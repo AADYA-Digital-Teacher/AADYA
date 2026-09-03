@@ -1,300 +1,532 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#111111">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111111">
 
-  <title>AADYA – Learning</title>
+<title>AADYA – Learning</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      color: #222;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    .header {
-      background: #111;
-      color: white;
-      padding: 16px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #222;
+}
 
-    .header img {
-      width: 150px;
-      max-width: 70%;
-      height: auto;
-    }
+/* HEADER */
 
-    .header h1 {
-      margin: 10px 0 4px;
-      font-size: 22px;
-    }
+.header {
+  background: #111;
+  color: white;
+  padding: 22px 16px 26px;
+  text-align: center;
+}
 
-    .header p {
-      margin: 0;
-      font-size: 14px;
-      color: #ddd;
-    }
+.header img {
+  width: 180px;
+  max-width: 75%;
+  height: auto;
+  display: block;
+  margin: 0 auto 12px;
+}
 
-    .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 16px;
-    }
+.header h1 {
+  margin: 8px 0;
+  font-size: 27px;
+}
 
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 16px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    }
+.header p {
+  margin: 0;
+  font-size: 16px;
+  color: #ddd;
+}
 
-    .chapter {
-      font-size: 14px;
-      color: #777;
-      margin-bottom: 6px;
-    }
+/* MAIN */
 
-    h2 {
-      margin-top: 5px;
-      font-size: 25px;
-    }
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 18px 16px 40px;
+}
 
-    h3 {
-      margin-bottom: 8px;
-    }
+/* CARDS */
 
-    .objective {
-      padding: 8px 0;
-    }
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.08);
+}
 
-    .example {
-      background: #f7f7f7;
-      border-left: 4px solid #111;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 8px;
-    }
+.chapter {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 8px;
+}
 
-    .question {
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
+h2 {
+  margin: 6px 0 10px;
+  font-size: 26px;
+}
 
-    .option {
-      display: block;
-      width: 100%;
-      text-align: left;
-      padding: 13px;
-      margin: 8px 0;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      background: white;
-      font-size: 16px;
-      cursor: pointer;
-    }
+h3 {
+  margin: 0 0 14px;
+  font-size: 21px;
+}
 
-    .option:hover {
-      background: #f0f0f0;
-    }
+p {
+  line-height: 1.7;
+}
 
-    .option.correct {
-      background: #dff5df;
-      border-color: #2e8b57;
-    }
+.objective {
+  padding: 9px 0;
+  line-height: 1.5;
+}
 
-    .option.wrong {
-      background: #ffe0e0;
-      border-color: #d33;
-    }
+/* EXAMPLES */
 
-    .feedback {
-      margin-top: 10px;
-      font-weight: bold;
-    }
+.example {
+  background: #f7f7f7;
+  border-left: 4px solid #111;
+  padding: 14px;
+  margin: 12px 0;
+  border-radius: 10px;
+  line-height: 1.6;
+}
 
-    .btn {
-      display: block;
-      width: 100%;
-      border: none;
-      border-radius: 12px;
-      padding: 14px;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-      background: #111;
-      color: white;
-      margin-top: 12px;
-    }
+.question {
+  font-weight: bold;
+  margin-bottom: 12px;
+  font-size: 17px;
+}
 
-    .success {
-      text-align: center;
-      background: #111;
-      color: white;
-    }
+/* BUTTONS */
 
-    .loading {
-      text-align: center;
-      padding: 40px 10px;
-      font-size: 18px;
-    }
+.option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 14px;
+  margin: 9px 0;
+  border: 1px solid #ddd;
+  border-radius: 11px;
+  background: white;
+  font-size: 16px;
+  cursor: pointer;
+}
 
-    .error {
-      background: #ffe5e5;
-      color: #900;
-      padding: 18px;
-      border-radius: 12px;
-    }
+.option:hover {
+  background: #f0f0f0;
+}
 
-    .progress {
-      height: 10px;
-      background: #ddd;
-      border-radius: 10px;
-      overflow: hidden;
-      margin-top: 10px;
-    }
+.option.correct {
+  background: #dff5df;
+  border-color: #2e8b57;
+}
 
-    .progress-bar {
-      height: 100%;
-      width: 0%;
-      background: #111;
-      transition: width 0.4s;
-    }
-  </style>
+.option.wrong {
+  background: #ffe0e0;
+  border-color: #d33;
+}
+
+.option:disabled {
+  cursor: default;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  background: #111;
+  color: white;
+  margin-top: 12px;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.answer {
+  display: none;
+  margin-top: 12px;
+  padding: 12px;
+  background: #eaf7ea;
+  border-radius: 10px;
+}
+
+/* FEEDBACK */
+
+.feedback {
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.feedback.good {
+  background: #e5f6e5;
+  color: #176b17;
+}
+
+.feedback.bad {
+  background: #ffe7e7;
+  color: #a00000;
+}
+
+/* SUCCESS */
+
+.success {
+  text-align: center;
+  background: #111;
+  color: white;
+}
+
+.progress {
+  height: 12px;
+  background: #555;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 18px 0;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: #d4af37;
+  transition: width 0.4s;
+}
+
+/* LOADING */
+
+.loading {
+  text-align: center;
+  padding: 40px 10px;
+  font-size: 18px;
+}
+
+/* ERROR */
+
+.error {
+  background: #ffe5e5;
+  color: #900;
+  padding: 18px;
+  border-radius: 12px;
+}
+
+/* LIST */
+
+ul {
+  padding-left: 24px;
+}
+
+li {
+  margin: 9px 0;
+  line-height: 1.5;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .header {
+    padding: 18px 12px 22px;
+  }
+
+  .header img {
+    width: 165px;
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .header p {
+    font-size: 15px;
+  }
+
+  .container {
+    padding: 14px 12px 30px;
+  }
+
+  .card {
+    padding: 17px;
+    border-radius: 16px;
+  }
+
+  h2 {
+    font-size: 23px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
 
-  <header class="header">
-    <img src="./assets/logo/aadya-logo-header-full.png"
-         alt="AADYA">
+<header class="header">
 
-    <h1 id="lessonTitle">AADYA Learning</h1>
-    <p>आपका अपना Digital Teacher</p>
-  </header>
+  <img
+    src="./assets/logo/aadya-logo-header-full.png"
+    alt="AADYA">
 
-  <main class="container">
+  <h1 id="lessonTitle">AADYA Learning</h1>
 
-    <div id="loading" class="card loading">
-      📚 Lesson तैयार हो रहा है...
-    </div>
+  <p>आपका अपना Digital Teacher</p>
 
-    <div id="content" style="display:none;">
+</header>
 
-      <section class="card">
-        <div class="chapter" id="chapterTitle"></div>
-        <h2 id="mainTitle"></h2>
-        <p id="subtitle"></p>
-      </section>
 
-      <section class="card">
-        <h3>🎯 आज हम क्या सीखेंगे?</h3>
-        <div id="objectives"></div>
-      </section>
+<main class="container">
 
-      <section class="card">
-        <h3 id="introQuestion"></h3>
-        <p id="introExplanation"></p>
-      </section>
+  <!-- LOADING -->
 
-      <section class="card">
-        <h3>💡 आसान भाषा में समझें</h3>
-        <div id="explanation"></div>
-      </section>
+  <div id="loading" class="card loading">
+    📚 Lesson तैयार हो रहा है...
+  </div>
 
-      <section class="card">
-        <h3>🔢 उदाहरण देखें</h3>
-        <div id="examples"></div>
-      </section>
 
-      <section class="card">
-        <h3>✍️ खुद करके देखें</h3>
-        <div id="tryYourself"></div>
-      </section>
+  <!-- MAIN CONTENT -->
 
-      <section class="card">
-        <h3>📝 अभ्यास</h3>
-        <div id="practice"></div>
-      </section>
+  <div id="content" style="display:none;">
 
-      <section class="card">
-        <h3>🧠 Quiz – अपनी समझ जाँचें</h3>
-        <div id="quiz"></div>
-      </section>
 
-      <section class="card">
-        <h3>🌍 अपने आसपास पैटर्न खोजें</h3>
-        <p id="activityInstruction"></p>
-        <ul id="activityExamples"></ul>
-      </section>
+    <!-- LESSON HEADER -->
 
-      <section class="card">
-        <h3>⭐ आज की मुख्य बातें</h3>
-        <ul id="keyPoints"></ul>
-      </section>
+    <section class="card">
 
-      <section class="card success">
-        <h2 id="completionMessage"></h2>
-        <p id="nextLesson"></p>
+      <div
+        class="chapter"
+        id="chapterTitle">
+      </div>
 
-        <div class="progress">
-          <div class="progress-bar" id="progressBar"></div>
+      <h2 id="mainTitle"></h2>
+
+      <p id="subtitle"></p>
+
+    </section>
+
+
+    <!-- OBJECTIVES -->
+
+    <section class="card">
+
+      <h3>🎯 आज हम क्या सीखेंगे?</h3>
+
+      <div id="objectives"></div>
+
+    </section>
+
+
+    <!-- INTRODUCTION -->
+
+    <section class="card">
+
+      <h3 id="introQuestion"></h3>
+
+      <p id="introExplanation"></p>
+
+    </section>
+
+
+    <!-- SIMPLE EXPLANATION -->
+
+    <section class="card">
+
+      <h3>💡 आसान भाषा में समझें</h3>
+
+      <div id="explanation"></div>
+
+    </section>
+
+
+    <!-- EXAMPLES -->
+
+    <section class="card">
+
+      <h3>🔢 उदाहरण देखें</h3>
+
+      <div id="examples"></div>
+
+    </section>
+
+
+    <!-- TRY YOURSELF -->
+
+    <section class="card">
+
+      <h3>✍️ खुद करके देखें</h3>
+
+      <div id="tryYourself"></div>
+
+    </section>
+
+
+    <!-- PRACTICE -->
+
+    <section class="card">
+
+      <h3>📝 अभ्यास</h3>
+
+      <div id="practice"></div>
+
+    </section>
+
+
+    <!-- QUIZ -->
+
+    <section class="card">
+
+      <h3>🧠 Quiz – अपनी समझ जाँचें</h3>
+
+      <div id="quiz"></div>
+
+      <div
+        id="quizResult"
+        style="margin-top:15px;font-weight:bold;">
+      </div>
+
+    </section>
+
+
+    <!-- ACTIVITY -->
+
+    <section class="card">
+
+      <h3>🌍 अपने आसपास पैटर्न खोजें</h3>
+
+      <p id="activityInstruction"></p>
+
+      <ul id="activityExamples"></ul>
+
+    </section>
+
+
+    <!-- KEY POINTS -->
+
+    <section class="card">
+
+      <h3>⭐ आज की मुख्य बातें</h3>
+
+      <ul id="keyPoints"></ul>
+
+    </section>
+
+
+    <!-- COMPLETION -->
+
+    <section class="card success">
+
+      <h2 id="completionMessage"></h2>
+
+      <p id="nextLesson"></p>
+
+      <div class="progress">
+
+        <div
+          class="progress-bar"
+          id="progressBar">
         </div>
 
-        <button class="btn" onclick="completeLesson()">
-          ✅ Lesson पूरा किया
-        </button>
-      </section>
+      </div>
 
-    </div>
+      <button
+        class="btn"
+        onclick="completeLesson()">
 
-    <div id="error" style="display:none;"></div>
+        ✅ Lesson पूरा किया
 
-  </main>
+      </button>
+
+    </section>
+
+
+  </div>
+
+
+  <!-- ERROR -->
+
+  <div
+    id="error"
+    style="display:none;">
+  </div>
+
+
+</main>
+
 
 <script>
 
 let lessonData = null;
+
 let quizScore = 0;
+
 let answeredQuestions = 0;
+
+
+/* LESSON FILE */
 
 const lessonFile =
   "./content/class6/mathematics/chapter01/lesson01.json";
 
 
+/* LOAD LESSON */
+
 async function loadLesson() {
 
   try {
 
-    const response = await fetch(lessonFile);
+    const response =
+      await fetch(lessonFile);
 
     if (!response.ok) {
-      throw new Error("Lesson file नहीं मिला");
+
+      throw new Error(
+        "Lesson file नहीं मिला"
+      );
+
     }
 
-    lessonData = await response.json();
+    lessonData =
+      await response.json();
 
     renderLesson(lessonData);
 
-    document.getElementById("loading").style.display = "none";
-    document.getElementById("content").style.display = "block";
+    document.getElementById(
+      "loading"
+    ).style.display = "none";
 
-  } catch (error) {
+    document.getElementById(
+      "content"
+    ).style.display = "block";
 
-    document.getElementById("loading").style.display = "none";
+  }
 
-    const errorBox = document.getElementById("error");
+  catch (error) {
+
+    document.getElementById(
+      "loading"
+    ).style.display = "none";
+
+    const errorBox =
+      document.getElementById("error");
 
     errorBox.style.display = "block";
 
@@ -302,221 +534,732 @@ async function loadLesson() {
 
     errorBox.innerHTML =
       "<strong>Lesson लोड नहीं हो पाया।</strong><br><br>" +
-      "कृपया Internet connection जाँचें और फिर page खोलें।";
+      "कृपया page को दोबारा खोलें।";
 
     console.error(error);
+
   }
+
 }
 
+
+/* RENDER LESSON */
 
 function renderLesson(data) {
 
-  // Header
-  document.getElementById("lessonTitle").textContent =
+
+  /* HEADER */
+
+  document.getElementById(
+    "lessonTitle"
+  ).textContent =
     data.lesson.title;
 
-  // Chapter + lesson
-  document.getElementById("chapterTitle").textContent =
-    "कक्षा " + data.class + " • " +
-    data.subject + " • अध्याय " +
-    data.chapter.number + " : " +
+
+  /* CHAPTER */
+
+  document.getElementById(
+    "chapterTitle"
+  ).textContent =
+    "कक्षा " +
+    data.class +
+    " • " +
+    data.subject +
+    " • अध्याय " +
+    data.chapter.number +
+    " : " +
     data.chapter.title;
 
-  document.getElementById("mainTitle").textContent =
+
+  document.getElementById(
+    "mainTitle"
+  ).textContent =
     data.lesson.title;
 
-  document.getElementById("subtitle").textContent =
+
+  document.getElementById(
+    "subtitle"
+  ).textContent =
     data.lesson.subtitle;
 
 
-  // Learning Objectives
-  const objectives = document.getElementById("objectives");
+  /* OBJECTIVES */
+
+  const objectives =
+    document.getElementById(
+      "objectives"
+    );
+
   objectives.innerHTML = "";
 
-  data.learning_objectives.forEach((item, index) => {
-    const div = document.createElement("div");
-    div.className = "objective";
-    div.textContent = "✅ " + item;
-    objectives.appendChild(div);
-  });
+
+  data.learning_objectives.forEach(
+    item => {
+
+      const div =
+        document.createElement("div");
+
+      div.className =
+        "objective";
+
+      div.textContent =
+        "✅ " + item;
+
+      objectives.appendChild(div);
+
+    }
+  );
 
 
-  // Introduction
-  document.getElementById("introQuestion").textContent =
-    "🤔 " + data.introduction.question;
+  /* INTRODUCTION */
 
-  document.getElementById("introExplanation").textContent =
+  document.getElementById(
+    "introQuestion"
+  ).textContent =
+    "🤔 " +
+    data.introduction.question;
+
+
+  document.getElementById(
+    "introExplanation"
+  ).textContent =
     data.introduction.explanation;
 
 
-  // Simple Explanation
-  const explanation = document.getElementById("explanation");
+  /* SIMPLE EXPLANATION */
+
+  const explanation =
+    document.getElementById(
+      "explanation"
+    );
+
   explanation.innerHTML = "";
 
-  data.simple_explanation.forEach(item => {
-    const box = document.createElement("div");
-    box.className = "example";
 
-    box.innerHTML =
-      "<strong>" + item.title + "</strong><br><br>" +
-      item.text;
+  data.simple_explanation.forEach(
+    item => {
 
-    explanation.appendChild(box);
-  });
+      const box =
+        document.createElement("div");
+
+      box.className =
+        "example";
+
+      box.innerHTML =
+        "<strong>" +
+        item.title +
+        "</strong><br><br>" +
+        item.text;
+
+      explanation.appendChild(box);
+
+    }
+  );
 
 
-  // Examples
-  const examples = document.getElementById("examples");
+  /* EXAMPLES */
+
+  const examples =
+    document.getElementById(
+      "examples"
+    );
+
   examples.innerHTML = "";
 
-  data.examples.forEach(item => {
-    const box = document.createElement("div");
-    box.className = "example";
 
-    box.innerHTML =
-      "<strong>" + item.question + "</strong><br><br>" +
-      "उत्तर: <strong>" + item.answer + "</strong><br>" +
-      item.reason;
+  data.examples.forEach(
+    item => {
 
-    examples.appendChild(box);
-  });
+      const box =
+        document.createElement("div");
+
+      box.className =
+        "example";
+
+      box.innerHTML =
+        "<strong>" +
+        item.question +
+        "</strong><br><br>" +
+        "उत्तर: <strong>" +
+        item.answer +
+        "</strong><br>" +
+        item.reason;
+
+      examples.appendChild(box);
+
+    }
+  );
 
 
-  // Try Yourself
-  const tryBox = document.getElementById("tryYourself");
+  /* TRY YOURSELF */
+
+  const tryBox =
+    document.getElementById(
+      "tryYourself"
+    );
+
   tryBox.innerHTML = "";
 
-  data.try_yourself.forEach((item, index) => {
 
-    const box = document.createElement("div");
-    box.className = "example";
+  data.try_yourself.forEach(
+    (item, index) => {
 
-    box.innerHTML =
-      "<strong>" + (index + 1) + ". " +
-      item.question + "</strong><br><br>" +
-      "<button class='btn' onclick=\"this.nextElementSibling.style.display='block'\">" +
-      "उत्तर देखें" +
-      "</button>" +
-      "<div style='display:none;margin-top:10px'>" +
-      "उत्तर: <strong>" + item.answer + "</strong>" +
-      "</div>";
+      const box =
+        document.createElement("div");
 
-    tryBox.appendChild(box);
-  });
+      box.className =
+        "example";
 
 
-  // Practice
-  const practice = document.getElementById("practice");
+      box.innerHTML =
+        "<strong>" +
+        (index + 1) +
+        ". " +
+        item.question +
+        "</strong>" +
+
+        "<button class='btn' " +
+        "onclick='showAnswer(this)'>" +
+        "उत्तर देखें" +
+        "</button>" +
+
+        "<div class='answer'>" +
+        "उत्तर: <strong>" +
+        item.answer +
+        "</strong>" +
+        "</div>";
+
+
+      tryBox.appendChild(box);
+
+    }
+  );
+
+
+  /* PRACTICE */
+
+  const practice =
+    document.getElementById(
+      "practice"
+    );
+
   practice.innerHTML = "";
 
-  data.practice.forEach((item, index) => {
 
-    const box = document.createElement("div");
-    box.className = "example";
+  data.practice.forEach(
+    (item, index) => {
 
-    let html =
-      "<div class='question'>" +
-      (index + 1) + ". " + item.question +
-      "</div>";
+      const box =
+        document.createElement("div");
 
-    item.options.forEach(option => {
+      box.className =
+        "example";
+
+
+      let html =
+        "<div class='question'>" +
+        (index + 1) +
+        ". " +
+        item.question +
+        "</div>";
+
+
+      item.options.forEach(
+        option => {
+
+          html +=
+            "<button class='option' " +
+            "onclick='checkPractice(this)' " +
+            "data-option='" +
+            escapeAttribute(option) +
+            "' " +
+            "data-answer='" +
+            escapeAttribute(item.answer) +
+            "' " +
+            "data-explanation='" +
+            escapeAttribute(item.explanation) +
+            "'>" +
+            option +
+            "</button>";
+
+        }
+      );
+
 
       html +=
-        "<button class='option' " +
-        "onclick=\"checkPractice(this, '" +
-        option.replace(/'/g, "\\'") +
-        "', '" +
-        item.answer.replace(/'/g, "\\'") +
-        "', '" +
-        item.explanation.replace(/'/g, "\\'") +
-        "')\">" +
-        option +
-        "</button>";
-    });
-
-    html += "<div class='feedback'></div>";
-
-    box.innerHTML = html;
-    practice.appendChild(box);
-  });
+        "<div class='feedback'></div>";
 
 
-  // Quiz
-  const quiz = document.getElementById("quiz");
+      box.innerHTML = html;
+
+      practice.appendChild(box);
+
+    }
+  );
+
+
+  /* QUIZ */
+
+  const quiz =
+    document.getElementById(
+      "quiz"
+    );
+
   quiz.innerHTML = "";
 
-  data.quiz.questions.forEach((item, index) => {
+  quizScore = 0;
 
-    const box = document.createElement("div");
-    box.className = "example";
+  answeredQuestions = 0;
 
-    let html =
-      "<div class='question'>" +
-      (index + 1) + ". " + item.question +
-      "</div>";
 
-    item.options.forEach(option => {
+  data.quiz.questions.forEach(
+    (item, index) => {
+
+      const box =
+        document.createElement("div");
+
+      box.className =
+        "example";
+
+
+      let html =
+        "<div class='question'>" +
+        (index + 1) +
+        ". " +
+        item.question +
+        "</div>";
+
+
+      item.options.forEach(
+        option => {
+
+          html +=
+            "<button class='option' " +
+            "onclick='checkQuiz(this)' " +
+            "data-option='" +
+            escapeAttribute(option) +
+            "' " +
+            "data-answer='" +
+            escapeAttribute(item.correct_answer) +
+            "' " +
+            "data-correct='" +
+            escapeAttribute(item.feedback_correct) +
+            "' " +
+            "data-wrong='" +
+            escapeAttribute(item.feedback_wrong) +
+            "'>" +
+            option +
+            "</button>";
+
+        }
+      );
+
 
       html +=
-        "<button class='option' " +
-        "onclick=\"checkQuiz(this, '" +
-        option.replace(/'/g, "\\'") +
-        "', '" +
-        item.correct_answer.replace(/'/g, "\\'") +
-        "', '" +
-        item.feedback_correct.replace(/'/g, "\\'") +
-        "', '" +
-        item.feedback_wrong.replace(/'/g, "\\'") +
-        "')\">" +
-        option +
-        "</button>";
-    });
-
-    html += "<div class='feedback'></div>";
-
-    box.innerHTML = html;
-    quiz.appendChild(box);
-  });
+        "<div class='feedback'></div>";
 
 
-  // Real Life Activity
-  document.getElementById("activityInstruction").textContent =
+      box.innerHTML = html;
+
+      quiz.appendChild(box);
+
+    }
+  );
+
+
+  /* ACTIVITY */
+
+  document.getElementById(
+    "activityInstruction"
+  ).textContent =
     data.real_life_activity.instruction;
 
+
   const activityExamples =
-    document.getElementById("activityExamples");
+    document.getElementById(
+      "activityExamples"
+    );
 
   activityExamples.innerHTML = "";
 
-  data.real_life_activity.examples.forEach(item => {
 
-    const li = document.createElement("li");
-    li.textContent = item;
-    activityExamples.appendChild(li);
-  });
+  data.real_life_activity.examples.forEach(
+    item => {
+
+      const li =
+        document.createElement("li");
+
+      li.textContent = item;
+
+      activityExamples.appendChild(li);
+
+    }
+  );
 
 
-  // Key Points
-  const keyPoints = document.getElementById("keyPoints");
+  /* KEY POINTS */
+
+  const keyPoints =
+    document.getElementById(
+      "keyPoints"
+    );
+
   keyPoints.innerHTML = "";
 
-  data.key_points.forEach(item => {
 
-    const li = document.createElement("li");
-    li.textContent = item;
-    keyPoints.appendChild(li);
-  });
+  data.key_points.forEach(
+    item => {
+
+      const li =
+        document.createElement("li");
+
+      li.textContent = item;
+
+      keyPoints.appendChild(li);
+
+    }
+  );
 
 
-  // Completion
-  document.getElementById("completionMessage").textContent =
+  /* COMPLETION */
+
+  document.getElementById(
+    "completionMessage"
+  ).textContent =
     data.completion.message;
 
-  document.getElementById("nextLesson").textContent =
-    "अगला पाठ: " + data.completion.next_lesson;
+
+  document.getElementById(
+    "nextLesson"
+  ).textContent =
+    "अगला पाठ: " +
+    data.completion.next_lesson;
+
 }
 
+
+/* ESCAPE TEXT */
+
+function escapeAttribute(text) {
+
+  return String(text)
+    .replace(/&/g, "&amp;")
+    .replace(/'/g, "&#39;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
+}
+
+
+/* TRY YOURSELF ANSWER */
+
+function showAnswer(button) {
+
+  const answer =
+    button.nextElementSibling;
+
+  if (answer) {
+
+    answer.style.display =
+      "block";
+
+    button.style.display =
+      "none";
+
+  }
+
+}
+
+
+/* PRACTICE CHECK */
+
+function checkPractice(button) {
+
+  const box =
+    button.parentElement;
+
+  const buttons =
+    box.querySelectorAll(
+      ".option"
+    );
+
+  const feedback =
+    box.querySelector(
+      ".feedback"
+    );
+
+
+  const selected =
+    button.getAttribute(
+      "data-option"
+    );
+
+  const answer =
+    button.getAttribute(
+      "data-answer"
+    );
+
+  const explanation =
+    button.getAttribute(
+      "data-explanation"
+    );
+
+
+  buttons.forEach(
+    btn => {
+
+      btn.disabled = true;
+
+      if (
+        btn.getAttribute(
+          "data-option"
+        ) === answer
+      ) {
+
+        btn.classList.add(
+          "correct"
+        );
+
+      }
+
+    }
+  );
+
+
+  if (selected === answer) {
+
+    button.classList.add(
+      "correct"
+    );
+
+    feedback.className =
+      "feedback good";
+
+    feedback.textContent =
+      "✅ सही उत्तर! " +
+      explanation;
+
+  }
+
+  else {
+
+    button.classList.add(
+      "wrong"
+    );
+
+    feedback.className =
+      "feedback bad";
+
+    feedback.textContent =
+      "❌ सही उत्तर: " +
+      answer +
+      " — " +
+      explanation;
+
+  }
+
+}
+
+
+/* QUIZ CHECK */
+
+function checkQuiz(button) {
+
+  const box =
+    button.parentElement;
+
+  const buttons =
+    box.querySelectorAll(
+      ".option"
+    );
+
+  const feedback =
+    box.querySelector(
+      ".feedback"
+    );
+
+
+  if (
+    box.dataset.answered === "true"
+  ) {
+
+    return;
+
+  }
+
+
+  box.dataset.answered =
+    "true";
+
+  answeredQuestions++;
+
+
+  const selected =
+    button.getAttribute(
+      "data-option"
+    );
+
+  const answer =
+    button.getAttribute(
+      "data-answer"
+    );
+
+  const correctFeedback =
+    button.getAttribute(
+      "data-correct"
+    );
+
+  const wrongFeedback =
+    button.getAttribute(
+      "data-wrong"
+    );
+
+
+  buttons.forEach(
+    btn => {
+
+      btn.disabled = true;
+
+      if (
+        btn.getAttribute(
+          "data-option"
+        ) === answer
+      ) {
+
+        btn.classList.add(
+          "correct"
+        );
+
+      }
+
+    }
+  );
+
+
+  if (selected === answer) {
+
+    quizScore++;
+
+    button.classList.add(
+      "correct"
+    );
+
+    feedback.className =
+      "feedback good";
+
+    feedback.textContent =
+      "✅ " +
+      correctFeedback;
+
+  }
+
+  else {
+
+    button.classList.add(
+      "wrong"
+    );
+
+    feedback.className =
+      "feedback bad";
+
+    feedback.textContent =
+      "❌ " +
+      wrongFeedback;
+
+  }
+
+
+  updateQuizResult();
+
+}
+
+
+/* QUIZ RESULT */
+
+function updateQuizResult() {
+
+  const result =
+    document.getElementById(
+      "quizResult"
+    );
+
+  const total =
+    lessonData.quiz.questions.length;
+
+
+  if (
+    answeredQuestions === total
+  ) {
+
+    const percentage =
+      Math.round(
+        (quizScore / total) * 100
+      );
+
+
+    result.innerHTML =
+      "🎉 Quiz पूरा! आपका स्कोर: " +
+      quizScore +
+      "/" +
+      total +
+      " (" +
+      percentage +
+      "%)";
+
+
+    localStorage.setItem(
+      "aadya_last_quiz_score",
+      quizScore
+    );
+
+  }
+
+  else {
+
+    result.textContent =
+      "प्रश्न हल किए: " +
+      answeredQuestions +
+      "/" +
+      total;
+
+  }
+
+}
+
+
+/* COMPLETE LESSON */
+
+function completeLesson() {
+
+  localStorage.setItem(
+    "aadya_last_lesson",
+    lessonData.id
+  );
+
+
+  const progressBar =
+    document.getElementById(
+      "progressBar"
+    );
+
+
+  progressBar.style.width =
+    "100%";
+
+
+  alert(
+    "🎉 बहुत बढ़िया!\n\n" +
+    "आपने यह Lesson पूरा कर लिया।"
+  );
+
+}
+
+
+/* START */
+
 loadLesson();
+
 </script>
 
 </body>
