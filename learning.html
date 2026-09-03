@@ -1259,6 +1259,128 @@ function completeLesson() {
 /* START */
 
 loadLesson();
+<script>
+
+/* ================================
+   AADYA PROGRESS SYSTEM
+   ================================ */
+
+const PROGRESS_KEY = "aadya_progress_v1";
+
+/* Save completed lesson */
+function saveLessonProgress() {
+
+  const progress = JSON.parse(
+    localStorage.getItem(PROGRESS_KEY) || "{}"
+  );
+
+  progress[lessonFile] = {
+    completed: true,
+    completedAt: new Date().toISOString()
+  };
+
+  localStorage.setItem(
+    PROGRESS_KEY,
+    JSON.stringify(progress)
+  );
+}
+
+
+/* Check whether lesson is already completed */
+function isLessonCompleted() {
+
+  const progress = JSON.parse(
+    localStorage.getItem(PROGRESS_KEY) || "{}"
+  );
+
+  return !!(
+    progress[lessonFile] &&
+    progress[lessonFile].completed
+  );
+}
+
+
+/* Update completion screen */
+function updateProgressUI() {
+
+  const bar =
+    document.getElementById("progressBar");
+
+  const button =
+    document.querySelector(".success .btn");
+
+  if (!bar || !button) return;
+
+  if (isLessonCompleted()) {
+
+    bar.style.width = "100%";
+
+    button.textContent =
+      "✅ Lesson पहले ही पूरा किया गया";
+
+    button.disabled = true;
+
+    button.style.opacity = "0.75";
+
+  } else {
+
+    bar.style.width = "0%";
+
+    button.textContent =
+      "✅ Lesson पूरा किया";
+
+    button.disabled = false;
+
+    button.style.opacity = "1";
+  }
+}
+
+
+/* New completion action */
+window.completeLesson = function() {
+
+  saveLessonProgress();
+
+  const bar =
+    document.getElementById("progressBar");
+
+  const button =
+    document.querySelector(".success .btn");
+
+  if (bar) {
+    bar.style.width = "100%";
+  }
+
+  if (button) {
+
+    button.textContent =
+      "✅ Lesson पूरा किया गया";
+
+    button.disabled = true;
+
+    button.style.opacity = "0.75";
+  }
+
+  alert(
+    "🎉 बहुत बढ़िया!\n\n" +
+    "आपने यह Lesson पूरा कर लिया।\n\n" +
+    "आपकी Progress सुरक्षित कर ली गई है।"
+  );
+};
+
+
+/* Restore progress whenever page opens */
+document.addEventListener(
+  "DOMContentLoaded",
+  function() {
+
+    setTimeout(
+      updateProgressUI,
+      500
+    );
+
+  }
+);
 
 </script>
 
