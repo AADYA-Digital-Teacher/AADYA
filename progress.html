@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="theme-color"
+    content="#111111">
+
+  <link
+    rel="manifest"
+    href="./manifest.json">
+
+  <title>AADYA – मेरी Progress</title>
+
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    body {
+
+      font-family:
+        Arial,
+        "Noto Sans Devanagari",
+        sans-serif;
+
+      background: #f5f5f5;
+
+      color: #222;
+
+    }
+
+
+    /* =========================
+       HEADER
+    ========================== */
+
+    .header {
+
+      background: #111;
+
+      color: white;
+
+      text-align: center;
+
+      padding: 22px 15px 24px;
+
+      border-bottom:
+        3px solid #d4af37;
+
+    }
+
+
+    .logo img {
+
+      width: 175px;
+
+      max-width: 80vw;
+
+      height: auto;
+
+    }
+
+
+    .tagline {
+
+      margin-top: 8px;
+
+      font-size: 13px;
+
+      line-height: 1.5;
+
+      color: #ddd;
+
+    }
+
+
+    /* =========================
+       MAIN
+    ========================== */
+
+    .container {
+
+      max-width: 680px;
+
+      margin: auto;
+
+      padding:
+        18px 14px 40px;
+
+    }
+
+
+    .back {
+
+      display: inline-block;
+
+      margin-bottom: 15px;
+
+      color: #111;
+
+      text-decoration: none;
+
+      font-size: 14px;
+
+      font-weight: bold;
+
+    }
+
+
+    /* =========================
+       STUDENT CARD
+    ========================== */
+
+    .student-card {
+
+      background:
+        linear-gradient(
+          135deg,
+          #111,
+          #292929
+        );
+
+      color: white;
+
+      border-radius: 20px;
+
+      padding: 22px 18px;
+
+      text-align: center;
+
+      box-shadow:
+        0 6px 22px
+        rgba(0,0,0,0.15);
+
+      margin-bottom: 17px;
+
+    }
+
+
+    .student-greeting {
+
+      color: #d4af37;
+
+      font-size: 22px;
+
+      font-weight: bold;
+
+    }
+
+
+    .student-class {
+
+      margin-top: 6px;
+
+      color: #ddd;
+
+      font-size: 14px;
+
+    }
+
+
+    /* =========================
+       STATS
+    ========================== */
+
+    .stats {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 10px;
+
+      margin-bottom: 17px;
+
+    }
+
+
+    .stat {
+
+      background: white;
+
+      border-radius: 15px;
+
+      padding: 15px 7px;
+
+      text-align: center;
+
+      box-shadow:
+        0 4px 15px
+        rgba(0,0,0,0.07);
+
+    }
+
+
+    .stat-icon {
+
+      font-size: 24px;
+
+      margin-bottom: 5px;
+
+    }
+
+
+    .stat-number {
+
+      font-size: 21px;
+
+      font-weight: bold;
+
+      color: #b38b00;
+
+    }
+
+
+    .stat-label {
+
+      margin-top: 3px;
+
+      color: #666;
+
+      font-size: 11px;
+
+    }
+
+
+    /* =========================
+       PROGRESS CARD
+    ========================== */
+
+    .progress-card {
+
+      background: white;
+
+      border-radius: 20px;
+
+      padding: 20px 18px;
+
+      box-shadow:
+        0 5px 18px
+        rgba(0,0,0,0.08);
+
+      margin-bottom: 17px;
+
+    }
+
+
+    .section-title {
+
+      font-size: 19px;
+
+      font-weight: bold;
+
+      margin-bottom: 12px;
+
+    }
+
+
+    .progress-info {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      margin-bottom: 8px;
+
+      font-size: 13px;
+
+    }
+
+
+    .progress-percent {
+
+      color: #b38b00;
+
+      font-weight: bold;
+
+    }
+
+
+    .progress-bar {
+
+      width: 100%;
+
+      height: 13px;
+
+      background: #eeeeee;
+
+      border-radius: 20px;
+
+      overflow: hidden;
+
+    }
+
+
+    .progress-fill {
+
+      height: 100%;
+
+      width: 0%;
+
+      background: #d4af37;
+
+      border-radius: 20px;
+
+      transition:
+        width 0.5s ease;
+
+    }
+
+
+    .progress-message {
+
+      margin-top: 12px;
+
+      color: #666;
+
+      font-size: 13px;
+
+      line-height: 1.6;
+
+    }
+
+
+    /* =========================
+       LATEST LESSON
+    ========================== */
+
+    .lesson-card {
+
+      background: white;
+
+      border-radius: 20px;
+
+      padding: 20px 18px;
+
+      box-shadow:
+        0 5px 18px
+        rgba(0,0,0,0.08);
+
+      margin-bottom: 17px;
+
+    }
+
+
+    .lesson-title {
+
+      font-size: 18px;
+
+      font-weight: bold;
+
+      margin-bottom: 6px;
+
+    }
+
+
+    .lesson-meta {
+
+      color: #777;
+
+      font-size: 13px;
+
+      line-height: 1.5;
+
+    }
+
+
+    .completed {
+
+      display: inline-block;
+
+      margin-top: 11px;
+
+      padding: 6px 11px;
+
+      border-radius: 20px;
+
+      background: #f8f3df;
+
+      color: #8d6d00;
+
+      font-size: 12px;
+
+      font-weight: bold;
+
+    }
+
+
+    /* =========================
+       EMPTY STATE
+    ========================== */
+
+    .empty {
+
+      text-align: center;
+
+      padding: 20px 10px;
+
+      color: #777;
+
+      line-height: 1.7;
+
+      font-size: 14px;
+
+    }
+
+
+    /* =========================
+       BUTTONS
+    ========================== */
+
+    .action-btn {
+
+      display: block;
+
+      width: 100%;
+
+      padding: 14px;
+
+      border: none;
+
+      border-radius: 13px;
+
+      background: #d4af37;
+
+      color: #111;
+
+      text-decoration: none;
+
+      text-align: center;
+
+      font-size: 15px;
+
+      font-weight: bold;
+
+      margin-top: 12px;
+
+    }
+
+
+    .secondary-btn {
+
+      background: #111;
+
+      color: white;
+
+    }
+
+
+    .action-btn:active {
+
+      transform: scale(0.98);
+
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    .footer {
+
+      text-align: center;
+
+      color: #888;
+
+      font-size: 11px;
+
+      line-height: 1.6;
+
+      padding-top: 10px;
+
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media (max-width: 380px) {
+
+      .student-greeting {
+
+        font-size: 20px;
+
+      }
+
+      .stat {
+
+        padding: 13px 5px;
+
+      }
+
+      .stat-number {
+
+        font-size: 19px;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header class="header">
+
+    <div class="logo">
+
+      <img
+        src="./assets/logo/aadya-logo-header-full.png"
+        alt="AADYA">
+
+    </div>
+
+
+    <div class="tagline">
+
+      Apne Adarsh Digital Gyan ka Yashasvi Abhiyan<br>
+
+      हर बच्चे की शिक्षा, आत्मनिर्भर भविष्य की ओर
+
+    </div>
+
+  </header>
+
+
+
+  <!-- =========================
+       MAIN
+  ========================== -->
+
+  <main class="container">
+
+
+    <a
+      href="./index.html"
+      class="back">
+
+      ← AADYA Home
+
+    </a>
+
+
+
+    <!-- STUDENT -->
+
+    <section class="student-card">
+
+      <div
+        class="student-greeting"
+        id="studentGreeting">
+
+        नमस्ते! 👋
+
+      </div>
+
+
+      <div
+        class="student-class"
+        id="studentClass">
+
+        आपकी Learning Journey
+
+      </div>
+
+    </section>
+
+
+
+    <!-- STATS -->
+
+    <section class="stats">
+
+
+      <div class="stat">
+
+        <div class="stat-icon">
+          📚
+        </div>
+
+        <div
+          class="stat-number"
+          id="completedLessons">
+
+          0
+
+        </div>
+
+        <div class="stat-label">
+
+          Lessons पूरे
+
+        </div>
+
+      </div>
+
+
+
+      <div class="stat">
+
+        <div class="stat-icon">
+          📝
+        </div>
+
+        <div
+          class="stat-number"
+          id="quizScore">
+
+          —
+
+        </div>
+
+        <div class="stat-label">
+
+          Last Quiz
+
+        </div>
+
+      </div>
+
+
+
+      <div class="stat">
+
+        <div class="stat-icon">
+          🎯
+        </div>
+
+        <div
+          class="stat-number"
+          id="progressPercent">
+
+          0%
+
+        </div>
+
+        <div class="stat-label">
+
+          Learning Progress
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- OVERALL PROGRESS -->
+
+    <section class="progress-card">
+
+      <div class="section-title">
+
+        📈 मेरी Learning Progress
+
+      </div>
+
+
+      <div class="progress-info">
+
+        <span>
+          उपलब्ध Lessons में प्रगति
+        </span>
+
+        <span
+          class="progress-percent"
+          id="progressText">
+
+          0%
+
+        </span>
+
+      </div>
+
+
+      <div class="progress-bar">
+
+        <div
+          class="progress-fill"
+          id="progressFill">
+        </div>
+
+      </div>
+
+
+      <div
+        class="progress-message"
+        id="progressMessage">
+
+        सीखना शुरू करें और अपनी Progress यहाँ देखें। 🚀
+
+      </div>
+
+    </section>
+
+
+
+    <!-- LATEST LESSON -->
+
+    <section class="lesson-card">
+
+      <div class="section-title">
+
+        📖 Latest Learning
+
+      </div>
+
+
+      <div
+        id="latestLesson">
+
+        <div class="empty">
+
+          अभी कोई Lesson पूरा नहीं हुआ है।<br>
+
+          पहला Lesson पूरा करके यहाँ अपनी progress देखें। 😊
+
+        </div>
+
+      </div>
+
+
+      <a
+        href="./learning.html"
+        class="action-btn">
+
+        🚀 Learning जारी रखें
+
+      </a>
+
+    </section>
+
+
+
+    <!-- MOTIVATION -->
+
+    <section class="progress-card">
+
+      <div class="section-title">
+
+        🌟 AADYA की ओर से
+
+      </div>
+
+
+      <div
+        class="progress-message"
+        id="motivation">
+
+        हर दिन थोड़ा सीखें,<br>
+        हर दिन थोड़ा आगे बढ़ें। 💪
+
+      </div>
+
+    </section>
+
+
+
+    <a
+      href="./index.html"
+      class="action-btn secondary-btn">
+
+      🏠 वापस AADYA Home
+
+    </a>
+
+
+
+    <div class="footer">
+
+      AADYA – Apne Adarsh Digital Gyan ka Yashasvi Abhiyan<br>
+
+      <strong>
+        हर बच्चे की शिक्षा, आत्मनिर्भर भविष्य की ओर
+      </strong>
+
+    </div>
+
+
+  </main>
+
+
+
+  <script>
+
+
+    /* =========================
+       STORAGE KEYS
+    ========================== */
+
+    const PROFILE_KEY =
+      "aadya_student_profile";
+
+    const PROGRESS_KEY =
+      "aadya_progress_v1";
+
+    const QUIZ_KEY =
+      "aadya_last_quiz_score";
+
+
+
+    /* =========================
+       STUDENT PROFILE
+    ========================== */
+
+    function loadStudentProfile() {
+
+      let profile = null;
+
+      try {
+
+        profile =
+          JSON.parse(
+            localStorage.getItem(
+              PROFILE_KEY
+            ) || "null"
+          );
+
+      } catch (error) {
+
+        profile = null;
+
+      }
+
+
+      if (
+        profile &&
+        profile.name
+      ) {
+
+        document.getElementById(
+          "studentGreeting"
+        ).textContent =
+          "नमस्ते, " +
+          profile.name +
+          "! 👋";
+
+
+        if (profile.class) {
+
+          document.getElementById(
+            "studentClass"
+          ).textContent =
+            "कक्षा " +
+            profile.class +
+            " • आपकी Learning Journey";
+
+        }
+
+      }
+
+    }
+
+
+
+    /* =========================
+       PROGRESS
+    ========================== */
+
+    function loadProgress() {
+
+      let progress = {};
+
+      try {
+
+        progress =
+          JSON.parse(
+            localStorage.getItem(
+              PROGRESS_KEY
+            ) || "{}"
+          );
+
+      } catch (error) {
+
+        progress = {};
+
+      }
+
+
+      const entries =
+        Object.entries(progress);
+
+
+      const completed =
+        entries.filter(
+          function(item) {
+
+            return (
+              item[1] &&
+              item[1].completed === true
+            );
+
+          }
+        );
+
+
+      const completedCount =
+        completed.length;
+
+
+      /*
+        फिलहाल उपलब्ध Lesson
+        केवल हमारा वर्तमान Lesson है।
+        आगे नए Lessons जोड़ते ही
+        इस list को बढ़ाएँगे।
+      */
+
+      const totalLessons = 1;
+
+
+      let percent = 0;
+
+
+      if (totalLessons > 0) {
+
+        percent =
+          Math.round(
+            (
+              completedCount /
+              totalLessons
+            ) * 100
+          );
+
+      }
+
+
+      if (percent > 100) {
+
+        percent = 100;
+
+      }
+
+
+      document.getElementById(
+        "completedLessons"
+      ).textContent =
+        completedCount;
+
+
+      document.getElementById(
+        "progressPercent"
+      ).textContent =
+        percent + "%";
+
+
+      document.getElementById(
+        "progressText"
+      ).textContent =
+        percent + "%";
+
+
+      document.getElementById(
+        "progressFill"
+      ).style.width =
+        percent + "%";
+
+
+      if (completedCount === 0) {
+
+        document.getElementById(
+          "progressMessage"
+        ).textContent =
+          "अभी शुरुआत बाकी है। पहला Lesson पूरा करें और अपनी Progress बढ़ाएँ। 🚀";
+
+      }
+
+      else if (percent === 100) {
+
+        document.getElementById(
+          "progressMessage"
+        ).textContent =
+          "🎉 शानदार! आपने अभी उपलब्ध सभी Lessons पूरे कर लिए हैं।";
+
+      }
+
+      else {
+
+        document.getElementById(
+          "progressMessage"
+        ).textContent =
+          "बहुत बढ़िया! आपकी Learning Journey आगे बढ़ रही है। 💪";
+
+      }
+
+
+
+      /* =========================
+         LATEST COMPLETED LESSON
+      ========================== */
+
+      const latest =
+        completed
+          .sort(
+            function(a, b) {
+
+              return (
+                new Date(
+                  b[1].completedAt || 0
+                ) -
+                new Date(
+                  a[1].completedAt || 0
+                )
+              );
+
+            }
+          )[0];
+
+
+      if (latest) {
+
+        const lessonPath =
+          latest[0];
+
+
+        let title =
+          "Completed Lesson";
+
+
+        let meta =
+          "आपने यह Lesson पूरा किया है।";
+
+
+        if (
+          lessonPath.includes(
+            "lesson01.json"
+          )
+        )
