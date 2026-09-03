@@ -2,13 +2,23 @@
 <html lang="hi">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#111111">
 
-  <link rel="manifest" href="./manifest.json">
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="theme-color"
+    content="#111111">
+
+  <link
+    rel="manifest"
+    href="./manifest.json">
 
   <title>AADYA – Digital Teacher</title>
+
 
   <style>
 
@@ -18,14 +28,33 @@
       padding: 0;
     }
 
+
     body {
-      font-family: Arial, "Noto Sans Devanagari", sans-serif;
+
+      font-family:
+        Arial,
+        "Noto Sans Devanagari",
+        sans-serif;
+
       background: #f5f5f5;
+
       color: #222;
+
     }
 
+
+    button,
+    input {
+
+      font-family: inherit;
+
+    }
+
+
     .app {
+
       min-height: 100vh;
+
       background:
         linear-gradient(
           180deg,
@@ -33,678 +62,1784 @@
           #222222 43%,
           #f5f5f5 43%
         );
+
     }
+
 
     /* =========================
        HEADER
-    ========================= */
+    ========================== */
 
     .header {
-      padding: 38px 18px 30px;
+
+      padding:
+        38px 18px 30px;
+
       text-align: center;
+
       color: white;
+
     }
+
 
     .logo img {
+
       width: 210px;
+
       max-width: 86vw;
+
       height: auto;
+
       display: block;
+
       margin: 0 auto;
+
     }
 
+
     .tagline {
+
       margin-top: 12px;
+
       font-size: 14px;
+
       line-height: 1.6;
+
       color: #eeeeee;
+
     }
+
 
     /* =========================
        STUDENT WELCOME
-    ========================= */
+    ========================== */
 
     .student-welcome {
-      margin: 22px auto 0;
+
+      margin:
+        22px auto 0;
+
       max-width: 500px;
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(212,175,55,0.45);
+
+      background:
+        rgba(255,255,255,0.10);
+
+      border:
+        1px solid
+        rgba(212,175,55,0.45);
+
       border-radius: 16px;
+
       padding: 14px 16px;
+
       color: white;
+
       display: none;
+
     }
+
 
     .student-name {
+
       color: #d4af37;
+
       font-size: 21px;
+
       font-weight: bold;
+
     }
+
 
     .student-class {
+
       margin-top: 4px;
+
       font-size: 13px;
+
       color: #ddd;
+
     }
 
+
     .start-btn {
+
       margin-top: 22px;
-      padding: 14px 27px;
+
+      padding:
+        14px 27px;
+
       border: none;
+
       border-radius: 30px;
+
       background: #d4af37;
+
       color: #111;
+
       font-size: 16px;
+
       font-weight: bold;
+
       cursor: pointer;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.25);
+
+      box-shadow:
+        0 5px 18px
+        rgba(0,0,0,0.25);
+
     }
+
+
+    .start-btn:active {
+
+      transform: scale(0.97);
+
+    }
+
 
     /* =========================
        MAIN CONTENT
-    ========================= */
+    ========================== */
 
     .content {
+
       background: #f5f5f5;
-      border-radius: 28px 28px 0 0;
-      padding: 27px 16px 35px;
+
+      border-radius:
+        28px 28px 0 0;
+
+      padding:
+        27px 16px 35px;
+
       min-height: 57vh;
+
     }
+
 
     .welcome {
+
       font-size: 21px;
+
       font-weight: bold;
+
       margin-bottom: 18px;
+
     }
 
+
     .welcome span {
+
       color: #b38b00;
+
     }
+
 
     /* =========================
        CARDS
-    ========================= */
+    ========================== */
 
     .cards {
+
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns:
+        1fr 1fr;
+
       gap: 14px;
+
       max-width: 650px;
+
       margin: auto;
+
     }
+
 
     .card {
+
       background: white;
-      padding: 21px 12px;
+
+      padding:
+        21px 12px;
+
       border-radius: 18px;
+
       text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+
+      box-shadow:
+        0 4px 15px
+        rgba(0,0,0,0.08);
+
       cursor: pointer;
-      transition: transform 0.15s ease;
+
+      transition:
+        transform 0.15s ease;
+
     }
+
 
     .card:active {
+
       transform: scale(0.97);
+
     }
+
 
     .icon {
+
       font-size: 31px;
+
       margin-bottom: 9px;
+
     }
+
 
     .card h3 {
+
       font-size: 16px;
+
       margin-bottom: 5px;
+
     }
+
 
     .card p {
+
       font-size: 12px;
+
       color: #666;
+
       line-height: 1.4;
+
     }
+
 
     /* =========================
-       FOUNDER
-    ========================= */
+       FOUNDER CARD
+    ========================== */
 
     .founder-card {
+
       max-width: 650px;
-      margin: 18px auto 0;
+
+      margin:
+        18px auto 0;
+
       background: #111;
+
       color: white;
+
       border-radius: 18px;
-      padding: 17px;
+
+      padding: 19px 17px;
+
       text-align: center;
+
       cursor: pointer;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+
+      box-shadow:
+        0 5px 18px
+        rgba(0,0,0,0.12);
+
     }
+
+
+    .founder-card:active {
+
+      transform: scale(0.98);
+
+    }
+
 
     .founder-title {
+
       color: #d4af37;
+
       font-size: 15px;
+
       font-weight: bold;
+
     }
+
 
     .founder-name {
+
       margin-top: 5px;
-      font-size: 17px;
+
+      font-size: 18px;
+
       font-weight: bold;
+
     }
 
+
     .founder-role {
+
       margin-top: 4px;
+
       color: #ccc;
+
       font-size: 12px;
+
     }
+
+
+    .founder-hint {
+
+      margin-top: 9px;
+
+      color: #999;
+
+      font-size: 11px;
+
+    }
+
 
     /* =========================
        FOOTER
-    ========================= */
+    ========================== */
 
     .footer {
+
       text-align: center;
-      padding: 25px 10px;
+
+      padding:
+        25px 10px;
+
       color: #777;
+
       font-size: 11px;
+
       line-height: 1.6;
+
     }
+
+
+    /* =========================
+       MODAL COMMON
+    ========================== */
+
+    .modal {
+
+      position: fixed;
+
+      inset: 0;
+
+      background:
+        rgba(0,0,0,0.75);
+
+      display: none;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 15px;
+
+      z-index: 1000;
+
+    }
+
+
+    .modal-box {
+
+      width: 100%;
+
+      max-width: 430px;
+
+      background: white;
+
+      border-radius: 22px;
+
+      padding:
+        24px 20px;
+
+      box-shadow:
+        0 10px 40px
+        rgba(0,0,0,0.35);
+
+      max-height: 92vh;
+
+      overflow-y: auto;
+
+    }
+
 
     /* =========================
        PROFILE MODAL
-    ========================= */
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.72);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 15px;
-      z-index: 1000;
-    }
-
-    .modal-box {
-      width: 100%;
-      max-width: 430px;
-      background: white;
-      border-radius: 22px;
-      padding: 24px 20px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-      max-height: 92vh;
-      overflow-y: auto;
-    }
+    ========================== */
 
     .modal-logo {
+
       text-align: center;
+
       margin-bottom: 12px;
+
     }
+
 
     .modal-logo img {
+
       width: 155px;
+
       max-width: 70%;
+
     }
+
 
     .modal-title {
+
       text-align: center;
+
       font-size: 22px;
+
       font-weight: bold;
+
       margin-bottom: 6px;
+
     }
+
 
     .modal-subtitle {
+
       text-align: center;
+
       color: #666;
+
       font-size: 13px;
+
       line-height: 1.5;
+
       margin-bottom: 20px;
+
     }
+
 
     .input-label {
+
       display: block;
+
       font-size: 14px;
+
       font-weight: bold;
+
       margin-bottom: 7px;
+
     }
+
 
     .name-input {
+
       width: 100%;
+
       padding: 13px;
-      border: 1px solid #ccc;
+
+      border:
+        1px solid #ccc;
+
       border-radius: 11px;
+
       font-size: 16px;
+
       outline: none;
+
       margin-bottom: 17px;
+
     }
+
+
+    .name-input:focus {
+
+      border-color: #d4af37;
+
+      box-shadow:
+        0 0 0 2px
+        rgba(212,175,55,0.15);
+
+    }
+
 
     .class-title {
+
       font-size: 14px;
+
       font-weight: bold;
+
       margin-bottom: 9px;
+
     }
+
 
     .class-buttons {
+
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
       gap: 9px;
+
     }
+
 
     .class-btn {
+
       padding: 12px 5px;
-      border: 1px solid #ccc;
+
+      border:
+        1px solid #ccc;
+
       border-radius: 11px;
+
       background: white;
+
       font-weight: bold;
+
       font-size: 14px;
+
       cursor: pointer;
+
     }
+
 
     .class-btn.selected {
+
       background: #111;
+
       color: #d4af37;
+
       border-color: #d4af37;
+
     }
+
 
     .save-profile {
+
       width: 100%;
+
       margin-top: 20px;
+
       padding: 14px;
+
       border: none;
+
       border-radius: 12px;
+
       background: #d4af37;
+
       color: #111;
+
       font-size: 16px;
+
       font-weight: bold;
+
       cursor: pointer;
+
     }
 
+
     .close-btn {
+
       width: 100%;
+
       margin-top: 9px;
+
       padding: 11px;
+
       border: none;
+
       background: transparent;
+
       color: #777;
+
       font-size: 14px;
+
       cursor: pointer;
+
+    }
+
+
+    /* =========================
+       FOUNDER MODAL
+    ========================== */
+
+    .founder-modal-box {
+
+      text-align: center;
+
+    }
+
+
+    .founder-photo {
+
+      width: 135px;
+
+      height: 135px;
+
+      object-fit: cover;
+
+      object-position: center;
+
+      border-radius: 50%;
+
+      display: block;
+
+      margin:
+        0 auto 15px;
+
+      border:
+        4px solid #d4af37;
+
+      box-shadow:
+        0 5px 20px
+        rgba(0,0,0,0.20);
+
+    }
+
+
+    .behind-title {
+
+      color: #b38b00;
+
+      font-size: 16px;
+
+      font-weight: bold;
+
+      margin-bottom: 5px;
+
+    }
+
+
+    .profile-name {
+
+      font-size: 22px;
+
+      font-weight: bold;
+
+      color: #111;
+
+    }
+
+
+    .profile-role {
+
+      margin-top: 5px;
+
+      color: #666;
+
+      font-size: 13px;
+
+    }
+
+
+    .about-text {
+
+      margin-top: 18px;
+
+      text-align: left;
+
+      font-size: 14px;
+
+      line-height: 1.75;
+
+      color: #333;
+
+    }
+
+
+    .about-highlight {
+
+      margin-top: 15px;
+
+      padding: 13px;
+
+      border-radius: 12px;
+
+      background:
+        #f8f3df;
+
+      border-left:
+        4px solid #d4af37;
+
+      font-size: 14px;
+
+      line-height: 1.6;
+
+      font-weight: bold;
+
+    }
+
+
+    .youtube-link {
+
+      display: block;
+
+      margin-top: 17px;
+
+      padding: 12px;
+
+      border-radius: 11px;
+
+      background: #111;
+
+      color: white;
+
+      text-decoration: none;
+
+      font-size: 14px;
+
+      font-weight: bold;
+
+    }
+
+
+    .youtube-link:active {
+
+      transform: scale(0.98);
+
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media (max-width: 380px) {
+
+      .header {
+
+        padding-top: 28px;
+
+      }
+
+      .logo img {
+
+        width: 190px;
+
+      }
+
+      .welcome {
+
+        font-size: 19px;
+
+      }
+
+      .card {
+
+        padding:
+          18px 8px;
+
+      }
+
+      .card h3 {
+
+        font-size: 15px;
+
+      }
+
     }
 
   </style>
+
 </head>
 
 
 <body>
 
-  <div class="app">
 
-    <!-- =========================
-         AADYA HEADER
-    ========================== -->
-
-    <header class="header">
-
-      <div class="logo">
-        <img
-          src="./assets/logo/aadya-logo-header-full.png"
-          alt="AADYA – Apne Adarsh Digital Gyan ka Yashasvi Abhiyan">
-      </div>
-
-      <div class="tagline">
-        Apne Adarsh Digital Gyan ka Yashasvi Abhiyan<br>
-        हर बच्चे की शिक्षा, आत्मनिर्भर भविष्य की ओर
-      </div>
-
-
-      <!-- Student welcome appears here -->
-      <div class="student-welcome" id="studentWelcome">
-
-        <div class="student-name" id="studentName">
-        </div>
-
-        <div class="student-class" id="studentClass">
-        </div>
-
-      </div>
-
-
-      <button
-        class="start-btn"
-        onclick="startLearning()">
-
-        🚀 चलो सीखना शुरू करें →
-
-      </button>
-
-    </header>
-
-
-    <!-- =========================
-         MAIN
-    ========================== -->
-
-    <main class="content">
-
-      <div class="welcome" id="welcomeText">
-        नमस्ते! आज क्या सीखना है? 👋
-      </div>
-
-
-      <div class="cards">
-
-        <!-- CLASS -->
-
-        <div
-          class="card"
-          onclick="openProfile()">
-
-          <div class="icon">🎓</div>
-
-          <h3>
-            मेरी कक्षा
-          </h3>
-
-          <p>
-            अपनी Class देखें
-          </p>
-
-        </div>
-
-
-        <!-- SUBJECT -->
-
-        <div
-          class="card"
-          onclick="showMessage('विषय')">
-
-          <div class="icon">📚</div>
-
-          <h3>
-            विषय
-          </h3>
-
-          <p>
-            अपने Subjects देखें
-          </p>
-
-        </div>
-
-
-        <!-- QUIZ -->
-
-        <div
-          class="card"
-          onclick="showMessage('Quiz')">
-
-          <div class="icon">🧠</div>
-
-          <h3>
-            Quiz
-          </h3>
-
-          <p>
-            अपनी तैयारी जाँचें
-          </p>
-
-        </div>
-
-
-        <!-- PROGRESS -->
-
-        <div
-          class="card"
-          onclick="openProgress()">
-
-          <div class="icon">📈</div>
-
-          <h3>
-            मेरी Progress
-          </h3>
-
-          <p>
-            अपनी Learning देखें
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <!-- =========================
-           FOUNDER CARD
-      ========================== -->
-
-      <div
-        class="founder-card"
-        onclick="openFounder()">
-
-        <div class="founder-title">
-          👨‍💻 Behind AADYA Digital Teacher
-        </div>
-
-        <div class="founder-name">
-          Er. Shubham Rastogi
-        </div>
-
-        <div class="founder-role">
-          Founder • Developer • Creator
-        </div>
-
-      </div>
-
-
-      <div class="footer">
-
-        AADYA — Apne Adarsh Digital Gyan ka Yashasvi Abhiyan<br>
-
-        <strong>
-          हर बच्चे की शिक्षा, आत्मनिर्भर भविष्य की ओर
-        </strong>
-
-      </div>
-
-    </main>
-
-  </div>
+<div class="app">
 
 
   <!-- =========================
-       FIRST-TIME PROFILE MODAL
+       HEADER
   ========================== -->
 
-  <div
-    class="modal"
-    id="profileModal">
-
-    <div class="modal-box">
-
-      <div class="modal-logo">
-
-        <img
-          src="./assets/logo/aadya-logo-header-full.png"
-          alt="AADYA">
-
-      </div>
+  <header class="header">
 
 
-      <div class="modal-title">
-        👋 AADYA में आपका स्वागत है!
-      </div>
+    <div class="logo">
 
-
-      <div class="modal-subtitle">
-        अपनी छोटी-सी Profile बनाइए और<br>
-        अपनी Learning Journey शुरू कीजिए।
-      </div>
-
-
-      <label class="input-label">
-        आपका नाम
-      </label>
-
-      <input
-        type="text"
-        id="nameInput"
-        class="name-input"
-        placeholder="अपना नाम लिखें"
-        maxlength="30"
-        autocomplete="off">
-
-
-      <div class="class-title">
-        आप किस कक्षा में पढ़ते हैं?
-      </div>
-
-
-      <div class="class-buttons">
-
-        <button
-          class="class-btn"
-          onclick="selectClass(6)"
-          id="class6">
-          कक्षा 6
-        </button>
-
-        <button
-          class="class-btn"
-          onclick="selectClass(7)"
-          id="class7">
-          कक्षा 7
-        </button>
-
-        <button
-          class="class-btn"
-          onclick="selectClass(8)"
-          id="class8">
-          कक्षा 8
-        </button>
-
-      </div>
-
-
-      <button
-        class="save-profile"
-        onclick="saveProfile()">
-
-        🚀 मेरी Learning Journey शुरू करें
-
-      </button>
-
-
-      <button
-        class="close-btn"
-        onclick="closeProfile()">
-
-        बाद में
-
-      </button>
+      <img
+        src="./assets/logo/aadya-logo-header-full.png"
+        alt="AADYA">
 
     </div>
 
-  </div>
+
+    <div class="tagline">
+
+      Apne Adarsh Digital Gyan ka Yashasvi Abhiyan<br>
+
+      हर बच्चे की शिक्षा, आत्मनिर्भर भविष्य की ओर
+
+    </div>
+
+
+    <!-- STUDENT WELCOME -->
+
+    <div
+      class="student-welcome"
+      id="studentWelcome">
+
+      <div
+        class="student-name"
+        id="studentName">
+      </div>
+
+      <div
+        class="student-class"
+        id="studentClass">
+      </div>
+
+    </div>
+
+
+    <button
+      class="start-btn"
+      onclick="startLearning()">
+
+      🚀 चलो सीखना शुरू करें →
+
+    </button>
+
+
+  </header>
+
 
 
   <!-- =========================
-       JAVASCRIPT
+       MAIN
   ========================== -->
 
-  <script>
-
-    const PROFILE_KEY = "aadya_student_profile_v1";
-
-    let selectedClass = "";
+  <main class="content">
 
 
-    /* =========================
-       LOAD STUDENT PROFILE
-    ========================== */
+    <div
+      class="welcome"
+      id="welcomeText">
 
-    function loadProfile() {
+      नमस्ते! आज क्या सीखना है? 👋
 
-      const saved =
-        localStorage.getItem(PROFILE_KEY);
+    </div>
 
-      if (!saved) {
 
-        setTimeout(function() {
+    <!-- =========================
+         CARDS
+    ========================== -->
 
-          document.getElementById(
-            "profileModal"
-          ).style.display = "flex";
+    <div class="cards">
 
-          document.getElementById(
-            "nameInput"
-          ).focus();
 
-        }, 700);
+      <!-- MY CLASS -->
 
-        return;
+      <div
+        class="card"
+        onclick="openProfile()">
+
+        <div class="icon">
+          🎓
+        </div>
+
+        <h3>
+          मेरी कक्षा
+        </h3>
+
+        <p>
+          अपनी Class देखें
+        </p>
+
+      </div>
+
+
+      <!-- SUBJECT -->
+
+      <div
+        class="card"
+        onclick="showMessage('विषय')">
+
+        <div class="icon">
+          📚
+        </div>
+
+        <h3>
+          विषय
+        </h3>
+
+        <p>
+          अपने Subjects देखें
+        </p>
+
+      </div>
+
+
+      <!-- QUIZ -->
+
+      <div
+        class="card"
+        onclick="showMessage('Quiz')">
+
+        <div class="icon">
+          🧠
+        </div>
+
+        <h3>
+          Quiz
+        </h3>
+
+        <p>
+          अपनी तैयारी जाँचें
+        </p>
+
+      </div>
+
+
+      <!-- PROGRESS -->
+
+      <div
+        class="card"
+        onclick="openProgress()">
+
+        <div class="icon">
+          📈
+        </div>
+
+        <h3>
+          मेरी Progress
+        </h3>
+
+        <p>
+          अपनी Learning देखें
+        </p>
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         FOUNDER
+    ========================== -->
+
+    <div
+      class="founder-card"
+      onclick="openFounder()">
+
+
+      <div class="founder-title">
+
+        👨‍💻 Behind AADYA Digital Teacher
+
+      </div>
+
+
+      <div class="founder-name">
+
+        Er. Shubham Rastogi
+
+      </div>
+
+
+      <div class="founder-role">
+
+        Founder • Developer • Creator
+
+      </div>
+
+
+      <div class="founder-hint">
+
+        मेरे बारे में जानने के लिए Touch करें →
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+      AADYA — Apne Adarsh Digital Gyan ka Yashasvi Abhiyan<br>
+
+      <strong>
+        हर बच्चे की शिक्षा, आत्मनिर्भर भविष्य की ओर
+      </strong>
+
+    </div>
+
+
+  </main>
+
+
+</div>
+
+
+
+<!-- =================================================
+     STUDENT PROFILE MODAL
+================================================= -->
+
+<div
+  class="modal"
+  id="profileModal">
+
+
+  <div class="modal-box">
+
+
+    <div class="modal-logo">
+
+      <img
+        src="./assets/logo/aadya-logo-header-full.png"
+        alt="AADYA">
+
+    </div>
+
+
+    <div class="modal-title">
+
+      👋 AADYA में आपका स्वागत है!
+
+    </div>
+
+
+    <div class="modal-subtitle">
+
+      अपनी छोटी-सी Profile बनाइए और<br>
+
+      अपनी Learning Journey शुरू कीजिए।
+
+    </div>
+
+
+    <label
+      class="input-label"
+      for="nameInput">
+
+      आपका नाम
+
+    </label>
+
+
+    <input
+      type="text"
+      id="nameInput"
+      class="name-input"
+      placeholder="अपना नाम लिखें"
+      maxlength="30"
+      autocomplete="off">
+
+
+    <div class="class-title">
+
+      आप किस कक्षा में पढ़ते हैं?
+
+    </div>
+
+
+    <div class="class-buttons">
+
+
+      <button
+        class="class-btn"
+        id="class6"
+        onclick="selectClass(6)">
+
+        कक्षा 6
+
+      </button>
+
+
+      <button
+        class="class-btn"
+        id="class7"
+        onclick="selectClass(7)">
+
+        कक्षा 7
+
+      </button>
+
+
+      <button
+        class="class-btn"
+        id="class8"
+        onclick="selectClass(8)">
+
+        कक्षा 8
+
+      </button>
+
+
+    </div>
+
+
+    <button
+      class="save-profile"
+      onclick="saveProfile()">
+
+      🚀 मेरी Learning Journey शुरू करें
+
+    </button>
+
+
+    <button
+      class="close-btn"
+      onclick="closeProfile()">
+
+      बाद में
+
+    </button>
+
+
+  </div>
+
+</div>
+
+
+
+<!-- =================================================
+     FOUNDER MODAL
+================================================= -->
+
+<div
+  class="modal"
+  id="founderModal">
+
+
+  <div
+    class="modal-box founder-modal-box">
+
+
+    <img
+      class="founder-photo"
+      src="./assets/profile/shubham-rastogi.png"
+      alt="Er. Shubham Rastogi">
+
+
+    <div class="behind-title">
+
+      👨‍💻 Behind AADYA Digital Teacher
+
+    </div>
+
+
+    <div class="profile-name">
+
+      Er. Shubham Rastogi
+
+    </div>
+
+
+    <div class="profile-role">
+
+      Teacher | Educator | Digital Learning Creator
+
+    </div>
+
+
+    <div class="about-text">
+
+      एक शिक्षक के रूप में मैंने महसूस किया कि
+      अच्छी शिक्षा की जरूरत हर बच्चे को है,
+      लेकिन अच्छे learning resources हर बच्चे तक
+      नहीं पहुँच पाते।
+
+      <br><br>
+
+      इसी सोच से <strong>AADYA Digital Teacher</strong>
+      की शुरुआत हुई—
+
+      एक ऐसा प्रयास जहाँ
+      <strong>Free + सरल + Offline Learning</strong>
+      के माध्यम से technology को बच्चों की
+      शिक्षा का साथी बनाया जा सके।
+
+    </div>
+
+
+    <div class="about-highlight">
+
+      यह सिर्फ एक App नहीं, बल्कि एक छोटा-सा प्रयास है—
+
+      <br>
+
+      “हर बच्चे को सीखने का समान अवसर देने का।”
+
+    </div>
+
+
+    <a
+      class="youtube-link"
+      href="https://www.youtube.com/@ErShubhamRastogi"
+      target="_blank"
+      rel="noopener">
+
+      🎓 YouTube: Er Shubham Rastogi
+
+    </a>
+
+
+    <button
+      class="close-btn"
+      onclick="closeFounder()">
+
+      बंद करें
+
+    </button>
+
+
+  </div>
+
+</div>
+
+
+
+<!-- =================================================
+     JAVASCRIPT
+================================================= -->
+
+<script>
+
+
+  /* =========================
+     PROFILE STORAGE
+  ========================== */
+
+  const PROFILE_KEY =
+    "aadya_student_profile_v1";
+
+
+  let selectedClass = "";
+
+
+
+  /* =========================
+     PAGE LOAD
+  ========================== */
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+      loadProfile();
+
+    }
+  );
+
+
+
+  /* =========================
+     LOAD PROFILE
+  ========================== */
+
+  function loadProfile() {
+
+
+    const saved =
+      localStorage.getItem(PROFILE_KEY);
+
+
+    if (!saved) {
+
+      setTimeout(
+        function() {
+
+          openProfile();
+
+        },
+        700
+      );
+
+      return;
+
+    }
+
+
+    try {
+
+
+      const profile =
+        JSON.parse(saved);
+
+
+      if (
+        profile &&
+        profile.name &&
+        profile.class
+      ) {
+
+
+        document.getElementById(
+          "studentName"
+        ).textContent =
+          "नमस्ते, " +
+          profile.name +
+          "! 👋";
+
+
+        document.getElementById(
+          "studentClass"
+        ).textContent =
+          "कक्षा " +
+          profile.class +
+          " • आपकी Learning Journey में स्वागत है";
+
+
+        document.getElementById(
+          "studentWelcome"
+        ).style.display =
+          "block";
+
+
+        document.getElementById(
+          "welcomeText"
+        ).innerHTML =
+          "नमस्ते, <span>" +
+          profile.name +
+          "</span>! 👋";
+
+
+        selectedClass =
+          String(profile.class);
+
       }
+
+
+    } catch (error) {
+
+      console.log(
+        "Profile load error:",
+        error
+      );
+
+    }
+
+  }
+
+
+
+  /* =========================
+     OPEN PROFILE
+  ========================== */
+
+  function openProfile() {
+
+
+    const modal =
+      document.getElementById(
+        "profileModal"
+      );
+
+
+    const input =
+      document.getElementById(
+        "nameInput"
+      );
+
+
+    const saved =
+      localStorage.getItem(
+        PROFILE_KEY
+      );
+
+
+    if (saved) {
 
 
       try {
 
+
         const profile =
           JSON.parse(saved);
 
-        if (
-          profile &&
-          profile.name &&
-          profile.class
-        ) {
 
-          document.getElementById(
-            "studentWelcome"
-          ).style.display = "block";
+        input.value =
+          profile.name || "";
 
 
-          document.getElementById(
-            "studentName"
-          ).textContent =
-            "नमस्ते " + profile.name + "! 👋";
+        selectedClass =
+          String(
+            profile.class || ""
+          );
 
 
-          document.getElementById(
-            "studentClass"
-          ).textContent =
-            "कक्षा " + profile.class +
-            " • आपकी Learning Journey में स्वागत है";
+        updateClassButtons();
 
-
-          document.getElementById(
-            "welcomeText"
-          ).innerHTML =
-            "नमस्ते <span>" +
-            profile.name +
-            "</span>! आज क्या सीखना है? 👋";
-
-        }
 
       } catch (error) {
 
-        console.log(
-          "Profile load error:",
-          error
-        );
+        console.log(error);
 
       }
 
     }
 
 
-    /* =========================
-    START APP
-    ========================== */
+    modal.style.display =
+      "flex";
 
-    document.addEventListener(
-      "DOMContentLoaded",
+
+    setTimeout(
       function() {
 
-        loadProfile();
+        input.focus();
+
+      },
+      100
+    );
+
+  }
+
+
+
+  /* =========================
+     CLOSE PROFILE
+  ========================== */
+
+  function closeProfile() {
+
+    document.getElementById(
+      "profileModal"
+    ).style.display =
+      "none";
+
+  }
+
+
+
+  /* =========================
+     SELECT CLASS
+  ========================== */
+
+  function selectClass(classNumber) {
+
+
+    selectedClass =
+      String(classNumber);
+
+
+    updateClassButtons();
+
+  }
+
+
+
+  /* =========================
+     UPDATE CLASS BUTTONS
+  ========================== */
+
+  function updateClassButtons() {
+
+
+    const buttons = [
+      document.getElementById("class6"),
+      document.getElementById("class7"),
+      document.getElementById("class8")
+    ];
+
+
+    buttons.forEach(
+      function(button) {
+
+        button.classList.remove(
+          "selected"
+        );
 
       }
     );
 
-  </script>
+
+    if (selectedClass === "6") {
+
+      document.getElementById(
+        "class6"
+      ).classList.add("selected");
+
+    }
+
+
+    if (selectedClass === "7") {
+
+      document.getElementById(
+        "class7"
+      ).classList.add("selected");
+
+    }
+
+
+    if (selectedClass === "8") {
+
+      document.getElementById(
+        "class8"
+      ).classList.add("selected");
+
+    }
+
+  }
+
+
+
+  /* =========================
+     SAVE PROFILE
+  ========================== */
+
+  function saveProfile() {
+
+
+    const input =
+      document.getElementById(
+        "nameInput"
+      );
+
+
+    const name =
+      input.value.trim();
+
+
+    if (!name) {
+
+      alert(
+        "कृपया अपना नाम लिखिए। 😊"
+      );
+
+      input.focus();
+
+      return;
+
+    }
+
+
+    if (!selectedClass) {
+
+      alert(
+        "कृपया अपनी कक्षा चुनिए। 📚"
+      );
+
+      return;
+
+    }
+
+
+    const profile = {
+
+      name: name,
+
+      class: Number(
+        selectedClass
+      ),
+
+      createdAt:
+        new Date().toISOString()
+
+    };
+
+
+    localStorage.setItem(
+
+      PROFILE_KEY,
+
+      JSON.stringify(profile)
+
+    );
+
+
+    loadProfile();
+
+
+    closeProfile();
+
+
+    alert(
+
+      "🎉 बहुत बढ़िया, " +
+      name +
+      "!\n\n" +
+
+      "आपकी Profile तैयार है।\n" +
+
+      "अब AADYA आपकी Learning Journey में आपका साथ देगा। 🚀"
+
+    );
+
+  }
+
+
+
+  /* =========================
+     START LEARNING
+  ========================== */
+
+  function startLearning() {
+
+
+    const saved =
+      localStorage.getItem(
+        PROFILE_KEY
+      );
+
+
+    if (!saved) {
+
+      openProfile();
+
+      return;
+
+    }
+
+
+    try {
+
+
+      const profile =
+        JSON.parse(saved);
+
+
+      if (
+        !profile.name ||
+        !profile.class
+      ) {
+
+        openProfile();
+
+        return;
+
+      }
+
+
+      window.location.href =
+        "./learning.html";
+
+
+    } catch (error) {
+
+      openProfile();
+
+    }
+
+  }
+
+
+
+  /* =========================
+     PROGRESS
+  ========================== */
+
+  function openProgress() {
+
+
+    window.location.href =
+      "./progress.html";
+
+  }
+
+
+
+  /* =========================
+     FOUNDER
+  ========================== */
+
+  function openFounder() {
+
+
+    document.getElementById(
+      "founderModal"
+    ).style.display =
+      "flex";
+
+  }
+
+
+
+  function closeFounder() {
+
+
+    document.getElementById(
+      "founderModal"
+    ).style.display =
+      "none";
+
+  }
+
+
+
+  /* =========================
+     TEMPORARY MESSAGE
+  ========================== */
+
+  function showMessage(section) {
+
+
+    if (section === "विषय") {
+
+      alert(
+        "📚 Subjects section जल्द ही तैयार होगा।"
+      );
+
+      return;
+
+    }
+
+
+    if (section === "Quiz") {
+
+      alert(
+        "🧠 Quiz section जल्द ही तैयार होगा।"
+      );
+
+      return;
+
+    }
+
+
+  }
+
+
+
+  /* =========================
+     CLOSE MODAL ON BACKDROP
+  ========================== */
+
+  document
+    .getElementById("profileModal")
+    .addEventListener(
+      "click",
+      function(event) {
+
+        if (
+          event.target === this
+        ) {
+
+          closeProfile();
+
+        }
+
+      }
+    );
+
+
+  document
+    .getElementById("founderModal")
+    .addEventListener(
+      "click",
+      function(event) {
+
+        if (
+          event.target === this
+        ) {
+
+          closeFounder();
+
+        }
+
+      }
+    );
+
+
+</script>
+
 
 </body>
+
 </html>
