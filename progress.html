@@ -947,7 +947,22 @@
 
       }
     );
+    /* =========================
+       REFRESH PROGRESS PAGE
+       ========================= */
 
+    function refreshDashboard() {
+      loadStudentProfile();
+      loadProgress();
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      refreshDashboard();
+    });
+
+    window.addEventListener("pageshow", function() {
+      refreshDashboard();
+    });
   </script>
 
 </body>
