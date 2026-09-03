@@ -1,0 +1,11 @@
+{
+  "name": "AADYA - Your Own Digital Teacher",
+  "short_name": "AADYA",
+  "description": "Free and offline learning for every child",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0b5ed7",
+  "orientation": "portrait",
+  "icons": []
+}
