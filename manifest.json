@@ -1,11 +1,23 @@
 {
-  "name": "AADYA - Your Own Digital Teacher",
+  "name": "AADYA – Your Own Digital Teacher",
   "short_name": "AADYA",
-  "description": "Free and offline learning for every child",
+  "description": "Free and Offline Learning for Every Child",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#0b5ed7",
+  "theme_color": "#0d6efd",
   "orientation": "portrait",
-  "icons": []
+  "lang": "hi",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }
