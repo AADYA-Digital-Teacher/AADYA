@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#111111">
+  <link rel="manifest" href="./manifest.json">
   <title>AADYA – Your Own Digital Teacher</title>
 
   <style>
@@ -174,6 +175,20 @@
       alert(section + " — यह सुविधा जल्द ही तैयार होगी।");
     }
   </script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("./service-worker.js")
+      .then(function () {
+        console.log("AADYA Offline Mode Ready");
+      })
+      .catch(function (error) {
+        console.log("Service Worker Error:", error);
+      });
+  });
+}
+</script>
 
 </body>
 </html>
