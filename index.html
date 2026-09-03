@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="hi">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#111111">
+
   <link rel="manifest" href="./manifest.json">
-  <title>AADYA – Your Own Digital Teacher</title>
+
+  <title>AADYA – Digital Teacher</title>
 
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -15,83 +19,137 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
+      font-family: Arial, "Noto Sans Devanagari", sans-serif;
       background: #f5f5f5;
       color: #222;
     }
 
     .app {
       min-height: 100vh;
-      background: linear-gradient(180deg, #111 0%, #222 42%, #f5f5f5 42%);
+      background:
+        linear-gradient(
+          180deg,
+          #111111 0%,
+          #222222 43%,
+          #f5f5f5 43%
+        );
     }
+
+    /* =========================
+       HEADER
+    ========================= */
 
     .header {
-      padding: 55px 22px 35px;
-      color: white;
+      padding: 38px 18px 30px;
       text-align: center;
+      color: white;
     }
 
-    .logo {
-      font-size: 42px;
-      font-weight: 800;
-      letter-spacing: 3px;
+    .logo img {
+      width: 210px;
+      max-width: 86vw;
+      height: auto;
+      display: block;
+      margin: 0 auto;
     }
-.logo img {
-    width: 180px;
-    max-width: 80vw;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
+
     .tagline {
-      margin-top: 10px;
-      font-size: 17px;
-      line-height: 1.5;
+      margin-top: 12px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #eeeeee;
+    }
+
+    /* =========================
+       STUDENT WELCOME
+    ========================= */
+
+    .student-welcome {
+      margin: 22px auto 0;
+      max-width: 500px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(212,175,55,0.45);
+      border-radius: 16px;
+      padding: 14px 16px;
+      color: white;
+      display: none;
+    }
+
+    .student-name {
+      color: #d4af37;
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .student-class {
+      margin-top: 4px;
+      font-size: 13px;
+      color: #ddd;
     }
 
     .start-btn {
-      margin-top: 25px;
-      padding: 14px 28px;
+      margin-top: 22px;
+      padding: 14px 27px;
       border: none;
       border-radius: 30px;
       background: #d4af37;
       color: #111;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: bold;
       cursor: pointer;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.25);
     }
+
+    /* =========================
+       MAIN CONTENT
+    ========================= */
 
     .content {
       background: #f5f5f5;
       border-radius: 28px 28px 0 0;
-      padding: 28px 18px;
-      min-height: 58vh;
+      padding: 27px 16px 35px;
+      min-height: 57vh;
     }
 
     .welcome {
-      font-size: 22px;
+      font-size: 21px;
       font-weight: bold;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
+
+    .welcome span {
+      color: #b38b00;
+    }
+
+    /* =========================
+       CARDS
+    ========================= */
 
     .cards {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
+      max-width: 650px;
+      margin: auto;
     }
 
     .card {
       background: white;
-      padding: 22px 14px;
+      padding: 21px 12px;
       border-radius: 18px;
       text-align: center;
       box-shadow: 0 4px 15px rgba(0,0,0,0.08);
       cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+
+    .card:active {
+      transform: scale(0.97);
     }
 
     .icon {
-      font-size: 32px;
-      margin-bottom: 10px;
+      font-size: 31px;
+      margin-bottom: 9px;
     }
 
     .card h3 {
@@ -102,101 +160,551 @@
     .card p {
       font-size: 12px;
       color: #666;
+      line-height: 1.4;
     }
+
+    /* =========================
+       FOUNDER
+    ========================= */
+
+    .founder-card {
+      max-width: 650px;
+      margin: 18px auto 0;
+      background: #111;
+      color: white;
+      border-radius: 18px;
+      padding: 17px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+    }
+
+    .founder-title {
+      color: #d4af37;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .founder-name {
+      margin-top: 5px;
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    .founder-role {
+      margin-top: 4px;
+      color: #ccc;
+      font-size: 12px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
 
     .footer {
       text-align: center;
       padding: 25px 10px;
       color: #777;
-      font-size: 12px;
+      font-size: 11px;
+      line-height: 1.6;
     }
+
+    /* =========================
+       PROFILE MODAL
+    ========================= */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      z-index: 1000;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 430px;
+      background: white;
+      border-radius: 22px;
+      padding: 24px 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      max-height: 92vh;
+      overflow-y: auto;
+    }
+
+    .modal-logo {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .modal-logo img {
+      width: 155px;
+      max-width: 70%;
+    }
+
+    .modal-title {
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .modal-subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .input-label {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    .name-input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccc;
+      border-radius: 11px;
+      font-size: 16px;
+      outline: none;
+      margin-bottom: 17px;
+    }
+
+    .class-title {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 9px;
+    }
+
+    .class-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+    }
+
+    .class-btn {
+      padding: 12px 5px;
+      border: 1px solid #ccc;
+      border-radius: 11px;
+      background: white;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .class-btn.selected {
+      background: #111;
+      color: #d4af37;
+      border-color: #d4af37;
+    }
+
+    .save-profile {
+      width: 100%;
+      margin-top: 20px;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: #d4af37;
+      color: #111;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close-btn {
+      width: 100%;
+      margin-top: 9px;
+      padding: 11px;
+      border: none;
+      background: transparent;
+      color: #777;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
   </style>
 </head>
+
 
 <body>
 
   <div class="app">
 
+    <!-- =========================
+         AADYA HEADER
+    ========================== -->
+
     <header class="header">
+
       <div class="logo">
-  <img src="./assets/logo/aadya-logo-header-full.png" alt="AADYA – Your Own Digital Teacher">
+        <img
+          src="./assets/logo/aadya-logo-header-full.png"
+          alt="AADYA – Apne Adarsh Digital Gyan ka Yashasvi Abhiyan">
       </div>
 
       <div class="tagline">
-        आपका अपना Digital Teacher<br>
-        हर बच्चे के लिए Free & Offline Learning
+        Apne Adarsh Digital Gyan ka Yashasvi Abhiyan<br>
+        हर बच्चे की शिक्षा, आत्मनिर्भर भविष्य की ओर
       </div>
 
-      <button class="start-btn" onclick="startLearning()">
-        चलो सीखना शुरू करें →
+
+      <!-- Student welcome appears here -->
+      <div class="student-welcome" id="studentWelcome">
+
+        <div class="student-name" id="studentName">
+        </div>
+
+        <div class="student-class" id="studentClass">
+        </div>
+
+      </div>
+
+
+      <button
+        class="start-btn"
+        onclick="startLearning()">
+
+        🚀 चलो सीखना शुरू करें →
+
       </button>
+
     </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
 
     <main class="content">
 
-      <div class="welcome">
+      <div class="welcome" id="welcomeText">
         नमस्ते! आज क्या सीखना है? 👋
       </div>
 
+
       <div class="cards">
 
-        <div class="card" onclick="showMessage('मेरी कक्षा')">
+        <!-- CLASS -->
+
+        <div
+          class="card"
+          onclick="openProfile()">
+
           <div class="icon">🎓</div>
-          <h3>मेरी कक्षा</h3>
-          <p>अपनी Class चुनें</p>
+
+          <h3>
+            मेरी कक्षा
+          </h3>
+
+          <p>
+            अपनी Class देखें
+          </p>
+
         </div>
 
-        <div class="card" onclick="showMessage('विषय')">
+
+        <!-- SUBJECT -->
+
+        <div
+          class="card"
+          onclick="showMessage('विषय')">
+
           <div class="icon">📚</div>
-          <h3>विषय</h3>
-          <p>अपने Subjects देखें</p>
+
+          <h3>
+            विषय
+          </h3>
+
+          <p>
+            अपने Subjects देखें
+          </p>
+
         </div>
 
-        <div class="card" onclick="showMessage('Quiz')">
+
+        <!-- QUIZ -->
+
+        <div
+          class="card"
+          onclick="showMessage('Quiz')">
+
           <div class="icon">🧠</div>
-          <h3>Quiz</h3>
-          <p>अपनी तैयारी जाँचें</p>
+
+          <h3>
+            Quiz
+          </h3>
+
+          <p>
+            अपनी तैयारी जाँचें
+          </p>
+
         </div>
 
-        <div class="card" onclick="showMessage('मेरी प्रगति')">
+
+        <!-- PROGRESS -->
+
+        <div
+          class="card"
+          onclick="openProgress()">
+
           <div class="icon">📈</div>
-          <h3>मेरी प्रगति</h3>
-          <p>अपनी Learning देखें</p>
+
+          <h3>
+            मेरी Progress
+          </h3>
+
+          <p>
+            अपनी Learning देखें
+          </p>
+
         </div>
 
       </div>
 
+
+      <!-- =========================
+           FOUNDER CARD
+      ========================== -->
+
+      <div
+        class="founder-card"
+        onclick="openFounder()">
+
+        <div class="founder-title">
+          👨‍💻 Behind AADYA Digital Teacher
+        </div>
+
+        <div class="founder-name">
+          Er. Shubham Rastogi
+        </div>
+
+        <div class="founder-role">
+          Founder • Developer • Creator
+        </div>
+
+      </div>
+
+
       <div class="footer">
-        AADYA — Accessible, Adaptive, Digital Yatra for All
+
+        AADYA — Apne Adarsh Digital Gyan ka Yashasvi Abhiyan<br>
+
+        <strong>
+          हर बच्चे की शिक्षा, आत्मनिर्भर भविष्य की ओर
+        </strong>
+
       </div>
 
     </main>
 
   </div>
 
+
+  <!-- =========================
+       FIRST-TIME PROFILE MODAL
+  ========================== -->
+
+  <div
+    class="modal"
+    id="profileModal">
+
+    <div class="modal-box">
+
+      <div class="modal-logo">
+
+        <img
+          src="./assets/logo/aadya-logo-header-full.png"
+          alt="AADYA">
+
+      </div>
+
+
+      <div class="modal-title">
+        👋 AADYA में आपका स्वागत है!
+      </div>
+
+
+      <div class="modal-subtitle">
+        अपनी छोटी-सी Profile बनाइए और<br>
+        अपनी Learning Journey शुरू कीजिए।
+      </div>
+
+
+      <label class="input-label">
+        आपका नाम
+      </label>
+
+      <input
+        type="text"
+        id="nameInput"
+        class="name-input"
+        placeholder="अपना नाम लिखें"
+        maxlength="30"
+        autocomplete="off">
+
+
+      <div class="class-title">
+        आप किस कक्षा में पढ़ते हैं?
+      </div>
+
+
+      <div class="class-buttons">
+
+        <button
+          class="class-btn"
+          onclick="selectClass(6)"
+          id="class6">
+          कक्षा 6
+        </button>
+
+        <button
+          class="class-btn"
+          onclick="selectClass(7)"
+          id="class7">
+          कक्षा 7
+        </button>
+
+        <button
+          class="class-btn"
+          onclick="selectClass(8)"
+          id="class8">
+          कक्षा 8
+        </button>
+
+      </div>
+
+
+      <button
+        class="save-profile"
+        onclick="saveProfile()">
+
+        🚀 मेरी Learning Journey शुरू करें
+
+      </button>
+
+
+      <button
+        class="close-btn"
+        onclick="closeProfile()">
+
+        बाद में
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
   <script>
-    function startLearning() {
-    window.location.href = "./learning.html";
+
+    const PROFILE_KEY = "aadya_student_profile_v1";
+
+    let selectedClass = "";
+
+
+    /* =========================
+       LOAD STUDENT PROFILE
+    ========================== */
+
+    function loadProfile() {
+
+      const saved =
+        localStorage.getItem(PROFILE_KEY);
+
+      if (!saved) {
+
+        setTimeout(function() {
+
+          document.getElementById(
+            "profileModal"
+          ).style.display = "flex";
+
+          document.getElementById(
+            "nameInput"
+          ).focus();
+
+        }, 700);
+
+        return;
+      }
+
+
+      try {
+
+        const profile =
+          JSON.parse(saved);
+
+        if (
+          profile &&
+          profile.name &&
+          profile.class
+        ) {
+
+          document.getElementById(
+            "studentWelcome"
+          ).style.display = "block";
+
+
+          document.getElementById(
+            "studentName"
+          ).textContent =
+            "नमस्ते " + profile.name + "! 👋";
+
+
+          document.getElementById(
+            "studentClass"
+          ).textContent =
+            "कक्षा " + profile.class +
+            " • आपकी Learning Journey में स्वागत है";
+
+
+          document.getElementById(
+            "welcomeText"
+          ).innerHTML =
+            "नमस्ते <span>" +
+            profile.name +
+            "</span>! आज क्या सीखना है? 👋";
+
+        }
+
+      } catch (error) {
+
+        console.log(
+          "Profile load error:",
+          error
+        );
+
+      }
+
     }
 
-    function showMessage(section) {
-      alert(section + " — यह सुविधा जल्द ही तैयार होगी।");
-    }
+
+    /* =========================
+    START APP
+    ========================== */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function() {
+
+        loadProfile();
+
+      }
+    );
+
   </script>
-
-<script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function () {
-    navigator.serviceWorker.register("./service-worker.js")
-      .then(function () {
-        console.log("AADYA Offline Mode Ready");
-      })
-      .catch(function (error) {
-        console.log("Service Worker Error:", error);
-      });
-  });
-}
-</script>
 
 </body>
 </html>
