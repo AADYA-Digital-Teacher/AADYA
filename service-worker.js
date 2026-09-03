@@ -1,4 +1,4 @@
-const CACHE_NAME = "aadya-v1";
+const CACHE_NAME = "aadya-v2";
 
 const APP_FILES = [
   "./",
