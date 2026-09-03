@@ -1,704 +1,405 @@
 <!DOCTYPE html>
 <html lang="hi">
-
 <head>
-
   <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="theme-color"
-    content="#111111">
+  <meta name="theme-color" content="#111111">
 
-  <link
-    rel="manifest"
-    href="./manifest.json">
-
-  <title>AADYA – मेरी Progress</title>
-
+  <title>AADYA | मेरी Progress</title>
 
   <style>
-
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
-
 
     body {
-
-      font-family:
-        Arial,
-        "Noto Sans Devanagari",
-        sans-serif;
-
+      margin: 0;
+      font-family: Arial, "Noto Sans Devanagari", sans-serif;
       background: #f5f5f5;
-
       color: #222;
-
     }
-
-
-    /* =========================
-       HEADER
-    ========================== */
-
-    .header {
-
-      background: #111;
-
-      color: white;
-
-      text-align: center;
-
-      padding: 22px 15px 24px;
-
-      border-bottom:
-        3px solid #d4af37;
-
-    }
-
-
-    .logo img {
-
-      width: 175px;
-
-      max-width: 80vw;
-
-      height: auto;
-
-    }
-
-
-    .tagline {
-
-      margin-top: 8px;
-
-      font-size: 13px;
-
-      line-height: 1.5;
-
-      color: #ddd;
-
-    }
-
-
-    /* =========================
-       MAIN
-    ========================== */
 
     .container {
-
-      max-width: 680px;
-
+      max-width: 900px;
       margin: auto;
-
-      padding:
-        18px 14px 40px;
-
+      padding: 18px;
     }
 
+    /* HEADER */
+
+    .header {
+      background: #111;
+      color: white;
+      border-radius: 18px;
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.15);
+    }
+
+    .logo {
+      width: 150px;
+      max-width: 45%;
+      height: auto;
+    }
 
     .back {
-
-      display: inline-block;
-
-      margin-bottom: 15px;
-
-      color: #111;
-
+      color: #f1c40f;
       text-decoration: none;
-
-      font-size: 14px;
-
       font-weight: bold;
-
+      font-size: 14px;
     }
 
-
-    /* =========================
-       STUDENT CARD
-    ========================== */
+    /* STUDENT CARD */
 
     .student-card {
-
-      background:
-        linear-gradient(
-          135deg,
-          #111,
-          #292929
-        );
-
-      color: white;
-
-      border-radius: 20px;
-
-      padding: 22px 18px;
-
-      text-align: center;
-
-      box-shadow:
-        0 6px 22px
-        rgba(0,0,0,0.15);
-
-      margin-bottom: 17px;
-
+      margin-top: 18px;
+      background: white;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border-left: 5px solid #f1c40f;
     }
 
-
-    .student-greeting {
-
-      color: #d4af37;
-
-      font-size: 22px;
-
-      font-weight: bold;
-
+    .student-card h1 {
+      margin: 0 0 7px;
+      font-size: 25px;
     }
-
 
     .student-class {
-
-      margin-top: 6px;
-
-      color: #ddd;
-
-      font-size: 14px;
-
+      margin: 0;
+      color: #666;
+      font-size: 15px;
     }
 
-
-    /* =========================
-       STATS
-    ========================== */
+    /* STATS */
 
     .stats {
-
+      margin-top: 18px;
       display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 10px;
-
-      margin-bottom: 17px;
-
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
     }
 
-
-    .stat {
-
+    .stat-card {
       background: white;
-
-      border-radius: 15px;
-
-      padding: 15px 7px;
-
+      border-radius: 16px;
+      padding: 18px 10px;
       text-align: center;
-
-      box-shadow:
-        0 4px 15px
-        rgba(0,0,0,0.07);
-
+      box-shadow: 0 4px 14px rgba(0,0,0,0.07);
     }
-
-
-    .stat-icon {
-
-      font-size: 24px;
-
-      margin-bottom: 5px;
-
-    }
-
 
     .stat-number {
-
-      font-size: 21px;
-
+      font-size: 27px;
       font-weight: bold;
-
-      color: #b38b00;
-
+      color: #111;
+      margin-bottom: 5px;
     }
-
 
     .stat-label {
-
-      margin-top: 3px;
-
       color: #666;
-
-      font-size: 11px;
-
+      font-size: 13px;
     }
 
-
-    /* =========================
-       PROGRESS CARD
-    ========================== */
+    /* PROGRESS */
 
     .progress-card {
-
+      margin-top: 18px;
       background: white;
-
-      border-radius: 20px;
-
-      padding: 20px 18px;
-
-      box-shadow:
-        0 5px 18px
-        rgba(0,0,0,0.08);
-
-      margin-bottom: 17px;
-
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     }
-
 
     .section-title {
-
-      font-size: 19px;
-
-      font-weight: bold;
-
-      margin-bottom: 12px;
-
+      margin: 0 0 15px;
+      font-size: 20px;
     }
-
 
     .progress-info {
-
       display: flex;
-
       justify-content: space-between;
-
-      align-items: center;
-
-      margin-bottom: 8px;
-
-      font-size: 13px;
-
+      gap: 10px;
+      font-size: 14px;
+      margin-bottom: 9px;
+      color: #555;
     }
-
-
-    .progress-percent {
-
-      color: #b38b00;
-
-      font-weight: bold;
-
-    }
-
 
     .progress-bar {
-
       width: 100%;
-
-      height: 13px;
-
-      background: #eeeeee;
-
+      height: 14px;
+      background: #e5e5e5;
       border-radius: 20px;
-
       overflow: hidden;
-
     }
-
 
     .progress-fill {
-
       height: 100%;
-
       width: 0%;
-
-      background: #d4af37;
-
+      background: linear-gradient(90deg, #f1c40f, #d4a900);
       border-radius: 20px;
-
-      transition:
-        width 0.5s ease;
-
+      transition: width 0.5s ease;
     }
-
 
     .progress-message {
-
-      margin-top: 12px;
-
-      color: #666;
-
-      font-size: 13px;
-
-      line-height: 1.6;
-
-    }
-
-
-    /* =========================
-       LATEST LESSON
-    ========================== */
-
-    .lesson-card {
-
-      background: white;
-
-      border-radius: 20px;
-
-      padding: 20px 18px;
-
-      box-shadow:
-        0 5px 18px
-        rgba(0,0,0,0.08);
-
-      margin-bottom: 17px;
-
-    }
-
-
-    .lesson-title {
-
-      font-size: 18px;
-
+      margin-top: 14px;
       font-weight: bold;
-
-      margin-bottom: 6px;
-
-    }
-
-
-    .lesson-meta {
-
-      color: #777;
-
-      font-size: 13px;
-
+      color: #555;
       line-height: 1.5;
-
     }
 
+    /* LATEST LESSON */
 
-    .completed {
-
-      display: inline-block;
-
-      margin-top: 11px;
-
-      padding: 6px 11px;
-
-      border-radius: 20px;
-
-      background: #f8f3df;
-
-      color: #8d6d00;
-
-      font-size: 12px;
-
-      font-weight: bold;
-
+    .latest-card {
+      margin-top: 18px;
+      background: white;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     }
 
+    .latest-lesson {
+      background: #fafafa;
+      border-radius: 14px;
+      padding: 16px;
+      border: 1px solid #eee;
+    }
 
-    /* =========================
-       EMPTY STATE
-    ========================== */
+    .latest-lesson h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
 
-    .empty {
-
-      text-align: center;
-
-      padding: 20px 10px;
-
-      color: #777;
-
-      line-height: 1.7;
-
+    .latest-lesson p {
+      margin: 5px 0;
+      color: #666;
       font-size: 14px;
-
+      line-height: 1.5;
     }
 
+    .completed-badge {
+      display: inline-block;
+      margin-top: 10px;
+      background: #111;
+      color: #f1c40f;
+      padding: 6px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
 
-    /* =========================
-       BUTTONS
-    ========================== */
+    /* BUTTON */
+
+    .action-area {
+      margin-top: 18px;
+    }
 
     .action-btn {
-
       display: block;
-
       width: 100%;
-
-      padding: 14px;
-
-      border: none;
-
-      border-radius: 13px;
-
-      background: #d4af37;
-
-      color: #111;
-
+      text-align: center;
       text-decoration: none;
-
-      text-align: center;
-
-      font-size: 15px;
-
-      font-weight: bold;
-
-      margin-top: 12px;
-
-    }
-
-
-    .secondary-btn {
-
       background: #111;
-
       color: white;
-
+      padding: 15px;
+      border-radius: 14px;
+      font-weight: bold;
+      font-size: 16px;
+      transition: 0.2s;
     }
 
-
-    .action-btn:active {
-
-      transform: scale(0.98);
-
+    .action-btn:hover {
+      transform: translateY(-1px);
     }
 
+    /* MOTIVATION */
 
-    /* =========================
-       FOOTER
-    ========================== */
-
-    .footer {
-
+    .motivation {
+      margin-top: 18px;
+      background: linear-gradient(135deg, #111, #222);
+      color: white;
+      border-radius: 18px;
+      padding: 22px;
       text-align: center;
-
-      color: #888;
-
-      font-size: 11px;
-
-      line-height: 1.6;
-
-      padding-top: 10px;
-
+      box-shadow: 0 4px 15px rgba(0,0,0,0.12);
     }
 
+    .motivation h2 {
+      margin: 0 0 8px;
+      color: #f1c40f;
+      font-size: 20px;
+    }
 
-    /* =========================
-       MOBILE
-    ========================== */
+    .motivation p {
+      margin: 0;
+      line-height: 1.6;
+      color: #eee;
+    }
 
-    @media (max-width: 380px) {
+    /* HOME BUTTON */
 
-      .student-greeting {
+    .home-area {
+      margin-top: 18px;
+      text-align: center;
+    }
 
-        font-size: 20px;
+    .home-btn {
+      display: inline-block;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      padding: 10px 15px;
+    }
 
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+      .container {
+        padding: 12px;
       }
 
-      .stat {
+      .header {
+        padding: 15px;
+      }
 
-        padding: 13px 5px;
+      .logo {
+        width: 135px;
+      }
 
+      .stats {
+        gap: 8px;
+      }
+
+      .stat-card {
+        padding: 15px 6px;
       }
 
       .stat-number {
-
-        font-size: 19px;
-
+        font-size: 23px;
       }
 
+      .stat-label {
+        font-size: 12px;
+      }
+
+      .student-card h1 {
+        font-size: 22px;
+      }
     }
-
   </style>
-
 </head>
-
 
 <body>
 
+  <div class="container">
 
-  <!-- =========================
-       HEADER
-  ========================== -->
+    <!-- HEADER -->
 
-  <header class="header">
-
-    <div class="logo">
+    <div class="header">
 
       <img
         src="./assets/logo/aadya-logo-header-full.png"
+        class="logo"
         alt="AADYA">
 
-    </div>
-
-
-    <div class="tagline">
-
-      Apne Adarsh Digital Gyan ka Yashasvi Abhiyan<br>
-
-      हर बच्चे की शिक्षा, आत्मनिर्भर भविष्य की ओर
+      <a href="./index.html" class="back">
+        ← AADYA Home
+      </a>
 
     </div>
-
-  </header>
-
-
-
-  <!-- =========================
-       MAIN
-  ========================== -->
-
-  <main class="container">
-
-
-    <a
-      href="./index.html"
-      class="back">
-
-      ← AADYA Home
-
-    </a>
-
 
 
     <!-- STUDENT -->
 
-    <section class="student-card">
+    <div class="student-card">
 
-      <div
-        class="student-greeting"
-        id="studentGreeting">
-
+      <h1 id="studentGreeting">
         नमस्ते! 👋
+      </h1>
 
-      </div>
+      <p class="student-class" id="studentClass">
+        आपकी Learning Journey यहाँ दिखाई देगी।
+      </p>
 
-
-      <div
-        class="student-class"
-        id="studentClass">
-
-        आपकी Learning Journey
-
-      </div>
-
-    </section>
-
+    </div>
 
 
     <!-- STATS -->
 
-    <section class="stats">
+    <div class="stats">
 
-
-      <div class="stat">
-
-        <div class="stat-icon">
-          📚
-        </div>
+      <div class="stat-card">
 
         <div
           class="stat-number"
           id="completedLessons">
-
           0
-
         </div>
 
         <div class="stat-label">
-
           Lessons पूरे
-
         </div>
 
       </div>
 
 
-
-      <div class="stat">
-
-        <div class="stat-icon">
-          📝
-        </div>
+      <div class="stat-card">
 
         <div
           class="stat-number"
           id="quizScore">
-
           —
-
         </div>
 
         <div class="stat-label">
-
           Last Quiz
-
         </div>
 
       </div>
 
 
-
-      <div class="stat">
-
-        <div class="stat-icon">
-          🎯
-        </div>
+      <div class="stat-card">
 
         <div
           class="stat-number"
           id="progressPercent">
-
           0%
-
         </div>
 
         <div class="stat-label">
-
           Learning Progress
-
         </div>
 
       </div>
 
-
-    </section>
-
+    </div>
 
 
-    <!-- OVERALL PROGRESS -->
+    <!-- PROGRESS -->
 
-    <section class="progress-card">
+    <div class="progress-card">
 
-      <div class="section-title">
-
-        📈 मेरी Learning Progress
-
-      </div>
-
+      <h2 class="section-title">
+        📊 आपकी Learning Progress
+      </h2>
 
       <div class="progress-info">
 
-        <span>
-          उपलब्ध Lessons में प्रगति
+        <span id="progressText">
+          0 / 1 Lessons
         </span>
 
-        <span
-          class="progress-percent"
-          id="progressText">
-
+        <strong id="progressPercentText">
           0%
-
-        </span>
+        </strong>
 
       </div>
-
 
       <div class="progress-bar">
 
@@ -709,43 +410,43 @@
 
       </div>
 
-
       <div
         class="progress-message"
         id="progressMessage">
-
-        सीखना शुरू करें और अपनी Progress यहाँ देखें। 🚀
-
+        🚀 अपनी Learning Journey शुरू करें!
       </div>
 
-    </section>
-
+    </div>
 
 
     <!-- LATEST LESSON -->
 
-    <section class="lesson-card">
+    <div class="latest-card">
 
-      <div class="section-title">
-
-        📖 Latest Learning
-
-      </div>
-
+      <h2 class="section-title">
+        📚 Latest Learning
+      </h2>
 
       <div
+        class="latest-lesson"
         id="latestLesson">
 
-        <div class="empty">
+        <h3>
+          अभी कोई Lesson पूरा नहीं हुआ
+        </h3>
 
-          अभी कोई Lesson पूरा नहीं हुआ है।<br>
-
-          पहला Lesson पूरा करके यहाँ अपनी progress देखें। 😊
-
-        </div>
+        <p>
+          अपना पहला Lesson पूरा करें और यहाँ अपनी progress देखें।
+        </p>
 
       </div>
 
+    </div>
+
+
+    <!-- CONTINUE -->
+
+    <div class="action-area">
 
       <a
         href="./learning.html"
@@ -755,112 +456,89 @@
 
       </a>
 
-    </section>
-
+    </div>
 
 
     <!-- MOTIVATION -->
 
-    <section class="progress-card">
+    <div class="motivation" id="motivation">
 
-      <div class="section-title">
+      <h2>
+        🌟 Keep Learning!
+      </h2>
 
-        🌟 AADYA की ओर से
-
-      </div>
-
-
-      <div
-        class="progress-message"
-        id="motivation">
-
-        हर दिन थोड़ा सीखें,<br>
-        हर दिन थोड़ा आगे बढ़ें। 💪
-
-      </div>
-
-    </section>
-
-
-
-    <a
-      href="./index.html"
-      class="action-btn secondary-btn">
-
-      🏠 वापस AADYA Home
-
-    </a>
-
-
-
-    <div class="footer">
-
-      AADYA – Apne Adarsh Digital Gyan ka Yashasvi Abhiyan<br>
-
-      <strong>
-        हर बच्चे की शिक्षा, आत्मनिर्भर भविष्य की ओर
-      </strong>
+      <p>
+        हर पूरा किया हुआ Lesson आपको अपने लक्ष्य के
+        एक कदम और करीब ले जाता है।
+      </p>
 
     </div>
 
 
-  </main>
+    <!-- HOME -->
 
+    <div class="home-area">
+
+      <a
+        href="./index.html"
+        class="home-btn">
+
+        🏠 Home पर जाएँ
+
+      </a>
+
+    </div>
+
+  </div>
 
 
   <script>
 
+    const PROFILE_KEY = "aadya_student_profile";
 
-    /* =========================
-       STORAGE KEYS
-    ========================== */
+    const PROGRESS_KEY = "aadya_progress_v1";
 
-    const PROFILE_KEY =
-      "aadya_student_profile";
-
-    const PROGRESS_KEY =
-      "aadya_progress_v1";
-
-    const QUIZ_KEY =
-      "aadya_last_quiz_score";
-
+    const QUIZ_KEY = "aadya_last_quiz_score";
 
 
     /* =========================
        STUDENT PROFILE
-    ========================== */
+    ========================= */
 
     function loadStudentProfile() {
 
-      let profile = null;
+      const profileData =
+        localStorage.getItem(PROFILE_KEY);
 
-      try {
-
-        profile =
-          JSON.parse(
-            localStorage.getItem(
-              PROFILE_KEY
-            ) || "null"
-          );
-
-      } catch (error) {
-
-        profile = null;
-
-      }
-
-
-      if (
-        profile &&
-        profile.name
-      ) {
+      if (!profileData) {
 
         document.getElementById(
           "studentGreeting"
         ).textContent =
-          "नमस्ते, " +
-          profile.name +
-          "! 👋";
+          "नमस्ते! 👋";
+
+        document.getElementById(
+          "studentClass"
+        ).textContent =
+          "अपनी Learning Journey शुरू करें।";
+
+        return;
+      }
+
+
+      try {
+
+        const profile =
+          JSON.parse(profileData);
+
+        if (profile.name) {
+
+          document.getElementById(
+            "studentGreeting"
+          ).textContent =
+            "नमस्ते, " + profile.name + "! 👋";
+
+        }
 
 
         if (profile.class) {
@@ -874,15 +552,21 @@
 
         }
 
+      } catch (error) {
+
+        console.log(
+          "Profile read error:",
+          error
+        );
+
       }
 
     }
 
 
-
     /* =========================
        PROGRESS
-    ========================== */
+    ========================= */
 
     function loadProgress() {
 
@@ -890,35 +574,38 @@
 
       try {
 
-        progress =
-          JSON.parse(
-            localStorage.getItem(
-              PROGRESS_KEY
-            ) || "{}"
-          );
+        progress = JSON.parse(
+          localStorage.getItem(
+            PROGRESS_KEY
+          ) || "{}"
+        );
 
       } catch (error) {
+
+        console.log(
+          "Progress read error:",
+          error
+        );
 
         progress = {};
 
       }
 
 
-      const entries =
-        Object.entries(progress);
+      /*
+        केवल वास्तव में completed lessons
+        को count किया जाएगा।
+      */
 
+      const completed = Object.entries(progress)
+        .filter(function(entry) {
 
-      const completed =
-        entries.filter(
-          function(item) {
+          return (
+            entry[1] &&
+            entry[1].completed === true
+          );
 
-            return (
-              item[1] &&
-              item[1].completed === true
-            );
-
-          }
-        );
+        });
 
 
       const completedCount =
@@ -926,37 +613,33 @@
 
 
       /*
-        फिलहाल उपलब्ध Lesson
-        केवल हमारा वर्तमान Lesson है।
-        आगे नए Lessons जोड़ते ही
-        इस list को बढ़ाएँगे।
+        अभी AADYA में केवल 1 lesson है।
+        नए lessons आने पर इस संख्या को
+        update किया जाएगा।
       */
 
       const totalLessons = 1;
 
 
-      let percent = 0;
-
+      let percentage = 0;
 
       if (totalLessons > 0) {
 
-        percent =
-          Math.round(
-            (
-              completedCount /
-              totalLessons
-            ) * 100
-          );
+        percentage = Math.round(
+          (completedCount / totalLessons) * 100
+        );
 
       }
 
 
-      if (percent > 100) {
+      if (percentage > 100) {
 
-        percent = 100;
+        percentage = 100;
 
       }
 
+
+      /* LESSON COUNT */
 
       document.getElementById(
         "completedLessons"
@@ -964,91 +647,308 @@
         completedCount;
 
 
+      /* PERCENTAGE */
+
       document.getElementById(
         "progressPercent"
       ).textContent =
-        percent + "%";
+        percentage + "%";
 
+
+      document.getElementById(
+        "progressPercentText"
+      ).textContent =
+        percentage + "%";
+
+
+      /* PROGRESS TEXT */
 
       document.getElementById(
         "progressText"
       ).textContent =
-        percent + "%";
+        completedCount +
+        " / " +
+        totalLessons +
+        " Lessons";
 
+
+      /* PROGRESS BAR */
 
       document.getElementById(
         "progressFill"
       ).style.width =
-        percent + "%";
+        percentage + "%";
+
+
+      /* PROGRESS MESSAGE */
+
+      const progressMessage =
+        document.getElementById(
+          "progressMessage"
+        );
 
 
       if (completedCount === 0) {
 
-        document.getElementById(
-          "progressMessage"
-        ).textContent =
-          "अभी शुरुआत बाकी है। पहला Lesson पूरा करें और अपनी Progress बढ़ाएँ। 🚀";
+        progressMessage.textContent =
+          "🚀 अपनी Learning Journey शुरू करें!";
 
       }
 
-      else if (percent === 100) {
+      else if (percentage < 100) {
 
-        document.getElementById(
-          "progressMessage"
-        ).textContent =
-          "🎉 शानदार! आपने अभी उपलब्ध सभी Lessons पूरे कर लिए हैं।";
+        progressMessage.textContent =
+          "🔥 बहुत बढ़िया! Learning जारी रखें।";
 
       }
 
       else {
 
-        document.getElementById(
-          "progressMessage"
-        ).textContent =
-          "बहुत बढ़िया! आपकी Learning Journey आगे बढ़ रही है। 💪";
+        progressMessage.textContent =
+          "🏆 शानदार! आपने उपलब्ध Lessons पूरे कर लिए हैं।";
 
       }
 
 
-
       /* =========================
-         LATEST COMPLETED LESSON
-      ========================== */
+         LATEST LESSON
+      ========================= */
 
-      const latest =
-        completed
-          .sort(
-            function(a, b) {
-
-              return (
-                new Date(
-                  b[1].completedAt || 0
-                ) -
-                new Date(
-                  a[1].completedAt || 0
-                )
-              );
-
-            }
-          )[0];
+      const latestLesson =
+        document.getElementById(
+          "latestLesson"
+        );
 
 
-      if (latest) {
+      if (completed.length === 0) {
 
-        const lessonPath =
+        latestLesson.innerHTML = `
+
+          <h3>
+            अभी कोई Lesson पूरा नहीं हुआ
+          </h3>
+
+          <p>
+            अपना पहला Lesson पूरा करें और यहाँ
+            अपनी progress देखें।
+          </p>
+
+        `;
+
+      }
+
+      else {
+
+        /*
+          सबसे हाल में पूरा किया गया lesson
+          खोजें।
+        */
+
+        completed.sort(function(a, b) {
+
+          const dateA =
+            new Date(
+              a[1].completedAt || 0
+            );
+
+          const dateB =
+            new Date(
+              b[1].completedAt || 0
+            );
+
+          return dateB - dateA;
+
+        });
+
+
+        const latest =
+          completed[0];
+
+
+        const lessonFile =
           latest[0];
 
 
-        let title =
+        let lessonTitle =
           "Completed Lesson";
 
 
-        let meta =
-          "आपने यह Lesson पूरा किया है।";
+        let lessonDetails =
+          "कक्षा 6 • गणित • अध्याय 1";
 
+
+        /*
+          अभी हमारे पास केवल पहला lesson है।
+        */
 
         if (
-          lessonPath.includes(
+          lessonFile.includes(
             "lesson01.json"
           )
-        )
+        ) {
+
+          lessonTitle =
+            "पैटर्न क्या होता है?";
+
+          lessonDetails =
+            "कक्षा 6 • गणित • अध्याय 1 • गणित में पैटर्न";
+
+        }
+
+
+        latestLesson.innerHTML = `
+
+          <h3>
+            ${lessonTitle}
+          </h3>
+
+          <p>
+            ${lessonDetails}
+          </p>
+
+          <span class="completed-badge">
+            ✅ Lesson Completed
+          </span>
+
+        `;
+
+      }
+
+
+      /* =========================
+         MOTIVATION
+      ========================= */
+
+      const motivation =
+        document.getElementById(
+          "motivation"
+        );
+
+
+      if (percentage === 100) {
+
+        motivation.innerHTML = `
+
+          <h2>
+            🏆 शानदार काम!
+          </h2>
+
+          <p>
+            आपने अपना उपलब्ध Lesson पूरा कर लिया है।
+            अब अगले Lesson की ओर बढ़ते हैं। 🚀
+          </p>
+
+        `;
+
+      }
+
+      else if (completedCount > 0) {
+
+        motivation.innerHTML = `
+
+          <h2>
+            🔥 बहुत बढ़िया!
+          </h2>
+
+          <p>
+            आपने शुरुआत कर दी है।
+            अब Learning को लगातार आगे बढ़ाइए।
+          </p>
+
+        `;
+
+      }
+
+      else {
+
+        motivation.innerHTML = `
+
+          <h2>
+            🌟 Keep Learning!
+          </h2>
+
+          <p>
+            हर पूरा किया हुआ Lesson आपको अपने लक्ष्य के
+            एक कदम और करीब ले जाता है।
+          </p>
+
+        `;
+
+      }
+
+
+      /* =========================
+         LAST QUIZ
+      ========================= */
+
+      const quizData =
+        localStorage.getItem(
+          QUIZ_KEY
+        );
+
+
+      if (quizData) {
+
+        document.getElementById(
+          "quizScore"
+        ).textContent =
+          quizData;
+
+      }
+
+    }
+
+
+    /* =========================
+       REFRESH DASHBOARD
+    ========================= */
+
+    function refreshDashboard() {
+
+      loadStudentProfile();
+
+      loadProgress();
+
+    }
+
+
+    /*
+      पहली बार page खुलने पर
+    */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function() {
+
+        refreshDashboard();
+
+      }
+    );
+
+
+    /*
+      IMPORTANT FIX:
+
+      जब user Learning page से
+      Back करता है तो mobile browser
+      कई बार page को पूरी तरह reload
+      नहीं करता बल्कि पुराने page snapshot
+      (bfcache) से वापस दिखाता है।
+
+      इसलिए यहाँ pageshow पर data
+      दोबारा localStorage से पढ़ा जाता है।
+    */
+
+    window.addEventListener(
+      "pageshow",
+      function() {
+
+        refreshDashboard();
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
