@@ -1717,8 +1717,26 @@
       openProfile();
 
     }
+  }
+  function openClass() {
+
+  const saved =
+    localStorage.getItem(
+      PROFILE_KEY
+    );
+
+  if (!saved) {
+
+    openProfile();
+
+    return;
 
   }
+
+  window.location.href =
+    "./class.html";
+
+}
 
 
 
