@@ -1013,7 +1013,6 @@ function showAnswer(button) {
 
 }
 
-
 /* PRACTICE CHECK */
 
 function checkPractice(button) {
@@ -1048,6 +1047,31 @@ function checkPractice(button) {
     );
 
 
+  /*
+   * Lesson JSON में answer कभी
+   * option number/index हो सकता है
+   * और कभी पूरा answer text।
+   */
+
+  let correctAnswer = answer;
+
+  const answerIndex =
+    Number(answer);
+
+
+  if (
+    Number.isInteger(answerIndex) &&
+    answerIndex >= 0 &&
+    answerIndex < buttons.length
+  ) {
+
+    correctAnswer =
+      buttons[answerIndex]
+        .getAttribute("data-option");
+
+  }
+
+
   buttons.forEach(
     btn => {
 
@@ -1056,7 +1080,7 @@ function checkPractice(button) {
       if (
         btn.getAttribute(
           "data-option"
-        ) === answer
+        ) === correctAnswer
       ) {
 
         btn.classList.add(
@@ -1069,7 +1093,9 @@ function checkPractice(button) {
   );
 
 
-  if (selected === answer) {
+  if (
+    selected === correctAnswer
+  ) {
 
     button.classList.add(
       "correct"
@@ -1095,14 +1121,13 @@ function checkPractice(button) {
 
     feedback.textContent =
       "❌ सही उत्तर: " +
-      answer +
+      correctAnswer +
       " — " +
       explanation;
 
   }
 
 }
-
 
 /* QUIZ CHECK */
 
@@ -1158,6 +1183,31 @@ function checkQuiz(button) {
     );
 
 
+  /*
+   * Lesson JSON में correct_answer
+   * option number/index या text
+   * दोनों में हो सकता है।
+   */
+
+  let correctAnswer = answer;
+
+  const answerIndex =
+    Number(answer);
+
+
+  if (
+    Number.isInteger(answerIndex) &&
+    answerIndex >= 0 &&
+    answerIndex < buttons.length
+  ) {
+
+    correctAnswer =
+      buttons[answerIndex]
+        .getAttribute("data-option");
+
+  }
+
+
   buttons.forEach(
     btn => {
 
@@ -1166,7 +1216,7 @@ function checkQuiz(button) {
       if (
         btn.getAttribute(
           "data-option"
-        ) === answer
+        ) === correctAnswer
       ) {
 
         btn.classList.add(
@@ -1179,7 +1229,9 @@ function checkQuiz(button) {
   );
 
 
-  if (selected === answer) {
+  if (
+    selected === correctAnswer
+  ) {
 
     quizScore++;
 
