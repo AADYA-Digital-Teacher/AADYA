@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="theme-color"
+    content="#111111">
+
+  <title>AADYA – Class 6 Mathematics</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+
+      font-family:
+        Arial,
+        "Noto Sans Devanagari",
+        sans-serif;
+
+      background: #f5f5f5;
+
+      color: #222;
+
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .app {
+      min-height: 100vh;
+      background: #f5f5f5;
+    }
+
+    /* HEADER */
+
+    .header {
+
+      background: #111111;
+
+      color: white;
+
+      text-align: center;
+
+      padding: 30px 18px 34px;
+
+    }
+
+    .logo {
+
+      width: 145px;
+
+      max-width: 55%;
+
+      display: block;
+
+      margin: 0 auto 20px;
+
+      border-radius: 10px;
+
+    }
+
+    .header h1 {
+
+      font-size: 27px;
+
+      line-height: 1.35;
+
+      margin-bottom: 8px;
+
+    }
+
+    .header p {
+
+      font-size: 17px;
+
+      color: #dddddd;
+
+    }
+
+    /* MAIN */
+
+    .container {
+
+      width: 92%;
+
+      max-width: 760px;
+
+      margin: 0 auto;
+
+      padding: 22px 0 40px;
+
+    }
+
+    /* BREADCRUMB */
+
+    .breadcrumb {
+
+      background: white;
+
+      border-radius: 18px;
+
+      padding: 17px 18px;
+
+      margin-bottom: 18px;
+
+      box-shadow:
+        0 5px 18px rgba(0,0,0,0.06);
+
+    }
+
+    .breadcrumb .small {
+
+      font-size: 15px;
+
+      color: #777;
+
+      margin-bottom: 7px;
+
+    }
+
+    .breadcrumb h2 {
+
+      font-size: 23px;
+
+      line-height: 1.4;
+
+    }
+
+    /* INTRO */
+
+    .intro {
+
+      background: white;
+
+      border-radius: 20px;
+
+      padding: 22px 20px;
+
+      margin-bottom: 20px;
+
+      box-shadow:
+        0 5px 18px rgba(0,0,0,0.06);
+
+    }
+
+    .intro h3 {
+
+      font-size: 23px;
+
+      margin-bottom: 10px;
+
+    }
+
+    .intro p {
+
+      font-size: 17px;
+
+      line-height: 1.75;
+
+      color: #444;
+
+    }
+
+    /* LESSON CARD */
+
+    .lesson-card {
+
+      background: white;
+
+      border-radius: 22px;
+
+      padding: 21px;
+
+      margin-bottom: 18px;
+
+      box-shadow:
+        0 6px 22px rgba(0,0,0,0.07);
+
+      border-left: 5px solid #d4af37;
+
+    }
+
+    .lesson-number {
+
+      display: inline-block;
+
+      background: #111111;
+
+      color: #d4af37;
+
+      font-weight: bold;
+
+      padding: 7px 13px;
+
+      border-radius: 20px;
+
+      font-size: 15px;
+
+      margin-bottom: 13px;
+
+    }
+
+    .lesson-card h3 {
+
+      font-size: 23px;
+
+      line-height: 1.45;
+
+      margin-bottom: 8px;
+
+    }
+
+    .lesson-card p {
+
+      font-size: 16px;
+
+      line-height: 1.7;
+
+      color: #555;
+
+      margin-bottom: 17px;
+
+    }
+
+    .lesson-info {
+
+      display: flex;
+
+      gap: 8px;
+
+      flex-wrap: wrap;
+
+      margin-bottom: 18px;
+
+    }
+
+    .tag {
+
+      background: #f1f1f1;
+
+      padding: 7px 11px;
+
+      border-radius: 15px;
+
+      font-size: 14px;
+
+      color: #555;
+
+    }
+
+    .btn {
+
+      display: block;
+
+      width: 100%;
+
+      background: #111111;
+
+      color: white;
+
+      text-align: center;
+
+      padding: 15px 18px;
+
+      border-radius: 14px;
+
+      font-size: 18px;
+
+      font-weight: bold;
+
+    }
+
+    .btn:active {
+
+      transform: scale(0.98);
+
+    }
+
+    /* COMING SOON */
+
+    .coming {
+
+      background: #111111;
+
+      color: white;
+
+      border-radius: 22px;
+
+      padding: 24px 20px;
+
+      margin-top: 22px;
+
+      text-align: center;
+
+    }
+
+    .coming h3 {
+
+      color: #d4af37;
+
+      font-size: 21px;
+
+      margin-bottom: 9px;
+
+    }
+
+    .coming p {
+
+      color: #dddddd;
+
+      line-height: 1.65;
+
+      font-size: 16px;
+
+    }
+
+    /* HOME BUTTON */
+
+    .home-btn {
+
+      display: block;
+
+      text-align: center;
+
+      margin-top: 20px;
+
+      padding: 14px;
+
+      border-radius: 14px;
+
+      background: white;
+
+      border: 2px solid #111111;
+
+      font-size: 17px;
+
+      font-weight: bold;
+
+    }
+
+    /* FOOTER */
+
+    .footer {
+
+      text-align: center;
+
+      color: #888;
+
+      font-size: 13px;
+
+      padding: 10px 20px 30px;
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <div class="app">
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+      <img
+        src="./assets/logo/aadya-logo-header-full.png"
+        class="logo"
+        alt="AADYA Logo">
+
+      <h1>
+        कक्षा 6 • गणित
+      </h1>
+
+      <p>
+        आपका अपना Digital Teacher
+      </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+      <!-- BREADCRUMB -->
+
+      <section class="breadcrumb">
+
+        <div class="small">
+          कक्षा 6 • गणित • अध्याय 1
+        </div>
+
+        <h2>
+          📚 गणित में पैटर्न
+        </h2>
+
+      </section>
+
+
+      <!-- INTRO -->
+
+      <section class="intro">
+
+        <h3>
+          🎯 आज कहाँ से सीखें?
+        </h3>
+
+        <p>
+          नीचे दिए गए Lessons में से कोई भी Lesson चुनें
+          और अपनी Learning Journey आगे बढ़ाएँ।
+        </p>
+
+      </section>
+
+
+      <!-- LESSON 1 -->
+
+      <section class="lesson-card">
+
+        <div class="lesson-number">
+          LESSON 01
+        </div>
+
+        <h3>
+          पैटर्न क्या होता है?
+        </h3>
+
+        <p>
+          संख्याओं और वस्तुओं में छिपे नियम को पहचानना
+          सीखें और पैटर्न को समझें।
+        </p>
+
+        <div class="lesson-info">
+
+          <span class="tag">
+            📖 Concept
+          </span>
+
+          <span class="tag">
+            ✏️ Practice
+          </span>
+
+          <span class="tag">
+            🧠 Quiz
+          </span>
+
+        </div>
+
+        <a
+          href="./learning.html?lesson=1"
+          class="btn">
+
+          ▶ Lesson शुरू करें
+
+        </a>
+
+      </section>
+
+
+      <!-- LESSON 2 -->
+
+      <section class="lesson-card">
+
+        <div class="lesson-number">
+          LESSON 02
+        </div>
+
+        <h3>
+          संख्याओं में पैटर्न पहचानना
+        </h3>
+
+        <p>
+          संख्याओं की श्रेणी में छिपे नियम को पहचानें,
+          अगली संख्या बताएं और अपने शब्दों में नियम समझाएँ।
+        </p>
+
+        <div class="lesson-info">
+
+          <span class="tag">
+            🔢 Number Pattern
+          </span>
+
+          <span class="tag">
+            ✏️ Practice
+          </span>
+
+          <span class="tag">
+            🧠 Quiz
+          </span>
+
+        </div>
+
+        <a
+          href="./learning.html?lesson=2"
+          class="btn">
+
+          ▶ Lesson शुरू करें
+
+        </a>
+
+      </section>
+
+
+      <!-- COMING SOON -->
+
+      <section class="coming">
+
+        <h3>
+          🚀 आगे और Lessons आएँगे
+        </h3>
+
+        <p>
+          इस Chapter में आगे के Lessons भी
+          धीरे-धीरे AADYA में जोड़े जाएँगे।
+        </p>
+
+      </section>
+
+
+      <!-- HOME -->
+
+      <a
+        href="./index.html"
+        class="home-btn">
+
+        🏠 AADYA Home पर जाएँ
+
+      </a>
+
+
+    </main>
+
+
+    <footer class="footer">
+
+      AADYA – Apne Adarsh Digital Gyan ka Yashasvi Abhiyan
+
+    </footer>
+
+  </div>
+
+</body>
+
+</html>
