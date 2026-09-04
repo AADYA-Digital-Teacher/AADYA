@@ -480,48 +480,50 @@ let quizScore = 0;
 
 let answeredQuestions = 0;
 
-
-/* LESSON FILE */
-
 /* LESSON FILE */
 
 const lessonParams =
-  new URLSearchParams(window.location.search);
+  new URLSearchParams(
+    window.location.search
+  );
 
 const requestedLesson =
   lessonParams.get("lesson") || "1";
 
-let lessonNumber = "01";
+let lessonFile =
+  "./content/class6/mathematics/chapter01/lesson01.json";
 
-if (requestedLesson.includes("lesson")) {
 
-  const match =
-    requestedLesson.match(
-      /lesson(\d+)\.json/i
-    );
+/* FULL JSON PATH FROM CLASS PAGE */
 
-  if (match) {
+if (
+  requestedLesson.endsWith(".json")
+) {
 
-    lessonNumber =
-      match[1].padStart(2, "0");
+  lessonFile =
+    requestedLesson.startsWith("./")
+      ? requestedLesson
+      : "./" + requestedLesson;
 
-  }
+}
 
-} else {
 
-  lessonNumber =
+/* OLD 1 / 2 SUPPORT */
+
+else {
+
+  const lessonNumber =
     String(requestedLesson).padStart(
       2,
       "0"
     );
 
+  lessonFile =
+    "./content/class6/mathematics/chapter01/lesson" +
+    lessonNumber +
+    ".json";
+
 }
-
-const lessonFile =
-  "./content/class6/mathematics/chapter01/lesson" +
-  lessonNumber +
-  ".json";
-
 
 /* LOAD LESSON */
 
@@ -530,7 +532,11 @@ async function loadLesson() {
   try {
 
     const response =
-      await fetch(lessonFile);
+  await fetch(
+    lessonFile +
+    "?v=" +
+    Date.now()
+  );
 
     if (!response.ok) {
 
