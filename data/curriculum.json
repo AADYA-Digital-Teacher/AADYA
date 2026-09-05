@@ -1,6 +1,6 @@
 {
   "app": "AADYA Digital Teacher",
-  "version": "1.1",
+  "version": "1.2",
   "classes": [
     {
       "id": "class6",
@@ -51,136 +51,142 @@
             {
               "id": "textbook01",
               "number": 3,
-              "title": "प्राकृतिक संख्याएँ",
               "book_number": 1,
+              "title": "प्राकृतिक संख्याएँ",
               "source": "textbook",
-              "lessons": []
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "संख्या और संख्यांक में अन्तर करना",
+                  "file": "./content/class6/mathematics/textbook01/lesson01.json"
+                }
+              ]
             },
             {
               "id": "textbook02",
               "number": 4,
-              "title": "पूर्ण संख्याएँ",
               "book_number": 2,
+              "title": "पूर्ण संख्याएँ",
               "source": "textbook",
               "lessons": []
             },
             {
               "id": "textbook03",
               "number": 5,
-              "title": "पूर्णांक",
               "book_number": 3,
+              "title": "पूर्णांक",
               "source": "textbook",
               "lessons": []
             },
             {
               "id": "textbook04",
               "number": 6,
-              "title": "सांख्यिकी",
               "book_number": 4,
+              "title": "सांख्यिकी",
               "source": "textbook",
               "lessons": []
             },
             {
               "id": "textbook05",
               "number": 7,
-              "title": "बीजगणितीय अवधारणाएँ",
               "book_number": 5,
+              "title": "बीजगणितीय अवधारणाएँ",
               "source": "textbook",
               "lessons": []
             },
             {
               "id": "textbook06",
               "number": 8,
-              "title": "बीजीय व्यंजक",
               "book_number": 6,
+              "title": "बीजीय व्यंजक",
               "source": "textbook",
               "lessons": []
             },
             {
               "id": "textbook07",
               "number": 9,
-              "title": "ज्यामितीय अवधारणाएँ",
               "book_number": 7,
+              "title": "ज्यामितीय अवधारणाएँ",
               "source": "textbook",
               "lessons": []
             },
             {
               "id": "textbook08",
               "number": 10,
-              "title": "कोण",
               "book_number": 8,
+              "title": "कोण",
               "source": "textbook",
               "lessons": []
             },
             {
               "id": "textbook09",
               "number": 11,
-              "title": "लम्ब और समान्तर रेखाएँ",
               "book_number": 9,
+              "title": "लम्ब और समान्तर रेखाएँ",
               "source": "textbook",
               "lessons": []
             },
             {
               "id": "textbook10",
               "number": 12,
-              "title": "लघुत्तम समापवर्त्य एवं महत्तम समापवर्तक",
               "book_number": 10,
+              "title": "लघुत्तम समापवर्त्य एवं महत्तम समापवर्तक",
               "source": "textbook",
               "lessons": []
             },
             {
               "id": "textbook11",
               "number": 13,
-              "title": "समीकरण : एक चर में",
               "book_number": 11,
+              "title": "समीकरण : एक चर में",
               "source": "textbook",
               "lessons": []
             },
             {
               "id": "textbook12",
               "number": 14,
-              "title": "वाणिज्य गणित",
               "book_number": 12,
+              "title": "वाणिज्य गणित",
               "source": "textbook",
               "lessons": []
             },
             {
               "id": "textbook13",
               "number": 15,
-              "title": "त्रिभुज",
               "book_number": 13,
+              "title": "त्रिभुज",
               "source": "textbook",
               "lessons": []
             },
             {
               "id": "textbook14",
               "number": 16,
-              "title": "वृत्त",
               "book_number": 14,
+              "title": "वृत्त",
               "source": "textbook",
               "lessons": []
             },
             {
               "id": "textbook15",
               "number": 17,
-              "title": "सममितता",
               "book_number": 15,
+              "title": "सममितता",
               "source": "textbook",
               "lessons": []
             },
             {
               "id": "textbook16",
               "number": 18,
-              "title": "क्षेत्रमिति (मेन्सुरेशन)",
               "book_number": 16,
+              "title": "क्षेत्रमिति (मेन्सुरेशन)",
               "source": "textbook",
               "lessons": []
             },
             {
               "id": "textbook17",
               "number": 19,
-              "title": "गुणा : ऊर्ध्वतिर्यक विधि द्वारा",
               "book_number": 17,
+              "title": "गुणा : ऊर्ध्वतिर्यक विधि द्वारा",
               "source": "textbook",
               "lessons": []
             }
@@ -320,4 +326,4 @@
       ]
     }
   ]
-            }
+}
