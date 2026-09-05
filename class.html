@@ -112,7 +112,7 @@
       margin-bottom: 5px;
     }
 
-    .class-card p {
+    .class-description {
       font-size: 13px;
       color: #777;
       margin-bottom: 15px;
@@ -123,13 +123,7 @@
       border-radius: 14px;
       padding: 15px;
       margin-top: 10px;
-      cursor: pointer;
       background: #fff;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    .subject-card:active {
-      transform: scale(0.98);
     }
 
     .subject-top {
@@ -225,6 +219,16 @@
       flex-shrink: 0;
     }
 
+    .empty-box {
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #f7f7f7;
+      color: #888;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
     .info-box {
       margin-top: 20px;
       padding: 15px;
@@ -234,6 +238,21 @@
       font-size: 13px;
       line-height: 1.7;
       color: #555;
+    }
+
+    .loading,
+    .error {
+      text-align: center;
+      padding: 30px 15px;
+      color: #777;
+      font-size: 14px;
+    }
+
+    .error {
+      background: #fff0f0;
+      border: 1px solid #f0cccc;
+      border-radius: 12px;
+      color: #a33;
     }
 
     .footer {
@@ -262,8 +281,13 @@
     >
 
     <div>
-      <div class="header-title">मेरी कक्षा</div>
-      <div class="header-subtitle">AADYA Digital Teacher</div>
+      <div class="header-title">
+        मेरी कक्षा
+      </div>
+
+      <div class="header-subtitle">
+        AADYA Digital Teacher
+      </div>
     </div>
 
   </header>
@@ -303,155 +327,28 @@
         कक्षा 6
       </h2>
 
-      <p>
-        अपने विषय और Lessons चुनकर सीखना शुरू करें।
+      <p class="class-description">
+        अपने विषय, अध्याय और Lessons चुनकर सीखना शुरू करें।
       </p>
 
 
-      <!-- MATHEMATICS -->
-
-      <div class="subject-card">
-
-        <div class="subject-top">
-
-          <div class="subject-icon">
-            📐
-          </div>
-
-          <div class="subject-info">
-
-            <h3>
-              गणित
-            </h3>
-
-            <p>
-              Mathematics
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="chapter-box">
-
-          <div class="chapter-title">
-            📖 अध्याय 1 — गणित में पैटर्न
-          </div>
-
-
-          <!-- LESSON 1 -->
-
-          <div
-            class="lesson-card"
-            onclick="openLesson('./content/class6/mathematics/chapter01/lesson01.json')"
-          >
-
-            <div class="lesson-left">
-
-              <div class="lesson-number">
-                1
-              </div>
-
-              <div class="lesson-name">
-                पैटर्न क्या होता है?
-              </div>
-
-            </div>
-
-            <div class="lesson-arrow">
-              ›
-            </div>
-
-          </div>
-
-
-          <!-- LESSON 2 -->
-
-          <div
-            class="lesson-card"
-            onclick="openLesson('./content/class6/mathematics/chapter01/lesson02.json')"
-          >
-
-            <div class="lesson-left">
-
-              <div class="lesson-number">
-                2
-              </div>
-
-              <div class="lesson-name">
-                संख्याओं में पैटर्न पहचानना
-              </div>
-
-            </div>
-
-            <div class="lesson-arrow">
-              ›
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-<!-- CHAPTER 2 -->
-
-<div class="chapter-box">
-
-  <div class="chapter-title">
-    📖 अध्याय 2 — रेखाएँ और कोण
-  </div>
-
-
-  <!-- LESSON 1 -->
-
-  <div
-    class="lesson-card"
-    onclick="openLesson('./content/class6/mathematics/chapter02/lesson01.json')"
-  >
-
-    <div class="lesson-left">
-
-      <div class="lesson-number">
-        1
+      <div
+        id="curriculumLoading"
+        class="loading"
+      >
+        📚 आपका Curriculum तैयार हो रहा है...
       </div>
 
-      <div class="lesson-name">
-        रेखा, रेखाखंड और किरण
-      </div>
 
-    </div>
+      <div id="curriculumContent"></div>
 
-    <div class="lesson-arrow">
-      ›
-    </div>
 
-  </div>
-  <!-- LESSON 2 -->
+      <div
+        id="curriculumError"
+        class="error"
+        style="display:none;"
+      ></div>
 
-  <div
-    class="lesson-card"
-    onclick="openLesson('./content/class6/mathematics/chapter02/lesson02.json')"
-  >
-
-    <div class="lesson-left">
-
-      <div class="lesson-number">
-        2
-      </div>
-
-      <div class="lesson-name">
-        कोण क्या होता है?
-      </div>
-
-    </div>
-
-    <div class="lesson-arrow">
-      ›
-    </div>
-
-  </div>
-</div>
 
       <div class="info-box">
 
@@ -484,19 +381,26 @@
       "aadya_student_profile_v1";
 
 
+    let studentClass = 6;
+
+
     function loadStudent() {
 
       try {
 
         const saved =
-          localStorage.getItem(PROFILE_KEY);
+          localStorage.getItem(
+            PROFILE_KEY
+          );
 
         if (!saved) {
           return;
         }
 
+
         const profile =
           JSON.parse(saved);
+
 
         if (
           profile &&
@@ -512,22 +416,28 @@
 
         }
 
+
         if (
           profile &&
           profile.class
         ) {
 
+          studentClass =
+            Number(profile.class);
+
+
           document.getElementById(
             "classTitle"
           ).textContent =
             "कक्षा " +
-            profile.class;
+            studentClass;
+
 
           document.getElementById(
             "welcomeSubtitle"
           ).textContent =
             "कक्षा " +
-            profile.class +
+            studentClass +
             " के लिए अपनी Learning Journey शुरू करें।";
 
         }
@@ -565,11 +475,347 @@
     }
 
 
+    function createLessonCard(
+      lesson
+    ) {
+
+      const card =
+        document.createElement(
+          "div"
+        );
+
+      card.className =
+        "lesson-card";
+
+
+      card.onclick =
+        function() {
+
+          openLesson(
+            lesson.file
+          );
+
+        };
+
+
+      card.innerHTML =
+
+        '<div class="lesson-left">' +
+
+          '<div class="lesson-number">' +
+            lesson.number +
+          '</div>' +
+
+          '<div class="lesson-name">' +
+            lesson.title +
+          '</div>' +
+
+        '</div>' +
+
+        '<div class="lesson-arrow">' +
+          '›' +
+        '</div>';
+
+
+      return card;
+
+    }
+
+
+    function renderCurriculum(
+      data
+    ) {
+
+      const content =
+        document.getElementById(
+          "curriculumContent"
+        );
+
+
+      content.innerHTML = "";
+
+
+      const classData =
+        data.classes.find(
+          function(item) {
+
+            return (
+              item.id ===
+              "class" +
+              studentClass
+            );
+
+          }
+        );
+
+
+      if (!classData) {
+
+        throw new Error(
+          "कक्षा " +
+          studentClass +
+          " का Curriculum नहीं मिला।"
+        );
+
+      }
+
+
+      classData.subjects.forEach(
+        function(subject) {
+
+          const subjectCard =
+            document.createElement(
+              "div"
+            );
+
+          subjectCard.className =
+            "subject-card";
+
+
+          const top =
+            document.createElement(
+              "div"
+            );
+
+          top.className =
+            "subject-top";
+
+
+          top.innerHTML =
+
+            '<div class="subject-icon">' +
+              subject.icon +
+            '</div>' +
+
+            '<div class="subject-info">' +
+
+              '<h3>' +
+                subject.name +
+              '</h3>' +
+
+              '<p>' +
+                subject.english_name +
+              '</p>' +
+
+            '</div>';
+
+
+          subjectCard.appendChild(
+            top
+          );
+
+
+          if (
+            !subject.chapters ||
+            subject.chapters.length === 0
+          ) {
+
+            const empty =
+              document.createElement(
+                "div"
+              );
+
+            empty.className =
+              "empty-box";
+
+
+            empty.textContent =
+              "📘 इस विषय की Lessons AADYA में जल्द उपलब्ध होंगी।";
+
+
+            subjectCard.appendChild(
+              empty
+            );
+
+          } else {
+
+
+            subject.chapters.forEach(
+              function(chapter) {
+
+                const chapterBox =
+                  document.createElement(
+                    "div"
+                  );
+
+                chapterBox.className =
+                  "chapter-box";
+
+
+                const title =
+                  document.createElement(
+                    "div"
+                  );
+
+                title.className =
+                  "chapter-title";
+
+
+                title.textContent =
+                  "📖 अध्याय " +
+                  chapter.number +
+                  " — " +
+                  chapter.title;
+
+
+                chapterBox.appendChild(
+                  title
+                );
+
+
+                if (
+                  !chapter.lessons ||
+                  chapter.lessons.length === 0
+                ) {
+
+                  const empty =
+                    document.createElement(
+                      "div"
+                    );
+
+                  empty.className =
+                    "empty-box";
+
+
+                  empty.textContent =
+                    "इस अध्याय की Lessons जल्द उपलब्ध होंगी।";
+
+
+                  chapterBox.appendChild(
+                    empty
+                  );
+
+                } else {
+
+
+                  chapter.lessons.forEach(
+                    function(lesson) {
+
+                      chapterBox.appendChild(
+                        createLessonCard(
+                          lesson
+                        )
+                      );
+
+                    }
+                  );
+
+                }
+
+
+                subjectCard.appendChild(
+                  chapterBox
+                );
+
+              }
+            );
+
+          }
+
+
+          content.appendChild(
+            subjectCard
+          );
+
+        }
+      );
+
+    }
+
+
+    async function loadCurriculum() {
+
+      const loading =
+        document.getElementById(
+          "curriculumLoading"
+        );
+
+
+      const content =
+        document.getElementById(
+          "curriculumContent"
+        );
+
+
+      const errorBox =
+        document.getElementById(
+          "curriculumError"
+        );
+
+
+      try {
+
+        const response =
+          await fetch(
+            "./data/curriculum.json?v=" +
+            Date.now(),
+            {
+              cache: "no-store"
+            }
+          );
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            "curriculum.json नहीं मिला: " +
+            response.status
+          );
+
+        }
+
+
+        const data =
+          await response.json();
+
+
+        renderCurriculum(
+          data
+        );
+
+
+        loading.style.display =
+          "none";
+
+
+        content.style.display =
+          "block";
+
+
+      } catch (error) {
+
+        loading.style.display =
+          "none";
+
+
+        errorBox.style.display =
+          "block";
+
+
+        errorBox.innerHTML =
+
+          "<strong>Curriculum लोड नहीं हो पाया।</strong><br><br>" +
+
+          "कृपया page को दोबारा खोलें।";
+
+
+        console.error(
+          "CURRICULUM LOAD ERROR:",
+          error
+        );
+
+      }
+
+    }
+
+
     document.addEventListener(
       "DOMContentLoaded",
       function() {
 
         loadStudent();
+
+        loadCurriculum();
 
       }
     );
