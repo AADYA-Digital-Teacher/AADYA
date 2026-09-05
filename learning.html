@@ -5,49 +5,249 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#111111">
 <title>AADYA – Learning</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f5f5f5;color:#222}
-.header{background:#111;color:#fff;padding:22px 16px 26px;text-align:center}
-.header img{width:180px;max-width:75%;height:auto;display:block;margin:0 auto 12px}
-.header h1{margin:8px 0;font-size:27px}
-.header p{margin:0;font-size:16px;color:#ddd}
-.container{max-width:800px;margin:auto;padding:18px 16px 40px}
-.card{background:#fff;border-radius:18px;padding:20px;margin-bottom:18px;box-shadow:0 3px 14px rgba(0,0,0,.08)}
-.chapter{font-size:14px;color:#777;margin-bottom:8px}
-h2{margin:6px 0 10px;font-size:26px}
-h3{margin:0 0 14px;font-size:21px}
-p{line-height:1.7}
-.objective{padding:9px 0;line-height:1.5}
-.example{background:#f7f7f7;border-left:4px solid #111;padding:14px;margin:12px 0;border-radius:10px;line-height:1.6}
-.question{font-weight:bold;margin-bottom:12px;font-size:17px}
-.option{display:block;width:100%;text-align:left;padding:14px;margin:9px 0;border:1px solid #ddd;border-radius:11px;background:#fff;font-size:16px;cursor:pointer}
-.option:hover{background:#f0f0f0}
-.option.correct{background:#dff5df;border-color:#2e8b57}
-.option.wrong{background:#ffe0e0;border-color:#d33}
-.option:disabled{cursor:default}
-.btn{display:block;width:100%;border:none;border-radius:12px;padding:14px;font-size:17px;font-weight:bold;cursor:pointer;background:#111;color:#fff;margin-top:12px}
-.btn:hover{opacity:.9}
-.answer{display:none;margin-top:12px;padding:12px;background:#eaf7ea;border-radius:10px}
-.feedback{margin-top:12px;padding:10px;border-radius:8px;font-weight:bold}
-.feedback.good{background:#e5f6e5;color:#176b17}
-.feedback.bad{background:#ffe7e7;color:#a00000}
-.success{text-align:center;background:#111;color:#fff}
-.progress{height:12px;background:#555;border-radius:10px;overflow:hidden;margin:18px 0}
-.progress-bar{height:100%;width:0;background:#d4af37;transition:width .4s}
-.loading{text-align:center;padding:40px 10px;font-size:18px}
-.error{background:#ffe5e5;color:#900;padding:18px;border-radius:12px}
-ul{padding-left:24px}
-li{margin:9px 0;line-height:1.5}
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+color:#222
+}
+
+.header{
+background:#111;
+color:#fff;
+padding:22px 16px 26px;
+text-align:center
+}
+
+.header img{
+width:180px;
+max-width:75%;
+height:auto;
+display:block;
+margin:0 auto 12px
+}
+
+.header h1{
+margin:8px 0;
+font-size:27px
+}
+
+.header p{
+margin:0;
+font-size:16px;
+color:#ddd
+}
+
+.container{
+max-width:800px;
+margin:auto;
+padding:18px 16px 40px
+}
+
+.card{
+background:#fff;
+border-radius:18px;
+padding:20px;
+margin-bottom:18px;
+box-shadow:0 3px 14px rgba(0,0,0,.08)
+}
+
+.chapter{
+font-size:14px;
+color:#777;
+margin-bottom:8px
+}
+
+h2{
+margin:6px 0 10px;
+font-size:26px
+}
+
+h3{
+margin:0 0 14px;
+font-size:21px
+}
+
+p{
+line-height:1.7
+}
+
+.objective{
+padding:9px 0;
+line-height:1.5
+}
+
+.example{
+background:#f7f7f7;
+border-left:4px solid #111;
+padding:14px;
+margin:12px 0;
+border-radius:10px;
+line-height:1.6
+}
+
+.question{
+font-weight:bold;
+margin-bottom:12px;
+font-size:17px
+}
+
+.option{
+display:block;
+width:100%;
+text-align:left;
+padding:14px;
+margin:9px 0;
+border:1px solid #ddd;
+border-radius:11px;
+background:#fff;
+font-size:16px;
+cursor:pointer
+}
+
+.option:hover{
+background:#f0f0f0
+}
+
+.option.correct{
+background:#dff5df;
+border-color:#2e8b57
+}
+
+.option.wrong{
+background:#ffe0e0;
+border-color:#d33
+}
+
+.option:disabled{
+cursor:default
+}
+
+.btn{
+display:block;
+width:100%;
+border:none;
+border-radius:12px;
+padding:14px;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+background:#111;
+color:#fff;
+margin-top:12px
+}
+
+.btn:hover{
+opacity:.9
+}
+
+.answer{
+display:none;
+margin-top:12px;
+padding:12px;
+background:#eaf7ea;
+border-radius:10px
+}
+
+.feedback{
+margin-top:12px;
+padding:10px;
+border-radius:8px;
+font-weight:bold
+}
+
+.feedback.good{
+background:#e5f6e5;
+color:#176b17
+}
+
+.feedback.bad{
+background:#ffe7e7;
+color:#a00000
+}
+
+.success{
+text-align:center;
+background:#111;
+color:#fff
+}
+
+.progress{
+height:12px;
+background:#555;
+border-radius:10px;
+overflow:hidden;
+margin:18px 0
+}
+
+.progress-bar{
+height:100%;
+width:0;
+background:#d4af37;
+transition:width .4s
+}
+
+.loading{
+text-align:center;
+padding:40px 10px;
+font-size:18px
+}
+
+.error{
+background:#ffe5e5;
+color:#900;
+padding:18px;
+border-radius:12px
+}
+
+ul{
+padding-left:24px
+}
+
+li{
+margin:9px 0;
+line-height:1.5
+}
+
 @media(max-width:600px){
-.header{padding:18px 12px 22px}
-.header img{width:165px}
-.header h1{font-size:24px}
-.header p{font-size:15px}
-.container{padding:14px 12px 30px}
-.card{padding:17px;border-radius:16px}
-h2{font-size:23px}
-h3{font-size:20px}
+
+.header{
+padding:18px 12px 22px
+}
+
+.header img{
+width:165px
+}
+
+.header h1{
+font-size:24px
+}
+
+.header p{
+font-size:15px
+}
+
+.container{
+padding:14px 12px 30px
+}
+
+.card{
+padding:17px;
+border-radius:16px
+}
+
+h2{
+font-size:23px
+}
+
+h3{
+font-size:20px
+}
+
 }
 </style>
 </head>
@@ -55,81 +255,176 @@ h3{font-size:20px}
 <body>
 
 <header class="header">
-<img src="./assets/logo/aadya-logo-header-full.png" alt="AADYA">
-<h1 id="lessonTitle">AADYA Learning</h1>
-<p>आपका अपना Digital Teacher</p>
+
+<img
+src="./assets/logo/aadya-logo-header-full.png"
+alt="AADYA"
+>
+
+<h1 id="lessonTitle">
+AADYA Learning
+</h1>
+
+<p>
+आपका अपना Digital Teacher
+</p>
+
 </header>
+
 
 <main class="container">
 
-<div id="loading" class="card loading">
+<div
+id="loading"
+class="card loading"
+>
 📚 Lesson तैयार हो रहा है...
 </div>
 
-<div id="content" style="display:none;">
+
+<div
+id="content"
+style="display:none;"
+>
 
 <section class="card">
-<div class="chapter" id="chapterTitle"></div>
+
+<div
+class="chapter"
+id="chapterTitle"
+></div>
+
 <h2 id="mainTitle"></h2>
+
 <p id="subtitle"></p>
+
 </section>
 
+
 <section class="card">
-<h3>🎯 आज हम क्या सीखेंगे?</h3>
+
+<h3>
+🎯 आज हम क्या सीखेंगे?
+</h3>
+
 <div id="objectives"></div>
+
 </section>
 
+
 <section class="card">
+
 <h3 id="introQuestion"></h3>
+
 <p id="introExplanation"></p>
+
 </section>
 
+
 <section class="card">
-<h3>💡 आसान भाषा में समझें</h3>
+
+<h3>
+💡 आसान भाषा में समझें
+</h3>
+
 <div id="explanation"></div>
+
 </section>
 
+
 <section class="card">
-<h3>🔢 उदाहरण देखें</h3>
+
+<h3>
+🔢 उदाहरण देखें
+</h3>
+
 <div id="examples"></div>
+
 </section>
 
+
 <section class="card">
-<h3>✍️ खुद करके देखें</h3>
+
+<h3>
+✍️ खुद करके देखें
+</h3>
+
 <div id="tryYourself"></div>
+
 </section>
 
+
 <section class="card">
-<h3>📝 अभ्यास</h3>
+
+<h3>
+📝 अभ्यास
+</h3>
+
 <div id="practice"></div>
+
 </section>
 
+
 <section class="card">
-<h3>🧠 Quiz – अपनी समझ जाँचें</h3>
+
+<h3>
+🧠 Quiz – अपनी समझ जाँचें
+</h3>
+
 <div id="quiz"></div>
-<div id="quizResult" style="margin-top:15px;font-weight:bold"></div>
+
+<div
+id="quizResult"
+style="margin-top:15px;font-weight:bold"
+></div>
+
 </section>
 
+
 <section class="card">
-<h3 id="activityTitle">🌍 गतिविधि</h3>
+
+<h3 id="activityTitle">
+🌍 गतिविधि
+</h3>
+
 <p id="activityInstruction"></p>
+
 <ul id="activityExamples"></ul>
+
 </section>
 
+
 <section class="card">
-<h3>⭐ आज की मुख्य बातें</h3>
+
+<h3>
+⭐ आज की मुख्य बातें
+</h3>
+
 <ul id="keyPoints"></ul>
+
 </section>
+
 
 <section class="card success">
+
 <h2 id="completionMessage"></h2>
+
 <p id="nextLesson"></p>
 
 <div class="progress">
-<div class="progress-bar" id="progressBar"></div>
+
+<div
+class="progress-bar"
+id="progressBar"
+></div>
+
 </div>
 
-<button class="btn" id="completeButton" onclick="completeLesson()">
+<button
+class="btn"
+id="completeButton"
+onclick="completeLesson()"
+>
 ✅ Lesson पूरा किया
 </button>
 
@@ -137,31 +432,59 @@ h3{font-size:20px}
 
 </div>
 
-<div id="error" style="display:none"></div>
+
+<div
+id="error"
+style="display:none"
+></div>
 
 </main>
+
 
 <script>
 
 let lessonData=null;
+
 let quizScore=0;
+
 let answeredQuestions=0;
 
-const lessonParams=new URLSearchParams(window.location.search);
 
-const requestedLesson=lessonParams.get("lesson")||"1";
+/* --------------------------------
+   LESSON PATH
+-------------------------------- */
 
-let lessonFile="./content/class6/mathematics/chapter01/lesson01.json";
+const lessonParams=
+new URLSearchParams(
+window.location.search
+);
 
-if(requestedLesson.endsWith(".json")){
+const requestedLesson=
+lessonParams.get("lesson") || "1";
 
-lessonFile=requestedLesson.startsWith("./")
-?requestedLesson
-:"./"+requestedLesson;
 
-}else{
+let lessonFile=
+"./content/class6/mathematics/chapter01/lesson01.json";
 
-const n=String(requestedLesson).padStart(2,"0");
+
+if(
+requestedLesson.endsWith(".json")
+){
+
+lessonFile=
+requestedLesson.startsWith("./")
+?
+requestedLesson
+:
+"./"+requestedLesson;
+
+}
+
+else{
+
+const n=
+String(requestedLesson)
+.padStart(2,"0");
 
 lessonFile=
 "./content/class6/mathematics/chapter01/lesson"+
@@ -171,22 +494,40 @@ n+
 }
 
 
+/* --------------------------------
+   HELPERS
+-------------------------------- */
+
 function asArray(value){
 
-return Array.isArray(value)?value:[];
+return Array.isArray(value)
+?
+value
+:
+[];
 
 }
 
 
-function firstValue(obj,keys,fallback=""){
+function firstValue(
+obj,
+keys,
+fallback=""
+){
 
-for(const key of keys){
+for(
+const key of keys
+){
 
 if(
 obj &&
-obj[key]!==undefined &&
-obj[key]!==null
-)return obj[key];
+obj[key] !== undefined &&
+obj[key] !== null
+){
+
+return obj[key];
+
+}
 
 }
 
@@ -197,16 +538,21 @@ return fallback;
 
 function answerIndex(value){
 
-const n=Number(value);
+const n=
+Number(value);
 
-return Number.isInteger(n)?n:null;
+return Number.isInteger(n)
+?
+n
+:
+null;
 
 }
 
 
 function escapeAttribute(text){
 
-return String(text??"")
+return String(text ?? "")
 .replace(/&/g,"&amp;")
 .replace(/'/g,"&#39;")
 .replace(/"/g,"&quot;")
@@ -215,6 +561,10 @@ return String(text??"")
 
 }
 
+
+/* --------------------------------
+   LOAD LESSON
+-------------------------------- */
 
 async function loadLesson(){
 
@@ -225,41 +575,70 @@ await fetch(
 lessonFile+
 "?v="+
 Date.now(),
-{cache:"no-store"}
+{
+cache:"no-store"
+}
 );
 
-if(!response.ok)
+
+if(!response.ok){
+
 throw new Error(
 "Lesson file नहीं मिला: "+
 response.status
 );
 
-lessonData=await response.json();
+}
 
-renderLesson(lessonData);
 
-document.getElementById("loading").style.display="none";
+lessonData=
+await response.json();
 
-document.getElementById("content").style.display="block";
+
+renderLesson(
+lessonData
+);
+
+
+document.getElementById(
+"loading"
+).style.display="none";
+
+
+document.getElementById(
+"content"
+).style.display="block";
+
 
 updateProgressUI();
 
-}catch(error){
 
-document.getElementById("loading").style.display="none";
+}
+catch(error){
 
-const box=document.getElementById("error");
+document.getElementById(
+"loading"
+).style.display="none";
+
+
+const box=
+document.getElementById(
+"error"
+);
+
 
 box.style.display="block";
 
 box.className="error";
 
+
 box.innerHTML=
 "<strong>Lesson लोड नहीं हो पाया।</strong><br><br>"+
 escapeAttribute(
-error.message||
+error.message ||
 "कृपया page को दोबारा खोलें।"
 );
+
 
 console.error(error);
 
@@ -268,204 +647,357 @@ console.error(error);
 }
 
 
+/* --------------------------------
+   RENDER LESSON
+-------------------------------- */
+
 function renderLesson(data){
 
-const lesson=data.lesson||{};
-const chapter=data.chapter||{};
-const intro=data.introduction||{};
+const lesson=
+data.lesson || {};
+
+const chapter=
+data.chapter || {};
+
+const intro=
+data.introduction || {};
 
 
-document.getElementById("lessonTitle").textContent=
-lesson.title||
+document.getElementById(
+"lessonTitle"
+).textContent=
+lesson.title ||
 "AADYA Learning";
 
 
-document.getElementById("chapterTitle").textContent=
+document.getElementById(
+"chapterTitle"
+).textContent=
 "कक्षा "+
-(data.class??"")+
+(data.class ?? "")+
 " • "+
-(data.subject??"")+
+(data.subject ?? "")+
 " • अध्याय "+
-(chapter.number??chapter.book_number??"")+
+(
+chapter.number ??
+chapter.book_number ??
+""
+)+
 " : "+
-(chapter.title||"");
+(
+chapter.title ||
+""
+);
 
 
-document.getElementById("mainTitle").textContent=
-lesson.title||"";
+document.getElementById(
+"mainTitle"
+).textContent=
+lesson.title || "";
 
 
-document.getElementById("subtitle").textContent=
-lesson.subtitle||"";
+document.getElementById(
+"subtitle"
+).textContent=
+lesson.subtitle || "";
 
+
+/* OBJECTIVES */
 
 const objectives=
-document.getElementById("objectives");
+document.getElementById(
+"objectives"
+);
 
 objectives.innerHTML="";
 
-asArray(data.learning_objectives)
-.forEach(item=>{
 
-const div=document.createElement("div");
+asArray(
+data.learning_objectives
+)
+.forEach(
+item=>{
 
-div.className="objective";
+const div=
+document.createElement(
+"div"
+);
 
-div.textContent="✅ "+item;
+div.className=
+"objective";
 
-objectives.appendChild(div);
+div.textContent=
+"✅ "+item;
 
-});
+objectives.appendChild(
+div
+);
+
+}
+);
 
 
-document.getElementById("introQuestion").textContent=
+/* INTRODUCTION */
+
+document.getElementById(
+"introQuestion"
+).textContent=
 intro.question
-?"🤔 "+intro.question
-:"";
+?
+"🤔 "+intro.question
+:
+"";
 
 
-document.getElementById("introExplanation").textContent=
-intro.explanation||"";
+document.getElementById(
+"introExplanation"
+).textContent=
+intro.explanation || "";
 
+
+/* SIMPLE EXPLANATION */
 
 const explanation=
-document.getElementById("explanation");
+document.getElementById(
+"explanation"
+);
 
 explanation.innerHTML="";
 
-asArray(data.simple_explanation)
-.forEach(item=>{
 
-const box=document.createElement("div");
+asArray(
+data.simple_explanation
+)
+.forEach(
+item=>{
 
-box.className="example";
+const box=
+document.createElement(
+"div"
+);
+
+box.className=
+"example";
+
 
 box.innerHTML=
 "<strong>"+
-escapeAttribute(item.title||"")+
+escapeAttribute(
+item.title || ""
+)+
 "</strong><br><br>"+
 escapeAttribute(
 firstValue(
 item,
-["text","content","explanation"],
+[
+"text",
+"content",
+"explanation"
+],
 ""
 )
 );
 
-explanation.appendChild(box);
 
-});
+explanation.appendChild(
+box
+);
 
+}
+);
+
+
+/* EXAMPLES */
 
 const examples=
-document.getElementById("examples");
+document.getElementById(
+"examples"
+);
 
 examples.innerHTML="";
 
-asArray(data.examples)
-.forEach(item=>{
 
-const box=document.createElement("div");
+asArray(
+data.examples
+)
+.forEach(
+item=>{
 
-box.className="example";
+const box=
+document.createElement(
+"div"
+);
+
+box.className=
+"example";
+
 
 let html=
 "<strong>"+
-escapeAttribute(item.question||"")+
+escapeAttribute(
+item.question || ""
+)+
 "</strong>";
 
-if(Array.isArray(item.items)){
+
+if(
+Array.isArray(item.items)
+){
 
 html+=
 "<br><br>"+
-item.items.map(escapeAttribute).join(", ");
+item.items
+.map(
+escapeAttribute
+)
+.join(", ");
 
 }
 
-if(item.answer!==undefined){
+
+if(
+item.answer !== undefined
+){
 
 html+=
 "<br><br>उत्तर: <strong>"+
-escapeAttribute(item.answer)+
+escapeAttribute(
+item.answer
+)+
 "</strong>";
 
 }
+
 
 const reason=
 firstValue(
 item,
-["reason","explanation","content"],
+[
+"reason",
+"explanation",
+"content"
+],
 ""
 );
+
 
 if(reason){
 
 html+=
 "<br>"+
-escapeAttribute(reason);
+escapeAttribute(
+reason
+);
 
 }
 
-box.innerHTML=html;
 
-examples.appendChild(box);
+box.innerHTML=
+html;
 
-});
+examples.appendChild(
+box
+);
 
+}
+);
+
+
+/* TRY YOURSELF */
 
 const tryBox=
-document.getElementById("tryYourself");
+document.getElementById(
+"tryYourself"
+);
 
 tryBox.innerHTML="";
 
-asArray(data.try_yourself)
-.forEach((item,index)=>{
 
-const box=document.createElement("div");
+asArray(
+data.try_yourself
+)
+.forEach(
+(item,index)=>{
 
-box.className="example";
+const box=
+document.createElement(
+"div"
+);
+
+box.className=
+"example";
+
 
 let html=
 "<strong>"+
 (index+1)+
 ". "+
-escapeAttribute(item.question||"")+
+escapeAttribute(
+item.question || ""
+)+
 "</strong>";
 
-if(item.answer!==undefined){
+
+if(
+item.answer !== undefined
+){
 
 html+=
 "<button class='btn' onclick='showAnswer(this)'>"+
 "उत्तर देखें"+
 "</button>"+
-"<div class='answer'>उत्तर: <strong>"+
-escapeAttribute(item.answer)+
-"</strong></div>";
-
-}else if(item.hint){
-
-html+=
-"<br><br>💡 संकेत: "+
-escapeAttribute(item.hint);
+"<div class='answer'>"+
+"उत्तर: <strong>"+
+escapeAttribute(
+item.answer
+)+
+"</strong>"+
+"</div>";
 
 }
 
-box.innerHTML=html;
+else if(
+item.hint
+){
 
-tryBox.appendChild(box);
+html+=
+"<br><br>💡 संकेत: "+
+escapeAttribute(
+item.hint
+);
 
-});
+}
 
+
+box.innerHTML=
+html;
+
+
+tryBox.appendChild(
+box
+);
+
+}
+);
+
+
+/* PRACTICE */
 
 renderQuestions(
 asArray(data.practice),
-document.getElementById("practice"),
+document.getElementById(
+"practice"
+),
 false
 );
 
 
+/* QUIZ */
+
 const quiz=
-document.getElementById("quiz");
+document.getElementById(
+"quiz"
+);
 
 quiz.innerHTML="";
 
@@ -476,7 +1008,7 @@ answeredQuestions=0;
 
 renderQuestions(
 asArray(
-data.quiz&&
+data.quiz &&
 data.quiz.questions
 ),
 quiz,
@@ -484,31 +1016,48 @@ true
 );
 
 
+/* REAL LIFE ACTIVITY */
+
 const activity=
-data.real_life_activity||{};
+data.real_life_activity || {};
 
 
-document.getElementById("activityTitle").textContent=
+document.getElementById(
+"activityTitle"
+).textContent=
 "🌍 "+
-(activity.title||"गतिविधि");
+(
+activity.title ||
+"गतिविधि"
+);
 
 
 const instruction=
 firstValue(
 activity,
-["instruction","instructions","learning"],
+[
+"instruction",
+"instructions",
+"learning"
+],
 ""
 );
 
 
-document.getElementById("activityInstruction").textContent=
+document.getElementById(
+"activityInstruction"
+).textContent=
 typeof instruction==="string"
-?instruction
-:"";
+?
+instruction
+:
+"";
 
 
 const activityExamples=
-document.getElementById("activityExamples");
+document.getElementById(
+"activityExamples"
+);
 
 activityExamples.innerHTML="";
 
@@ -517,106 +1066,185 @@ const activityItems=
 asArray(
 firstValue(
 activity,
-["examples","steps"],
+[
+"examples",
+"steps"
+],
 []
 )
 );
 
 
-activityItems.forEach(item=>{
+activityItems.forEach(
+item=>{
 
-const li=document.createElement("li");
+const li=
+document.createElement(
+"li"
+);
+
 
 li.textContent=
 typeof item==="string"
-?item
-:(item.text||
-item.instruction||
-JSON.stringify(item));
+?
+item
+:
+(
+item.text ||
+item.instruction ||
+JSON.stringify(item)
+);
 
-activityExamples.appendChild(li);
 
-});
+activityExamples.appendChild(
+li
+);
+
+}
+);
 
 
-if(activity.example){
+if(
+activity.example
+){
 
-const li=document.createElement("li");
+const li=
+document.createElement(
+"li"
+);
 
 li.textContent=
 "उदाहरण: "+
 activity.example;
 
-activityExamples.appendChild(li);
+activityExamples.appendChild(
+li
+);
 
 }
 
 
+/* KEY POINTS */
+
 const keyPoints=
-document.getElementById("keyPoints");
+document.getElementById(
+"keyPoints"
+);
 
 keyPoints.innerHTML="";
 
-asArray(data.key_points)
-.forEach(item=>{
 
-const li=document.createElement("li");
+asArray(
+data.key_points
+)
+.forEach(
+item=>{
 
-li.textContent=item;
+const li=
+document.createElement(
+"li"
+);
 
-keyPoints.appendChild(li);
+li.textContent=
+item;
 
-});
+keyPoints.appendChild(
+li
+);
+
+}
+);
 
 
-document.getElementById("completionMessage").textContent=
-(data.completion||{}).message||
+/* COMPLETION */
+
+document.getElementById(
+"completionMessage"
+).textContent=
+(
+data.completion || {}
+).message ||
 "🎉 शानदार! Lesson पूरा हुआ।";
 
 
-document.getElementById("nextLesson").textContent=
-(data.completion||{}).next_lesson
-?"अगला पाठ: "+
+document.getElementById(
+"nextLesson"
+).textContent=
+(
+data.completion || {}
+).next_lesson
+?
+"अगला पाठ: "+
 data.completion.next_lesson
-:"";
+:
+"";
 
 }
 
 
-function renderQuestions(items,container,isQuiz){
+/* --------------------------------
+   QUESTIONS
+-------------------------------- */
 
-items.forEach((item,index)=>{
+function renderQuestions(
+items,
+container,
+isQuiz
+){
 
-const box=document.createElement("div");
+items.forEach(
+(item,index)=>{
 
-box.className="example";
+const box=
+document.createElement(
+"div"
+);
+
+box.className=
+"example";
 
 
 let html=
 "<div class='question'>"+
 (index+1)+
 ". "+
-escapeAttribute(item.question||"")+
+escapeAttribute(
+item.question || ""
+)+
 "</div>";
 
 
-asArray(item.options)
-.forEach(option=>{
+asArray(
+item.options
+)
+.forEach(
+option=>{
 
 html+=
-"<button class='option' onclick='"+
-(isQuiz
-?"checkQuiz"
-:"checkPractice")+
+"<button "+
+"class='option' "+
+"onclick='"+
+(
+isQuiz
+?
+"checkQuiz"
+:
+"checkPractice"
+)+
 "(this)' "+
 "data-option='"+
-escapeAttribute(option)+
+escapeAttribute(
+option
+)+
 "' "+
 "data-answer='"+
 escapeAttribute(
 firstValue(
 item,
-["correct_answer","answer"],
+[
+"correct_answer",
+"answer"
+],
 ""
 )
 )+
@@ -625,7 +1253,10 @@ item,
 escapeAttribute(
 firstValue(
 item,
-["explanation","reason"],
+[
+"explanation",
+"reason"
+],
 ""
 )
 )+
@@ -634,7 +1265,10 @@ item,
 escapeAttribute(
 firstValue(
 item,
-["feedback_correct","explanation"],
+[
+"feedback_correct",
+"explanation"
+],
 "सही उत्तर!"
 )
 )+
@@ -643,82 +1277,135 @@ item,
 escapeAttribute(
 firstValue(
 item,
-["feedback_wrong","explanation"],
+[
+"feedback_wrong",
+"explanation"
+],
 "कृपया सही उत्तर देखें।"
 )
 )+
 "'>"+
-escapeAttribute(option)+
+escapeAttribute(
+option
+)+
 "</button>";
 
-});
+}
+);
 
 
 html+=
 "<div class='feedback'></div>";
 
-box.innerHTML=html;
 
-container.appendChild(box);
+box.innerHTML=
+html;
 
-});
+
+container.appendChild(
+box
+);
+
+}
+);
 
 }
 
+
+/* --------------------------------
+   SHOW ANSWER
+-------------------------------- */
 
 function showAnswer(button){
 
 const answer=
 button.nextElementSibling;
 
+
 if(answer){
 
-answer.style.display="block";
+answer.style.display=
+"block";
 
-button.style.display="none";
+button.style.display=
+"none";
 
 }
 
 }
 
 
-function resolveCorrectAnswer(buttons,answer){
+/* --------------------------------
+   FIND CORRECT ANSWER
+-------------------------------- */
 
-const n=answerIndex(answer);
-
-if(
-n!==null &&
-n>=0 &&
-n<buttons.length
+function resolveCorrectAnswer(
+buttons,
+answer
 ){
 
-return buttons[n].getAttribute("data-option");
+const n=
+answerIndex(answer);
+
+
+if(
+n !== null &&
+n >= 0 &&
+n < buttons.length
+){
+
+return buttons[n]
+.getAttribute(
+"data-option"
+);
 
 }
+
 
 return answer;
 
 }
 
 
+/* --------------------------------
+   PRACTICE CHECK
+-------------------------------- */
+
 function checkPractice(button){
 
-const box=button.parentElement;
+const box=
+button.parentElement;
+
 
 const buttons=
-box.querySelectorAll(".option");
+box.querySelectorAll(
+".option"
+);
+
 
 const feedback=
-box.querySelector(".feedback");
+box.querySelector(
+".feedback"
+);
+
 
 const selected=
-button.getAttribute("data-option");
+button.getAttribute(
+"data-option"
+);
+
 
 const answer=
-button.getAttribute("data-answer");
+button.getAttribute(
+"data-answer"
+);
+
 
 const explanation=
-button.getAttribute("data-explanation")||"";
+button.getAttribute(
+"data-explanation"
+) || "";
+
 
 const correct=
 resolveCorrectAnswer(
@@ -727,25 +1414,35 @@ answer
 );
 
 
-buttons.forEach(btn=>{
+buttons.forEach(
+btn=>{
 
 btn.disabled=true;
 
+
 if(
-btn.getAttribute("data-option")===
-correct
+btn.getAttribute(
+"data-option"
+) === correct
 ){
 
-btn.classList.add("correct");
+btn.classList.add(
+"correct"
+);
 
 }
 
-});
+}
+);
 
 
-if(selected===correct){
+if(
+selected === correct
+){
 
-button.classList.add("correct");
+button.classList.add(
+"correct"
+);
 
 feedback.className=
 "feedback good";
@@ -754,9 +1451,13 @@ feedback.textContent=
 "✅ सही उत्तर! "+
 explanation;
 
-}else{
+}
 
-button.classList.add("wrong");
+else{
+
+button.classList.add(
+"wrong"
+);
 
 feedback.className=
 "feedback bad";
@@ -764,38 +1465,68 @@ feedback.className=
 feedback.textContent=
 "❌ सही उत्तर: "+
 correct+
-(explanation
-?" — "+explanation
-:"");
+(
+explanation
+?
+" — "+explanation
+:
+""
+);
 
 }
 
 }
 
+
+/* --------------------------------
+   QUIZ CHECK
+-------------------------------- */
 
 function checkQuiz(button){
 
-const box=button.parentElement;
+const box=
+button.parentElement;
 
-if(box.dataset.answered==="true")
+
+if(
+box.dataset.answered === "true"
+){
+
 return;
 
-box.dataset.answered="true";
+}
+
+
+box.dataset.answered=
+"true";
+
 
 answeredQuestions++;
 
 
 const buttons=
-box.querySelectorAll(".option");
+box.querySelectorAll(
+".option"
+);
+
 
 const feedback=
-box.querySelector(".feedback");
+box.querySelector(
+".feedback"
+);
+
 
 const selected=
-button.getAttribute("data-option");
+button.getAttribute(
+"data-option"
+);
+
 
 const answer=
-button.getAttribute("data-answer");
+button.getAttribute(
+"data-answer"
+);
+
 
 const correct=
 resolveCorrectAnswer(
@@ -805,50 +1536,71 @@ answer
 
 
 const correctFeedback=
-button.getAttribute("data-correct")||
+button.getAttribute(
+"data-correct"
+) ||
 "सही उत्तर!";
 
 
 const wrongFeedback=
-button.getAttribute("data-wrong")||
+button.getAttribute(
+"data-wrong"
+) ||
 "कृपया सही उत्तर देखें।";
 
 
-buttons.forEach(btn=>{
+buttons.forEach(
+btn=>{
 
 btn.disabled=true;
 
+
 if(
-btn.getAttribute("data-option")===
-correct
+btn.getAttribute(
+"data-option"
+) === correct
 ){
 
-btn.classList.add("correct");
+btn.classList.add(
+"correct"
+);
 
 }
 
-});
+}
+);
 
 
-if(selected===correct){
+if(
+selected === correct
+){
 
 quizScore++;
 
-button.classList.add("correct");
+
+button.classList.add(
+"correct"
+);
 
 feedback.className=
 "feedback good";
+
 
 feedback.textContent=
 "✅ "+
 correctFeedback;
 
-}else{
+}
 
-button.classList.add("wrong");
+else{
+
+button.classList.add(
+"wrong"
+);
 
 feedback.className=
 "feedback bad";
+
 
 feedback.textContent=
 "❌ "+
@@ -856,24 +1608,34 @@ wrongFeedback;
 
 }
 
+
 updateQuizResult();
 
 }
 
 
+/* --------------------------------
+   QUIZ RESULT
+-------------------------------- */
+
 function updateQuizResult(){
 
 const result=
-document.getElementById("quizResult");
+document.getElementById(
+"quizResult"
+);
+
 
 const total=
-lessonData&&
-lessonData.quiz&&
+lessonData &&
+lessonData.quiz &&
 Array.isArray(
 lessonData.quiz.questions
 )
-?lessonData.quiz.questions.length
-:0;
+?
+lessonData.quiz.questions.length
+:
+0;
 
 
 if(!total){
@@ -885,14 +1647,17 @@ return;
 }
 
 
-if(answeredQuestions===total){
+if(
+answeredQuestions === total
+){
 
 const percentage=
 Math.round(
-quizScore/
-total*
+quizScore /
+total *
 100
 );
+
 
 result.textContent=
 "🎉 Quiz पूरा! आपका स्कोर: "+
@@ -903,12 +1668,15 @@ total+
 percentage+
 "%)";
 
+
 localStorage.setItem(
 "aadya_last_quiz_score",
 quizScore
 );
 
-}else{
+}
+
+else{
 
 result.textContent=
 "प्रश्न हल किए: "+
@@ -921,6 +1689,10 @@ total;
 }
 
 
+/* --------------------------------
+   PROGRESS
+-------------------------------- */
+
 const PROGRESS_KEY=
 "aadya_progress_v1";
 
@@ -929,14 +1701,20 @@ function saveLessonProgress(){
 
 const progress=
 JSON.parse(
-localStorage.getItem(PROGRESS_KEY)||
+localStorage.getItem(
+PROGRESS_KEY
+) ||
 "{}"
 );
 
-progress[lessonFile]={
+
+progress[lessonFile]=
+{
 completed:true,
-completedAt:new Date().toISOString()
+completedAt:
+new Date().toISOString()
 };
+
 
 localStorage.setItem(
 PROGRESS_KEY,
@@ -950,9 +1728,12 @@ function isLessonCompleted(){
 
 const progress=
 JSON.parse(
-localStorage.getItem(PROGRESS_KEY)||
+localStorage.getItem(
+PROGRESS_KEY
+) ||
 "{}"
 );
+
 
 return !!(
 progress[lessonFile] &&
@@ -965,62 +1746,107 @@ progress[lessonFile].completed
 function updateProgressUI(){
 
 const bar=
-document.getElementById("progressBar");
+document.getElementById(
+"progressBar"
+);
+
 
 const button=
-document.getElementById("completeButton");
+document.getElementById(
+"completeButton"
+);
 
 
-if(!bar||!button)
+if(
+!bar ||
+!button
+){
+
 return;
 
+}
 
-if(isLessonCompleted()){
 
-bar.style.width="100%";
+if(
+isLessonCompleted()
+){
+
+bar.style.width=
+"100%";
+
 
 button.textContent=
 "✅ Lesson पहले ही पूरा किया गया";
 
+
 button.disabled=true;
 
-button.style.opacity=".75";
+button.style.opacity=
+".75";
 
-}else{
+}
 
-bar.style.width="0";
+else{
+
+bar.style.width=
+"0";
+
 
 button.textContent=
 "✅ Lesson पूरा किया";
 
+
 button.disabled=false;
 
-button.style.opacity="1";
+button.style.opacity=
+"1";
 
 }
 
 }
 
 
-window.completeLesson=function(){
+/* --------------------------------
+   COMPLETE LESSON
+-------------------------------- */
+
+window.completeLesson=
+function(){
 
 saveLessonProgress();
+
+
+if(
+lessonData &&
+lessonData.id
+){
 
 localStorage.setItem(
 "aadya_last_lesson",
 lessonData.id
 );
 
+}
+
 
 const bar=
-document.getElementById("progressBar");
+document.getElementById(
+"progressBar"
+);
+
 
 const button=
-document.getElementById("completeButton");
+document.getElementById(
+"completeButton"
+);
 
 
-if(bar)
-bar.style.width="100%";
+if(bar){
+
+bar.style.width=
+"100%";
+
+}
 
 
 if(button){
@@ -1028,9 +1854,12 @@ if(button){
 button.textContent=
 "✅ Lesson पूरा किया गया";
 
+
 button.disabled=true;
 
-button.style.opacity=".75";
+
+button.style.opacity=
+".75";
 
 }
 
@@ -1043,6 +1872,10 @@ alert(
 
 };
 
+
+/* --------------------------------
+   START
+-------------------------------- */
 
 loadLesson();
 
