@@ -653,81 +653,114 @@ console.error(error);
 
 function renderLesson(data){
 
-const lesson=
-data.lesson || {};
+/* --------------------------------
+   AADYA DATA COMPATIBILITY LAYER
+   Supports old + new lesson JSON
+-------------------------------- */
 
-const chapter=
-data.chapter || {};
+const isNewFormat =
+  typeof data.lesson === "number" ||
+  typeof data.title === "string";
 
-const intro=
-data.introduction || {};
+/* LESSON */
+const lesson = isNewFormat
+  ? {
+      title: data.title || "AADYA Learning",
+      subtitle: ""
+    }
+  : (data.lesson || {});
 
+/* CHAPTER */
+const chapter = isNewFormat
+  ? {
+      number: data.chapter ?? "",
+      title: data.chapter_title || ""
+    }
+  : (data.chapter || {});
+
+/* INTRODUCTION */
+const intro = isNewFormat
+  ? {
+      question: "आज हम क्या सीखेंगे?",
+      explanation: data.concept || ""
+    }
+  : (data.introduction || {});
+
+
+/* --------------------------------
+   TITLE
+-------------------------------- */
 
 document.getElementById(
-"lessonTitle"
-).textContent=
+  "lessonTitle"
+).textContent =
 lesson.title ||
 "AADYA Learning";
 
 
 document.getElementById(
-"chapterTitle"
-).textContent=
-"कक्षा "+
-(data.class ?? "")+
-" • "+
-(data.subject ?? "")+
-" • अध्याय "+
+  "chapterTitle"
+).textContent =
+"कक्षा " +
+(data.class ?? "") +
+" • " +
+(data.subject ?? "") +
+" • अध्याय " +
 (
-chapter.number ??
-chapter.book_number ??
-""
-)+
-" : "+
+  chapter.number ??
+  chapter.book_number ??
+  ""
+) +
+" : " +
 (
-chapter.title ||
-""
+  chapter.title ||
+  ""
 );
 
 
 document.getElementById(
-"mainTitle"
-).textContent=
+  "mainTitle"
+).textContent =
 lesson.title || "";
 
 
 document.getElementById(
-"subtitle"
-).textContent=
+  "subtitle"
+).textContent =
 lesson.subtitle || "";
 
 
-/* OBJECTIVES */
+/* --------------------------------
+   OBJECTIVES
+-------------------------------- */
 
-const objectives=
+const objectives =
 document.getElementById(
-"objectives"
+  "objectives"
 );
 
-objectives.innerHTML="";
+objectives.innerHTML = "";
 
 
-asArray(
-data.learning_objectives
-)
-.forEach(
-item=>{
+const objectiveData =
+isNewFormat
+  ? asArray(data.objectives)
+  : asArray(data.learning_objectives);
 
-const div=
+
+objectiveData.forEach(
+item => {
+
+const div =
 document.createElement(
-"div"
+  "div"
 );
 
-div.className=
+div.className =
 "objective";
 
-div.textContent=
-"✅ "+item;
+div.textContent =
+"✅ " + item;
 
 objectives.appendChild(
 div
@@ -737,66 +770,98 @@ div
 );
 
 
-/* INTRODUCTION */
+/* --------------------------------
+   INTRODUCTION
+-------------------------------- */
 
 document.getElementById(
-"introQuestion"
-).textContent=
+  "introQuestion"
+).textContent =
 intro.question
-?
-"🤔 "+intro.question
-:
-"";
+  ? "🤔 " + intro.question
+  : "";
 
 
 document.getElementById(
-"introExplanation"
-).textContent=
+  "introExplanation"
+).textContent =
 intro.explanation || "";
 
 
-/* SIMPLE EXPLANATION */
+/* --------------------------------
+   SIMPLE EXPLANATION
+-------------------------------- */
 
-const explanation=
+const explanation =
 document.getElementById(
-"explanation"
+  "explanation"
 );
 
-explanation.innerHTML="";
+explanation.innerHTML = "";
 
 
-asArray(
-data.simple_explanation
-)
-.forEach(
-item=>{
+let explanationData =
+isNewFormat
+  ? asArray(data.explanation)
+  : asArray(data.simple_explanation);
 
-const box=
+
+explanationData.forEach(
+item => {
+
+const box =
 document.createElement(
-"div"
+  "div"
 );
 
-box.className=
+box.className =
 "example";
 
 
-box.innerHTML=
-"<strong>"+
-escapeAttribute(
-item.title || ""
-)+
-"</strong><br><br>"+
-escapeAttribute(
-firstValue(
-item,
-[
-"text",
-"content",
-"explanation"
-],
-""
-)
-);
+/*
+ * New format:
+ * heading + content
+ *
+ * Old format:
+ * title + text
+ */
+
+const title =
+typeof item === "string"
+  ? ""
+  :
+  (
+    item.title ||
+    item.heading ||
+    ""
+  );
+
+
+const text =
+typeof item === "string"
+  ? item
+  :
+  firstValue(
+    item,
+    [
+      "text",
+      "content",
+      "explanation"
+    ],
+    ""
+  );
+
+
+box.innerHTML =
+"<strong>" +
+escapeAttribute(title) +
+"</strong>" +
+(
+  title
+  ? "<br><br>"
+  : ""
+) +
+escapeAttribute(text);
 
 
 explanation.appendChild(
@@ -807,36 +872,60 @@ box
 );
 
 
-/* EXAMPLES */
+/* --------------------------------
+   EXAMPLES
+-------------------------------- */
 
-const examples=
+const examples =
 document.getElementById(
-"examples"
+  "examples"
 );
 
-examples.innerHTML="";
+examples.innerHTML = "";
 
 
-asArray(
-data.examples
-)
-.forEach(
-item=>{
+const exampleData =
+asArray(data.examples);
 
-const box=
+
+exampleData.forEach(
+(item,index) => {
+
+const box =
 document.createElement(
-"div"
+  "div"
 );
 
-box.className=
+box.className =
 "example";
 
 
-let html=
-"<strong>"+
+/*
+ * New lessons contain
+ * examples as simple strings.
+ *
+ * Old lessons may contain
+ * question/items/answer.
+ */
+
+if(
+  typeof item === "string"
+){
+
+box.innerHTML =
+"<strong>" +
+(index + 1) +
+". उदाहरण</strong><br><br>" +
+escapeAttribute(item);
+
+}
+else{
+
+let html =
+"<strong>" +
 escapeAttribute(
-item.question || ""
-)+
+  item.question || ""
+) +
 "</strong>";
 
 
@@ -844,12 +933,10 @@ if(
 Array.isArray(item.items)
 ){
 
-html+=
-"<br><br>"+
+html +=
+"<br><br>" +
 item.items
-.map(
-escapeAttribute
-)
+.map(escapeAttribute)
 .join(", ");
 
 }
@@ -859,41 +946,42 @@ if(
 item.answer !== undefined
 ){
 
-html+=
-"<br><br>उत्तर: <strong>"+
+html +=
+"<br><br>उत्तर: <strong>" +
 escapeAttribute(
-item.answer
-)+
+  item.answer
+) +
 "</strong>";
 
 }
 
 
-const reason=
+const reason =
 firstValue(
-item,
-[
-"reason",
-"explanation",
-"content"
-],
-""
+  item,
+  [
+    "reason",
+    "explanation",
+    "content"
+  ],
+  ""
 );
 
 
 if(reason){
 
-html+=
-"<br>"+
-escapeAttribute(
-reason
-);
+html +=
+"<br>" +
+escapeAttribute(reason);
 
 }
 
 
-box.innerHTML=
+box.innerHTML =
 html;
+
+}
+
 
 examples.appendChild(
 box
@@ -903,73 +991,135 @@ box
 );
 
 
-/* TRY YOURSELF */
+/* --------------------------------
+   TRY YOURSELF
+-------------------------------- */
 
-const tryBox=
+const tryBox =
 document.getElementById(
-"tryYourself"
+  "tryYourself"
 );
 
-tryBox.innerHTML="";
+tryBox.innerHTML = "";
 
 
-asArray(
-data.try_yourself
-)
-.forEach(
-(item,index)=>{
+let tryData =
+asArray(data.try_yourself);
 
-const box=
+
+/*
+ * New textbook lessons may not
+ * have try_yourself separately.
+ *
+ * In that case use first 3
+ * practice questions.
+ */
+
+if(
+  tryData.length === 0 &&
+  isNewFormat &&
+  data.practice &&
+  Array.isArray(
+    data.practice.questions
+  )
+){
+
+tryData =
+data.practice.questions
+.slice(0,3)
+.map(item => {
+
+const options =
+asArray(item.options);
+
+const answerIndex =
+answerIndexValue(
+  firstValue(
+    item,
+    [
+      "correct_answer",
+      "answer"
+    ],
+    null
+  )
+);
+
+return {
+  question:
+    item.question || "",
+
+  answer:
+    answerIndex !== null &&
+    options[answerIndex] !== undefined
+      ? options[answerIndex]
+      : ""
+};
+
+});
+
+}
+
+
+tryData.forEach(
+(item,index) => {
+
+const box =
 document.createElement(
-"div"
+  "div"
 );
 
-box.className=
+box.className =
 "example";
 
 
-let html=
-"<strong>"+
-(index+1)+
-". "+
-escapeAttribute(
-item.question || ""
-)+
+const question =
+typeof item === "string"
+  ? item
+  : (
+      item.question ||
+      ""
+    );
+
+
+let html =
+"<strong>" +
+(index + 1) +
+". " +
+escapeAttribute(question) +
 "</strong>";
 
 
 if(
-item.answer !== undefined
+typeof item !== "string" &&
+item.answer !== undefined &&
+item.answer !== ""
 ){
 
-html+=
-"<button class='btn' onclick='showAnswer(this)'>"+
-"उत्तर देखें"+
-"</button>"+
-"<div class='answer'>"+
-"उत्तर: <strong>"+
-escapeAttribute(
-item.answer
-)+
-"</strong>"+
+html +=
+"<button class='btn' onclick='showAnswer(this)'>" +
+"उत्तर देखें" +
+"</button>" +
+
+"<div class='answer'>" +
+"उत्तर: <strong>" +
+escapeAttribute(item.answer) +
+"</strong>" +
 "</div>";
 
 }
-
 else if(
+typeof item !== "string" &&
 item.hint
 ){
 
-html+=
-"<br><br>💡 संकेत: "+
-escapeAttribute(
-item.hint
-);
+html +=
+"<br><br>💡 संकेत: " +
+escapeAttribute(item.hint);
 
 }
 
 
-box.innerHTML=
+box.innerHTML =
 html;
 
 
@@ -981,120 +1131,172 @@ box
 );
 
 
-/* PRACTICE */
+/* --------------------------------
+   PRACTICE
+-------------------------------- */
+
+const practiceContainer =
+document.getElementById(
+  "practice"
+);
+
+
+let practiceQuestions = [];
+
+
+if(
+  isNewFormat &&
+  data.practice &&
+  Array.isArray(
+    data.practice.questions
+  )
+){
+
+practiceQuestions =
+data.practice.questions;
+
+}
+else if(
+  Array.isArray(data.practice)
+){
+
+practiceQuestions =
+data.practice;
+
+}
+
 
 renderQuestions(
-asArray(data.practice),
-document.getElementById(
-"practice"
-),
+practiceQuestions,
+practiceContainer,
 false
 );
 
 
-/* QUIZ */
+/* --------------------------------
+   QUIZ
+-------------------------------- */
 
-const quiz=
+const quiz =
 document.getElementById(
-"quiz"
+  "quiz"
 );
 
-quiz.innerHTML="";
+quiz.innerHTML = "";
 
-quizScore=0;
+quizScore = 0;
 
-answeredQuestions=0;
+answeredQuestions = 0;
+
+
+let quizQuestions = [];
+
+
+if(
+  isNewFormat &&
+  data.quiz &&
+  Array.isArray(
+    data.quiz.questions
+  )
+){
+
+quizQuestions =
+data.quiz.questions;
+
+}
+else if(
+  Array.isArray(data.quiz)
+){
+
+quizQuestions =
+data.quiz;
+
+}
 
 
 renderQuestions(
-asArray(
-data.quiz &&
-data.quiz.questions
-),
+quizQuestions,
 quiz,
 true
 );
 
 
-/* REAL LIFE ACTIVITY */
+/* --------------------------------
+   REAL LIFE ACTIVITY
+-------------------------------- */
 
-const activity=
+const activity =
 data.real_life_activity || {};
 
 
 document.getElementById(
-"activityTitle"
-).textContent=
-"🌍 "+
+  "activityTitle"
+).textContent =
+"🌍 " +
 (
-activity.title ||
-"गतिविधि"
+  activity.title ||
+  "गतिविधि"
 );
 
 
-const instruction=
+const instruction =
 firstValue(
-activity,
-[
-"instruction",
-"instructions",
-"learning"
-],
-""
+  activity,
+  [
+    "instruction",
+    "instructions",
+    "learning"
+  ],
+  ""
 );
 
 
 document.getElementById(
-"activityInstruction"
-).textContent=
-typeof instruction==="string"
-?
-instruction
-:
-"";
+  "activityInstruction"
+).textContent =
+typeof instruction === "string"
+  ? instruction
+  : "";
 
 
-const activityExamples=
+const activityExamples =
 document.getElementById(
-"activityExamples"
+  "activityExamples"
 );
 
-activityExamples.innerHTML="";
+activityExamples.innerHTML = "";
 
 
-const activityItems=
+const activityItems =
 asArray(
-firstValue(
-activity,
-[
-"examples",
-"steps"
-],
-[]
-)
+  firstValue(
+    activity,
+    [
+      "examples",
+      "steps"
+    ],
+    []
+  )
 );
 
 
 activityItems.forEach(
-item=>{
+item => {
 
-const li=
+const li =
 document.createElement(
-"li"
+  "li"
 );
 
-
-li.textContent=
-typeof item==="string"
-?
-item
-:
-(
-item.text ||
-item.instruction ||
-JSON.stringify(item)
-);
-
+li.textContent =
+typeof item === "string"
+  ? item
+  :
+  (
+    item.text ||
+    item.instruction ||
+    JSON.stringify(item)
+  );
 
 activityExamples.appendChild(
 li
@@ -1103,49 +1305,50 @@ li
 }
 );
 
+
+/* --------------------------------
+   KEY POINTS
+-------------------------------- */
+
+const keyPoints =
+document.getElementById(
+  "keyPoints"
+);
+
+keyPoints.innerHTML = "";
+
+
+let keyPointData =
+asArray(data.key_points);
+
+
+/*
+ * New format lessons do not
+ * separately contain key_points.
+ *
+ * Use objectives as main points.
+ */
 
 if(
-activity.example
+  keyPointData.length === 0 &&
+  isNewFormat
 ){
 
-const li=
-document.createElement(
-"li"
-);
-
-li.textContent=
-"उदाहरण: "+
-activity.example;
-
-activityExamples.appendChild(
-li
-);
+keyPointData =
+asArray(data.objectives);
 
 }
 
 
-/* KEY POINTS */
+keyPointData.forEach(
+item => {
 
-const keyPoints=
-document.getElementById(
-"keyPoints"
-);
-
-keyPoints.innerHTML="";
-
-
-asArray(
-data.key_points
-)
-.forEach(
-item=>{
-
-const li=
+const li =
 document.createElement(
-"li"
+  "li"
 );
 
-li.textContent=
+li.textContent =
 item;
 
 keyPoints.appendChild(
@@ -1156,31 +1359,32 @@ li
 );
 
 
-/* COMPLETION */
+/* --------------------------------
+   COMPLETION
+-------------------------------- */
 
 document.getElementById(
-"completionMessage"
-).textContent=
+  "completionMessage"
+).textContent =
 (
-data.completion || {}
+  data.completion || {}
 ).message ||
 "🎉 शानदार! Lesson पूरा हुआ।";
 
 
 document.getElementById(
-"nextLesson"
-).textContent=
+  "nextLesson"
+).textContent =
 (
-data.completion || {}
+  data.completion || {}
 ).next_lesson
-?
-"अगला पाठ: "+
-data.completion.next_lesson
-:
-"";
+  ?
+  "अगला पाठ: " +
+  data.completion.next_lesson
+  :
+  "";
 
-}
-
+   }
 
 /* --------------------------------
    QUESTIONS
