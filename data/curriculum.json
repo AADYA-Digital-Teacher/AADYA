@@ -1,6 +1,6 @@
 {
   "app": "AADYA Digital Teacher",
-  "version": "1.2",
+  "version": "1.3",
   "classes": [
     {
       "id": "class6",
@@ -55,31 +55,31 @@
               "title": "प्राकृतिक संख्याएँ",
               "source": "textbook",
               "lessons": [
-  {
-    "number": 1,
-    "title": "संख्या और संख्यांक में अन्तर करना",
-    "file": "./content/class6/mathematics/textbook01/lesson01.json"
-  },
-  {
-    "number": 2,
-    "title": "0, 1, 2, 3, 4, 5, 6, 7, 8, 9 अंकों का प्रयोग तथा स्थानीय मान पद्धति से संख्याओं का निर्माण",
-    "file": "./content/class6/mathematics/textbook01/lesson02.json"
-  },
-  {
-    "number": 3,
-    "title": "प्राकृतिक संख्याएँ",
-    "file": "./content/class6/mathematics/textbook01/lesson03.json"
-  },
-  {
-    "number": 4,
-    "title": "संख्या रेखा का ज्ञान तथा इस पर प्राकृतिक संख्याओं को दर्शाना",
-    "file": "./content/class6/mathematics/textbook01/lesson04.json"
-  },
-  {
-    "number": 5,
-    "title": "पूर्ववर्ती एवं उत्तरवर्ती संख्याओं का बोध कराना",
-    "file": "./content/class6/mathematics/textbook01/lesson05.json"
-  }
+                {
+                  "number": 1,
+                  "title": "संख्या और संख्यांक में अन्तर करना",
+                  "file": "./content/class6/mathematics/textbook01/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "0, 1, 2, 3, 4, 5, 6, 7, 8, 9 अंकों का प्रयोग तथा स्थानीय मान पद्धति से संख्याओं का निर्माण",
+                  "file": "./content/class6/mathematics/textbook01/lesson02.json"
+                },
+                {
+                  "number": 3,
+                  "title": "प्राकृतिक संख्याएँ",
+                  "file": "./content/class6/mathematics/textbook01/lesson03.json"
+                },
+                {
+                  "number": 4,
+                  "title": "संख्या रेखा का ज्ञान तथा इस पर प्राकृतिक संख्याओं को दर्शाना",
+                  "file": "./content/class6/mathematics/textbook01/lesson04.json"
+                },
+                {
+                  "number": 5,
+                  "title": "पूर्ववर्ती एवं उत्तरवर्ती संख्याओं का बोध कराना",
+                  "file": "./content/class6/mathematics/textbook01/lesson05.json"
+                }
               ]
             },
             {
@@ -89,26 +89,26 @@
               "title": "पूर्ण संख्याएँ",
               "source": "textbook",
               "lessons": [
-  {
-    "number": 1,
-    "title": "पूर्ण संख्याएँ",
-    "file": "./content/class6/mathematics/textbook02/lesson01.json"
-  },
-  {
-    "number": 2,
-    "title": "संख्या रेखा पर पूर्ण संख्याओं का प्रदर्शन",
-    "file": "./content/class6/mathematics/textbook02/lesson02.json"
-  },
-  {
-    "number": 3,
-    "title": "क्रमागत पूर्ण संख्याएँ",
-    "file": "./content/class6/mathematics/textbook02/lesson03.json"
-  },
-  {
-    "number": 4,
-    "title": "पूर्ण संख्याओं पर संक्रियाएँ तथा गुणधर्म",
-    "file": "./content/class6/mathematics/textbook02/lesson04.json"
-  }
+                {
+                  "number": 1,
+                  "title": "पूर्ण संख्याएँ",
+                  "file": "./content/class6/mathematics/textbook02/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "संख्या रेखा पर पूर्ण संख्याओं का प्रदर्शन",
+                  "file": "./content/class6/mathematics/textbook02/lesson02.json"
+                },
+                {
+                  "number": 3,
+                  "title": "क्रमागत पूर्ण संख्याएँ",
+                  "file": "./content/class6/mathematics/textbook02/lesson03.json"
+                },
+                {
+                  "number": 4,
+                  "title": "पूर्ण संख्याओं पर संक्रियाएँ तथा गुणधर्म",
+                  "file": "./content/class6/mathematics/textbook02/lesson04.json"
+                }
               ]
             },
             {
@@ -118,16 +118,36 @@
               "title": "पूर्णांक",
               "source": "textbook",
               "lessons": [
-  {
-    "number": 1,
-    "title": "पूर्णांक की संकल्पना",
-    "file": "./content/class6/mathematics/textbook03/lesson01.json"
-  },
-  {
-    "number": 2,
-    "title": "पूर्णांकों का निरपेक्ष मान",
-    "file": "./content/class6/mathematics/textbook03/lesson02.json"
-  }
+                {
+                  "number": 1,
+                  "title": "पूर्णांक की संकल्पना",
+                  "file": "./content/class6/mathematics/textbook03/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "पूर्णांकों का निरपेक्ष मान",
+                  "file": "./content/class6/mathematics/textbook03/lesson02.json"
+                },
+                {
+                  "number": 3,
+                  "title": "पूर्णांकों की मूल संक्रियाओं के गुण",
+                  "file": "./content/class6/mathematics/textbook03/lesson03.json"
+                },
+                {
+                  "number": 4,
+                  "title": "कोष्ठकों का प्रयोग एवं प्रकार",
+                  "file": "./content/class6/mathematics/textbook03/lesson04.json"
+                },
+                {
+                  "number": 5,
+                  "title": "संख्या रेखा पर पूर्णांक का निरूपण",
+                  "file": "./content/class6/mathematics/textbook03/lesson05.json"
+                },
+                {
+                  "number": 6,
+                  "title": "BODMAS नियम",
+                  "file": "./content/class6/mathematics/textbook03/lesson06.json"
+                }
               ]
             },
             {
@@ -136,7 +156,38 @@
               "book_number": 4,
               "title": "सांख्यिकी",
               "source": "textbook",
-              "lessons": []
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "सांख्यिकीय आँकड़े एवं उनकी विशेषताएँ",
+                  "file": "./content/class6/mathematics/textbook04/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "आँकड़ों को एकत्र करना, व्यवस्थित करना तथा उनका वर्गीकरण करना",
+                  "file": "./content/class6/mathematics/textbook04/lesson02.json"
+                },
+                {
+                  "number": 3,
+                  "title": "अवर्गीकृत आँकड़ों की बारम्बारता सारणी बनाना",
+                  "file": "./content/class6/mathematics/textbook04/lesson03.json"
+                },
+                {
+                  "number": 4,
+                  "title": "अवर्गीकृत आँकड़ों का चित्र ग्राफ (पिक्टोग्राफ) बनाना",
+                  "file": "./content/class6/mathematics/textbook04/lesson04.json"
+                },
+                {
+                  "number": 5,
+                  "title": "अवर्गीकृत आँकड़ों का दण्ड आलेख (बार ग्राफ) बनाना",
+                  "file": "./content/class6/mathematics/textbook04/lesson05.json"
+                },
+                {
+                  "number": 6,
+                  "title": "अवर्गीकृत आँकड़ों का मिश्रित दण्ड आलेख बनाना तथा उसकी व्याख्या करना",
+                  "file": "./content/class6/mathematics/textbook04/lesson06.json"
+                }
+              ]
             },
             {
               "id": "textbook05",
@@ -378,4 +429,4 @@
       ]
     }
   ]
-}
+            }
