@@ -1878,7 +1878,96 @@ alert(
 -------------------------------- */
 
 loadLesson();
+/* --------------------------------
+   START AADYA LEARNING PAGE
+-------------------------------- */
 
+function goHome() {
+
+  window.location.href =
+    "./index.html";
+
+}
+
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function() {
+
+    loadLesson();
+
+
+    /*
+     * Home button
+     */
+
+    const homeButton =
+      document.createElement(
+        "button"
+      );
+
+
+    homeButton.textContent =
+      "← होम पर जाएँ";
+
+
+    homeButton.style.display =
+      "block";
+
+    homeButton.style.width =
+      "100%";
+
+    homeButton.style.padding =
+      "14px";
+
+    homeButton.style.marginBottom =
+      "16px";
+
+    homeButton.style.border =
+      "none";
+
+    homeButton.style.borderRadius =
+      "12px";
+
+    homeButton.style.background =
+      "#ffffff";
+
+    homeButton.style.color =
+      "#222";
+
+    homeButton.style.fontSize =
+      "16px";
+
+    homeButton.style.fontWeight =
+      "700";
+
+    homeButton.style.cursor =
+      "pointer";
+
+    homeButton.style.boxShadow =
+      "0 3px 10px rgba(0,0,0,.08)";
+
+
+    homeButton.onclick =
+      goHome;
+
+
+    const container =
+      document.querySelector(
+        ".container"
+      );
+
+
+    if (container) {
+
+      container.prepend(
+        homeButton
+      );
+
+    }
+
+  }
+);
 </script>
 
 </body>
