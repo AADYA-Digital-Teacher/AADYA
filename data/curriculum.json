@@ -1,5 +1,5 @@
 {
-  "version": "1.3",
+  "version": "1.4",
   "classes": {
     "class6": {
       "name": "कक्षा 6",
@@ -211,7 +211,48 @@
               "book_number": 6,
               "title": "बीजीय व्यंजक",
               "source": "textbook",
-              "lessons": []
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "व्यंजक की अवधारणा",
+                  "file": "./content/class6/mathematics/textbook06/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "व्यंजकों के पद, पदों के गुणनखण्ड एवं गुणांक",
+                  "file": "./content/class6/mathematics/textbook06/lesson02.json"
+                },
+                {
+                  "number": 3,
+                  "title": "सजातीय और विजातीय पद",
+                  "file": "./content/class6/mathematics/textbook06/lesson03.json"
+                },
+                {
+                  "number": 4,
+                  "title": "व्यंजकों की डिग्री",
+                  "file": "./content/class6/mathematics/textbook06/lesson04.json"
+                },
+                {
+                  "number": 5,
+                  "title": "एक, दो एवं त्रिपदीय व्यंजकों की अवधारणा",
+                  "file": "./content/class6/mathematics/textbook06/lesson05.json"
+                },
+                {
+                  "number": 6,
+                  "title": "बीजीय व्यंजकों का जोड़ एवं घटाना",
+                  "file": "./content/class6/mathematics/textbook06/lesson06.json"
+                },
+                {
+                  "number": 7,
+                  "title": "बीजीय व्यंजकों का मान ज्ञात करना",
+                  "file": "./content/class6/mathematics/textbook06/lesson07.json"
+                },
+                {
+                  "number": 8,
+                  "title": "कोष्ठकों का प्रयोग",
+                  "file": "./content/class6/mathematics/textbook06/lesson08.json"
+                }
+              ]
             },
             {
               "number": 9,
