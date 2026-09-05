@@ -88,7 +88,28 @@
               "book_number": 2,
               "title": "पूर्ण संख्याएँ",
               "source": "textbook",
-              "lessons": []
+              "lessons": [
+  {
+    "number": 1,
+    "title": "पूर्ण संख्याएँ",
+    "file": "./content/class6/mathematics/textbook02/lesson01.json"
+  },
+  {
+    "number": 2,
+    "title": "संख्या रेखा पर पूर्ण संख्याओं का प्रदर्शन",
+    "file": "./content/class6/mathematics/textbook02/lesson02.json"
+  },
+  {
+    "number": 3,
+    "title": "क्रमागत पूर्ण संख्याएँ",
+    "file": "./content/class6/mathematics/textbook02/lesson03.json"
+  },
+  {
+    "number": 4,
+    "title": "पूर्ण संख्याओं पर संक्रियाएँ तथा गुणधर्म",
+    "file": "./content/class6/mathematics/textbook02/lesson04.json"
+  }
+              ]
             },
             {
               "id": "textbook03",
