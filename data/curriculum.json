@@ -1,55 +1,47 @@
 {
-  "app": "AADYA Digital Teacher",
   "version": "1.3",
-  "classes": [
-    {
-      "id": "class6",
+  "classes": {
+    "class6": {
       "name": "कक्षा 6",
-      "subjects": [
-        {
-          "id": "mathematics",
+      "subjects": {
+        "mathematics": {
           "name": "गणित",
-          "english_name": "Mathematics",
-          "icon": "📐",
           "chapters": [
             {
-              "id": "chapter01",
               "number": 1,
-              "title": "गणित में पैटर्न",
-              "source": "aadya",
+              "title": "बीजगणित की मूल बातें",
+              "source": "custom",
               "lessons": [
                 {
                   "number": 1,
-                  "title": "पैटर्न क्या होता है?",
+                  "title": "बीजगणित का परिचय",
                   "file": "./content/class6/mathematics/chapter01/lesson01.json"
                 },
                 {
                   "number": 2,
-                  "title": "संख्याओं में पैटर्न पहचानना",
+                  "title": "चर और अचर की पहचान",
                   "file": "./content/class6/mathematics/chapter01/lesson02.json"
                 }
               ]
             },
             {
-              "id": "chapter02",
               "number": 2,
-              "title": "रेखाएँ और कोण",
-              "source": "aadya",
+              "title": "कोण और उनके प्रकार",
+              "source": "custom",
               "lessons": [
                 {
                   "number": 1,
-                  "title": "रेखा, रेखाखंड और किरण",
+                  "title": "कोण की अवधारणा",
                   "file": "./content/class6/mathematics/chapter02/lesson01.json"
                 },
                 {
                   "number": 2,
-                  "title": "कोण क्या होता है?",
+                  "title": "कोणों के प्रकार",
                   "file": "./content/class6/mathematics/chapter02/lesson02.json"
                 }
               ]
             },
             {
-              "id": "textbook01",
               "number": 3,
               "book_number": 1,
               "title": "प्राकृतिक संख्याएँ",
@@ -62,7 +54,7 @@
                 },
                 {
                   "number": 2,
-                  "title": "0, 1, 2, 3, 4, 5, 6, 7, 8, 9 अंकों का प्रयोग तथा स्थानीय मान पद्धति से संख्याओं का निर्माण",
+                  "title": "अंकों का प्रयोग तथा स्थानीय मान पद्धति से संख्याओं का निर्माण",
                   "file": "./content/class6/mathematics/textbook01/lesson02.json"
                 },
                 {
@@ -83,7 +75,6 @@
               ]
             },
             {
-              "id": "textbook02",
               "number": 4,
               "book_number": 2,
               "title": "पूर्ण संख्याएँ",
@@ -112,7 +103,6 @@
               ]
             },
             {
-              "id": "textbook03",
               "number": 5,
               "book_number": 3,
               "title": "पूर्णांक",
@@ -151,7 +141,6 @@
               ]
             },
             {
-              "id": "textbook04",
               "number": 6,
               "book_number": 4,
               "title": "सांख्यिकी",
@@ -190,15 +179,34 @@
               ]
             },
             {
-              "id": "textbook05",
               "number": 7,
               "book_number": 5,
               "title": "बीजगणितीय अवधारणाएँ",
               "source": "textbook",
-              "lessons": []
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "संख्याओं को दर्शाने के लिए अक्षरों की आवश्यकता एवं प्रयोग",
+                  "file": "./content/class6/mathematics/textbook05/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "संख्याओं और अक्षर संख्याओं की मूल संक्रियाएँ",
+                  "file": "./content/class6/mathematics/textbook05/lesson02.json"
+                },
+                {
+                  "number": 3,
+                  "title": "अक्षर संख्याओं की घात",
+                  "file": "./content/class6/mathematics/textbook05/lesson03.json"
+                },
+                {
+                  "number": 4,
+                  "title": "चर और अचर संख्याएँ",
+                  "file": "./content/class6/mathematics/textbook05/lesson04.json"
+                }
+              ]
             },
             {
-              "id": "textbook06",
               "number": 8,
               "book_number": 6,
               "title": "बीजीय व्यंजक",
@@ -206,7 +214,6 @@
               "lessons": []
             },
             {
-              "id": "textbook07",
               "number": 9,
               "book_number": 7,
               "title": "ज्यामितीय अवधारणाएँ",
@@ -214,7 +221,6 @@
               "lessons": []
             },
             {
-              "id": "textbook08",
               "number": 10,
               "book_number": 8,
               "title": "कोण",
@@ -222,7 +228,6 @@
               "lessons": []
             },
             {
-              "id": "textbook09",
               "number": 11,
               "book_number": 9,
               "title": "लम्ब और समान्तर रेखाएँ",
@@ -230,7 +235,6 @@
               "lessons": []
             },
             {
-              "id": "textbook10",
               "number": 12,
               "book_number": 10,
               "title": "लघुत्तम समापवर्त्य एवं महत्तम समापवर्तक",
@@ -238,7 +242,6 @@
               "lessons": []
             },
             {
-              "id": "textbook11",
               "number": 13,
               "book_number": 11,
               "title": "समीकरण : एक चर में",
@@ -246,7 +249,6 @@
               "lessons": []
             },
             {
-              "id": "textbook12",
               "number": 14,
               "book_number": 12,
               "title": "वाणिज्य गणित",
@@ -254,7 +256,6 @@
               "lessons": []
             },
             {
-              "id": "textbook13",
               "number": 15,
               "book_number": 13,
               "title": "त्रिभुज",
@@ -262,7 +263,6 @@
               "lessons": []
             },
             {
-              "id": "textbook14",
               "number": 16,
               "book_number": 14,
               "title": "वृत्त",
@@ -270,7 +270,6 @@
               "lessons": []
             },
             {
-              "id": "textbook15",
               "number": 17,
               "book_number": 15,
               "title": "सममितता",
@@ -278,7 +277,6 @@
               "lessons": []
             },
             {
-              "id": "textbook16",
               "number": 18,
               "book_number": 16,
               "title": "क्षेत्रमिति (मेन्सुरेशन)",
@@ -286,7 +284,6 @@
               "lessons": []
             },
             {
-              "id": "textbook17",
               "number": 19,
               "book_number": 17,
               "title": "गुणा : ऊर्ध्वतिर्यक विधि द्वारा",
@@ -294,139 +291,8 @@
               "lessons": []
             }
           ]
-        },
-        {
-          "id": "hindi",
-          "name": "हिंदी",
-          "english_name": "Hindi",
-          "icon": "📖",
-          "chapters": []
-        },
-        {
-          "id": "english",
-          "name": "अंग्रेज़ी",
-          "english_name": "English",
-          "icon": "🔤",
-          "chapters": []
-        },
-        {
-          "id": "science",
-          "name": "विज्ञान",
-          "english_name": "Science",
-          "icon": "🔬",
-          "chapters": []
-        },
-        {
-          "id": "social-science",
-          "name": "सामाजिक विज्ञान",
-          "english_name": "Social Science",
-          "icon": "🌍",
-          "chapters": []
-        },
-        {
-          "id": "computer",
-          "name": "कंप्यूटर",
-          "english_name": "Computer",
-          "icon": "💻",
-          "chapters": []
         }
-      ]
-    },
-    {
-      "id": "class7",
-      "name": "कक्षा 7",
-      "subjects": [
-        {
-          "id": "mathematics",
-          "name": "गणित",
-          "english_name": "Mathematics",
-          "icon": "📐",
-          "chapters": []
-        },
-        {
-          "id": "hindi",
-          "name": "हिंदी",
-          "english_name": "Hindi",
-          "icon": "📖",
-          "chapters": []
-        },
-        {
-          "id": "english",
-          "name": "अंग्रेज़ी",
-          "english_name": "English",
-          "icon": "🔤",
-          "chapters": []
-        },
-        {
-          "id": "science",
-          "name": "विज्ञान",
-          "english_name": "Science",
-          "icon": "🔬",
-          "chapters": []
-        },
-        {
-          "id": "social-science",
-          "name": "सामाजिक विज्ञान",
-          "english_name": "Social Science",
-          "icon": "🌍",
-          "chapters": []
-        },
-        {
-          "id": "computer",
-          "name": "कंप्यूटर",
-          "english_name": "Computer",
-          "icon": "💻",
-          "chapters": []
-        }
-      ]
-    },
-    {
-      "id": "class8",
-      "name": "कक्षा 8",
-      "subjects": [
-        {
-          "id": "mathematics",
-          "name": "गणित",
-          "english_name": "Mathematics",
-          "icon": "📐",
-          "chapters": []
-        },
-        {
-          "id": "hindi",
-          "name": "हिंदी",
-          "english_name": "Hindi",
-          "icon": "📖",
-          "chapters": []
-        },
-        {
-          "id": "english",
-          "name": "अंग्रेज़ी",
-          "english_name": "English",
-          "icon": "🔤",
-          "chapters": []
-        },
-        {
-          "id": "science",
-          "name": "विज्ञान",
-          "english_name": "Science",
-          "icon": "🔬",
-          "chapters": []
-        },
-        {
-          "id": "social-science",
-          "name": "सामाजिक विज्ञान",
-          "english_name": "Social Science",
-          "icon": "🌍",
-          "chapters": []
-        },
-        {
-          "id": "computer",
-          "name": "कंप्यूटर",
-          "english_name": "Computer",
-          "icon": "💻",
-          "chapters": []
-        }
-      ]
+      }
     }
-  ]
-            }
+  }
+}
