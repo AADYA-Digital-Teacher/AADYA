@@ -117,7 +117,18 @@
               "book_number": 3,
               "title": "पूर्णांक",
               "source": "textbook",
-              "lessons": []
+              "lessons": [
+  {
+    "number": 1,
+    "title": "पूर्णांक की संकल्पना",
+    "file": "./content/class6/mathematics/textbook03/lesson01.json"
+  },
+  {
+    "number": 2,
+    "title": "पूर्णांकों का निरपेक्ष मान",
+    "file": "./content/class6/mathematics/textbook03/lesson02.json"
+  }
+              ]
             },
             {
               "id": "textbook04",
