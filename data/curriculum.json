@@ -62,8 +62,23 @@
   },
   {
     "number": 2,
-    "title": "अंकों का प्रयोग तथा स्थानीय मान पद्धति से संख्याओं का निर्माण",
+    "title": "0, 1, 2, 3, 4, 5, 6, 7, 8, 9 अंकों का प्रयोग तथा स्थानीय मान पद्धति से संख्याओं का निर्माण",
     "file": "./content/class6/mathematics/textbook01/lesson02.json"
+  },
+  {
+    "number": 3,
+    "title": "प्राकृतिक संख्याएँ",
+    "file": "./content/class6/mathematics/textbook01/lesson03.json"
+  },
+  {
+    "number": 4,
+    "title": "संख्या रेखा का ज्ञान तथा इस पर प्राकृतिक संख्याओं को दर्शाना",
+    "file": "./content/class6/mathematics/textbook01/lesson04.json"
+  },
+  {
+    "number": 5,
+    "title": "पूर्ववर्ती एवं उत्तरवर्ती संख्याओं का बोध कराना",
+    "file": "./content/class6/mathematics/textbook01/lesson05.json"
   }
               ]
             },
