@@ -1,276 +1,611 @@
 <!DOCTYPE html>
 <html lang="hi">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>AADYA | मेरी कक्षा</title>
 
+
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+
     body {
-      font-family: Arial, "Noto Sans Devanagari", sans-serif;
+
+      font-family:
+        Arial,
+        "Noto Sans Devanagari",
+        sans-serif;
+
       background: #f5f6f8;
+
       color: #222;
+
       min-height: 100vh;
+
     }
+
 
     .header {
+
       background: #111;
+
       color: white;
+
       padding: 14px 18px;
+
       display: flex;
+
       align-items: center;
+
       gap: 12px;
+
       position: sticky;
+
       top: 0;
+
       z-index: 10;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+
+      box-shadow:
+        0 3px 12px
+        rgba(0,0,0,0.15);
+
     }
+
 
     .logo {
+
       height: 42px;
+
       width: auto;
+
       object-fit: contain;
+
     }
+
 
     .header-title {
+
       font-size: 18px;
+
       font-weight: 700;
+
     }
+
 
     .header-subtitle {
+
       font-size: 12px;
+
       color: #ccc;
+
       margin-top: 3px;
+
     }
+
 
     .container {
+
       max-width: 720px;
+
       margin: auto;
+
       padding: 20px 15px 40px;
+
     }
+
 
     .back-btn {
+
       display: inline-flex;
+
       align-items: center;
+
       gap: 6px;
+
       border: none;
+
       background: white;
+
       color: #333;
+
       padding: 10px 14px;
+
       border-radius: 10px;
+
       font-size: 14px;
+
       font-weight: 600;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+      box-shadow:
+        0 2px 8px
+        rgba(0,0,0,0.08);
+
       cursor: pointer;
+
       margin-bottom: 18px;
+
     }
+
+
+    .back-btn:active {
+
+      transform: scale(0.98);
+
+    }
+
 
     .welcome {
-      background: linear-gradient(135deg, #111, #292929);
+
+      background:
+        linear-gradient(
+          135deg,
+          #111,
+          #292929
+        );
+
       color: white;
+
       border-radius: 18px;
+
       padding: 22px 18px;
+
       margin-bottom: 20px;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.14);
+
+      box-shadow:
+        0 5px 18px
+        rgba(0,0,0,0.14);
+
     }
+
 
     .welcome h1 {
+
       font-size: 24px;
+
       margin-bottom: 8px;
+
     }
+
 
     .welcome p {
+
       color: #ddd;
+
       font-size: 14px;
+
       line-height: 1.6;
+
     }
+
 
     .section-title {
+
       font-size: 20px;
+
       font-weight: 800;
+
       margin: 22px 2px 12px;
+
     }
+
 
     .class-card {
+
       background: white;
+
       border-radius: 18px;
+
       padding: 18px;
+
       margin-bottom: 16px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+
+      box-shadow:
+        0 3px 12px
+        rgba(0,0,0,0.08);
+
       border: 1px solid #eee;
+
     }
+
 
     .class-card h2 {
+
       font-size: 19px;
+
       margin-bottom: 5px;
+
     }
+
 
     .class-description {
+
       font-size: 13px;
+
       color: #777;
+
       margin-bottom: 15px;
+
     }
+
 
     .subject-card {
+
       border: 1px solid #e7e7e7;
+
       border-radius: 14px;
+
       padding: 15px;
+
       margin-top: 10px;
+
       background: #fff;
+
     }
+
 
     .subject-top {
+
       display: flex;
+
       align-items: center;
+
       gap: 12px;
+
     }
+
 
     .subject-icon {
+
       width: 46px;
+
       height: 46px;
+
       border-radius: 12px;
+
       background: #f2df9b;
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
+
       font-size: 25px;
+
       flex-shrink: 0;
+
     }
+
+
+    .subject-info {
+
+      min-width: 0;
+
+    }
+
 
     .subject-info h3 {
+
       font-size: 17px;
+
       margin-bottom: 4px;
+
     }
+
 
     .subject-info p {
+
       margin: 0;
+
       font-size: 12px;
+
       color: #777;
+
     }
+
 
     .chapter-box {
+
       margin-top: 14px;
+
       background: #fafafa;
+
       border-radius: 12px;
+
       padding: 13px;
+
       border-left: 4px solid #d4af37;
+
     }
+
+
+    .chapter-title-row {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 8px;
+
+      margin-bottom: 10px;
+
+    }
+
 
     .chapter-title {
+
       font-size: 15px;
+
       font-weight: 700;
-      margin-bottom: 10px;
+
+      line-height: 1.5;
+
     }
+
+
+    .source-badge {
+
+      flex-shrink: 0;
+
+      font-size: 10px;
+
+      padding: 4px 7px;
+
+      border-radius: 20px;
+
+      background: #eee;
+
+      color: #666;
+
+    }
+
+
+    .source-badge.textbook {
+
+      background: #fff1c2;
+
+      color: #7a5b00;
+
+    }
+
+
+    .source-badge.custom {
+
+      background: #e9e9e9;
+
+      color: #555;
+
+    }
+
 
     .lesson-card {
+
       background: white;
+
       border: 1px solid #e5e5e5;
+
       border-radius: 11px;
+
       padding: 12px;
+
       margin-top: 9px;
+
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
+
       gap: 10px;
+
       cursor: pointer;
+
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+
     }
+
+
+    .lesson-card:hover {
+
+      box-shadow:
+        0 3px 10px
+        rgba(0,0,0,0.08);
+
+    }
+
 
     .lesson-card:active {
+
       transform: scale(0.99);
+
     }
+
 
     .lesson-left {
+
       display: flex;
+
       align-items: center;
+
       gap: 10px;
+
       min-width: 0;
+
     }
+
 
     .lesson-number {
+
       width: 34px;
+
       height: 34px;
+
       border-radius: 50%;
+
       background: #111;
+
       color: #d4af37;
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
+
       font-weight: 800;
+
       font-size: 13px;
+
       flex-shrink: 0;
+
     }
+
 
     .lesson-name {
+
       font-size: 14px;
+
       font-weight: 600;
+
       line-height: 1.4;
+
     }
+
 
     .lesson-arrow {
+
       font-size: 20px;
+
       color: #888;
+
       flex-shrink: 0;
+
     }
+
 
     .empty-box {
+
       margin-top: 10px;
+
       padding: 12px;
+
       border-radius: 10px;
+
       background: #f7f7f7;
+
       color: #888;
+
       font-size: 13px;
+
       line-height: 1.5;
+
     }
+
+
+    .loading {
+
+      text-align: center;
+
+      padding: 30px 15px;
+
+      color: #777;
+
+      font-size: 14px;
+
+    }
+
+
+    .error {
+
+      margin-top: 15px;
+
+      padding: 15px;
+
+      background: #fff0f0;
+
+      border: 1px solid #f0cccc;
+
+      border-radius: 12px;
+
+      color: #a33;
+
+      font-size: 13px;
+
+      line-height: 1.6;
+
+    }
+
 
     .info-box {
+
       margin-top: 20px;
+
       padding: 15px;
+
       border-radius: 14px;
+
       background: #fff8df;
+
       border: 1px solid #f0df9c;
+
       font-size: 13px;
+
       line-height: 1.7;
+
       color: #555;
+
     }
 
-    .loading,
-    .error {
-      text-align: center;
-      padding: 30px 15px;
-      color: #777;
-      font-size: 14px;
-    }
-
-    .error {
-      background: #fff0f0;
-      border: 1px solid #f0cccc;
-      border-radius: 12px;
-      color: #a33;
-    }
 
     .footer {
+
       text-align: center;
+
       color: #888;
+
       font-size: 12px;
+
       padding: 25px 10px;
+
+      line-height: 1.7;
+
     }
+
 
     @media (min-width: 600px) {
+
       .container {
+
         padding-top: 28px;
+
       }
+
     }
+
   </style>
+
 </head>
 
+
 <body>
+
 
   <header class="header">
 
@@ -281,6 +616,7 @@
     >
 
     <div>
+
       <div class="header-title">
         मेरी कक्षा
       </div>
@@ -288,19 +624,25 @@
       <div class="header-subtitle">
         AADYA Digital Teacher
       </div>
+
     </div>
 
   </header>
 
 
+
   <main class="container">
+
 
     <button
       class="back-btn"
       onclick="goHome()"
     >
+
       ← होम पर जाएँ
+
     </button>
+
 
 
     <section class="welcome">
@@ -316,31 +658,47 @@
     </section>
 
 
+
     <div class="section-title">
+
       📚 मेरी कक्षा
+
     </div>
 
 
+
     <section class="class-card">
+
 
       <h2 id="classTitle">
         कक्षा 6
       </h2>
 
+
       <p class="class-description">
-        अपने विषय, अध्याय और Lessons चुनकर सीखना शुरू करें।
+
+        अपने विषय, अध्याय और Lessons चुनकर
+        सीखना शुरू करें।
+
       </p>
+
 
 
       <div
         id="curriculumLoading"
         class="loading"
       >
+
         📚 आपका Curriculum तैयार हो रहा है...
+
       </div>
 
 
-      <div id="curriculumContent"></div>
+
+      <div
+        id="curriculumContent"
+      ></div>
+
 
 
       <div
@@ -350,16 +708,20 @@
       ></div>
 
 
+
       <div class="info-box">
 
         💡 <strong>AADYA में सीखने का तरीका</strong><br>
 
         पहले Concept समझें → फिर Example देखें →
-        Practice करें → Quiz दें → अपनी Progress देखें।
+        Practice करें → Quiz दें →
+        अपनी Progress देखें।
 
       </div>
 
+
     </section>
+
 
 
     <div class="footer">
@@ -367,21 +729,33 @@
       AADYA — आपका अपना Digital Teacher<br>
 
       <span>
-        हर बच्चे तक, हर जगह, हर समय — सीखने की आज़ादी।
+        हर बच्चे तक, हर जगह, हर समय —
+        सीखने की आज़ादी।
       </span>
 
     </div>
 
+
   </main>
 
 
+
   <script>
+
 
     const PROFILE_KEY =
       "aadya_student_profile_v1";
 
 
     let studentClass = 6;
+
+
+
+    /*
+     * -----------------------------------------
+     * PROFILE LOAD
+     * -----------------------------------------
+     */
 
 
     function loadStudent() {
@@ -393,8 +767,11 @@
             PROFILE_KEY
           );
 
+
         if (!saved) {
+
           return;
+
         }
 
 
@@ -442,6 +819,7 @@
 
         }
 
+
       } catch (error) {
 
         console.log(
@@ -454,17 +832,12 @@
     }
 
 
-    function openLesson(
-      lessonFile
-    ) {
 
-      window.location.href =
-        "learning.html?lesson=" +
-        encodeURIComponent(
-          lessonFile
-        );
-
-    }
+    /*
+     * -----------------------------------------
+     * HOME
+     * -----------------------------------------
+     */
 
 
     function goHome() {
@@ -475,6 +848,70 @@
     }
 
 
+
+    /*
+     * -----------------------------------------
+     * OPEN LESSON
+     * -----------------------------------------
+     */
+
+
+    function openLesson(
+      lessonFile
+    ) {
+
+      if (!lessonFile) {
+
+        return;
+
+      }
+
+
+      window.location.href =
+        "learning.html?lesson=" +
+        encodeURIComponent(
+          lessonFile
+        );
+
+    }
+
+
+
+    /*
+     * -----------------------------------------
+     * SAFE TEXT
+     * -----------------------------------------
+     */
+
+
+    function safeText(
+      value,
+      fallback = ""
+    ) {
+
+      if (
+        value === null ||
+        value === undefined
+      ) {
+
+        return fallback;
+
+      }
+
+
+      return String(value);
+
+    }
+
+
+
+    /*
+     * -----------------------------------------
+     * CREATE LESSON CARD
+     * -----------------------------------------
+     */
+
+
     function createLessonCard(
       lesson
     ) {
@@ -483,6 +920,7 @@
         document.createElement(
           "div"
         );
+
 
       card.className =
         "lesson-card";
@@ -498,28 +936,398 @@
         };
 
 
-      card.innerHTML =
+      const left =
+        document.createElement(
+          "div"
+        );
 
-        '<div class="lesson-left">' +
 
-          '<div class="lesson-number">' +
-            lesson.number +
-          '</div>' +
+      left.className =
+        "lesson-left";
 
-          '<div class="lesson-name">' +
-            lesson.title +
-          '</div>' +
 
-        '</div>' +
+      const number =
+        document.createElement(
+          "div"
+        );
 
-        '<div class="lesson-arrow">' +
-          '›' +
-        '</div>';
+
+      number.className =
+        "lesson-number";
+
+
+      number.textContent =
+        safeText(
+          lesson.number,
+          "•"
+        );
+
+
+      const name =
+        document.createElement(
+          "div"
+        );
+
+
+      name.className =
+        "lesson-name";
+
+
+      name.textContent =
+        safeText(
+          lesson.title,
+          "Lesson"
+        );
+
+
+      left.appendChild(
+        number
+      );
+
+
+      left.appendChild(
+        name
+      );
+
+
+      const arrow =
+        document.createElement(
+          "div"
+        );
+
+
+      arrow.className =
+        "lesson-arrow";
+
+
+      arrow.textContent =
+        "›";
+
+
+      card.appendChild(
+        left
+      );
+
+
+      card.appendChild(
+        arrow
+      );
 
 
       return card;
 
     }
+
+
+
+    /*
+     * -----------------------------------------
+     * CREATE SUBJECT CARD
+     * -----------------------------------------
+     */
+
+
+    function createSubjectCard(
+      subjectKey,
+      subject
+    ) {
+
+      const subjectCard =
+        document.createElement(
+          "div"
+        );
+
+
+      subjectCard.className =
+        "subject-card";
+
+
+      const top =
+        document.createElement(
+          "div"
+        );
+
+
+      top.className =
+        "subject-top";
+
+
+      const icon =
+        document.createElement(
+          "div"
+        );
+
+
+      icon.className =
+        "subject-icon";
+
+
+      icon.textContent =
+        safeText(
+          subject.icon,
+          "📘"
+        );
+
+
+      const info =
+        document.createElement(
+          "div"
+        );
+
+
+      info.className =
+        "subject-info";
+
+
+      const name =
+        document.createElement(
+          "h3"
+        );
+
+
+      name.textContent =
+        safeText(
+          subject.name,
+          subjectKey
+        );
+
+
+      const englishName =
+        document.createElement(
+          "p"
+        );
+
+
+      englishName.textContent =
+        safeText(
+          subject.english_name,
+          ""
+        );
+
+
+      info.appendChild(
+        name
+      );
+
+
+      if (
+        englishName.textContent
+      ) {
+
+        info.appendChild(
+          englishName
+        );
+
+      }
+
+
+      top.appendChild(
+        icon
+      );
+
+
+      top.appendChild(
+        info
+      );
+
+
+      subjectCard.appendChild(
+        top
+      );
+
+
+      return subjectCard;
+
+    }
+
+
+
+    /*
+     * -----------------------------------------
+     * CREATE CHAPTER
+     * -----------------------------------------
+     */
+
+
+    function createChapterBox(
+      chapter
+    ) {
+
+      const chapterBox =
+        document.createElement(
+          "div"
+        );
+
+
+      chapterBox.className =
+        "chapter-box";
+
+
+      const titleRow =
+        document.createElement(
+          "div"
+        );
+
+
+      titleRow.className =
+        "chapter-title-row";
+
+
+      const title =
+        document.createElement(
+          "div"
+        );
+
+
+      title.className =
+        "chapter-title";
+
+
+      title.textContent =
+        "📖 अध्याय " +
+        safeText(
+          chapter.number,
+          ""
+        ) +
+        " — " +
+        safeText(
+          chapter.title,
+          "अध्याय"
+        );
+
+
+      titleRow.appendChild(
+        title
+      );
+
+
+      /*
+       * Source badge
+       */
+
+
+      if (
+        chapter.source
+      ) {
+
+        const badge =
+          document.createElement(
+            "div"
+          );
+
+
+        badge.className =
+          "source-badge " +
+          safeText(
+            chapter.source
+          );
+
+
+        if (
+          chapter.source ===
+          "textbook"
+        ) {
+
+          badge.textContent =
+            "पुस्तक";
+
+        } else {
+
+          badge.textContent =
+            "AADYA";
+
+        }
+
+
+        titleRow.appendChild(
+          badge
+        );
+
+      }
+
+
+      chapterBox.appendChild(
+        titleRow
+      );
+
+
+      /*
+       * Lessons
+       */
+
+
+      if (
+        !Array.isArray(
+          chapter.lessons
+        ) ||
+        chapter.lessons.length === 0
+      ) {
+
+        const empty =
+          document.createElement(
+            "div"
+          );
+
+
+        empty.className =
+          "empty-box";
+
+
+        empty.textContent =
+          "📘 इस अध्याय की Lessons AADYA में जल्द उपलब्ध होंगी।";
+
+
+        chapterBox.appendChild(
+          empty
+        );
+
+
+        return chapterBox;
+
+      }
+
+
+      chapter.lessons.forEach(
+        function(lesson) {
+
+          if (
+            lesson &&
+            lesson.file
+          ) {
+
+            chapterBox.appendChild(
+              createLessonCard(
+                lesson
+              )
+            );
+
+          }
+
+        }
+      );
+
+
+      return chapterBox;
+
+    }
+
+
+
+    /*
+     * -----------------------------------------
+     * RENDER CURRICULUM
+     *
+     * New structure:
+     *
+     * data
+     *  └── classes
+     *       └── class6
+     *            └── subjects
+     *                 └── mathematics
+     *                      └── chapters
+     *
+     * -----------------------------------------
+     */
 
 
     function renderCurriculum(
@@ -532,21 +1340,41 @@
         );
 
 
-      content.innerHTML = "";
+      content.innerHTML =
+        "";
+
+
+      /*
+       * Check curriculum
+       */
+
+
+      if (
+        !data ||
+        !data.classes
+      ) {
+
+        throw new Error(
+          "Curriculum में classes नहीं मिलीं।"
+        );
+
+      }
+
+
+      /*
+       * Get selected class
+       */
+
+
+      const classKey =
+        "class" +
+        studentClass;
 
 
       const classData =
-        data.classes.find(
-          function(item) {
-
-            return (
-              item.id ===
-              "class" +
-              studentClass
-            );
-
-          }
-        );
+        data.classes[
+          classKey
+        ];
 
 
       if (!classData) {
@@ -554,66 +1382,90 @@
         throw new Error(
           "कक्षा " +
           studentClass +
-          " का Curriculum नहीं मिला।"
+          " का Curriculum उपलब्ध नहीं है।"
         );
 
       }
 
 
-      classData.subjects.forEach(
-        function(subject) {
-
-          const subjectCard =
-            document.createElement(
-              "div"
-            );
-
-          subjectCard.className =
-            "subject-card";
+      /*
+       * Subjects object
+       */
 
 
-          const top =
-            document.createElement(
-              "div"
-            );
-
-          top.className =
-            "subject-top";
+      const subjects =
+        classData.subjects;
 
 
-          top.innerHTML =
+      if (
+        !subjects ||
+        typeof subjects !==
+          "object"
+      ) {
 
-            '<div class="subject-icon">' +
-              subject.icon +
-            '</div>' +
+        throw new Error(
+          "इस कक्षा के Subjects उपलब्ध नहीं हैं।"
+        );
 
-            '<div class="subject-info">' +
-
-              '<h3>' +
-                subject.name +
-              '</h3>' +
-
-              '<p>' +
-                subject.english_name +
-              '</p>' +
-
-            '</div>';
+      }
 
 
-          subjectCard.appendChild(
-            top
-          );
+      /*
+       * Each subject
+       */
+
+
+      Object.keys(
+        subjects
+      ).forEach(
+        function(subjectKey) {
+
+          const subject =
+            subjects[
+              subjectKey
+            ];
 
 
           if (
-            !subject.chapters ||
-            subject.chapters.length === 0
+            !subject ||
+            typeof subject !==
+              "object"
+          ) {
+
+            return;
+
+          }
+
+
+          const subjectCard =
+            createSubjectCard(
+              subjectKey,
+              subject
+            );
+
+
+          /*
+           * Chapters
+           */
+
+
+          const chapters =
+            Array.isArray(
+              subject.chapters
+            )
+              ? subject.chapters
+              : [];
+
+
+          if (
+            chapters.length === 0
           ) {
 
             const empty =
               document.createElement(
                 "div"
               );
+
 
             empty.className =
               "empty-box";
@@ -629,82 +1481,22 @@
 
           } else {
 
-
-            subject.chapters.forEach(
+            chapters.forEach(
               function(chapter) {
 
-                const chapterBox =
-                  document.createElement(
-                    "div"
-                  );
-
-                chapterBox.className =
-                  "chapter-box";
-
-
-                const title =
-                  document.createElement(
-                    "div"
-                  );
-
-                title.className =
-                  "chapter-title";
-
-
-                title.textContent =
-                  "📖 अध्याय " +
-                  chapter.number +
-                  " — " +
-                  chapter.title;
-
-
-                chapterBox.appendChild(
-                  title
-                );
-
-
                 if (
-                  !chapter.lessons ||
-                  chapter.lessons.length === 0
+                  !chapter
                 ) {
 
-                  const empty =
-                    document.createElement(
-                      "div"
-                    );
-
-                  empty.className =
-                    "empty-box";
-
-
-                  empty.textContent =
-                    "इस अध्याय की Lessons जल्द उपलब्ध होंगी।";
-
-
-                  chapterBox.appendChild(
-                    empty
-                  );
-
-                } else {
-
-
-                  chapter.lessons.forEach(
-                    function(lesson) {
-
-                      chapterBox.appendChild(
-                        createLessonCard(
-                          lesson
-                        )
-                      );
-
-                    }
-                  );
+                  return;
 
                 }
 
 
                 subjectCard.appendChild(
-                  chapterBox
+                  createChapterBox(
+                    chapter
+                  )
                 );
 
               }
@@ -720,7 +1512,45 @@
         }
       );
 
+
+      /*
+       * If absolutely nothing rendered
+       */
+
+
+      if (
+        content.children.length === 0
+      ) {
+
+        const empty =
+          document.createElement(
+            "div"
+          );
+
+
+        empty.className =
+          "empty-box";
+
+
+        empty.textContent =
+          "📘 इस कक्षा के लिए Curriculum जल्द उपलब्ध होगा।";
+
+
+        content.appendChild(
+          empty
+        );
+
+      }
+
     }
+
+
+
+    /*
+     * -----------------------------------------
+     * LOAD CURRICULUM
+     * -----------------------------------------
+     */
 
 
     async function loadCurriculum() {
@@ -728,12 +1558,6 @@
       const loading =
         document.getElementById(
           "curriculumLoading"
-        );
-
-
-      const content =
-        document.getElementById(
-          "curriculumContent"
         );
 
 
@@ -745,82 +1569,48 @@
 
       try {
 
+        loading.style.display =
+          "block";
+
+
+        errorBox.style.display =
+          "none";
+
+
+        /*
+         * Cache busting
+         *
+         * इससे GitHub Pages पुराने
+         * curriculum.json को cache से
+         * नहीं उठाएगा।
+         */
+
+
+        const url =
+          "./data/curriculum.json?v=" +
+          Date.now();
+
+
         const response =
           await fetch(
-            "./data/curriculum.json?v=" +
-            Date.now(),
+            url,
             {
               cache: "no-store"
             }
           );
 
 
-        if (!response.ok) {
+        if (
+          !response.ok
+        ) {
 
           throw new Error(
-            "curriculum.json नहीं मिला: " +
-            response.status
+            "HTTP " +
+            response.status +
+            " — curriculum.json नहीं मिला।"
           );
 
         }
 
 
-        const data =
-          await response.json();
-
-
-        renderCurriculum(
-          data
-        );
-
-
-        loading.style.display =
-          "none";
-
-
-        content.style.display =
-          "block";
-
-
-      } catch (error) {
-
-        loading.style.display =
-          "none";
-
-
-        errorBox.style.display =
-          "block";
-
-
-        errorBox.innerHTML =
-
-          "<strong>Curriculum लोड नहीं हो पाया।</strong><br><br>" +
-
-          "कृपया page को दोबारा खोलें।";
-
-
-        console.error(
-          "CURRICULUM LOAD ERROR:",
-          error
-        );
-
-      }
-
-    }
-
-
-    document.addEventListener(
-      "DOMContentLoaded",
-      function() {
-
-        loadStudent();
-
-        loadCurriculum();
-
-      }
-    );
-
-  </script>
-
-</body>
-</html>
+        const data 
