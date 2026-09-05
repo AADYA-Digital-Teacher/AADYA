@@ -55,11 +55,16 @@
               "title": "प्राकृतिक संख्याएँ",
               "source": "textbook",
               "lessons": [
-                {
-                  "number": 1,
-                  "title": "संख्या और संख्यांक में अन्तर करना",
-                  "file": "./content/class6/mathematics/textbook01/lesson01.json"
-                }
+  {
+    "number": 1,
+    "title": "संख्या और संख्यांक में अन्तर करना",
+    "file": "./content/class6/mathematics/textbook01/lesson01.json"
+  },
+  {
+    "number": 2,
+    "title": "अंकों का प्रयोग तथा स्थानीय मान पद्धति से संख्याओं का निर्माण",
+    "file": "./content/class6/mathematics/textbook01/lesson02.json"
+  }
               ]
             },
             {
