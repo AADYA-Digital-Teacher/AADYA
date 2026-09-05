@@ -1,1 +1,131 @@
-
+{
+  "class": 6,
+  "subject": "गणित",
+  "chapter": 10,
+  "chapter_title": "लघुत्तम समापवर्त्य एवं महत्तम समापवर्तक",
+  "lesson": 6,
+  "title": "दो संख्याओं, LCM और HCF के मध्य सम्बन्ध",
+  "source": "पाठ्यपुस्तक",
+  "objectives": [
+    "LCM और HCF के बीच सम्बन्ध समझना",
+    "दो संख्याओं के लिए LCM × HCF का नियम समझना",
+    "दिए गए LCM या HCF से दूसरी राशि ज्ञात करना"
+  ],
+  "concept": "दो धनात्मक पूर्ण संख्याओं के लिए उनका गुणनफल = उनके HCF × LCM।",
+  "explanation": [
+    {
+      "heading": "मुख्य सम्बन्ध",
+      "content": "दो संख्याओं का गुणनफल उनके HCF और LCM के गुणनफल के बराबर होता है। अर्थात संख्या 1 × संख्या 2 = HCF × LCM।"
+    },
+    {
+      "heading": "उदाहरण",
+      "content": "12 और 18 का HCF 6 तथा LCM 36 है। 12 × 18 = 216 और 6 × 36 = 216। दोनों बराबर हैं।"
+    },
+    {
+      "heading": "अज्ञात राशि",
+      "content": "यदि दो संख्याओं का गुणनफल और HCF दिया हो, तो LCM = दोनों संख्याओं का गुणनफल ÷ HCF।"
+    }
+  ],
+  "examples": [
+    "8 और 12: HCF = 4, LCM = 24 और 8 × 12 = 4 × 24।",
+    "15 और 25: HCF = 5, LCM = 75 और 15 × 25 = 5 × 75।"
+  ],
+  "practice": {
+    "title": "अभ्यास",
+    "questions": [
+      {
+        "question": "6 और 8 का HCF × LCM कितना है?",
+        "options": ["24", "48", "72", "96"],
+        "correct_answer": 1,
+        "explanation": "HCF = 2, LCM = 24, इसलिए 2 × 24 = 48।"
+      },
+      {
+        "question": "10 और 15 का HCF क्या है?",
+        "options": ["3", "5", "10", "15"],
+        "correct_answer": 1,
+        "explanation": "10 और 15 का HCF 5 है।"
+      },
+      {
+        "question": "यदि दो संख्याओं का HCF 4 और LCM 24 है, तो उनका गुणनफल कितना होगा?",
+        "options": ["48", "72", "96", "120"],
+        "correct_answer": 2,
+        "explanation": "4 × 24 = 96।"
+      },
+      {
+        "question": "8 और 12 के लिए HCF × LCM कितना होगा?",
+        "options": ["48", "72", "96", "120"],
+        "correct_answer": 2,
+        "explanation": "HCF = 4 और LCM = 24, अतः 4 × 24 = 96।"
+      },
+      {
+        "question": "15 और 25 के लिए HCF × LCM कितना होगा?",
+        "options": ["125", "250", "375", "500"],
+        "correct_answer": 2,
+        "explanation": "HCF = 5 और LCM = 75, अतः 5 × 75 = 375।"
+      },
+      {
+        "question": "यदि दो संख्याओं का गुणनफल 180 और HCF 6 है, तो LCM कितना होगा?",
+        "options": ["20", "30", "36", "60"],
+        "correct_answer": 1,
+        "explanation": "LCM = 180 ÷ 6 = 30।"
+      }
+    ]
+  },
+  "quiz": {
+    "title": "🧠 Quiz – अपनी समझ जाँचें",
+    "questions": [
+      {
+        "question": "12 और 18 का HCF × LCM कितना है?",
+        "options": ["108", "216", "324", "432"],
+        "correct_answer": 1,
+        "explanation": "HCF = 6 और LCM = 36, इसलिए 6 × 36 = 216।"
+      },
+      {
+        "question": "यदि HCF = 5 और LCM = 60 है, तो दो संख्याओं का गुणनफल कितना होगा?",
+        "options": ["120", "250", "300", "360"],
+        "correct_answer": 2,
+        "explanation": "5 × 60 = 300।"
+      },
+      {
+        "question": "16 और 24 के HCF तथा LCM का गुणनफल कितना है?",
+        "options": ["192", "384", "576", "768"],
+        "correct_answer": 1,
+        "explanation": "HCF = 8 और LCM = 48, इसलिए 8 × 48 = 384।"
+      },
+      {
+        "question": "दो संख्याओं का गुणनफल 420 और HCF 7 है। LCM कितना है?",
+        "options": ["40", "50", "60", "70"],
+        "correct_answer": 2,
+        "explanation": "LCM = 420 ÷ 7 = 60।"
+      },
+      {
+        "question": "दो संख्याओं का गुणनफल 720 और LCM 120 है। HCF कितना है?",
+        "options": ["4", "6", "8", "10"],
+        "correct_answer": 2,
+        "explanation": "HCF = 720 ÷ 120 = 6 नहीं, 720 ÷ 120 = 6। सही उत्तर 6 है।"
+      },
+      {
+        "question": "दो संख्याओं का HCF 9 और LCM 180 है। उनका गुणनफल क्या होगा?",
+        "options": ["810", "1260", "1620", "1800"],
+        "correct_answer": 2,
+        "explanation": "9 × 180 = 1620।"
+      },
+      {
+        "question": "यदि दो सह-अभाज्य संख्याओं का HCF 1 है, तो उनका LCM किसके बराबर होगा?",
+        "options": ["उनका योग", "उनका अन्तर", "उनका गुणनफल", "उनका आधा गुणनफल"],
+        "correct_answer": 2,
+        "explanation": "HCF × LCM = गुणनफल। HCF 1 होने पर LCM = गुणनफल।"
+      },
+      {
+        "question": "दो संख्याओं का गुणनफल 960 और HCF 8 है। उनका LCM कितना होगा?",
+        "options": ["100", "120", "140", "160"],
+        "correct_answer": 1,
+        "explanation": "LCM = 960 ÷ 8 = 120।"
+      }
+    ]
+  },
+  "completion": {
+    "message": "🧠 शानदार! अब आप HCF और LCM के सम्बन्ध को समझ चुके हैं।",
+    "next_lesson": "content/class6/mathematics/textbook08/lesson07.json"
+  }
+}
