@@ -1,5 +1,5 @@
 {
-  "version": "1.4",
+  "version": "1.5",
   "classes": {
     "class6": {
       "name": "कक्षा 6",
@@ -259,28 +259,132 @@
               "book_number": 7,
               "title": "ज्यामितीय अवधारणाएँ",
               "source": "textbook",
-              "lessons": []
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "बिन्दु",
+                  "file": "./content/class6/mathematics/textbook07/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "सरल बिन्दु (एक रेखीय बिन्दु)",
+                  "file": "./content/class6/mathematics/textbook07/lesson02.json"
+                },
+                {
+                  "number": 3,
+                  "title": "एक बिन्दु से गुजरती रेखाएँ",
+                  "file": "./content/class6/mathematics/textbook07/lesson03.json"
+                },
+                {
+                  "number": 4,
+                  "title": "तल (समतल) के गुण",
+                  "file": "./content/class6/mathematics/textbook07/lesson04.json"
+                },
+                {
+                  "number": 5,
+                  "title": "बंद और खुली आकृतियाँ",
+                  "file": "./content/class6/mathematics/textbook07/lesson05.json"
+                }
+              ]
             },
             {
               "number": 10,
               "book_number": 8,
               "title": "कोण",
               "source": "textbook",
-              "lessons": []
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "कोण की अवधारणा",
+                  "file": "./content/class6/mathematics/textbook08/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "कोण की माप और कोण के प्रकार",
+                  "file": "./content/class6/mathematics/textbook08/lesson02.json"
+                },
+                {
+                  "number": 3,
+                  "title": "कोणमापी से कोण की माप करना",
+                  "file": "./content/class6/mathematics/textbook08/lesson03.json"
+                },
+                {
+                  "number": 4,
+                  "title": "60° और 120° कोण की रचना",
+                  "file": "./content/class6/mathematics/textbook08/lesson04.json"
+                }
+              ]
             },
             {
               "number": 11,
               "book_number": 9,
               "title": "लम्ब और समान्तर रेखाएँ",
               "source": "textbook",
-              "lessons": []
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "लम्ब और समान्तर रेखाओं की अवधारणा",
+                  "file": "./content/class6/mathematics/textbook09/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "तिर्यक रेखा से बने कोणों के नाम और गुण",
+                  "file": "./content/class6/mathematics/textbook09/lesson02.json"
+                },
+                {
+                  "number": 3,
+                  "title": "पटरी और गुनिया की सहायता से समान्तर रेखाएँ खींचना",
+                  "file": "./content/class6/mathematics/textbook09/lesson03.json"
+                },
+                {
+                  "number": 4,
+                  "title": "अज्ञात कोण ज्ञात करना और समान्तर रेखाओं का सत्यापन",
+                  "file": "./content/class6/mathematics/textbook09/lesson04.json"
+                }
+              ]
             },
             {
               "number": 12,
               "book_number": 10,
               "title": "लघुत्तम समापवर्त्य एवं महत्तम समापवर्तक",
               "source": "textbook",
-              "lessons": []
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "अपवर्तक",
+                  "file": "./content/class6/mathematics/textbook10/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "समापवर्तक और महत्तम समापवर्तक",
+                  "file": "./content/class6/mathematics/textbook10/lesson02.json"
+                },
+                {
+                  "number": 3,
+                  "title": "अपवर्त्य और समापवर्तक",
+                  "file": "./content/class6/mathematics/textbook10/lesson03.json"
+                },
+                {
+                  "number": 4,
+                  "title": "लघुत्तम समापवर्त्य",
+                  "file": "./content/class6/mathematics/textbook10/lesson04.json"
+                },
+                {
+                  "number": 5,
+                  "title": "भाग विधि से महत्तम समापवर्तक",
+                  "file": "./content/class6/mathematics/textbook10/lesson05.json"
+                },
+                {
+                  "number": 6,
+                  "title": "दो संख्याओं, LCM और HCF के मध्य सम्बन्ध",
+                  "file": "./content/class6/mathematics/textbook10/lesson06.json"
+                },
+                {
+                  "number": 7,
+                  "title": "LCM और HCF का दैनिक जीवन में उपयोग",
+                  "file": "./content/class6/mathematics/textbook10/lesson07.json"
+                }
+              ]
             },
             {
               "number": 13,
