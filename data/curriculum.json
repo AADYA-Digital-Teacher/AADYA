@@ -1,0 +1,185 @@
+{
+  "app": "AADYA Digital Teacher",
+  "version": "1.0",
+  "classes": [
+    {
+      "id": "class6",
+      "name": "कक्षा 6",
+      "subjects": [
+        {
+          "id": "mathematics",
+          "name": "गणित",
+          "english_name": "Mathematics",
+          "icon": "📐",
+          "chapters": [
+            {
+              "id": "chapter01",
+              "number": 1,
+              "title": "गणित में पैटर्न",
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "पैटर्न क्या होता है?",
+                  "file": "./content/class6/mathematics/chapter01/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "संख्याओं में पैटर्न पहचानना",
+                  "file": "./content/class6/mathematics/chapter01/lesson02.json"
+                }
+              ]
+            },
+            {
+              "id": "chapter02",
+              "number": 2,
+              "title": "रेखाएँ और कोण",
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "रेखा, रेखाखंड और किरण",
+                  "file": "./content/class6/mathematics/chapter02/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "कोण क्या होता है?",
+                  "file": "./content/class6/mathematics/chapter02/lesson02.json"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hindi",
+          "name": "हिंदी",
+          "english_name": "Hindi",
+          "icon": "📖",
+          "chapters": []
+        },
+        {
+          "id": "english",
+          "name": "अंग्रेज़ी",
+          "english_name": "English",
+          "icon": "🔤",
+          "chapters": []
+        },
+        {
+          "id": "science",
+          "name": "विज्ञान",
+          "english_name": "Science",
+          "icon": "🔬",
+          "chapters": []
+        },
+        {
+          "id": "social-science",
+          "name": "सामाजिक विज्ञान",
+          "english_name": "Social Science",
+          "icon": "🌍",
+          "chapters": []
+        },
+        {
+          "id": "computer",
+          "name": "कंप्यूटर",
+          "english_name": "Computer",
+          "icon": "💻",
+          "chapters": []
+        }
+      ]
+    },
+    {
+      "id": "class7",
+      "name": "कक्षा 7",
+      "subjects": [
+        {
+          "id": "mathematics",
+          "name": "गणित",
+          "english_name": "Mathematics",
+          "icon": "📐",
+          "chapters": []
+        },
+        {
+          "id": "hindi",
+          "name": "हिंदी",
+          "english_name": "Hindi",
+          "icon": "📖",
+          "chapters": []
+        },
+        {
+          "id": "english",
+          "name": "अंग्रेज़ी",
+          "english_name": "English",
+          "icon": "🔤",
+          "chapters": []
+        },
+        {
+          "id": "science",
+          "name": "विज्ञान",
+          "english_name": "Science",
+          "icon": "🔬",
+          "chapters": []
+        },
+        {
+          "id": "social-science",
+          "name": "सामाजिक विज्ञान",
+          "english_name": "Social Science",
+          "icon": "🌍",
+          "chapters": []
+        },
+        {
+          "id": "computer",
+          "name": "कंप्यूटर",
+          "english_name": "Computer",
+          "icon": "💻",
+          "chapters": []
+        }
+      ]
+    },
+    {
+      "id": "class8",
+      "name": "कक्षा 8",
+      "subjects": [
+        {
+          "id": "mathematics",
+          "name": "गणित",
+          "english_name": "Mathematics",
+          "icon": "📐",
+          "chapters": []
+        },
+        {
+          "id": "hindi",
+          "name": "हिंदी",
+          "english_name": "Hindi",
+          "icon": "📖",
+          "chapters": []
+        },
+        {
+          "id": "english",
+          "name": "अंग्रेज़ी",
+          "english_name": "English",
+          "icon": "🔤",
+          "chapters": []
+        },
+        {
+          "id": "science",
+          "name": "विज्ञान",
+          "english_name": "Science",
+          "icon": "🔬",
+          "chapters": []
+        },
+        {
+          "id": "social-science",
+          "name": "सामाजिक विज्ञान",
+          "english_name": "Social Science",
+          "icon": "🌍",
+          "chapters": []
+        },
+        {
+          "id": "computer",
+          "name": "कंप्यूटर",
+          "english_name": "Computer",
+          "icon": "💻",
+          "chapters": []
+        }
+      ]
+    }
+  ]
+}
