@@ -516,33 +516,82 @@
               ]
             },
             {
-              "number": 16,
-              "book_number": 14,
-              "title": "वृत्त",
-              "source": "textbook",
-              "lessons": []
-            },
             {
-              "number": 17,
-              "book_number": 15,
-              "title": "सममितता",
-              "source": "textbook",
-              "lessons": []
-            },
-            {
-              "number": 18,
-              "book_number": 16,
-              "title": "क्षेत्रमिति",
-              "source": "textbook",
-              "lessons": []
-            },
-            {
-              "number": 19,
-              "book_number": 17,
-              "title": "गुणा : ऊर्ध्वतिर्यक विधि द्वारा",
-              "source": "textbook",
-              "lessons": []
-            }
+  "number": 16,
+  "book_number": 14,
+  "title": "वृत्त",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "वृत्त की अवधारणा",
+      "file": "./content/class6/mathematics/textbook14/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "वृत्त की त्रिज्या, व्यास, जीवा तथा चाप",
+      "file": "./content/class6/mathematics/textbook14/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "अर्धवृत्त",
+      "file": "./content/class6/mathematics/textbook14/lesson03.json"
+    },
+    {
+      "number": 4,
+      "title": "वृत्तखण्ड एवं त्रिज्याखण्ड",
+      "file": "./content/class6/mathematics/textbook14/lesson04.json"
+    }
+  ]
+},
+{
+  "number": 17,
+  "book_number": 15,
+  "title": "सममितता",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "पर्यावरण में सममित वस्तुओं की पहचान",
+      "file": "./content/class6/mathematics/textbook15/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "सममितता की रेखा एवं परावर्तित सममितता",
+      "file": "./content/class6/mathematics/textbook15/lesson02.json"
+    }
+  ]
+},
+{
+  "number": 18,
+  "book_number": 16,
+  "title": "क्षेत्रमिति",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "घनाभ, घन, प्रिज्म तथा पिरामिड के अंग",
+      "file": "./content/class6/mathematics/textbook16/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "आयतन की अवधारणा",
+      "file": "./content/class6/mathematics/textbook16/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "घनाभ एवं घन का आयतन",
+      "file": "./content/class6/mathematics/textbook16/lesson03.json"
+    }
+  ]
+},
+{
+  "number": 19,
+  "book_number": 17,
+  "title": "गुणा : ऊर्ध्वतिर्यक विधि द्वारा",
+  "source": "textbook",
+  "lessons": []
+}
           ]
         }
       }
