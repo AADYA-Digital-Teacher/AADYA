@@ -1,272 +1,306 @@
 <!DOCTYPE html>
 <html lang="hi">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#111111">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+  name="theme-color"
+  content="#111111"
+>
+
 <title>AADYA – Learning</title>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+  box-sizing:border-box;
+}
 
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#f5f5f5;
-color:#222
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f5f5f5;
+  color:#222;
 }
 
 .header{
-background:#111;
-color:#fff;
-padding:22px 16px 26px;
-text-align:center
+  background:#111;
+  color:#fff;
+  padding:22px 16px 26px;
+  text-align:center;
 }
 
 .header img{
-width:180px;
-max-width:75%;
-height:auto;
-display:block;
-margin:0 auto 12px
+  width:180px;
+  max-width:75%;
+  height:auto;
+  display:block;
+  margin:0 auto 12px;
 }
 
 .header h1{
-margin:8px 0;
-font-size:27px
+  margin:8px 0;
+  font-size:27px;
 }
 
 .header p{
-margin:0;
-font-size:16px;
-color:#ddd
+  margin:0;
+  font-size:16px;
+  color:#ddd;
 }
 
 .container{
-max-width:800px;
-margin:auto;
-padding:18px 16px 40px
+  max-width:800px;
+  margin:auto;
+  padding:18px 16px 40px;
 }
 
 .card{
-background:#fff;
-border-radius:18px;
-padding:20px;
-margin-bottom:18px;
-box-shadow:0 3px 14px rgba(0,0,0,.08)
+  background:#fff;
+  border-radius:18px;
+  padding:20px;
+  margin-bottom:18px;
+  box-shadow:0 3px 14px rgba(0,0,0,.08);
 }
 
 .chapter{
-font-size:14px;
-color:#777;
-margin-bottom:8px
+  font-size:14px;
+  color:#777;
+  margin-bottom:8px;
 }
 
 h2{
-margin:6px 0 10px;
-font-size:26px
+  margin:6px 0 10px;
+  font-size:26px;
 }
 
 h3{
-margin:0 0 14px;
-font-size:21px
+  margin:0 0 14px;
+  font-size:21px;
 }
 
 p{
-line-height:1.7
+  line-height:1.7;
 }
 
 .objective{
-padding:9px 0;
-line-height:1.5
+  padding:9px 0;
+  line-height:1.5;
 }
 
 .example{
-background:#f7f7f7;
-border-left:4px solid #111;
-padding:14px;
-margin:12px 0;
-border-radius:10px;
-line-height:1.6
+  background:#f7f7f7;
+  border-left:4px solid #111;
+  padding:14px;
+  margin:12px 0;
+  border-radius:10px;
+  line-height:1.6;
 }
 
 .question{
-font-weight:bold;
-margin-bottom:12px;
-font-size:17px
+  font-weight:bold;
+  margin-bottom:12px;
+  font-size:17px;
 }
 
 .option{
-display:block;
-width:100%;
-text-align:left;
-padding:14px;
-margin:9px 0;
-border:1px solid #ddd;
-border-radius:11px;
-background:#fff;
-font-size:16px;
-cursor:pointer
+  display:block;
+  width:100%;
+  text-align:left;
+  padding:14px;
+  margin:9px 0;
+  border:1px solid #ddd;
+  border-radius:11px;
+  background:#fff;
+  font-size:16px;
+  cursor:pointer;
 }
 
 .option:hover{
-background:#f0f0f0
+  background:#f0f0f0;
 }
 
 .option.correct{
-background:#dff5df;
-border-color:#2e8b57
+  background:#dff5df;
+  border-color:#2e8b57;
 }
 
 .option.wrong{
-background:#ffe0e0;
-border-color:#d33
+  background:#ffe0e0;
+  border-color:#d33;
 }
 
 .option:disabled{
-cursor:default
+  cursor:default;
 }
 
 .btn{
-display:block;
-width:100%;
-border:none;
-border-radius:12px;
-padding:14px;
-font-size:17px;
-font-weight:bold;
-cursor:pointer;
-background:#111;
-color:#fff;
-margin-top:12px
+  display:block;
+  width:100%;
+  border:none;
+  border-radius:12px;
+  padding:14px;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+  background:#111;
+  color:#fff;
+  margin-top:12px;
 }
 
 .btn:hover{
-opacity:.9
-}
-
-.answer{
-display:none;
-margin-top:12px;
-padding:12px;
-background:#eaf7ea;
-border-radius:10px
+  opacity:.9;
 }
 
 .feedback{
-margin-top:12px;
-padding:10px;
-border-radius:8px;
-font-weight:bold
+  margin-top:12px;
+  padding:10px;
+  border-radius:8px;
+  font-weight:bold;
 }
 
 .feedback.good{
-background:#e5f6e5;
-color:#176b17
+  background:#e5f6e5;
+  color:#176b17;
 }
 
 .feedback.bad{
-background:#ffe7e7;
-color:#a00000
+  background:#ffe7e7;
+  color:#a00000;
 }
 
 .success{
-text-align:center;
-background:#111;
-color:#fff
+  text-align:center;
+  background:#111;
+  color:#fff;
 }
 
 .progress{
-height:12px;
-background:#555;
-border-radius:10px;
-overflow:hidden;
-margin:18px 0
+  height:12px;
+  background:#555;
+  border-radius:10px;
+  overflow:hidden;
+  margin:18px 0;
 }
 
 .progress-bar{
-height:100%;
-width:0;
-background:#d4af37;
-transition:width .4s
+  height:100%;
+  width:0;
+  background:#d4af37;
+  transition:width .4s;
 }
 
 .loading{
-text-align:center;
-padding:40px 10px;
-font-size:18px
+  text-align:center;
+  padding:40px 10px;
+  font-size:18px;
 }
 
 .error{
-background:#ffe5e5;
-color:#900;
-padding:18px;
-border-radius:12px
+  background:#ffe5e5;
+  color:#900;
+  padding:18px;
+  border-radius:12px;
 }
 
 ul{
-padding-left:24px
+  padding-left:24px;
 }
 
 li{
-margin:9px 0;
-line-height:1.5
+  margin:9px 0;
+  line-height:1.5;
+}
+
+.home-btn{
+  display:block;
+  width:100%;
+  border:none;
+  border-radius:12px;
+  padding:13px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  background:#d4af37;
+  color:#111;
+  margin-bottom:18px;
+}
+
+.home-btn:hover{
+  opacity:.9;
+}
+
+.small-note{
+  color:#777;
+  font-size:14px;
+  margin-top:8px;
 }
 
 @media(max-width:600px){
 
-.header{
-padding:18px 12px 22px
+  .header{
+    padding:18px 12px 22px;
+  }
+
+  .header img{
+    width:165px;
+  }
+
+  .header h1{
+    font-size:24px;
+  }
+
+  .header p{
+    font-size:15px;
+  }
+
+  .container{
+    padding:14px 12px 30px;
+  }
+
+  .card{
+    padding:17px;
+    border-radius:16px;
+  }
+
+  h2{
+    font-size:23px;
+  }
+
+  h3{
+    font-size:20px;
+  }
+
 }
 
-.header img{
-width:165px
-}
-
-.header h1{
-font-size:24px
-}
-
-.header p{
-font-size:15px
-}
-
-.container{
-padding:14px 12px 30px
-}
-
-.card{
-padding:17px;
-border-radius:16px
-}
-
-h2{
-font-size:23px
-}
-
-h3{
-font-size:20px
-}
-
-}
 </style>
+
 </head>
 
+
 <body>
+
 
 <header class="header">
 
 <img
-src="./assets/logo/aadya-logo-header-full.png"
-alt="AADYA"
+  src="./assets/logo/aadya-logo-header-full.png"
+  alt="AADYA"
 >
 
 <h1 id="lessonTitle">
-AADYA Learning
+  AADYA Learning
 </h1>
 
 <p>
-आपका अपना Digital Teacher
+  आपका अपना Digital Teacher
 </p>
 
 </header>
@@ -274,24 +308,34 @@ AADYA Learning
 
 <main class="container">
 
-<div
-id="loading"
-class="card loading"
+
+<button
+  class="home-btn"
+  onclick="goHome()"
 >
-📚 Lesson तैयार हो रहा है...
+  ← होम पर जाएँ
+</button>
+
+
+<div
+  id="loading"
+  class="card loading"
+>
+  📚 Lesson तैयार हो रहा है...
 </div>
 
 
 <div
-id="content"
-style="display:none;"
+  id="content"
+  style="display:none;"
 >
+
 
 <section class="card">
 
 <div
-class="chapter"
-id="chapterTitle"
+  class="chapter"
+  id="chapterTitle"
 ></div>
 
 <h2 id="mainTitle"></h2>
@@ -304,7 +348,7 @@ id="chapterTitle"
 <section class="card">
 
 <h3>
-🎯 आज हम क्या सीखेंगे?
+  🎯 आज हम क्या सीखेंगे?
 </h3>
 
 <div id="objectives"></div>
@@ -324,7 +368,7 @@ id="chapterTitle"
 <section class="card">
 
 <h3>
-💡 आसान भाषा में समझें
+  💡 आसान भाषा में समझें
 </h3>
 
 <div id="explanation"></div>
@@ -335,7 +379,7 @@ id="chapterTitle"
 <section class="card">
 
 <h3>
-🔢 उदाहरण देखें
+  🔢 उदाहरण देखें
 </h3>
 
 <div id="examples"></div>
@@ -346,7 +390,7 @@ id="chapterTitle"
 <section class="card">
 
 <h3>
-✍️ खुद करके देखें
+  ✍️ खुद करके देखें
 </h3>
 
 <div id="tryYourself"></div>
@@ -357,7 +401,7 @@ id="chapterTitle"
 <section class="card">
 
 <h3>
-📝 अभ्यास
+  📝 अभ्यास
 </h3>
 
 <div id="practice"></div>
@@ -368,14 +412,14 @@ id="chapterTitle"
 <section class="card">
 
 <h3>
-🧠 Quiz – अपनी समझ जाँचें
+  🧠 Quiz – अपनी समझ जाँचें
 </h3>
 
 <div id="quiz"></div>
 
 <div
-id="quizResult"
-style="margin-top:15px;font-weight:bold"
+  id="quizResult"
+  style="margin-top:15px;font-weight:bold"
 ></div>
 
 </section>
@@ -384,7 +428,7 @@ style="margin-top:15px;font-weight:bold"
 <section class="card">
 
 <h3 id="activityTitle">
-🌍 गतिविधि
+  🌍 गतिविधि
 </h3>
 
 <p id="activityInstruction"></p>
@@ -397,7 +441,7 @@ style="margin-top:15px;font-weight:bold"
 <section class="card">
 
 <h3>
-⭐ आज की मुख्य बातें
+  ⭐ आज की मुख्य बातें
 </h3>
 
 <ul id="keyPoints"></ul>
@@ -414,1676 +458,2074 @@ style="margin-top:15px;font-weight:bold"
 <div class="progress">
 
 <div
-class="progress-bar"
-id="progressBar"
+  class="progress-bar"
+  id="progressBar"
 ></div>
 
 </div>
 
 <button
-class="btn"
-id="completeButton"
-onclick="completeLesson()"
+  class="btn"
+  id="completeButton"
+  onclick="completeLesson()"
 >
-✅ Lesson पूरा किया
+  ✅ Lesson पूरा किया
 </button>
 
 </section>
+
 
 </div>
 
 
 <div
-id="error"
-style="display:none"
+  id="error"
+  style="display:none"
 ></div>
+
 
 </main>
 
 
 <script>
 
-let lessonData=null;
 
-let quizScore=0;
+/* ==========================================
+   AADYA LEARNING ENGINE
+   Version: 2.0
+   Old + New JSON compatible
+========================================== */
 
-let answeredQuestions=0;
+
+let lessonData = null;
+
+let quizScore = 0;
+
+let answeredQuestions = 0;
+
+let quizFinished = false;
 
 
-/* --------------------------------
+/* ==========================================
+   PROFILE / PROGRESS
+========================================== */
+
+
+const PROFILE_KEY =
+  "aadya_student_profile_v1";
+
+const PROGRESS_KEY =
+  "aadya_progress_v1";
+
+const QUIZ_KEY =
+  "aadya_last_quiz_score";
+
+
+/* ==========================================
    LESSON PATH
--------------------------------- */
-
-const lessonParams=
-new URLSearchParams(
-window.location.search
-);
-
-const requestedLesson=
-lessonParams.get("lesson") || "1";
+========================================== */
 
 
-let lessonFile=
-"./content/class6/mathematics/chapter01/lesson01.json";
+const lessonParams =
+  new URLSearchParams(
+    window.location.search
+  );
+
+
+const requestedLesson =
+  lessonParams.get("lesson") || "1";
+
+
+let lessonFile =
+  "./content/class6/mathematics/chapter01/lesson01.json";
 
 
 if(
-requestedLesson.endsWith(".json")
+  requestedLesson.endsWith(".json")
 ){
 
-lessonFile=
-requestedLesson.startsWith("./")
-?
-requestedLesson
-:
-"./"+requestedLesson;
+  lessonFile =
+    requestedLesson.startsWith("./")
+      ? requestedLesson
+      : "./" + requestedLesson;
 
 }
 
 else{
 
-const n=
-String(requestedLesson)
-.padStart(2,"0");
+  const lessonNumber =
+    String(requestedLesson)
+      .padStart(2,"0");
 
-lessonFile=
-"./content/class6/mathematics/chapter01/lesson"+
-n+
-".json";
+  lessonFile =
+    "./content/class6/mathematics/chapter01/lesson" +
+    lessonNumber +
+    ".json";
 
 }
 
 
-/* --------------------------------
-   HELPERS
--------------------------------- */
+/* ==========================================
+   BASIC HELPERS
+========================================== */
+
 
 function asArray(value){
 
-return Array.isArray(value)
-?
-value
-:
-[];
+  return Array.isArray(value)
+    ? value
+    : [];
 
 }
 
 
 function firstValue(
-obj,
-keys,
-fallback=""
+  obj,
+  keys,
+  fallback = ""
 ){
 
-for(
-const key of keys
-){
+  for(
+    const key of keys
+  ){
 
-if(
-obj &&
-obj[key] !== undefined &&
-obj[key] !== null
-){
+    if(
+      obj &&
+      obj[key] !== undefined &&
+      obj[key] !== null
+    ){
 
-return obj[key];
+      return obj[key];
 
-}
-
-}
-
-return fallback;
-
-}
-
-
-function answerIndexValue(value){
-
-const n=
-Number(value);
-
-return Number.isInteger(n)
-?
-n
-:
-null;
-
-}
-
-
-function escapeAttribute(text){
-
-return String(text ?? "")
-.replace(/&/g,"&amp;")
-.replace(/'/g,"&#39;")
-.replace(/"/g,"&quot;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;");
-
-}
-
-
-/* --------------------------------
-   LOAD LESSON
--------------------------------- */
-
-async function loadLesson(){
-
-try{
-
-const response=
-await fetch(
-lessonFile+
-"?v="+
-Date.now(),
-{
-cache:"no-store"
-}
-);
-
-
-if(!response.ok){
-
-throw new Error(
-"Lesson file नहीं मिला: "+
-response.status
-);
-
-}
-
-
-lessonData=
-await response.json();
-
-
-renderLesson(
-lessonData
-);
-
-
-document.getElementById(
-"loading"
-).style.display="none";
-
-
-document.getElementById(
-"content"
-).style.display="block";
-
-
-updateProgressUI();
-
-
-}
-catch(error){
-
-document.getElementById(
-"loading"
-).style.display="none";
-
-
-const box=
-document.getElementById(
-"error"
-);
-
-
-box.style.display="block";
-
-box.className="error";
-
-
-box.innerHTML=
-"<strong>Lesson लोड नहीं हो पाया।</strong><br><br>"+
-escapeAttribute(
-error.message ||
-"कृपया page को दोबारा खोलें।"
-);
-
-
-console.error(error);
-
-}
-
-}
-
-
-/* --------------------------------
-   RENDER LESSON
--------------------------------- */
-
-function renderLesson(data){
-
-/* --------------------------------
-   AADYA DATA COMPATIBILITY LAYER
-   Supports old + new lesson JSON
--------------------------------- */
-
-const isNewFormat =
-  typeof data.lesson === "number" ||
-  typeof data.title === "string";
-
-/* LESSON */
-const lesson = isNewFormat
-  ? {
-      title: data.title || "AADYA Learning",
-      subtitle: ""
     }
-  : (data.lesson || {});
 
-/* CHAPTER */
-const chapter = isNewFormat
-  ? {
-      number: data.chapter ?? "",
-      title: data.chapter_title || ""
-    }
-  : (data.chapter || {});
+  }
 
-/* INTRODUCTION */
-const intro = isNewFormat
-  ? {
-      question: "आज हम क्या सीखेंगे?",
-      explanation: data.concept || ""
-    }
-  : (data.introduction || {});
-
-
-/* --------------------------------
-   TITLE
--------------------------------- */
-
-document.getElementById(
-  "lessonTitle"
-).textContent =
-lesson.title ||
-"AADYA Learning";
-
-
-document.getElementById(
-  "chapterTitle"
-).textContent =
-"कक्षा " +
-(data.class ?? "") +
-" • " +
-(data.subject ?? "") +
-" • अध्याय " +
-(
-  chapter.number ??
-  chapter.book_number ??
-  ""
-) +
-" : " +
-(
-  chapter.title ||
-  ""
-);
-
-
-document.getElementById(
-  "mainTitle"
-).textContent =
-lesson.title || "";
-
-
-document.getElementById(
-  "subtitle"
-).textContent =
-lesson.subtitle || "";
-
-
-/* --------------------------------
-   OBJECTIVES
--------------------------------- */
-
-const objectives =
-document.getElementById(
-  "objectives"
-);
-
-objectives.innerHTML = "";
-
-
-const objectiveData =
-isNewFormat
-  ? asArray(data.objectives)
-  : asArray(data.learning_objectives);
-
-
-objectiveData.forEach(
-item => {
-
-const div =
-document.createElement(
-  "div"
-);
-
-div.className =
-"objective";
-
-div.textContent =
-"✅ " + item;
-
-objectives.appendChild(
-div
-);
+  return fallback;
 
 }
-);
 
 
-/* --------------------------------
-   INTRODUCTION
--------------------------------- */
+/* ==========================================
+   HTML SAFETY
+========================================== */
 
-document.getElementById(
-  "introQuestion"
-).textContent =
-intro.question
-  ? "🤔 " + intro.question
-  : "";
 
+function escapeHTML(value){
 
-document.getElementById(
-  "introExplanation"
-).textContent =
-intro.explanation || "";
-
-
-/* --------------------------------
-   SIMPLE EXPLANATION
--------------------------------- */
-
-const explanation =
-document.getElementById(
-  "explanation"
-);
-
-explanation.innerHTML = "";
-
-
-let explanationData =
-isNewFormat
-  ? asArray(data.explanation)
-  : asArray(data.simple_explanation);
-
-
-explanationData.forEach(
-item => {
-
-const box =
-document.createElement(
-  "div"
-);
-
-box.className =
-"example";
-
-
-/*
- * New format:
- * heading + content
- *
- * Old format:
- * title + text
- */
-
-const title =
-typeof item === "string"
-  ? ""
-  :
-  (
-    item.title ||
-    item.heading ||
-    ""
-  );
-
-
-const text =
-typeof item === "string"
-  ? item
-  :
-  firstValue(
-    item,
-    [
-      "text",
-      "content",
-      "explanation"
-    ],
-    ""
-  );
-
-
-box.innerHTML =
-"<strong>" +
-escapeAttribute(title) +
-"</strong>" +
-(
-  title
-  ? "<br><br>"
-  : ""
-) +
-escapeAttribute(text);
-
-
-explanation.appendChild(
-box
-);
-
-}
-);
-
-
-/* --------------------------------
-   EXAMPLES
--------------------------------- */
-
-const examples =
-document.getElementById(
-  "examples"
-);
-
-examples.innerHTML = "";
-
-
-const exampleData =
-asArray(data.examples);
-
-
-exampleData.forEach(
-(item,index) => {
-
-const box =
-document.createElement(
-  "div"
-);
-
-box.className =
-"example";
-
-
-/*
- * New lessons contain
- * examples as simple strings.
- *
- * Old lessons may contain
- * question/items/answer.
- */
-
-if(
-  typeof item === "string"
-){
-
-box.innerHTML =
-"<strong>" +
-(index + 1) +
-". उदाहरण</strong><br><br>" +
-escapeAttribute(item);
-
-}
-else{
-
-let html =
-"<strong>" +
-escapeAttribute(
-  item.question || ""
-) +
-"</strong>";
-
-
-if(
-Array.isArray(item.items)
-){
-
-html +=
-"<br><br>" +
-item.items
-.map(escapeAttribute)
-.join(", ");
-
-}
-
-
-if(
-item.answer !== undefined
-){
-
-html +=
-"<br><br>उत्तर: <strong>" +
-escapeAttribute(
-  item.answer
-) +
-"</strong>";
-
-}
-
-
-const reason =
-firstValue(
-  item,
-  [
-    "reason",
-    "explanation",
-    "content"
-  ],
-  ""
-);
-
-
-if(reason){
-
-html +=
-"<br>" +
-escapeAttribute(reason);
-
-}
-
-
-box.innerHTML =
-html;
-
-}
-
-
-examples.appendChild(
-box
-);
-
-}
-);
-
-
-/* --------------------------------
-   TRY YOURSELF
--------------------------------- */
-
-const tryBox =
-document.getElementById(
-  "tryYourself"
-);
-
-tryBox.innerHTML = "";
-
-
-let tryData =
-asArray(data.try_yourself);
-
-
-/*
- * New textbook lessons may not
- * have try_yourself separately.
- *
- * In that case use first 3
- * practice questions.
- */
-
-if(
-  tryData.length === 0 &&
-  isNewFormat &&
-  data.practice &&
-  Array.isArray(
-    data.practice.questions
+  return String(
+    value ?? ""
   )
-){
-
-tryData =
-data.practice.questions
-.slice(0,3)
-.map(item => {
-
-const options =
-asArray(item.options);
-
-const answerIndex =
-answerIndexValue(
-  firstValue(
-    item,
-    [
-      "correct_answer",
-      "answer"
-    ],
-    null
-  )
-);
-
-return {
-  question:
-    item.question || "",
-
-  answer:
-    answerIndex !== null &&
-    options[answerIndex] !== undefined
-      ? options[answerIndex]
-      : ""
-};
-
-});
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#39;");
 
 }
 
 
-tryData.forEach(
-(item,index) => {
-
-const box =
-document.createElement(
-  "div"
-);
-
-box.className =
-"example";
+/* ==========================================
+   ANSWER INDEX
+   Supports multiple JSON naming styles
+========================================== */
 
 
-const question =
-typeof item === "string"
-  ? item
-  : (
-      item.question ||
+function answerIndex(item){
+
+  if(!item){
+    return -1;
+  }
+
+  const value =
+    item.correct_answer ??
+    item.answer ??
+    item.correctAnswer ??
+    item.answer_index;
+
+  if(
+    typeof value === "number" &&
+    Number.isFinite(value)
+  ){
+
+    return value;
+
+  }
+
+  if(
+    typeof value === "string" &&
+    value.trim() !== ""
+  ){
+
+    const n =
+      Number(value.trim());
+
+    if(
+      Number.isFinite(n)
+    ){
+
+      return n;
+
+    }
+
+  }
+
+  return -1;
+
+}
+
+
+/* ==========================================
+   APP CHAPTER NUMBER
+   IMPORTANT:
+   textbook01 = App Chapter 3
+   textbook02 = App Chapter 4
+   ...
+========================================== */
+
+
+function getAppChapterNumber(
+  data,
+  filePath
+){
+
+  const match =
+    filePath.match(
+      /\/textbook(\d+)\/lesson\d+\.json$/
+    );
+
+  if(match){
+
+    return (
+      Number(match[1]) + 2
+    );
+
+  }
+
+
+  /*
+   * Old custom lessons
+   */
+
+  if(
+    data &&
+    data.chapter &&
+    typeof data.chapter === "object"
+  ){
+
+    return (
+      data.chapter.number ??
+      data.chapter.book_number ??
       ""
     );
 
-
-let html =
-"<strong>" +
-(index + 1) +
-". " +
-escapeAttribute(question) +
-"</strong>";
+  }
 
 
-if(
-typeof item !== "string" &&
-item.answer !== undefined &&
-item.answer !== ""
-){
-
-html +=
-"<button class='btn' onclick='showAnswer(this)'>" +
-"उत्तर देखें" +
-"</button>" +
-
-"<div class='answer'>" +
-"उत्तर: <strong>" +
-escapeAttribute(item.answer) +
-"</strong>" +
-"</div>";
-
-}
-else if(
-typeof item !== "string" &&
-item.hint
-){
-
-html +=
-"<br><br>💡 संकेत: " +
-escapeAttribute(item.hint);
-
-}
-
-
-box.innerHTML =
-html;
-
-
-tryBox.appendChild(
-box
-);
-
-}
-);
-
-
-/* --------------------------------
-   PRACTICE
--------------------------------- */
-
-const practiceContainer =
-document.getElementById(
-  "practice"
-);
-
-
-let practiceQuestions = [];
-
-
-if(
-  isNewFormat &&
-  data.practice &&
-  Array.isArray(
-    data.practice.questions
-  )
-){
-
-practiceQuestions =
-data.practice.questions;
-
-}
-else if(
-  Array.isArray(data.practice)
-){
-
-practiceQuestions =
-data.practice;
-
-}
-
-
-renderQuestions(
-practiceQuestions,
-practiceContainer,
-false
-);
-
-
-/* --------------------------------
-   QUIZ
--------------------------------- */
-
-const quiz =
-document.getElementById(
-  "quiz"
-);
-
-quiz.innerHTML = "";
-
-quizScore = 0;
-
-answeredQuestions = 0;
-
-
-let quizQuestions = [];
-
-
-if(
-  isNewFormat &&
-  data.quiz &&
-  Array.isArray(
-    data.quiz.questions
-  )
-){
-
-quizQuestions =
-data.quiz.questions;
-
-}
-else if(
-  Array.isArray(data.quiz)
-){
-
-quizQuestions =
-data.quiz;
-
-}
-
-
-renderQuestions(
-quizQuestions,
-quiz,
-true
-);
-
-
-/* --------------------------------
-   REAL LIFE ACTIVITY
--------------------------------- */
-
-const activity =
-data.real_life_activity || {};
-
-
-document.getElementById(
-  "activityTitle"
-).textContent =
-"🌍 " +
-(
-  activity.title ||
-  "गतिविधि"
-);
-
-
-const instruction =
-firstValue(
-  activity,
-  [
-    "instruction",
-    "instructions",
-    "learning"
-  ],
-  ""
-);
-
-
-document.getElementById(
-  "activityInstruction"
-).textContent =
-typeof instruction === "string"
-  ? instruction
-  : "";
-
-
-const activityExamples =
-document.getElementById(
-  "activityExamples"
-);
-
-activityExamples.innerHTML = "";
-
-
-const activityItems =
-asArray(
-  firstValue(
-    activity,
-    [
-      "examples",
-      "steps"
-    ],
-    []
-  )
-);
-
-
-activityItems.forEach(
-item => {
-
-const li =
-document.createElement(
-  "li"
-);
-
-li.textContent =
-typeof item === "string"
-  ? item
-  :
-  (
-    item.text ||
-    item.instruction ||
-    JSON.stringify(item)
+  return (
+    data?.chapter ?? ""
   );
 
-activityExamples.appendChild(
-li
-);
-
 }
-);
 
 
-/* --------------------------------
-   KEY POINTS
--------------------------------- */
-
-const keyPoints =
-document.getElementById(
-  "keyPoints"
-);
-
-keyPoints.innerHTML = "";
+/* ==========================================
+   CHAPTER TITLE
+========================================== */
 
 
-let keyPointData =
-asArray(data.key_points);
+function getChapterTitle(data){
 
+  if(
+    data &&
+    typeof data.chapter === "object"
+  ){
 
-/*
- * New format lessons do not
- * separately contain key_points.
- *
- * Use objectives as main points.
- */
+    return (
+      data.chapter.title ||
+      data.chapter.chapter_title ||
+      data.chapter.name ||
+      ""
+    );
 
-if(
-  keyPointData.length === 0 &&
-  isNewFormat
-){
+  }
 
-keyPointData =
-asArray(data.objectives);
+  return (
+    data?.chapter_title ||
+    ""
+  );
 
 }
 
 
-keyPointData.forEach(
-item => {
+/* ==========================================
+   LESSON TITLE
+========================================== */
 
-const li =
-document.createElement(
-  "li"
-);
 
-li.textContent =
-item;
+function getLessonTitle(data){
 
-keyPoints.appendChild(
-li
-);
+  if(
+    data &&
+    typeof data.lesson === "object"
+  ){
+
+    return (
+      data.lesson.title ||
+      data.lesson.name ||
+      ""
+    );
+
+  }
+
+  return (
+    data?.title ||
+    ""
+  );
 
 }
-);
 
 
-/* --------------------------------
-   COMPLETION
--------------------------------- */
-
-document.getElementById(
-  "completionMessage"
-).textContent =
-(
-  data.completion || {}
-).message ||
-"🎉 शानदार! Lesson पूरा हुआ।";
+/* ==========================================
+   LESSON NUMBER
+========================================== */
 
 
-document.getElementById(
-  "nextLesson"
-).textContent =
-(
-  data.completion || {}
-).next_lesson
-  ?
-  "अगला पाठ: " +
-  data.completion.next_lesson
-  :
-  "";
+function getLessonNumber(data){
 
-   }
+  if(
+    data &&
+    typeof data.lesson === "object"
+  ){
 
-/* --------------------------------
-   QUESTIONS
--------------------------------- */
+    return (
+      data.lesson.number ??
+      data.lesson.lesson ??
+      ""
+    );
+
+  }
+
+  return (
+    data?.lesson ?? ""
+  );
+
+}
+
+
+/* ==========================================
+   INTRODUCTION
+========================================== */
+
+
+function getIntroduction(data){
+
+  /*
+   * New format
+   */
+
+  if(
+    data?.concept
+  ){
+
+    return {
+
+      question:
+        "आज हम क्या सीखेंगे?",
+
+      explanation:
+        data.concept
+
+    };
+
+  }
+
+
+  /*
+   * Old format
+   */
+
+  if(
+    data?.introduction
+  ){
+
+    return data.introduction;
+
+  }
+
+
+  return {
+
+    question:
+      "आज हम क्या सीखेंगे?",
+
+    explanation:""
+
+  };
+
+}
+
+
+/* ==========================================
+   EXPLANATION NORMALIZER
+========================================== */
+
+
+function getExplanation(data){
+
+  if(
+    Array.isArray(
+      data?.explanation
+    )
+  ){
+
+    return data.explanation;
+
+  }
+
+
+  return asArray(
+    data?.simple_explanation
+  );
+
+}
+
+
+/* ==========================================
+   EXAMPLE NORMALIZER
+========================================== */
+
+
+function getExamples(data){
+
+  return asArray(
+    data?.examples
+  );
+
+}
+
+
+/* ==========================================
+   QUESTION NORMALIZER
+========================================== */
+
+
+function normalizeQuestion(item){
+
+  if(
+    typeof item === "string"
+  ){
+
+    return {
+
+      question:item,
+
+      options:[],
+
+      correct_answer:-1,
+
+      explanation:""
+
+    };
+
+  }
+
+
+  if(!item){
+
+    return {
+
+      question:"",
+
+      options:[],
+
+      correct_answer:-1,
+
+      explanation:""
+
+    };
+
+  }
+
+
+  let options =
+    item.options ??
+    item.choices ??
+    item.answers ??
+    [];
+
+
+  if(
+    !Array.isArray(options)
+  ){
+
+    options = [];
+
+  }
+
+
+  return {
+
+    question:
+      item.question ||
+      item.text ||
+      item.statement ||
+      "",
+
+    options:
+
+      options.map(
+        option => {
+
+          if(
+            typeof option === "object"
+          ){
+
+            return (
+              option.text ||
+              option.label ||
+              option.value ||
+              ""
+            );
+
+          }
+
+          return String(
+            option
+          );
+
+        }
+      ),
+
+    correct_answer:
+      answerIndex(item),
+
+    explanation:
+      item.explanation ||
+      item.solution ||
+      item.answer_explanation ||
+      ""
+
+  };
+
+}
+
+
+/* ==========================================
+   QUESTIONS FROM NEW / OLD JSON
+========================================== */
+
+
+function getPracticeQuestions(data){
+
+  /*
+   * New format:
+   * practice.questions
+   */
+
+  if(
+    data?.practice &&
+    Array.isArray(
+      data.practice.questions
+    )
+  ){
+
+    return data.practice.questions
+      .map(normalizeQuestion);
+
+  }
+
+
+  /*
+   * Old format:
+   * practice_questions
+   */
+
+  return asArray(
+    data?.practice_questions
+  )
+  .map(normalizeQuestion);
+
+}
+
+
+function getQuizQuestions(data){
+
+  /*
+   * New format:
+   * quiz.questions
+   */
+
+  if(
+    data?.quiz &&
+    Array.isArray(
+      data.quiz.questions
+    )
+  ){
+
+    return data.quiz.questions
+      .map(normalizeQuestion);
+
+  }
+
+
+  /*
+   * Old format:
+   * quiz_questions
+   */
+
+  return asArray(
+    data?.quiz_questions
+  )
+  .map(normalizeQuestion);
+
+}
+
+
+/* ==========================================
+   LOAD LESSON
+========================================== */
+
+
+async function loadLesson(){
+
+  try{
+
+    const response =
+      await fetch(
+        lessonFile +
+        "?v=" +
+        Date.now(),
+        {
+          cache:"no-store"
+        }
+      );
+
+
+    if(!response.ok){
+
+      throw new Error(
+        "Lesson file नहीं मिला: " +
+        response.status
+      );
+
+    }
+
+
+    lessonData =
+      await response.json();
+
+
+    renderLesson(
+      lessonData
+    );
+
+
+    document.getElementById(
+      "loading"
+    ).style.display =
+      "none";
+
+
+    document.getElementById(
+      "content"
+    ).style.display =
+      "block";
+
+
+    updateProgressUI();
+
+
+  }
+  catch(error){
+
+    document.getElementById(
+      "loading"
+    ).style.display =
+      "none";
+
+
+    const box =
+      document.getElementById(
+        "error"
+      );
+
+
+    box.style.display =
+      "block";
+
+
+    box.className =
+      "error";
+
+
+    box.innerHTML =
+      "<strong>Lesson लोड नहीं हो पाया।</strong><br><br>" +
+      escapeHTML(
+        error.message ||
+        "कृपया page को दोबारा खोलें।"
+      );
+
+
+    console.error(error);
+
+  }
+
+}
+
+
+/* ==========================================
+   RENDER LESSON
+========================================== */
+
+
+function renderLesson(data){
+
+  const chapterNumber =
+    getAppChapterNumber(
+      data,
+      lessonFile
+    );
+
+
+  const chapterTitle =
+    getChapterTitle(data);
+
+
+  const lessonTitle =
+    getLessonTitle(data);
+
+
+  const lessonNumber =
+    getLessonNumber(data);
+
+
+  const intro =
+    getIntroduction(data);
+
+
+  /* --------------------------------------
+     HEADER / TITLE
+  -------------------------------------- */
+
+
+  document.getElementById(
+    "lessonTitle"
+  ).textContent =
+    lessonTitle ||
+    "AADYA Learning";
+
+
+  document.getElementById(
+    "chapterTitle"
+  ).textContent =
+
+    "कक्षा " +
+    (data.class ?? "") +
+
+    " • " +
+
+    (data.subject ?? "") +
+
+    " • अध्याय " +
+
+    chapterNumber +
+
+    (
+      chapterTitle
+        ? " : " + chapterTitle
+        : ""
+    );
+
+
+  document.getElementById(
+    "mainTitle"
+  ).textContent =
+    lessonTitle;
+
+
+  document.getElementById(
+    "subtitle"
+  ).textContent =
+
+    lessonNumber
+      ? "पाठ " + lessonNumber
+      : "";
+
+
+  /* --------------------------------------
+     OBJECTIVES
+  -------------------------------------- */
+
+
+  const objectives =
+    document.getElementById(
+      "objectives"
+    );
+
+
+  objectives.innerHTML =
+    "";
+
+
+  const objectiveData =
+
+    Array.isArray(
+      data.objectives
+    )
+
+      ? data.objectives
+
+      : asArray(
+          data.learning_objectives
+        );
+
+
+  objectiveData.forEach(
+    item => {
+
+      const div =
+        document.createElement(
+          "div"
+        );
+
+
+      div.className =
+        "objective";
+
+
+      div.textContent =
+        "✅ " + item;
+
+
+      objectives.appendChild(
+        div
+      );
+
+    }
+  );
+
+
+  /* --------------------------------------
+     INTRODUCTION
+  -------------------------------------- */
+
+
+  document.getElementById(
+    "introQuestion"
+  ).textContent =
+
+    intro.question
+      ? "🤔 " + intro.question
+      : "";
+
+
+  document.getElementById(
+    "introExplanation"
+  ).textContent =
+
+    intro.explanation ||
+    "";
+
+
+  /* --------------------------------------
+     EXPLANATION
+  -------------------------------------- */
+
+
+  const explanation =
+    document.getElementById(
+      "explanation"
+    );
+
+
+  explanation.innerHTML =
+    "";
+
+
+  const explanationData =
+    getExplanation(data);
+
+
+  explanationData.forEach(
+    item => {
+
+      const box =
+        document.createElement(
+          "div"
+        );
+
+
+      box.className =
+        "example";
+
+
+      if(
+        typeof item === "string"
+      ){
+
+        box.innerHTML =
+          escapeHTML(item);
+
+      }
+      else{
+
+        const title =
+          item.heading ||
+          item.title ||
+          "";
+
+
+        const text =
+          item.content ||
+          item.text ||
+          item.explanation ||
+          "";
+
+
+        box.innerHTML =
+
+          (
+            title
+              ? "<strong>" +
+                escapeHTML(title) +
+                "</strong><br><br>"
+              : ""
+          ) +
+
+          escapeHTML(text);
+
+      }
+
+
+      explanation.appendChild(
+        box
+      );
+
+    }
+  );
+
+
+  /* --------------------------------------
+     EXAMPLES
+  -------------------------------------- */
+
+
+  const examples =
+    document.getElementById(
+      "examples"
+    );
+
+
+  examples.innerHTML =
+    "";
+
+
+  const exampleData =
+    getExamples(data);
+
+
+  exampleData.forEach(
+    (item,index) => {
+
+      const box =
+        document.createElement(
+          "div"
+        );
+
+
+      box.className =
+        "example";
+
+
+      if(
+        typeof item === "string"
+      ){
+
+        box.innerHTML =
+
+          "<strong>" +
+          (index + 1) +
+          ". उदाहरण</strong><br><br>" +
+
+          escapeHTML(item);
+
+      }
+      else{
+
+        let html =
+          "<strong>" +
+
+          escapeHTML(
+            item.question ||
+            item.title ||
+            (
+              (index + 1) +
+              ". उदाहरण"
+            )
+          ) +
+
+          "</strong>";
+
+
+        if(
+          Array.isArray(
+            item.items
+          )
+        ){
+
+          html +=
+            "<br><br>" +
+
+            item.items
+              .map(
+                escapeHTML
+              )
+              .join("<br>");
+
+        }
+
+
+        if(
+          item.answer
+        ){
+
+          html +=
+            "<br><br><strong>उत्तर:</strong> " +
+
+            escapeHTML(
+              item.answer
+            );
+
+        }
+
+
+        box.innerHTML =
+          html;
+
+      }
+
+
+      examples.appendChild(
+        box
+      );
+
+    }
+  );
+
+
+  /* --------------------------------------
+     TRY YOURSELF
+  -------------------------------------- */
+
+
+  const tryBox =
+    document.getElementById(
+      "tryYourself"
+    );
+
+
+  tryBox.innerHTML =
+    "";
+
+
+  let tryData =
+    asArray(
+      data.try_yourself
+    );
+
+
+  /*
+   * New textbook lessons do not
+   * necessarily have try_yourself.
+   *
+   * So derive it from first
+   * practice questions.
+   */
+
+
+  if(
+    tryData.length === 0
+  ){
+
+    const practice =
+      getPracticeQuestions(data);
+
+
+    tryData =
+      practice.slice(
+        0,
+        3
+      );
+
+  }
+
+
+  tryData.forEach(
+    item => {
+
+      const box =
+        document.createElement(
+          "div"
+        );
+
+
+      box.className =
+        "example";
+
+
+      if(
+        typeof item === "string"
+      ){
+
+        box.textContent =
+          "✏️ " + item;
+
+      }
+      else{
+
+        box.textContent =
+          "✏️ " +
+          (
+            item.question ||
+            item.text ||
+            ""
+          );
+
+      }
+
+
+      tryBox.appendChild(
+        box
+      );
+
+    }
+  );
+
+
+  /* --------------------------------------
+     PRACTICE
+  -------------------------------------- */
+
+
+  renderQuestions(
+    getPracticeQuestions(data),
+    document.getElementById(
+      "practice"
+    ),
+    false
+  );
+
+
+  /* --------------------------------------
+     QUIZ
+  -------------------------------------- */
+
+
+  renderQuestions(
+    getQuizQuestions(data),
+    document.getElementById(
+      "quiz"
+    ),
+    true
+  );
+
+
+    /* --------------------------------------
+     ACTIVITY
+  -------------------------------------- */
+
+
+  renderActivity(data);
+
+
+  /* --------------------------------------
+     KEY POINTS
+  -------------------------------------- */
+
+
+  renderKeyPoints(data);
+
+
+  /* --------------------------------------
+     COMPLETION
+  -------------------------------------- */
+
+
+  renderCompletion(data);
+
+}
+
+
+/* ==========================================
+   RENDER QUESTIONS
+========================================== */
+
 
 function renderQuestions(
-items,
-container,
-isQuiz
+  items,
+  container,
+  isQuiz
 ){
 
-container.innerHTML = "";
+  /*
+   * VERY IMPORTANT:
+   * Clear container before rendering.
+   * Prevents duplicate Practice / Quiz.
+   */
 
-items.forEach(
-(item,index)=>{
-
-const box=
-document.createElement(
-"div"
-);
-
-box.className=
-"example";
+  container.innerHTML =
+    "";
 
 
-let html=
-"<div class='question'>"+
-(index+1)+
-". "+
-escapeAttribute(
-item.question || ""
-)+
-"</div>";
+  if(
+    !items ||
+    items.length === 0
+  ){
+
+    container.innerHTML =
+
+      "<p class='small-note'>" +
+
+      (
+        isQuiz
+          ? "इस lesson का Quiz तैयार किया जा रहा है।"
+          : "इस lesson का अभ्यास उपलब्ध नहीं है।"
+      ) +
+
+      "</p>";
+
+    return;
+
+  }
 
 
-asArray(
-item.options
-)
-.forEach(
-option=>{
+  items.forEach(
+    (item,index) => {
 
-html+=
-"<button "+
-"class='option' "+
-"onclick='"+
-(
-isQuiz
-?
-"checkQuiz"
-:
-"checkPractice"
-)+
-"(this)' "+
-"data-option='"+
-escapeAttribute(
-option
-)+
-"' "+
-"data-answer='"+
-escapeAttribute(
-firstValue(
-item,
-[
-"correct_answer",
-"answer"
-],
-""
-)
-)+
-"' "+
-"data-explanation='"+
-escapeAttribute(
-firstValue(
-item,
-[
-"explanation",
-"reason"
-],
-""
-)
-)+
-"' "+
-"data-correct='"+
-escapeAttribute(
-firstValue(
-item,
-[
-"feedback_correct",
-"explanation"
-],
-"सही उत्तर!"
-)
-)+
-"' "+
-"data-wrong='"+
-escapeAttribute(
-firstValue(
-item,
-[
-"feedback_wrong",
-"explanation"
-],
-"कृपया सही उत्तर देखें।"
-)
-)+
-"'>"+
-escapeAttribute(
-option
-)+
-"</button>";
+      const questionBox =
+        document.createElement(
+          "div"
+        );
+
+
+      questionBox.className =
+        "example";
+
+
+      const question =
+        document.createElement(
+          "div"
+        );
+
+
+      question.className =
+        "question";
+
+
+      question.textContent =
+
+        (index + 1) +
+        ". " +
+        item.question;
+
+
+      questionBox.appendChild(
+        question
+      );
+
+
+      if(
+        item.options.length === 0
+      ){
+
+        const note =
+          document.createElement(
+            "div"
+          );
+
+
+        note.textContent =
+          "✏️ इस प्रश्न को कॉपी/नोटबुक में हल करें।";
+
+
+        questionBox.appendChild(
+          note
+        );
+
+
+        container.appendChild(
+          questionBox
+        );
+
+
+        return;
+
+      }
+
+
+      const feedback =
+        document.createElement(
+          "div"
+        );
+
+
+      feedback.className =
+        "feedback";
+
+
+      feedback.style.display =
+        "none";
+
+
+      item.options.forEach(
+        (optionText,optionIndex) => {
+
+          const button =
+            document.createElement(
+              "button"
+            );
+
+
+          button.className =
+            "option";
+
+
+          button.textContent =
+            String.fromCharCode(
+              65 + optionIndex
+            ) +
+            ". " +
+            optionText;
+
+
+          button.onclick =
+            function(){
+
+              handleQuestionAnswer(
+                button,
+                item,
+                optionIndex,
+                questionBox,
+                feedback,
+                isQuiz
+              );
+
+            };
+
+
+          questionBox.appendChild(
+            button
+          );
+
+        }
+      );
+
+
+      questionBox.appendChild(
+        feedback
+      );
+
+
+      container.appendChild(
+        questionBox
+      );
+
+    }
+  );
 
 }
-);
 
 
-html+=
-"<div class='feedback'></div>";
+/* ==========================================
+   HANDLE QUESTION ANSWER
+========================================== */
 
 
-box.innerHTML=
-html;
-
-
-container.appendChild(
-box
-);
-
-}
-);
-
-}
-
-
-/* --------------------------------
-   SHOW ANSWER
--------------------------------- */
-
-function showAnswer(button){
-
-const answer=
-button.nextElementSibling;
-
-
-if(answer){
-
-answer.style.display=
-"block";
-
-button.style.display=
-"none";
-
-}
-
-}
-
-
-/* --------------------------------
-   FIND CORRECT ANSWER
--------------------------------- */
-
-function resolveCorrectAnswer(
-buttons,
-answer
+function handleQuestionAnswer(
+  clickedButton,
+  item,
+  selectedIndex,
+  questionBox,
+  feedback,
+  isQuiz
 ){
 
-const n=
-answerIndexValue(answer);
+  const buttons =
+    questionBox.querySelectorAll(
+      ".option"
+    );
 
 
-if(
-n !== null &&
-n >= 0 &&
-n < buttons.length
-){
+  /*
+   * Prevent answering same
+   * question multiple times.
+   */
 
-return buttons[n]
-.getAttribute(
-"data-option"
-);
+  if(
+    Array.from(buttons)
+      .some(
+        button =>
+          button.disabled
+      )
+  ){
 
-}
+    return;
 
-
-return answer;
-
-}
-
-
-/* --------------------------------
-   PRACTICE CHECK
--------------------------------- */
-
-function checkPractice(button){
-
-const box=
-button.parentElement;
+  }
 
 
-const buttons=
-box.querySelectorAll(
-".option"
-);
+  buttons.forEach(
+    button => {
+
+      button.disabled =
+        true;
+
+    }
+  );
 
 
-const feedback=
-box.querySelector(
-".feedback"
-);
+  const correctIndex =
+    answerIndex(item);
 
 
-const selected=
-button.getAttribute(
-"data-option"
-);
+  if(
+    selectedIndex ===
+    correctIndex
+  ){
+
+    clickedButton.classList.add(
+      "correct"
+    );
 
 
-const answer=
-button.getAttribute(
-"data-answer"
-);
+    feedback.className =
+      "feedback good";
 
 
-const explanation=
-button.getAttribute(
-"data-explanation"
-) || "";
+    feedback.innerHTML =
+      "✅ बिल्कुल सही!";
 
 
-const correct=
-resolveCorrectAnswer(
-buttons,
-answer
-);
+    feedback.style.display =
+      "block";
 
 
-buttons.forEach(
-btn=>{
+    if(isQuiz){
 
-btn.disabled=true;
+      quizScore++;
 
+    }
 
-if(
-btn.getAttribute(
-"data-option"
-) === correct
-){
+  }
+  else{
 
-btn.classList.add(
-"correct"
-);
-
-}
-
-}
-);
+    clickedButton.classList.add(
+      "wrong"
+    );
 
 
-if(
-selected === correct
-){
+    /*
+     * Highlight correct option
+     */
 
-button.classList.add(
-"correct"
-);
+    if(
+      correctIndex >= 0 &&
+      correctIndex < buttons.length
+    ){
 
-feedback.className=
-"feedback good";
+      buttons[
+        correctIndex
+      ].classList.add(
+        "correct"
+      );
 
-feedback.textContent=
-"✅ सही उत्तर! "+
-explanation;
-
-}
-
-else{
-
-button.classList.add(
-"wrong"
-);
-
-feedback.className=
-"feedback bad";
-
-feedback.textContent=
-"❌ सही उत्तर: "+
-correct+
-(
-explanation
-?
-" — "+explanation
-:
-""
-);
-
-}
-
-}
+    }
 
 
-/* --------------------------------
-   QUIZ CHECK
--------------------------------- */
-
-function checkQuiz(button){
-
-const box=
-button.parentElement;
+    feedback.className =
+      "feedback bad";
 
 
-if(
-box.dataset.answered === "true"
-){
+    feedback.innerHTML =
+      "❌ अभी सही उत्तर नहीं।" +
 
-return;
+      (
+        item.explanation
+          ? "<br><br>" +
+            escapeHTML(
+              item.explanation
+            )
+          : ""
+      );
+
+
+    feedback.style.display =
+      "block";
+
+  }
+
+
+  if(isQuiz){
+
+    answeredQuestions++;
+
+
+    const total =
+      getQuizQuestions(
+        lessonData
+      ).length;
+
+
+    if(
+      answeredQuestions >= total
+    ){
+
+      finishQuiz();
+
+    }
+
+  }
 
 }
 
 
-box.dataset.answered=
-"true";
+/* ==========================================
+   FINISH QUIZ
+========================================== */
 
 
-answeredQuestions++;
+function finishQuiz(){
+
+  if(quizFinished){
+
+    return;
+
+  }
 
 
-const buttons=
-box.querySelectorAll(
-".option"
-);
+  quizFinished =
+    true;
 
 
-const feedback=
-box.querySelector(
-".feedback"
-);
+  const total =
+    getQuizQuestions(
+      lessonData
+    ).length;
 
 
-const selected=
-button.getAttribute(
-"data-option"
-);
+  const percentage =
+    total > 0
+      ? Math.round(
+          (
+            quizScore /
+            total
+          ) * 100
+        )
+      : 0;
 
 
-const answer=
-button.getAttribute(
-"data-answer"
-);
+  const result =
+    document.getElementById(
+      "quizResult"
+    );
 
 
-const correct=
-resolveCorrectAnswer(
-buttons,
-answer
-);
+  result.innerHTML =
+
+    "🎉 Quiz पूरा हुआ! " +
+
+    "<br><br>" +
+
+    "आपका Score: " +
+
+    quizScore +
+
+    " / " +
+
+    total +
+
+    " (" +
+
+    percentage +
+
+    "%)";
 
 
-const correctFeedback=
-button.getAttribute(
-"data-correct"
-) ||
-"सही उत्तर!";
+  localStorage.setItem(
+    QUIZ_KEY,
+    JSON.stringify({
+
+      score:
+        quizScore,
+
+      total:
+        total,
+
+      percentage:
+        percentage,
+
+      lesson:
+        lessonFile,
+
+      timestamp:
+        new Date().toISOString()
+
+    })
+  );
 
 
-const wrongFeedback=
-button.getAttribute(
-"data-wrong"
-) ||
-"कृपया सही उत्तर देखें।";
+  /*
+   * Small motivation
+   */
 
+  if(
+    percentage >= 80
+  ){
 
-buttons.forEach(
-btn=>{
+    result.innerHTML +=
+      "<br><br>🌟 शानदार! आपकी समझ बहुत अच्छी है।";
 
-btn.disabled=true;
+  }
+  else if(
+    percentage >= 50
+  ){
 
+    result.innerHTML +=
+      "<br><br>👍 बहुत अच्छा! एक बार lesson फिर से देखकर और बेहतर कर सकते हैं।";
 
-if(
-btn.getAttribute(
-"data-option"
-) === correct
-){
+  }
+  else{
 
-btn.classList.add(
-"correct"
-);
+    result.innerHTML +=
+      "<br><br>💪 कोई बात नहीं। Lesson दोबारा पढ़िए और फिर Quiz दीजिए।";
 
-}
-
-}
-);
-
-
-if(
-selected === correct
-){
-
-quizScore++;
-
-
-button.classList.add(
-"correct"
-);
-
-feedback.className=
-"feedback good";
-
-
-feedback.textContent=
-"✅ "+
-correctFeedback;
-
-}
-
-else{
-
-button.classList.add(
-"wrong"
-);
-
-feedback.className=
-"feedback bad";
-
-
-feedback.textContent=
-"❌ "+
-wrongFeedback;
-
-}
-
-
-updateQuizResult();
+  }
 
 }
 
 
-/* --------------------------------
-   QUIZ RESULT
--------------------------------- */
-
-function updateQuizResult(){
-
-const result=
-document.getElementById(
-"quizResult"
-);
+/* ==========================================
+   ACTIVITY
+========================================== */
 
 
-const total=
-lessonData &&
-lessonData.quiz &&
-Array.isArray(
-lessonData.quiz.questions
-)
-?
-lessonData.quiz.questions.length
-:
-0;
+function renderActivity(data){
+
+  const title =
+    document.getElementById(
+      "activityTitle"
+    );
 
 
-if(!total){
+  const instruction =
+    document.getElementById(
+      "activityInstruction"
+    );
 
-result.textContent="";
 
-return;
+  const list =
+    document.getElementById(
+      "activityExamples"
+    );
+
+
+  list.innerHTML =
+    "";
+
+
+  const activity =
+    data.activity ||
+    data.activity_section ||
+    {};
+
+
+  const activityTitle =
+    activity.title ||
+    data.activity_title ||
+    "🌍 गतिविधि";
+
+
+  const activityInstruction =
+    activity.instruction ||
+    data.activity_instruction ||
+    "";
+
+
+  const activityExamples =
+    asArray(
+      activity.examples ||
+      data.activity_examples
+    );
+
+
+  title.textContent =
+    activityTitle;
+
+
+  instruction.textContent =
+    activityInstruction;
+
+
+  activityExamples.forEach(
+    item => {
+
+      const li =
+        document.createElement(
+          "li"
+        );
+
+
+      li.textContent =
+        typeof item === "string"
+          ? item
+          : (
+              item.text ||
+              item.content ||
+              item.example ||
+              ""
+            );
+
+
+      list.appendChild(
+        li
+      );
+
+    }
+  );
+
+
+  /*
+   * If no activity exists,
+   * keep section useful.
+   */
+
+  if(
+    !activityInstruction &&
+    activityExamples.length === 0
+  ){
+
+    instruction.textContent =
+      "आज सीखी गई अवधारणा को अपने आसपास की किसी वस्तु या दैनिक जीवन की स्थिति से जोड़कर देखें।";
+
+  }
 
 }
 
 
-if(
-answeredQuestions === total
-){
-
-const percentage=
-Math.round(
-quizScore /
-total *
-100
-);
+/* ==========================================
+   KEY POINTS
+========================================== */
 
 
-result.textContent=
-"🎉 Quiz पूरा! आपका स्कोर: "+
-quizScore+
-"/"+
-total+
-" ("+
-percentage+
-"%)";
+function renderKeyPoints(data){
+
+  const list =
+    document.getElementById(
+      "keyPoints"
+    );
 
 
-localStorage.setItem(
-"aadya_last_quiz_score",
-quizScore
-);
+  list.innerHTML =
+    "";
+
+
+  let points =
+    asArray(
+      data.key_points
+    );
+
+
+  if(
+    points.length === 0
+  ){
+
+    points =
+      asArray(
+        data.summary
+      );
+
+  }
+
+
+  if(
+    points.length === 0
+  ){
+
+    /*
+     * New lessons:
+     * objectives are a safe fallback.
+     */
+
+    points =
+      asArray(
+        data.objectives
+      );
+
+  }
+
+
+  points.forEach(
+    point => {
+
+      const li =
+        document.createElement(
+          "li"
+        );
+
+
+      li.textContent =
+        point;
+
+
+      list.appendChild(
+        li
+      );
+
+    }
+  );
+
+
+  if(
+    points.length === 0
+  ){
+
+    const li =
+      document.createElement(
+        "li"
+      );
+
+
+    li.textContent =
+      "आज की अवधारणा को एक बार अपने शब्दों में दोहराएँ।";
+
+
+    list.appendChild(
+      li
+    );
+
+  }
 
 }
 
-else{
 
-result.textContent=
-"प्रश्न हल किए: "+
-answeredQuestions+
-"/"+
-total;
+/* ==========================================
+   COMPLETION
+========================================== */
+
+
+function renderCompletion(data){
+
+  const completion =
+    data.completion ||
+    {};
+
+
+  document.getElementById(
+    "completionMessage"
+  ).textContent =
+
+    completion.message ||
+    "🎉 बहुत बढ़िया! Lesson पूरा करने के लिए तैयार हैं।";
+
+
+  document.getElementById(
+    "nextLesson"
+  ).textContent =
+
+    completion.next ||
+    "Lesson पूरा करने के बाद आपकी Learning Progress सेव हो जाएगी।";
+
+
+  updateProgressUI();
 
 }
 
-}
 
-
-/* --------------------------------
+/* ==========================================
    PROGRESS
--------------------------------- */
-
-const PROGRESS_KEY=
-"aadya_progress_v1";
+========================================== */
 
 
-function saveLessonProgress(){
+function getProgressData(){
 
-const progress=
-JSON.parse(
-localStorage.getItem(
-PROGRESS_KEY
-) ||
-"{}"
-);
+  try{
 
-
-progress[lessonFile]=
-{
-completed:true,
-completedAt:
-new Date().toISOString()
-};
+    const saved =
+      localStorage.getItem(
+        PROGRESS_KEY
+      );
 
 
-localStorage.setItem(
-PROGRESS_KEY,
-JSON.stringify(progress)
-);
+    if(!saved){
 
-}
+      return {};
 
-
-function isLessonCompleted(){
-
-const progress=
-JSON.parse(
-localStorage.getItem(
-PROGRESS_KEY
-) ||
-"{}"
-);
+    }
 
 
-return !!(
-progress[lessonFile] &&
-progress[lessonFile].completed
-);
+    return JSON.parse(
+      saved
+    ) || {};
+
+  }
+  catch(error){
+
+    console.error(
+      "Progress read error:",
+      error
+    );
+
+
+    return {};
+
+  }
 
 }
+
+
+/* ==========================================
+   UPDATE PROGRESS UI
+========================================== */
 
 
 function updateProgressUI(){
 
-const bar=
-document.getElementById(
-"progressBar"
-);
+  const progress =
+    getProgressData();
 
 
-const button=
-document.getElementById(
-"completeButton"
-);
+  const completed =
+    progress[lessonFile] === true ||
+    (
+      progress[lessonFile] &&
+      progress[lessonFile].completed === true
+    );
 
 
-if(
-!bar ||
-!button
-){
-
-return;
-
-}
+  const bar =
+    document.getElementById(
+      "progressBar"
+    );
 
 
-if(
-isLessonCompleted()
-){
+  if(bar){
 
-bar.style.width=
-"100%";
+    bar.style.width =
+      completed
+        ? "100%"
+        : "0%";
 
-
-button.textContent=
-"✅ Lesson पहले ही पूरा किया गया";
+  }
 
 
-button.disabled=true;
-
-button.style.opacity=
-".75";
-
-}
-
-else{
-
-bar.style.width=
-"0";
+  const button =
+    document.getElementById(
+      "completeButton"
+    );
 
 
-button.textContent=
-"✅ Lesson पूरा किया";
+  if(button){
 
+    button.textContent =
+      completed
+        ? "✅ Lesson पूरा हो चुका है"
+        : "✅ Lesson पूरा किया";
 
-button.disabled=false;
-
-button.style.opacity=
-"1";
-
-}
+  }
 
 }
 
 
-/* --------------------------------
+/* ==========================================
    COMPLETE LESSON
--------------------------------- */
-
-window.completeLesson=
-function(){
-
-saveLessonProgress();
+========================================== */
 
 
-if(
-lessonData &&
-lessonData.id
-){
+function completeLesson(){
 
-localStorage.setItem(
-"aadya_last_lesson",
-lessonData.id
-);
+  const progress =
+    getProgressData();
+
+
+  progress[lessonFile] = {
+
+    completed:true,
+
+    timestamp:
+      new Date().toISOString(),
+
+    title:
+      getLessonTitle(
+        lessonData
+      ),
+
+    chapter:
+      getAppChapterNumber(
+        lessonData,
+        lessonFile
+      )
+
+  };
+
+
+  localStorage.setItem(
+    PROGRESS_KEY,
+    JSON.stringify(
+      progress
+    )
+  );
+
+
+  document.getElementById(
+    "progressBar"
+  ).style.width =
+    "100%";
+
+
+  document.getElementById(
+    "completeButton"
+  ).textContent =
+    "✅ Lesson पूरा हो चुका है";
+
+
+  document.getElementById(
+    "completionMessage"
+  ).textContent =
+    "🎉 शानदार! आपने यह Lesson पूरा कर लिया।";
+
+
+  document.getElementById(
+    "nextLesson"
+  ).textContent =
+    "आपकी Learning Progress सेव हो गई है। 🚀";
+
+
+  /*
+   * Small notification
+   */
+
+  setTimeout(
+    function(){
+
+      alert(
+        "🎉 बहुत बढ़िया!\n\n" +
+        "यह Lesson आपकी Progress में सेव हो गया है।"
+      );
+
+    },
+    100
+  );
 
 }
 
 
-const bar=
-document.getElementById(
-"progressBar"
-);
+/* ==========================================
+   HOME
+========================================== */
 
 
-const button=
-document.getElementById(
-"completeButton"
-);
-
-
-if(bar){
-
-bar.style.width=
-"100%";
-
-}
-
-
-if(button){
-
-button.textContent=
-"✅ Lesson पूरा किया गया";
-
-
-button.disabled=true;
-
-
-button.style.opacity=
-".75";
-
-}
-
-
-alert(
-"🎉 बहुत बढ़िया!\n\n"+
-"आपने यह Lesson पूरा कर लिया।\n\n"+
-"आपकी Progress सुरक्षित कर ली गई है।"
-);
-
-};
-
-
-/* --------------------------------
-   START AADYA LEARNING PAGE
--------------------------------- */
-
-function goHome() {
+function goHome(){
 
   window.location.href =
     "./index.html";
@@ -2091,85 +2533,24 @@ function goHome() {
 }
 
 
+/* ==========================================
+   START
+   ONLY ONE LOAD CALL
+========================================== */
+
+
 document.addEventListener(
   "DOMContentLoaded",
-  function() {
+  function(){
 
     loadLesson();
 
-
-    /*
-     * Home button
-     */
-
-    const homeButton =
-      document.createElement(
-        "button"
-      );
-
-
-    homeButton.textContent =
-      "← होम पर जाएँ";
-
-
-    homeButton.style.display =
-      "block";
-
-    homeButton.style.width =
-      "100%";
-
-    homeButton.style.padding =
-      "14px";
-
-    homeButton.style.marginBottom =
-      "16px";
-
-    homeButton.style.border =
-      "none";
-
-    homeButton.style.borderRadius =
-      "12px";
-
-    homeButton.style.background =
-      "#ffffff";
-
-    homeButton.style.color =
-      "#222";
-
-    homeButton.style.fontSize =
-      "16px";
-
-    homeButton.style.fontWeight =
-      "700";
-
-    homeButton.style.cursor =
-      "pointer";
-
-    homeButton.style.boxShadow =
-      "0 3px 10px rgba(0,0,0,.08)";
-
-
-    homeButton.onclick =
-      goHome;
-
-
-    const container =
-      document.querySelector(
-        ".container"
-      );
-
-
-    if (container) {
-
-      container.prepend(
-        homeButton
-      );
-
-    }
-
   }
 );
+
+
 </script>
 
 </body>
+
 </html>
