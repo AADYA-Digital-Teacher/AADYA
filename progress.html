@@ -889,10 +889,45 @@ const totalLessons = 4;
 
       if (quizData) {
 
-        document.getElementById(
-          "quizScore"
-        ).textContent =
-          quizData;
+  try {
+
+    const quiz =
+      JSON.parse(quizData);
+
+    if (
+      quiz.score !== undefined &&
+      quiz.total !== undefined
+    ) {
+
+      document.getElementById(
+        "quizScore"
+      ).textContent =
+        quiz.score +
+        "/" +
+        quiz.total;
+
+    } else {
+
+      document.getElementById(
+        "quizScore"
+      ).textContent =
+        "—";
+
+    }
+
+  } catch (error) {
+
+    console.log(
+      "Quiz read error:",
+      error
+    );
+
+    document.getElementById(
+      "quizScore"
+    ).textContent =
+      "—";
+
+  }
 
       }
 
