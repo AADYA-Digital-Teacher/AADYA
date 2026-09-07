@@ -1,0 +1,71 @@
+{
+  "version": "1.0",
+  "classes": {
+    "class7": {
+      "name": "कक्षा 7",
+      "subjects": {
+        "mathematics": {
+          "name": "गणित",
+          "chapters": [
+            {
+              "number": 1,
+              "book_number": 1,
+              "title": "परिमेय संख्याएँ",
+              "source": "textbook",
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "परिमेय संख्याओं की अवधारणा",
+                  "file": "./content/class7/mathematics/textbook01/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "दो क्रमागत पूर्णांकों के मध्य परिमेय संख्याएँ",
+                  "file": "./content/class7/mathematics/textbook01/lesson02.json"
+                },
+                {
+                  "number": 3,
+                  "title": "समतुल्य परिमेय संख्याएँ",
+                  "file": "./content/class7/mathematics/textbook01/lesson03.json"
+                },
+                {
+                  "number": 4,
+                  "title": "परिमेय संख्याओं का क्रम",
+                  "file": "./content/class7/mathematics/textbook01/lesson04.json"
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "book_number": 2,
+              "title": "घातांक",
+              "source": "textbook",
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "घातांक के नियम",
+                  "file": "./content/class7/mathematics/textbook02/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "परिमेय संख्याओं को घात द्वारा व्यक्त करना",
+                  "file": "./content/class7/mathematics/textbook02/lesson02.json"
+                },
+                {
+                  "number": 3,
+                  "title": "धनात्मक एवं ऋणात्मक घातांक",
+                  "file": "./content/class7/mathematics/textbook02/lesson03.json"
+                },
+                {
+                  "number": 4,
+                  "title": "बड़ी एवं छोटी संख्याओं को घातांकीय रूप में व्यक्त करके उनकी तुलना करना",
+                  "file": "./content/class7/mathematics/textbook02/lesson04.json"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}
