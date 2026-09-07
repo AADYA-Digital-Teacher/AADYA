@@ -1,390 +1,448 @@
 /* =========================================================
    AADYA DIGITAL TEACHER
-   OFFLINE SVG DIAGRAM ENGINE
-   Circle + Triangle
+   Offline Diagram Engine
+   Version 2.0
+   ---------------------------------------------------------
+   Supports:
+   • Circle diagrams
+   • Triangle diagrams
+   • Responsive inline SVG
+   • Offline-first
+   • Automatic lesson-title detection
    ========================================================= */
 
 (function () {
 
   "use strict";
 
+  /* =======================================================
+     BASIC SVG HELPERS
+     ======================================================= */
 
-  /* =========================================================
-     COMMON SVG WRAPPER
-     ========================================================= */
+  function esc(value) {
 
-  function svgWrap(content, title) {
+    return String(value || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+  }
+
+
+  function svgWrap(content, label) {
 
     return `
       <section class="card aadya-diagram-card">
 
         <div class="aadya-diagram-title">
-          📐 ${title}
+          📐 ${esc(label || "दृश्य उदाहरण")}
         </div>
 
-        <div class="aadya-svg-container">
+        <div class="aadya-svg-wrap">
+
           <svg
-            viewBox="0 0 600 360"
-            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 800 460"
             role="img"
-            aria-label="${title}"
+            aria-label="${esc(label || "गणितीय आकृति")}"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid meet"
           >
+
             ${content}
+
           </svg>
+
         </div>
 
       </section>
     `;
+
   }
 
 
-  /* =========================================================
-     CIRCLE — BASIC CONCEPT
-     ========================================================= */
+  /* =======================================================
+     CIRCLE DIAGRAMS
+     ======================================================= */
 
   function circleConcept() {
 
     return svgWrap(`
 
       <circle
-        cx="300"
-        cy="180"
-        r="110"
+        cx="400"
+        cy="230"
+        r="145"
         fill="none"
         stroke="currentColor"
         stroke-width="5"
       />
 
       <circle
-        cx="300"
-        cy="180"
-        r="7"
+        cx="400"
+        cy="230"
+        r="6"
         fill="currentColor"
       />
 
       <line
-        x1="300"
-        y1="180"
-        x2="410"
-        y2="180"
+        x1="400"
+        y1="230"
+        x2="545"
+        y2="230"
         stroke="currentColor"
         stroke-width="4"
       />
 
       <text
-        x="305"
-        y="165"
-        font-size="22"
-        fill="currentColor"
-      >
-        O
-      </text>
-
-      <text
-        x="350"
-        y="168"
-        font-size="20"
-        fill="currentColor"
+        x="470"
+        y="215"
+        font-size="28"
+        text-anchor="middle"
       >
         त्रिज्या
       </text>
 
       <text
-        x="300"
-        y="325"
+        x="400"
+        y="255"
+        font-size="25"
         text-anchor="middle"
-        font-size="24"
-        fill="currentColor"
       >
-        वृत्त
+        केंद्र O
+      </text>
+
+      <text
+        x="400"
+        y="420"
+        font-size="30"
+        text-anchor="middle"
+      >
+        वृत्त और उसका केंद्र
       </text>
 
     `, "वृत्त की मूल अवधारणा");
+
   }
 
 
-  /* =========================================================
-     CIRCLE — RADIUS, DIAMETER, CHORD AND ARC
-     ========================================================= */
-
   function radiusDiameterChordArc() {
+
+    return svgWrap(`
+
+      <circle
+        cx="400"
+        cy="230"
+        r="150"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="5"
+      />
+
+      <!-- Center -->
+
+      <circle
+        cx="400"
+        cy="230"
+        r="6"
+        fill="currentColor"
+      />
+
+      <text
+        x="385"
+        y="215"
+        font-size="26"
+      >
+        O
+      </text>
+
+      <!-- Radius -->
+
+      <line
+        x1="400"
+        y1="230"
+        x2="550"
+        y2="230"
+        stroke="currentColor"
+        stroke-width="5"
+      />
+
+      <text
+        x="475"
+        y="215"
+        font-size="25"
+        text-anchor="middle"
+      >
+        त्रिज्या
+      </text>
+
+      <!-- Diameter -->
+
+      <line
+        x1="250"
+        y1="230"
+        x2="550"
+        y2="230"
+        stroke="currentColor"
+        stroke-width="3"
+        stroke-dasharray="10 7"
+      />
+
+      <text
+        x="400"
+        y="195"
+        font-size="24"
+        text-anchor="middle"
+      >
+        व्यास
+      </text>
+
+      <!-- Chord -->
+
+      <line
+        x1="290"
+        y1="135"
+        x2="515"
+        y2="300"
+        stroke="currentColor"
+        stroke-width="5"
+      />
+
+      <text
+        x="420"
+        y="135"
+        font-size="24"
+      >
+        जीवा
+      </text>
+
+      <!-- Arc -->
+
+      <path
+        d="M 285 150
+           A 150 150 0 0 1 525 165"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="7"
+      />
+
+      <text
+        x="405"
+        y="105"
+        font-size="24"
+        text-anchor="middle"
+      >
+        चाप
+      </text>
+
+    `, "त्रिज्या, व्यास, जीवा और चाप");
+
+  }
+
+
+  function semicircle() {
+
+    return svgWrap(`
+
+      <path
+        d="
+          M 180 300
+          A 220 220 0 0 1 620 300
+          Z
+        "
+        fill="none"
+        stroke="currentColor"
+        stroke-width="6"
+      />
+
+      <line
+        x1="180"
+        y1="300"
+        x2="620"
+        y2="300"
+        stroke="currentColor"
+        stroke-width="5"
+      />
+
+      <circle
+        cx="400"
+        cy="300"
+        r="6"
+        fill="currentColor"
+      />
+
+      <text
+        x="400"
+        y="350"
+        font-size="27"
+        text-anchor="middle"
+      >
+        व्यास
+      </text>
+
+      <text
+        x="400"
+        y="110"
+        font-size="30"
+        text-anchor="middle"
+      >
+        अर्धवृत्त
+      </text>
+
+    `, "अर्धवृत्त");
+
+  }
+
+
+  function segmentAndSector() {
 
     return svgWrap(`
 
       <!-- Circle -->
 
       <circle
-        cx="300"
-        cy="180"
-        r="115"
+        cx="250"
+        cy="230"
+        r="145"
         fill="none"
         stroke="currentColor"
         stroke-width="5"
       />
-
-      <!-- Centre -->
-
-      <circle
-        cx="300"
-        cy="180"
-        r="6"
-        fill="currentColor"
-      />
-
-      <text
-        x="285"
-        y="170"
-        font-size="20"
-        fill="currentColor"
-      >
-        O
-      </text>
-
-
-      <!-- Diameter -->
-
-      <line
-        x1="185"
-        y1="180"
-        x2="415"
-        y2="180"
-        stroke="currentColor"
-        stroke-width="4"
-      />
-
-      <text
-        x="300"
-        y="165"
-        text-anchor="middle"
-        font-size="19"
-        fill="currentColor"
-      >
-        व्यास
-      </text>
-
-
-      <!-- Radius -->
-
-      <line
-        x1="300"
-        y1="180"
-        x2="415"
-        y2="180"
-        stroke="currentColor"
-        stroke-width="7"
-      />
-
-      <text
-        x="355"
-        y="205"
-        font-size="18"
-        fill="currentColor"
-      >
-        त्रिज्या
-      </text>
-
 
       <!-- Chord -->
 
       <line
-        x1="220"
-        y1="100"
-        x2="380"
-        y2="115"
+        x1="145"
+        y1="170"
+        x2="355"
+        y2="170"
         stroke="currentColor"
         stroke-width="5"
       />
 
-      <text
-        x="300"
-        y="95"
-        text-anchor="middle"
-        font-size="19"
-        fill="currentColor"
-      >
-        जीवा
-      </text>
-
-
-      <!-- Arc -->
+      <!-- Segment shading -->
 
       <path
-        d="M 220 100 A 115 115 0 0 1 380 115"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="9"
-      />
-
-      <text
-        x="425"
-        y="105"
-        font-size="19"
+        d="
+          M 145 170
+          A 145 145 0 0 0 355 170
+          Z
+        "
         fill="currentColor"
-      >
-        चाप
-      </text>
-
-    `, "त्रिज्या, व्यास, जीवा और चाप");
-  }
-
-
-  /* =========================================================
-     SEMICIRCLE
-     ========================================================= */
-
-  function semicircle() {
-
-    return svgWrap(`
-
-      <!-- Semicircle -->
-
-      <path
-        d="M 150 220
-           A 150 150 0 0 1 450 220"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="6"
-      />
-
-      <!-- Diameter -->
-
-      <line
-        x1="150"
-        y1="220"
-        x2="450"
-        y2="220"
-        stroke="currentColor"
-        stroke-width="5"
+        opacity="0.12"
       />
 
       <text
-        x="300"
-        y="255"
-        text-anchor="middle"
-        font-size="22"
-        fill="currentColor"
-      >
-        व्यास
-      </text>
-
-      <text
-        x="300"
-        y="90"
-        text-anchor="middle"
+        x="250"
+        y="125"
         font-size="25"
-        fill="currentColor"
-      >
-        अर्धवृत्त
-      </text>
-
-    `, "अर्धवृत्त");
-  }
-
-
-  /* =========================================================
-     CIRCLE SEGMENT + SECTOR
-     ========================================================= */
-
-  function segmentAndSector() {
-
-    return svgWrap(`
-
-      <!-- LEFT : CIRCLE SEGMENT -->
-
-      <circle
-        cx="170"
-        cy="180"
-        r="95"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="4"
-      />
-
-      <line
-        x1="110"
-        y1="105"
-        x2="235"
-        y2="120"
-        stroke="currentColor"
-        stroke-width="5"
-      />
-
-      <path
-        d="M110 105
-           A95 95 0 0 1 235 120"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="8"
-      />
-
-      <text
-        x="170"
-        y="315"
         text-anchor="middle"
-        font-size="21"
-        fill="currentColor"
       >
         वृत्तखण्ड
       </text>
 
 
-      <!-- RIGHT : SECTOR -->
+      <!-- Sector -->
 
       <circle
-        cx="430"
-        cy="180"
-        r="95"
+        cx="570"
+        cy="230"
+        r="145"
         fill="none"
         stroke="currentColor"
-        stroke-width="4"
-      />
-
-      <path
-        d="M430 180
-           L430 85
-           A95 95 0 0 1 510 225
-           Z"
-        fill="currentColor"
-        opacity="0.15"
-        stroke="currentColor"
-        stroke-width="4"
+        stroke-width="5"
       />
 
       <line
-        x1="430"
-        y1="180"
-        x2="430"
+        x1="570"
+        y1="230"
+        x2="570"
         y2="85"
         stroke="currentColor"
         stroke-width="5"
       />
 
       <line
-        x1="430"
-        y1="180"
-        x2="510"
-        y2="225"
+        x1="570"
+        y1="230"
+        x2="705"
+        y2="285"
         stroke="currentColor"
         stroke-width="5"
       />
 
-      <text
-        x="430"
-        y="315"
-        text-anchor="middle"
-        font-size="21"
+      <path
+        d="
+          M 570 85
+          A 145 145 0 0 1 705 285
+          L 570 230
+          Z
+        "
         fill="currentColor"
+        opacity="0.12"
+      />
+
+      <text
+        x="625"
+        y="155"
+        font-size="25"
+        text-anchor="middle"
       >
         त्रिज्याखण्ड
       </text>
 
     `, "वृत्तखण्ड और त्रिज्याखण्ड");
+
   }
 
 
-  /* =========================================================
-     TRIANGLE — BASIC
-     ========================================================= */
+  function genericCircle() {
+
+    return svgWrap(`
+
+      <circle
+        cx="400"
+        cy="230"
+        r="150"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="6"
+      />
+
+      <circle
+        cx="400"
+        cy="230"
+        r="6"
+        fill="currentColor"
+      />
+
+      <line
+        x1="400"
+        y1="230"
+        x2="550"
+        y2="230"
+        stroke="currentColor"
+        stroke-width="5"
+      />
+
+      <text
+        x="475"
+        y="210"
+        font-size="25"
+        text-anchor="middle"
+      >
+        त्रिज्या
+      </text>
+
+    `, "वृत्त");
+
+  }
+
+
+  /* =======================================================
+     TRIANGLE DIAGRAMS
+     ======================================================= */
 
   function triangleBasic() {
 
@@ -393,66 +451,76 @@
       <!-- Triangle -->
 
       <polygon
-        points="300,65 155,285 445,285"
-        fill="currentColor"
-        fill-opacity="0.08"
+        points="400,80 190,350 610,350"
+        fill="none"
         stroke="currentColor"
-        stroke-width="5"
+        stroke-width="6"
       />
 
       <!-- Vertices -->
 
-      <circle cx="300" cy="65" r="7" fill="currentColor"/>
-      <circle cx="155" cy="285" r="7" fill="currentColor"/>
-      <circle cx="445" cy="285" r="7" fill="currentColor"/>
-
-      <!-- Labels -->
+      <circle cx="400" cy="80" r="6" fill="currentColor"/>
+      <circle cx="190" cy="350" r="6" fill="currentColor"/>
+      <circle cx="610" cy="350" r="6" fill="currentColor"/>
 
       <text
-        x="300"
-        y="45"
+        x="400"
+        y="55"
+        font-size="30"
         text-anchor="middle"
-        font-size="24"
-        fill="currentColor"
       >
         A
       </text>
 
       <text
-        x="135"
-        y="305"
-        font-size="24"
-        fill="currentColor"
+        x="170"
+        y="380"
+        font-size="30"
       >
         B
       </text>
 
       <text
-        x="450"
-        y="305"
-        font-size="24"
-        fill="currentColor"
+        x="620"
+        y="380"
+        font-size="30"
       >
         C
       </text>
 
+      <!-- Side labels -->
+
       <text
-        x="300"
-        y="345"
+        x="285"
+        y="205"
+        font-size="25"
         text-anchor="middle"
-        font-size="24"
-        fill="currentColor"
       >
-        त्रिभुज ABC
+        AB
       </text>
 
-    `, "त्रिभुज की मूल अवधारणा");
+      <text
+        x="515"
+        y="205"
+        font-size="25"
+        text-anchor="middle"
+      >
+        AC
+      </text>
+
+      <text
+        x="400"
+        y="390"
+        font-size="25"
+        text-anchor="middle"
+      >
+        BC
+      </text>
+
+    `, "त्रिभुज की पहचान");
+
   }
 
-
-  /* =========================================================
-     TRIANGLE — TYPES
-     ========================================================= */
 
   function triangleTypes() {
 
@@ -461,450 +529,833 @@
       <!-- Equilateral -->
 
       <polygon
-        points="95,130 45,215 145,215"
+        points="130,250 210,110 290,250"
         fill="none"
         stroke="currentColor"
-        stroke-width="4"
+        stroke-width="5"
       />
 
       <text
-        x="95"
-        y="250"
+        x="210"
+        y="295"
+        font-size="22"
         text-anchor="middle"
-        font-size="18"
-        fill="currentColor"
       >
         समबाहु
       </text>
 
-
       <!-- Isosceles -->
 
       <polygon
-        points="300,105 245,215 355,215"
+        points="400,100 320,250 480,250"
         fill="none"
         stroke="currentColor"
-        stroke-width="4"
+        stroke-width="5"
       />
 
       <text
-        x="300"
-        y="250"
+        x="400"
+        y="295"
+        font-size="22"
         text-anchor="middle"
-        font-size="18"
-        fill="currentColor"
       >
         समद्विबाहु
       </text>
 
-
       <!-- Scalene -->
 
       <polygon
-        points="485,105 415,215 560,215"
+        points="610,110 520,260 710,240"
         fill="none"
         stroke="currentColor"
-        stroke-width="4"
+        stroke-width="5"
       />
 
       <text
-        x="487"
-        y="250"
+        x="615"
+        y="295"
+        font-size="22"
         text-anchor="middle"
-        font-size="18"
-        fill="currentColor"
       >
         विषमबाहु
       </text>
 
     `, "त्रिभुज के प्रकार");
+
   }
 
 
-  /* =========================================================
-     TRIANGLE — CONGRUENCY
-     ========================================================= */
+  function triangleConstruction() {
 
-  function triangleCongruency() {
+    return svgWrap(`
+
+      <!-- Base -->
+
+      <line
+        x1="170"
+        y1="330"
+        x2="630"
+        y2="330"
+        stroke="currentColor"
+        stroke-width="5"
+      />
+
+      <circle
+        cx="170"
+        cy="330"
+        r="6"
+        fill="currentColor"
+      />
+
+      <circle
+        cx="630"
+        cy="330"
+        r="6"
+        fill="currentColor"
+      />
+
+      <text
+        x="155"
+        y="365"
+        font-size="25"
+      >
+        B
+      </text>
+
+      <text
+        x="635"
+        y="365"
+        font-size="25"
+      >
+        C
+      </text>
+
+      <!-- Construction arcs -->
+
+      <path
+        d="
+          M 170 330
+          A 210 210 0 0 1 380 120
+        "
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+        stroke-dasharray="10 8"
+      />
+
+      <path
+        d="
+          M 630 330
+          A 210 210 0 0 0 420 120
+        "
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+        stroke-dasharray="10 8"
+      />
+
+      <!-- Triangle -->
+
+      <line
+        x1="170"
+        y1="330"
+        x2="400"
+        y2="115"
+        stroke="currentColor"
+        stroke-width="5"
+      />
+
+      <line
+        x1="630"
+        y1="330"
+        x2="400"
+        y2="115"
+        stroke="currentColor"
+        stroke-width="5"
+      />
+
+      <circle
+        cx="400"
+        cy="115"
+        r="6"
+        fill="currentColor"
+      />
+
+      <text
+        x="400"
+        y="85"
+        font-size="27"
+        text-anchor="middle"
+      >
+        A
+      </text>
+
+      <text
+        x="400"
+        y="420"
+        font-size="27"
+        text-anchor="middle"
+      >
+        आधार BC और रचना चाप
+      </text>
+
+    `, "त्रिभुज की रचना");
+
+  }
+
+
+  function congruentShapes() {
+
+    return svgWrap(`
+
+      <!-- Shape 1 -->
+
+      <polygon
+        points="230,100 130,310 330,310"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="6"
+      />
+
+      <!-- Tick marks -->
+
+      <line
+        x1="175"
+        y1="205"
+        x2="195"
+        y2="215"
+        stroke="currentColor"
+        stroke-width="5"
+      />
+
+      <line
+        x1="405"
+        y1="205"
+        x2="425"
+        y2="215"
+        stroke="currentColor"
+        stroke-width="5"
+      />
+
+      <!-- Equality -->
+
+      <text
+        x="400"
+        y="150"
+        font-size="42"
+        text-anchor="middle"
+      >
+        ≅
+      </text>
+
+      <!-- Shape 2 -->
+
+      <polygon
+        points="570,100 470,310 670,310"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="6"
+      />
+
+      <text
+        x="400"
+        y="385"
+        font-size="28"
+        text-anchor="middle"
+      >
+        समान आकार और समान माप
+      </text>
+
+    `, "आकृतियों की सर्वांगसमता");
+
+  }
+
+
+  function congruentTriangles() {
 
     return svgWrap(`
 
       <!-- Triangle 1 -->
 
       <polygon
-        points="145,90 75,240 215,240"
+        points="210,90 100,320 320,320"
         fill="none"
         stroke="currentColor"
-        stroke-width="5"
+        stroke-width="6"
       />
-
-      <text
-        x="145"
-        y="70"
-        text-anchor="middle"
-        font-size="21"
-        fill="currentColor"
-      >
-        ABC
-      </text>
-
-
-      <!-- Triangle 2 -->
-
-      <polygon
-        points="455,90 385,240 525,240"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="5"
-      />
-
-      <text
-        x="455"
-        y="70"
-        text-anchor="middle"
-        font-size="21"
-        fill="currentColor"
-      >
-        PQR
-      </text>
-
 
       <!-- Equal side marks -->
 
       <line
-        x1="105"
-        y1="165"
-        x2="115"
-        y2="170"
+        x1="145"
+        y1="205"
+        x2="165"
+        y2="215"
         stroke="currentColor"
-        stroke-width="4"
+        stroke-width="5"
       />
 
       <line
-        x1="415"
-        y1="165"
-        x2="425"
-        y2="170"
+        x1="255"
+        y1="205"
+        x2="275"
+        y2="215"
         stroke="currentColor"
-        stroke-width="4"
+        stroke-width="5"
       />
 
+      <line
+        x1="190"
+        y1="320"
+        x2="190"
+        y2="300"
+        stroke="currentColor"
+        stroke-width="5"
+      />
+
+      <!-- Congruent sign -->
+
       <text
-        x="300"
-        y="315"
+        x="400"
+        y="220"
+        font-size="50"
         text-anchor="middle"
-        font-size="22"
-        fill="currentColor"
       >
-        सर्वांगसम आकृतियाँ
+        ≅
       </text>
 
+      <!-- Triangle 2 -->
+
+      <polygon
+        points="590,90 480,320 700,320"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="6"
+      />
+
+      <line
+        x1="525"
+        y1="205"
+        x2="545"
+        y2="215"
+        stroke="currentColor"
+        stroke-width="5"
+      />
+
+      <line
+        x1="635"
+        y1="205"
+        x2="655"
+        y2="215"
+        stroke="currentColor"
+        stroke-width="5"
+      />
+
+      <line
+        x1="570"
+        y1="320"
+        x2="570"
+        y2="300"
+        stroke="currentColor"
+        stroke-width="5"
+      />
+
     `, "त्रिभुजों की सर्वांगसमता");
+
   }
 
 
-  /* =========================================================
-     TRIANGLE — SIMILARITY
-     ========================================================= */
+  function similarShapes() {
 
-  function triangleSimilarity() {
+    return svgWrap(`
+
+      <!-- Small rectangle -->
+
+      <rect
+        x="110"
+        y="140"
+        width="170"
+        height="120"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="6"
+      />
+
+      <!-- Large rectangle -->
+
+      <rect
+        x="450"
+        y="100"
+        width="250"
+        height="180"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="6"
+      />
+
+      <!-- Similar sign -->
+
+      <text
+        x="365"
+        y="220"
+        font-size="50"
+        text-anchor="middle"
+      >
+        ∼
+      </text>
+
+      <text
+        x="400"
+        y="370"
+        font-size="28"
+        text-anchor="middle"
+      >
+        समान आकृति — आकार अलग, अनुपात समान
+      </text>
+
+    `, "आकृतियों की समरूपता");
+
+  }
+
+
+  function similarTriangles() {
 
     return svgWrap(`
 
       <!-- Small triangle -->
 
       <polygon
-        points="135,120 80,230 190,230"
+        points="205,110 115,300 295,300"
         fill="none"
         stroke="currentColor"
-        stroke-width="5"
+        stroke-width="6"
       />
+
+      <!-- Side labels -->
+
+      <text
+        x="145"
+        y="205"
+        font-size="22"
+      >
+        3
+      </text>
+
+      <text
+        x="260"
+        y="205"
+        font-size="22"
+      >
+        3
+      </text>
+
+      <text
+        x="205"
+        y="330"
+        font-size="22"
+        text-anchor="middle"
+      >
+        4
+      </text>
+
+
+      <!-- Similar sign -->
+
+      <text
+        x="400"
+        y="220"
+        font-size="50"
+        text-anchor="middle"
+      >
+        ∼
+      </text>
 
 
       <!-- Large triangle -->
 
       <polygon
-        points="430,70 330,270 530,270"
+        points="590,70 450,320 730,320"
         fill="none"
         stroke="currentColor"
-        stroke-width="5"
+        stroke-width="6"
       />
 
-
       <text
-        x="135"
-        y="305"
-        text-anchor="middle"
-        font-size="21"
-        fill="currentColor"
-      >
-        छोटा त्रिभुज
-      </text>
-
-      <text
-        x="430"
-        y="320"
-        text-anchor="middle"
-        font-size="21"
-        fill="currentColor"
-      >
-        बड़ा त्रिभुज
-      </text>
-
-
-      <text
-        x="300"
-        y="45"
-        text-anchor="middle"
+        x="505"
+        y="205"
         font-size="22"
-        fill="currentColor"
       >
-        समान आकार, अलग माप
+        6
+      </text>
+
+      <text
+        x="670"
+        y="205"
+        font-size="22"
+      >
+        6
+      </text>
+
+      <text
+        x="590"
+        y="350"
+        font-size="22"
+        text-anchor="middle"
+      >
+        8
+      </text>
+
+      <text
+        x="400"
+        y="420"
+        font-size="27"
+        text-anchor="middle"
+      >
+        संगत भुजाओं का अनुपात समान
       </text>
 
     `, "त्रिभुजों की समरूपता");
+
   }
 
 
-  /* =========================================================
-     GENERIC TRIANGLE
-     ========================================================= */
-
-  function genericTriangle() {
+  function triangleRevision() {
 
     return svgWrap(`
+
+      <!-- Triangle -->
 
       <polygon
-        points="300,65 150,285 455,285"
-        fill="currentColor"
-        fill-opacity="0.08"
-        stroke="currentColor"
-        stroke-width="5"
-      />
-
-      <text
-        x="300"
-        y="345"
-        text-anchor="middle"
-        font-size="23"
-        fill="currentColor"
-      >
-        त्रिभुज
-      </text>
-
-    `, "त्रिभुज");
-  }
-
-
-  /* =========================================================
-     GENERIC CIRCLE
-     ========================================================= */
-
-  function genericCircle() {
-
-    return svgWrap(`
-
-      <circle
-        cx="300"
-        cy="180"
-        r="110"
+        points="400,70 190,330 610,330"
         fill="none"
         stroke="currentColor"
-        stroke-width="5"
+        stroke-width="6"
       />
 
+      <!-- Height -->
+
+      <line
+        x1="400"
+        y1="70"
+        x2="400"
+        y2="330"
+        stroke="currentColor"
+        stroke-width="3"
+        stroke-dasharray="9 7"
+      />
+
+      <!-- Midpoint -->
+
       <circle
-        cx="300"
-        cy="180"
+        cx="400"
+        cy="330"
         r="6"
         fill="currentColor"
       />
 
-    `, "वृत्त");
+      <!-- Angle marks -->
+
+      <path
+        d="M 370 110 A 45 45 0 0 1 430 110"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="4"
+      />
+
+      <!-- Labels -->
+
+      <text
+        x="400"
+        y="48"
+        font-size="28"
+        text-anchor="middle"
+      >
+        A
+      </text>
+
+      <text
+        x="165"
+        y="360"
+        font-size="28"
+      >
+        B
+      </text>
+
+      <text
+        x="620"
+        y="360"
+        font-size="28"
+      >
+        C
+      </text>
+
+      <text
+        x="430"
+        y="220"
+        font-size="23"
+      >
+        ऊँचाई
+      </text>
+
+      <text
+        x="400"
+        y="410"
+        font-size="27"
+        text-anchor="middle"
+      >
+        Triangle Application & Revision
+      </text>
+
+    `, "त्रिभुज — मिश्रित पुनरावृत्ति");
+
   }
 
 
-  /* =========================================================
-     DIAGRAM SELECTOR
-     ========================================================= */
+  /* =======================================================
+     DIAGRAM SELECTION
+     ======================================================= */
 
-  function getDiagram(chapterTitle, lessonTitle) {
+  function getDiagram(title) {
 
-    const chapter =
-      String(chapterTitle || "").trim();
+    const text =
+      String(title || "")
+        .trim()
+        .toLowerCase();
 
-    const lesson =
-      String(lessonTitle || "").trim();
 
-
-    /* -------------------------------------------------------
-       CIRCLE — CHAPTER 16
-       ------------------------------------------------------- */
+    /* -----------------------------------------------------
+       TRIANGLE
+       ----------------------------------------------------- */
 
     if (
-      chapter.includes("वृत्त") &&
-      !chapter.includes("सममित")
+      text.includes("त्रिभुज की पहचान") ||
+      text.includes("मूल अवधारणा")
     ) {
 
-      if (
-        lesson.includes("त्रिज्या") ||
-        lesson.includes("व्यास") ||
-        lesson.includes("जीवा") ||
-        lesson.includes("चाप")
-      ) {
-        return radiusDiameterChordArc();
-      }
+      return triangleBasic();
 
-      if (
-        lesson.includes("अर्धवृत्त")
-      ) {
-        return semicircle();
-      }
-
-      if (
-        lesson.includes("वृत्तखण्ड") ||
-        lesson.includes("त्रिज्याखण्ड")
-      ) {
-        return segmentAndSector();
-      }
-
-      if (
-        lesson.includes("अवधारणा")
-      ) {
-        return circleConcept();
-      }
-
-      return genericCircle();
     }
 
 
-    /* -------------------------------------------------------
-       TRIANGLE — CHAPTER 15
-       ------------------------------------------------------- */
-
     if (
-      chapter.includes("त्रिभुज")
+      text.includes("त्रिभुज के प्रकार")
     ) {
 
-      if (
-        lesson.includes("प्रकार")
-      ) {
-        return triangleTypes();
-      }
+      return triangleTypes();
 
-      if (
-        lesson.includes("सर्वांगसम")
-      ) {
-        return triangleCongruency();
-      }
+    }
 
-      if (
-        lesson.includes("समरूप")
-      ) {
-        return triangleSimilarity();
-      }
 
-      if (
-        lesson.includes("पहचान") ||
-        lesson.includes("मूल अवधारणा")
-      ) {
-        return triangleBasic();
-      }
+    if (
+      text.includes("त्रिभुज की रचना")
+    ) {
 
-      return genericTriangle();
+      return triangleConstruction();
+
+    }
+
+
+    if (
+      text.includes("आकृतियों की सर्वांगसमता")
+    ) {
+
+      return congruentShapes();
+
+    }
+
+
+    if (
+      text.includes("त्रिभुजों की सर्वांगसमता")
+    ) {
+
+      return congruentTriangles();
+
+    }
+
+
+    if (
+      text.includes("आकृतियों की समरूपता")
+    ) {
+
+      return similarShapes();
+
+    }
+
+
+    if (
+      text.includes("त्रिभुजों की समरूपता")
+    ) {
+
+      return similarTriangles();
+
+    }
+
+
+    if (
+      text.includes("मिश्रित") &&
+      text.includes("revision")
+    ) {
+
+      return triangleRevision();
+
+    }
+
+
+    if (
+      text.includes("मिश्रित") &&
+      text.includes("application")
+    ) {
+
+      return triangleRevision();
+
+    }
+
+
+    /* -----------------------------------------------------
+       CIRCLE
+       ----------------------------------------------------- */
+
+    if (
+      text.includes("वृत्त की अवधारणा")
+    ) {
+
+      return circleConcept();
+
+    }
+
+
+    if (
+      text.includes("त्रिज्या") &&
+      text.includes("व्यास") &&
+      text.includes("जीवा")
+    ) {
+
+      return radiusDiameterChordArc();
+
+    }
+
+
+    if (
+      text.includes("अर्धवृत्त")
+    ) {
+
+      return semicircle();
+
+    }
+
+
+    if (
+      text.includes("वृत्तखण्ड") ||
+      text.includes("त्रिज्याखण्ड")
+    ) {
+
+      return segmentAndSector();
+
+    }
+
+
+    if (
+      text.includes("वृत्त")
+    ) {
+
+      return genericCircle();
+
     }
 
 
     return "";
+
   }
 
 
-  /* =========================================================
+  /* =======================================================
      RENDER DIAGRAM
-     ========================================================= */
+     ======================================================= */
 
-  function renderDiagram() {
+  function renderDiagram(title) {
 
-    const mainTitle =
-      document.getElementById("mainTitle");
+    const existing =
+      document.querySelector(
+        ".aadya-diagram-card"
+      );
 
-    const chapterTitle =
-      document.getElementById("chapterTitle");
+    /*
+     * Prevent duplicate diagrams.
+     */
 
-    const examples =
-      document.getElementById("examples");
+    if (existing) {
 
-
-    if (!mainTitle) {
       return;
+
     }
-
-
-    const lessonTitle =
-      mainTitle.textContent || "";
-
-
-    const chapter =
-      chapterTitle
-        ? chapterTitle.textContent || ""
-        : "";
 
 
     const diagram =
-      getDiagram(
-        chapter,
-        lessonTitle
-      );
+      getDiagram(title);
 
 
     if (!diagram) {
+
       return;
+
     }
 
 
-    const old =
+    /*
+     * Prefer examples section.
+     */
+
+    const examples =
       document.getElementById(
-        "aadyaDiagramCard"
+        "examples"
       );
-
-
-    if (old) {
-      old.remove();
-    }
-
-
-    const wrapper =
-      document.createElement("div");
-
-
-    wrapper.innerHTML =
-      diagram.replace(
-        '<section class="card aadya-diagram-card">',
-        '<section class="card aadya-diagram-card" id="aadyaDiagramCard">'
-      );
-
-
-    const card =
-      wrapper.firstElementChild;
-
-
-    if (!card) {
-      return;
-    }
 
 
     if (examples) {
 
-      examples.insertAdjacentElement(
+      examples.insertAdjacentHTML(
         "afterend",
-        card
+        diagram
       );
 
-    } else {
+      return;
 
-      mainTitle.insertAdjacentElement(
+    }
+
+
+    /*
+     * Fallback:
+     * insert after main content title.
+     */
+
+    const mainTitle =
+      document.getElementById(
+        "mainTitle"
+      );
+
+
+    if (mainTitle) {
+
+      mainTitle.insertAdjacentHTML(
         "afterend",
-        card
+        diagram
+      );
+
+      return;
+
+    }
+
+
+    /*
+     * Final fallback:
+     * insert inside body.
+     */
+
+    if (document.body) {
+
+      document.body.insertAdjacentHTML(
+        "beforeend",
+        diagram
       );
 
     }
@@ -912,35 +1363,39 @@
   }
 
 
-  /* =========================================================
-     CSS
-     ========================================================= */
+  /* =======================================================
+     STYLES
+     ======================================================= */
 
   function injectStyles() {
 
     if (
       document.getElementById(
-        "aadyaDiagramStyles"
+        "aadya-diagram-engine-style"
       )
     ) {
+
       return;
+
     }
 
 
     const style =
-      document.createElement("style");
+      document.createElement(
+        "style"
+      );
 
 
     style.id =
-      "aadyaDiagramStyles";
+      "aadya-diagram-engine-style";
 
 
     style.textContent = `
 
       .aadya-diagram-card {
 
-        margin-top: 18px;
-        padding: 16px;
+        margin-top: 20px;
+        margin-bottom: 20px;
         overflow: hidden;
 
       }
@@ -948,43 +1403,63 @@
 
       .aadya-diagram-title {
 
-        font-size: 19px;
+        font-size: 20px;
         font-weight: 700;
+        padding: 14px 16px;
         text-align: center;
-        margin-bottom: 10px;
 
       }
 
 
-      .aadya-svg-container {
+      .aadya-svg-wrap {
 
         width: 100%;
-        max-width: 650px;
-        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px 10px 18px;
+        box-sizing: border-box;
 
       }
 
 
-      .aadya-svg-container svg {
+      .aadya-svg-wrap svg {
 
         width: 100%;
+        max-width: 800px;
         height: auto;
         display: block;
 
       }
 
 
+      .aadya-svg-wrap text {
+
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Noto Sans Devanagari",
+          "Mangal",
+          sans-serif;
+
+        fill: currentColor;
+
+      }
+
+
       @media (max-width: 600px) {
-
-        .aadya-diagram-card {
-
-          padding: 10px;
-
-        }
 
         .aadya-diagram-title {
 
-          font-size: 17px;
+          font-size: 18px;
+
+        }
+
+        .aadya-svg-wrap {
+
+          padding-left: 4px;
+          padding-right: 4px;
 
         }
 
@@ -993,58 +1468,202 @@
     `;
 
 
-    document.head.appendChild(style);
+    document.head.appendChild(
+      style
+    );
 
   }
 
 
-  /* =========================================================
+  /* =======================================================
+     TITLE DETECTION
+     ======================================================= */
+
+  function findLessonTitle() {
+
+    /*
+     * Most reliable:
+     * learning page's main title.
+     */
+
+    const mainTitle =
+      document.getElementById(
+        "mainTitle"
+      );
+
+
+    if (
+      mainTitle &&
+      mainTitle.textContent.trim()
+    ) {
+
+      return mainTitle.textContent.trim();
+
+    }
+
+
+    /*
+     * Chapter title fallback.
+     */
+
+    const chapterTitle =
+      document.getElementById(
+        "chapterTitle"
+      );
+
+
+    if (
+      chapterTitle &&
+      chapterTitle.textContent.trim()
+    ) {
+
+      return chapterTitle.textContent.trim();
+
+    }
+
+
+    /*
+     * Search common heading elements.
+     */
+
+    const headings =
+      document.querySelectorAll(
+        "h1, h2, h3"
+      );
+
+
+    for (
+      let i = 0;
+      i < headings.length;
+      i++
+    ) {
+
+      const value =
+        headings[i].textContent.trim();
+
+
+      if (!value) {
+
+        continue;
+
+      }
+
+
+      if (
+        value.includes("त्रिभुज") ||
+        value.includes("वृत्त")
+      ) {
+
+        return value;
+
+      }
+
+    }
+
+
+    return "";
+
+  }
+
+
+  /* =======================================================
      START
-     ========================================================= */
+     ======================================================= */
 
   function start() {
 
     injectStyles();
 
-    renderDiagram();
+
+    const title =
+      findLessonTitle();
+
+
+    if (title) {
+
+      renderDiagram(title);
+
+      return;
+
+    }
+
+
+    /*
+     * Lesson content may load asynchronously.
+     * Watch for DOM changes for a short period.
+     */
+
+    let attempts = 0;
 
 
     const observer =
       new MutationObserver(
         function () {
 
-          renderDiagram();
+          attempts++;
+
+
+          const currentTitle =
+            findLessonTitle();
+
+
+          if (currentTitle) {
+
+            renderDiagram(
+              currentTitle
+            );
+
+            observer.disconnect();
+
+            return;
+
+          }
+
+
+          /*
+           * Avoid observing forever.
+           */
+
+          if (attempts > 80) {
+
+            observer.disconnect();
+
+          }
 
         }
       );
 
 
-    observer.observe(
-      document.body,
-      {
-        childList: true,
-        subtree: true
-      }
-    );
+    if (document.body) {
+
+      observer.observe(
+        document.body,
+        {
+          childList: true,
+          subtree: true
+        }
+      );
+
+    }
 
   }
 
 
-  /* =========================================================
+  /* =======================================================
      PUBLIC API
-     ========================================================= */
+     ======================================================= */
 
   window.AADYADiagramEngine = {
 
-    render:
-      renderDiagram
+    render: renderDiagram,
+    start: start
 
   };
 
 
-  /* =========================================================
-     DOM READY
-     ========================================================= */
+  /* =======================================================
+     INITIALIZE
+     ======================================================= */
 
   if (
     document.readyState ===
@@ -1061,6 +1680,5 @@
     start();
 
   }
-
 
 })();
