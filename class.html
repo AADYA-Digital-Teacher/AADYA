@@ -840,9 +840,13 @@
 
         /* CURRICULUM FILE */
 
-        const url =
-          "./data/curriculum.json?v=" +
-          Date.now();
+        const curriculumFile =
+  String(studentClass) === "7"
+    ? "./data/curriculum-class7.json"
+    : "./data/curriculum.json";
+
+const url =
+  curriculumFile + "?v=" + Date.now();
 
 
 
