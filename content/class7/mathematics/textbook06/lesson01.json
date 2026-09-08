@@ -65,7 +65,7 @@
       {
         "question": "2x + 3 = 11 में x है—",
         "options": ["3", "4", "5", "7"],
-        "correct_answer": 0,
+        "correct_answer": 1,
         "explanation": "2x = 8, इसलिए x = 4।"
       },
       {
