@@ -1857,10 +1857,9 @@ function handleQuestionAnswer(
     );
 
 
-  /*
-   * Prevent answering same
-   * question multiple times.
-   */
+  /* ==========================================
+     PREVENT MULTIPLE ANSWERS
+  ========================================== */
 
   if(
     Array.from(buttons)
@@ -1885,9 +1884,55 @@ function handleQuestionAnswer(
   );
 
 
+  /* ==========================================
+     CORRECT ANSWER INDEX
+  ========================================== */
+
   const correctIndex =
     answerIndex(item);
 
+
+  /* ==========================================
+     CORRECT ANSWER TEXT
+  ========================================== */
+
+  let correctAnswerText =
+    "सही उत्तर उपलब्ध नहीं है।";
+
+
+  if(
+    correctIndex >= 0 &&
+    correctIndex < item.options.length
+  ){
+
+    correctAnswerText =
+      item.options[correctIndex];
+
+  }
+
+
+  /* ==========================================
+     USER ANSWER TEXT
+  ========================================== */
+
+  let userAnswerText =
+    "कोई उत्तर नहीं";
+
+
+  if(
+    selectedIndex >= 0 &&
+    selectedIndex < item.options.length
+  ){
+
+    userAnswerText =
+      item.options[selectedIndex];
+
+  }
+
+
+  /* ==========================================
+     CORRECT ANSWER
+  ========================================== */
 
   if(
     selectedIndex ===
@@ -1904,12 +1949,51 @@ function handleQuestionAnswer(
 
 
     feedback.innerHTML =
-      "✅ बिल्कुल सही!";
+
+      "✅ <strong>बिल्कुल सही!</strong>" +
+
+      "<br><br>" +
+
+      "🎯 आपका उत्तर: <strong>" +
+
+      escapeHTML(
+        userAnswerText
+      ) +
+
+      "</strong>";
+
+
+    /* --------------------------------------
+       EXPLANATION
+    -------------------------------------- */
+
+    if(
+      item.explanation &&
+      String(
+        item.explanation
+      ).trim() !== ""
+    ){
+
+      feedback.innerHTML +=
+
+        "<br><br>" +
+
+        "💡 <strong>क्यों?</strong><br>" +
+
+        escapeHTML(
+          item.explanation
+        );
+
+    }
 
 
     feedback.style.display =
       "block";
 
+
+    /* --------------------------------------
+       QUIZ SCORE
+    -------------------------------------- */
 
     if(isQuiz){
 
@@ -1918,6 +2002,12 @@ function handleQuestionAnswer(
     }
 
   }
+
+
+  /* ==========================================
+     WRONG ANSWER
+  ========================================== */
+
   else{
 
     clickedButton.classList.add(
@@ -1925,9 +2015,9 @@ function handleQuestionAnswer(
     );
 
 
-    /*
-     * Highlight correct option
-     */
+    /* --------------------------------------
+       HIGHLIGHT CORRECT OPTION
+    -------------------------------------- */
 
     if(
       correctIndex >= 0 &&
@@ -1948,16 +2038,56 @@ function handleQuestionAnswer(
 
 
     feedback.innerHTML =
-      "❌ अभी सही उत्तर नहीं।" +
 
-      (
+      "❌ <strong>अभी सही उत्तर नहीं।</strong>" +
+
+      "<br><br>" +
+
+      "👉 आपका उत्तर: " +
+
+      "<strong>" +
+
+      escapeHTML(
+        userAnswerText
+      ) +
+
+      "</strong>" +
+
+      "<br><br>" +
+
+      "✅ सही उत्तर: " +
+
+      "<strong>" +
+
+      escapeHTML(
+        correctAnswerText
+      ) +
+
+      "</strong>";
+
+
+    /* --------------------------------------
+       EXPLANATION
+    -------------------------------------- */
+
+    if(
+      item.explanation &&
+      String(
         item.explanation
-          ? "<br><br>" +
-            escapeHTML(
-              item.explanation
-            )
-          : ""
-      );
+      ).trim() !== ""
+    ){
+
+      feedback.innerHTML +=
+
+        "<br><br>" +
+
+        "💡 <strong>समझिए:</strong><br>" +
+
+        escapeHTML(
+          item.explanation
+        );
+
+    }
 
 
     feedback.style.display =
@@ -1965,6 +2095,10 @@ function handleQuestionAnswer(
 
   }
 
+
+  /* ==========================================
+     QUIZ COMPLETION
+  ========================================== */
 
   if(isQuiz){
 
@@ -1978,7 +2112,8 @@ function handleQuestionAnswer(
 
 
     if(
-      answeredQuestions >= total
+      answeredQuestions >=
+      total
     ){
 
       finishQuiz();
