@@ -696,6 +696,59 @@ function getAppChapterNumber(
 
   if(match){
 
+    const textbookNumber =
+      Number(match[1]);
+
+    /*
+     * Class 7 में textbook number
+     * ही app chapter number है.
+     */
+    if(
+      String(data?.class) === "7"
+    ){
+
+      return textbookNumber;
+
+    }
+
+    /*
+     * Class 6 के पुराने custom
+     * Chapter 1–2 के कारण +2
+     */
+    return textbookNumber + 2;
+
+  }
+
+  /*
+   * Old custom lessons
+   */
+  if(
+    data &&
+    data.chapter &&
+    typeof data.chapter === "object"
+  ){
+
+    return (
+      data.chapter.number ??
+      data.chapter.book_number ??
+      ""
+    );
+
+  }
+
+  return (
+    data?.chapter ?? ""
+  );
+
+}
+
+  const match =
+    filePath.match(
+      /\/textbook(\d+)\/lesson\d+\.json$/
+    );
+
+  if(match){
+
     return (
       Number(match[1]) + 2
     );
