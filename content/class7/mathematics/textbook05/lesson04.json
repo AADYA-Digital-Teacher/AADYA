@@ -1,0 +1,119 @@
+{
+  "class": 7,
+  "subject": "गणित",
+  "chapter": 6,
+  "chapter_title": "बीजीय व्यंजक",
+  "lesson": 4,
+  "title": "बीजीय व्यंजकों का जोड़ एवं घटाना",
+  "source": "पाठ्यपुस्तक",
+  "objectives": [
+    "सजातीय पदों को जोड़ना",
+    "सजातीय पदों को घटाना",
+    "सरल बीजीय व्यंजकों को सरल करना"
+  ],
+  "concept": "बीजीय व्यंजकों में समान प्रकार के पदों को जोड़ या घटाकर व्यंजक को सरल किया जाता है।",
+  "explanation": [
+    {
+      "heading": "जोड़",
+      "content": "सजातीय पदों के गुणांकों को जोड़ा जाता है। जैसे 3x + 5x = 8x।"
+    },
+    {
+      "heading": "घटाव",
+      "content": "सजातीय पदों के गुणांकों को घटाया जाता है। जैसे 9a - 4a = 5a।"
+    },
+    {
+      "heading": "विजातीय पद",
+      "content": "x और y जैसे विजातीय पदों को सामान्यतः एक ही पद में नहीं जोड़ा जा सकता। इसलिए x + y अपने रूप में ही रहता है।"
+    }
+  ],
+  "examples": [
+    "3x + 5x = 8x",
+    "9a - 4a = 5a",
+    "7m + 2n = 7m + 2n",
+    "5x + 3 - 2x = 3x + 3"
+  ],
+  "practice": {
+    "title": "अभ्यास",
+    "questions": [
+      {
+        "question": "3x + 4x = ?",
+        "options": ["7x", "12x", "x", "7"],
+        "correct_answer": 0
+      },
+      {
+        "question": "8a - 3a = ?",
+        "options": ["11a", "5a", "24a", "5"],
+        "correct_answer": 1
+      },
+      {
+        "question": "5m + 2m - m = ?",
+        "options": ["6m", "8m", "4m", "5m"],
+        "correct_answer": 0
+      },
+      {
+        "question": "7x + 3y को सरल करने पर क्या मिलेगा?",
+        "options": ["10xy", "10x", "7x + 3y", "4xy"],
+        "correct_answer": 2
+      },
+      {
+        "question": "9p - 4p + 2p = ?",
+        "options": ["7p", "5p", "11p", "13p"],
+        "correct_answer": 0
+      },
+      {
+        "question": "4a + 5 - 2a = ?",
+        "options": ["2a + 5", "6a + 5", "2a + 3", "7a"],
+        "correct_answer": 0
+      }
+    ]
+  },
+  "quiz": {
+    "title": "🧠 Quiz – अपनी समझ जाँचें",
+    "questions": [
+      {
+        "question": "6x + 2x = ?",
+        "options": ["8x", "12x", "4x", "8"],
+        "correct_answer": 0
+      },
+      {
+        "question": "10a - 7a = ?",
+        "options": ["17a", "3a", "70a", "3"],
+        "correct_answer": 1
+      },
+      {
+        "question": "5m + 3m - 2m = ?",
+        "options": ["6m", "10m", "4m", "8m"],
+        "correct_answer": 0
+      },
+      {
+        "question": "8x + 3y में सजातीय पद कौन-से हैं?",
+        "options": ["8x और 3y", "कोई नहीं", "8 और 3", "x और y"],
+        "correct_answer": 1
+      },
+      {
+        "question": "7p + 4 - 3p = ?",
+        "options": ["4p + 4", "10p + 4", "4p + 1", "4p"],
+        "correct_answer": 0
+      },
+      {
+        "question": "9a + 2b - 4a = ?",
+        "options": ["5a + 2b", "11ab", "5a - 2b", "13a"],
+        "correct_answer": 0
+      },
+      {
+        "question": "3x + 5x - 2x + 4 = ?",
+        "options": ["6x + 4", "10x + 4", "8x + 4", "6x"],
+        "correct_answer": 0
+      },
+      {
+        "question": "सजातीय पदों को जोड़ते समय मुख्यतः किसे जोड़ा जाता है?",
+        "options": ["चर", "घात", "गुणांक", "चिह्न हटाकर"],
+        "correct_answer": 2
+      }
+    ]
+  },
+  "completion": {
+    "message": "🏆 आपने Chapter 6 के बीजीय व्यंजकों का जोड़ और घटाना सीख लिया।",
+    "next": "आगे व्यंजकों का मान और कोष्ठकों का प्रयोग सीखेंगे।"
+  }
+}
