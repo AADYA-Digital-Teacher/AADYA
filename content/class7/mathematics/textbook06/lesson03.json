@@ -78,7 +78,7 @@
       {
         "question": "x/3 = 4/2 में x है—",
         "options": ["4", "6", "8", "12"],
-        "correct_answer": 2,
+        "correct_answer": 1,
         "explanation": "2x = 12, इसलिए x = 6।"
       },
       {
