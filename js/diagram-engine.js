@@ -1,22 +1,42 @@
 /* =========================================================
-   AADYA DIGITAL TEACHER
-   OFFLINE VISUAL / DIAGRAM ENGINE
-   Version 3.0
+   AADYA DIGITAL TEACHER — DIAGRAM ENGINE v4.0
+
+   Offline SVG Visual Engine
    ---------------------------------------------------------
+   Designed for:
+   Class 6, 7, 8
+   Future: Class 1–5 + Pre-Primary
+
    Supports:
-   • Circle diagrams
-   • Triangle diagrams
+   • Statistics
    • Pie Chart
-   • Central Tendency visual
-   • Mean calculation table
+   • Central Tendency
+   • Mean calculation
+   • Geometrical constructions
    • Line segment bisector
    • Equal angle construction
    • Angle bisector
-   • Parallel line construction
-   • Perpendicular construction
-   • Responsive inline SVG
+   • Parallel lines
+   • Perpendicular
+   • Triangle
+   • Pythagoras theorem
+   • Pythagorean triples
+   • Altitude
+   • Median
+   • Perpendicular bisector
+   • Angle bisectors
+   • Four centres of triangle
+   • Similar triangles
+   • Linear equation graph
+   • Equation solving steps
+   • Word problems
+   • Circle support
+   • Responsive SVG
    • Offline-first
    • Automatic lesson-title detection
+
+   No external library
+   No PNG dependency
    ========================================================= */
 
 (function () {
@@ -25,12 +45,20 @@
 
 
   /* =======================================================
-     BASIC HELPERS
-     ======================================================= */
+     BASIC SETTINGS
+  ======================================================= */
+
+  const CARD_ID =
+    "aadya-auto-diagram";
+
+
+  /* =======================================================
+     HTML ESCAPE
+  ======================================================= */
 
   function esc(value) {
 
-    return String(value || "")
+    return String(value ?? "")
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
@@ -40,13 +68,23 @@
   }
 
 
-  function svgWrap(content, label) {
+  /* =======================================================
+     SVG WRAPPER
+  ======================================================= */
+
+  function wrap(label, body) {
 
     return `
-      <section class="card aadya-diagram-card">
+
+      <section
+        id="${CARD_ID}"
+        class="card aadya-diagram-card"
+      >
 
         <div class="aadya-diagram-title">
-          📐 ${esc(label || "दृश्य उदाहरण")}
+
+          📐 ${esc(label)}
+
         </div>
 
         <div class="aadya-svg-wrap">
@@ -54,1584 +92,1801 @@
           <svg
             viewBox="0 0 800 460"
             role="img"
-            aria-label="${esc(label || "गणितीय आकृति")}"
+            aria-label="${esc(label)}"
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="xMidYMid meet"
           >
 
-            ${content}
+            <style>
+
+              .a {
+                fill:none;
+                stroke:currentColor;
+                stroke-width:5;
+                stroke-linecap:round;
+                stroke-linejoin:round;
+              }
+
+              .d {
+                fill:none;
+                stroke:currentColor;
+                stroke-width:3;
+                stroke-dasharray:10 8;
+              }
+
+              .p {
+                fill:currentColor;
+                opacity:.10;
+              }
+
+              .t {
+                fill:currentColor;
+                font-size:25px;
+                font-family:system-ui,sans-serif;
+              }
+
+              .s {
+                fill:currentColor;
+                font-size:21px;
+                font-family:system-ui,sans-serif;
+              }
+
+              .pt {
+                fill:currentColor;
+                font-size:28px;
+                font-weight:700;
+                font-family:system-ui,sans-serif;
+              }
+
+            </style>
+
+            ${body}
 
           </svg>
 
         </div>
 
       </section>
+
     `;
 
   }
 
 
-  function visualWrap(content, label) {
+  /* =======================================================
+     SVG HELPERS
+  ======================================================= */
+
+  function point(x, y, r = 6) {
 
     return `
-      <section class="card aadya-diagram-card">
-
-        <div class="aadya-diagram-title">
-          📊 ${esc(label || "दृश्य उदाहरण")}
-        </div>
-
-        <div class="aadya-visual-content">
-
-          ${content}
-
-        </div>
-
-      </section>
+      <circle
+        cx="${x}"
+        cy="${y}"
+        r="${r}"
+        fill="currentColor"
+      />
     `;
 
   }
 
 
-  /* =======================================================
-     CIRCLE DIAGRAMS
-     ======================================================= */
+  function line(
+    x1,
+    y1,
+    x2,
+    y2,
+    cls = "a"
+  ) {
 
-  function circleConcept() {
-
-    return svgWrap(`
-
-      <circle
-        cx="400"
-        cy="230"
-        r="145"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="5"
-      />
-
-      <circle
-        cx="400"
-        cy="230"
-        r="6"
-        fill="currentColor"
-      />
-
+    return `
       <line
-        x1="400"
-        y1="230"
-        x2="545"
-        y2="230"
-        stroke="currentColor"
-        stroke-width="4"
+        x1="${x1}"
+        y1="${y1}"
+        x2="${x2}"
+        y2="${y2}"
+        class="${cls}"
       />
-
-      <text
-        x="475"
-        y="215"
-        font-size="28"
-        text-anchor="middle"
-      >
-        त्रिज्या
-      </text>
-
-      <text
-        x="400"
-        y="270"
-        font-size="25"
-        text-anchor="middle"
-      >
-        केंद्र O
-      </text>
-
-    `, "वृत्त की मूल अवधारणा");
+    `;
 
   }
 
 
-  function radiusDiameterChordArc() {
+  function text(
+    x,
+    y,
+    value,
+    cls = "t",
+    anchor = "middle"
+  ) {
 
-    return svgWrap(`
-
-      <circle
-        cx="400"
-        cy="230"
-        r="150"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="5"
-      />
-
-      <circle
-        cx="400"
-        cy="230"
-        r="6"
-        fill="currentColor"
-      />
-
+    return `
       <text
-        x="382"
-        y="215"
-        font-size="26"
+        x="${x}"
+        y="${y}"
+        class="${cls}"
+        text-anchor="${anchor}"
       >
-        O
+        ${esc(value)}
       </text>
-
-      <line
-        x1="400"
-        y1="230"
-        x2="550"
-        y2="230"
-        stroke="currentColor"
-        stroke-width="5"
-      />
-
-      <text
-        x="475"
-        y="210"
-        font-size="24"
-        text-anchor="middle"
-      >
-        त्रिज्या
-      </text>
-
-      <line
-        x1="250"
-        y1="230"
-        x2="550"
-        y2="230"
-        stroke="currentColor"
-        stroke-width="3"
-        stroke-dasharray="10 7"
-      />
-
-      <text
-        x="400"
-        y="195"
-        font-size="24"
-        text-anchor="middle"
-      >
-        व्यास
-      </text>
-
-      <line
-        x1="290"
-        y1="135"
-        x2="515"
-        y2="300"
-        stroke="currentColor"
-        stroke-width="5"
-      />
-
-      <text
-        x="420"
-        y="135"
-        font-size="24"
-      >
-        जीवा
-      </text>
-
-      <path
-        d="M 285 150
-           A 150 150 0 0 1 525 165"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="7"
-      />
-
-      <text
-        x="405"
-        y="105"
-        font-size="24"
-        text-anchor="middle"
-      >
-        चाप
-      </text>
-
-    `, "त्रिज्या, व्यास, जीवा और चाप");
-
-  }
-
-
-  function semicircle() {
-
-    return svgWrap(`
-
-      <path
-        d="
-          M 180 300
-          A 220 220 0 0 1 620 300
-          Z
-        "
-        fill="none"
-        stroke="currentColor"
-        stroke-width="6"
-      />
-
-      <line
-        x1="180"
-        y1="300"
-        x2="620"
-        y2="300"
-        stroke="currentColor"
-        stroke-width="5"
-      />
-
-      <circle
-        cx="400"
-        cy="300"
-        r="6"
-        fill="currentColor"
-      />
-
-      <text
-        x="400"
-        y="350"
-        font-size="27"
-        text-anchor="middle"
-      >
-        व्यास
-      </text>
-
-      <text
-        x="400"
-        y="100"
-        font-size="30"
-        text-anchor="middle"
-      >
-        अर्धवृत्त
-      </text>
-
-    `, "अर्धवृत्त");
-
-  }
-
-
-  function segmentAndSector() {
-
-    return svgWrap(`
-
-      <circle
-        cx="250"
-        cy="230"
-        r="145"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="5"
-      />
-
-      <line
-        x1="145"
-        y1="170"
-        x2="355"
-        y2="170"
-        stroke="currentColor"
-        stroke-width="5"
-      />
-
-      <path
-        d="
-          M 145 170
-          A 145 145 0 0 0 355 170
-          Z
-        "
-        fill="currentColor"
-        opacity="0.12"
-      />
-
-      <text
-        x="250"
-        y="125"
-        font-size="25"
-        text-anchor="middle"
-      >
-        वृत्तखण्ड
-      </text>
-
-
-      <circle
-        cx="570"
-        cy="230"
-        r="145"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="5"
-      />
-
-      <line
-        x1="570"
-        y1="230"
-        x2="570"
-        y2="85"
-        stroke="currentColor"
-        stroke-width="5"
-      />
-
-      <line
-        x1="570"
-        y1="230"
-        x2="705"
-        y2="285"
-        stroke="currentColor"
-        stroke-width="5"
-      />
-
-      <path
-        d="
-          M 570 85
-          A 145 145 0 0 1 705 285
-          L 570 230
-          Z
-        "
-        fill="currentColor"
-        opacity="0.12"
-      />
-
-      <text
-        x="625"
-        y="155"
-        font-size="25"
-        text-anchor="middle"
-      >
-        त्रिज्याखण्ड
-      </text>
-
-    `, "वृत्तखण्ड और त्रिज्याखण्ड");
-
-  }
-
-
-  function genericCircle() {
-
-    return svgWrap(`
-
-      <circle
-        cx="400"
-        cy="230"
-        r="150"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="6"
-      />
-
-      <circle
-        cx="400"
-        cy="230"
-        r="6"
-        fill="currentColor"
-      />
-
-      <line
-        x1="400"
-        y1="230"
-        x2="550"
-        y2="230"
-        stroke="currentColor"
-        stroke-width="5"
-      />
-
-      <text
-        x="475"
-        y="210"
-        font-size="25"
-        text-anchor="middle"
-      >
-        त्रिज्या
-      </text>
-
-    `, "वृत्त");
-
-  }
-
-
-  /* =======================================================
-     TRIANGLE DIAGRAMS
-     ======================================================= */
-
-  function triangleBasic() {
-
-    return svgWrap(`
-
-      <polygon
-        points="400,80 190,350 610,350"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="6"
-      />
-
-      <circle cx="400" cy="80" r="6" fill="currentColor"/>
-      <circle cx="190" cy="350" r="6" fill="currentColor"/>
-      <circle cx="610" cy="350" r="6" fill="currentColor"/>
-
-      <text
-        x="400"
-        y="55"
-        font-size="30"
-        text-anchor="middle"
-      >
-        A
-      </text>
-
-      <text
-        x="170"
-        y="380"
-        font-size="30"
-      >
-        B
-      </text>
-
-      <text
-        x="620"
-        y="380"
-        font-size="30"
-      >
-        C
-      </text>
-
-      <text
-        x="285"
-        y="205"
-        font-size="25"
-        text-anchor="middle"
-      >
-        AB
-      </text>
-
-      <text
-        x="515"
-        y="205"
-        font-size="25"
-        text-anchor="middle"
-      >
-        AC
-      </text>
-
-      <text
-        x="400"
-        y="390"
-        font-size="25"
-        text-anchor="middle"
-      >
-        BC
-      </text>
-
-    `, "त्रिभुज की पहचान");
-
-  }
-
-
-  function triangleTypes() {
-
-    return svgWrap(`
-
-      <polygon
-        points="130,250 210,110 290,250"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="5"
-      />
-
-      <text
-        x="210"
-        y="295"
-        font-size="22"
-        text-anchor="middle"
-      >
-        समबाहु
-      </text>
-
-      <polygon
-        points="400,100 320,250 480,250"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="5"
-      />
-
-      <text
-        x="400"
-        y="295"
-        font-size="22"
-        text-anchor="middle"
-      >
-        समद्विबाहु
-      </text>
-
-      <polygon
-        points="610,110 520,260 710,240"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="5"
-      />
-
-      <text
-        x="615"
-        y="295"
-        font-size="22"
-        text-anchor="middle"
-      >
-        विषमबाहु
-      </text>
-
-    `, "त्रिभुज के प्रकार");
-
-  }
-
-
-  function triangleConstruction() {
-
-    return svgWrap(`
-
-      <line
-        x1="170"
-        y1="330"
-        x2="630"
-        y2="330"
-        stroke="currentColor"
-        stroke-width="5"
-      />
-
-      <circle
-        cx="170"
-        cy="330"
-        r="6"
-        fill="currentColor"
-      />
-
-      <circle
-        cx="630"
-        cy="330"
-        r="6"
-        fill="currentColor"
-      />
-
-      <text x="155" y="365" font-size="25">B</text>
-      <text x="635" y="365" font-size="25">C</text>
-
-      <path
-        d="
-          M 170 330
-          A 210 210 0 0 1 380 120
-        "
-        fill="none"
-        stroke="currentColor"
-        stroke-width="3"
-        stroke-dasharray="10 8"
-      />
-
-      <path
-        d="
-          M 630 330
-          A 210 210 0 0 0 420 120
-        "
-        fill="none"
-        stroke="currentColor"
-        stroke-width="3"
-        stroke-dasharray="10 8"
-      />
-
-      <line
-        x1="170"
-        y1="330"
-        x2="400"
-        y2="115"
-        stroke="currentColor"
-        stroke-width="5"
-      />
-
-      <line
-        x1="630"
-        y1="330"
-        x2="400"
-        y2="115"
-        stroke="currentColor"
-        stroke-width="5"
-      />
-
-      <circle
-        cx="400"
-        cy="115"
-        r="6"
-        fill="currentColor"
-      />
-
-      <text
-        x="400"
-        y="85"
-        font-size="27"
-        text-anchor="middle"
-      >
-        A
-      </text>
-
-    `, "त्रिभुज की रचना");
+    `;
 
   }
 
 
   /* =======================================================
      CHAPTER 3 — STATISTICS
-     ======================================================= */
+  ======================================================= */
+
 
   function pieChart() {
 
-    return svgWrap(`
+    return wrap(
+      "पाई चार्ट (वृत्तारेख)",
 
-      <!-- Full circle -->
+      `
 
-      <circle
-        cx="400"
-        cy="225"
-        r="150"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="5"
-      />
+        <circle
+          cx="400"
+          cy="230"
+          r="155"
+          class="a"
+        />
 
-      <!-- 90 degree sector -->
+        <path
+          d="
+            M400 230
+            L400 75
+            A155 155 0 0 1 550 305
+            Z
+          "
+          class="p"
+        />
 
-      <path
-        d="
-          M 400 225
-          L 400 75
-          A 150 150 0 0 1 550 225
-          Z
-        "
-        fill="currentColor"
-        opacity="0.18"
-      />
+        ${line(400, 230, 400, 75)}
 
-      <!-- 180 degree sector -->
+        ${line(400, 230, 550, 305)}
 
-      <path
-        d="
-          M 400 225
-          L 250 225
-          A 150 150 0 0 1 400 375
-          Z
-        "
-        fill="currentColor"
-        opacity="0.10"
-      />
+        ${line(400, 230, 245, 230)}
 
-      <!-- Radius lines -->
+        ${text(490, 155, "30%", "s")}
 
-      <line
-        x1="400"
-        y1="225"
-        x2="400"
-        y2="75"
-        stroke="currentColor"
-        stroke-width="4"
-      />
+        ${text(300, 185, "25%", "s")}
 
-      <line
-        x1="400"
-        y1="225"
-        x2="550"
-        y2="225"
-        stroke="currentColor"
-        stroke-width="4"
-      />
+        ${text(420, 335, "45%", "s")}
 
-      <line
-        x1="400"
-        y1="225"
-        x2="250"
-        y2="225"
-        stroke="currentColor"
-        stroke-width="4"
-      />
+        ${text(
+          400,
+          405,
+          "360° = पूरा वृत्त",
+          "pt"
+        )}
 
-      <line
-        x1="400"
-        y1="225"
-        x2="400"
-        y2="375"
-        stroke="currentColor"
-        stroke-width="4"
-      />
-
-      <circle
-        cx="400"
-        cy="225"
-        r="5"
-        fill="currentColor"
-      />
-
-      <text
-        x="475"
-        y="150"
-        font-size="25"
-        text-anchor="middle"
-      >
-        90°
-      </text>
-
-      <text
-        x="325"
-        y="325"
-        font-size="25"
-        text-anchor="middle"
-      >
-        180°
-      </text>
-
-      <text
-        x="400"
-        y="425"
-        font-size="27"
-        text-anchor="middle"
-      >
-        पूरा वृत्त = 360°
-      </text>
-
-    `, "पाई चार्ट / वृत्तारेख");
+      `
+    );
 
   }
 
 
   function centralTendency() {
 
-    return visualWrap(`
+    return wrap(
+      "केन्द्रीय प्रवृत्ति — माध्य, माध्यिका, बहुलक",
 
-      <div class="aadya-stat-grid">
+      `
 
-        <div class="aadya-stat-box">
-          <div class="aadya-stat-symbol">Σ</div>
-          <div class="aadya-stat-name">माध्य</div>
-          <div class="aadya-stat-text">
-            सभी मानों का योग ÷ कुल मान
-          </div>
-        </div>
+        ${line(110, 320, 690, 320)}
 
-        <div class="aadya-stat-box">
-          <div class="aadya-stat-symbol">↕</div>
-          <div class="aadya-stat-name">माध्यिका</div>
-          <div class="aadya-stat-text">
-            क्रम में बीच का मान
-          </div>
-        </div>
+        ${[150, 250, 350, 450, 550, 650]
+          .map(x =>
+            line(x, 313, x, 327)
+          )
+          .join("")
+        }
 
-        <div class="aadya-stat-box">
-          <div class="aadya-stat-symbol">★</div>
-          <div class="aadya-stat-name">बहुलक</div>
-          <div class="aadya-stat-text">
-            सबसे अधिक बार आने वाला मान
-          </div>
-        </div>
+        ${[1, 2, 2, 3, 3, 3]
+          .map(
+            (v, i) =>
+              point(
+                150 + i * 100,
+                320 - v * 55,
+                7
+              )
+          )
+          .join("")
+        }
 
-      </div>
+        ${text(
+          400,
+          80,
+          "आँकड़ों का दृश्य प्रदर्शन",
+          "pt"
+        )}
 
-    `, "केन्द्रीय प्रवृत्ति के प्रमुख माप");
+        ${text(150, 365, "1", "s")}
+
+        ${text(250, 365, "2", "s")}
+
+        ${text(350, 365, "2", "s")}
+
+        ${text(450, 365, "3", "s")}
+
+        ${text(550, 365, "3", "s")}
+
+        ${text(650, 365, "3", "s")}
+
+        ${text(
+          400,
+          415,
+          "बहुलक = 3  |  माध्यिका = 2.5",
+          "t"
+        )}
+
+      `
+    );
 
   }
 
 
-  function meanVisual() {
+  function meanTable() {
 
-    return visualWrap(`
+    return wrap(
+      "समान्तर माध्य की गणना",
 
-      <div class="aadya-formula">
-        समान्तर माध्य =
-        <strong>
-          सभी आँकड़ों का योग
-        </strong>
-        ÷
-        <strong>
-          आँकड़ों की संख्या
-        </strong>
-      </div>
+      `
 
-      <table class="aadya-data-table">
+        <rect
+          x="130"
+          y="90"
+          width="540"
+          height="250"
+          rx="14"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="4"
+        />
 
-        <thead>
-          <tr>
-            <th>आँकड़े</th>
-            <th>योग</th>
-            <th>संख्या</th>
-            <th>माध्य</th>
-          </tr>
-        </thead>
+        ${line(130, 155, 670, 155)}
 
-        <tbody>
-          <tr>
-            <td>5, 7, 9</td>
-            <td>21</td>
-            <td>3</td>
-            <td>7</td>
-          </tr>
+        ${line(130, 220, 670, 220)}
 
-          <tr>
-            <td>10, 20, 30</td>
-            <td>60</td>
-            <td>3</td>
-            <td>20</td>
-          </tr>
-        </tbody>
+        ${line(130, 285, 670, 285)}
 
-      </table>
+        ${line(265, 90, 265, 340)}
 
-    `, "समान्तर माध्य की गणना");
+        ${line(480, 90, 480, 340)}
+
+        ${text(195, 132, "x", "pt")}
+
+        ${text(370, 132, "आवृत्ति f", "s")}
+
+        ${text(575, 132, "fx", "s")}
+
+        ${text(195, 195, "2", "t")}
+
+        ${text(370, 195, "2", "t")}
+
+        ${text(575, 195, "4", "t")}
+
+        ${text(195, 260, "4", "t")}
+
+        ${text(370, 260, "3", "t")}
+
+        ${text(575, 260, "12", "t")}
+
+        ${text(195, 325, "6", "t")}
+
+        ${text(370, 325, "1", "t")}
+
+        ${text(575, 325, "6", "t")}
+
+        ${text(
+          400,
+          390,
+          "माध्य = Σfx / Σf = 22 / 6 ≈ 3.67",
+          "pt"
+        )}
+
+      `
+    );
 
   }
 
 
   /* =======================================================
      CHAPTER 4 — CONSTRUCTIONS
-     ======================================================= */
+  ======================================================= */
 
-  function lineSegmentBisector() {
 
-    return svgWrap(`
+  function segmentBisector() {
 
-      <!-- AB -->
+    return wrap(
+      "रेखाखंड का समद्विभाजन",
 
-      <line
-        x1="170"
-        y1="260"
-        x2="630"
-        y2="260"
-        stroke="currentColor"
-        stroke-width="5"
-      />
+      `
 
-      <circle
-        cx="170"
-        cy="260"
-        r="6"
-        fill="currentColor"
-      />
+        ${line(150, 300, 650, 300)}
 
-      <circle
-        cx="630"
-        cy="260"
-        r="6"
-        fill="currentColor"
-      />
+        ${point(150, 300)}
 
-      <text
-        x="150"
-        y="300"
-        font-size="28"
-      >
-        A
-      </text>
+        ${point(650, 300)}
 
-      <text
-        x="635"
-        y="300"
-        font-size="28"
-      >
-        B
-      </text>
+        ${point(400, 300)}
 
-      <!-- Construction arcs -->
+        ${text(140, 340, "A", "pt")}
 
-      <path
-        d="
-          M 170 260
-          A 230 230 0 0 1 400 30
-        "
-        fill="none"
-        stroke="currentColor"
-        stroke-width="3"
-        stroke-dasharray="9 7"
-      />
+        ${text(660, 340, "B", "pt")}
 
-      <path
-        d="
-          M 630 260
-          A 230 230 0 0 0 400 30
-        "
-        fill="none"
-        stroke="currentColor"
-        stroke-width="3"
-        stroke-dasharray="9 7"
-      />
+        ${text(400, 345, "M", "pt")}
 
-      <path
-        d="
-          M 170 260
-          A 230 230 0 0 0 400 490
-        "
-        fill="none"
-        stroke="currentColor"
-        stroke-width="3"
-        stroke-dasharray="9 7"
-      />
+        <path
+          d="
+            M150 300
+            A250 250 0 0 1 400 100
+            A250 250 0 0 1 650 300
+          "
+          class="d"
+        />
 
-      <path
-        d="
-          M 630 260
-          A 230 230 0 0 1 400 490
-        "
-        fill="none"
-        stroke="currentColor"
-        stroke-width="3"
-        stroke-dasharray="9 7"
-      />
+        ${line(
+          400,
+          95,
+          400,
+          365,
+          "d"
+        )}
 
-      <!-- Bisector -->
+        ${text(
+          400,
+          65,
+          "AM = MB",
+          "pt"
+        )}
 
-      <line
-        x1="400"
-        y1="45"
-        x2="400"
-        y2="440"
-        stroke="currentColor"
-        stroke-width="5"
-      />
-
-      <circle
-        cx="400"
-        cy="260"
-        r="6"
-        fill="currentColor"
-      />
-
-      <text
-        x="400"
-        y="420"
-        font-size="26"
-        text-anchor="middle"
-      >
-        M = मध्य-बिन्दु
-      </text>
-
-    `, "रेखाखंड का समद्विभाजन");
+      `
+    );
 
   }
 
 
-  function equalAngleConstruction() {
+  function equalAngle() {
 
-    return svgWrap(`
+    return wrap(
+      "दिए हुए कोण के बराबर कोण की रचना",
 
-      <!-- Given angle -->
+      `
 
-      <line
-        x1="90"
-        y1="330"
-        x2="270"
-        y2="330"
-        stroke="currentColor"
-        stroke-width="5"
-      />
+        ${line(160, 320, 360, 180)}
 
-      <line
-        x1="90"
-        y1="330"
-        x2="220"
-        y2="170"
-        stroke="currentColor"
-        stroke-width="5"
-      />
+        ${line(160, 320, 365, 365)}
 
-      <path
-        d="
-          M 150 330
-          A 60 60 0 0 0 135 285
-        "
-        fill="none"
-        stroke="currentColor"
-        stroke-width="4"
-      />
+        ${point(160, 320)}
 
-      <text
-        x="115"
-        y="355"
-        font-size="26"
-      >
-        O
-      </text>
+        ${text(140, 355, "O", "pt")}
 
-      <text
-        x="170"
-        y="245"
-        font-size="24"
-      >
-        दिया कोण
-      </text>
+        <path
+          d="
+            M220 278
+            A75 75 0 0 1 225 365
+          "
+          class="a"
+        />
 
+        ${line(500, 320, 700, 180)}
 
-      <!-- New equal angle -->
+        ${line(500, 320, 700, 365)}
 
-      <line
-        x1="500"
-        y1="330"
-        x2="700"
-        y2="330"
-        stroke="currentColor"
-        stroke-width="5"
-      />
+        ${point(500, 320)}
 
-      <line
-        x1="500"
-        y1="330"
-        x2="630"
-        y2="170"
-        stroke="currentColor"
-        stroke-width="5"
-      />
+        ${text(480, 355, "P", "pt")}
 
-      <path
-        d="
-          M 560 330
-          A 60 60 0 0 0 545 285
-        "
-        fill="none"
-        stroke="currentColor"
-        stroke-width="4"
-      />
+        <path
+          d="
+            M560 278
+            A75 75 0 0 1 565 365
+          "
+          class="a"
+        />
 
-      <text
-        x="525"
-        y="355"
-        font-size="26"
-      >
-        P
-      </text>
+        ${text(
+          255,
+          135,
+          "दिया हुआ कोण",
+          "s"
+        )}
 
-      <text
-        x="610"
-        y="245"
-        font-size="24"
-      >
-        बराबर कोण
-      </text>
+        ${text(
+          595,
+          135,
+          "बराबर कोण",
+          "s"
+        )}
 
-      <text
-        x="400"
-        y="420"
-        font-size="27"
-        text-anchor="middle"
-      >
-        ∠AOB = ∠XPY
-      </text>
-
-    `, "दिए हुए कोण के बराबर कोण की रचना");
+      `
+    );
 
   }
 
 
   function angleBisector() {
 
-    return svgWrap(`
+    return wrap(
+      "कोण का समद्विभाजन",
 
-      <!-- Original angle -->
+      `
 
-      <line
-        x1="400"
-        y1="340"
-        x2="170"
-        y2="150"
-        stroke="currentColor"
-        stroke-width="5"
-      />
+        ${line(160, 330, 400, 120)}
 
-      <line
-        x1="400"
-        y1="340"
-        x2="630"
-        y2="150"
-        stroke="currentColor"
-        stroke-width="5"
-      />
+        ${line(160, 330, 400, 330)}
 
-      <!-- Arc -->
+        ${point(160, 330)}
 
-      <path
-        d="
-          M 300 255
-          A 125 125 0 0 1 500 255
-        "
-        fill="none"
-        stroke="currentColor"
-        stroke-width="4"
-      />
+        <path
+          d="
+            M235 264
+            A105 105 0 0 1 265 330
+          "
+          class="a"
+        />
 
-      <!-- Bisector -->
+        ${line(
+          160,
+          330,
+          285,
+          270
+        )}
 
-      <line
-        x1="400"
-        y1="340"
-        x2="400"
-        y2="105"
-        stroke="currentColor"
-        stroke-width="6"
-      />
+        ${text(140, 365, "O", "pt")}
 
-      <circle
-        cx="400"
-        cy="340"
-        r="6"
-        fill="currentColor"
-      />
+        ${text(285, 255, "M", "pt")}
 
-      <text
-        x="400"
-        y="390"
-        font-size="26"
-        text-anchor="middle"
-      >
-        दोनों कोण बराबर
-      </text>
+        ${text(
+          400,
+          395,
+          "∠AOM = ∠MOB",
+          "pt"
+        )}
 
-      <text
-        x="400"
-        y="80"
-        font-size="28"
-        text-anchor="middle"
-      >
-        समद्विभाजक
-      </text>
-
-    `, "कोण का समद्विभाजन");
+      `
+    );
 
   }
 
 
-  function parallelConstruction() {
+  function parallelLines() {
 
-    return svgWrap(`
+    return wrap(
+      "दी हुई रेखा के समान्तर रेखा",
 
-      <!-- Given line -->
+      `
 
-      <line
-        x1="120"
-        y1="160"
-        x2="680"
-        y2="160"
-        stroke="currentColor"
-        stroke-width="6"
-      />
+        ${line(120, 160, 680, 160)}
 
-      <text
-        x="700"
-        y="165"
-        font-size="28"
-      >
-        l
-      </text>
+        ${line(120, 330, 680, 330)}
 
-      <!-- Guide -->
+        ${text(
+          105,
+          150,
+          "l",
+          "pt",
+          "end"
+        )}
 
-      <line
-        x1="250"
-        y1="100"
-        x2="250"
-        y2="370"
-        stroke="currentColor"
-        stroke-width="3"
-        stroke-dasharray="8 7"
-      />
+        ${text(
+          105,
+          320,
+          "m",
+          "pt",
+          "end"
+        )}
 
-      <!-- Parallel line -->
+        ${line(
+          350,
+          80,
+          350,
+          400,
+          "d"
+        )}
 
-      <line
-        x1="120"
-        y1="330"
-        x2="680"
-        y2="330"
-        stroke="currentColor"
-        stroke-width="6"
-      />
+        ${text(
+          350,
+          65,
+          "दोनों रेखाएँ समान्तर हैं",
+          "s"
+        )}
 
-      <text
-        x="700"
-        y="335"
-        font-size="28"
-      >
-        m
-      </text>
+        ${text(
+          400,
+          215,
+          "l ∥ m",
+          "pt"
+        )}
 
-      <!-- Direction arrows -->
-
-      <path
-        d="M 300 160 L 320 150 L 320 170 Z"
-        fill="currentColor"
-      />
-
-      <path
-        d="M 300 330 L 320 320 L 320 340 Z"
-        fill="currentColor"
-      />
-
-      <text
-        x="400"
-        y="410"
-        font-size="27"
-        text-anchor="middle"
-      >
-        l ∥ m
-      </text>
-
-    `, "दी हुई रेखा के समान्तर रेखा");
+      `
+    );
 
   }
 
 
-  function perpendicularConstruction() {
+  function perpendicular() {
 
-    return svgWrap(`
+    return wrap(
+      "दिए गए बिन्दु से लम्ब की रचना",
 
-      <!-- Given line -->
+      `
 
-      <line
-        x1="120"
-        y1="300"
-        x2="680"
-        y2="300"
-        stroke="currentColor"
-        stroke-width="6"
-      />
+        ${line(110, 300, 690, 300)}
 
-      <text
-        x="690"
-        y="305"
-        font-size="28"
-      >
-        l
-      </text>
+        ${point(400, 300)}
 
-      <!-- Perpendicular -->
+        ${point(400, 150)}
 
-      <line
-        x1="400"
-        y1="80"
-        x2="400"
-        y2="420"
-        stroke="currentColor"
-        stroke-width="6"
-      />
+        ${line(
+          400,
+          110,
+          400,
+          390
+        )}
 
-      <!-- Right angle -->
+        ${text(
+          420,
+          135,
+          "P",
+          "pt"
+        )}
 
-      <path
-        d="
-          M 400 300
-          L 450 300
-          L 450 250
-          L 400 250
-          Z
-        "
-        fill="none"
-        stroke="currentColor"
-        stroke-width="4"
-      />
+        ${text(
+          400,
+          345,
+          "90°",
+          "pt"
+        )}
 
-      <circle
-        cx="400"
-        cy="300"
-        r="6"
-        fill="currentColor"
-      />
+        <path
+          d="
+            M400 300
+            h35
+            v-35
+          "
+          class="a"
+        />
 
-      <text
-        x="420"
-        y="245"
-        font-size="26"
-      >
-        90°
-      </text>
+        ${text(
+          400,
+          420,
+          "लम्ब रेखा ⟂ आधार रेखा",
+          "pt"
+        )}
 
-      <text
-        x="400"
-        y="60"
-        font-size="27"
-        text-anchor="middle"
-      >
-        m
-      </text>
-
-      <text
-        x="400"
-        y="445"
-        font-size="27"
-        text-anchor="middle"
-      >
-        m ⟂ l
-      </text>
-
-    `, "दिए गए बिन्दु से लम्ब की रचना");
+      `
+    );
 
   }
 
 
-  /*
-   =======================================================
-     DIAGRAM SELECTION
-     ======================================================= */
+  /* =======================================================
+     CHAPTER 5 — TRIANGLES
+  ======================================================= */
 
-  function getDiagram(title, chapterTitle) {
 
-    const t = String(title || "").trim();
-    const c = String(chapterTitle || "").trim();
+  function triangleBasic() {
 
-    /* -----------------------------------------------------
-       CIRCLE
-       ----------------------------------------------------- */
+    return wrap(
+      "त्रिभुज",
 
-    if (
-      t.includes("त्रिज्या") &&
-      (
-        t.includes("व्यास") ||
-        t.includes("जीवा") ||
-        t.includes("चाप")
+      `
+
+        <polygon
+          points="400,75 170,360 630,360"
+          class="a"
+        />
+
+        ${point(400, 75)}
+
+        ${point(170, 360)}
+
+        ${point(630, 360)}
+
+        ${text(400, 55, "A", "pt")}
+
+        ${text(150, 390, "B", "pt")}
+
+        ${text(650, 390, "C", "pt")}
+
+        ${text(285, 205, "AB", "s")}
+
+        ${text(515, 205, "AC", "s")}
+
+        ${text(400, 395, "BC", "s")}
+
+      `
+    );
+
+  }
+
+
+  function pythagoras() {
+
+    return wrap(
+      "पाइथागोरस प्रमेय",
+
+      `
+
+        <polygon
+          points="220,350 220,120 600,350"
+          class="a"
+        />
+
+        <path
+          d="
+            M220 350
+            h45
+            v-45
+          "
+          class="a"
+        />
+
+        ${text(195, 235, "a", "pt")}
+
+        ${text(410, 375, "b", "pt")}
+
+        ${text(420, 215, "c", "pt")}
+
+        ${text(
+          400,
+          85,
+          "c² = a² + b²",
+          "pt"
+        )}
+
+        ${text(
+          400,
+          425,
+          "समकोण त्रिभुज में कर्ण² = अन्य दो भुजाओं के वर्गों का योग",
+          "s"
+        )}
+
+      `
+    );
+
+  }
+
+
+  function pythagoreanTriple() {
+
+    return wrap(
+      "पाइथागोरियन त्रिक",
+
+      `
+
+        <rect
+          x="130"
+          y="90"
+          width="540"
+          height="260"
+          rx="16"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="4"
+        />
+
+        ${text(265, 145, "3", "pt")}
+
+        ${text(400, 145, "4", "pt")}
+
+        ${text(535, 145, "5", "pt")}
+
+        ${text(
+          265,
+          205,
+          "3² = 9",
+          "t"
+        )}
+
+        ${text(
+          400,
+          205,
+          "4² = 16",
+          "t"
+        )}
+
+        ${text(
+          535,
+          205,
+          "5² = 25",
+          "t"
+        )}
+
+        ${text(
+          400,
+          275,
+          "9 + 16 = 25",
+          "pt"
+        )}
+
+        ${text(
+          400,
+          320,
+          "(3, 4, 5) एक पाइथागोरियन त्रिक है।",
+          "s"
+        )}
+
+      `
+    );
+
+  }
+
+
+  function triangleConstruction() {
+
+    return wrap(
+      "त्रिभुज की रचना",
+
+      `
+
+        ${line(
+          170,
+          330,
+          630,
+          330
+        )}
+
+        ${point(170, 330)}
+
+        ${point(630, 330)}
+
+        ${text(
+          155,
+          365,
+          "B",
+          "pt"
+        )}
+
+        ${text(
+          645,
+          365,
+          "C",
+          "pt"
+        )}
+
+        <path
+          d="
+            M170 330
+            A210 210 0 0 1 380 120
+          "
+          class="d"
+        />
+
+        <path
+          d="
+            M630 330
+            A210 210 0 0 0 420 120
+          "
+          class="d"
+        />
+
+        ${line(
+          170,
+          330,
+          400,
+          115
+        )}
+
+        ${line(
+          630,
+          330,
+          400,
+          115
+        )}
+
+        ${point(400, 115)}
+
+        ${text(
+          400,
+          85,
+          "A",
+          "pt"
+        )}
+
+      `
+    );
+
+  }
+
+
+  function altitude() {
+
+    return wrap(
+      "त्रिभुज का शीर्षलम्ब",
+
+      `
+
+        <polygon
+          points="400,75 170,360 630,360"
+          class="a"
+        />
+
+        ${line(
+          400,
+          75,
+          400,
+          360,
+          "d"
+        )}
+
+        ${point(400, 360)}
+
+        ${text(400, 55, "A", "pt")}
+
+        ${text(155, 390, "B", "pt")}
+
+        ${text(645, 390, "C", "pt")}
+
+        ${text(425, 350, "D", "pt")}
+
+        <path
+          d="
+            M400 360
+            h28
+            v-28
+          "
+          class="a"
+        />
+
+        ${text(
+          400,
+          425,
+          "AD ⟂ BC — AD शीर्षलम्ब है",
+          "pt"
+        )}
+
+      `
+    );
+
+  }
+
+
+  function median() {
+
+    return wrap(
+      "त्रिभुज की माध्यिका",
+
+      `
+
+        <polygon
+          points="400,75 170,360 630,360"
+          class="a"
+        />
+
+        ${point(400, 75)}
+
+        ${point(170, 360)}
+
+        ${point(630, 360)}
+
+        ${point(400, 360)}
+
+        ${line(
+          400,
+          75,
+          400,
+          360
+        )}
+
+        ${text(400, 55, "A", "pt")}
+
+        ${text(155, 390, "B", "pt")}
+
+        ${text(645, 390, "C", "pt")}
+
+        ${text(400, 390, "M", "pt")}
+
+        ${text(
+          400,
+          425,
+          "BM = MC — AM माध्यिका है",
+          "pt"
+        )}
+
+      `
+    );
+
+  }
+
+
+  function perpendicularBisector() {
+
+    return wrap(
+      "त्रिभुज की लम्बार्धक",
+
+      `
+
+        ${line(
+          170,
+          300,
+          630,
+          300
+        )}
+
+        ${point(170, 300)}
+
+        ${point(630, 300)}
+
+        ${point(400, 300)}
+
+        ${line(
+          400,
+          100,
+          400,
+          400,
+          "d"
+        )}
+
+        ${text(150, 340, "A", "pt")}
+
+        ${text(650, 340, "B", "pt")}
+
+        ${text(400, 350, "M", "pt")}
+
+        <path
+          d="
+            M400 300
+            h30
+            v-30
+          "
+          class="a"
+        />
+
+        ${text(
+          400,
+          75,
+          "AM = MB और लम्बार्धक AB पर 90° बनाता है",
+          "pt"
+        )}
+
+      `
+    );
+
+  }
+
+
+  function triangleAngleBisectors() {
+
+    return wrap(
+      "त्रिभुज के कोणों के समद्विभाजक",
+
+      `
+
+        <polygon
+          points="400,75 170,360 630,360"
+          class="a"
+        />
+
+        ${line(
+          400,
+          75,
+          400,
+          360,
+          "d"
+        )}
+
+        ${line(
+          170,
+          360,
+          430,
+          235,
+          "d"
+        )}
+
+        ${line(
+          630,
+          360,
+          370,
+          235,
+          "d"
+        )}
+
+        ${point(400, 245, 8)}
+
+        ${text(
+          430,
+          245,
+          "अन्तःकेन्द्र",
+          "s",
+          "start"
+        )}
+
+        ${text(
+          400,
+          425,
+          "तीनों कोण समद्विभाजक एक बिन्दु पर मिलते हैं।",
+          "pt"
+        )}
+
+      `
+    );
+
+  }
+
+
+  function fourCenters() {
+
+    return wrap(
+      "त्रिभुज के चार प्रमुख केन्द्र",
+
+      `
+
+        <polygon
+          points="400,75 170,360 630,360"
+          class="a"
+        />
+
+        ${point(400, 220, 8)}
+
+        ${point(400, 290, 8)}
+
+        ${point(325, 285, 8)}
+
+        ${point(475, 285, 8)}
+
+        ${text(
+          425,
+          215,
+          "लम्ब केन्द्र",
+          "s",
+          "start"
+        )}
+
+        ${text(
+          425,
+          295,
+          "अन्तःकेन्द्र",
+          "s",
+          "start"
+        )}
+
+        ${text(
+          315,
+          280,
+          "केन्द्रक",
+          "s",
+          "end"
+        )}
+
+        ${text(
+          485,
+          345,
+          "परिकेन्द्र",
+          "s",
+          "start"
+        )}
+
+        ${text(
+          400,
+          425,
+          "लम्ब केन्द्र • केन्द्रक • परिकेन्द्र • अन्तःकेन्द्र",
+          "pt"
+        )}
+
+      `
+    );
+
+  }
+
+
+  function similarTriangles() {
+
+    return wrap(
+      "समरूप त्रिभुज",
+
+      `
+
+        <polygon
+          points="210,340 210,170 360,340"
+          class="a"
+        />
+
+        <polygon
+          points="470,340 470,90 690,340"
+          class="a"
+        />
+
+        ${text(
+          285,
+          390,
+          "△ABC",
+          "pt"
+        )}
+
+        ${text(
+          580,
+          390,
+          "△DEF",
+          "pt"
+        )}
+
+        ${text(
+          285,
+          130,
+          "छोटा त्रिभुज",
+          "s"
+        )}
+
+        ${text(
+          580,
+          65,
+          "बड़ा त्रिभुज",
+          "s"
+        )}
+
+        ${text(
+          400,
+          435,
+          "संगत भुजाओं के अनुपात समान होते हैं।",
+          "s"
+        )}
+
+      `
+    );
+
+  }
+
+
+  /* =======================================================
+     CHAPTER 6 — LINEAR EQUATIONS
+  ======================================================= */
+
+
+  function linearGraph() {
+
+    return wrap(
+      "रेखीय समीकरण का आलेख",
+
+      `
+
+        ${line(
+          130,
+          360,
+          680,
+          360
+        )}
+
+        ${line(
+          220,
+          410,
+          220,
+          70
+        )}
+
+        <polygon
+          points="675,360 660,352 660,368"
+          fill="currentColor"
+        />
+
+        <polygon
+          points="220,75 212,90 228,90"
+          fill="currentColor"
+        />
+
+        ${line(
+          270,
+          325,
+          610,
+          115
+        )}
+
+        ${point(350, 275)}
+
+        ${point(520, 175)}
+
+        ${text(
+          355,
+          260,
+          "(x₁,y₁)",
+          "s"
+        )}
+
+        ${text(
+          525,
+          160,
+          "(x₂,y₂)",
+          "s"
+        )}
+
+        ${text(
+          610,
+          105,
+          "y = ax + b",
+          "pt"
+        )}
+
+        ${text(
+          650,
+          390,
+          "x",
+          "pt"
+        )}
+
+        ${text(
+          205,
+          85,
+          "y",
+          "pt"
+        )}
+
+      `
+    );
+
+  }
+
+
+  function equationSteps() {
+
+    return wrap(
+      "समीकरण हल करने के चरण",
+
+      `
+
+        ${text(
+          400,
+          85,
+          "2x + 5 = 17",
+          "pt"
+        )}
+
+         ${text(
+          400,
+          155,
+          "2x = 17 − 5",
+          "t"
+        )}
+
+        ${text(
+          400,
+          225,
+          "2x = 12",
+          "t"
+        )}
+
+        ${text(
+          400,
+          295,
+          "x = 12 ÷ 2",
+          "t"
+        )}
+
+        ${text(
+          400,
+          365,
+          "x = 6  ✓",
+          "pt"
+        )}
+
+        ${text(
+          400,
+          425,
+          "दोनों पक्षों पर समान क्रिया करें।",
+          "s"
+        )}
+
+      `
+    );
+
+  }
+
+
+  function wordEquation() {
+
+    return wrap(
+      "वार्तिक प्रश्न → रेखीय समीकरण",
+
+      `
+
+        <rect
+          x="120"
+          y="95"
+          width="560"
+          height="105"
+          rx="16"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="4"
+        />
+
+        ${text(
+          400,
+          140,
+          "किसी संख्या में 7 जोड़ने पर 19 मिलता है।",
+          "s"
+        )}
+
+        ${text(
+          400,
+          180,
+          "संख्या = x  →  x + 7 = 19",
+          "pt"
+        )}
+
+        ${text(
+          400,
+          275,
+          "x = 12",
+          "pt"
+        )}
+
+        ${text(
+          400,
+          350,
+          "जाँच: 12 + 7 = 19 ✓",
+          "t"
+        )}
+
+      `
+    );
+
+  }
+
+
+  /* =======================================================
+     CIRCLE SUPPORT
+  ======================================================= */
+
+
+  function circleConcept() {
+
+    return wrap(
+      "वृत्त की मूल अवधारणा",
+
+      `
+
+        <circle
+          cx="400"
+          cy="230"
+          r="145"
+          class="a"
+        />
+
+        ${point(400, 230)}
+
+        ${line(
+          400,
+          230,
+          545,
+          230
+        )}
+
+        ${text(
+          475,
+          215,
+          "त्रिज्या",
+          "t"
+        )}
+
+        ${text(
+          400,
+          270,
+          "केंद्र O",
+          "pt"
+        )}
+
+      `
+    );
+
+  }
+
+
+  function radiusDiameterChordArc() {
+
+    return wrap(
+      "त्रिज्या, व्यास, जीवा और चाप",
+
+      `
+
+        <circle
+          cx="400"
+          cy="230"
+          r="150"
+          class="a"
+        />
+
+        ${point(400, 230)}
+
+        ${line(
+          250,
+          230,
+          550,
+          230,
+          "d"
+        )}
+
+        ${line(
+          400,
+          230,
+          550,
+          230
+        )}
+
+        ${line(
+          290,
+          135,
+          515,
+          300
+        )}
+
+        <path
+          d="
+            M285 150
+            A150 150 0 0 1 525 165
+          "
+          fill="none"
+          stroke="currentColor"
+          stroke-width="7"
+        />
+
+        ${text(
+          400,
+          195,
+          "व्यास",
+          "s"
+        )}
+
+        ${text(
+          475,
+          210,
+          "त्रिज्या",
+          "s"
+        )}
+
+        ${text(
+          420,
+          135,
+          "जीवा",
+          "s"
+        )}
+
+        ${text(
+          405,
+          105,
+          "चाप",
+          "s"
+        )}
+
+      `
+    );
+
+  }
+
+
+  function semicircle() {
+
+    return wrap(
+      "अर्धवृत्त",
+
+      `
+
+        <path
+          d="
+            M180 300
+            A220 220 0 0 1 620 300
+            Z
+          "
+          class="a"
+        />
+
+        ${line(
+          180,
+          300,
+          620,
+          300
+        )}
+
+        ${point(400, 300)}
+
+        ${text(
+          400,
+          350,
+          "व्यास",
+          "pt"
+        )}
+
+        ${text(
+          400,
+          100,
+          "अर्धवृत्त",
+          "pt"
+        )}
+
+      `
+    );
+
+  }
+
+
+  /* =======================================================
+     TITLE DETECTION
+  ======================================================= */
+
+  function getTitle() {
+
+    const ids = [
+
+      "mainTitle",
+
+      "lessonTitle",
+
+      "chapterTitle"
+
+    ];
+
+    return ids
+
+      .map(
+        id =>
+          document
+            .getElementById(id)
+            ?.textContent || ""
       )
-    ) {
-      return radiusDiameterChordArc();
-    }
 
-    if (t.includes("अर्धवृत्त")) {
-      return semicircle();
-    }
+      .join(" ")
 
-    if (
-      t.includes("वृत्तखण्ड") ||
-      t.includes("त्रिज्याखण्ड")
-    ) {
-      return segmentAndSector();
-    }
+      .trim();
 
-    if (
-      t.includes("वृत्त") &&
-      (
-        c.includes("वृत्त") ||
-        t.includes("वृत्त")
-      )
-    ) {
-      return circleConcept();
-    }
+  }
 
 
-    /* -----------------------------------------------------
-       TRIANGLE
-       ----------------------------------------------------- */
+  /* =======================================================
+     AUTOMATIC DIAGRAM SELECTION
+  ======================================================= */
+ function choose(title) {
 
-    if (t.includes("त्रिभुज के प्रकार")) {
-      return triangleTypes();
-    }
+    const t =
+      title.toLowerCase();
 
-    if (t.includes("त्रिभुज की रचना")) {
-      return triangleConstruction();
-    }
+
+    /* ---------- Chapter 3 ---------- */
 
     if (
-      t.includes("त्रिभुज") &&
-      (
-        t.includes("सर्वांगसम") ||
-        t.includes("समरूप") ||
-        c.includes("त्रिभुज")
-      )
+      /पाई चार्ट|वृत्तारेख/.test(t)
     ) {
-      return triangleBasic();
-    }
 
-
-    /* -----------------------------------------------------
-       CLASS 7 — CHAPTER 3
-       ----------------------------------------------------- */
-
-    if (
-      t.includes("पाई चार्ट") ||
-      t.includes("वृत्तारेख")
-    ) {
       return pieChart();
+
     }
 
+
     if (
-      t.includes("केन्द्रीय प्रवृत्ति") ||
-      t.includes("केंद्रीय प्रवृत्ति")
+      /केन्द्रीय प्रवृत्ति|माध्यिका|बहुलक/.test(t)
     ) {
+
       return centralTendency();
-    }
 
-    if (
-      t.includes("समान्तर माध्य") ||
-      t.includes("माध्य की गणना")
-    ) {
-      return meanVisual();
     }
 
 
-    /* -----------------------------------------------------
-       CLASS 7 — CHAPTER 4
-       ----------------------------------------------------- */
-
     if (
-      t.includes("रेखाखंड") &&
-      (
-        t.includes("समद्विभाजन") ||
-        t.includes("समद्विभाजित")
-      )
+      /समान्तर माध्य|औसत|माध्य की गणना/.test(t)
     ) {
-      return lineSegmentBisector();
+
+      return meanTable();
+
     }
 
-    if (
-      t.includes("बराबर कोण") ||
-      t.includes("समान कोण")
-    ) {
-      return equalAngleConstruction();
-    }
+
+    /* ---------- Chapter 4 ---------- */
 
     if (
-      t.includes("कोण") &&
-      (
-        t.includes("समद्विभाजन") ||
-        t.includes("समद्विभाजित")
-      )
+      /रेखाखंड.*समद्विभाज|रेखा खंड.*समद्विभाज/.test(t)
     ) {
+
+      return segmentBisector();
+
+    }
+
+
+    if (
+      /बराबर कोण/.test(t)
+    ) {
+
+      return equalAngle();
+
+    }
+
+
+    if (
+      /कोण.*समद्विभाजित/.test(t)
+    ) {
+
       return angleBisector();
+
     }
+
 
     if (
-      t.includes("समान्तर रेखा") ||
-      t.includes("समान्तर रेखाएँ")
+      /समान्तर रेखा/.test(t)
     ) {
-      return parallelConstruction();
+
+      return parallelLines();
+
     }
+
 
     if (
-      t.includes("लम्ब") &&
-      (
-        t.includes("रेखाखंड") ||
-        t.includes("बिन्दु")
-      )
+      /लम्ब खींचना|लम्ब रचना/.test(t)
     ) {
-      return perpendicularConstruction();
+
+      return perpendicular();
+
     }
 
 
-    return null;
+    /* ---------- Chapter 5 ---------- */
+
+    if (
+      /पाइथागोरियन त्रिक/.test(t)
+    ) {
+
+      return pythagoreanTriple();
+
+    }
+
+
+    if (
+      /पाइथागोरस प्रमेय/.test(t)
+    ) {
+
+      return pythagoras();
+
+    }
+
+
+    if (
+      /त्रिभुज.*रचना|त्रिभुजों की रचना/.test(t)
+    ) {
+
+      return triangleConstruction();
+
+    }
+
+
+    if (
+      /शीर्षलम्ब/.test(t)
+    ) {
+
+      return altitude();
+
+    }
+
+
+    if (
+      /माध्यिक/.test(t)
+    ) {
+
+      return median();
+
+    }
+
+
+    if (
+      /लम्बार्धक/.test(t)
+    ) {
+
+      return perpendicularBisector();
+
+    }
+
+
+    if (
+      /कोणों.*समद्विभाजक/.test(t)
+    ) {
+
+      return triangleAngleBisectors();
+
+    }
+
+
+    if (
+      /चार.*केन्द्र|केन्द्रक.*लम्ब केन्द्र|लम्ब केन्द्र.*परिकेन्द्र/.test(t)
+    ) {
+
+      return fourCenters();
+
+    }
+
+
+    if (
+      /समरूप त्रिभुज/.test(t)
+    ) {
+
+      return similarTriangles();
+
+    }
+
+
+    /* ---------- Chapter 6 ---------- */
+
+    if (
+      /समीकरण.*आलेख|रेखीय समीकरण.*आलेख/.test(t)
+    ) {
+
+      return linearGraph();
+
+    }
+
+
+    if (
+      /समीकरण.*हल|बक्रगुणन|प्रतिस्थापन विधि/.test(t)
+    ) {
+
+      return equationSteps();
+
+    }
+
+
+    if (
+      /वार्तिक|शाब्दिक|दैनिक जीवन/.test(t) &&
+      /समीकरण/.test(t)
+    ) {
+
+      return wordEquation();
+
+    }
+
+
+    /* ---------- Circle ---------- */
+
+    if (
+      /त्रिज्या.*व्यास.*जीवा.*चाप/.test(t)
+    ) {
+
+      return radiusDiameterChordArc();
+
+    }
+
+
+    if (
+      /अर्धवृत्त/.test(t)
+    ) {
+
+      return semicircle();
+
+    }
+
+
+    if (
+      /वृत्त की मूल|वृत्त की अवधारणा/.test(t)
+    ) {
+
+      return circleConcept();
+
+    }
+
+
+    return "";
 
   }
 
 
   /* =======================================================
-     INSERT DIAGRAM
-     ======================================================= */
- function findTarget() {
-
-    const examples =
-      document.getElementById("examples");
-
-    if (examples) {
-      return examples;
-    }
-
-    const main =
-      document.getElementById("mainContent");
-
-    if (main) {
-      return main;
-    }
-
-    const container =
-      document.getElementById("lessonContent");
-
-    if (container) {
-      return container;
-    }
-
-    return document.body;
-
-  }
-
-
-  function renderDiagram() {
-
-    /* Prevent duplicate rendering */
-
-    if (
-      document.querySelector(
-        ".aadya-auto-visual"
-      )
-    ) {
-      return;
-    }
-
-
-    const mainTitle =
-      document.getElementById("mainTitle");
-
-    const chapterTitle =
-      document.getElementById("chapterTitle");
-
-    const title =
-      mainTitle
-        ? mainTitle.textContent
-        : "";
-
-    const chapter =
-      chapterTitle
-        ? chapterTitle.textContent
-        : "";
-
-
-    if (!title && !chapter) {
-      return;
-    }
-
-
-    const diagram =
-      getDiagram(
-        title,
-        chapter
-      );
-
-
-    if (!diagram) {
-      return;
-    }
-
-
-    const wrapper =
-      document.createElement("div");
-
-    wrapper.className =
-      "aadya-auto-visual";
-
-    wrapper.innerHTML =
-      diagram;
-
-
-    const target =
-      findTarget();
-
-
-    if (
-      target &&
-      target.parentNode
-    ) {
-
-      target.parentNode.insertBefore(
-        wrapper,
-        target.nextSibling
-      );
-
-    }
-
-  }
-
-
-  /* =======================================================
-     CSS
-     ======================================================= */
-
-  function injectStyles() {
+     STYLE
+  ======================================================= */
+ function injectStyles() {
 
     if (
       document.getElementById(
         "aadya-diagram-engine-style"
       )
     ) {
+
       return;
+
     }
 
 
     const style =
-      document.createElement("style");
+      document.createElement(
+        "style"
+      );
+
 
     style.id =
       "aadya-diagram-engine-style";
@@ -1641,176 +1896,60 @@
 
       .aadya-diagram-card {
 
-        margin-top: 18px;
-        margin-bottom: 18px;
-        overflow: hidden;
+        margin-top:18px;
+
+        overflow:hidden;
 
       }
 
 
       .aadya-diagram-title {
 
-        font-weight: 700;
-        font-size: 18px;
-        padding: 12px 14px;
-        text-align: center;
+        font-weight:800;
+
+        font-size:1.05rem;
+
+        padding:12px 14px;
 
       }
 
 
       .aadya-svg-wrap {
 
-        width: 100%;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        width:100%;
+
+        overflow:hidden;
+
+        padding:8px 10px 14px;
 
       }
 
 
       .aadya-svg-wrap svg {
 
-        width: 100%;
-        max-width: 800px;
-        height: auto;
-        display: block;
+        display:block;
+
+        width:100%;
+
+        height:auto;
+
+        max-height:460px;
 
       }
 
 
-      .aadya-visual-content {
-
-        width: 100%;
-        padding: 12px;
-        box-sizing: border-box;
-
-      }
-
-
-      .aadya-stat-grid {
-
-        display: grid;
-        grid-template-columns:
-          repeat(
-            3,
-            minmax(0, 1fr)
-          );
-
-        gap: 12px;
-
-      }
-
-
-      .aadya-stat-box {
-
-        border: 1px solid currentColor;
-        border-radius: 14px;
-        padding: 14px 10px;
-        text-align: center;
-
-      }
-
-
-      .aadya-stat-symbol {
-
-        font-size: 30px;
-        font-weight: 700;
-        margin-bottom: 5px;
-
-      }
-
-
-      .aadya-stat-name {
-
-        font-size: 18px;
-        font-weight: 700;
-        margin-bottom: 6px;
-
-      }
-
-
-      .aadya-stat-text {
-
-        font-size: 14px;
-        line-height: 1.5;
-
-      }
-
-
-      .aadya-formula {
-
-        text-align: center;
-        font-size: 18px;
-        line-height: 1.7;
-        padding: 12px;
-        margin-bottom: 12px;
-        border-radius: 12px;
-        border: 1px solid currentColor;
-
-      }
-
-
-      .aadya-data-table {
-
-        width: 100%;
-        border-collapse: collapse;
-        text-align: center;
-        font-size: 16px;
-
-      }
-
-
-      .aadya-data-table th,
-      .aadya-data-table td {
-
-        border: 1px solid currentColor;
-        padding: 10px 6px;
-
-      }
-
-
-      .aadya-data-table th {
-
-        font-weight: 700;
-
-      }
-
-
-      @media (max-width: 600px) {
-
-        .aadya-stat-grid {
-
-          grid-template-columns:
-            1fr;
-
-        }
-
-
-        .aadya-stat-box {
-
-          padding: 12px;
-
-        }
-
+      @media(max-width:600px) {
 
         .aadya-diagram-title {
 
-          font-size: 16px;
+          font-size:1rem;
 
         }
 
 
-        .aadya-svg-wrap svg {
+        .aadya-svg-wrap {
 
-          width: 100%;
-
-        }
-
-
-        .aadya-data-table {
-
-          font-size: 14px;
+          padding:4px;
 
         }
 
@@ -1819,32 +1958,107 @@
     `;
 
 
-    document.head.appendChild(style);
+    document.head.appendChild(
+      style
+    );
 
   }
 
 
   /* =======================================================
-     START
-     ======================================================= */
+     RENDER
+  ======================================================= */
+
+  function render() {
+
+    if (
+      document.getElementById(
+        CARD_ID
+      )
+    ) {
+
+      return;
+
+    }
+
+
+    const title =
+      getTitle();
+
+
+    if (!title) {
+
+      return;
+
+    }
+
+
+    const html =
+      choose(title);
+
+
+    if (!html) {
+
+      return;
+
+    }
+
+
+    const examples =
+      document.getElementById(
+        "examples"
+      );
+
+
+    const explanation =
+      document.getElementById(
+        "explanation"
+      );
+
+
+    const content =
+      document.getElementById(
+        "content"
+      );
+
+
+    const anchor =
+      examples ||
+      explanation ||
+      content;
+
+
+    if (!anchor) {
+
+      return;
+
+    }
+
+
+    anchor.insertAdjacentHTML(
+      "afterend",
+      html
+    );
+
+  }
+
+
+  /* =======================================================
+     START ENGINE
+  ======================================================= */
 
   function start() {
 
     injectStyles();
 
-    renderDiagram();
+    render();
 
-
-    /*
-     * learning.html content is loaded dynamically.
-     * इसलिए DOM बदलने पर फिर से check करेंगे।
-     */
 
     const observer =
       new MutationObserver(
         function () {
 
-          renderDiagram();
+          render();
 
         }
       );
@@ -1853,30 +2067,29 @@
     observer.observe(
       document.body,
       {
-        childList: true,
-        subtree: true
+        childList:true,
+        subtree:true,
+        characterData:true
       }
     );
+
+
+    window.AADYADiagramEngine = {
+
+      render:render,
+
+      refresh:render
+
+    };
 
   }
 
 
   /* =======================================================
-     PUBLIC API
-     ======================================================= */
-
-  window.AADYADiagramEngine = {
-
-    render: renderDiagram,
-    start: start
-
-  };
-
-
-  /* =======================================================
      DOM READY
-     ======================================================= */
- if (
+  ======================================================= */
+
+  if (
     document.readyState ===
     "loading"
   ) {
@@ -1886,11 +2099,12 @@
       start
     );
 
-  } else {
+  }
+
+  else {
 
     start();
 
   }
-
 
 })();
