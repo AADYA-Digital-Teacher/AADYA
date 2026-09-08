@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "classes": {
     "class7": {
       "name": "कक्षा 7",
@@ -60,6 +60,62 @@
                   "number": 4,
                   "title": "बड़ी एवं छोटी संख्याओं को घातांकीय रूप में व्यक्त करके उनकी तुलना करना",
                   "file": "./content/class7/mathematics/textbook02/lesson04.json"
+                }
+              ]
+            },
+            {
+              "number": 3,
+              "book_number": 3,
+              "title": "सांख्यिकी",
+              "source": "textbook",
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "पाई चार्ट (वृत्तारेख)",
+                  "file": "./content/class7/mathematics/textbook03/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "केन्द्रीय प्रवृत्ति की माप तथा इसके प्रकार",
+                  "file": "./content/class7/mathematics/textbook03/lesson02.json"
+                },
+                {
+                  "number": 3,
+                  "title": "समान्तर माध्य की गणना",
+                  "file": "./content/class7/mathematics/textbook03/lesson03.json"
+                }
+              ]
+            },
+            {
+              "number": 4,
+              "book_number": 4,
+              "title": "रचनाएँ",
+              "source": "textbook",
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "दिए हुए रेखाखंड का समद्विभाजन",
+                  "file": "./content/class7/mathematics/textbook04/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "दिए हुए कोण के बराबर कोण की रचना",
+                  "file": "./content/class7/mathematics/textbook04/lesson02.json"
+                },
+                {
+                  "number": 3,
+                  "title": "दिए हुए कोण को समद्विभाजित करना",
+                  "file": "./content/class7/mathematics/textbook04/lesson03.json"
+                },
+                {
+                  "number": 4,
+                  "title": "दी हुई रेखा के समान्तर रेखा खींचना",
+                  "file": "./content/class7/mathematics/textbook04/lesson04.json"
+                },
+                {
+                  "number": 5,
+                  "title": "दिए गए रेखाखंड पर दिए गए बिन्दु से लम्ब खींचना",
+                  "file": "./content/class7/mathematics/textbook04/lesson05.json"
                 }
               ]
             }
