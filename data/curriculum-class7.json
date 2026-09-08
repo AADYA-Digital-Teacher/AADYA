@@ -1,5 +1,5 @@
 {
-  "version": "1.1",
+  "version": "1.2",
   "classes": {
     "class7": {
       "name": "कक्षा 7",
@@ -116,6 +116,97 @@
                   "number": 5,
                   "title": "दिए गए रेखाखंड पर दिए गए बिन्दु से लम्ब खींचना",
                   "file": "./content/class7/mathematics/textbook04/lesson05.json"
+                }
+              ]
+            },
+            {
+              "number": 5,
+              "book_number": 5,
+              "title": "त्रिभुज",
+              "source": "textbook",
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "पाइथागोरस प्रमेय की अवधारणा",
+                  "file": "./content/class7/mathematics/textbook05/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "पाइथागोरस प्रमेय का सत्यापन",
+                  "file": "./content/class7/mathematics/textbook05/lesson02.json"
+                },
+                {
+                  "number": 3,
+                  "title": "पाइथागोरियन त्रिक",
+                  "file": "./content/class7/mathematics/textbook05/lesson03.json"
+                },
+                {
+                  "number": 4,
+                  "title": "भिन्न-भिन्न शर्तों के आधार पर त्रिभुजों की रचना",
+                  "file": "./content/class7/mathematics/textbook05/lesson04.json"
+                },
+                {
+                  "number": 5,
+                  "title": "त्रिभुज के शीर्षलम्ब, लम्ब केन्द्र",
+                  "file": "./content/class7/mathematics/textbook05/lesson05.json"
+                },
+                {
+                  "number": 6,
+                  "title": "त्रिभुज की माध्यिकाएँ एवं केन्द्रक",
+                  "file": "./content/class7/mathematics/textbook05/lesson06.json"
+                },
+                {
+                  "number": 7,
+                  "title": "त्रिभुज की लम्बार्धक एवं परिकेन्द्र",
+                  "file": "./content/class7/mathematics/textbook05/lesson07.json"
+                },
+                {
+                  "number": 8,
+                  "title": "त्रिभुज के कोणों के समद्विभाजक एवं अन्तःकेन्द्र",
+                  "file": "./content/class7/mathematics/textbook05/lesson08.json"
+                },
+                {
+                  "number": 9,
+                  "title": "त्रिभुज के केन्द्रक, लम्ब केन्द्र, परिकेन्द्र और अन्तःकेन्द्र",
+                  "file": "./content/class7/mathematics/textbook05/lesson09.json"
+                },
+                {
+                  "number": 10,
+                  "title": "समरूप त्रिभुज के गुणधर्म",
+                  "file": "./content/class7/mathematics/textbook05/lesson10.json"
+                },
+                {
+                  "number": 11,
+                  "title": "दी गई भुजाओं के अनुपात के आधार पर समरूप त्रिभुजों की रचना",
+                  "file": "./content/class7/mathematics/textbook05/lesson11.json"
+                }
+              ]
+            },
+            {
+              "number": 6,
+              "book_number": 6,
+              "title": "रेखीय समीकरण",
+              "source": "textbook",
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "रेखीय समीकरण और उनका हल",
+                  "file": "./content/class7/mathematics/textbook06/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "ax + b = cx + d (a ≠ c) प्रकार के रेखीय समीकरणों का हल",
+                  "file": "./content/class7/mathematics/textbook06/lesson02.json"
+                },
+                {
+                  "number": 3,
+                  "title": "बक्रगुणन विधि द्वारा रेखीय समीकरणों का हल",
+                  "file": "./content/class7/mathematics/textbook06/lesson03.json"
+                },
+                {
+                  "number": 4,
+                  "title": "रेखीय समीकरणों पर आधारित वार्तिक प्रश्न",
+                  "file": "./content/class7/mathematics/textbook06/lesson04.json"
                 }
               ]
             }
