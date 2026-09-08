@@ -94,7 +94,7 @@
       {
         "question": "किसी संख्या से 9 घटाने पर 16 मिलता है। संख्या है—",
         "options": ["23", "24", "25", "26"],
-        "correct_answer": 0,
+        "correct_answer": 2,
         "explanation": "x - 9 = 16 ⇒ x = 25।"
       },
       {
