@@ -1,0 +1,119 @@
+{
+  "class": 7,
+  "subject": "गणित",
+  "chapter": 5,
+  "chapter_title": "बीजगणितीय अवधारणाएँ",
+  "lesson": 3,
+  "title": "अक्षर संख्याओं की घात",
+  "source": "पाठ्यपुस्तक",
+  "objectives": [
+    "घात और आधार की पहचान करना",
+    "अक्षरीय राशियों को घात के रूप में लिखना",
+    "घात का विस्तारित रूप समझना"
+  ],
+  "concept": "किसी संख्या या अक्षर को बार-बार गुणा करने को घात के रूप में लिखा जा सकता है। जैसे x × x = x² और a × a × a = a³।",
+  "explanation": [
+    {
+      "heading": "आधार और घातांक",
+      "content": "x³ में x आधार और 3 घातांक है। इसका अर्थ x × x × x है।"
+    },
+    {
+      "heading": "विस्तारित रूप",
+      "content": "a² = a × a तथा b⁴ = b × b × b × b।"
+    },
+    {
+      "heading": "घात का महत्व",
+      "content": "घात बार-बार होने वाले गुणन को छोटा और सरल रूप में लिखने में सहायता करती है।"
+    }
+  ],
+  "examples": [
+    "x × x = x²",
+    "a × a × a = a³",
+    "p × p × p × p = p⁴",
+    "2 × 2 × 2 = 2³"
+  ],
+  "practice": {
+    "title": "अभ्यास",
+    "questions": [
+      {
+        "question": "x × x को कैसे लिखेंगे?",
+        "options": ["x", "x²", "2x", "x + 2"],
+        "correct_answer": 1
+      },
+      {
+        "question": "a × a × a = ?",
+        "options": ["a²", "3a", "a³", "a"],
+        "correct_answer": 2
+      },
+      {
+        "question": "p⁴ में आधार क्या है?",
+        "options": ["4", "p", "0", "1"],
+        "correct_answer": 1
+      },
+      {
+        "question": "y³ का विस्तारित रूप है—",
+        "options": ["3y", "y + y + y", "y × y × y", "y/3"],
+        "correct_answer": 2
+      },
+      {
+        "question": "b² का अर्थ है—",
+        "options": ["2b", "b + 2", "b × b", "b/2"],
+        "correct_answer": 2
+      },
+      {
+        "question": "m⁵ में घातांक है—",
+        "options": ["m", "5", "0", "1"],
+        "correct_answer": 1
+      }
+    ]
+  },
+  "quiz": {
+    "title": "🧠 Quiz – अपनी समझ जाँचें",
+    "questions": [
+      {
+        "question": "z × z × z = ?",
+        "options": ["z²", "z³", "3z", "z"],
+        "correct_answer": 1
+      },
+      {
+        "question": "c⁴ का विस्तारित रूप है—",
+        "options": ["4c", "c + c + c + c", "c × c × c × c", "c/4"],
+        "correct_answer": 2
+      },
+      {
+        "question": "q² में घातांक कौन है?",
+        "options": ["q", "2", "0", "1"],
+        "correct_answer": 1
+      },
+      {
+        "question": "5³ का अर्थ है—",
+        "options": ["5 × 3", "5 + 5 + 5", "5 × 5 × 5", "3 × 3 × 3"],
+        "correct_answer": 2
+      },
+      {
+        "question": "a × a × a × a × a = ?",
+        "options": ["a⁴", "a⁵", "5a", "a²"],
+        "correct_answer": 1
+      },
+      {
+        "question": "यदि x = 2, तो x³ = ?",
+        "options": ["6", "8", "4", "9"],
+        "correct_answer": 1
+      },
+      {
+        "question": "यदि y = 3, तो y² = ?",
+        "options": ["6", "9", "12", "5"],
+        "correct_answer": 1
+      },
+      {
+        "question": "n⁶ में आधार और घातांक क्रमशः हैं—",
+        "options": ["6 और n", "n और 6", "n और n", "6 और 6"],
+        "correct_answer": 1
+      }
+    ]
+  },
+  "completion": {
+    "message": "🏆 अब आप अक्षरीय संख्याओं को घात के रूप में लिख सकते हैं।",
+    "next": "अब चर और अचर संख्याओं को समझें।"
+  }
+}
