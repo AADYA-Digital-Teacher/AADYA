@@ -677,12 +677,16 @@ function answerIndex(item){
 
 /* ==========================================
    APP CHAPTER NUMBER
-   IMPORTANT:
-   textbook01 = App Chapter 3
-   textbook02 = App Chapter 4
+   Class 7:
+   textbook01 = Chapter 1
+   textbook02 = Chapter 2
+   ...
+   
+   Class 6:
+   textbook01 = Chapter 3
+   textbook02 = Chapter 4
    ...
 ========================================== */
-
 
 function getAppChapterNumber(
   data,
@@ -719,47 +723,10 @@ function getAppChapterNumber(
 
   }
 
-  /*
-   * Old custom lessons
-   */
-  if(
-    data &&
-    data.chapter &&
-    typeof data.chapter === "object"
-  ){
-
-    return (
-      data.chapter.number ??
-      data.chapter.book_number ??
-      ""
-    );
-
-  }
-
-  return (
-    data?.chapter ?? ""
-  );
-
-}
-
-  const match =
-    filePath.match(
-      /\/textbook(\d+)\/lesson\d+\.json$/
-    );
-
-  if(match){
-
-    return (
-      Number(match[1]) + 2
-    );
-
-  }
-
 
   /*
    * Old custom lessons
    */
-
   if(
     data &&
     data.chapter &&
@@ -780,6 +747,7 @@ function getAppChapterNumber(
   );
 
 }
+
 
 
 /* ==========================================
