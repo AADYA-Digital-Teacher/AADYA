@@ -1001,87 +1001,136 @@
 
   function getDiagram() {
 
-    const page =
-      getPageText();
+  const page =
+    getPageText();
 
-    /*
-      Chapter 7
-    */
+  /* =====================================================
+     CHAPTER 7 — वाणिज्य गणित
+  ===================================================== */
 
-    if(page.includes("समानुपात")) {
+  if(
+    page.includes("वाणिज्य गणित")
+  ){
 
-      if(
-        page.includes("अनुलोम और प्रतिलोम")
-      ) {
-        return directInverse();
-      }
-
-      if(
-        page.includes("प्रतिशतता का अनुप्रयोग")
-      ) {
-        return percentageApplication();
-      }
-
-      if(
-        page.includes("चक्रवृद्धि ब्याज का अर्थ")
-      ) {
-        return compoundMeaning();
-      }
-
-      if(
-        page.includes("ऐकिक नियम द्वारा चक्रवृद्धि")
-      ) {
-        return unitaryCompound();
-      }
-
-      if(
-        page.includes("चक्रवृद्धि मिश्रधन का सूत्र")
-      ) {
-        return compoundFormula();
-      }
-
-      if(
-        page.includes("कर (Tax)")
-      ) {
-        return taxTypes();
-      }
-
-      return proportion();
-
+    /* Lesson 2 */
+    if(
+      page.includes("अनुलोम और प्रतिलोम समानुपात")
+    ){
+      return directInverse();
     }
 
-    /*
-      Chapter 8
-    */
+    /* Lesson 3 */
+    if(
+      page.includes("प्रतिशतता का अनुप्रयोग")
+    ){
+      return percentageApplication();
+    }
+
+    /* Lesson 4 */
+    if(
+      page.includes("चक्रवृद्धि ब्याज का अर्थ")
+    ){
+      return compoundMeaning();
+    }
+
+    /* Lesson 5 */
+    if(
+      page.includes(
+        "ऐकिक नियम द्वारा चक्रवृद्धि मिश्रधन एवं चक्रवृद्धि ब्याज"
+      )
+    ){
+      return unitaryCompound();
+    }
 
     if(
-      page.includes("व्यंजकों का गुणनफल")
-    ) {
+      page.includes(
+        "ऐकिक नियम द्वारा चक्रवृद्धि"
+      )
+    ){
+      return unitaryCompound();
+    }
 
-      if(
-        page.includes("समीकरण एवं सर्वसमिका में अन्तर")
-      ) {
-        return equationVsIdentity();
-      }
+    /* Lesson 6 */
+    if(
+      page.includes(
+        "चक्रवृद्धि मिश्रधन का सूत्र"
+      )
+    ){
+      return compoundFormula();
+    }
 
-      if(
-        page.includes("सर्वसमिकाओं का अनुप्रयोग")
-      ) {
-        return identityApplication();
-      }
+    /* Lesson 7 */
+    if(
+      page.includes("कर (Tax)")
+    ){
+      return taxTypes();
+    }
 
-      if(
- page.includes("सर्वसमिकाएँ")
-      ) {
-        return identities();
-      }
-
-      return expressionProduct();
-
+    /* Lesson 1 */
+    if(
+      page.includes("समानुपात")
+    ){
+      return proportion();
     }
 
     return "";
+  }
 
+
+  /* =====================================================
+     CHAPTER 8 — व्यंजकों का गुणनफल एवं सर्वसमिकाएँ
+  ===================================================== */
+
+  if(
+    page.includes(
+      "व्यंजकों का गुणनफल एवं सर्वसमिकाएँ"
+    )
+  ){
+
+    /* Lesson 3 */
+    if(
+      page.includes(
+        "समीकरण एवं सर्वसमिका में अन्तर"
+      )
+    ){
+      return equationVsIdentity();
+    }
+
+    /* Lesson 4 */
+    if(
+      page.includes(
+        "सर्वसमिकाओं का अनुप्रयोग"
+      )
+    ){
+      return identityApplication();
+    }
+
+    /* Lesson 2 */
+    if(
+      page.includes("सर्वसमिकाएँ")
+    ){
+      return identities();
+    }
+
+    /* Lesson 1 */
+    if(
+      page.includes("व्यंजकों का गुणनफल")
+    ){
+      return expressionProduct();
+    }
+
+    return "";
+  }
+
+
+  /* =====================================================
+     IMPORTANT
+     अन्य Chapters के diagrams को न छेड़ें।
+     Existing Diagram Engine v4 के बाकी logic को
+     यथावत रहने दें।
+  ===================================================== */
+
+  return "";
   }
 
   /* =======================================================
