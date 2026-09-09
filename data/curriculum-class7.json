@@ -1,5 +1,5 @@
 {
-  "version": "1.2",
+  "version": "1.3",
   "classes": {
     "class7": {
       "name": "कक्षा 7",
@@ -207,6 +207,77 @@
                   "number": 4,
                   "title": "रेखीय समीकरणों पर आधारित वार्तिक प्रश्न",
                   "file": "./content/class7/mathematics/textbook06/lesson04.json"
+                }
+              ]
+            },
+            {
+              "number": 7,
+              "book_number": 7,
+              "title": "वाणिज्य गणित",
+              "source": "textbook",
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "समानुपात",
+                  "file": "./content/class7/mathematics/textbook07/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "अनुलोम और प्रतिलोम समानुपात",
+                  "file": "./content/class7/mathematics/textbook07/lesson02.json"
+                },
+                {
+                  "number": 3,
+                  "title": "प्रतिशतता का अनुप्रयोग",
+                  "file": "./content/class7/mathematics/textbook07/lesson03.json"
+                },
+                {
+                  "number": 4,
+                  "title": "चक्रवृद्धि ब्याज का अर्थ",
+                  "file": "./content/class7/mathematics/textbook07/lesson04.json"
+                },
+                {
+                  "number": 5,
+                  "title": "ऐकिक नियम द्वारा चक्रवृद्धि मिश्रधन एवं चक्रवृद्धि ब्याज ज्ञात करना",
+                  "file": "./content/class7/mathematics/textbook07/lesson05.json"
+                },
+                {
+                  "number": 6,
+                  "title": "चक्रवृद्धि मिश्रधन का सूत्र तथा उसका अनुप्रयोग",
+                  "file": "./content/class7/mathematics/textbook07/lesson06.json"
+                },
+                {
+                  "number": 7,
+                  "title": "कर (Tax) एवं कर के प्रकार",
+                  "file": "./content/class7/mathematics/textbook07/lesson07.json"
+                }
+              ]
+            },
+            {
+              "number": 8,
+              "book_number": 8,
+              "title": "व्यंजकों का गुणनफल एवं सर्वसमिकाएँ",
+              "source": "textbook",
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "व्यंजकों का गुणनफल",
+                  "file": "./content/class7/mathematics/textbook08/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "सर्वसमिकाएँ",
+                  "file": "./content/class7/mathematics/textbook08/lesson02.json"
+                },
+                {
+                  "number": 3,
+                  "title": "समीकरण एवं सर्वसमिका में अन्तर",
+                  "file": "./content/class7/mathematics/textbook08/lesson03.json"
+                },
+                {
+                  "number": 4,
+                  "title": "सर्वसमिकाओं का अनुप्रयोग",
+                  "file": "./content/class7/mathematics/textbook08/lesson04.json"
                 }
               ]
             }
