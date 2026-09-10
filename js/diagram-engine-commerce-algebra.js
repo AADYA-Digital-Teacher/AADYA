@@ -471,7 +471,7 @@ IMPORTANT:
     `, 235);
   }
 
-  /* ======================================================
+    /* ======================================================
      LESSON DETECTION
   ====================================================== */
 
@@ -500,34 +500,8 @@ IMPORTANT:
       return Number(match[1]);
     }
 
-    try {
-      if (
-        window.lessonData &&
-        window.lessonData.chapter !== undefined
-      ) {
-        const ch = window.lessonData.chapter;
-
-        if (
-          typeof ch === "number"
-        ) {
-          return ch;
-        }
-
-        if (
-          typeof ch === "object"
-        ) {
-          return Number(
-            ch.number ??
-            ch.book_number ??
-            0
-          );
-        }
-      }
-    } catch (e) {}
-
     return 0;
   }
-
   function getLessonNumber() {
     const url = window.location.pathname;
 
