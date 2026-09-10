@@ -1,5 +1,5 @@
 {
-  "version": "1.3",
+  "version": "1.4",
   "classes": {
     "class7": {
       "name": "कक्षा 7",
@@ -278,6 +278,52 @@
                   "number": 4,
                   "title": "सर्वसमिकाओं का अनुप्रयोग",
                   "file": "./content/class7/mathematics/textbook08/lesson04.json"
+                }
+              ]
+             },
+            {
+              "number": 9,
+              "book_number": 9,
+              "title": "व्यंजकों का गुणनखण्ड",
+              "source": "textbook",
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "उभयनिष्ठ गुणनखण्ड द्वारा गुणनखण्ड",
+                  "file": "./content/class7/mathematics/textbook09/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "समूहन द्वारा व्यंजकों का गुणनखण्ड",
+                  "file": "./content/class7/mathematics/textbook09/lesson02.json"
+                }
+              ]
+            },
+            {
+              "number": 10,
+              "book_number": 10,
+              "title": "चतुर्भुज",
+              "source": "textbook",
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "चतुर्भुज एवं इसके विभिन्न अंग तथा प्रकार",
+                  "file": "./content/class7/mathematics/textbook10/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "चतुर्भुज के कोणों का योग",
+                  "file": "./content/class7/mathematics/textbook10/lesson02.json"
+                },
+                {
+                  "number": 3,
+                  "title": "समान्तर चतुर्भुज एवं समलम्ब चतुर्भुज के गुण",
+                  "file": "./content/class7/mathematics/textbook10/lesson03.json"
+                },
+                {
+                  "number": 4,
+                  "title": "समचतुर्भुज, आयत और वर्ग के गुण एवं अनुप्रयोग",
+                  "file": "./content/class7/mathematics/textbook10/lesson04.json"
                 }
               ]
             }
