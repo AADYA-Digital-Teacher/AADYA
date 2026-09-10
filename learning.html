@@ -499,6 +499,9 @@ li{
 
 let lessonData = null;
 
+/* Commerce + Algebra Diagram Engine के लिए */
+window.lessonData = null;
+
 let quizScore = 0;
 
 let answeredQuestions = 0;
@@ -1135,12 +1138,20 @@ async function loadLesson(){
 
     lessonData =
       await response.json();
+    window.lessonData = lessonData;
 
 
     renderLesson(
       lessonData
     );
-
+if (
+  window.AADYACommerceAlgebraDiagramEngine &&
+  typeof window.AADYACommerceAlgebraDiagramEngine.refresh === "function"
+) {
+  setTimeout(function () {
+    window.AADYACommerceAlgebraDiagramEngine.refresh();
+  }, 100);
+}
 
     document.getElementById(
       "loading"
