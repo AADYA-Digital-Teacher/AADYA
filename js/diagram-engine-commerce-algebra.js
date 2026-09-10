@@ -489,43 +489,199 @@ IMPORTANT:
     return source.toLowerCase();
   }
 
-  function getChapterNumber() {
-    const url = window.location.pathname;
+  function getLessonFileFromURL() {
 
-    const match = url.match(
+  try {
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+    return (
+      params.get("lesson") || ""
+    );
+
+  } catch (e) {
+
+    return "";
+
+  }
+
+}
+
+
+function getChapterNumber() {
+
+  /* -----------------------------------------
+     1. PRIMARY SOURCE:
+        learning.html?lesson=...
+  ----------------------------------------- */
+
+  const lessonFile =
+    getLessonFileFromURL();
+
+  const queryMatch =
+    lessonFile.match(
       /textbook(\d+)/i
     );
 
-    if (match) {
-      return Number(match[1]);
+  if (queryMatch) {
+
+    return Number(
+      queryMatch[1]
+    );
+
+  }
+
+
+  /* -----------------------------------------
+     2. FALLBACK:
+        pathname
+  ----------------------------------------- */
+
+  const path =
+    window.location.pathname;
+
+  const pathMatch =
+    path.match(
+      /textbook(\d+)/i
+    );
+
+  if (pathMatch) {
+
+    return Number(
+      pathMatch[1]
+    );
+
+  }
+
+
+  /* -----------------------------------------
+     3. FALLBACK:
+        lessonData
+  ----------------------------------------- */
+
+  try {
+
+    if (
+      window.lessonData
+    ) {
+
+      const data =
+        window.lessonData;
+
+      if (
+        data.chapter !== undefined
+      ) {
+
+        return Number(
+          data.chapter
+        );
+
+      }
+
+      if (
+        data.chapter_number !== undefined
+      ) {
+
+        return Number(
+          data.chapter_number
+        );
+
+      }
+
     }
 
-    return 0;
-  }
-  function getLessonNumber() {
-    const url = window.location.pathname;
+  } catch (e) {}
 
-    const match = url.match(
+
+  return 0;
+
+}
+
+
+function getLessonNumber() {
+
+  /* -----------------------------------------
+     1. PRIMARY SOURCE:
+        learning.html?lesson=...
+  ----------------------------------------- */
+
+  const lessonFile =
+    getLessonFileFromURL();
+
+  const queryMatch =
+    lessonFile.match(
       /lesson(\d+)\.json/i
     );
 
-    if (match) {
-      return Number(match[1]);
+  if (queryMatch) {
+
+    return Number(
+      queryMatch[1]
+    );
+
+  }
+
+
+  /* -----------------------------------------
+     2. FALLBACK:
+        pathname
+  ----------------------------------------- */
+
+  const path =
+    window.location.pathname;
+
+  const pathMatch =
+    path.match(
+      /lesson(\d+)\.json/i
+    );
+
+  if (pathMatch) {
+
+    return Number(
+      pathMatch[1]
+    );
+
+  }
+
+
+  /* -----------------------------------------
+     3. FALLBACK:
+        lessonData
+  ----------------------------------------- */
+
+  try {
+
+    if (
+      window.lessonData &&
+      window.lessonData.lesson !== undefined
+    ) {
+
+      return Number(
+        window.lessonData.lesson
+      );
+
     }
 
-    try {
-      if (
-        window.lessonData &&
-        window.lessonData.lesson !== undefined
-      ) {
-        return Number(
-          window.lessonData.lesson
-        );
-      }
-    } catch (e) {}
+    if (
+      window.lessonData &&
+      window.lessonData.lesson_number !== undefined
+    ) {
 
-    return 0;
-  }
+      return Number(
+        window.lessonData.lesson_number
+      );
+
+    }
+
+  } catch (e) {}
+
+
+  return 0;
+
+    }
 
   /* ======================================================
      DETERMINE DIAGRAM
