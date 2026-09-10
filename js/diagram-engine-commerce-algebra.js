@@ -830,25 +830,25 @@ function getLessonNumber() {
 
   function findLessonContainer() {
 
-    const selectors = [
-      "#content",
-      "#lessonContent",
-      "#lesson-container",
-      ".lesson-content",
-      ".lesson-container",
-      "main"
-    ];
+  const selectors = [
+    "#content",
+    "#lessonContent",
+    "#lesson-container",
+    ".lesson-content",
+    ".lesson-container",
+    "main"
+  ];
 
-    for (const selector of selectors) {
-      const element =
-        document.querySelector(selector);
+  for (const selector of selectors) {
+    const element =
+      document.querySelector(selector);
 
-      if (element) {
-        return element;
-      }
+    if (element) {
+      return element;
     }
+  }
 
-    return null;
+  return null;
   }
 
   function render() {
@@ -901,21 +901,21 @@ function getLessonNumber() {
       but before Practice / Quiz when possible.
     */
 
-    const practice =
-      container.querySelector(
-        "#practiceSection, .practice-section"
-      );
+    const tryYourself =
+  container.querySelector(
+    "#tryYourself"
+  );
 
-    if (practice) {
-      practice.parentNode.insertBefore(
-        wrapper.firstElementChild,
-        practice
-      );
-    } else {
-      container.appendChild(
-        wrapper.firstElementChild
-      );
-    }
+if (tryYourself) {
+  tryYourself.parentNode.insertBefore(
+    wrapper.firstElementChild,
+    tryYourself
+  );
+} else {
+  container.appendChild(
+    wrapper.firstElementChild
+  );
+}
   }
 
   function refresh() {
