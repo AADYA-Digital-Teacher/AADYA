@@ -831,6 +831,7 @@ function getLessonNumber() {
   function findLessonContainer() {
 
     const selectors = [
+      "#content",
       "#lessonContent",
       "#lesson-container",
       ".lesson-content",
