@@ -853,69 +853,96 @@ function getLessonNumber() {
 
   function render() {
 
-    /*
-      Never touch an existing AADYA diagram.
-      This is the key protection for Ch.3–4.
-    */
+  const chapter =
+    getChapterNumber();
+
+  if (
+    chapter < 7 ||
+    chapter > 10
+  ) {
+    return;
+  }
+
+  const container =
+    findLessonContainer();
+
+  if (!container) {
+    return;
+  }
+
+  /*
+   * यदि Diagram पहले ही बन चुका है,
+   * तो उसे सही जगह MOVE करें।
+   */
+  let existing =
+    document.querySelector(
+      ".aadya-ca-diagram"
+    );
+
+  const tryYourself =
+    container.querySelector(
+      "#tryYourself"
+    );
+
+  if (existing) {
 
     if (
-      document.querySelector(
-        ".aadya-ca-diagram"
-      )
+      tryYourself &&
+      existing !== tryYourself
     ) {
-      return;
+
+      tryYourself.parentNode.insertBefore(
+        existing,
+        tryYourself
+      );
+
     }
 
-    const chapter =
-      getChapterNumber();
+    return;
+  }
 
-    if (
-      chapter < 7 ||
-      chapter > 10
-    ) {
-      return;
-    }
+  /*
+   * नया Diagram बनाएं
+   */
+  const diagram =
+    selectDiagram();
 
-    const diagram =
-      selectDiagram();
+  if (!diagram) {
+    return;
+  }
 
-    if (!diagram) {
-      return;
-    }
+  const wrapper =
+    document.createElement("div");
 
-    const container =
-      findLessonContainer();
+  wrapper.innerHTML =
+    diagram.trim();
 
-    if (!container) {
-      return;
-    }
+  const newDiagram =
+    wrapper.firstElementChild;
 
-    const wrapper =
-      document.createElement("div");
+  if (!newDiagram) {
+    return;
+  }
 
-    wrapper.innerHTML =
-      diagram.trim();
+  /*
+   * Diagram को
+   * "खुद करके देखें" से ठीक पहले रखें।
+   */
+  if (tryYourself) {
 
-    /*
-      Insert near the end of the explanation
-      but before Practice / Quiz when possible.
-    */
+    tryYourself.parentNode.insertBefore(
+      newDiagram,
+      tryYourself
+    );
 
-    const tryYourself =
-  container.querySelector(
-    "#tryYourself"
-  );
+  } else {
 
-if (tryYourself) {
-  tryYourself.parentNode.insertBefore(
-    wrapper.firstElementChild,
-    tryYourself
-  );
-} else {
-  container.appendChild(
-    wrapper.firstElementChild
-  );
-}
+    container.appendChild(
+      newDiagram
+    );
+
+  }
+
   }
 
   function refresh() {
@@ -955,13 +982,6 @@ if (tryYourself) {
       new MutationObserver(
         function () {
 
-          if (
-            document.querySelector(
-              ".aadya-ca-diagram"
-            )
-          ) {
-            return;
-          }
 
           const chapter =
             getChapterNumber();
