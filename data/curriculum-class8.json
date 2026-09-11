@@ -96,7 +96,83 @@
                   "file": "./content/class8/mathematics/textbook02/lesson07.json"
                 }
               ]
-            }
+            },
+            {
+  "number": 3,
+  "book_number": 3,
+  "title": "घनमूल",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "घन और घनमूल की संकल्पना",
+      "file": "./content/class8/mathematics/textbook03/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "पूर्ण घन संख्या की पहचान",
+      "file": "./content/class8/mathematics/textbook03/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "गुणनखंड विधि से पूर्ण घन का घनमूल",
+      "file": "./content/class8/mathematics/textbook03/lesson03.json"
+    },
+    {
+      "number": 4,
+      "title": "ऋण पूर्ण घन तथा दो पूर्ण घनों के गुणनफल का घनमूल",
+      "file": "./content/class8/mathematics/textbook03/lesson04.json"
+    },
+    {
+      "number": 5,
+      "title": "परिमेय संख्या का घनमूल",
+      "file": "./content/class8/mathematics/textbook03/lesson05.json"
+    },
+    {
+      "number": 6,
+      "title": "दशमलव संख्या का घनमूल — गुणनखंड विधि",
+      "file": "./content/class8/mathematics/textbook03/lesson06.json"
+    },
+    {
+      "number": 7,
+      "title": "करणी, करणीगत राशि, करणी चिन्ह तथा करणी का घातांक और व्यावहारिक उपयोग",
+      "file": "./content/class8/mathematics/textbook03/lesson07.json"
+    }
+  ]
+},
+{
+  "number": 4,
+  "book_number": 4,
+  "title": "सर्वसमिकाएँ",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "(a+b)³ की सर्वसमिका",
+      "file": "./content/class8/mathematics/textbook04/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "(a−b)³ की सर्वसमिका",
+      "file": "./content/class8/mathematics/textbook04/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "(a+b+c)² की सर्वसमिका",
+      "file": "./content/class8/mathematics/textbook04/lesson03.json"
+    },
+    {
+      "number": 4,
+      "title": "सर्वसमिकाओं का ज्यामितीय सत्यापन",
+      "file": "./content/class8/mathematics/textbook04/lesson04.json"
+    },
+    {
+      "number": 5,
+      "title": "सर्वसमिकाओं का अनुप्रयोग",
+      "file": "./content/class8/mathematics/textbook04/lesson05.json"
+    }
+  ]
+}
           ]
         }
       }
