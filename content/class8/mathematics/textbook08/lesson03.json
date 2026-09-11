@@ -1,0 +1,89 @@
+{
+  "class": 8,
+  "subject": "गणित",
+  "chapter": 8,
+  "chapter_title": "वर्ग समीकरण",
+  "lesson": 3,
+  "title": "ax² + bx + c = 0 प्रकार के वर्ग समीकरणों का हल",
+  "source": "पाठ्यपुस्तक",
+  "diagram_required": true,
+  "diagram_notes": "Quadratic → factorisation → दो सरल समीकरण → दो roots का flowchart.",
+  "objectives": [
+    "ax²+bx+c=0 प्रकार के समीकरण पहचानना",
+    "गुणनखंड द्वारा वर्ग समीकरण हल करना",
+    "दो हल प्राप्त करना",
+    "दोनों हलों की जाँच करना"
+  ],
+  "concept": "कई वर्ग समीकरणों को गुणनखंड करके दो सरल रैखिक समीकरणों में बदला जा सकता है और फिर दोनों हल प्राप्त किए जा सकते हैं।",
+  "explanation": [
+    {
+      "heading": "गुणनखंड से शुरुआत",
+      "content": "x²−5x+6=0 में 2 और 3 ऐसे गुणनखंड हैं जिनका गुणनफल 6 और योग 5 है। इसलिए (x−2)(x−3)=0।"
+    },
+    {
+      "heading": "शून्य गुणनफल नियम",
+      "content": "यदि दो संख्याओं का गुणनफल 0 है, तो उनमें से कम-से-कम एक 0 होगा। इसलिए x−2=0 या x−3=0।"
+    },
+    {
+      "heading": "दो हल",
+      "content": "इसलिए x=2 या x=3।"
+    },
+    {
+      "heading": "दैनिक जीवन",
+      "content": "क्षेत्रफल या आयाम से जुड़ी समस्याओं में कई बार किसी अज्ञात लंबाई के लिए quadratic equation बनती है।"
+    }
+  ],
+  "examples": [
+    {
+      "question": "x²−5x+6=0 हल कीजिए।",
+      "solution": "(x−2)(x−3)=0, इसलिए x=2 या x=3।"
+    },
+    {
+      "question": "x²+7x+12=0 हल कीजिए।",
+      "solution": "(x+3)(x+4)=0, इसलिए x=−3 या x=−4।"
+    },
+    {
+      "question": "x²−9x+20=0 हल कीजिए।",
+      "solution": "(x−4)(x−5)=0, इसलिए x=4 या x=5।"
+    }
+  ],
+  "activity": {
+    "title": "🕵️ Root Hunt",
+    "instruction": "ऐसी दो संख्याएँ खोजो जिनका गुणनफल c और योग/अंतर b के अनुसार हो। फिर roots खोजो।"
+  },
+  "practice": {
+    "title": "🎮 Root Hunt",
+    "questions": [
+      {
+        "question": "x²−7x+12=0",
+        "answer": "x=3 या 4",
+        "explanation": "(x−3)(x−4)=0।"
+      },
+      {
+        "question": "x²−8x+15=0",
+        "answer": "x=3 या 5",
+        "explanation": "(x−3)(x−5)=0।"
+      }
+    ]
+  },
+  "quiz": {
+    "title": "🏆 Root Hunter",
+    "questions": [
+      {
+        "question": "x²−6x+8=0 के roots हैं—",
+        "options": ["1,8", "2,4", "3,3", "−2,−4"],
+        "correct_answer": 1,
+        "explanation": "(x−2)(x−4)=0।"
+      },
+      {
+        "question": "x²+5x+6=0 के roots हैं—",
+        "options": ["2,3", "−2,−3", "−1,−6", "1,6"],
+        "correct_answer": 1,
+        "explanation": "(x+2)(x+3)=0।"
+      }
+    ]
+  },
+  "completion": {
+    "message": "🎯 अब quadratic को दो छोटे equations में तोड़कर उसके दोनों roots खोज सकते हैं!"
+  }
+}
