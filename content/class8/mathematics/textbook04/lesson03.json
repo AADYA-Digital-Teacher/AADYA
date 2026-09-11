@@ -1,0 +1,81 @@
+{
+  "class": 8,
+  "subject": "गणित",
+  "chapter": 4,
+  "chapter_title": "सर्वसमिकाएँ",
+  "lesson": 3,
+  "title": "(a+b+c)² की सर्वसमिका",
+  "source": "पाठ्यपुस्तक",
+  "diagram_required": true,
+  "diagram_notes": "बड़े वर्ग को a,b,c के क्षेत्रों में बाँटकर a²,b²,c² और 2ab,2bc,2ca दिखाने वाला area model.",
+  "objectives": [
+    "तीन पदों के योग का वर्ग समझना",
+    "cross terms पहचानना",
+    "सूत्र का प्रयोग करना"
+  ],
+  "concept": "(a+b+c)² = a²+b²+c²+2ab+2bc+2ca।",
+  "explanation": [
+    {
+      "heading": "मुख्य सूत्र",
+      "content": "(a+b+c)² = a²+b²+c²+2ab+2bc+2ca।"
+    },
+    {
+      "heading": "क्यों?",
+      "content": "हर पद अपने आप से गुणा होकर a²,b²,c² देता है और अलग-अलग पदों के दो-दो गुणन से 2ab, 2bc, 2ca मिलते हैं।"
+    },
+    {
+      "heading": "उदाहरण",
+      "content": "(1+2+3)² = 1+4+9+4+12+6 = 36।"
+    }
+  ],
+  "examples": [
+    {
+      "question": "(x+y+z)² लिखिए।",
+      "solution": "x²+y²+z²+2xy+2yz+2zx।"
+    },
+    {
+      "question": "(2+3+1)² =",
+      "solution": "36।"
+    }
+  ],
+  "practice": {
+    "title": "✍️ खुद करके देखें",
+    "questions": [
+      {
+        "question": "कितने cross terms हैं?",
+        "answer": "3",
+        "explanation": "2ab, 2bc और 2ca।"
+      },
+      {
+        "question": "(1+1+1)² =",
+        "answer": "9",
+        "explanation": "3²=9।"
+      }
+    ]
+  },
+  "quiz": {
+    "title": "🧠 Quiz – अपनी समझ जाँचें",
+    "questions": [
+      {
+        "question": "सही सूत्र है—",
+        "options": [
+          "a²+b²+c²",
+          "a²+b²+c²+2ab+2bc+2ca",
+          "a²+b²+c²+abc",
+          "a+b+c"
+        ],
+        "correct_answer": 1,
+        "explanation": "तीन पदों के योग का वर्ग।"
+      },
+      {
+        "question": "(1+2+3)² =",
+        "options": ["18", "24", "36", "49"],
+        "correct_answer": 2,
+        "explanation": "6²=36।"
+      }
+    ]
+  },
+  "completion": {
+    "message": "🧠 अब तीन पदों के योग का वर्ग व्यवस्थित रूप से खोलना आसान है।"
+  }
+}
