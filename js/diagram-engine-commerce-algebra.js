@@ -871,33 +871,17 @@ function getLessonNumber() {
   }
 
   /*
-   * यदि Diagram पहले ही बन चुका है,
-   * तो उसे सही जगह MOVE करें।
+   * यदि Diagram पहले से मौजूद है,
+   * तो दोबारा उसे move/reinsert न करें।
+   *
+   * इससे MutationObserver loop नहीं बनेगा।
    */
-  let existing =
+  const existing =
     document.querySelector(
       ".aadya-ca-diagram"
     );
 
-  const tryYourself =
-    container.querySelector(
-      "#tryYourself"
-    );
-
   if (existing) {
-
-    if (
-      tryYourself &&
-      existing !== tryYourself
-    ) {
-
-      tryYourself.parentNode.insertBefore(
-        existing,
-        tryYourself
-      );
-
-    }
-
     return;
   }
 
@@ -928,6 +912,11 @@ function getLessonNumber() {
    * Diagram को
    * "खुद करके देखें" से ठीक पहले रखें।
    */
+  const tryYourself =
+    container.querySelector(
+      "#tryYourself"
+    );
+
   if (tryYourself) {
 
     tryYourself.parentNode.insertBefore(
@@ -944,7 +933,7 @@ function getLessonNumber() {
   }
 
   }
-
+  
   function refresh() {
 
     const old =
@@ -966,34 +955,56 @@ function getLessonNumber() {
 
   function startObserver() {
 
-    if (observerStarted) {
-      return;
+  if (observerStarted) {
+    return;
+  }
+
+  observerStarted = true;
+
+  if (!window.MutationObserver) {
+    return;
+  }
+
+  const observer =
+    new MutationObserver(function () {
+
+      const chapter =
+        getChapterNumber();
+
+      if (
+        chapter < 7 ||
+        chapter > 10
+      ) {
+        return;
+      }
+
+      /*
+       * Diagram पहले से मौजूद है तो
+       * render() दोबारा नहीं चलाना है।
+       *
+       * यही MutationObserver loop को रोकता है।
+       */
+      const existing =
+        document.querySelector(
+          ".aadya-ca-diagram"
+        );
+
+      if (existing) {
+        return;
+      }
+
+      render();
+
+    });
+
+  observer.observe(
+    document.body,
+    {
+      childList: true,
+      subtree: true
     }
-
-    observerStarted = true;
-
-    if (
-      !window.MutationObserver
-    ) {
-      return;
-    }
-
-    const observer =
-      new MutationObserver(
-        function () {
-
-
-          const chapter =
-            getChapterNumber();
-
-          if (
-            chapter >= 7 &&
-            chapter <= 10
-          ) {
-            render();
-          }
-        }
-      );
+  );
+  }
 
     observer.observe(
       document.body,
