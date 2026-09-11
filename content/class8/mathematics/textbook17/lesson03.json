@@ -1,0 +1,104 @@
+{
+  "class": 8,
+  "subject": "गणित",
+  "chapter": 17,
+  "chapter_title": "कार्तीय तल",
+  "lesson": 3,
+  "title": "चार चतुर्थांश — बिंदु किस इलाके में है?",
+  "source": "पाठ्यपुस्तक",
+  "diagram_required": true,
+  "objectives": [
+    "चारों चतुर्थांश पहचानना",
+    "x और y के चिह्नों से चतुर्थांश पहचानना",
+    "धनात्मक और ऋणात्मक निर्देशांक समझना",
+    "कार्तीय तल पर बिंदुओं की स्थिति निर्धारित करना"
+  ],
+  "concept": "X-अक्ष और Y-अक्ष कार्तीय तल को चार चतुर्थांशों में बाँटते हैं। चतुर्थांश I में (+,+), II में (-,+), III में (-,-) और IV में (+,-) निर्देशांक होते हैं।",
+  "explanation": [
+    {
+      "heading": "🗺️ चार इलाके",
+      "content": "कार्तीय तल के चार हिस्से चार चतुर्थांश कहलाते हैं।"
+    },
+    {
+      "heading": "➕➕ प्रथम चतुर्थांश",
+      "content": "यहाँ x और y दोनों धनात्मक होते हैं।"
+    },
+    {
+      "heading": "➖➕ द्वितीय",
+      "content": "x ऋणात्मक और y धनात्मक होता है।"
+    },
+    {
+      "heading": "➖➖ तृतीय",
+      "content": "x और y दोनों ऋणात्मक होते हैं।"
+    },
+    {
+      "heading": "➕➖ चतुर्थ",
+      "content": "x धनात्मक और y ऋणात्मक होता है।"
+    }
+  ],
+  "activity": {
+    "title": "🚦 Sign Detective",
+    "instruction": "चार कार्ड बनाएँ: (+,+), (-,+), (-,-), (+,-)। दिए गए बिंदुओं को सही कार्ड के नीचे रखें।",
+    "challenge": "(-5,3) किस चतुर्थांश में जाएगा?"
+  },
+  "quiz": {
+    "title": "🚦 Quadrant Detective",
+    "questions": [
+      {
+        "type": "mcq",
+        "question": "(+,+) किस चतुर्थांश का चिह्न है?",
+        "options": ["I", "II", "III", "IV"],
+        "correct_answer": 0
+      },
+      {
+        "type": "mcq",
+        "question": "(-,+) किस चतुर्थांश का चिह्न है?",
+        "options": ["I", "II", "III", "IV"],
+        "correct_answer": 1
+      },
+      {
+        "type": "mcq",
+        "question": "(-,-) किस चतुर्थांश का चिह्न है?",
+        "options": ["I", "II", "III", "IV"],
+        "correct_answer": 2
+      },
+      {
+        "type": "mcq",
+        "question": "(+,-) किस चतुर्थांश का चिह्न है?",
+        "options": ["I", "II", "III", "IV"],
+        "correct_answer": 3
+      },
+      {
+        "type": "thinking",
+        "question": "बिंदु (-5,3) किस चतुर्थांश में होगा?",
+        "options": ["I", "II", "III", "IV"],
+        "correct_answer": 1
+      },
+      {
+        "type": "mcq",
+        "question": "बिंदु (-2,-6) किस चतुर्थांश में होगा?",
+        "options": ["I", "II", "III", "IV"],
+        "correct_answer": 2
+      },
+      {
+        "type": "true_false",
+        "question": "प्रथम चतुर्थांश में x और y दोनों धनात्मक होते हैं।",
+        "correct_answer": true
+      },
+      {
+        "type": "fill_blank",
+        "question": चतुर्थ चतुर्थांश में x ______ और y ______ होता है।",
+        "answer": "धनात्मक, ऋणात्मक"
+      },
+      {
+        "type": "mcq",
+        "question": "(4,-3) किस चतुर्थांश में है?",
+        "options": ["I", "II", "III", "IV"],
+        "correct_answer": 3
+      }
+    ]
+  },
+  "completion": {
+    "message": "🚦 अब सिर्फ चिह्न देखकर भी आप बिंदु का इलाका पहचान सकते हैं!"
+  }
+}
