@@ -1,0 +1,77 @@
+{
+  "class": 8,
+  "subject": "गणित",
+  "chapter": 10,
+  "chapter_title": "चतुर्भुज की रचनाएँ",
+  "lesson": 1,
+  "title": "चार भुजाएँ और एक विकर्ण दिए होने पर चतुर्भुज की रचना",
+  "source": "पाठ्यपुस्तक",
+  "diagram_required": true,
+  "diagram_notes": "ABCD quadrilateral with diagonal AC; पहले triangle ABC और फिर triangle ACD construct करने का visual.",
+  "objectives": [
+    "दिए गए चार sides और एक diagonal से quadrilateral बनाना",
+    "quadrilateral को दो triangles में बाँटकर समझना",
+    "construction steps का क्रम समझना"
+  ],
+  "concept": "किसी चतुर्भुज का एक विकर्ण उसे दो त्रिभुजों में बाँट देता है। इसलिए चार भुजाएँ और एक विकर्ण दिए होने पर दो triangles बनाकर पूरा quadrilateral बनाया जा सकता है।",
+  "explanation": [
+    {
+      "heading": "विकर्ण का कमाल",
+      "content": "चतुर्भुज ABCD में diagonal AC खींचने पर यह ABC और ACD दो त्रिभुजों में बँट जाता है।"
+    },
+    {
+      "heading": "Construction idea",
+      "content": "पहले दिए गए diagonal और दो sides से पहला triangle बनाइए। फिर उसी diagonal और बाकी दो sides से दूसरा triangle बनाइए।"
+    },
+    {
+      "heading": "दैनिक जीवन",
+      "content": "किसी चार-कोने वाले plot या frame का नक्शा बनाते समय diagonal एक useful measurement हो सकता है।"
+    }
+  ],
+  "examples": [
+    {
+      "question": "AB, BC, CD, DA और diagonal AC दिए हों तो क्या quadrilateral बनाया जा सकता है?",
+      "solution": "हाँ। AC को आधार बनाकर ABC और ACD दो triangles construct किए जा सकते हैं।"
+    }
+  ],
+  "activity": {
+    "title": "🏗️ Shape Builder",
+    "instruction": "कागज पर एक diagonal खींचकर quadrilateral को दो triangles में बाँटिए।",
+    "challenge": "क्या diagonal हटाने पर भी आपको construction की पूरी प्रक्रिया याद रहेगी?"
+  },
+  "practice": {
+    "title": "✏️ Construction Check",
+    "questions": [
+      {
+        "question": "एक quadrilateral का diagonal उसे कितने triangles में बाँटता है?",
+        "answer": "2",
+        "explanation": "एक diagonal से चतुर्भुज दो त्रिभुजों में विभाजित होता है।"
+      },
+      {
+        "question": "चार sides और एक diagonal दिए हों तो construction में किस shape का सहारा लिया जा सकता है?",
+        "answer": "त्रिभुज",
+        "explanation": "दो triangles बनाकर quadrilateral पूरा किया जाता है।"
+      }
+    ]
+  },
+  "quiz": {
+    "title": "🏗️ Quadrilateral Builder",
+    "questions": [
+      {
+        "question": "एक diagonal quadrilateral को कितने triangles में बाँटता है?",
+        "options": ["1", "2", "3", "4"],
+        "correct_answer": 1,
+        "explanation": "एक diagonal दो triangles बनाता है।"
+      },
+      {
+        "question": "चार sides + एक diagonal से construction में मुख्य भूमिका किसकी है?",
+        "options": ["वृत्त", "त्रिभुज", "घन", "वर्ग"],
+        "correct_answer": 1,
+        "explanation": "दो triangles construct करके quadrilateral बनाया जाता है।"
+      }
+    ]
+  },
+  "completion": {
+    "message": "🔺 एक diagonal ने पूरे quadrilateral को दो आसान triangles में बदल दिया!"
+  }
+}
