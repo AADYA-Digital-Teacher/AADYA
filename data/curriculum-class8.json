@@ -1,0 +1,86 @@
+{
+  "number": 1,
+  "book_number": 1,
+  "title": "परिमेय संख्याएँ",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "परिमेय संख्या क्या है? — रोजमर्रा की संख्याएँ",
+      "file": "./content/class8/mathematics/textbook01/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "संख्या रेखा पर परिमेय संख्याएँ",
+      "file": "./content/class8/mathematics/textbook01/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "परिमेय संख्याओं का जोड़ और घटाना",
+      "file": "./content/class8/mathematics/textbook01/lesson03.json"
+    },
+    {
+      "number": 4,
+      "title": "परिमेय संख्याओं का गुणा और वितरण नियम",
+      "file": "./content/class8/mathematics/textbook01/lesson04.json"
+    },
+    {
+      "number": 5,
+      "title": "योज्य प्रतिलोम और गुणात्मक प्रतिलोम",
+      "file": "./content/class8/mathematics/textbook01/lesson05.json"
+    },
+    {
+      "number": 6,
+      "title": "परिमेय संख्याओं का भाग",
+      "file": "./content/class8/mathematics/textbook01/lesson06.json"
+    },
+    {
+      "number": 7,
+      "title": "निरपेक्ष मान और परिमेय संख्याओं की तुलना",
+      "file": "./content/class8/mathematics/textbook01/lesson07.json"
+    },
+    {
+      "number": 8,
+      "title": "दो परिमेय संख्याओं के बीच परिमेय संख्याएँ और दशमलव रूप",
+      "file": "./content/class8/mathematics/textbook01/lesson08.json"
+    }
+  ]
+},
+{
+  "number": 2,
+  "book_number": 2,
+  "title": "वर्गमूल",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "वर्ग और पूर्ण वर्ग — चीजों को चौकोर करके समझें",
+      "file": "./content/class8/mathematics/textbook02/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "वर्गमूल का अर्थ — कौन-सी संख्या खुद से गुणा होकर यह संख्या देती है?",
+      "file": "./content/class8/mathematics/textbook02/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "गुणनखंड विधि से वर्गमूल",
+      "file": "./content/class8/mathematics/textbook02/lesson03.json"
+    },
+    {
+      "number": 4,
+      "title": "भाग विधि से वर्गमूल",
+      "file": "./content/class8/mathematics/textbook02/lesson04.json"
+    },
+    {
+      "number": 5,
+      "title": "पूर्ण वर्ग, निकटतम वर्ग और अंकों की संख्या",
+      "file": "./content/class8/mathematics/textbook02/lesson05.json"
+    },
+    {
+      "number": 6,
+      "title": "दशमलव संख्याओं का वर्गमूल",
+      "file": "./content/class8/mathematics/textbook02/lesson06.json"
+    }
+  ]
+}
