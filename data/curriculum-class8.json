@@ -340,6 +340,72 @@
       "file": "./content/class8/mathematics/textbook10/lesson05.json"
     }
   ]
+},
+            {
+  "number": 11,
+  "book_number": 11,
+  "title": "वाणिज्य गणित",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "चक्रवृद्धि ब्याज — पैसा कैसे बढ़ता है?",
+      "file": "./content/class8/mathematics/textbook11/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "वार्षिक और अर्धवार्षिक चक्रवृद्धि ब्याज",
+      "file": "./content/class8/mathematics/textbook11/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "तिमाही चक्रवृद्धि ब्याज — साल को चार हिस्सों में बाँटें",
+      "file": "./content/class8/mathematics/textbook11/lesson03.json"
+    },
+    {
+      "number": 4,
+      "title": "वस्तुओं के मूल्य में वृद्धि और घटे की दर",
+      "file": "./content/class8/mathematics/textbook11/lesson04.json"
+    }
+  ]
+},
+{
+  "number": 12,
+  "book_number": 12,
+  "title": "बैंकिंग",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "बैंक क्या है और बैंक में खाते क्यों खोले जाते हैं?",
+      "file": "./content/class8/mathematics/textbook12/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "बैंक ड्राफ्ट और लॉकर",
+      "file": "./content/class8/mathematics/textbook12/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "चेक और चेक के प्रकार",
+      "file": "./content/class8/mathematics/textbook12/lesson03.json"
+    },
+    {
+      "number": 4,
+      "title": "पासबुक और प्रविष्टियों से ब्याज की गणना",
+      "file": "./content/class8/mathematics/textbook12/lesson04.json"
+    },
+    {
+      "number": 5,
+      "title": "ATM और ऑनलाइन बैंकिंग",
+      "file": "./content/class8/mathematics/textbook12/lesson05.json"
+    },
+    {
+      "number": 6,
+      "title": "भारतीय नोटों के मूल्यवर्ग पहचानें",
+      "file": "./content/class8/mathematics/textbook12/lesson06.json"
+    }
+  ]
 }
           ]
         }
