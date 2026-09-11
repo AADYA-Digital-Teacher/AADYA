@@ -223,6 +223,62 @@
       "file": "./content/class8/mathematics/textbook06/lesson03.json"
     }
   ]
+},
+            {
+  "number": 7,
+  "book_number": 7,
+  "title": "युगपत समीकरण",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "दो चर वाले रैखिक समीकरण और युगपत समीकरण की पहचान",
+      "file": "./content/class8/mathematics/textbook07/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "युगपत समीकरणों का हल — विलोपन विधि",
+      "file": "./content/class8/mathematics/textbook07/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "युगपत समीकरणों का हल — प्रतिस्थापन और जाँच",
+      "file": "./content/class8/mathematics/textbook07/lesson03.json"
+    },
+    {
+      "number": 4,
+      "title": "दो चर वाले युगपत समीकरणों के व्यावहारिक प्रश्न",
+      "file": "./content/class8/mathematics/textbook07/lesson04.json"
+    }
+  ]
+},
+{
+  "number": 8,
+  "book_number": 8,
+  "title": "वर्ग समीकरण",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "वर्ग समीकरण की पहचान और अर्थ",
+      "file": "./content/class8/mathematics/textbook08/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "x² = k प्रकार के वर्ग समीकरणों का हल",
+      "file": "./content/class8/mathematics/textbook08/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "ax² + bx + c = 0 प्रकार के वर्ग समीकरणों का हल",
+      "file": "./content/class8/mathematics/textbook08/lesson03.json"
+    },
+    {
+      "number": 4,
+      "title": "वर्ग समीकरण आधारित व्यावहारिक प्रश्न",
+      "file": "./content/class8/mathematics/textbook08/lesson04.json"
+    }
+  ]
 }
           ]
         }
