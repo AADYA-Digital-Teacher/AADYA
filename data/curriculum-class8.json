@@ -406,6 +406,57 @@
       "file": "./content/class8/mathematics/textbook12/lesson06.json"
     }
   ]
+},
+            {
+  "number": 13,
+  "book_number": 13,
+  "title": "वृत्त और चक्रीय चतुर्भुज",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "केंद्र से जीवा पर लंब — जीवा का आधा-आधा खेल",
+      "file": "./content/class8/mathematics/textbook13/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "समान जीवाएँ और केंद्र पर बने समान कोण",
+      "file": "./content/class8/mathematics/textbook13/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "चक्रीय चतुर्भुज — चारों कोनों का वृत्त से रिश्ता",
+      "file": "./content/class8/mathematics/textbook13/lesson03.json"
+    },
+    {
+      "number": 4,
+      "title": "चक्रीय चतुर्भुज के सम्मुख कोण — 180° का रहस्य",
+      "file": "./content/class8/mathematics/textbook13/lesson04.json"
+    }
+  ]
+},
+{
+  "number": 14,
+  "book_number": 14,
+  "title": "वृत्त की स्पर्श रेखाएँ",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "छेदिका, स्पर्श रेखा और स्पर्श बिंदु",
+      "file": "./content/class8/mathematics/textbook14/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "वृत्त पर दिए बिंदु से स्पर्श रेखा की रचना",
+      "file": "./content/class8/mathematics/textbook14/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "स्पर्श रेखा और त्रिज्या — हमेशा 90°!",
+      "file": "./content/class8/mathematics/textbook14/lesson03.json"
+    }
+  ]
 }
           ]
         }
