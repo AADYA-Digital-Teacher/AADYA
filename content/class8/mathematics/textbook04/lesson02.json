@@ -1,0 +1,81 @@
+{
+  "class": 8,
+  "subject": "गणित",
+  "chapter": 4,
+  "chapter_title": "सर्वसमिकाएँ",
+  "lesson": 2,
+  "title": "(a−b)³ की सर्वसमिका",
+  "source": "पाठ्यपुस्तक",
+  "diagram_required": true,
+  "diagram_notes": "(a−b)³ के चार पदों को क्रम से दिखाने वाला labelled algebra flow.",
+  "objectives": [
+    "(a−b)³ का सूत्र समझना",
+    "ऋण चिह्नों का सही प्रयोग करना",
+    "सूत्र से गणना करना"
+  ],
+  "concept": "(a−b)³ = a³ − b³ − 3ab(a−b)।",
+  "explanation": [
+    {
+      "heading": "मुख्य सूत्र",
+      "content": "(a−b)³ = a³ − b³ − 3ab(a−b)। विस्तार रूप a³ − 3a²b + 3ab² − b³ है।"
+    },
+    {
+      "heading": "सावधानी",
+      "content": "इस सर्वसमिका में ऋण और धन के चिह्नों का क्रम बहुत महत्वपूर्ण है।"
+    },
+    {
+      "heading": "उदाहरण",
+      "content": "(5−2)³ = 125−8−3×5×2×3 = 27।"
+    }
+  ],
+  "examples": [
+    {
+      "question": "(x−2)³ का विस्तार कीजिए।",
+      "solution": "x³−6x²+12x−8।"
+    },
+    {
+      "question": "(5−2)³ ज्ञात कीजिए।",
+      "solution": "27।"
+    }
+  ],
+  "practice": {
+    "title": "✍️ खुद करके देखें",
+    "questions": [
+      {
+        "question": "(a−b)³ का अंतिम पद?",
+        "answer": "−b³",
+        "explanation": "विस्तार में अंतिम पद −b³ है।"
+      },
+      {
+        "question": "(4−1)³ =",
+        "answer": "27",
+        "explanation": "3³=27।"
+      }
+    ]
+  },
+  "quiz": {
+    "title": "🧠 Quiz – अपनी समझ जाँचें",
+    "questions": [
+      {
+        "question": "सही सूत्र है—",
+        "options": [
+          "a³+b³",
+          "a³−b³−3ab(a−b)",
+          "a³+b³+3ab(a+b)",
+          "a²−b²"
+        ],
+        "correct_answer": 1,
+        "explanation": "यही (a−b)³ की सर्वसमिका है।"
+      },
+      {
+        "question": "(5−3)³ =",
+        "options": ["2", "6", "8", "27"],
+        "correct_answer": 2,
+        "explanation": "2³=8।"
+      }
+    ]
+  },
+  "completion": {
+    "message": "⚠️ ऋण चिह्नों का क्रम समझना इस सर्वसमिका की कुंजी है।"
+  }
+}
