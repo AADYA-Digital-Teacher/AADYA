@@ -1,0 +1,77 @@
+{
+  "class": 8,
+  "subject": "गणित",
+  "chapter": 10,
+  "chapter_title": "चतुर्भुज की रचनाएँ",
+  "lesson": 2,
+  "title": "तीन भुजाएँ और दोनों विकर्ण दिए होने पर चतुर्भुज की रचना",
+  "source": "पाठ्यपुस्तक",
+  "diagram_required": true,
+  "diagram_notes": "AB, BC, CD और diagonals AC, BD दिए होने पर intersection O के साथ construction visual.",
+  "objectives": [
+    "तीन भुजाओं और दोनों diagonals से quadrilateral की रचना समझना",
+    "diagonals के intersection का उपयोग करना",
+    "construction में क्रम बनाए रखना"
+  ],
+  "concept": "जब तीन भुजाएँ और दोनों विकर्ण दिए हों, तो diagonals की सहायता से चतुर्भुज के points को क्रमशः locate किया जा सकता है।",
+  "explanation": [
+    {
+      "heading": "दो diagonals",
+      "content": "चतुर्भुज ABCD में AC और BD दोनों diagonals होते हैं। वे एक-दूसरे को एक बिंदु पर काटते हैं।"
+    },
+    {
+      "heading": "Construction idea",
+      "content": "दी गई side और diagonal measurements के आधार पर पहले आवश्यक triangles बनाए जाते हैं और फिर दूसरे diagonal की सहायता से चौथा vertex locate किया जाता है।"
+    },
+    {
+      "heading": "दैनिक जीवन",
+      "content": "किसी चार-कोने वाले क्षेत्र का नक्शा बनाने में boundary के साथ diagonal measurements अतिरिक्त जानकारी दे सकते हैं।"
+    }
+  ],
+  "examples": [
+    {
+      "question": "तीन sides और दोनों diagonals दिए होने का लाभ क्या है?",
+      "solution": "इससे vertices की स्थिति निर्धारित करने के लिए पर्याप्त ज्यामितीय जानकारी मिलती है।"
+    }
+  ],
+  "activity": {
+    "title": "📐 Diagonal Network",
+    "instruction": "एक quadrilateral बनाकर उसके दोनों diagonals खींचिए। उनके intersection को O नाम दीजिए।",
+    "challenge": "अब सोचिए कि O की सहायता से construction को कैसे दो triangles में बाँटा जा सकता है।"
+  },
+  "practice": {
+    "title": "🎯 समझ जाँचिए",
+    "questions": [
+      {
+        "question": "चतुर्भुज में कितने diagonals होते हैं?",
+        "answer": "2",
+        "explanation": "चार vertices वाले quadrilateral में AC और BD दो diagonals होते हैं।"
+      },
+      {
+        "question": "दो diagonals सामान्यतः कहाँ मिलते हैं?",
+        "answer": "एक बिंदु पर",
+        "explanation": "दोनों diagonals का एक intersection point होता है।"
+      }
+    ]
+  },
+  "quiz": {
+    "title": "🔺 Diagonal Challenge",
+    "questions": [
+      {
+        "question": "एक quadrilateral में diagonals की संख्या है—",
+        "options": ["1", "2", "3", "4"],
+        "correct_answer": 1,
+        "explanation": "चार vertices से दो diagonals बनते हैं।"
+      },
+      {
+        "question": "दो diagonals के intersection को क्या कहा जा सकता है?",
+        "options": ["एक बिंदु", "एक side", "एक angle", "एक circle"],
+        "correct_answer": 0,
+        "explanation": "वे एक intersection point पर मिलते हैं।"
+      }
+    ]
+  },
+  "completion": {
+    "message": "📐 अब quadrilateral की construction में दोनों diagonals को भी अपना साथी बना लिया!"
+  }
+}
