@@ -843,7 +843,9 @@
         const curriculumFile =
   String(cls) === "7"
     ? "./data/curriculum-class7.json"
-    : "./data/curriculum.json";
+    : String(cls) === "8"
+      ? "./data/curriculum-class8.json"
+      : "./data/curriculum.json";
 
 const url =
   curriculumFile + "?v=" + Date.now();
