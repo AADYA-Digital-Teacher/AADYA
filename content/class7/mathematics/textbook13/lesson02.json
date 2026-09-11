@@ -1,0 +1,82 @@
+{
+  "class": 7,
+  "subject": "गणित",
+  "chapter": 13,
+  "chapter_title": "मानसिक अभ्यास",
+  "lesson": 2,
+  "title": "अक्षर श्रेणी और क्रम पहचानना",
+  "source": "पाठ्यपुस्तक",
+  "diagram_required": true,
+  "diagram_notes": "अक्षरों को क्रम में बदलते हुए दृश्य संकेत और ABE, BCF, CDG जैसी श्रृंखला।",
+  "objectives": [
+    "अक्षरों की क्रम संख्या पहचानना",
+    "एक से अधिक अक्षरों वाली श्रेणी का नियम समझना",
+    "लुप्त अक्षर-समूह ज्ञात करना"
+  ],
+  "concept": "अक्षरों को उनके क्रमांक 1 से 26 के आधार पर देखकर श्रेणी का नियम समझा जा सकता है।",
+  "explanation": [
+    {
+      "heading": "अक्षर का क्रमांक",
+      "content": "A=1, B=2, C=3 और इसी प्रकार Z=26।"
+    },
+    {
+      "heading": "उदाहरण",
+      "content": "ABE, BCF, CDG, ?, EFI में प्रत्येक समूह के अक्षर एक-एक स्थान आगे बढ़ते हैं।"
+    }
+  ],
+  "examples": [
+    {
+      "question": "ABE, BCF, CDG, ?, EFI में लुप्त समूह क्या होगा?",
+      "solution": "DEH"
+    },
+    {
+      "question": "ABC, DEF, GHI, ?",
+      "solution": "JKL"
+    }
+  ],
+  "practice": {
+    "title": "अभ्यास",
+    "questions": [
+      {
+        "question": "ABC, BCD, CDE, ?",
+        "answer": "DEF",
+        "explanation": "हर अक्षर समूह एक स्थान आगे बढ़ रहा है।"
+      },
+      {
+        "question": "ACE, BDF, CEG, ?",
+        "answer": "DFH",
+        "explanation": "प्रत्येक स्थान पर अक्षर एक-एक क्रम आगे बढ़ रहा है।"
+      }
+    ]
+  },
+  "quiz": {
+    "title": "🧠 Quiz – अपनी समझ जाँचें",
+    "questions": [
+      {
+        "question": "ABE, BCF, CDG, ?, EFI में सही समूह कौन-सा है?",
+        "options": [
+          "CDH",
+          "EFH",
+          "DEG",
+          "DEH"
+        ],
+        "correct_answer": 3,
+        "explanation": "सभी अक्षर क्रमशः एक-एक स्थान आगे बढ़ते हैं।"
+      },
+      {
+        "question": "ABC, DEF, GHI, ?",
+        "options": [
+          "IJK",
+          "JKL",
+          "KLM",
+          "LMN"
+        ],
+        "correct_answer": 1,
+        "explanation": "तीन-तीन अक्षरों के समूह लगातार आगे बढ़ते हैं।"
+      }
+    ]
+  },
+  "completion": {
+    "message": "🎉 अब आप अक्षर श्रेणियों का नियम आसानी से पहचान सकते हैं।"
+  }
+}
