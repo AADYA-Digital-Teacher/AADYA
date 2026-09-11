@@ -1,0 +1,92 @@
+{
+  "class": 8,
+  "subject": "गणित",
+  "chapter": 10,
+  "chapter_title": "चतुर्भुज की रचनाएँ",
+  "lesson": 5,
+  "title": "चार भुजाएँ और एक कोण दिए होने पर चतुर्भुज की रचना",
+  "source": "पाठ्यपुस्तक",
+  "diagram_required": true,
+  "diagram_notes": "चार sides AB, BC, CD, DA और angle BAD से quadrilateral construction का step flow.",
+  "objectives": [
+    "चार sides और एक angle से quadrilateral construction समझना",
+    "दिए गए angle को आधार बनाकर sides construct करना",
+    "अंतिम vertex को locate करना",
+    "पूरी construction की जाँच करना"
+  ],
+  "concept": "चारों भुजाओं की लंबाई और एक कोण दिए होने पर पहले दिए गए कोण और उससे जुड़ी भुजाओं का निर्माण करके शेष vertices निर्धारित किए जा सकते हैं।",
+  "explanation": [
+    {
+      "heading": "पहला कदम",
+      "content": "दिए गए angle को बनाइए और उसके दोनों arms पर संबंधित sides की लंबाई mark कीजिए।"
+    },
+    {
+      "heading": "बाकी sides",
+      "content": "बची हुई sides की लंबाई के अनुसार compass arcs की सहायता से अंतिम vertex locate किया जा सकता है।"
+    },
+    {
+      "heading": "Construction की जाँच",
+      "content": "चारों sides की लंबाई और दिया गया angle दोबारा मापें।"
+    },
+    {
+      "heading": "दैनिक जीवन",
+      "content": "किसी जमीन, कमरे, garden या frame के चारों किनारों की माप और एक corner angle ज्ञात हो तो उसका outline बनाया जा सकता है।"
+    }
+  ],
+  "examples": [
+    {
+      "question": "चार sides और एक angle क्यों पर्याप्त हो सकते हैं?",
+      "solution": "दिया गया angle शुरुआती दिशा तय करता है और sides की lengths बाकी vertices की स्थिति निर्धारित करने में सहायता करती हैं।"
+    }
+  ],
+  "activity": {
+    "title": "🏡 Plot Designer",
+    "instruction": "एक काल्पनिक garden की चार boundary lengths और एक corner angle मानकर rough design बनाइए।",
+    "challenge": "अब ruler, compass और protractor से उसका accurate construction कीजिए।"
+  },
+  "practice": {
+    "title": "✏️ खुद करके देखें",
+    "questions": [
+      {
+        "question": "चारों sides की जाँच किससे करेंगे?",
+        "answer": "स्केल",
+        "explanation": "Scale से सभी side lengths मापेंगे।"
+      },
+      {
+        "question": "दिए गए corner angle की जाँच किससे करेंगे?",
+        "answer": "कोणमापी",
+        "explanation": "Protractor से angle verify करेंगे।"
+      }
+    ]
+  },
+  "quiz": {
+    "title": "🏆 Final Constructor Challenge",
+    "questions": [
+      {
+        "question": "चार sides और एक angle दिए हों तो construction में angle बनाने के लिए—",
+        "options": [
+          "स्केल",
+          "कोणमापी",
+          "रबर",
+          "केवल पेंसिल"
+        ],
+        "correct_answer": 1,
+        "explanation": "दिए गए angle को accurately बनाने के लिए कोणमापी उपयोगी है।"
+      },
+      {
+        "question": "Construction के अंत में सबसे अच्छा कदम क्या है?",
+        "options": [
+          "चित्र मिटा देना",
+          "कुछ नहीं करना",
+          "दिए गए measurements से जाँच करना",
+          "केवल रंग भरना"
+        ],
+        "correct_answer": 2,
+        "explanation": "Verification से construction की शुद्धता सुनिश्चित होती है।"
+      }
+    ]
+  },
+  "completion": {
+    "message": "🏆 Chapter 10 पूरा! अब आप measurements को एक वास्तविक geometric shape में बदल सकते हैं।"
+  }
+}
