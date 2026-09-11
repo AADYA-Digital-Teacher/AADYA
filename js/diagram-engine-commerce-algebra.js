@@ -851,7 +851,7 @@ function getLessonNumber() {
   return null;
   }
 
-  function render() {
+function render() {
 
   const chapter =
     getChapterNumber();
@@ -871,13 +871,11 @@ function getLessonNumber() {
   }
 
   /*
-   * यदि Diagram पहले से मौजूद है,
-   * तो दोबारा उसे move/reinsert न करें।
-   *
-   * इससे MutationObserver loop नहीं बनेगा।
+   * यदि इस container में Diagram पहले से है,
+   * तो दोबारा बनाने की जरूरत नहीं।
    */
   const existing =
-    document.querySelector(
+    container.querySelector(
       ".aadya-ca-diagram"
     );
 
@@ -886,7 +884,8 @@ function getLessonNumber() {
   }
 
   /*
-   * नया Diagram बनाएं
+   * Chapter + Lesson के अनुसार
+   * सही Diagram तैयार करें।
    */
   const diagram =
     selectDiagram();
@@ -909,8 +908,8 @@ function getLessonNumber() {
   }
 
   /*
-   * Diagram को
-   * "खुद करके देखें" से ठीक पहले रखें।
+   * Diagram को "खुद करके देखें"
+   * से ठीक पहले रखें।
    */
   const tryYourself =
     container.querySelector(
@@ -932,7 +931,7 @@ function getLessonNumber() {
 
   }
 
-  }
+}
   
   function refresh() {
 
@@ -948,12 +947,13 @@ function getLessonNumber() {
     render();
   }
 
-  /* ======================================================
-     OBSERVER
-  ====================================================== */
- let observerStarted = false;
+/* ======================================================
+   OBSERVER
+====================================================== */
 
-  function startObserver() {
+let observerStarted = false;
+
+function startObserver() {
 
   if (observerStarted) {
     return;
@@ -980,12 +980,17 @@ function getLessonNumber() {
 
       /*
        * Diagram पहले से मौजूद है तो
-       * render() दोबारा नहीं चलाना है।
-       *
-       * यही MutationObserver loop को रोकता है।
+       * दोबारा render नहीं करना है।
        */
+      const container =
+        findLessonContainer();
+
+      if (!container) {
+        return;
+      }
+
       const existing =
-        document.querySelector(
+        container.querySelector(
           ".aadya-ca-diagram"
         );
 
@@ -993,6 +998,10 @@ function getLessonNumber() {
         return;
       }
 
+      /*
+       * Lesson content आने के बाद
+       * Diagram बनाएं।
+       */
       render();
 
     });
@@ -1004,16 +1013,8 @@ function getLessonNumber() {
       subtree: true
     }
   );
-  }
 
-    observer.observe(
-      document.body,
-      {
-        childList: true,
-        subtree: true
-      }
-    );
-  }
+}
 
   /* ======================================================
      INITIALIZE
