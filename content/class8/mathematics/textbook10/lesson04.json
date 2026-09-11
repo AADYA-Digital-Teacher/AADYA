@@ -1,0 +1,81 @@
+{
+  "class": 8,
+  "subject": "गणित",
+  "chapter": 10,
+  "chapter_title": "चतुर्भुज की रचनाएँ",
+  "lesson": 4,
+  "title": "तीन भुजाएँ और दो मध्यस्थ कोण दिए होने पर चतुर्भुज की रचना",
+  "source": "पाठ्यपुस्तक",
+  "diagram_required": true,
+  "diagram_notes": "तीन given sides और दो given angles के आधार पर quadrilateral construction का step-by-step visual.",
+  "objectives": [
+    "तीन sides और दिए गए angles को construction में जोड़ना",
+    "angles की सहायता से unknown vertices निर्धारित करना",
+    "construction steps को क्रम से करना"
+  ],
+  "concept": "पर्याप्त sides और angles दिए होने पर compass, ruler और angle measurement की सहायता से quadrilateral के शेष vertices निर्धारित किए जा सकते हैं।",
+  "explanation": [
+    {
+      "heading": "जानकारी को टुकड़ों में देखें",
+      "content": "तीन sides को boundary information और दो angles को direction information मानकर construction को आसान बनाया जा सकता है।"
+    },
+    {
+      "heading": "Construction strategy",
+      "content": "पहले दी गई side बनाइए। फिर दिए गए angle के अनुसार अगली दिशा निर्धारित कीजिए। दिए गए side lengths से points locate करते हुए अंतिम vertex प्राप्त कीजिए।"
+    },
+    {
+      "heading": "जाँच",
+      "content": "Construction पूरी होने के बाद दी गई तीनों sides और दोनों angles को फिर से मापकर जाँच करें।"
+    },
+    {
+      "heading": "दैनिक जीवन",
+      "content": "किसी पार्क या जमीन के boundary layout में कुछ sides और corners की measurements से पूरा outline तैयार किया जा सकता है।"
+    }
+  ],
+  "examples": [
+    {
+      "question": "Construction के बाद जाँच क्यों आवश्यक है?",
+      "solution": "ताकि यह सुनिश्चित हो सके कि बनाई गई figure में दी गई sides और angles सही हैं।"
+    }
+  ],
+  "activity": {
+    "title": "🧭 Shape Navigator",
+    "instruction": "तीन sides को boundary और दो angles को direction मानकर एक rough quadrilateral बनाइए।",
+    "challenge": "अब ruler और protractor से उसे दिए गए measurements के अनुसार सुधारिए।"
+  },
+  "practice": {
+    "title": "🎯 Construction Check",
+    "questions": [
+      {
+        "question": "दिए गए angle की जाँच किस उपकरण से करेंगे?",
+        "answer": "कोणमापी",
+        "explanation": "Protractor से angle measure किया जाता है।"
+      },
+      {
+        "question": "दिए गए side की लंबाई की जाँच किससे करेंगे?",
+        "answer": "स्केल",
+        "explanation": "Ruler/scale से लंबाई मापते हैं।"
+      }
+    ]
+  },
+  "quiz": {
+    "title": "🧩 Construction Inspector",
+    "questions": [
+      {
+        "question": "Side length check करने के लिए—",
+        "options": ["कोणमापी", "स्केल", "कम्पास ही", "रबर"],
+        "correct_answer": 1,
+        "explanation": "Scale से length check की जाती है।"
+      },
+      {
+        "question": "Angle check करने के लिए—",
+        "options": ["स्केल", "कोणमापी", "रबर", "पेंसिल"],
+        "correct_answer": 1,
+        "explanation": "Protractor/कोणमापी से angle मापा जाता है।"
+      }
+    ]
+  },
+  "completion": {
+    "message": "🔍 एक अच्छा constructor figure बनाने के बाद उसकी जाँच भी करता है!"
+  }
+}
