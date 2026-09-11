@@ -471,7 +471,19 @@ Independent Diagram Engine
       document.querySelector(".lesson-container") ||
       document.querySelector("main");
   }
+function isClass8() {
+  const file = getLessonFile();
 
+  if (/\/class8\//i.test(file)) {
+    return true;
+  }
+
+  if (window.lessonData && window.lessonData.class !== undefined) {
+    return Number(window.lessonData.class) === 8;
+  }
+
+  return false;
+}
   function render() {
     const chapter = getChapter();
 
