@@ -1,0 +1,81 @@
+{
+  "class": 8,
+  "subject": "गणित",
+  "chapter": 4,
+  "chapter_title": "सर्वसमिकाएँ",
+  "lesson": 1,
+  "title": "(a+b)³ की सर्वसमिका",
+  "source": "पाठ्यपुस्तक",
+  "diagram_required": true,
+  "diagram_notes": "(a+b)³ के चार expanded terms a³, 3a²b, 3ab², b³ का labelled cube-volume concept.",
+  "objectives": [
+    "(a+b)³ का सूत्र समझना",
+    "सूत्र का विस्तार करना",
+    "संख्यात्मक गणना में प्रयोग करना"
+  ],
+  "concept": "(a+b)³ = a³ + b³ + 3ab(a+b)।",
+  "explanation": [
+    {
+      "heading": "मुख्य सूत्र",
+      "content": "(a+b)³ = a³ + b³ + 3ab(a+b)। विस्तार रूप a³ + 3a²b + 3ab² + b³ है।"
+    },
+    {
+      "heading": "समझने की तरकीब",
+      "content": "पहले और अंतिम पद के घन आते हैं तथा बीच में 3 से गुणा वाले दो पद आते हैं।"
+    },
+    {
+      "heading": "उदाहरण",
+      "content": "(2+3)³ = 8+27+3×2×3×5 = 125।"
+    }
+  ],
+  "examples": [
+    {
+      "question": "(x+2)³ का विस्तार कीजिए।",
+      "solution": "x³+6x²+12x+8।"
+    },
+    {
+      "question": "(3+4)³ ज्ञात कीजिए।",
+      "solution": "343।"
+    }
+  ],
+  "practice": {
+    "title": "✍️ खुद करके देखें",
+    "questions": [
+      {
+        "question": "(a+b)³ का पहला पद?",
+        "answer": "a³",
+        "explanation": "पहले पद का घन।"
+      },
+      {
+        "question": "(2+1)³ =",
+        "answer": "27",
+        "explanation": "3³ = 27।"
+      }
+    ]
+  },
+  "quiz": {
+    "title": "🧠 Quiz – अपनी समझ जाँचें",
+    "questions": [
+      {
+        "question": "सही सर्वसमिका है—",
+        "options": [
+          "a³+b³+3ab(a+b)",
+          "a³+b³",
+          "a³−b³",
+          "a²+b²"
+        ],
+        "correct_answer": 0,
+        "explanation": "यही (a+b)³ की सर्वसमिका है।"
+      },
+      {
+        "question": "(1+2)³ =",
+        "options": ["3", "6", "9", "27"],
+        "correct_answer": 3,
+        "explanation": "3³=27।"
+      }
+    ]
+  },
+  "completion": {
+    "message": "🎉 अब आप (a+b)³ को समझकर प्रयोग कर सकते हैं।"
+  }
+}
