@@ -382,6 +382,62 @@
       "file": "./content/class7/mathematics/textbook12/lesson05.json"
     }
   ]
+            },
+            {
+  "number": 13,
+  "book_number": 13,
+  "title": "मानसिक अभ्यास",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "संख्या श्रेणी को पहचानना",
+      "file": "./content/class7/mathematics/textbook13/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "अक्षर श्रेणी और क्रम पहचानना",
+      "file": "./content/class7/mathematics/textbook13/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "आकृतियों को समझना और त्रिभुज गिनना",
+      "file": "./content/class7/mathematics/textbook13/lesson03.json"
+    },
+    {
+      "number": 4,
+      "title": "कागज मोड़ना, काटना और लुप्त संख्या",
+      "file": "./content/class7/mathematics/textbook13/lesson04.json"
+    }
+  ]
+},
+            {
+  "number": 14,
+  "book_number": 14,
+  "title": "भाग : वैदिक विधि द्वारा",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "निखिलम् विधि — आधार और पूरक भाजक",
+      "file": "./content/class7/mathematics/textbook14/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "निखिलम् विधि से भाग — 100 के आधार पर",
+      "file": "./content/class7/mathematics/textbook14/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "निखिलम् विधि में शेषफल का सुधार",
+      "file": "./content/class7/mathematics/textbook14/lesson03.json"
+    },
+    {
+      "number": 4,
+      "title": "परावर्त्य योजयेत् विधि से भाग",
+      "file": "./content/class7/mathematics/textbook14/lesson04.json"
+    }
+  ]
             }
           ]
         }
