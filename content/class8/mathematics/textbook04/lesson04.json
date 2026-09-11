@@ -1,0 +1,81 @@
+{
+  "class": 8,
+  "subject": "गणित",
+  "chapter": 4,
+  "chapter_title": "सर्वसमिकाएँ",
+  "lesson": 4,
+  "title": "सर्वसमिकाओं का ज्यामितीय सत्यापन",
+  "source": "पाठ्यपुस्तक",
+  "diagram_required": true,
+  "diagram_notes": "(a+b)² area model तथा (a+b)³ volume model का labelled geometric verification.",
+  "objectives": [
+    "सर्वसमिका और ज्यामिति का संबंध समझना",
+    "क्षेत्रफल से सूत्र सत्यापित करना",
+    "चित्र से algebraic terms समझना"
+  ],
+  "concept": "सर्वसमिकाओं को क्षेत्रफल और आयतन के ज्यामितीय मॉडल द्वारा भी समझा और सत्यापित किया जा सकता है।",
+  "explanation": [
+    {
+      "heading": "वर्ग से सत्यापन",
+      "content": "भुजा (a+b) वाले वर्ग का क्षेत्रफल (a+b)² है। इसे a², b² और दो ab आयतों में बाँटने पर a²+2ab+b² मिलता है।"
+    },
+    {
+      "heading": "घन से सत्यापन",
+      "content": "(a+b)³ के आयतन को छोटे घनों और घनाभों में बाँटकर a³, 3a²b, 3ab² और b³ पदों का अर्थ देखा जा सकता है।"
+    },
+    {
+      "heading": "सीखने की तरकीब",
+      "content": "सूत्र रटने की जगह चित्र के प्रत्येक हिस्से का क्षेत्रफल या आयतन पहचानें।"
+    }
+  ],
+  "examples": [
+    {
+      "question": "भुजा (a+b) वाले वर्ग का क्षेत्रफल?",
+      "solution": "(a+b)² = a²+2ab+b²।"
+    },
+    {
+      "question": "a=3,b=2 में a²+2ab+b²?",
+      "solution": "9+12+4=25।"
+    }
+  ],
+  "practice": {
+    "title": "✍️ खुद करके देखें",
+    "questions": [
+      {
+        "question": "ab आयत कितनी बार आता है?",
+        "answer": "दो बार",
+        "explanation": "दो समान cross rectangles।"
+      },
+      {
+        "question": "(3+2)² =",
+        "answer": "25",
+        "explanation": "5²=25।"
+      }
+    ]
+  },
+  "quiz": {
+    "title": "🧠 Quiz – अपनी समझ जाँचें",
+    "questions": [
+      {
+        "question": "(a+b)² का ज्यामितीय सत्यापन किससे?",
+        "options": [
+          "वर्ग के क्षेत्रफल से",
+          "केवल रेखा से",
+          "केवल वृत्त से",
+          "केवल संख्या रेखा से"
+        ],
+        "correct_answer": 0,
+        "explanation": "भुजा (a+b) वाले वर्ग से।"
+      },
+      {
+        "question": "(4+1)² =",
+        "options": ["9", "16", "20", "25"],
+        "correct_answer": 3,
+        "explanation": "5²=25।"
+      }
+    ]
+  },
+  "completion": {
+    "message": "🔍 अब सर्वसमिका आपको सूत्र के साथ-साथ चित्र में भी दिखाई देगी।"
+  }
+}
