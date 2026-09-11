@@ -1,0 +1,89 @@
+{
+  "class": 8,
+  "subject": "गणित",
+  "chapter": 8,
+  "chapter_title": "वर्ग समीकरण",
+  "lesson": 2,
+  "title": "x² = k प्रकार के वर्ग समीकरणों का हल",
+  "source": "पाठ्यपुस्तक",
+  "diagram_required": true,
+  "diagram_notes": "Square root pair visual: x²=25 → x=±5; square area से side निकालने का visual.",
+  "objectives": [
+    "x²=k प्रकार के समीकरण हल करना",
+    "वर्गमूल के माध्यम से हल निकालना",
+    "धनात्मक और ऋणात्मक दोनों हल समझना",
+    "उत्तर की जाँच करना"
+  ],
+  "concept": "यदि x²=k है तो x के वे दोनों मान लिए जाते हैं जिनका वर्ग k हो। इसलिए सामान्यतः x=±√k।",
+  "explanation": [
+    {
+      "heading": "सरल उदाहरण",
+      "content": "x²=25 में 5²=25 और (−5)²=25। इसलिए x=5 या x=−5।"
+    },
+    {
+      "heading": "वर्गमूल से हल",
+      "content": "x²=49 से x=±√49=±7।"
+    },
+    {
+      "heading": "क्षेत्रफल से जोड़ें",
+      "content": "यदि किसी वर्ग का क्षेत्रफल 64 वर्ग इकाई है, तो उसकी भुजा 8 इकाई होगी क्योंकि 8²=64। वास्तविक लंबाई के प्रश्नों में सामान्यतः धनात्मक मान लिया जाता है।"
+    },
+    {
+      "heading": "जाँच",
+      "content": "प्राप्त दोनों मानों को वर्ग करके देखें। यदि दोनों से k मिलता है तो दोनों समीकरण के हल हैं।"
+    }
+  ],
+  "examples": [
+    {
+      "question": "x²=36 हल कीजिए।",
+      "solution": "x=±6।"
+    },
+    {
+      "question": "x²=81 हल कीजिए।",
+      "solution": "x=±9।"
+    },
+    {
+      "question": "वर्ग का क्षेत्रफल 121 cm² है। भुजा ज्ञात कीजिए।",
+      "solution": "भुजा=√121=11 cm। लंबाई होने के कारण धनात्मक मान लिया जाएगा।"
+    }
+  ],
+  "activity": {
+    "title": "🎲 Square Root Treasure",
+    "instruction": "खजाने की चाबी संख्या k है। वह संख्या खोजो जिसका square k हो।"
+  },
+  "practice": {
+    "title": "✏️ खुद करके देखें",
+    "questions": [
+      {
+        "question": "x²=64",
+        "answer": "x=±8",
+        "explanation": "8² और (−8)² दोनों 64 हैं।"
+      },
+      {
+        "question": "x²=100",
+        "answer": "x=±10",
+        "explanation": "10²=100।"
+      }
+    ]
+  },
+  "quiz": {
+    "title": "⚡ Square Equation Challenge",
+    "questions": [
+      {
+        "question": "x²=49 के हल हैं—",
+        "options": ["7", "−7", "±7", "49"],
+        "correct_answer": 2,
+        "explanation": "7² और (−7)² दोनों 49 हैं।"
+      },
+      {
+        "question": "किसी वर्ग का क्षेत्रफल 144 cm² है। उसकी भुजा है—",
+        "options": ["10 cm", "11 cm", "12 cm", "14 cm"],
+        "correct_answer": 2,
+        "explanation": "√144=12।"
+      }
+    ]
+  },
+  "completion": {
+    "message": "🎯 Square का area दिया हो या x²=k—अब hidden side/number खोज सकते हैं!"
+  }
+}
