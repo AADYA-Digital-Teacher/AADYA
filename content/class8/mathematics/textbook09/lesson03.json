@@ -1,0 +1,86 @@
+{
+  "class": 8,
+  "subject": "गणित",
+  "chapter": 9,
+  "chapter_title": "समान्तर रेखाएँ",
+  "lesson": 3,
+  "title": "एक ही रेखा पर लम्ब दो रेखाएँ परस्पर समान्तर",
+  "source": "पाठ्यपुस्तक",
+  "diagram_required": true,
+  "diagram_notes": "एक horizontal reference line और उस पर बने दो perpendicular lines; दोनों vertical और समान्तर दिखाएँ।",
+  "objectives": [
+    "लम्ब रेखा की पहचान करना",
+    "एक ही रेखा पर लम्ब दो रेखाओं का सम्बन्ध समझना",
+    "प्रयोग द्वारा समान्तरता सत्यापित करना"
+  ],
+  "concept": "यदि दो रेखाएँ एक ही रेखा पर लम्ब हों, तो वे दोनों रेखाएँ परस्पर समान्तर होती हैं।",
+  "explanation": [
+    {
+      "heading": "लम्ब का अर्थ",
+      "content": "जब दो रेखाएँ 90° का कोण बनाती हैं, तो वे परस्पर लम्ब कहलाती हैं।"
+    },
+    {
+      "heading": "मुख्य नियम",
+      "content": "यदि m ⟂ l और n ⟂ l, तो m ∥ n।"
+    },
+    {
+      "heading": "कागज पर प्रयोग",
+      "content": "एक horizontal line खींचिए। उसके अलग-अलग स्थानों पर 90° के कोण बनाकर दो perpendicular lines खींचिए।"
+    },
+    {
+      "heading": "दैनिक जीवन",
+      "content": "फर्श पर खड़े बिजली के खम्भे या किसी सीधी दीवार के perpendicular support को देखकर इस सम्बन्ध को समझा जा सकता है।"
+    }
+  ],
+  "examples": [
+    {
+      "question": "यदि p ⟂ l और q ⟂ l, तो p और q का सम्बन्ध क्या होगा?",
+      "solution": "p ∥ q।"
+    }
+  ],
+  "activity": {
+    "title": "📐 90° Challenge",
+    "instruction": "एक ruler और set square की सहायता से एक line पर दो perpendicular lines बनाइए।",
+    "challenge": "क्या दोनों perpendicular lines आपस में समान्तर हैं? मापकर जाँचिए।"
+  },
+  "practice": {
+    "title": "✏️ अभ्यास",
+    "questions": [
+      {
+        "question": "यदि a ⟂ c और b ⟂ c है, तो a और b क्या होंगी?",
+        "answer": "समान्तर",
+        "explanation": "एक ही रेखा पर लम्ब दो रेखाएँ परस्पर समान्तर होती हैं।"
+      },
+      {
+        "question": "लम्ब रेखाएँ कितने डिग्री का कोण बनाती हैं?",
+        "answer": "90°",
+        "explanation": "लम्ब रेखाओं की यही पहचान है।"
+      }
+    ]
+  },
+  "quiz": {
+    "title": "⚡ 90° से Parallel",
+    "questions": [
+      {
+        "question": "यदि a ⟂ c और b ⟂ c, तो—",
+        "options": [
+          "a ∥ b",
+          "a ⟂ b",
+          "a और b मिलेंगी",
+          "a=b"
+        ],
+        "correct_answer": 0,
+        "explanation": "एक ही रेखा पर लम्ब दो रेखाएँ समान्तर होती हैं।"
+      },
+      {
+        "question": "लम्ब रेखाओं के बीच कोण होता है—",
+        "options": ["45°", "60°", "90°", "180°"],
+        "correct_answer": 2,
+        "explanation": "लम्ब रेखाएँ 90° बनाती हैं।"
+      }
+    ]
+  },
+  "completion": {
+    "message": "🎯 90° का सम्बन्ध समझकर आपने समान्तर रेखाओं का एक और नियम खोज लिया!"
+  }
+}
