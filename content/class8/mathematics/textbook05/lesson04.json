@@ -1,0 +1,85 @@
+{
+  "class": 8,
+  "subject": "गणित",
+  "chapter": 5,
+  "chapter_title": "बीजीय व्यंजकों का भाग एवं गुणनखंड",
+  "lesson": 4,
+  "title": "ax² + bx + c प्रकार के व्यंजकों का गुणनखंड",
+  "source": "पाठ्यपुस्तक",
+  "diagram_required": true,
+  "diagram_notes": "Middle-term splitting का flow: ax²+bx+c → ac का गुणनफल → दो संख्याएँ → मध्य पद का विभाजन → grouping → factors.",
+  "objectives": [
+    "ax²+bx+c प्रकार के व्यंजक पहचानना",
+    "मध्य पद को विभाजित करना",
+    "समूहन द्वारा गुणनखंड करना"
+  ],
+  "concept": "ax²+bx+c प्रकार के व्यंजक में मध्य पद को इस प्रकार विभाजित किया जाता है कि गुणनखंड करना सरल हो जाए।",
+  "explanation": [
+    {
+      "heading": "मुख्य विचार",
+      "content": "पहले a×c ज्ञात करें। फिर ऐसी दो संख्याएँ खोजें जिनका गुणनफल ac और योग b हो।"
+    },
+    {
+      "heading": "उदाहरण",
+      "content": "6x²+11x+3 में ac=18। 9 और 2 का गुणनफल 18 और योग 11 है। इसलिए 11x को 9x+2x में बाँटते हैं।"
+    },
+    {
+      "heading": "समूहन",
+      "content": "6x²+9x+2x+3 = 3x(2x+3)+1(2x+3) = (3x+1)(2x+3)।"
+    },
+    {
+      "heading": "दैनिक जीवन से जोड़ें",
+      "content": "इसे puzzle की तरह सोचें: हमें ऐसी दो संख्याएँ खोजनी हैं जो एक साथ 'गुणा का clue' और 'जोड़ का clue' पूरा करें।"
+    }
+  ],
+  "examples": [
+    {
+      "question": "6x²+11x+3 का गुणनखंड कीजिए।",
+      "solution": "6x²+9x+2x+3 = 3x(2x+3)+1(2x+3) = (3x+1)(2x+3)।"
+    },
+    {
+      "question": "2x²+7x+3 का गुणनखंड कीजिए।",
+      "solution": "ac=6 और 6 तथा 1 का योग 7 है। 2x²+6x+x+3 = 2x(x+3)+1(x+3) = (2x+1)(x+3)।"
+    }
+  ],
+  "practice": {
+    "title": "🧩 Number Detective",
+    "questions": [
+      {
+        "question": "x²+5x+6 में किन दो संख्याओं का गुणनफल 6 और योग 5 है?",
+        "answer": "2 और 3",
+        "explanation": "2×3=6 और 2+3=5।"
+      },
+      {
+        "question": "2x²+5x+2 में ac कितना है?",
+        "answer": "4",
+        "explanation": "a=2 और c=2, इसलिए ac=4।"
+      }
+    ]
+  },
+  "quiz": {
+    "title": "🕵️ Middle Term Mystery",
+    "questions": [
+      {
+        "question": "x²+7x+12 में सही जोड़ी है—",
+        "options": ["2 और 5", "3 और 4", "1 और 12", "6 और 6"],
+        "correct_answer": 1,
+        "explanation": "3×4=12 और 3+4=7।"
+      },
+      {
+        "question": "2x²+7x+3 के गुणनखंड हैं—",
+        "options": [
+          "(2x+1)(x+3)",
+          "(2x+3)(x+1)",
+          "(x+3)(x+3)",
+          "(2x−1)(x−3)"
+        ],
+        "correct_answer": 0,
+        "explanation": "गुणा करने पर 2x²+7x+3 मिलता है।"
+      }
+    ]
+  },
+  "completion": {
+    "message": "🏆 Chapter 05 पूरा! अब algebraic division और factorisation दोनों आपके toolkit में हैं।"
+  }
+}
