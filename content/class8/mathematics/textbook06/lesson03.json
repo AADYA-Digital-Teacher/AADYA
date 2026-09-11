@@ -1,0 +1,100 @@
+{
+  "class": 8,
+  "subject": "गणित",
+  "chapter": 6,
+  "chapter_title": "संख्याओं से खेल",
+  "lesson": 3,
+  "title": "रिक्त स्थान की संख्या ज्ञात करना और संख्या पहेली",
+  "source": "पाठ्यपुस्तक",
+  "diagram_required": true,
+  "diagram_notes": "Missing-number puzzle cards: 4□+27=63, 8□÷4=21, □×7=84 और four operations का number puzzle board.",
+  "objectives": [
+    "रिक्त स्थान वाली संख्याओं को हल करना",
+    "चार मूल संक्रियाओं का प्रयोग करना",
+    "संख्या-पहेली में pattern पहचानना",
+    "तर्क के आधार पर उत्तर निकालना"
+  ],
+  "concept": "रिक्त स्थान वाली संख्या पहेली को हल करने के लिए उपलब्ध संख्याओं और संक्रियाओं के संबंध को पहचानना होता है।",
+  "explanation": [
+    {
+      "heading": "जोड़ की पहेली",
+      "content": "यदि □+27=63 है तो □=63−27=36।"
+    },
+    {
+      "heading": "गुणा की पहेली",
+      "content": "यदि □×7=84 है तो □=84÷7=12।"
+    },
+    {
+      "heading": "भाग की पहेली",
+      "content": "यदि 96÷□=12 है तो □=96÷12=8।"
+    },
+    {
+      "heading": "चार संक्रियाओं का खेल",
+      "content": "किसी संख्या को पाने के लिए जोड़, घटाना, गुणा और भाग में से कौन-सी संक्रिया लग रही है, यह पहचानें।"
+    },
+    {
+      "heading": "दैनिक जीवन से जोड़ें",
+      "content": "दुकान का बिल, बचे हुए पैसे, वस्तुओं की संख्या और बराबर बाँटने जैसी वास्तविक परिस्थितियाँ भी ऐसी ही missing-number puzzles बनाती हैं।"
+    }
+  ],
+  "examples": [
+    {
+      "question": "□+35=82 में □ ज्ञात कीजिए।",
+      "solution": "82−35=47, इसलिए □=47।"
+    },
+    {
+      "question": "□×6=72 में □ ज्ञात कीजिए।",
+      "solution": "72÷6=12, इसलिए □=12।"
+    },
+    {
+      "question": "90÷□=10 में □ ज्ञात कीजिए।",
+      "solution": "90÷10=9, इसलिए □=9।"
+    }
+  ],
+  "practice": {
+    "title": "🧩 Number Puzzle",
+    "questions": [
+      {
+        "question": "□+28=50",
+        "answer": "22",
+        "explanation": "50−28=22।"
+      },
+      {
+        "question": "7×□=63",
+        "answer": "9",
+        "explanation": "63÷7=9।"
+      },
+      {
+        "question": "81÷□=9",
+        "answer": "9",
+        "explanation": "81÷9=9।"
+      }
+    ]
+  },
+  "quiz": {
+    "title": "🏆 Number Puzzle Champion",
+    "questions": [
+      {
+        "question": "□−19=31 में □ क्या है?",
+        "options": ["40", "50", "60", "12"],
+        "correct_answer": 1,
+        "explanation": "31+19=50।"
+      },
+      {
+        "question": "8×□=56 में □ क्या है?",
+        "options": ["6", "7", "8", "9"],
+        "correct_answer": 1,
+        "explanation": "56÷8=7।"
+      },
+      {
+        "question": "72÷□=8 में □ क्या है?",
+        "options": ["7", "8", "9", "10"],
+        "correct_answer": 2,
+        "explanation": "72÷8=9।"
+      }
+    ]
+  },
+  "completion": {
+    "message": "🎉 Chapter 06 पूरा! अब गणित आपके लिए एक Number Game बन चुका है।"
+  }
+}
