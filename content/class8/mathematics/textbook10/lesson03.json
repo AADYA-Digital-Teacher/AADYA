@@ -1,0 +1,86 @@
+{
+  "class": 8,
+  "subject": "गणित",
+  "chapter": 10,
+  "chapter_title": "चतुर्भुज की रचनाएँ",
+  "lesson": 3,
+  "title": "दो संलग्न भुजाएँ और उनके बीच का कोण तथा अन्य दो कोण दिए होने पर रचना",
+  "source": "पाठ्यपुस्तक",
+  "diagram_required": true,
+  "diagram_notes": "AB और AD adjacent sides, angle BAD तथा अन्य दो दिए angles से quadrilateral construction का क्रम दिखाएँ।",
+  "objectives": [
+    "संलग्न भुजाओं का अर्थ समझना",
+    "दिए गए कोणों का construction में प्रयोग करना",
+    "angle और side information से quadrilateral बनाना"
+  ],
+  "concept": "चतुर्भुज की दो संलग्न भुजाएँ और उनके बीच का कोण तथा अन्य दो कोण दिए होने पर कोणों की सहायता से vertices निर्धारित करके चतुर्भुज की रचना की जा सकती है।",
+  "explanation": [
+    {
+      "heading": "संलग्न भुजाएँ",
+      "content": "जो दो भुजाएँ एक ही vertex पर मिलती हैं, उन्हें संलग्न भुजाएँ कहते हैं।"
+    },
+    {
+      "heading": "पहला आधार",
+      "content": "दी गई एक side को खींचकर उसके endpoint पर दिए गए angle के अनुसार दूसरी side बनाते हैं।"
+    },
+    {
+      "heading": "बाकी angles",
+      "content": "दिए गए अन्य angles की सहायता से बाकी sides की दिशाएँ निर्धारित की जाती हैं।"
+    },
+    {
+      "heading": "दैनिक जीवन",
+      "content": "किसी room, garden या plot के corner का design बनाते समय sides के साथ corner angles भी महत्वपूर्ण होते हैं।"
+    }
+  ],
+  "examples": [
+    {
+      "question": "संलग्न भुजाएँ क्या होती हैं?",
+      "solution": "जो दो भुजाएँ एक ही vertex पर मिलती हैं।"
+    }
+  ],
+  "activity": {
+    "title": "📐 Corner Designer",
+    "instruction": "एक कागज पर दो lines को एक common point पर मिलाकर अलग-अलग angles बनाइए।",
+    "challenge": "देखिए angle बदलने पर पूरा quadrilateral कैसे बदल जाता है।"
+  },
+  "practice": {
+    "title": "✏️ Practice",
+    "questions": [
+      {
+        "question": "AB और AD एक ही vertex A पर मिलती हैं। ये कैसी भुजाएँ हैं?",
+        "answer": "संलग्न भुजाएँ",
+        "explanation": "दोनों A पर मिलती हैं।"
+      },
+      {
+        "question": "Construction में angle बनाने के लिए किस उपकरण का उपयोग किया जा सकता है?",
+        "answer": "कोणमापी",
+        "explanation": "दिए गए कोण को accurately बनाने के लिए protractor/कोणमापी उपयोगी है।"
+      }
+    ]
+  },
+  "quiz": {
+    "title": "📐 Corner Challenge",
+    "questions": [
+      {
+        "question": "एक ही vertex पर मिलने वाली दो sides कहलाती हैं—",
+        "options": [
+          "विकर्ण",
+          "संलग्न भुजाएँ",
+          "समान्तर भुजाएँ",
+          "विपरीत भुजाएँ"
+        ],
+        "correct_answer": 1,
+        "explanation": "एक ही vertex पर मिलने वाली sides adjacent sides हैं।"
+      },
+      {
+        "question": "दिया हुआ angle बनाने के लिए कौन-सा उपकरण उपयोगी है?",
+        "options": ["कम्पास", "कोणमापी", "रबर", "स्केल केवल"],
+        "correct_answer": 1,
+        "explanation": "कोणमापी से कोण बनाया/मापा जाता है।"
+      }
+    ]
+  },
+  "completion": {
+    "message": "🏠 अब आप किसी shape के corners को भी construction का हिस्सा बना सकते हैं!"
+  }
+}
