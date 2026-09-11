@@ -326,6 +326,62 @@
                   "file": "./content/class7/mathematics/textbook10/lesson04.json"
                 }
               ]
+            },
+            {
+  "number": 11,
+  "book_number": 11,
+  "title": "वृत्त",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "अर्धवृत्त का कोण समकोण होता है",
+      "file": "./content/class7/mathematics/textbook11/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "चाप के सम्मुख केन्द्र पर बना कोण परिधि पर बने कोण का दुगुना होता है",
+      "file": "./content/class7/mathematics/textbook11/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "एक ही वृत्तखंड के कोण बराबर होते हैं",
+      "file": "./content/class7/mathematics/textbook11/lesson03.json"
+    }
+  ]
+},
+            {
+  "number": 12,
+  "book_number": 12,
+  "title": "क्षेत्रमिति (मेंसुरेशन)",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "आयताकार मार्ग का क्षेत्रफल",
+      "file": "./content/class7/mathematics/textbook12/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "त्रिभुजाकार क्षेत्र का क्षेत्रफल",
+      "file": "./content/class7/mathematics/textbook12/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "समान्तर चतुर्भुजाकार क्षेत्र का क्षेत्रफल",
+      "file": "./content/class7/mathematics/textbook12/lesson03.json"
+    },
+    {
+      "number": 4,
+      "title": "समचतुर्भुजाकार क्षेत्र का क्षेत्रफल",
+      "file": "./content/class7/mathematics/textbook12/lesson04.json"
+    },
+    {
+      "number": 5,
+      "title": "घन एवं घनाभ का सम्पूर्ण पृष्ठ",
+      "file": "./content/class7/mathematics/textbook12/lesson05.json"
+    }
+  ]
             }
           ]
         }
