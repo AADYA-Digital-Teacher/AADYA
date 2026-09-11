@@ -279,6 +279,67 @@
       "file": "./content/class8/mathematics/textbook08/lesson04.json"
     }
   ]
+},
+            {
+  "number": 9,
+  "book_number": 9,
+  "title": "समान्तर रेखाएँ",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "समान्तर रेखाएँ — पहचान और प्रयोगात्मक सत्यापन",
+      "file": "./content/class8/mathematics/textbook09/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "एक ही रेखा के समान्तर दो रेखाएँ परस्पर समान्तर",
+      "file": "./content/class8/mathematics/textbook09/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "एक ही रेखा पर लम्ब दो रेखाएँ परस्पर समान्तर",
+      "file": "./content/class8/mathematics/textbook09/lesson03.json"
+    },
+    {
+      "number": 4,
+      "title": "रेखाखंड को समान और दिए गए अनुपात में विभाजित करना",
+      "file": "./content/class8/mathematics/textbook09/lesson04.json"
+    }
+  ]
+},
+{
+  "number": 10,
+  "book_number": 10,
+  "title": "चतुर्भुज की रचनाएँ",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "चार भुजाएँ और एक विकर्ण दिए होने पर चतुर्भुज की रचना",
+      "file": "./content/class8/mathematics/textbook10/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "तीन भुजाएँ और दोनों विकर्ण दिए होने पर चतुर्भुज की रचना",
+      "file": "./content/class8/mathematics/textbook10/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "दो संलग्न भुजाएँ और उनके बीच का कोण तथा अन्य दो कोण दिए होने पर रचना",
+      "file": "./content/class8/mathematics/textbook10/lesson03.json"
+    },
+    {
+      "number": 4,
+      "title": "तीन भुजाएँ और दो मध्यस्थ कोण दिए होने पर चतुर्भुज की रचना",
+      "file": "./content/class8/mathematics/textbook10/lesson04.json"
+    },
+    {
+      "number": 5,
+      "title": "चार भुजाएँ और एक कोण दिए होने पर चतुर्भुज की रचना",
+      "file": "./content/class8/mathematics/textbook10/lesson05.json"
+    }
+  ]
 }
           ]
         }
