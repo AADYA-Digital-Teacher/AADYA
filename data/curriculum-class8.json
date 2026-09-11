@@ -172,7 +172,58 @@
       "file": "./content/class8/mathematics/textbook04/lesson05.json"
     }
           ]
-        }
+        },
+            {
+  "number": 5,
+  "book_number": 5,
+  "title": "बीजीय व्यंजकों का भाग एवं गुणनखंड",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "बीजीय व्यंजकों में एकपदी तथा द्विपदी व्यंजकों से भाग",
+      "file": "./content/class8/mathematics/textbook05/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "भाज्य = भाजक × भागफल + शेषफल",
+      "file": "./content/class8/mathematics/textbook05/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "बहुपदीय व्यंजकों के गुणनखंड — सर्वसमिकाओं का प्रयोग",
+      "file": "./content/class8/mathematics/textbook05/lesson03.json"
+    },
+    {
+      "number": 4,
+      "title": "ax² + bx + c प्रकार के व्यंजकों का गुणनखंड",
+      "file": "./content/class8/mathematics/textbook05/lesson04.json"
+    }
+  ]
+},
+{
+  "number": 6,
+  "book_number": 6,
+  "title": "संख्याओं से खेल",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "2 तथा 3 अंकों की संख्या को व्यापक रूप में लिखना तथा समझना",
+      "file": "./content/class8/mathematics/textbook06/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "2, 3, 5, 7, 9, 11 और 13 से विभाज्यता के नियम",
+      "file": "./content/class8/mathematics/textbook06/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "रिक्त स्थान की संख्या ज्ञात करना और संख्या पहेली",
+      "file": "./content/class8/mathematics/textbook06/lesson03.json"
+    }
+  ]
+}
       }
     }
   }
