@@ -81,12 +81,11 @@
       "number": 6,
       "title": "दशमलव संख्याओं का वर्गमूल",
       "file": "./content/class8/mathematics/textbook02/lesson06.json"
-  
-},
-{
-  "number": 7,
-  "title": "अपूर्ण वर्ग संख्याओं का वर्गमूल",
-  "file": "./content/class8/mathematics/textbook02/lesson07.json"
-}
+    },
+    {
+      "number": 7,
+      "title": "अपूर्ण वर्ग संख्याओं का वर्गमूल",
+      "file": "./content/class8/mathematics/textbook02/lesson07.json"
+    }
   ]
 }
