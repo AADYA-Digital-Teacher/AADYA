@@ -1100,10 +1100,8 @@ function normalizeQuestion(item){
 function getPracticeQuestions(data){
 
   /*
-   * New format:
-   * practice.questions
+   * 1. Standard new format
    */
-
   if(
     data?.practice &&
     Array.isArray(
@@ -1118,14 +1116,64 @@ function getPracticeQuestions(data){
 
 
   /*
-   * Old format:
-   * practice_questions
+   * 2. Old format
    */
+  if(
+    Array.isArray(
+      data?.practice_questions
+    )
+  ){
 
-  return asArray(
-    data?.practice_questions
-  )
-  .map(normalizeQuestion);
+    return data.practice_questions
+      .map(normalizeQuestion);
+
+  }
+
+
+  /*
+   * 3. Fallback:
+   * अगर practice नहीं है तो
+   * examples को लिखित अभ्यास में बदल दें।
+   *
+   * इससे पुराने/new lessons
+   * कभी खाली नहीं रहेंगे।
+   */
+  const examples =
+    getExamples(data);
+
+
+  if(
+    examples.length
+  ){
+
+    return examples.map(
+      function(item){
+
+        if(
+          typeof item === "string"
+        ){
+
+          return normalizeQuestion({
+            question: item
+          });
+
+        }
+
+
+        return normalizeQuestion({
+          question:
+            item.question ||
+            item.title ||
+            "इस उदाहरण को स्वयं हल कीजिए।"
+        });
+
+      }
+    );
+
+  }
+
+
+  return [];
 
 }
 
