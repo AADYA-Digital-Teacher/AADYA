@@ -707,8 +707,10 @@ function getAppChapterNumber(
       Number(match[1]);
 
     /*
-     * Class 7 में textbook number
-     * ही app chapter number है.
+     * Class 7:
+     * textbook01 = Chapter 1
+     * textbook02 = Chapter 2
+     * ...
      */
     if(
       String(data?.class) === "7"
@@ -719,8 +721,23 @@ function getAppChapterNumber(
     }
 
     /*
-     * Class 6 के पुराने custom
-     * Chapter 1–2 के कारण +2
+     * Class 8:
+     * textbook01 = Chapter 1
+     * textbook02 = Chapter 2
+     * ...
+     */
+    if(
+      String(data?.class) === "8"
+    ){
+
+      return textbookNumber;
+
+    }
+
+    /*
+     * Class 6:
+     * पुराने custom Chapter 1–2
+     * के कारण textbook01 से +2
      */
     return textbookNumber + 2;
 
@@ -728,7 +745,7 @@ function getAppChapterNumber(
 
 
   /*
-   * Old custom lessons
+   * पुराने custom lessons
    */
   if(
     data &&
