@@ -1575,16 +1575,22 @@ function renderLesson(data){
         }
 
 
-        if(
-          item.answer
-        ){
+        const solution =
+  item.answer ??
+  item.solution ??
+  item.explanation ??
+  "";
 
-          html +=
-            "<br><br><strong>उत्तर:</strong> " +
+if(
+  solution
+){
 
-            escapeHTML(
-              item.answer
-            );
+  html +=
+    "<br><br><strong>हल:</strong> " +
+
+    escapeHTML(
+      solution
+    );
 
         }
 
