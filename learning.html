@@ -939,11 +939,51 @@ function getExplanation(data){
 
 function getExamples(data){
 
-  return asArray(
-    data?.examples
-  );
+  /*
+   * Standard format
+   */
+  if(
+    Array.isArray(data?.examples)
+  ){
 
-}
+    return data.examples;
+
+  }
+
+
+  /*
+   * New lessons में कभी-कभी
+   * single example object है
+   */
+  if(
+    data?.example &&
+    typeof data.example === "object"
+  ){
+
+    return [
+      data.example
+    ];
+
+  }
+
+
+  /*
+   * बहुत पुराने format के लिए
+   */
+  if(
+    typeof data?.example === "string"
+  ){
+
+    return [
+      data.example
+    ];
+
+  }
+
+
+  return [];
+
+  }
 
 
 /* ==========================================
