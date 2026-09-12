@@ -312,13 +312,22 @@
 
     if (!diagram) return;
 
-    const tryYourself = box.querySelector("#tryYourself");
+    const examples =
+  box.querySelector("#examples");
 
-    if (tryYourself) {
-      tryYourself.parentNode.insertBefore(diagram, tryYourself);
-    } else {
-      box.appendChild(diagram);
-    }
+if (examples) {
+
+  examples.appendChild(
+    diagram
+  );
+
+} else {
+
+  box.appendChild(
+    diagram
+  );
+
+}
   }
 
   function start() {
