@@ -279,7 +279,18 @@ Independent Diagram Engine
       return "";
     }
   }
+function isClass7() {
+  if (window.lessonData?.class !== undefined) {
+    return Number(window.lessonData.class) === 7;
+  }
 
+  const p =
+    new URLSearchParams(location.search).get("lesson") || "";
+
+  return /\/class7\//i.test(
+    decodeURIComponent(p)
+  );
+}
   function getChapter() {
     const m = getLessonFile().match(/textbook(\d+)/i);
 
@@ -365,9 +376,13 @@ Independent Diagram Engine
   }
 
   function render() {
-    const chapter = getChapter();
 
-    if (chapter < 13 || chapter > 14) return;
+  /* केवल Class 7 के लिए */
+  if (!isClass7()) return;
+
+  const ch = getChapter();
+
+  if (ch < 13 || ch > 14) return;
 
     const container = findContainer();
 
