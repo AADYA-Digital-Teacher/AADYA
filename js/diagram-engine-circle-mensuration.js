@@ -196,7 +196,18 @@ Independent engine: does not modify Chapters 7–10.
       return "";
     }
   }
+function isClass7() {
+  if (window.lessonData?.class !== undefined) {
+    return Number(window.lessonData.class) === 7;
+  }
 
+  const p =
+    new URLSearchParams(location.search).get("lesson") || "";
+
+  return /\/class7\//i.test(
+    decodeURIComponent(p)
+  );
+}
   function getChapter() {
     const m = getLessonFile().match(/textbook(\d+)/i);
 
@@ -253,9 +264,13 @@ Independent engine: does not modify Chapters 7–10.
   }
 
   function render() {
-    const ch = getChapter();
 
-    if (ch < 11 || ch > 12) return;
+  /* केवल Class 7 के लिए */
+  if (!isClass7()) return;
+
+  const ch = getChapter();
+
+  if (ch < 11 || ch > 12) return;
 
     const container = findContainer();
 
