@@ -1688,20 +1688,59 @@ if(
 
 
   if(
-    tryData.length === 0
+  tryData.length === 0
+){
+
+  const practice =
+    getPracticeQuestions(data);
+
+  tryData =
+    practice.slice(
+      0,
+      3
+    );
+
+}
+
+
+/*
+ * अगर अभी भी कुछ नहीं मिला,
+ * तो Activity को "खुद करके देखें"
+ * के रूप में दिखाएँ।
+ */
+if(
+  tryData.length === 0 &&
+  data?.activity
+){
+
+  const instruction =
+    data.activity.instruction ||
+    "";
+
+  const challenge =
+    data.activity.challenge ||
+    "";
+
+  if(
+    instruction ||
+    challenge
   ){
 
-    const practice =
-      getPracticeQuestions(data);
-
-
-    tryData =
-      practice.slice(
-        0,
-        3
-      );
+    tryData = [
+      {
+        question:
+          instruction +
+          (
+            challenge
+              ? " " + challenge
+              : ""
+          )
+      }
+    ];
 
   }
+
+}
 
 
   tryData.forEach(
