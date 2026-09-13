@@ -685,7 +685,8 @@ function render(){
   box.querySelector(
     ".aadya-c8-c12-14-diagram, .aadya-c8cb-diagram"
   )
-) return;
+) {
+  return;
   }
 
   const key =
