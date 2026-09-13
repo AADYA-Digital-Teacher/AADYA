@@ -934,44 +934,189 @@ function getExplanation(data){
 
 /* ==========================================
    EXAMPLE NORMALIZER
-   OLD + NEW JSON COMPATIBLE
+   OLD + NEW + FALLBACK COMPATIBLE
 ========================================== */
+
 function getExamples(data){
 
   if(!data) return [];
 
-  /* New format:
-     "examples":[ ... ]
-  */
-  if(Array.isArray(data.examples)){
+  /* ------------------------------------------
+     1. New format: examples[]
+  ------------------------------------------ */
+
+  if(Array.isArray(data.examples) &&
+     data.examples.length > 0){
+
     return data.examples;
+
   }
 
-  /* Single example:
-     "example":{...}
-  */
-  if(data.example && typeof data.example === "object"){
+
+  /* ------------------------------------------
+     2. Single example object
+  ------------------------------------------ */
+
+  if(
+    data.example &&
+    typeof data.example === "object" &&
+    !Array.isArray(data.example)
+  ){
+
     return [data.example];
+
   }
 
-  /* Old format:
-     "example":[ ... ]
-  */
-  if(Array.isArray(data.example)){
+
+  /* ------------------------------------------
+     3. Old format: example[]
+  ------------------------------------------ */
+
+  if(
+    Array.isArray(data.example) &&
+    data.example.length > 0
+  ){
+
     return data.example;
+
   }
 
-  /* Very old format */
-  if(Array.isArray(data.example_questions)){
+
+  /* ------------------------------------------
+     4. Very old format
+  ------------------------------------------ */
+
+  if(
+    Array.isArray(data.example_questions) &&
+    data.example_questions.length > 0
+  ){
+
     return data.example_questions;
+
   }
 
-  /* String example */
-  if(typeof data.example === "string"){
-    return [data.example];
+
+  /* ------------------------------------------
+     5. String example
+  ------------------------------------------ */
+
+  if(
+    typeof data.example === "string" &&
+    data.example.trim() !== ""
+  ){
+
+    return [
+      data.example
+    ];
+
   }
+
+
+  /* ==========================================
+     6. SMART FALLBACK
+     यदि JSON में example नहीं है,
+     तो पहले Practice से example लें
+  ========================================== */
+
+  const practiceQuestions =
+    data?.practice?.questions;
+
+  if(
+    Array.isArray(practiceQuestions) &&
+    practiceQuestions.length > 0
+  ){
+
+    const first =
+      practiceQuestions[0];
+
+    return [
+
+      {
+        question:
+          first.question ||
+          first.text ||
+          "इस पाठ का उदाहरण",
+
+        solution:
+          first.answer ||
+          first.solution ||
+          first.explanation ||
+          ""
+      }
+
+    ];
+
+  }
+
+
+  /* ==========================================
+     7. दूसरा fallback:
+     Quiz से worked example
+  ========================================== */
+
+  const quizQuestions =
+    data?.quiz?.questions;
+
+  if(
+    Array.isArray(quizQuestions) &&
+    quizQuestions.length > 0
+  ){
+
+    const q =
+      quizQuestions[0];
+
+    let solution = "";
+
+    const correct =
+      q.correct_answer;
+
+    if(
+      typeof correct === "number" &&
+      Array.isArray(q.options) &&
+      q.options[correct] !== undefined
+    ){
+
+      solution =
+        q.options[correct];
+
+    }
+    else if(
+      typeof correct === "boolean"
+    ){
+
+      solution =
+        correct
+          ? "सही"
+          : "गलत";
+
+    }
+    else{
+
+      solution =
+        q.answer ||
+        q.solution ||
+        "";
+
+    }
+
+    return [
+
+      {
+        question:
+          q.question ||
+          "इस पाठ का उदाहरण",
+
+        solution:
+          solution
+      }
+
+    ];
+
+  }
+
 
   return [];
+
 }
 
 /* ==========================================
@@ -1082,37 +1227,88 @@ function normalizeQuestion(item){
 
 /* ==========================================
    PRACTICE QUESTION NORMALIZER
-   OLD + NEW JSON COMPATIBLE
+   OLD + NEW + FALLBACK COMPATIBLE
 ========================================== */
+
 function getPracticeQuestions(data){
 
   if(!data) return [];
 
-  /* New textbook format:
-     "practice":{
-       "questions":[ ... ]
-     }
-  */
+
+  /* ------------------------------------------
+     1. New textbook format
+  ------------------------------------------ */
+
   if(
     data.practice &&
-    Array.isArray(data.practice.questions)
+    Array.isArray(data.practice.questions) &&
+    data.practice.questions.length > 0
   ){
-    return data.practice.questions.map(normalizeQuestion);
+
+    return data.practice.questions.map(
+      normalizeQuestion
+    );
+
   }
 
-  /* Old format */
-  if(Array.isArray(data.practice_questions)){
-    return data.practice_questions.map(normalizeQuestion);
+
+  /* ------------------------------------------
+     2. Old format
+  ------------------------------------------ */
+
+  if(
+    Array.isArray(data.practice_questions) &&
+    data.practice_questions.length > 0
+  ){
+
+    return data.practice_questions.map(
+      normalizeQuestion
+    );
+
   }
 
-  /* Some lessons may use:
-     "practice":[ ... ]
-  */
-  if(Array.isArray(data.practice)){
-    return data.practice.map(normalizeQuestion);
+
+  /* ------------------------------------------
+     3. practice[]
+  ------------------------------------------ */
+
+  if(
+    Array.isArray(data.practice) &&
+    data.practice.length > 0
+  ){
+
+    return data.practice.map(
+      normalizeQuestion
+    );
+
   }
+
+
+  /* ==========================================
+     4. SMART FALLBACK
+     अगर Practice नहीं है तो Quiz के
+     पहले 3 questions को Practice बनाएं
+  ========================================== */
+
+  const quizQuestions =
+    data?.quiz?.questions;
+
+  if(
+    Array.isArray(quizQuestions) &&
+    quizQuestions.length > 0
+  ){
+
+    return quizQuestions
+      .slice(0,3)
+      .map(
+        normalizeQuestion
+      );
+
+  }
+
 
   return [];
+
 }
 
 /* ==========================================
