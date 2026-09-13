@@ -1,282 +1,87 @@
-/* =========================================================
-   AADYA DIGITAL TEACHER
-   CLASS 6 MATHEMATICS — COLOUR DIAGRAM ENGINE
-   ---------------------------------------------------------
-   IMPORTANT SAFETY RULES
-
-   1. ONLY Class 6
-   2. ONLY Mathematics
-   3. ONLY /content/class6/mathematics/
-   4. Never uses chapter number alone
-   5. Reads actual lessonData title/concept/content
-   6. Class 7 / Class 8 are completely ignored
-   7. SVG based
-   8. Colourful educational diagrams
-========================================================= */
-
 (function(){
+  'use strict';
 
-  "use strict";
+  const CARD = 'aadya-c6-diagram-card';
 
-  const CARD_CLASS =
-    "aadya-c6-diagram-card";
+  function isClass6Math(){
+    const d = window.lessonData;
 
-  const SCRIPT_NAME =
-    "AADYAClass6MathematicsDiagramEngine";
-
-
-  /* =====================================================
-     CLASS 6 PATH GUARD
-  ===================================================== */
-
-  function isClass6MathematicsLesson(){
-
-    const data =
-      window.lessonData;
-
-    if(!data){
+    if(
+      !d ||
+      Number(d.class) !== 6 ||
+      String(d.subject || '').trim() !== 'गणित'
+    ){
       return false;
     }
 
-    if(Number(data.class) !== 6){
-      return false;
-    }
-
-    if(String(data.subject || "").trim() !== "गणित"){
-      return false;
-    }
-
-    const params =
+    const p =
       new URLSearchParams(
-        window.location.search
+        location.search
+      ).get('lesson') || '';
+
+    return /content\/class6\/mathematics\/(chapter\d+|textbook\d+)\/lesson\d+\.json/i
+      .test(
+        p.replace(/^\.\//,'')
       );
-
-    const path =
-      params.get("lesson") || "";
-
-    if(
-      !/content\/class6\/mathematics\/
-        (chapter\d+|textbook\d+)\/lesson\d+\.json/i
-        .test(path.replace(/^\.\//,""))
-    ){
-      return false;
-    }
-
-    return true;
   }
 
+  function pathKey(){
 
-  /* =====================================================
-     TEXT HELPERS
-  ===================================================== */
+    const p =
+      new URLSearchParams(
+        location.search
+      ).get('lesson') || '';
 
-  function getLessonTitle(data){
-
-    if(
-      data &&
-      typeof data.lesson === "object"
-    ){
-      return (
-        data.lesson.title ||
-        data.lesson.name ||
-        ""
+    let m =
+      p.match(
+        /chapter(\d+)\/lesson(\d+)\.json/i
       );
+
+    if(m){
+      return `c${Number(m[1])}-${Number(m[2])}`;
     }
 
-    return data?.title || "";
+    m =
+      p.match(
+        /textbook(\d+)\/lesson(\d+)\.json/i
+      );
+
+    if(m){
+      return `t${Number(m[1])}-${Number(m[2])}`;
+    }
+
+    return '';
   }
 
+  function title(){
 
-  function getChapterTitle(data){
-
-    if(
-      data &&
-      typeof data.chapter === "object"
-    ){
-      return (
-        data.chapter.title ||
-        data.chapter.name ||
-        ""
-      );
-    }
+    const d =
+      window.lessonData || {};
 
     return (
-      data?.chapter_title ||
-      ""
+      d?.lesson?.title ||
+      d?.title ||
+      ''
     );
   }
 
+  function esc(v){
 
-  function collectText(data){
-
-    const parts = [];
-
-    parts.push(
-      getLessonTitle(data)
-    );
-
-    parts.push(
-      getChapterTitle(data)
-    );
-
-    if(data?.concept){
-      parts.push(
-        data.concept
-      );
-    }
-
-    if(Array.isArray(data?.objectives)){
-      parts.push(
-        data.objectives.join(" ")
-      );
-    }
-
-    if(Array.isArray(data?.learning_objectives)){
-      parts.push(
-        data.learning_objectives.join(" ")
-      );
-    }
-
-    if(Array.isArray(data?.explanation)){
-
-      data.explanation.forEach(
-        item => {
-
-          if(typeof item === "string"){
-            parts.push(item);
-          }
-
-          if(item && typeof item === "object"){
-
-            parts.push(
-              item.heading || ""
-            );
-
-            parts.push(
-              item.title || ""
-            );
-
-            parts.push(
-              item.content || ""
-            );
-
-            parts.push(
-              item.text || ""
-            );
-
-          }
-
-        }
-      );
-
-    }
-
-    if(Array.isArray(data?.simple_explanation)){
-
-      data.simple_explanation.forEach(
-        item => {
-
-          if(typeof item === "string"){
-            parts.push(item);
-          }
-
-          if(item && typeof item === "object"){
-
-            parts.push(
-              item.title || ""
-            );
-
-            parts.push(
-              item.text || ""
-            );
-
-          }
-
-        }
-      );
-
-    }
-
-    return parts
-      .join(" ")
-      .toLowerCase();
-
+    return String(v ?? '')
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;')
+      .replace(/'/g,'&#039;');
   }
 
-
-  /* =====================================================
-     CONTAINER
-  ===================================================== */
-
-  function findLessonContainer(){
-
-    const ids = [
-      "content",
-      "lessonContent",
-      "lesson-container"
-    ];
-
-    for(
-      const id of ids
-    ){
-
-      const el =
-        document.getElementById(id);
-
-      if(el){
-        return el;
-      }
-
-    }
-
-    const classes = [
-      ".lesson-content",
-      ".lesson-container",
-      "main"
-    ];
-
-    for(
-      const selector of classes
-    ){
-
-      const el =
-        document.querySelector(
-          selector
-        );
-
-      if(el){
-        return el;
-      }
-
-    }
-
-    return null;
-  }
-
-
-  /* =====================================================
-     SVG HELPERS
-  ===================================================== */
-
-  function esc(value){
-
-    return String(value ?? "")
-      .replace(/&/g,"&amp;")
-      .replace(/</g,"&lt;")
-      .replace(/>/g,"&gt;")
-      .replace(/"/g,"&quot;")
-      .replace(/'/g,"&#039;");
-
-  }
-
-
-  function text(
+  function T(
     x,
     y,
-    value,
-    size = 24,
-    color = "#222",
-    weight = "600"
+    s,
+    size = 25,
+    color = '#17324d',
+    w = 700
   ){
 
     return `
@@ -284,26 +89,24 @@
         x="${x}"
         y="${y}"
         text-anchor="middle"
+        font-family="Noto Sans Devanagari,system-ui,sans-serif"
         font-size="${size}"
-        font-weight="${weight}"
-        font-family="system-ui, sans-serif"
+        font-weight="${w}"
         fill="${color}"
       >
-        ${esc(value)}
+        ${esc(s)}
       </text>
     `;
-
   }
 
-
-  function line(
+  function L(
     x1,
     y1,
     x2,
     y2,
-    color = "#222",
-    width = 4,
-    dash = ""
+    color = '#17324d',
+    width = 5,
+    dash = ''
   ){
 
     return `
@@ -315,20 +118,18 @@
         stroke="${color}"
         stroke-width="${width}"
         stroke-linecap="round"
-        ${dash ? `stroke-dasharray="${dash}"` : ""}
+        ${dash ? `stroke-dasharray="${dash}"` : ''}
       />
     `;
-
   }
 
-
-  function circle(
+  function C(
     cx,
     cy,
     r,
-    fill = "none",
-    stroke = "#222",
-    width = 4
+    fill = 'none',
+    stroke = '#17324d',
+    width = 5
   ){
 
     return `
@@ -341,71 +142,90 @@
         stroke-width="${width}"
       />
     `;
-
   }
 
-
-  function point(
+  function R(
     x,
     y,
-    color = "#e63946"
+    w,
+    h,
+    fill = '#eef6ff',
+    stroke = '#457b9d',
+    sw = 4,
+    rx = 14
   ){
 
     return `
-      <circle
-        cx="${x}"
-        cy="${y}"
-        r="7"
-        fill="${color}"
+      <rect
+        x="${x}"
+        y="${y}"
+        width="${w}"
+        height="${h}"
+        rx="${rx}"
+        fill="${fill}"
+        stroke="${stroke}"
+        stroke-width="${sw}"
       />
     `;
-
   }
 
-
-  function wrap(
-    title,
-    body
+  function P(
+    points,
+    fill = '#eef6ff',
+    stroke = '#17324d',
+    sw = 5
   ){
+
+    return `
+      <polygon
+        points="${points}"
+        fill="${fill}"
+        stroke="${stroke}"
+        stroke-width="${sw}"
+        stroke-linejoin="round"
+      />
+    `;
+  }
+
+  function wrap(body){
 
     return `
       <section
-        class="${CARD_CLASS}"
+        class="${CARD}"
         style="
-          background:#ffffff;
+          background:#fff;
+          border:1px solid #dbe4ee;
           border-radius:18px;
-          padding:16px;
+          padding:14px;
           margin:18px 0;
-          box-shadow:0 4px 16px rgba(0,0,0,.08);
-          border:1px solid #e5e7eb;
+          box-shadow:0 4px 16px rgba(0,0,0,.08)
         "
       >
 
         <div
           style="
-            font-weight:700;
+            font-weight:800;
             font-size:18px;
-            margin-bottom:12px;
-            color:#1d3557;
+            color:#17324d;
+            margin-bottom:10px
           "
         >
-          📐 ${esc(title)}
+          📐 ${esc(title())}
         </div>
 
         <div
           style="
-            width:100%;
             overflow:hidden;
             border-radius:14px;
-            background:#f8fbff;
+            background:#f7fbff
           "
         >
 
           <svg
-            viewBox="0 0 800 440"
+            viewBox="0 0 800 430"
             width="100%"
             role="img"
-            aria-label="${esc(title)}"
+            aria-label="${esc(title())}"
             xmlns="http://www.w3.org/2000/svg"
           >
 
@@ -417,1359 +237,1754 @@
 
       </section>
     `;
-
   }
 
+  /*
+   * प्रत्येक lesson का स्पष्ट mapping
+   * chapter number पर generic guessing नहीं
+   */
 
-  /* =====================================================
-     DIAGRAM 1 — NUMBER LINE
-  ===================================================== */
+  const MAP = {
 
-  function numberLine(){
+    /* AADYA Special */
+    'c1-1':'smart-c1',
+    'c1-2':'smart-c1',
 
-    let body = "";
+    'c2-1':'smart-c2',
+    'c2-2':'angle',
 
-    body += line(
-      90,260,
-      710,260,
-      "#1d3557",
-      5
-    );
+    /* Ch 3 — प्राकृतिक संख्याएँ */
+    't1-1':'number-place',
+    't1-2':'number-place',
+    't1-3':'number-line',
+    't1-4':'number-line',
+    't1-5':'sequence',
 
-    for(
-      let i=0;
-      i<=10;
-      i++
-    ){
+    /* Ch 4 — पूर्ण संख्याएँ */
+    't2-1':'number-line',
+    't2-2':'number-line',
+    't2-3':'sequence',
+    't2-4':'number-line',
 
-      const x =
-        100 + i*60;
+    /* Ch 5 — पूर्णांक */
+    't3-1':'integer',
+    't3-2':'integer',
+    't3-3':'integer',
+    't3-4':'integer',
+    't3-5':'integer',
+    't3-6':'integer',
 
-      body += line(
-        x,245,
-        x,275,
-        "#457b9d",
-        4
-      );
+    /* Ch 6 — सांख्यिकी */
+    't4-1':'stats',
+    't4-2':'stats',
+    't4-3':'stats',
+    't4-4':'pictograph',
+    't4-5':'bar',
+    't4-6':'bar',
 
-      body += text(
-        x,
-        310,
-        i,
-        22,
-        "#1d3557"
-      );
+    /* Ch 7 — बीजीय अवधारणाएँ */
+    't5-1':'algebra',
+    't5-2':'algebra',
+    't5-3':'algebra',
+    't5-4':'algebra',
 
+    /* Ch 8 — बीजीय व्यंजक */
+    't6-1':'algebra',
+    't6-2':'algebra',
+    't6-3':'algebra',
+    't6-4':'algebra',
+    't6-5':'algebra',
+    't6-6':'algebra',
+    't6-7':'algebra',
+    't6-8':'algebra',
+
+    /* Ch 9 — ज्यामितीय अवधारणाएँ */
+    't7-1':'geometry',
+    't7-2':'geometry',
+    't7-3':'geometry',
+    't7-4':'geometry',
+    't7-5':'geometry',
+
+    /* Ch 10 — कोण */
+    't8-1':'angle',
+    't8-2':'angle',
+    't8-3':'angle',
+    't8-4':'angle',
+
+    /* Ch 11 — लम्ब और समान्तर रेखाएँ */
+    't9-1':'parallel',
+    't9-2':'parallel',
+    't9-3':'parallel',
+    't9-4':'parallel',
+
+    /* Ch 12 — LCM / HCF */
+    't10-1':'lcm-hcf',
+    't10-2':'lcm-hcf',
+    't10-3':'lcm-hcf',
+    't10-4':'lcm-hcf',
+    't10-5':'lcm-hcf',
+    't10-6':'lcm-hcf',
+    't10-7':'lcm-hcf',
+
+    /* Ch 13 — समीकरण */
+    't11-1':'equation',
+    't11-2':'equation',
+    't11-3':'equation',
+    't11-4':'equation',
+    't11-5':'equation',
+
+    /* Ch 14 — वाणिज्य गणित */
+    't12-1':'commerce',
+    't12-2':'commerce',
+    't12-3':'commerce',
+    't12-4':'commerce',
+    't12-5':'commerce',
+    't12-6':'commerce',
+    't12-7':'commerce',
+    't12-8':'commerce',
+
+    /* Ch 15 — त्रिभुज */
+    't13-1':'triangle',
+    't13-2':'triangle',
+    't13-3':'congruence',
+    't13-4':'congruence',
+    't13-5':'congruence',
+
+    /* Ch 16 — वृत्त */
+    't14-1':'circle',
+    't14-2':'circle',
+    't14-3':'circle',
+    't14-4':'circle',
+
+    /* Ch 17 — सममितता */
+    't15-1':'symmetry',
+    't15-2':'symmetry',
+
+    /* Ch 18 — क्षेत्रमिति */
+    't16-1':'solids',
+    't16-2':'solids',
+    't16-3':'solids'
+  };
+
+  function body(kind){
+
+    /*
+     * Custom lessons के actual JSON को प्राथमिकता
+     */
+
+    if(kind === 'smart-c1'){
+
+      return /पैटर्न|क्रम/.test(title())
+        ? body('sequence')
+        : body('algebra');
     }
 
-    body += point(
-      340,
-      260,
-      "#e63946"
-    );
+    if(kind === 'smart-c2'){
 
-    body += text(
-      340,
-      210,
-      "संख्या रेखा",
-      30,
-      "#1d3557",
-      "700"
-    );
+      return /रेखा|रेखाखंड|किरण/.test(title())
+        ? body('line-ray')
+        : body('angle');
+    }
 
-    return wrap(
-      "संख्या रेखा — संख्याओं का रास्ता",
-      body
-    );
+    switch(kind){
 
+      case 'sequence':
+
+        return `
+          ${T(400,70,'क्रम को पहचानें',30)}
+
+          ${L(
+            90,220,
+            710,220,
+            '#457b9d',
+            5
+          )}
+
+          ${[2,4,6,8,10]
+            .map((n,i)=>
+              `${C(
+                130+i*130,
+                220,
+                9,
+                '#e76f51',
+                '#e76f51',
+                2
+              )}
+              ${T(
+                130+i*130,
+                275,
+                String(n),
+                27
+              )}`
+            ).join('')}
+
+          ${T(
+            400,
+            350,
+            'हर बार +2 → अगली संख्या = 12',
+            28,
+            '#2a9d8f'
+          )}
+        `;
+
+      case 'line-ray':
+
+        return `
+          ${L(
+            100,110,
+            700,110,
+            '#457b9d',
+            5
+          )}
+
+          ${L(
+            100,215,
+            620,215,
+            '#e76f51',
+            5
+          )}
+
+          ${L(
+            180,335,
+            700,335,
+            '#2a9d8f',
+            5
+          )}
+
+          ${T(80,115,'←',28)}
+          ${T(720,115,'→',28)}
+
+          ${C(
+            100,215,
+            8,
+            '#e76f51',
+            '#e76f51',
+            2
+          )}
+
+          ${T(
+            400,75,
+            'रेखा',
+            26,
+            '#457b9d'
+          )}
+
+          ${T(
+            360,180,
+            'रेखाखंड',
+            26,
+            '#e76f51'
+          )}
+
+          ${T(
+            420,300,
+            'किरण',
+            26,
+            '#2a9d8f'
+          )}
+        `;
+
+      case 'angle':
+
+        return `
+          ${L(
+            160,320,
+            650,320,
+            '#e76f51',
+            7
+          )}
+
+          ${L(
+            160,320,
+            410,105,
+            '#457b9d',
+            7
+          )}
+
+          ${C(
+            160,320,
+            8,
+            '#17324d',
+            '#17324d',
+            2
+          )}
+
+          ${T(
+            160,365,
+            'शीर्ष',
+            22
+          )}
+
+          <path
+            d="M255 320 A95 95 0 0 0 230 255"
+            fill="none"
+            stroke="#2a9d8f"
+            stroke-width="8"
+          />
+
+          ${T(
+            280,245,
+            '30°',
+            28,
+            '#2a9d8f'
+          )}
+
+          ${T(
+            400,70,
+            'न्यून • सम • अधिक कोण',
+            28
+          )}
+        `;
+
+      case 'number-place':
+
+        return `
+          ${R(
+            100,105,
+            600,190,
+            '#eef6ff',
+            '#457b9d'
+          )}
+
+          ${T(
+            400,70,
+            '4  5  8  2',
+            36
+          )}
+
+          ${T(175,150,'हजार',22,'#e63946')}
+          ${T(325,150,'सैकड़ा',22,'#2a9d8f')}
+          ${T(475,150,'दहाई',22,'#f4a261')}
+          ${T(625,150,'इकाई',22,'#457b9d')}
+
+          ${T(175,235,'4000',28,'#e63946')}
+          ${T(325,235,'500',28,'#2a9d8f')}
+          ${T(475,235,'80',28,'#f4a261')}
+          ${T(625,235,'2',28,'#457b9d')}
+
+          ${T(
+            400,
+            365,
+            '4,582 = 4000 + 500 + 80 + 2',
+            27
+          )}
+        `;
+
+      case 'number-line':
+
+        return `
+          ${L(
+            80,220,
+            720,220,
+            '#17324d',
+            6
+          )}
+
+          ${
+            Array.from(
+              {length:11},
+              (_,i)=>
+                `${L(
+                  100+i*60,
+                  205,
+                  100+i*60,
+                  235,
+                  '#457b9d',
+                  4
+                )}
+                ${T(
+                  100+i*60,
+                  275,
+                  String(i),
+                  21
+                )}`
+            ).join('')
+          }
+
+          ${C(
+            340,220,
+            10,
+            '#e63946',
+            '#e63946',
+            2
+          )}
+
+          ${T(
+            400,
+            75,
+            'संख्या रेखा',
+            30
+          )}
+        `;
+
+      case 'integer':
+
+        return `
+          ${L(
+            70,220,
+            730,220,
+            '#17324d',
+            6
+          )}
+
+          ${
+            Array.from(
+              {length:11},
+              (_,i)=>{
+                const n=i-5;
+
+                return `
+                  ${L(
+                    100+i*60,
+                    205,
+                    100+i*60,
+                    235,
+                    n<0
+                      ? '#e76f51'
+                      : '#2a9d8f',
+                    4
+                  )}
+
+                  ${T(
+                    100+i*60,
+                    275,
+                    String(n),
+                    21,
+                    n<0
+                      ? '#e76f51'
+                      : '#17324d'
+                  )}
+                `;
+              }
+            ).join('')
+          }
+
+          ${T(
+            400,
+            75,
+            'ऋणात्मक ← 0 → धनात्मक',
+            28
+          )}
+        `;
+
+      case 'stats':
+
+        return `
+          ${R(
+            110,95,
+            580,250,
+            '#fff',
+            '#457b9d'
+          )}
+
+          ${L(110,155,690,155)}
+          ${L(110,215,690,215)}
+          ${L(110,275,690,275)}
+          ${L(350,95,350,345)}
+
+          ${T(230,135,'मान',23)}
+          ${T(515,135,'बारंबारता',23)}
+
+          ${T(230,195,'2',24,'#457b9d')}
+          ${T(515,195,'4',24,'#2a9d8f')}
+
+          ${T(230,255,'3',24,'#457b9d')}
+          ${T(515,255,'5',24,'#2a9d8f')}
+
+          ${T(
+            400,
+            390,
+            'आँकड़े → तालिका → समझ',
+            27,
+            '#e76f51'
+          )}
+        `;
+
+      case 'bar':
+
+        return `
+          ${L(
+            100,350,
+            100,80,
+            '#17324d',
+            5
+          )}
+
+          ${L(
+            100,350,
+            720,350,
+            '#17324d',
+            5
+          )}
+
+          <rect
+            x="170" y="240"
+            width="80" height="110"
+            rx="8"
+            fill="#457b9d"
+          />
+
+          <rect
+            x="310" y="180"
+            width="80" height="170"
+            rx="8"
+            fill="#2a9d8f"
+          />
+
+          <rect
+            x="450" y="120"
+            width="80" height="230"
+            rx="8"
+            fill="#e9c46a"
+          />
+
+          <rect
+            x="590" y="210"
+            width="80" height="140"
+            rx="8"
+            fill="#e76f51"
+          />
+
+          ${T(210,385,'A',22)}
+          ${T(350,385,'B',22)}
+          ${T(490,385,'C',22)}
+          ${T(630,385,'D',22)}
+
+          ${T(
+            400,
+            55,
+            'दण्ड आलेख',
+            30
+          )}
+        `;
+
+      case 'pictograph':
+
+        return `
+          ${T(
+            400,
+            70,
+            'चित्र ग्राफ',
+            30
+          )}
+
+          ${
+            [0,1,2,3]
+              .map(
+                r =>
+                  T(
+                    180+r*140,
+                    190,
+                    '●',
+                    48,
+                    [
+                      '#e63946',
+                      '#457b9d',
+                      '#2a9d8f',
+                      '#e9c46a'
+                    ][r]
+                  )
+              )
+              .join('')
+          }
+
+          ${T(
+            400,
+            270,
+            '● = 5 विद्यार्थी',
+            26
+          )}
+
+          ${T(
+            400,
+            350,
+            'चित्रों की संख्या × कुंजी = आँकड़ा',
+            26,
+            '#e76f51'
+          )}
+        `;
+
+      case 'algebra':
+
+        return `
+          ${R(
+            100,105,
+            600,190,
+            '#f4f9ff',
+            '#457b9d'
+          )}
+
+          ${T(
+            250,230,
+            '3x',
+            48,
+            '#e63946'
+          )}
+
+          ${T(
+            400,230,
+            '+',
+            42
+          )}
+
+          ${T(
+            550,230,
+            '5',
+            48,
+            '#2a9d8f'
+          )}
+
+          ${T(
+            250,165,
+            'गुणांक × चर',
+            21,
+            '#e63946'
+          )}
+
+          ${T(
+            550,165,
+            'अचर',
+            21,
+            '#2a9d8f'
+          )}
+
+          ${T(
+            400,370,
+            '3x + 5',
+            34
+          )}
+        `;
+
+      case 'geometry':
+
+        return `
+          ${C(
+            180,150,
+            8,
+            '#e63946',
+            '#e63946',
+            2
+          )}
+
+          ${T(
+            180,115,
+            'बिन्दु',
+            23
+          )}
+
+          ${L(
+            280,150,
+            650,150,
+            '#457b9d',
+            5
+          )}
+
+          ${T(
+            465,115,
+            'रेखा',
+            23,
+            '#457b9d'
+          )}
+
+          ${L(
+            300,285,
+            520,285,
+            '#e76f51',
+            6
+          )}
+
+          ${L(
+            410,220,
+            410,350,
+            '#2a9d8f',
+            6
+          )}
+
+          ${T(
+            410,395,
+            'समतल में आकृतियाँ',
+            27
+          )}
+        `;
+
+      case 'parallel':
+
+        return `
+          ${L(
+            120,140,
+            680,140,
+            '#457b9d',
+            6
+          )}
+
+          ${L(
+            120,300,
+            680,300,
+            '#457b9d',
+            6
+          )}
+
+          ${L(
+            250,360,
+            550,80,
+            '#e76f51',
+            6
+          )}
+
+          ${T(
+            650,125,
+            'ℓ₁',
+            23,
+            '#457b9d'
+          )}
+
+          ${T(
+            650,285,
+            'ℓ₂',
+            23,
+            '#457b9d'
+          )}
+
+          ${T(
+            400,
+            55,
+            'लम्ब / समान्तर / तिर्यक रेखा',
+            28
+          )}
+        `;
+
+      case 'lcm-hcf':
+
+        return `
+          ${T(
+            220,65,
+            '4 के गुणज',
+            26,
+            '#457b9d'
+          )}
+
+          ${T(
+            580,65,
+            '6 के गुणज',
+            26,
+            '#2a9d8f'
+          )}
+
+          ${
+            [4,8,12,16,20]
+              .map(
+                (n,i)=>
+                  `${C(
+                    150+i*115,
+                    150,
+                    10,
+                    n===12
+                      ? '#e63946'
+                      : '#457b9d',
+                    n===12
+                      ? '#e63946'
+                      : '#457b9d',
+                    2
+                  )}
+                  ${T(
+                    150+i*115,
+                    195,
+                    String(n),
+                    21
+                  )}`
+              )
+              .join('')
+          }
+
+          ${
+            [6,12,18,24,30]
+              .map(
+                (n,i)=>
+                  `${C(
+                    150+i*115,
+                    270,
+                    10,
+                    n===12
+                      ? '#e63946'
+                      : '#2a9d8f',
+                    n===12
+                      ? '#e63946'
+                      : '#2a9d8f',
+                    2
+                  )}
+                  ${T(
+                    150+i*115,
+                    315,
+                    String(n),
+                    21
+                  )}`
+              )
+              .join('')
+          }
+
+          ${T(
+            400,
+            385,
+            'पहला साझा गुणज = 12 → ल.स. = 12',
+            27,
+            '#e63946'
+          )}
+        `;
+
+      case 'equation':
+
+        return `
+          ${R(
+            120,180,
+            230,80,
+            '#eef6ff',
+            '#457b9d'
+          )}
+
+          ${R(
+            450,180,
+            230,80,
+            '#fff3e6',
+            '#e76f51'
+          )}
+
+          ${L(
+            350,220,
+            450,220,
+            '#17324d',
+            7
+          )}
+
+          ${T(
+            235,230,
+            'x + 5',
+            32
+          )}
+
+          ${T(
+            565,230,
+            '12',
+            32
+          )}
+
+          ${T(
+            400,
+            130,
+            '⚖️ दोनों पक्ष बराबर',
+            28
+          )}
+
+          ${T(
+            400,
+            335,
+            'x + 5 = 12  →  x = 7',
+            30,
+            '#2a9d8f'
+          )}
+        `;
+
+      case 'commerce':{
+
+        const s =
+          title();
+
+        if(/अनुपात/.test(s)){
+
+          return `
+            ${R(
+              120,100,
+              220,190,
+              '#eef6ff',
+              '#457b9d'
+            )}
+
+            ${T(
+              230,145,
+              '12',
+              34,
+              '#457b9d'
+            )}
+
+            ${T(
+              230,205,
+              ' : ',
+              28
+            )}
+
+            ${T(
+              230,265,
+              '8',
+              34,
+              '#2a9d8f'
+            )}
+
+            ${T(
+              510,155,
+              '12 : 8',
+              34
+            )}
+
+            ${T(
+              510,220,
+              '= 3 : 2',
+              34,
+              '#e63946'
+            )}
+
+            )}
+
+            ${T(
+              400,
+              355,
+              'दो समान प्रकार की राशियों की तुलना',
+              26
+            )}
+          `;
+        }
+
+        if(/समानुपात/.test(s)){
+
+          return `
+            ${T(
+              400,70,
+              '2 : 3  =  4 : 6',
+              34
+            )}
+
+            ${L(
+              160,145,
+              640,145,
+              '#457b9d',
+              5
+            )}
+
+            ${C(
+              220,145,
+              12,
+              '#457b9d',
+              '#457b9d',
+              2
+            )}
+
+            ${C(
+              400,145,
+              12,
+              '#2a9d8f',
+              '#2a9d8f',
+              2
+            )}
+
+            ${C(
+              580,145,
+              12,
+              '#e9c46a',
+              '#e9c46a',
+              2
+            )}
+
+            ${T(
+              400,
+              235,
+              '2×6 = 3×4',
+              30,
+              '#2a9d8f'
+            )}
+
+            ${T(
+              400,
+              330,
+              'समानुपात में दोनों अनुपात बराबर होते हैं',
+              25
+            )}
+          `;
+        }
+
+        if(/प्रतिशत/.test(s)){
+
+          return `
+            ${R(
+              110,120,
+              580,85,
+              '#eee',
+              '#bbb',
+              2,
+              12
+            )}
+
+            <rect
+              x="110"
+              y="120"
+              width="145"
+              height="85"
+              rx="12"
+              fill="#2a9d8f"
+            />
+
+            ${T(
+              400,
+              85,
+              '25%',
+              34,
+              '#2a9d8f'
+            )}
+
+            ${T(
+              400,
+              270,
+              '100 में से 25 = 25%',
+              28
+            )}
+
+            ${T(
+              400,
+              345,
+              'प्रतिशत = प्रति 100',
+              25,
+              '#e63946'
+            )}
+          `;
+        }
+
+        if(/लाभ|हानि/.test(s)){
+
+          return `
+            ${R(
+              120,110,
+              210,120,
+              '#eef6ff',
+              '#457b9d'
+            )}
+
+            ${T(
+              225,150,
+              'क्रय मूल्य',
+              23
+            )}
+
+            ${T(
+              225,195,
+              '₹500',
+              34
+            )}
+
+            ${R(
+              470,110,
+              210,120,
+              '#fff3e6',
+              '#e76f51'
+            )}
+
+            ${T(
+              575,150,
+              'विक्रय मूल्य',
+              23
+            )}
+
+            ${T(
+              575,195,
+              '₹600',
+              34,
+              '#e76f51'
+            )}
+
+            ${T(
+              400,
+              300,
+              '₹600 − ₹500 = ₹100 लाभ',
+              29,
+              '#2a9d8f'
+            )}
+
+            ${T(
+              400,
+              355,
+              'लाभ % = (लाभ/क्रय मूल्य) × 100',
+              23
+            )}
+          `;
+        }
+         if(/ब्याज/.test(s)){
+
+          return `
+            ${C(
+              220,190,
+              70,
+              '#eef6ff',
+              '#457b9d',
+              5
+            )}
+
+            ${T(
+              220,198,
+              'मूलधन P',
+              24
+            )}
+
+            ${C(
+              400,190,
+              70,
+              '#eefaf5',
+              '#2a9d8f',
+              5
+            )}
+
+            ${T(
+              400,198,
+              'ब्याज I',
+              24,
+              '#2a9d8f'
+            )}
+
+            ${C(
+              580,190,
+              70,
+              '#fff3e6',
+              '#e76f51',
+              5
+            )}
+
+            ${T(
+              580,198,
+              'राशि A',
+              24,
+              '#e76f51'
+            )}
+
+            ${T(
+              400,
+              330,
+              'साधारण ब्याज → P, R, T से I',
+              27
+            )}
+          `;
+        }
+
+        if(/मुद्रा/.test(s)){
+
+          return `
+            ${R(
+              100,120,
+              600,150,
+              '#fff9df',
+              '#e9c46a'
+            )}
+
+            ${T(
+              220,175,
+              '₹',
+              58,
+              '#e9a900'
+            )}
+
+            ${T(
+              400,175,
+              '₹10  ₹20  ₹50  ₹100',
+              28
+            )}
+
+            ${T(
+              400,
+              250,
+              'भारतीय मुद्रा के मूल्यवर्ग',
+              26
+            )}
+
+            ${T(
+              400,
+              350,
+              'रुपये = दैनिक लेन-देन की गणित',
+              25
+            )}
+          `;
+        }
+
+        if(/बिल|कैशमेमो/.test(s)){
+
+          return `
+            ${R(
+              170,70,
+              460,300,
+              '#fff',
+              '#17324d',
+              4,
+              8
+            )}
+
+            ${T(
+              400,105,
+              'कैशमेमो',
+              28
+            )}
+
+            ${L(
+              200,130,
+              600,130
+            )}
+
+            ${T(
+              250,165,
+              'वस्तु',
+              22
+            )}
+
+            ${T(
+              470,165,
+              'राशि',
+              22
+            )}
+
+            ${T(
+              250,215,
+              'किताब × 2',
+              22
+            )}
+
+            ${T(
+              470,215,
+              '₹200',
+              22
+            )}
+
+            ${T(
+              250,260,
+              'पेन × 3',
+              22
+            )}
+
+            ${T(
+              470,260,
+              '₹60',
+              22
+            )}
+
+            ${L(
+              200,285,
+              600,285
+            )}
+
+            ${T(
+              470,325,
+              'कुल ₹260',
+              25,
+              '#e63946'
+            )}
+          `;
+        }
+
+        return `
+          ${R(
+            90,95,
+            200,100,
+            '#eef6ff',
+            '#457b9d'
+          )}
+
+          ${T(190,135,'3 : 2',32)}
+          ${T(190,175,'अनुपात',22)}
+
+          ${R(
+            310,95,
+            200,100,
+            '#eefaf5',
+            '#2a9d8f'
+          )}
+
+          ${T(
+            410,135,
+            '25%',
+            32,
+            '#2a9d8f'
+          )}
+
+          ${T(
+            410,175,
+            'प्रतिशत',
+            22
+          )}
+
+          ${R(
+            530,95,
+            180,100,
+            '#fff3e6',
+            '#e76f51'
+          )}
+
+          ${T(
+            620,135,
+            '₹100',
+            30,
+            '#e76f51'
+          )}
+
+          ${T(
+            620,175,
+            'मूल्य',
+            22
+          )}
+
+          ${L(
+            120,290,
+            680,290,
+            '#17324d',
+            5
+          )}
+
+          ${T(
+            400,
+            350,
+            'लाभ/हानि • ब्याज • बिल/कैशमेमो',
+            26
+          )}
+        `;
+      }
+          case 'triangle':
+
+        return `
+          ${P(
+            '400,75 150,340 650,340',
+            '#eef6ff',
+            '#457b9d',
+            6
+          )}
+
+          ${T(
+            400,60,
+            'A',
+            25,
+            '#e63946'
+          )}
+
+          ${T(
+            130,370,
+            'B',
+            25,
+            '#2a9d8f'
+          )}
+
+          ${T(
+            670,370,
+            'C',
+            25,
+            '#e76f51'
+          )}
+
+          ${T(
+            400,
+            405,
+            '3 शीर्ष • 3 भुजाएँ • 3 कोण',
+            27
+          )}
+        `;
+
+      case 'congruence':
+
+        return `
+          ${P(
+            '190,300 300,110 410,300',
+            '#eef6ff',
+            '#457b9d',
+            6
+          )}
+
+          ${P(
+            '470,300 580,110 690,300',
+            '#fff3e6',
+            '#e76f51',
+            6
+          )}
+
+          ${T(
+            300,355,
+            '△ABC',
+            25,
+            '#457b9d'
+          )}
+
+          ${T(
+            580,355,
+            '△PQR',
+            25,
+            '#e76f51'
+          )}
+
+          ${T(
+            400,
+            75,
+            'समान आकार और समान माप',
+            29,
+            '#2a9d8f'
+          )}
+        `;
+
+      case 'circle':
+
+        return `
+          ${C(
+            400,220,
+            145,
+            '#eef6ff',
+            '#457b9d',
+            6
+          )}
+
+          ${C(
+            400,220,
+            8,
+            '#e63946',
+            '#e63946',
+            2
+          )}
+
+          ${L(
+            400,220,
+            545,220,
+            '#2a9d8f',
+            7
+          )}
+
+          ${L(
+            255,220,
+            545,220,
+            '#e76f51',
+            5
+          )}
+
+          ${T(
+            400,260,
+            'केन्द्र O',
+            22,
+            '#e63946'
+          )}
+
+          ${T(
+            475,200,
+            'त्रिज्या',
+            22,
+            '#2a9d8f'
+          )}
+
+          ${T(
+            400,180,
+            'व्यास',
+            22,
+            '#e76f51'
+          )}
+
+          ${T(
+            400,
+            400,
+            'जीवा • चाप • अर्धवृत्त • वृत्तखंड',
+            25
+          )}
+        `;
+
+      case 'symmetry':
+
+        return `
+          ${P(
+            '400,70 300,160 325,160 250,315 400,265 550,315 475,160 500,160',
+            '#e9c46a',
+            '#17324d',
+            5
+          )}
+
+          ${L(
+            400,50,
+            400,350,
+            '#e63946',
+            4,
+            '10 8'
+          )}
+
+          ${T(
+            400,
+            405,
+            'लाल रेखा = सममिति अक्ष',
+            27,
+            '#e63946'
+          )}
+        `;
+
+      case 'solids':{
+
+        const s =
+          title();
+
+        if(/अंग/.test(s)){
+
+          return `
+            ${P(
+              '120,145 300,95 430,150 250,205',
+              '#eef6ff',
+              '#457b9d',
+              5
+            )}
+
+            ${P(
+              '120,145 250,205 250,350 120,290',
+              '#dff5f0',
+              '#2a9d8f',
+              5
+            )}
+
+            ${P(
+              '250,205 430,150 430,295 250,350',
+              '#fff0df',
+              '#e76f51',
+              5
+            )}
+
+            ${T(
+              200,390,
+              'घनाभ',
+              25
+            )}
+
+            ${P(
+              '500,270 600,150 700,270',
+              '#fff3e6',
+              '#e76f51',
+              5
+            )}
+
+            ${T(
+              600,310,
+              'पिरामिड',
+              23
+            )}
+
+            ${T(
+              400,
+              55,
+              'फलक • किनारे • शीर्ष • प्रिज्म • पिरामिड',
+              27
+            )}
+          `;
+        }
+         if(/आयतन की अवधारणा/.test(s)){
+
+          return `
+            ${R(
+              120,115,
+              560,210,
+              '#eef6ff',
+              '#457b9d'
+            )}
+
+            ${
+              Array.from(
+                {length:24},
+                (_,i)=>{
+                  const col=i%6;
+                  const row=Math.floor(i/6);
+
+                  return `
+                    <rect
+                      x="${150+col*85}"
+                      y="${140+row*45}"
+                      width="70"
+                      height="35"
+                      fill="${
+                        row%2
+                          ? '#dff5f0'
+                          : '#fff3e6'
+                      }"
+                      stroke="#457b9d"
+                    />
+                  `;
+                }
+              ).join('')
+            }
+
+            ${T(
+              400,
+              370,
+              'छोटे 1 cm³ घन मिलाकर पूरा आयतन',
+              27,
+              '#2a9d8f'
+            )}
+          `;
+        }
+
+        return `
+          ${P(
+            '150,150 420,95 650,170 380,225',
+            '#eef6ff',
+            '#457b9d',
+            5
+          )}
+
+          ${P(
+            '150,150 380,225 380,370 150,295',
+            '#dff5f0',
+            '#2a9d8f',
+            5
+          )}
+
+          ${P(
+            '380,225 650,170 650,315 380,370',
+            '#fff0df',
+            '#e76f51',
+            5
+          )}
+
+          ${T(
+            400,
+            55,
+            'घनाभ का आयतन = l × b × h',
+            28
+          )}
+
+          ${T(
+            400,
+            410,
+            'घन का आयतन = a × a × a',
+            27,
+            '#2a9d8f'
+          )}
+        `;
+      }
+
+      default:
+        return '';
+    }
   }
-
-
-  /* =====================================================
-     DIAGRAM 2 — PLACE VALUE
-  ===================================================== */
-
-  function placeValue(){
-
-    return wrap(
-      "स्थानीय मान — 4,582 को समझें",
-
-      `
-        <rect
-          x="100"
-          y="100"
-          width="600"
-          height="220"
-          rx="16"
-          fill="#eef6ff"
-          stroke="#457b9d"
-          stroke-width="4"
-        />
-
-        ${text(
-          400,80,
-          "4  5  8  2",
-          38,
-          "#1d3557",
-          "700"
-        )}
-
-        ${text(
-          170,165,
-          "हजार",
-          22,
-          "#e63946"
-        )}
-
-        ${text(
-          315,165,
-          "सैकड़ा",
-          22,
-          "#2a9d8f"
-        )}
-
-        ${text(
-          470,165,
-          "दहाई",
-          22,
-          "#f4a261"
-        )}
-
-        ${text(
-          625,165,
-          "इकाई",
-          22,
-          "#457b9d"
-        )}
-
-        ${text(
-          170,230,
-          "4000",
-          28,
-          "#e63946",
-          "700"
-        )}
-
-        ${text(
-          315,230,
-          "500",
-          28,
-          "#2a9d8f",
-          "700"
-        )}
-
-        ${text(
-          470,230,
-          "80",
-          28,
-          "#f4a261",
-          "700"
-        )}
-
-        ${text(
-          625,230,
-          "2",
-          28,
-          "#457b9d",
-          "700"
-        )}
-
-        ${text(
-          400,385,
-          "4,582 = 4000 + 500 + 80 + 2",
-          28,
-          "#1d3557",
-          "700"
-        )}
-      `
-    );
-
-  }
-
-
-  /* =====================================================
-     DIAGRAM 3 — INTEGER NUMBER LINE
-  ===================================================== */
-
-  function integerLine(){
-
-    let body =
-      line(
-        80,250,
-        720,250,
-        "#1d3557",
-        5
-      );
-
-    for(
-      let n=-5;
-      n<=5;
-      n++
-    ){
-
-      const x =
-        100 + (n+5)*60;
-
-      body += line(
-        x,235,
-        x,265,
-        n<0
-          ? "#e76f51"
-          : "#2a9d8f",
-        4
-      );
-
-      body += text(
-        x,
-        305,
-        n,
-        21,
-        n<0
-          ? "#e76f51"
-          : "#1d3557"
-      );
-
-    }
-
-    body += text(
-      400,
-      100,
-      "ऋणात्मक ← 0 → धनात्मक",
-      30,
-      "#1d3557",
-      "700"
-    );
-
-    return wrap(
-      "पूर्णांक — संख्या रेखा पर",
-      body
-    );
-
-  }
-
-
-  /* =====================================================
-     DIAGRAM 4 — BAR GRAPH
-  ===================================================== */
-
-  function barGraph(){
-
-    return wrap(
-      "दण्ड आलेख — आँकड़ों को चित्र में देखें",
-
-      `
-        ${line(
-          110,350,
-          110,80,
-          "#1d3557",
-          5
-        )}
-
-        ${line(
-          110,350,
-          700,350,
-          "#1d3557",
-          5
-        )}
-
-        <rect
-          x="180"
-          y="230"
-          width="70"
-          height="120"
-          rx="8"
-          fill="#457b9d"
-        />
-
-        <rect
-          x="320"
-          y="170"
-          width="70"
-          height="180"
-          rx="8"
-          fill="#2a9d8f"
-        />
-
-        <rect
-          x="460"
-          y="110"
-          width="70"
-          height="240"
-          rx="8"
-          fill="#e9c46a"
-        />
-
-        <rect
-          x="600"
-          y="200"
-          width="70"
-          height="150"
-          rx="8"
-          fill="#e76f51"
-        />
-
-        ${text(
-          215,385,
-          "A",
-          22,
-          "#1d3557"
-        )}
-
-        ${text(
-          355,385,
-          "B",
-          22,
-          "#1d3557"
-        )}
-
-        ${text(
-          495,385,
-          "C",
-          22,
-          "#1d3557"
-        )}
-
-        ${text(
-          635,385,
-          "D",
-          22,
-          "#1d3557"
-        )}
-
-        ${text(
-          400,55,
-          "दण्ड आलेख",
-          30,
-          "#1d3557",
-          "700"
-        )}
-      `
-    );
-
-  }
-
-
-  /* =====================================================
-     DIAGRAM 5 — ALGEBRA
-  ===================================================== */
-
-  function algebraExpression(){
-
-    return wrap(
-      "बीजीय व्यंजक — पद, गुणांक और चर",
-
-      `
-        <rect
-          x="100"
-          y="120"
-          width="600"
-          height="180"
-          rx="18"
-          fill="#f4f9ff"
-          stroke="#457b9d"
-          stroke-width="4"
-        />
-
-        ${text(
-          250,235,
-          "3x",
-          46,
-          "#e63946",
-          "700"
-        )}
-
-        ${text(
-          400,235,
-          "+",
-          42,
-          "#1d3557",
-          "700"
-        )}
-
-        ${text(
-          550,235,
-          "5",
-          46,
-          "#2a9d8f",
-          "700"
-        )}
-
-        ${text(
-          250,165,
-          "गुणांक × चर",
-          22,
-          "#e63946"
-        )}
-
-        ${text(
-          550,165,
-          "अचर",
-          22,
-          "#2a9d8f"
-        )}
-
-        ${text(
-          400,370,
-          "3x + 5",
-          34,
-          "#1d3557",
-          "700"
-        )}
-      `
-    );
-
-  }
-
-
-  /* =====================================================
-     DIAGRAM 6 — ANGLE
-  ===================================================== */
-
-  function angleDiagram(){
-
-    return wrap(
-      "कोण — दो किरणों के बीच का खुलाव",
-
-      `
-        ${line(
-          160,330,
-          400,120,
-          "#457b9d",
-          6
-        )}
-
-        ${line(
-          160,330,
-          650,330,
-          "#e76f51",
-          6
-        )}
-
-        ${point(
-          160,330,
-          "#1d3557"
-        )}
-
-        <path
-          d="
-            M245 255
-            A110 110 0 0 1 275 330
-          "
-          fill="none"
-          stroke="#2a9d8f"
-          stroke-width="7"
-        />
-
-        ${text(
-          160,370,
-          "O",
-          26,
-          "#1d3557",
-          "700"
-        )}
-
-        ${text(
-          400,90,
-          "भुजा",
-          22,
-          "#457b9d"
-        )}
-
-        ${text(
-          620,310,
-          "भुजा",
-          22,
-          "#e76f51"
-        )}
-
-        ${text(
-          285,245,
-          "∠",
-          32,
-          "#2a9d8f",
-          "700"
-        )}
-      `
-    );
-
-  }
-
-
-  /* =====================================================
-     DIAGRAM 7 — TRIANGLE
-  ===================================================== */
-
-  function triangleDiagram(){
-
-    return wrap(
-      "त्रिभुज — तीन भुजाएँ और तीन कोण",
-
-      `
-        <polygon
-          points="400,70 150,350 650,350"
-          fill="#eef6ff"
-          stroke="#1d3557"
-          stroke-width="6"
-        />
-
-        ${point(
-          400,70,
-          "#e63946"
-        )}
-
-        ${point(
-          150,350,
-          "#2a9d8f"
-        )}
-
-        ${point(
-          650,350,
-          "#f4a261"
-        )}
-
-        ${text(
-          400,50,
-          "A",
-          28,
-          "#e63946",
-          "700"
-        )}
-
-        ${text(
-          125,380,
-          "B",
-          28,
-          "#2a9d8f",
-          "700"
-        )}
-
-        ${text(
-          675,380,
-          "C",
-          28,
-          "#f4a261",
-          "700"
-        )}
-
-        ${text(
-          400,415,
-          "∠A + ∠B + ∠C = 180°",
-          28,
-          "#1d3557",
-          "700"
-        )}
-      `
-    );
-
-  }
-
-
-  /* =====================================================
-     DIAGRAM 8 — QUADRILATERAL
-  ===================================================== */
-
-  function quadrilateralDiagram(){
-
-    return wrap(
-      "चतुर्भुज — चार भुजाओं की आकृति",
-
-      `
-        <polygon
-          points="
-            190,130
-            610,130
-            680,330
-            120,330
-          "
-          fill="#fff3e6"
-          stroke="#e76f51"
-          stroke-width="6"
-        />
-
-        ${text(
-          400,90,
-          "चार भुजाएँ",
-          30,
-          "#e76f51",
-          "700"
-        )}
-
-        ${text(
-          400,410,
-          "चारों आन्तरिक कोणों का योग = 360°",
-          27,
-          "#1d3557",
-          "700"
-        )}
-      `
-    );
-
-  }
-
-
-  /* =====================================================
-     DIAGRAM 9 — CIRCLE
-  ===================================================== */
-
-  function circleDiagram(){
-
-    return wrap(
-      "वृत्त — केन्द्र, त्रिज्या और व्यास",
-
-      `
-        ${circle(
-          400,
-          220,
-          145,
-          "#eef6ff",
-          "#457b9d",
-          6
-        )}
-
-        ${point(
-          400,
-          220,
-          "#e63946"
-        )}
-
-        ${line(
-          400,220,
-          545,220,
-          "#2a9d8f",
-          7
-        )}
-
-        ${line(
-          255,220,
-          545,220,
-          "#e76f51",
-          5
-        )}
-
-        ${text(
-          400,245,
-          "केन्द्र",
-          21,
-          "#e63946"
-        )}
-
-        ${text(
-          475,205,
-          "त्रिज्या r",
-          23,
-          "#2a9d8f"
-        )}
-
-        ${text(
-          400,185,
-          "व्यास d = 2r",
-          25,
-          "#e76f51",
-          "700"
-        )}
-
-        ${text(
-          400,405,
-          "गोल वस्तुएँ → पहिया, प्लेट, घड़ी",
-          25,
-          "#1d3557",
-          "700"
-        )}
-      `
-    );
-
-  }
-
-
-  /* =====================================================
-     DIAGRAM 10 — FRACTION
-  ===================================================== */
-
-  function fractionDiagram(){
-
-    return wrap(
-      "भिन्न — पूरे का एक हिस्सा",
-
-      `
-        ${text(
-          400,80,
-          "3/4",
-          42,
-          "#1d3557",
-          "700"
-        )}
-
-        <rect
-          x="160"
-          y="140"
-          width="480"
-          height="180"
-          rx="15"
-          fill="#ffffff"
-          stroke="#1d3557"
-          stroke-width="5"
-        />
-
-        <rect
-          x="160"
-          y="140"
-          width="120"
-          height="180"
-          fill="#457b9d"
-        />
-
-        <rect
-          x="280"
-          y="140"
-          width="120"
-          height="180"
-          fill="#2a9d8f"
-        />
-
-        <rect
-          x="400"
-          y="140"
-          width="120"
-          height="180"
-          fill="#e9c46a"
-        />
-
-        <rect
-          x="520"
-          y="140"
-          width="120"
-          height="180"
-          fill="#eeeeee"
-        />
-
-        ${text(
-          340,370,
-          "3 भाग रंगे हुए",
-          27,
-          "#1d3557",
-          "700"
-        )}
-
-        ${text(
-          560,370,
-          "1 भाग शेष",
-          22,
-          "#555"
-        )}
-      `
-    );
-
-  }
-
-
-  /* =====================================================
-     DIAGRAM 11 — SYMMETRY
-  ===================================================== */
-
-  function symmetryDiagram(){
-
-    return wrap(
-      "सममिति — दर्पण जैसा संतुलन",
-
-      `
-        <polygon
-          points="
-            400,70
-            300,180
-            330,180
-            250,320
-            400,270
-            550,320
-            470,180
-            500,180
-          "
-          fill="#e9c46a"
-          stroke="#1d3557"
-          stroke-width="5"
-        />
-
-        ${line(
-          400,50,
-          400,350,
-          "#e63946",
-          4,
-          "10 8"
-        )}
-
-        ${text(
-          400,410,
-          "लाल रेखा = सममिति अक्ष",
-          27,
-          "#e63946",
-          "700"
-        )}
-      `
-    );
-
-  }
-
-
-  /* =====================================================
-     DIAGRAM 12 — COORDINATE PLANE
-  ===================================================== */
-
-  function coordinatePlane(){
-
-    let body = "";
-
-    body += line(
-      90,220,
-      710,220,
-      "#1d3557",
-      4
-    );
-
-    body += line(
-      400,50,
-      400,390,
-      "#1d3557",
-      4
-    );
-
-    for(
-      let i=-5;
-      i<=5;
-      i++
-    ){
-
-      if(i===0) continue;
-
-      const x =
-        400 + i*55;
-
-      const y =
-        220 - i*55;
-
-      body += line(
-        x,213,
-        x,227,
-        "#457b9d",
-        3
-      );
-
-      body += line(
-        393,y,
-        407,y,
-        "#457b9d",
-        3
-      );
-
-    }
-
-    body += point(
-      565,
-      110,
-      "#e63946"
-    );
-
-    body += text(
-      585,105,
-      "(3,2)",
-      25,
-      "#e63946",
-      "700"
-    );
-
-    body += text(
-      400,35,
-      "Y",
-      25,
-      "#1d3557",
-      "700"
-    );
-
-    body += text(
-      735,220,
-      "X",
-      25,
-      "#1d3557",
-      "700"
-    );
-
-    return wrap(
-      "कार्तीय तल — बिंदु का पता",
-      body
-    );
-
-  }
-
-
-  /* =====================================================
-     DIAGRAM 13 — 3D CUBE
-  ===================================================== */
-
-  function cubeDiagram(){
-
-    return wrap(
-      "घन — 3D आकृति",
-
-      `
-        <polygon
-          points="
-            250,150
-            450,100
-            620,180
-            420,230
-          "
-          fill="#eef6ff"
-          stroke="#457b9d"
-          stroke-width="5"
-        />
-
-        <polygon
-          points="
-            250,150
-            420,230
-            420,390
-            250,310
-          "
-          fill="#dff5f0"
-          stroke="#2a9d8f"
-          stroke-width="5"
-        />
-
-        <polygon
-          points="
-            420,230
-            620,180
-            620,340
-            420,390
-          "
-          fill="#fff0df"
-          stroke="#e76f51"
-          stroke-width="5"
-        />
-
-        ${text(
-          400,60,
-          "घन",
-          34,
-          "#1d3557",
-          "700"
-        )}
-
-        ${text(
-          400,420,
-          "सभी किनारे बराबर",
-          26,
-          "#1d3557",
-          "700"
-        )}
-      `
-    );
-
-  }
-
-
-  /* =====================================================
-     DIAGRAM 14 — DATA TABLE
-  ===================================================== */
-
-  function tallyDiagram(){
-
-    return wrap(
-      "बारंबारता — गिनती को व्यवस्थित करें",
-
-      `
-        <rect
-          x="130"
-          y="90"
-          width="540"
-          height="250"
-          fill="#ffffff"
-          stroke="#1d3557"
-          stroke-width="4"
-        />
-
-        ${line(
-          130,150,
-          670,150,
-          "#1d3557",
-          3
-        )}
-
-        ${line(
-          130,215,
-          670,215,
-          "#1d3557",
-          3
-        )}
-
-        ${line(
-          130,280,
-          670,280,
-          "#1d3557",
-          3
-        )}
-
-        ${line(
-          360,90,
-          360,340,
-          "#1d3557",
-          3
-        )}
-
-        ${text(
-          245,130,
-          "मान",
-          23,
-          "#1d3557",
-          "700"
-        )}
-
-        ${text(
-          515,130,
-          "बारंबारता",
-          23,
-          "#1d3557",
-          "700"
-        )}
-
-        ${text(
-          245,195,
-          "2",
-          25,
-          "#457b9d"
-        )}
-
-        ${text(
-          515,195,
-          "4",
-          25,
-          "#2a9d8f"
-        )}
-
-        ${text(
-          245,260,
-          "3",
-          25,
-          "#457b9d"
-        )}
-
-        ${text(
-          515,260,
-          "5",
-          25,
-          "#2a9d8f"
-        )}
-
-        ${text(
-          400,390,
-          "सबसे अधिक बार आने वाला मान → बहुलक",
-          24,
-          "#e76f51",
-          "700"
-        )}
-      `
-    );
-
-  }
-
-
-  /* =====================================================
-  DIAGRAM SELECTOR
-     IMPORTANT:
-     Based on actual lesson content,
-     NOT merely chapter number.
-  ===================================================== */
-
-  function selectDiagram(data){
-
-    const h =
-      collectText(data);
-
-    /* Number / place value */
-
-    if(
-      /स्थानीय मान|संख्यांक|अंक.*प्रयोग|दशमलव|स्थानिक मान/.test(h)
-    ){
-      return placeValue();
-    }
-
-
-    if(
-      /संख्या रेखा|प्राकृतिक संख्या|पूर्ण संख्या/.test(h)
-    ){
-      return numberLine();
-    }
-
-
-    if(
-      /पूर्णांक|ऋणात्मक|धनात्मक|निरपेक्ष मान/.test(h)
-    ){
-      return integerLine();
-    }
-
-
-    /* Statistics */
-
-    if(
-      /बार ग्राफ|दण्ड आलेख|बारम्बारता.*आलेख|ग्राफ/.test(h)
-    ){
-      return barGraph();
-    }
-
-
-    if(
-      /बारम्बारता|आँकड़ों.*सारणी|आवृत्ति/.test(h)
-    ){
-      return tallyDiagram();
-    }
-
-
-    /* Algebra */
-
-    if(
-      /बीजीय व्यंजक|व्यंजक|गुणांक|चर और अचर|पद.*गुणनखण्ड/.test(h)
-    ){
-      return algebraExpression();
-    }
-
-
-    /* Geometry */
-
-    if(
-      /कोण|कोणमापी|समकोण|न्यून कोण|अधिक कोण/.test(h)
-    ){
-      return angleDiagram();
-    }
-
-
-    if(
-      /त्रिभुज|तीन भुजा|तीन कोण/.test(h)
-    ){
-      return triangleDiagram();
-    }
-
-
-    if(
-      /चतुर्भुज|चार भुजा|समांतर चतुर्भुज|आयत|वर्ग/.test(h)
-    ){
-      return quadrilateralDiagram();
-    }
-
-
-    if(
-      /वृत्त|गोल|त्रिज्या|व्यास|परिधि/.test(h)
-    ){
-      return circleDiagram();
-    }
-
-
-    if(
-      /बिंदु|बिन्दु|रेखा|रेखाखंड|तल|समतल/.test(h)
-    ){
-      return triangleDiagram();
-    }
-
-
-    /* Fraction */
-
-    if(
-      /भिन्न|अंश|हर|मिश्र भिन्न|दशमलव भिन्न/.test(h)
-    ){
-      return fractionDiagram();
-    }
-
-
-    /* Symmetry */
-
-    if(
-      /सममिति|सममित|दर्पण प्रतिबिम्ब/.test(h)
-    ){
-      return symmetryDiagram();
-    }
-
-
-    /* Coordinate */
-
-    if(
-      /निर्देशांक|कार्तीय|x-अक्ष|y-अक्ष|चतुर्थांश/.test(h)
-    ){
-      return coordinatePlane();
-    }
-
-
-    /* 3D */
-
-    if(
-      /घनाभ|घन|त्रिविमीय|आयतन|ठोस आकृति/.test(h)
-    ){
-      return cubeDiagram();
-    }
-
-
-    /* Generic mathematics fallback */
-
-    return numberLine();
-
-  }
-
-
-  /* =====================================================
-     RENDER
-  ===================================================== */
 
   function render(){
 
-    if(
-      !isClass6MathematicsLesson()
-    ){
-      return;
-    }
+    if(!isClass6Math()) return;
 
     const container =
-      findLessonContainer();
+      document.getElementById('content') ||
+      document.querySelector('main');
 
-    if(!container){
-      return;
+    if(!container) return;
+
+    /*
+     * पुराने generic engine का diagram
+     * यदि cache से आया हो तो हटाएँ
+     */
+
+    const old =
+      document.getElementById(
+        'aadya-auto-diagram'
+      );
+
+    if(old){
+      old.remove();
     }
 
     if(
       container.querySelector(
-        "." + CARD_CLASS
+        '.' + CARD
       )
     ){
       return;
     }
 
-    const diagram =
-      selectDiagram(
-        window.lessonData
+    const kind =
+      MAP[pathKey()];
+
+    /*
+     * अब कोई generic fallback नहीं।
+     * Mapping नहीं है तो diagram भी नहीं।
+     */
+
+    if(!kind) return;
+
+    const html =
+      wrap(
+        body(kind)
       );
 
-    if(!diagram){
-      return;
-    }
+    const box =
+      document.createElement('div');
 
-    const wrapper =
-      document.createElement("div");
+    box.innerHTML =
+      html.trim();
 
-    wrapper.innerHTML =
-      diagram.trim();
+    const card =
+      box.firstElementChild;
 
-    const newDiagram =
-      wrapper.firstElementChild;
-
-    if(!newDiagram){
-      return;
-    }
-
-    const tryYourself =
-      container.querySelector(
-        "#tryYourself"
+    const anchor =
+      document.getElementById(
+        'tryYourself'
       );
 
     if(
-      tryYourself &&
-      tryYourself.parentNode
+      anchor &&
+      anchor.parentNode
     ){
 
-      tryYourself.parentNode.insertBefore(
-        newDiagram,
-        tryYourself
+      anchor.parentNode.insertBefore(
+        card,
+        anchor
       );
 
     }
     else{
 
       container.appendChild(
-        newDiagram
+        card
       );
 
     }
-
   }
 
+  window.AADYAClass6MathematicsDiagramEngine = {
 
-  /* =====================================================
-     REFRESH
-  ===================================================== */
+    render,
 
-  function refresh(){
-
-    setTimeout(
-      render,
-      120
-    );
-
-  }
-
-
-  /* =====================================================
-     GLOBAL API
-  ===================================================== */
-
-  window[
-    SCRIPT_NAME
-  ] = {
-
-    render:render,
-
-    refresh:refresh
+    refresh:()=>{
+      setTimeout(
+        render,
+        120
+      );
+    }
 
   };
 
-
-  /* =====================================================
-     DOM READY
-  ===================================================== */
-
   document.addEventListener(
-    "DOMContentLoaded",
-    function(){
-
-      refresh();
-
-    }
-  );
-
-
-  /* =====================================================
-     LESSON RENDER WATCHER
-  ===================================================== */
-
-  const observer =
-    new MutationObserver(
-      function(){
-
-        refresh();
-
-      }
-    );
-
-
-  function startObserver(){
-
-    const target =
-      document.getElementById(
-        "content"
+    'DOMContentLoaded',
+    ()=>{
+      setTimeout(
+        render,
+        180
       );
-
-    if(!target){
-      return;
     }
+  );
 
-    observer.observe(
-      target,
-      {
-        childList:true,
-        subtree:true
+  const obs =
+    new MutationObserver(
+      ()=>{
+        setTimeout(
+          render,
+          80
+        );
       }
     );
 
-  }
-
-
   document.addEventListener(
-    "DOMContentLoaded",
-    startObserver
-  );
+    'DOMContentLoaded',
+    ()=>{
+      const c =
+        document.getElementById(
+          'content'
+        );
 
+      if(c){
+
+        obs.observe(
+          c,
+          {
+            childList:true,
+            subtree:true
+          }
+        );
+
+      }
+    }
+  );
 
 })();
+   
