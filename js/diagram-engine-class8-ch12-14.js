@@ -681,12 +681,11 @@ function render(){
 
   if(!box) return;
 
-  if(
-    box.querySelector(
-      ".aadya-c8-c12-14-diagram"
-    )
-  ){
-    return;
+  if (
+  box.querySelector(
+    ".aadya-c8-c12-14-diagram, .aadya-c8cb-diagram"
+  )
+) return;
   }
 
   const key =
