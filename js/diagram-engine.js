@@ -1605,7 +1605,29 @@
   /* =======================================================
      TITLE DETECTION
   ======================================================= */
+function isClass6MathematicsLesson(){
 
+  const data =
+    window.lessonData;
+
+  if(
+    !data ||
+    Number(data.class) !== 6 ||
+    String(data.subject || '').trim() !== 'गणित'
+  ){
+    return false;
+  }
+
+  const path =
+    new URLSearchParams(
+      window.location.search
+    ).get('lesson') || '';
+
+  return /content\/class6\/mathematics\/(chapter\d+|textbook\d+)\/lesson\d+\.json/i
+    .test(
+      path.replace(/^\.\//,'')
+    );
+}
   function getTitle() {
 
     const ids = [
@@ -1970,6 +1992,27 @@
   ======================================================= */
 
   function render() {
+
+    /*
+     * Class 6 Mathematics का पूरा नियंत्रण
+     * dedicated Class 6 engine के पास रहेगा.
+     */
+
+    if(
+      isClass6MathematicsLesson()
+    ){
+
+      const old =
+        document.getElementById(
+          CARD_ID
+        );
+
+      if(old){
+        old.remove();
+      }
+
+      return;
+    }
 
     if (
       document.getElementById(
