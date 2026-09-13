@@ -1877,89 +1877,148 @@ if(item.conclusion){
   
   /* --------------------------------------
    TRY YOURSELF
+   OLD + NEW + TEXTBOOK FALLBACK
 -------------------------------------- */
+
+function getTryYourselfItems(data){
+
+  if(!data){
+    return [];
+  }
+
+  /*
+   * 1. Existing try_yourself
+   */
+  if(
+    Array.isArray(
+      data.try_yourself
+    ) &&
+    data.try_yourself.length
+  ){
+
+    return data.try_yourself;
+  }
+
+  /*
+   * 2. Activity
+   */
+  if(
+    data.activity &&
+    (
+      data.activity.instruction ||
+      data.activity.challenge
+    )
+  ){
+
+    return [
+      data.activity
+    ];
+  }
+
+  /*
+   * 3. New textbook practice.questions
+   */
+  if(
+    data.practice &&
+    Array.isArray(
+      data.practice.questions
+    ) &&
+    data.practice.questions.length
+  ){
+
+    return data.practice.questions
+      .slice(0,3);
+  }
+
+  /*
+   * 4. Old practice_questions
+   */
+  if(
+    Array.isArray(
+      data.practice_questions
+    ) &&
+    data.practice_questions.length
+  ){
+
+    return data.practice_questions
+      .slice(0,3);
+  }
+
+  /*
+   * 5. Old practice[]
+   */
+  if(
+    Array.isArray(data.practice) &&
+    data.practice.length
+  ){
+
+    return data.practice
+      .slice(0,3);
+  }
+
+  return [];
+}
+
+
 const tryBox =
-  document.getElementById("tryYourself");
+  document.getElementById(
+    "tryYourself"
+  );
 
 tryBox.innerHTML = "";
 
-const activity =
-  data?.activity || {};
+const tryData =
+  getTryYourselfItems(data);
 
-const activityTitle =
-  activity.title ||
-  "✍️ खुद करके देखें";
 
-const instruction =
-  activity.instruction ||
-  "";
+if(
+  tryData.length === 0
+){
 
-const challenge =
-  activity.challenge ||
-  "";
-
-if(instruction || challenge){
-
-  const box =
-    document.createElement("div");
-
-  box.className = "example";
-
-  let html =
-    "<strong>" +
-    escapeHTML(activityTitle) +
-    "</strong>";
-
-  if(instruction){
-
-    html +=
-      "<br><br>" +
-      escapeHTML(instruction);
-
-  }
-
-  if(challenge){
-
-    html +=
-      "<br><br>" +
-      "<strong>🎯 Challenge:</strong><br>" +
-      escapeHTML(challenge);
-
-  }
-
-  box.innerHTML = html;
-
-  tryBox.appendChild(box);
+  tryBox.innerHTML = `
+    <div class="example">
+      ✍️ इस पाठ से जुड़ा एक प्रश्न
+      स्वयं बनाइए और कॉपी में हल कीजिए।
+    </div>
+  `;
 
 }
 else{
 
-  /* पुराने lessons के लिए fallback */
-  const tryData =
-    asArray(data?.try_yourself);
-
   tryData.forEach(
-    item => {
+    (item,index)=>{
 
       const box =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
       box.className =
         "example";
 
-      box.textContent =
-        "✏️ " +
-        (
-          typeof item === "string"
-            ? item
-            : (
-                item.question ||
-                item.text ||
-                ""
-              )
-        );
+      const q =
+        typeof item === "string"
+          ? item
+          : (
+              item.question ||
+              item.text ||
+              item.instruction ||
+              item.challenge ||
+              ""
+            );
 
-      tryBox.appendChild(box);
+      box.innerHTML =
+        `
+          <strong>
+            ✏️ प्रश्न ${index + 1}:
+          </strong>
+          <br><br>
+          ${escapeHTML(q)}
+        `;
+
+      tryBox.appendChild(
+        box
+      );
 
     }
   );
