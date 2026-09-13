@@ -531,6 +531,72 @@
       "file": "./content/class8/mathematics/textbook17/lesson04.json"
     }
   ]
+},
+{
+  "number": 18,
+  "book_number": 18,
+  "title": "क्षेत्रमिति (मेंसुरेशन)",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "समलम्ब का क्षेत्रफल — दो समान्तर भुजाओं का खेल",
+      "file": "./content/class8/mathematics/textbook18/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "वृत्त की परिधि और व्यास — गोल चीजों की माप",
+      "file": "./content/class8/mathematics/textbook18/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "वृत्त का क्षेत्रफल — गोल जगह कितनी है?",
+      "file": "./content/class8/mathematics/textbook18/lesson03.json"
+    },
+    {
+      "number": 4,
+      "title": "लम्ब वृत्तीय बेलन — आयतन और सम्पूर्ण पृष्ठ",
+      "file": "./content/class8/mathematics/textbook18/lesson04.json"
+    },
+    {
+      "number": 5,
+      "title": "लम्ब वृत्तीय शंकु — आयतन और सम्पूर्ण पृष्ठ",
+      "file": "./content/class8/mathematics/textbook18/lesson05.json"
+    }
+  ]
+},
+{
+  "number": 19,
+  "book_number": 19,
+  "title": "वर्ग तथा घन : वैदिक विधि द्वारा",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "आनुकल्पेण विधि — दो अंकों का वर्ग समझें",
+      "file": "./content/class8/mathematics/textbook19/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "एकाधिकेन पूर्वेण — 5 पर समाप्त संख्याओं का वर्ग",
+      "file": "./content/class8/mathematics/textbook19/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "यावदून तावदूनीकृत्य — आधार के पास की संख्याओं का वर्ग",
+      "file": "./content/class8/mathematics/textbook19/lesson03.json"
+    },
+    {
+      "number": 4,
+      "title": "यावदूनम् विधि से घन — संख्या को आधार के पास देखें",
+      "file": "./content/class8/mathematics/textbook19/lesson04.json"
+    },
+    {
+      "number": 5,
+      "title": "आनुकृष्येण विधि से घन — दो अंकों का तेज विस्तार",
+      "file": "./content/class8/mathematics/textbook19/lesson05.json"
+    }
+  ]
 }
           ]
         }
