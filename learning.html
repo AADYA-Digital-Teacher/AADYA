@@ -1755,18 +1755,47 @@ else{
      data + frequency table format
   ------------------------------------------ */
 
-  if(
-    Array.isArray(item.data)
-  ){
+if(Array.isArray(item.data)){
 
-    html +=
-      "<br><br>" +
-      "<strong>📊 दिए गए आँकड़े:</strong><br>" +
-      escapeHTML(
-        item.data.join(", ")
-      );
+  html+="<br><br><strong>📊 दिए गए आँकड़े:</strong><br>";
 
-  }
+  item.data.forEach(row => {
+
+    if(
+      row &&
+      typeof row === "object"
+    ){
+
+      const label =
+        row.day ??
+        row.name ??
+        row.label ??
+        row.value ??
+        "";
+
+      const value =
+        row.value ??
+        row.frequency ??
+        row.count ??
+        "";
+
+      html +=
+        escapeHTML(label) +
+        " → " +
+        escapeHTML(value) +
+        "<br>";
+
+    } else {
+
+      html +=
+        escapeHTML(row) +
+        "<br>";
+
+    }
+
+  });
+
+}
 
 
   if(
@@ -1796,7 +1825,13 @@ else{
   /* ------------------------------------------
      पुराने items format
   ------------------------------------------ */
+if(item.conclusion){
 
+  html +=
+    "<br><br><strong>💡 निष्कर्ष:</strong><br>" +
+    escapeHTML(item.conclusion);
+
+  }
   if(
     Array.isArray(item.items)
   ){
