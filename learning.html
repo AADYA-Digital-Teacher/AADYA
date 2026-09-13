@@ -1115,7 +1115,34 @@ function getPracticeQuestions(data){
   return [];
 }
 
+/* ==========================================
+   QUIZ QUESTIONS
+   OLD + NEW JSON COMPATIBLE
+========================================== */
+function getQuizQuestions(data){
 
+  /* New format:
+     "quiz":{
+       "questions":[ ... ]
+     }
+  */
+  if(
+    data?.quiz &&
+    Array.isArray(data.quiz.questions)
+  ){
+    return data.quiz.questions.map(normalizeQuestion);
+  }
+
+  /* Old format */
+  if(
+    Array.isArray(data?.quiz_questions)
+  ){
+    return data.quiz_questions.map(normalizeQuestion);
+  }
+
+  return [];
+}
+  
 /* ==========================================
    LOAD LESSON
 ========================================== */
