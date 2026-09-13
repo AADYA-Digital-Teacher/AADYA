@@ -934,57 +934,45 @@ function getExplanation(data){
 
 /* ==========================================
    EXAMPLE NORMALIZER
+   OLD + NEW JSON COMPATIBLE
 ========================================== */
-
-
 function getExamples(data){
 
-  /*
-   * Standard format
-   */
-  if(
-    Array.isArray(data?.examples)
-  ){
+  if(!data) return [];
 
+  /* New format:
+     "examples":[ ... ]
+  */
+  if(Array.isArray(data.examples)){
     return data.examples;
-
   }
 
-
-  /*
-   * New lessons में कभी-कभी
-   * single example object है
-   */
-  if(
-    data?.example &&
-    typeof data.example === "object"
-  ){
-
-    return [
-      data.example
-    ];
-
+  /* Single example:
+     "example":{...}
+  */
+  if(data.example && typeof data.example === "object"){
+    return [data.example];
   }
 
-
-  /*
-   * बहुत पुराने format के लिए
-   */
-  if(
-    typeof data?.example === "string"
-  ){
-
-    return [
-      data.example
-    ];
-
+  /* Old format:
+     "example":[ ... ]
+  */
+  if(Array.isArray(data.example)){
+    return data.example;
   }
 
+  /* Very old format */
+  if(Array.isArray(data.example_questions)){
+    return data.example_questions;
+  }
+
+  /* String example */
+  if(typeof data.example === "string"){
+    return [data.example];
+  }
 
   return [];
-
-  }
-
+}
 
 /* ==========================================
    QUESTION NORMALIZER
@@ -1093,121 +1081,38 @@ function normalizeQuestion(item){
 
 
 /* ==========================================
-   QUESTIONS FROM NEW / OLD JSON
+   PRACTICE QUESTION NORMALIZER
+   OLD + NEW JSON COMPATIBLE
 ========================================== */
-
-
 function getPracticeQuestions(data){
 
-  /*
-   * 1. Standard new format
-   */
+  if(!data) return [];
+
+  /* New textbook format:
+     "practice":{
+       "questions":[ ... ]
+     }
+  */
   if(
-    data?.practice &&
-    Array.isArray(
-      data.practice.questions
-    )
+    data.practice &&
+    Array.isArray(data.practice.questions)
   ){
-
-    return data.practice.questions
-      .map(normalizeQuestion);
-
+    return data.practice.questions.map(normalizeQuestion);
   }
 
-
-  /*
-   * 2. Old format
-   */
-  if(
-    Array.isArray(
-      data?.practice_questions
-    )
-  ){
-
-    return data.practice_questions
-      .map(normalizeQuestion);
-
+  /* Old format */
+  if(Array.isArray(data.practice_questions)){
+    return data.practice_questions.map(normalizeQuestion);
   }
 
-
-  /*
-   * 3. Fallback:
-   * अगर practice नहीं है तो
-   * examples को लिखित अभ्यास में बदल दें।
-   *
-   * इससे पुराने/new lessons
-   * कभी खाली नहीं रहेंगे।
-   */
-  const examples =
-    getExamples(data);
-
-
-  if(
-    examples.length
-  ){
-
-    return examples.map(
-      function(item){
-
-        if(
-          typeof item === "string"
-        ){
-
-          return normalizeQuestion({
-            question: item
-          });
-
-        }
-
-
-        return normalizeQuestion({
-          question:
-            item.question ||
-            item.title ||
-            "इस उदाहरण को स्वयं हल कीजिए।"
-        });
-
-      }
-    );
-
+  /* Some lessons may use:
+     "practice":[ ... ]
+  */
+  if(Array.isArray(data.practice)){
+    return data.practice.map(normalizeQuestion);
   }
-
 
   return [];
-
-}
-
-
-function getQuizQuestions(data){
-
-  /*
-   * New format:
-   * quiz.questions
-   */
-
-  if(
-    data?.quiz &&
-    Array.isArray(
-      data.quiz.questions
-    )
-  ){
-
-    return data.quiz.questions
-      .map(normalizeQuestion);
-
-  }
-
-
-  /*
-   * Old format:
-   * quiz_questions
-   */
-
-  return asArray(
-    data?.quiz_questions
-  )
-  .map(normalizeQuestion);
-
 }
 
 
@@ -1544,246 +1449,196 @@ function renderLesson(data){
 
 
   /* --------------------------------------
-     EXAMPLES
-  -------------------------------------- */
+   EXAMPLES
+-------------------------------------- */
+const examples =
+  document.getElementById("examples");
 
+examples.innerHTML = "";
 
-  const examples =
-    document.getElementById(
-      "examples"
-    );
+const exampleData =
+  getExamples(data);
 
+if(exampleData.length === 0){
 
-  examples.innerHTML =
-    "";
+  examples.innerHTML = `
+    <div class="example">
+      इस पाठ का उदाहरण ऊपर दिए गए समझाने वाले भाग से जुड़ा है।
+    </div>
+  `;
 
-
-  const exampleData =
-    getExamples(data);
-
+}
+else{
 
   exampleData.forEach(
     (item,index) => {
 
       const box =
-        document.createElement(
-          "div"
-        );
+        document.createElement("div");
 
+      box.className = "example";
 
-      box.className =
-        "example";
-
-
-      if(
-        typeof item === "string"
-      ){
+      /* String example */
+      if(typeof item === "string"){
 
         box.innerHTML =
-
-          "<strong>" +
+          "<strong>उदाहरण " +
           (index + 1) +
-          ". उदाहरण</strong><br><br>" +
-
+          ":</strong><br><br>" +
           escapeHTML(item);
 
       }
+
+      /* Object example */
       else{
 
+        const question =
+          item.question ??
+          item.problem ??
+          item.title ??
+          "";
+
+        const solution =
+          item.answer ??
+          item.solution ??
+          item.explanation ??
+          item.correct_answer_text ??
+          "";
+
         let html =
-          "<strong>" +
+          "<strong>उदाहरण " +
+          (index + 1) +
+          ":</strong>";
 
-          escapeHTML(
-            item.question ||
-            item.title ||
-            (
-              (index + 1) +
-              ". उदाहरण"
-            )
-          ) +
-
-          "</strong>";
-
-
-        if(
-          Array.isArray(
-            item.items
-          )
-        ){
+        if(question){
 
           html +=
             "<br><br>" +
+            escapeHTML(question);
 
+        }
+
+        if(Array.isArray(item.items)){
+
+          html +=
+            "<br><br>" +
             item.items
-              .map(
-                escapeHTML
-              )
+              .map(x => escapeHTML(x))
               .join("<br>");
 
         }
 
+        if(solution){
 
-        const solution =
-  item.answer ??
-  item.solution ??
-  item.explanation ??
-  "";
-
-if(
-  solution
-){
-
-  html +=
-    "<br><br><strong>हल:</strong> " +
-
-    escapeHTML(
-      solution
-    );
+          html +=
+            "<br><br>" +
+            "<strong>💡 हल:</strong><br>" +
+            escapeHTML(solution);
 
         }
 
-
-        box.innerHTML =
-          html;
+        box.innerHTML = html;
 
       }
 
-
-      examples.appendChild(
-        box
-      );
+      examples.appendChild(box);
 
     }
   );
 
-
-  /* --------------------------------------
-     TRY YOURSELF
-  -------------------------------------- */
-
-
-  const tryBox =
-    document.getElementById(
-      "tryYourself"
-    );
-
-
-  tryBox.innerHTML =
-    "";
-
-
-  let tryData =
-    asArray(
-      data.try_yourself
-    );
-
-
-  /*
-   * New textbook lessons do not
-   * necessarily have try_yourself.
-   *
-   * So derive it from first
-   * practice questions.
-   */
-
-
-  if(
-  tryData.length === 0
-){
-
-  const practice =
-    getPracticeQuestions(data);
-
-  tryData =
-    practice.slice(
-      0,
-      3
-    );
-
 }
 
+  
+  /* --------------------------------------
+   TRY YOURSELF
+-------------------------------------- */
+const tryBox =
+  document.getElementById("tryYourself");
 
-/*
- * अगर अभी भी कुछ नहीं मिला,
- * तो Activity को "खुद करके देखें"
- * के रूप में दिखाएँ।
- */
-if(
-  tryData.length === 0 &&
-  data?.activity
-){
+tryBox.innerHTML = "";
 
-  const instruction =
-    data.activity.instruction ||
-    "";
+const activity =
+  data?.activity || {};
 
-  const challenge =
-    data.activity.challenge ||
-    "";
+const activityTitle =
+  activity.title ||
+  "✍️ खुद करके देखें";
 
-  if(
-    instruction ||
-    challenge
-  ){
+const instruction =
+  activity.instruction ||
+  "";
 
-    tryData = [
-      {
-        question:
-          instruction +
-          (
-            challenge
-              ? " " + challenge
-              : ""
-          )
-      }
-    ];
+const challenge =
+  activity.challenge ||
+  "";
+
+if(instruction || challenge){
+
+  const box =
+    document.createElement("div");
+
+  box.className = "example";
+
+  let html =
+    "<strong>" +
+    escapeHTML(activityTitle) +
+    "</strong>";
+
+  if(instruction){
+
+    html +=
+      "<br><br>" +
+      escapeHTML(instruction);
 
   }
 
-}
+  if(challenge){
 
+    html +=
+      "<br><br>" +
+      "<strong>🎯 Challenge:</strong><br>" +
+      escapeHTML(challenge);
+
+  }
+
+  box.innerHTML = html;
+
+  tryBox.appendChild(box);
+
+}
+else{
+
+  /* पुराने lessons के लिए fallback */
+  const tryData =
+    asArray(data?.try_yourself);
 
   tryData.forEach(
     item => {
 
       const box =
-        document.createElement(
-          "div"
-        );
-
+        document.createElement("div");
 
       box.className =
         "example";
 
+      box.textContent =
+        "✏️ " +
+        (
+          typeof item === "string"
+            ? item
+            : (
+                item.question ||
+                item.text ||
+                ""
+              )
+        );
 
-      if(
-        typeof item === "string"
-      ){
-
-        box.textContent =
-          "✏️ " + item;
-
-      }
-      else{
-
-        box.textContent =
-          "✏️ " +
-          (
-            item.question ||
-            item.text ||
-            ""
-          );
-
-      }
-
-
-      tryBox.appendChild(
-        box
-      );
+      tryBox.appendChild(box);
 
     }
   );
 
+}
 
   /* --------------------------------------
      PRACTICE
@@ -2877,7 +2732,6 @@ document.addEventListener(
   <script src="./js/diagram-engine-class8-algebra-numbers.js"></script>
   <script src="./js/diagram-engine-class8-equations.js"></script>
   <script src="./js/diagram-engine-class8-parallel-quadrilateral.js"></script>
-  <script src="./js/diagram-engine-class8-commerce-banking.js"></script>
   <script src="./js/diagram-engine-class8-commerce-banking.js"></script>
   <script src="./js/diagram-engine-class8-statistics-probability-coordinate.js"></script>
 <script src="./js/diagram-engine-class8-ch11-14.js"></script>
