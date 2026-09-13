@@ -1713,56 +1713,123 @@ else{
       }
 
       /* Object example */
-      else{
+else{
 
-        const question =
-          item.question ??
-          item.problem ??
-          item.title ??
-          "";
+  let html =
+    "<strong>उदाहरण " +
+    (index + 1) +
+    ":</strong>";
 
-        const solution =
-          item.answer ??
-          item.solution ??
-          item.explanation ??
-          item.correct_answer_text ??
-          "";
 
-        let html =
-          "<strong>उदाहरण " +
-          (index + 1) +
-          ":</strong>";
+  /* ------------------------------------------
+     सामान्य question + solution format
+  ------------------------------------------ */
 
-        if(question){
+  const question =
+    item.question ??
+    item.problem ??
+    item.title ??
+    "";
 
-          html +=
-            "<br><br>" +
-            escapeHTML(question);
 
-        }
+  const solution =
+    item.answer ??
+    item.solution ??
+    item.explanation ??
+    item.correct_answer_text ??
+    "";
 
-        if(Array.isArray(item.items)){
 
-          html +=
-            "<br><br>" +
-            item.items
-              .map(x => escapeHTML(x))
-              .join("<br>");
+  if(question){
 
-        }
+    html +=
+      "<br><br>" +
+      escapeHTML(question);
 
-        if(solution){
+  }
 
-          html +=
-            "<br><br>" +
-            "<strong>💡 हल:</strong><br>" +
-            escapeHTML(solution);
 
-        }
+  /* ------------------------------------------
+     Ch 15 L2:
+     data + frequency table format
+  ------------------------------------------ */
 
-        box.innerHTML = html;
+  if(
+    Array.isArray(item.data)
+  ){
+
+    html +=
+      "<br><br>" +
+      "<strong>📊 दिए गए आँकड़े:</strong><br>" +
+      escapeHTML(
+        item.data.join(", ")
+      );
+
+  }
+
+
+  if(
+    Array.isArray(item.table)
+  ){
+
+    html +=
+      "<br><br>" +
+      "<strong>📋 बारंबारता सारणी:</strong><br>";
+
+    item.table.forEach(
+      row => {
+
+        html +=
+          "मान " +
+          escapeHTML(row.value) +
+          " → " +
+          escapeHTML(row.frequency) +
+          " बार<br>";
 
       }
+    );
+
+  }
+
+
+  /* ------------------------------------------
+     पुराने items format
+  ------------------------------------------ */
+
+  if(
+    Array.isArray(item.items)
+  ){
+
+    html +=
+      "<br><br>" +
+      item.items
+        .map(
+          x =>
+            escapeHTML(x)
+        )
+        .join("<br>");
+
+  }
+
+
+  /* ------------------------------------------
+     Solution
+  ------------------------------------------ */
+
+  if(solution){
+
+    html +=
+      "<br><br>" +
+      "<strong>💡 हल:</strong><br>" +
+      escapeHTML(solution);
+
+  }
+
+
+  box.innerHTML =
+    html;
+
+  }
 
       examples.appendChild(box);
 
