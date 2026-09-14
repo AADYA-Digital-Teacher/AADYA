@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<meta
+name="theme-color"
+content="#111111">
+
+<title>AADYA | सभी कक्षाएँ</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+font-family:
+Arial,
+"Noto Sans Devanagari",
+sans-serif;
+background:#f5f6f8;
+color:#222;
+}
+
+.top{
+background:#111;
+color:#fff;
+padding:17px 15px;
+position:sticky;
+top:0;
+z-index:10;
+}
+
+.row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+}
+
+.brand{
+font-size:21px;
+font-weight:800;
+}
+
+.sub{
+font-size:13px;
+color:#ccc;
+margin-top:3px;
+}
+
+.btn{
+border:0;
+border-radius:10px;
+padding:9px 12px;
+background:#fff;
+color:#111;
+font-weight:700;
+}
+
+.wrap{
+max-width:950px;
+margin:auto;
+padding:15px;
+}
+
+.intro,
+.classbox,
+.chapter,
+.lesson{
+background:#fff;
+border-radius:16px;
+box-shadow:
+0 4px 14px rgba(0,0,0,.07);
+}
+
+.intro{
+padding:17px;
+margin-bottom:14px;
+}
+
+.intro h1{
+margin:0 0 6px;
+font-size:22px;
+}
+
+.muted{
+color:#666;
+font-size:13px;
+line-height:1.5;
+}
+
+.class-tabs{
+display:grid;
+grid-template-columns:
+repeat(3,1fr);
+gap:9px;
+margin-bottom:14px;
+}
+
+.tab{
+border:0;
+border-radius:12px;
+padding:12px;
+background:#fff;
+font-weight:800;
+box-shadow:
+0 3px 10px rgba(0,0,0,.06);
+}
+
+.tab.active{
+background:#111;
+color:#d4af37;
+}
+
+.classbox{
+padding:15px;
+}
+
+.subject-title{
+font-size:19px;
+font-weight:900;
+margin:18px 0 9px;
+}
+
+.chapter{
+margin:10px 0;
+overflow:hidden;
+}
+
+.ch-head{
+padding:14px;
+border-bottom:1px solid #eee;
+font-weight:800;
+line-height:1.5;
+}
+
+.badge{
+display:inline-block;
+margin-top:6px;
+padding:4px 8px;
+background:#eee;
+border-radius:8px;
+font-size:10px;
+color:#555;
+}
+
+.lesson{
+margin:8px;
+padding:11px;
+display:flex;
+align-items:center;
+gap:10px;
+box-shadow:none;
+border:1px solid #eee;
+}
+
+.num{
+width:32px;
+height:32px;
+border-radius:50%;
+background:#111;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:800;
+flex:none;
+}
+
+.lt{
+flex:1;
+font-size:13px;
+line-height:1.45;
+}
+
+.open{
+border:0;
+border-radius:9px;
+padding:8px 10px;
+background:#111;
+color:#fff;
+font-weight:800;
+}
+
+.locked{
+background:#eee;
+color:#888;
+}
+
+.lesson.disabled{
+opacity:.62;
+}
+
+.note{
+margin:9px 0;
+padding:11px;
+border-radius:11px;
+background:#fff8df;
+color:#6a5700;
+font-size:12px;
+line-height:1.5;
+}
+
+.empty{
+text-align:center;
+color:#777;
+padding:18px;
+}
+
+@media(max-width:600px){
+
+.lt{
+font-size:12px;
+}
+
+.open{
+padding:7px 8px;
+font-size:11px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="top">
+
+<div class="row">
+
+<div>
+
+<div class="brand">
+AADYA Digital Teacher
+</div>
+
+<div class="sub">
+📖 सभी कक्षाएँ
+</div>
+
+</div>
+
+<button
+class="btn"
+onclick="location.href='./index.html'">
+
+⌂ Home
+
+</button>
+
+</div>
+
+</header>
+
+
+<main class="wrap">
+
+<section class="intro">
+
+<h1>
+📖 सभी कक्षाएँ देखें
+</h1>
+
+<div
+class="muted"
+id="intro">
+
+यहाँ कक्षा 6, 7 और 8 के विषय,
+अध्याय और Lesson नाम देख सकते हैं।
+
+</div>
+
+</section>
+
+
+<div class="class-tabs">
+
+<button
+class="tab"
+data-c="6">
+
+कक्षा 6
+
+</button>
+
+<button
+class="tab"
+data-c="7">
+
+कक्षा 7
+
+</button>
+
+<button
+class="tab"
+data-c="8">
+
+कक्षा 8
+
+</button>
+
+</div>
+
+
+<section
+class="classbox"
+id="content">
+
+लोड हो रहा है...
+
+</section>
+
+</main>
+
+
+<script>
+
+const PROFILE_KEY =
+"aadya_student_profile_v1";
+
+
+let selected="6";
+let profile={};
+
+
+function esc(v){
+
+return String(v ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+function curriculumUrl(c){
+
+if(String(c)==="7")
+return "./data/curriculum-class7.json";
+
+if(String(c)==="8")
+return "./data/curriculum-class8.json";
+
+return "./data/curriculum.json";
+
+}
+
+
+async function loadClass(c){
+
+selected=
+String(c);
+
+
+document
+.querySelectorAll(".tab")
+.forEach(function(button){
+
+button.classList.toggle(
+"active",
+button.dataset.c===
+selected
+);
+
+});
+
+
+document.getElementById(
+"content"
+).innerHTML=
+"⏳ Curriculum लोड हो रहा है...";
+
+
+try{
+
+const response=
+await fetch(
+curriculumUrl(selected)+
+"?v="+Date.now()
+);
+
+const data=
+await response.json();
+
+render(data);
+
+}catch(e){
+
+document.getElementById(
+"content"
+).innerHTML=
+'<div class="empty">'+
+'⚠️ Curriculum लोड नहीं हो पाया।'+
+'</div>';
+
+}
+
+}
+
+
+function render(data){
+
+const classData=
+data?.classes?.[
+"class"+selected
+];
+
+
+if(!classData){
+
+document.getElementById(
+"content"
+).innerHTML=
+'<div class="empty">'+
+'इस कक्षा का Curriculum नहीं मिला।'+
+'</div>';
+
+return;
+
+}
+
+
+const own=
+String(profile.class || "") ===
+selected;
+
+
+let html=
+
+'<div class="note">'+
+
+(
+own
+?
+
+'✅ यह आपकी चुनी हुई कक्षा है। Lessons खोल सकते हैं।'
+
+:
+
+'🔒 यह आपकी चुनी हुई कक्षा नहीं है। '+
+'विषय, अध्याय और Lesson नाम केवल देखने के लिए हैं; '+
+'Content नहीं खोला जाएगा।'
+
+)+
+
+'</div>';
+
+
+Object.keys(
+classData.subjects || {}
+)
+.forEach(function(subjectKey){
+
+const subject=
+classData.subjects[
+subjectKey
+];
+
+
+html +=
+'<div class="subject-title">'+
+'📘 '+
+esc(
+subject.name ||
+subjectKey
+)+
+'</div>';
+
+
+(subject.chapters || [])
+.forEach(function(chapter){
+
+html +=
+'<section class="chapter">'+
+
+'<div class="ch-head">'+
+
+'अध्याय '+
+esc(chapter.number)+
+' — '+
+esc(chapter.title || "");
+
+
+if(chapter.source){
+
+html +=
+'<br><span class="badge">'+
+
+(
+chapter.source==="textbook"
+?
+"📖 पाठ्यपुस्तक आधारित"
+:
+"✨ AADYA विशेष पाठ"
+)+
+
+'</span>';
+
+}
+
+
+html +=
+'</div>';
+
+
+const lessons=
+chapter.lessons || [];
+
+
+lessons.forEach(function(lesson){
+
+const file=
+esc(
+lesson.file || ""
+);
+
+
+html +=
+'<div class="lesson '+
+(
+own
+?
+''
+:
+'disabled'
+)+
+'">'+
+
+'<div class="num">'+
+esc(lesson.number)+
+'</div>'+
+
+'<div class="lt">'+
+esc(
+lesson.title ||
+("पाठ "+lesson.number)
+)+
+'</div>';
+
+
+if(
+own &&
+file
+){
+
+html +=
+'<button class="open" '+
+'data-file="'+
+file+
+'">'+
+'खोलें'+
+'</button>';
+
+}else{
+
+html +=
+'<button class="open locked" disabled>'+
+'🔒'+
+'</button>';
+
+}
+
+
+html +=
+'</div>';
+
+});
+
+
+if(!lessons.length){
+
+html +=
+'<div class="empty">'+
+'इस अध्याय के पाठ जल्द उपलब्ध होंगे।'+
+'</div>';
+
+}
+
+
+html +=
+'</section>';
+
+});
+
+});
+
+
+document.getElementById(
+"content"
+).innerHTML=html;
+
+
+document
+.querySelectorAll(
+".open[data-file]"
+)
+.forEach(function(button){
+
+button.onclick=function(){
+
+if(
+String(profile.class || "") !==
+selected
+){
+
+return;
+
+}
+
+
+location.href=
+"./learning.html?lesson="+
+encodeURIComponent(
+button.dataset.file
+);
+
+};
+
+});
+
+}
+
+
+function init(){
+
+try{
+
+profile=
+JSON.parse(
+localStorage.getItem(
+PROFILE_KEY
+)||"{}"
+);
+
+}catch(e){
+
+profile={};
+
+}
+
+
+selected=
+String(
+profile.class || 6
+);
+
+
+document.getElementById(
+"intro"
+).textContent=
+
+(
+profile.name
+?
+"नमस्ते, "+
+profile.name+
+"! "
+:
+""
+)+
+
+"आप कक्षा 6, 7 और 8 का Curriculum देख सकते हैं। "+
+"चुनी हुई कक्षा के Lessons ही खुलेंगे।";
+
+
+document
+.querySelectorAll(".tab")
+.forEach(function(button){
+
+button.onclick=function(){
+
+loadClass(
+button.dataset.c
+);
+
+};
+
+});
+
+
+loadClass(selected);
+
+}
+
+
+init();
+
+</script>
+
+</body>
+
+</html>
