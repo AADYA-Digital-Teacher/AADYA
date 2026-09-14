@@ -1908,18 +1908,42 @@ async function init(){
 
   }catch(error){
 
-    console.log(
+    console.error(
       "Curriculum load error:",
       error
     );
 
+    document.getElementById(
+      "progressText"
+    ).textContent =
+      "Curriculum लोड नहीं हुआ";
+
+    document.getElementById(
+      "progressPercentText"
+    ).textContent =
+      "0%";
 
     document.getElementById(
       "subjectDashboard"
     ).innerHTML =
 
-      "<div style='color:#b00020'>"+
-      "⚠️ Curriculum लोड नहीं हो पाया।"
+      "<div style='color:#b00020;background:#fff;padding:14px;border-radius:12px'>" +
+      "⚠️ Curriculum लोड नहीं हो पाया।<br>" +
+      "कृपया एक बार page refresh करें।" +
+      "</div>";
+
+  }
+
+}
+
+
+/* =========================
+   START APP
+========================= */
+
+init();
+
+</script>
 
 </body>
 </html>
