@@ -927,92 +927,48 @@
 
     <div class="cards">
 
+  <!-- MY CLASS -->
+  <div class="card" onclick="openClass()">
+    <div class="icon">🎓</div>
+    <h3>मेरी कक्षा</h3>
+    <p>अपनी Class और Lessons देखें</p>
+  </div>
 
-      <!-- MY CLASS -->
+  <!-- SUBJECT -->
+  <div class="card" onclick="location.href='./subjects.html'">
+    <div class="icon">📚</div>
+    <h3>विषय</h3>
+    <p>विषय चुनकर अध्याय और पाठ देखें</p>
+  </div>
 
-      <div
-  class="card"
-  onclick="openClass()">
+  <!-- QUIZ -->
+  <div class="card" onclick="location.href='./quiz.html'">
+    <div class="icon">🧠</div>
+    <h3>Quiz</h3>
+    <p>अपने Lessons का Quiz दें</p>
+  </div>
 
-        <div class="icon">
-          🎓
-        </div>
+  <!-- PROGRESS -->
+  <div class="card" onclick="openProgress()">
+    <div class="icon">📈</div>
+    <h3>मेरी Progress</h3>
+    <p>विषयवार अपनी प्रगति देखें</p>
+  </div>
 
-        <h3>
-          मेरी कक्षा
-        </h3>
+</div>
 
-        <p>
-          अपनी Class देखें
-        </p>
+<div class="explore"
+     onclick="location.href='./all-classes.html'">
 
-      </div>
+  <div class="explore-title">
+    📖 सभी कक्षाएँ देखें
+  </div>
 
+  <p>
+    कक्षा 6, 7 और 8 के विषय, अध्याय और Lessons ब्राउज़ करें
+  </p>
 
-      <!-- SUBJECT -->
-
-      <div
-        class="card"
-        onclick="showMessage('विषय')">
-
-        <div class="icon">
-          📚
-        </div>
-
-        <h3>
-          विषय
-        </h3>
-
-        <p>
-          अपने Subjects देखें
-        </p>
-
-      </div>
-
-
-      <!-- QUIZ -->
-
-      <div
-        class="card"
-        onclick="showMessage('Quiz')">
-
-        <div class="icon">
-          🧠
-        </div>
-
-        <h3>
-          Quiz
-        </h3>
-
-        <p>
-          अपनी तैयारी जाँचें
-        </p>
-
-      </div>
-
-
-      <!-- PROGRESS -->
-
-      <div
-        class="card"
-        onclick="openProgress()">
-
-        <div class="icon">
-          📈
-        </div>
-
-        <h3>
-          मेरी Progress
-        </h3>
-
-        <p>
-          अपनी Learning देखें
-        </p>
-
-      </div>
-
-
-    </div>
+</div>
 
 
 
@@ -1671,71 +1627,18 @@
      START LEARNING
   ========================== */
 
-  function startLearning() {
+  function startLearning(){
+  if(requireProfile()) openClass();
+}
 
+function openClass(){
+  if(!requireProfile()) return;
+  location.href="./class.html";
+}
 
-    const saved =
-      localStorage.getItem(
-        PROFILE_KEY
-      );
-
-
-    if (!saved) {
-
-      openProfile();
-
-      return;
-
-    }
-
-
-    try {
-
-
-      const profile =
-        JSON.parse(saved);
-
-
-      if (
-        !profile.name ||
-        !profile.class
-      ) {
-
-        openProfile();
-
-        return;
-
-      }
-
-
-      window.location.href =
-  "./class.html";
-
-
-    } catch (error) {
-
-      openProfile();
-
-    }
-  }
-  function openClass() {
-
-  const saved =
-    localStorage.getItem(
-      PROFILE_KEY
-    );
-
-  if (!saved) {
-
-    openProfile();
-
-    return;
-
-  }
-
-  window.location.href =
-    "./class.html";
-
+function openProgress(){
+  if(!requireProfile()) return;
+  location.href="./progress.html";
 }
 
 
