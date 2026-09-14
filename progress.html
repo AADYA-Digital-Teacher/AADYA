@@ -1529,7 +1529,109 @@ function renderSubjectDetail(
   html +=
     "</div>";
 
+  /* =========================
+     ALL LESSONS OF SUBJECT
+  ========================= */
 
+  html +=
+
+    "<div style='margin-top:18px;font-size:18px;font-weight:900'>" +
+    "📖 इस Subject के सभी Lessons" +
+    "</div>";
+
+
+  (subject.chapters || [])
+    .forEach(function(chapter){
+
+      html +=
+
+        "<div style='margin-top:14px'>" +
+
+        "<div style='" +
+        "background:#111;" +
+        "color:#fff;" +
+        "padding:10px 12px;" +
+        "border-radius:11px 11px 0 0;" +
+        "font-weight:800;" +
+        "'>" +
+
+        "अध्याय " +
+        esc(chapter.number) +
+        " — " +
+        esc(chapter.title) +
+
+        "</div>";
+
+
+      (chapter.lessons || [])
+        .forEach(function(lesson){
+
+          const completed =
+            isCompleted(
+              lesson.file
+            );
+
+
+          html +=
+
+            "<div style='" +
+            "background:#fff;" +
+            "border:1px solid #eee;" +
+            "border-top:0;" +
+            "padding:11px 12px;" +
+            "display:flex;" +
+            "gap:9px;" +
+            "align-items:flex-start;" +
+            "'>" +
+
+            "<div style='" +
+            "width:27px;" +
+            "height:27px;" +
+            "border-radius:50%;" +
+            "background:#111;" +
+            "color:#fff;" +
+            "display:flex;" +
+            "align-items:center;" +
+            "justify-content:center;" +
+            "font-weight:800;" +
+            "font-size:12px;" +
+            "flex:none;" +
+            "'>" +
+
+            esc(lesson.number) +
+
+            "</div>" +
+
+            "<div style='flex:1;font-size:13px;line-height:1.45'>" +
+
+            esc(
+              lesson.title ||
+              ("पाठ " + lesson.number)
+            ) +
+
+            "</div>" +
+
+            (
+              completed
+
+                ? "<div style='color:#17823b;font-size:12px;font-weight:800;white-space:nowrap'>" +
+                  "✅ पूरा" +
+                  "</div>"
+
+                : "<div style='color:#999;font-size:12px;font-weight:800;white-space:nowrap'>" +
+                  "○ बाकी" +
+                  "</div>"
+            ) +
+
+            "</div>";
+
+        });
+
+
+      html +=
+        "</div>";
+
+    });
   box.innerHTML =
     html;
 
