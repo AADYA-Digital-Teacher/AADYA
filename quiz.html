@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1.0">
+
+<meta
+  name="theme-color"
+  content="#111111">
+
+<title>AADYA | Quiz</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:
+    Arial,
+    "Noto Sans Devanagari",
+    sans-serif;
+  background:#f5f6f8;
+  color:#222;
+}
+
+.top{
+  background:#111;
+  color:#fff;
+  padding:17px 15px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.brand{
+  font-size:21px;
+  font-weight:800;
+}
+
+.sub{
+  font-size:13px;
+  color:#ccc;
+  margin-top:3px;
+}
+
+.btn{
+  border:0;
+  border-radius:10px;
+  padding:9px 12px;
+  background:#fff;
+  color:#111;
+  font-weight:700;
+}
+
+.wrap{
+  max-width:850px;
+  margin:auto;
+  padding:15px;
+}
+
+.box,
+.chapter,
+.question{
+  background:#fff;
+  border-radius:16px;
+  box-shadow:0 4px 14px rgba(0,0,0,.07);
+}
+
+.box{
+  padding:17px;
+  margin-bottom:14px;
+}
+
+.title{
+  font-size:21px;
+  font-weight:800;
+}
+
+.muted{
+  color:#666;
+  font-size:13px;
+  line-height:1.5;
+  margin-top:6px;
+}
+
+.select-title{
+  font-size:17px;
+  font-weight:800;
+  margin-bottom:10px;
+}
+
+.chapter{
+  margin:10px 0;
+  overflow:hidden;
+}
+
+.chapter-head{
+  padding:14px;
+  font-weight:800;
+  border-bottom:1px solid #eee;
+}
+
+.lesson{
+  padding:13px;
+  border-bottom:1px solid #eee;
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.lesson:last-child{
+  border-bottom:0;
+}
+
+.num{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  flex:none;
+}
+
+.lt{
+  flex:1;
+  font-size:14px;
+  line-height:1.45;
+}
+
+.start{
+  border:0;
+  background:#d4af37;
+  color:#111;
+  border-radius:10px;
+  padding:9px 12px;
+  font-weight:800;
+}
+
+.quiz-head{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center;
+}
+
+.q{
+  font-size:17px;
+  font-weight:700;
+  line-height:1.6;
+  margin-bottom:13px;
+}
+
+.option{
+  display:block;
+  width:100%;
+  text-align:left;
+  padding:12px;
+  border:1px solid #ddd;
+  background:#fff;
+  border-radius:11px;
+  margin:8px 0;
+  font-size:14px;
+}
+
+.option.selected{
+  border-color:#111;
+  background:#f1f1f1;
+}
+
+.nav{
+  display:flex;
+  gap:8px;
+  margin-top:14px;
+}
+
+.nav button{
+  flex:1;
+  padding:12px;
+  border:0;
+  border-radius:11px;
+  font-weight:800;
+}
+
+.next{
+  background:#111;
+  color:#fff;
+}
+
+.result{
+  text-align:center;
+  padding:22px;
+}
+
+.score{
+  font-size:34px;
+  font-weight:900;
+}
+
+.hidden{
+  display:none;
+}
+
+.empty{
+  padding:18px;
+  text-align:center;
+  color:#777;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="top">
+
+<div class="row">
+
+<div>
+
+<div class="brand">
+AADYA Digital Teacher
+</div>
+
+<div class="sub">
+🧠 Quiz
+</div>
+
+</div>
+
+<button
+class="btn"
+onclick="location.href='./index.html'">
+
+⌂ Home
+
+</button>
+
+</div>
+
+</header>
+
+
+<main class="wrap">
+
+<section class="box">
+
+<div class="title">
+🧠 अपना Quiz चुनें
+</div>
+
+<div
+class="muted"
+id="intro">
+
+पहले Lesson चुनें, फिर उसी Lesson का Quiz दें।
+
+</div>
+
+</section>
+
+
+<section
+id="selector"
+class="box">
+
+<div class="select-title">
+📚 Lessons
+</div>
+
+<div id="lessons"></div>
+
+</section>
+
+
+<section
+id="quizBox"
+class="box hidden">
+
+</section>
+
+</main>
+
+
+<script>
+
+const PROFILE_KEY =
+"aadya_student_profile_v1";
+
+const HISTORY_KEY =
+"aadya_quiz_history_v1";
+
+const LAST_KEY =
+"aadya_last_quiz_score";
+
+
+let cls="6";
+let data=null;
+let questions=[];
+let current=0;
+let answers=[];
+let currentFile="";
+
+
+function esc(v){
+
+return String(v ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+function profile(){
+
+try{
+
+return JSON.parse(
+localStorage.getItem(PROFILE_KEY)||"{}"
+);
+
+}catch(e){
+
+return {};
+
+}
+
+}
+
+
+function curriculumUrl(c){
+
+if(String(c)==="7")
+return "./data/curriculum-class7.json";
+
+if(String(c)==="8")
+return "./data/curriculum-class8.json";
+
+return "./data/curriculum.json";
+
+}
+
+
+function classData(){
+
+return data?.classes?.["class"+cls] || null;
+
+}
+
+
+function normalizeQuestion(q){
+
+if(typeof q==="string"){
+
+return {
+question:q,
+options:[],
+correct_answer:null
+};
+
+}
+
+return {
+
+question:
+q?.question ||
+q?.text ||
+"",
+
+options:
+Array.isArray(q?.options)
+?q.options
+:[],
+
+correct_answer:
+q?.correct_answer ??
+q?.answer ??
+q?.correct ??
+null
+
+};
+
+}
+
+
+function allLessons(){
+
+const result=[];
+
+const subjects =
+classData()?.subjects || {};
+
+Object.keys(subjects)
+.forEach(function(subjectKey){
+
+const subject =
+subjects[subjectKey];
+
+(subject.chapters || [])
+.forEach(function(chapter){
+
+(chapter.lessons || [])
+.forEach(function(lesson){
+
+result.push({
+
+...lesson,
+
+subjectName:
+subject.name ||
+subjectKey,
+
+chapterTitle:
+chapter.title,
+
+chapterNumber:
+chapter.number
+
+});
+
+});
+
+});
+
+});
+
+return result;
+
+}
+
+
+async function init(){
+
+const p=profile();
+
+cls=String(p.class || 6);
+
+document.getElementById("intro")
+.textContent =
+(p.name
+?"नमस्ते, "+p.name+"! "
+:"")+
+"कक्षा "+cls+
+" के Lessons का Quiz यहाँ दें।";
+
+
+try{
+
+data =
+await (
+await fetch(
+curriculumUrl(cls)+
+"?v="+Date.now()
+)
+).json();
+
+renderLessons();
+
+}catch(e){
+
+document.getElementById("lessons")
+.innerHTML =
+'<div class="empty">'+
+'⚠️ Curriculum लोड नहीं हो पाया।'+
+'</div>';
+
+}
+
+}
+
+
+function renderLessons(){
+
+const lessons=allLessons();
+
+let html="";
+
+let lastSubject="";
+let lastChapter="";
+
+
+lessons.forEach(function(lesson,index){
+
+if(
+lesson.subjectName !==
+lastSubject
+){
+
+html +=
+'<div style="margin:14px 0 8px;font-weight:800">'+
+'📘 '+
+esc(lesson.subjectName)+
+'</div>';
+
+lastSubject=
+lesson.subjectName;
+
+lastChapter="";
+
+}
+
+
+if(
+lesson.chapterTitle !==
+lastChapter
+){
+
+html +=
+'<div class="chapter">'+
+'<div class="chapter-head">'+
+'अध्याय '+
+esc(lesson.chapterNumber)+
+' — '+
+esc(lesson.chapterTitle || "")+
+'</div>';
+
+lastChapter=
+lesson.chapterTitle;
+
+}
+
+
+html +=
+'<div class="lesson">'+
+
+'<div class="num">'+
+esc(lesson.number)+
+'</div>'+
+
+'<div class="lt">'+
+esc(
+lesson.title ||
+("पाठ "+lesson.number)
+)+
+'</div>'+
+
+'<button '+
+'class="start" '+
+'data-file="'+
+esc(lesson.file || "")+
+'">'+
+
+'Quiz'+
+
+'</button>'+
+
+'</div>';
+
+
+const next=lessons[index+1];
+
+
+if(
+!next ||
+next.chapterTitle !==
+lastChapter
+){
+
+html +=
+'</div>';
+
+}
+
+});
+
+
+document.getElementById("lessons")
+.innerHTML =
+html ||
+'<div class="empty">'+
+'अभी कोई Lesson उपलब्ध नहीं है।'+
+'</div>';
+
+
+document
+.querySelectorAll(".start")
+.forEach(function(button){
+
+button.onclick=function(){
+
+startQuiz(
+button.dataset.file
+);
+
+};
+
+});
+
+}
+
+
+async function startQuiz(file){
+
+if(!file)
+return;
+
+currentFile=file;
+
+
+try{
+
+const response =
+await fetch(
+file+"?v="+Date.now()
+);
+
+const lesson =
+await response.json();
+
+
+questions =
+(
+lesson.quiz?.questions ||
+lesson.quiz_questions ||
+[]
+)
+.map(normalizeQuestion);
+
+
+if(!questions.length){
+
+alert(
+"इस Lesson में अभी Quiz प्रश्न उपलब्ध नहीं हैं।"
+);
+
+return;
+
+}
+
+
+current=0;
+
+answers=
+new Array(
+questions.length
+).fill(null);
+
+
+document
+.getElementById("selector")
+.classList.add("hidden");
+
+document
+.getElementById("quizBox")
+.classList.remove("hidden");
+
+
+renderQuestion();
+
+}catch(e){
+
+alert(
+"Quiz लोड नहीं हो पाया।"
+);
+
+}
+
+}
+
+
+function renderQuestion(){
+
+const q=
+questions[current];
+
+let html="";
+
+
+html +=
+'<div class="quiz-head">'+
+
+'<strong>'+
+'प्रश्न '+
+(current+1)+
+' / '+
+questions.length+
+'</strong>'+
+
+'<button class="btn" '+
+'onclick="backToLessons()">'+
+'← Lessons'+
+'</button>'+
+
+'</div>';
+
+
+html +=
+'<hr style="border:0;border-top:1px solid #eee;margin:12px 0">';
+
+
+html +=
+'<div class="q">'+
+esc(q.question)+
+'</div>';
+
+
+q.options.forEach(function(option,index){
+
+html +=
+'<button '+
+'class="option" '+
+'data-i="'+
+index+
+'">'+
+
+String.fromCharCode(65+index)+
+'. '+
+esc(option)+
+
+'</button>';
+
+});
+
+
+html +=
+'<div class="nav">'+
+
+'<button onclick="backToLessons()">'+
+'बाद में'+
+'</button>'+
+
+'<button class="next" '+
+'id="nextBtn">'+
+'अगला →'+
+'</button>'+
+
+'</div>';
+
+
+document.getElementById("quizBox")
+.innerHTML=html;
+
+
+document
+.querySelectorAll(".option")
+.forEach(function(button){
+
+button.onclick=function(){
+
+answers[current]=
+Number(button.dataset.i);
+
+
+document
+.querySelectorAll(".option")
+.forEach(function(b){
+
+b.classList.toggle(
+"selected",
+Number(b.dataset.i) ===
+answers[current]
+);
+
+});
+
+};
+
+});
+
+
+document.getElementById("nextBtn")
+.onclick=nextQuestion;
+
+}
+
+
+function nextQuestion(){
+
+if(answers[current]===null){
+
+alert(
+"पहले एक उत्तर चुनिए।"
+);
+
+return;
+
+}
+
+
+if(
+current <
+questions.length-1
+){
+
+current++;
+
+renderQuestion();
+
+}else{
+
+finishQuiz();
+
+}
+
+}
+
+
+function finishQuiz(){
+
+let score=0;
+
+
+questions.forEach(function(q,index){
+
+if(
+String(answers[index]) ===
+String(q.correct_answer)
+){
+
+score++;
+
+}
+
+});
+
+
+const percentage =
+Math.round(
+score /
+questions.length *
+100
+);
+
+
+let history={};
+
+try{
+
+history=
+JSON.parse(
+localStorage.getItem(
+HISTORY_KEY
+)||"{}"
+);
+
+}catch(e){
+
+history={};
+
+}
+
+
+const key=
+String(currentFile)
+.replace(/^\.\/+/,"");
+
+
+const result={
+
+score:score,
+
+total:
+questions.length,
+
+percentage:
+percentage,
+
+timestamp:
+new Date().toISOString()
+
+};
+
+
+history[key]=result;
+
+
+localStorage.setItem(
+HISTORY_KEY,
+JSON.stringify(history)
+);
+
+
+localStorage.setItem(
+LAST_KEY,
+JSON.stringify({
+
+...result,
+
+lessonFile:
+currentFile
+
+})
+);
+
+
+document.getElementById("quizBox")
+.innerHTML=
+
+'<div class="result">'+
+
+'<div style="font-size:42px">'+
+'🎉'+
+'</div>'+
+
+'<div class="score">'+
+score+
+' / '+
+questions.length+
+'</div>'+
+
+'<div style="margin-top:7px;font-weight:800">'+
+percentage+
+'% सही'+
+'</div>'+
+
+'<div class="muted" style="margin-top:10px">'+
+
+(
+percentage>=80
+?"बहुत बढ़िया! 🌟"
+:
+percentage>=50
+?"अच्छा प्रयास! फिर से अभ्यास करें।"
+:
+"कोई बात नहीं — Lesson दोबारा पढ़कर फिर प्रयास करें।"
+)+
+
+'</div>'+
+
+'<div class="nav">'+
+
+'<button onclick="backToLessons()">'+
+'📚 दूसरा Quiz'+
+'</button>'+
+
+'<button class="next" '+
+'onclick="startQuiz(currentFile)">'+
+'🔁 फिर से दें'+
+'</button>'+
+
+'</div>'+
+
+'</div>';
+
+}
+
+
+function backToLessons(){
+
+document
+.getElementById("quizBox")
+.classList.add("hidden");
+
+document
+.getElementById("selector")
+.classList.remove("hidden");
+
+}
+
+
+init();
+
+</script>
+
+</body>
+
+</html>
