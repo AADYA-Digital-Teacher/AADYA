@@ -3107,8 +3107,143 @@ document.addEventListener(
 
 
 </script>
-<script src="./js/diagram-engine.js"></script>
-  <script src="./js/diagram-engine-commerce-algebra.js"></script>
+<script>
+/* =========================================================
+   AADYA DIAGRAM ENGINE ROUTER
+   -----------------------------------------
+   Class 7:
+   • Ch 1–6  → Generic Diagram Engine
+   • Ch 7–10 → Commerce + Algebra Engine
+   • Ch 11–12 → Circle + Mensuration Engine
+   • Ch 13–14 → Mental + Vedic Engine
+   • Ch 15–17 → Generic Diagram Engine
+
+   Class 6 और Class 8 के लिए generic/class7 engines
+   यहाँ से जानबूझकर load नहीं होंगे।
+   ========================================================= */
+
+(function(){
+
+  "use strict";
+
+  function getLessonPath(){
+
+    try{
+
+      return decodeURIComponent(
+        new URLSearchParams(
+          window.location.search
+        ).get("lesson") || ""
+      );
+
+    }catch(error){
+
+      return "";
+
+    }
+
+  }
+
+
+  function loadEngine(src){
+
+    const script =
+      document.createElement("script");
+
+    script.src = src;
+
+    script.async = false;
+
+    document.body.appendChild(script);
+
+  }
+
+
+  const lessonPath =
+    getLessonPath();
+
+
+  const match =
+    lessonPath.match(
+      /content\/class(\d+)\/mathematics\/textbook(\d+)\/lesson\d+\.json/i
+    );
+
+
+  if(!match){
+
+    return;
+
+  }
+
+
+  const classNumber =
+    Number(match[1]);
+
+
+  const chapterNumber =
+    Number(match[2]);
+
+
+  /* =====================================================
+     CLASS 7 ONLY
+     ===================================================== */
+
+  if(classNumber === 7){
+
+    /* ---------------------------------------------
+       Class 7 Chapters 1–6
+       Generic visual engine
+    --------------------------------------------- */
+
+    if(
+      chapterNumber >= 1 &&
+      chapterNumber <= 6
+    ){
+
+      loadEngine(
+        "./js/diagram-engine.js"
+      );
+
+    }
+
+
+    /* ---------------------------------------------
+       Class 7 Chapters 7–10
+       Commerce + Algebra
+    --------------------------------------------- */
+
+    if(
+      chapterNumber >= 7 &&
+      chapterNumber <= 10
+    ){
+
+      loadEngine(
+        "./js/diagram-engine-commerce-algebra.js"
+      );
+
+    }
+
+
+    /* ---------------------------------------------
+       Class 7 Chapters 15–17
+       Generic visual engine
+    --------------------------------------------- */
+
+    if(
+      chapterNumber >= 15 &&
+      chapterNumber <= 17
+    ){
+
+      loadEngine(
+        "./js/diagram-engine.js"
+      );
+
+    }
+
+  }
+
+})();
+</script>
   <script src="./js/diagram-engine-circle-mensuration.js"></script>
   <script src="./js/diagram-engine-mental-vedic.js"></script>
   <script src="./js/diagram-engine-class8-number-roots.js"></script>
