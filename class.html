@@ -216,7 +216,1248 @@
       margin-top: 25px;
       line-height: 1.6;
     }
+/* =========================================================
+   AADYA — MY CLASS
+   PREMIUM COLORFUL LEARNING JOURNEY
+   CSS ONLY
+   CONTENT + JAVASCRIPT + LESSON LINKS UNTOUCHED
+========================================================= */
 
+
+/* ---------------------------------------------------------
+   DESIGN VARIABLES
+--------------------------------------------------------- */
+
+:root {
+  --aadya-navy: #172b4d;
+  --aadya-blue: #2f80ed;
+  --aadya-sky: #56ccf2;
+  --aadya-purple: #7b61ff;
+  --aadya-pink: #ff6b9d;
+  --aadya-yellow: #f7c928;
+  --aadya-orange: #f2994a;
+  --aadya-green: #27ae60;
+
+  --page-bg: #f3f7fb;
+  --card-bg: #ffffff;
+
+  --shadow-soft:
+    0 8px 25px rgba(23,43,77,.08);
+
+  --shadow-card:
+    0 10px 28px rgba(23,43,77,.10);
+}
+
+
+/* ---------------------------------------------------------
+   PAGE
+--------------------------------------------------------- */
+
+body {
+  background:
+    radial-gradient(
+      circle at 10% 0%,
+      rgba(86,204,242,.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 15%,
+      rgba(123,97,255,.10),
+      transparent 30%
+    ),
+    var(--page-bg) !important;
+
+  color: #172b4d !important;
+
+  overflow-x: hidden;
+}
+
+
+/* ---------------------------------------------------------
+   TOP HEADER
+--------------------------------------------------------- */
+
+.top {
+  background:
+    linear-gradient(
+      135deg,
+      #111111 0%,
+      #172b4d 58%,
+      #243b63 100%
+    ) !important;
+
+  padding:
+    16px
+    max(16px, env(safe-area-inset-right))
+    18px
+    max(16px, env(safe-area-inset-left))
+    !important;
+
+  box-shadow:
+    0 5px 22px rgba(0,0,0,.20);
+
+  border-bottom:
+    1px solid rgba(255,255,255,.08);
+
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+
+/* ---------------------------------------------------------
+   HEADER BRAND
+--------------------------------------------------------- */
+
+.brand {
+  font-size:
+    clamp(20px, 5.5vw, 27px) !important;
+
+  font-weight: 900 !important;
+
+  letter-spacing:
+    -.3px !important;
+
+  line-height: 1.15;
+
+  color: #ffffff !important;
+}
+
+.sub {
+  font-size:
+    13px !important;
+
+  margin-top:
+    5px !important;
+
+  color:
+    rgba(255,255,255,.72) !important;
+}
+
+
+/* ---------------------------------------------------------
+   HOME BUTTON
+--------------------------------------------------------- */
+
+.home {
+  min-height: 46px !important;
+
+  padding:
+    9px 15px !important;
+
+  border-radius:
+    14px !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #f5f8ff
+    ) !important;
+
+  color:
+    #172b4d !important;
+
+  font-size:
+    14px !important;
+
+  font-weight:
+    900 !important;
+
+  box-shadow:
+    0 5px 15px rgba(0,0,0,.18);
+
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease;
+}
+
+.home:active {
+  transform:
+    scale(.96);
+
+  box-shadow:
+    0 3px 9px rgba(0,0,0,.15);
+}
+
+
+/* ---------------------------------------------------------
+   MAIN WRAPPER
+--------------------------------------------------------- */
+
+.wrap {
+  width:
+    min(100%, 980px) !important;
+
+  padding:
+    16px 14px 50px !important;
+}
+
+
+/* ---------------------------------------------------------
+   WELCOME / AADYA BANNER
+--------------------------------------------------------- */
+
+.welcome {
+  position: relative;
+
+  padding:
+    0 !important;
+
+  overflow:
+    hidden !important;
+
+  border-radius:
+    24px !important;
+
+  background:
+    #ffffff !important;
+
+  box-shadow:
+    var(--shadow-card) !important;
+
+  margin-bottom:
+    22px !important;
+
+  border:
+    1px solid rgba(23,43,77,.06);
+
+  isolation: isolate;
+}
+
+
+/* Colorful AADYA banner */
+
+.welcome::before {
+  content: "";
+
+  display:
+    block;
+
+  width:
+    100%;
+
+  aspect-ratio:
+    3 / 1;
+
+  min-height:
+    105px;
+
+  background-image:
+    url("./assets/logo/aadya-home-banner.png");
+
+  background-size:
+    cover;
+
+  background-position:
+    center;
+
+  background-repeat:
+    no-repeat;
+}
+
+
+/* Soft decorative glow */
+
+.welcome::after {
+  content: "";
+
+  position: absolute;
+
+  width: 170px;
+  height: 170px;
+
+  right: -75px;
+  top: -70px;
+
+  border-radius:
+    50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,.38),
+      transparent 70%
+    );
+
+  pointer-events:
+    none;
+}
+
+
+/* ---------------------------------------------------------
+   WELCOME TEXT
+--------------------------------------------------------- */
+
+.welcome h1 {
+  position: relative;
+
+  margin:
+    0 !important;
+
+  padding:
+    18px 18px 5px !important;
+
+  font-size:
+    clamp(23px, 6vw, 31px) !important;
+
+  line-height:
+    1.25 !important;
+
+  font-weight:
+    900 !important;
+
+  color:
+    var(--aadya-navy) !important;
+}
+
+.welcome p {
+  position: relative;
+
+  margin:
+    0 !important;
+
+  padding:
+    0 18px 19px !important;
+
+  font-size:
+    clamp(13px, 3.8vw, 16px) !important;
+
+  line-height:
+    1.55 !important;
+
+  color:
+    #667085 !important;
+
+  font-weight:
+    600;
+}
+
+
+/* ---------------------------------------------------------
+   CURRICULUM CONTAINER
+--------------------------------------------------------- */
+
+#curriculumBox {
+  width:
+    100%;
+
+  background:
+    transparent !important;
+
+  box-shadow:
+    none !important;
+
+  padding:
+    0 !important;
+
+  border-radius:
+    0 !important;
+}
+
+
+/* ---------------------------------------------------------
+   SUBJECT CARD
+   Works automatically for ANY future subject
+--------------------------------------------------------- */
+
+.subject {
+  position: relative;
+
+  margin:
+    24px 0 14px !important;
+
+  padding:
+    18px 20px !important;
+
+  min-height:
+    68px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  border-radius:
+    20px !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #172b4d 0%,
+      #28558e 55%,
+      #2f80ed 100%
+    ) !important;
+
+  color:
+    #ffffff !important;
+
+  font-size:
+    clamp(19px, 5vw, 24px) !important;
+
+  font-weight:
+    900 !important;
+
+  letter-spacing:
+    .1px;
+
+  box-shadow:
+    0 10px 25px rgba(23,43,77,.20) !important;
+
+  overflow:
+    hidden;
+
+  border:
+    1px solid rgba(255,255,255,.10);
+}
+
+
+/* Decorative shine */
+
+.subject::after {
+  content: "";
+
+  position: absolute;
+
+  width:
+    120px;
+
+  height:
+    120px;
+
+  right:
+    -45px;
+
+  top:
+    -55px;
+
+  border-radius:
+    50%;
+
+  background:
+    rgba(255,255,255,.13);
+
+  pointer-events:
+    none;
+}
+
+
+/* ---------------------------------------------------------
+   CHAPTER CARD
+   Works automatically for every future chapter
+--------------------------------------------------------- */
+
+.chapter {
+  position: relative;
+
+  background:
+    rgba(255,255,255,.98) !important;
+
+  border-radius:
+    20px !important;
+
+  margin:
+    12px 0 !important;
+
+  overflow:
+    hidden !important;
+
+  border:
+    1px solid rgba(23,43,77,.07);
+
+  box-shadow:
+    var(--shadow-soft) !important;
+
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease;
+}
+
+
+/* Tiny colored accent */
+
+.chapter::before {
+  content: "";
+
+  position: absolute;
+
+  left:
+    0;
+
+  top:
+    0;
+
+  bottom:
+    0;
+
+  width:
+    5px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #56ccf2,
+      #7b61ff,
+      #ff6b9d
+    );
+}
+
+
+/* Desktop hover only */
+
+@media (hover: hover) {
+
+  .chapter:hover {
+    transform:
+      translateY(-2px);
+
+    box-shadow:
+      0 14px 30px rgba(23,43,77,.12) !important;
+  }
+
+}
+
+
+/* ---------------------------------------------------------
+   DIFFERENT CHAPTER ACCENT COLORS
+   Automatically cycles for future chapters
+--------------------------------------------------------- */
+
+.chapter:nth-of-type(6n + 1)::before {
+  background:
+    linear-gradient(
+      180deg,
+      #56ccf2,
+      #2f80ed
+    );
+}
+
+.chapter:nth-of-type(6n + 2)::before {
+  background:
+    linear-gradient(
+      180deg,
+      #f7c928,
+      #f2994a
+    );
+}
+
+.chapter:nth-of-type(6n + 3)::before {
+  background:
+    linear-gradient(
+      180deg,
+      #27ae60,
+      #6fcf97
+    );
+}
+
+.chapter:nth-of-type(6n + 4)::before {
+  background:
+    linear-gradient(
+      180deg,
+      #ff6b9d,
+      #eb5757
+    );
+}
+
+.chapter:nth-of-type(6n + 5)::before {
+  background:
+    linear-gradient(
+      180deg,
+      #7b61ff,
+      #9b51e0
+    );
+}
+
+.chapter:nth-of-type(6n + 6)::before {
+  background:
+    linear-gradient(
+      180deg,
+      #00b8a9,
+      #2f80ed
+    );
+}
+
+
+/* ---------------------------------------------------------
+   CHAPTER HEADER
+--------------------------------------------------------- */
+
+.chapter-head {
+  padding:
+    18px 17px 15px 21px !important;
+
+  border-bottom:
+    1px solid #edf0f5 !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff,
+      #fbfdff
+    );
+}
+
+.chapter-title {
+  font-size:
+    clamp(17px, 4.7vw, 21px) !important;
+
+  line-height:
+    1.5 !important;
+
+  font-weight:
+    900 !important;
+
+  color:
+    #172b4d !important;
+
+  overflow-wrap:
+    anywhere;
+}
+
+
+/* ---------------------------------------------------------
+   SOURCE BADGE
+--------------------------------------------------------- */
+
+.badge {
+  display:
+    inline-flex !important;
+
+  align-items:
+    center;
+
+  margin-top:
+    10px !important;
+
+  padding:
+    6px 10px !important;
+
+  border-radius:
+    999px !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #eef5ff,
+      #f5f1ff
+    ) !important;
+
+  color:
+    #53627a !important;
+
+  font-size:
+    11px !important;
+
+  font-weight:
+    800 !important;
+
+  border:
+    1px solid #e1e8f2;
+}
+
+
+/* ---------------------------------------------------------
+   LESSON AREA
+--------------------------------------------------------- */
+
+.lessons {
+  padding:
+    7px !important;
+
+  background:
+    #ffffff;
+}
+
+
+/* ---------------------------------------------------------
+   LESSON TILE
+   Works automatically for every lesson added later
+--------------------------------------------------------- */
+
+.lesson {
+  position: relative;
+
+  display:
+    flex !important;
+
+  align-items:
+    center !important;
+
+  gap:
+    12px !important;
+
+  min-height:
+    62px;
+
+  padding:
+    10px 10px !important;
+
+  margin:
+    2px 0;
+
+  border-radius:
+    15px !important;
+
+  cursor:
+    pointer;
+
+  background:
+    #ffffff;
+
+  transition:
+    transform .14s ease,
+    background .14s ease,
+    box-shadow .14s ease;
+}
+
+
+/* subtle separator */
+
+.lesson + .lesson {
+  border-top:
+    1px solid #f1f3f6;
+}
+
+
+/* Touch feedback */
+
+.lesson:active {
+  transform:
+    scale(.985);
+
+  background:
+    #f5f9ff !important;
+
+  box-shadow:
+    0 3px 10px rgba(47,128,237,.08);
+}
+
+
+/* Desktop hover */
+
+@media (hover: hover) {
+
+  .lesson:hover {
+    background:
+      linear-gradient(
+        90deg,
+        #f7fbff,
+        #ffffff
+      ) !important;
+
+    transform:
+      translateX(2px);
+  }
+
+}
+
+
+/* ---------------------------------------------------------
+   LESSON NUMBER CIRCLE
+--------------------------------------------------------- */
+
+.num {
+  width:
+    42px !important;
+
+  height:
+    42px !important;
+
+  min-width:
+    42px !important;
+
+  border-radius:
+    14px !important;
+
+  display:
+    flex !important;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #172b4d,
+      #2f80ed
+    ) !important;
+
+  color:
+    #ffffff !important;
+
+  font-size:
+    15px !important;
+
+  font-weight:
+    900 !important;
+
+  box-shadow:
+    0 4px 10px rgba(47,128,237,.18);
+}
+
+
+/* ---------------------------------------------------------
+   LESSON NUMBER COLOR CYCLE
+--------------------------------------------------------- */
+
+.lesson:nth-child(4n + 1) .num {
+  background:
+    linear-gradient(
+      135deg,
+      #2f80ed,
+      #56ccf2
+    ) !important;
+}
+
+.lesson:nth-child(4n + 2) .num {
+  background:
+    linear-gradient(
+      135deg,
+      #f2994a,
+      #f7c928
+    ) !important;
+}
+
+.lesson:nth-child(4n + 3) .num {
+  background:
+    linear-gradient(
+      135deg,
+      #27ae60,
+      #6fcf97
+    ) !important;
+}
+
+.lesson:nth-child(4n + 4) .num {
+  background:
+    linear-gradient(
+      135deg,
+      #7b61ff,
+      #ff6b9d
+    ) !important;
+}
+
+
+/* ---------------------------------------------------------
+   LESSON TITLE
+--------------------------------------------------------- */
+
+.lesson-title {
+  font-size:
+    clamp(14px, 3.9vw, 16px) !important;
+
+  line-height:
+    1.55 !important;
+
+  font-weight:
+    700 !important;
+
+  color:
+    #202b3c !important;
+
+  flex:
+    1;
+
+  min-width:
+    0;
+
+  overflow-wrap:
+    anywhere;
+}
+
+
+/* ---------------------------------------------------------
+   LESSON ARROW
+--------------------------------------------------------- */
+
+.arrow {
+  flex:
+    none !important;
+
+  width:
+    28px;
+
+  height:
+    28px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border-radius:
+    50%;
+
+  background:
+    #f1f5fa;
+
+  color:
+    #4b6079 !important;
+
+  font-size:
+    23px !important;
+
+  font-weight:
+    700;
+
+  transition:
+    transform .15s ease,
+    background .15s ease;
+}
+
+.lesson:active .arrow {
+  background:
+    #dcecff;
+
+  transform:
+    translateX(2px);
+}
+
+
+/* ---------------------------------------------------------
+   EMPTY / FUTURE CONTENT
+--------------------------------------------------------- */
+
+.empty {
+  margin:
+    10px 0 !important;
+
+  padding:
+    18px !important;
+
+  border-radius:
+    15px !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f8fbff,
+      #f7f4ff
+    ) !important;
+
+  color:
+    #667085 !important;
+
+  font-size:
+    13px !important;
+
+  line-height:
+    1.6 !important;
+
+  text-align:
+    center;
+
+  border:
+    1px dashed #d7dfeb;
+}
+
+
+/* ---------------------------------------------------------
+   LOADING / ERROR
+--------------------------------------------------------- */
+
+.loading,
+.error {
+  background:
+    #ffffff !important;
+
+  border-radius:
+    20px !important;
+
+  padding:
+    25px 18px !important;
+
+  box-shadow:
+    var(--shadow-soft) !important;
+
+  color:
+    #53627a;
+}
+
+
+/* ---------------------------------------------------------
+   FOOTER
+--------------------------------------------------------- */
+
+.footer-note {
+  margin-top:
+    32px !important;
+
+  padding:
+    22px 10px !important;
+
+  border-radius:
+    20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #172b4d,
+      #243b63
+    );
+
+  color:
+    rgba(255,255,255,.78) !important;
+
+  font-size:
+    12px !important;
+
+  line-height:
+    1.8 !important;
+
+  box-shadow:
+    0 8px 24px rgba(23,43,77,.16);
+}
+
+.footer-note::first-line {
+  color:
+    #ffffff;
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE — SMALL SCREENS
+--------------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+  .top {
+    padding:
+      14px 14px 16px !important;
+  }
+
+  .top-row {
+    gap:
+      9px;
+  }
+
+  .brand {
+    font-size:
+      20px !important;
+  }
+
+  .home {
+    min-height:
+      44px !important;
+
+    padding:
+      8px 12px !important;
+
+    font-size:
+      13px !important;
+  }
+
+  .wrap {
+    padding:
+      14px 12px 42px !important;
+  }
+
+  .welcome {
+    border-radius:
+      21px !important;
+
+    margin-bottom:
+      18px !important;
+  }
+
+  .welcome::before {
+    min-height:
+      92px;
+  }
+
+  .welcome h1 {
+    padding:
+      15px 16px 4px !important;
+
+    font-size:
+      22px !important;
+  }
+
+  .welcome p {
+    padding:
+      0 16px 16px !important;
+
+    font-size:
+      13px !important;
+  }
+
+  .subject {
+    min-height:
+      62px;
+
+    margin:
+      20px 0 12px !important;
+
+    padding:
+      15px 17px !important;
+
+    border-radius:
+      18px !important;
+
+    font-size:
+      19px !important;
+  }
+
+  .chapter {
+    border-radius:
+      18px !important;
+  }
+
+  .chapter-head {
+    padding:
+      16px 15px 14px 18px !important;
+  }
+
+  .chapter-title {
+    font-size:
+      17px !important;
+  }
+
+  .lesson {
+    min-height:
+      60px;
+
+    gap:
+      10px !important;
+
+    padding:
+      9px 7px !important;
+  }
+
+  .num {
+    width:
+      40px !important;
+
+    height:
+      40px !important;
+
+    min-width:
+      40px !important;
+
+    border-radius:
+      13px !important;
+  }
+
+  .lesson-title {
+    font-size:
+      14px !important;
+  }
+
+  .arrow {
+    width:
+      26px;
+
+    height:
+      26px;
+
+    font-size:
+      21px !important;
+  }
+
+}
+
+
+/* ---------------------------------------------------------
+   VERY SMALL PHONES
+--------------------------------------------------------- */
+
+@media (max-width: 380px) {
+
+  .brand {
+    font-size:
+      18px !important;
+  }
+
+  .sub {
+    font-size:
+      12px !important;
+  }
+
+  .home {
+    padding:
+      8px 10px !important;
+
+    font-size:
+      12px !important;
+  }
+
+  .wrap {
+    padding-left:
+      9px !important;
+
+    padding-right:
+      9px !important;
+  }
+
+  .welcome::before {
+    min-height:
+      82px;
+  }
+
+  .welcome h1 {
+    font-size:
+      20px !important;
+  }
+
+  .subject {
+    font-size:
+      18px !important;
+
+    min-height:
+      58px;
+  }
+
+  .chapter-title {
+    font-size:
+      16px !important;
+  }
+
+  .lesson-title {
+    font-size:
+      13.5px !important;
+  }
+
+  .num {
+    width:
+      38px !important;
+
+    height:
+      38px !important;
+
+    min-width:
+      38px !important;
+  }
+
+}
+
+
+/* ---------------------------------------------------------
+   ACCESSIBILITY / REDUCED MOTION
+--------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior:
+      auto !important;
+
+    transition:
+      none !important;
+
+    animation:
+      none !important;
+  }
+
+      }
   </style>
 
 </head>
