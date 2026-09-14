@@ -1940,7 +1940,594 @@ body {
   }
 
 }
-    
+    /* =========================================================
+   AADYA FIRST-OPEN PROFILE
+   PREMIUM COLORFUL MOBILE DESIGN
+   CSS ONLY — EXISTING HTML / JS / DATA UNTOUCHED
+========================================================= */
+
+
+/* =========================================================
+   PROFILE MODAL OVERLAY
+========================================================= */
+
+.modal {
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(255,196,50,0.18),
+      rgba(0,0,0,0.82) 58%
+    ) !important;
+
+  backdrop-filter: blur(5px);
+
+  padding: 10px !important;
+}
+
+
+/* =========================================================
+   PROFILE BOX
+   :has(.modal-logo) = केवल PROFILE MODAL
+   Founder modal को अलग रखा गया है
+========================================================= */
+
+.modal-box:has(.modal-logo) {
+
+  width: min(100%, 560px) !important;
+
+  max-width: 560px !important;
+
+  max-height: 94vh !important;
+
+  overflow-y: auto !important;
+
+  padding: 12px !important;
+
+  border-radius: 26px !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fffdf7 0%,
+      #ffffff 45%,
+      #f4fbff 100%
+    ) !important;
+
+  border:
+    1px solid rgba(212,175,55,0.25) !important;
+
+  box-shadow:
+    0 18px 55px rgba(0,0,0,0.35),
+    0 0 0 1px rgba(255,255,255,0.7) inset !important;
+
+  position: relative;
+}
+
+
+/* =========================================================
+   SOFT COLORFUL GLOW
+========================================================= */
+
+.modal-box:has(.modal-logo)::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 170px;
+  height: 170px;
+
+  top: -70px;
+  right: -70px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,193,7,0.25),
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   NEW AADYA HOME BANNER
+   पुराने square logo की जगह banner
+========================================================= */
+
+.modal-box:has(.modal-logo) .modal-logo {
+
+  margin: 0 0 14px !important;
+
+  padding: 0 !important;
+
+  width: 100% !important;
+
+  overflow: hidden;
+
+  border-radius: 18px !important;
+
+  background: #fffdf7;
+
+  box-shadow:
+    0 5px 18px rgba(0,0,0,0.10);
+
+}
+
+
+/* Existing IMG hide */
+.modal-box:has(.modal-logo) .modal-logo img {
+
+  display: none !important;
+}
+
+
+/* Banner inserted through CSS */
+.modal-box:has(.modal-logo) .modal-logo::before {
+
+  content: "";
+
+  display: block;
+
+  width: 100%;
+
+  aspect-ratio: 3 / 1;
+
+  background-image:
+    url("./assets/logo/aadya-home-banner.png");
+
+  background-size: cover;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+}
+
+
+/* =========================================================
+   WELCOME TITLE
+========================================================= */
+
+.modal-box:has(.modal-logo) .modal-title {
+
+  margin:
+    4px 4px 6px !important;
+
+  text-align: center !important;
+
+  font-size: clamp(21px, 5vw, 27px) !important;
+
+  line-height: 1.25 !important;
+
+  font-weight: 900 !important;
+
+  color: #172b4d !important;
+}
+
+
+/* =========================================================
+   SUBTITLE
+========================================================= */
+
+.modal-box:has(.modal-logo) .modal-subtitle {
+
+  margin:
+    0 8px 17px !important;
+
+  text-align: center !important;
+
+  font-size: 13px !important;
+
+  line-height: 1.55 !important;
+
+  color: #667085 !important;
+}
+
+
+/* =========================================================
+   FORM LABELS
+========================================================= */
+
+.modal-box:has(.modal-logo) .input-label,
+.modal-box:has(.modal-logo) .class-title {
+
+  color: #243b5a !important;
+
+  font-size: 15px !important;
+
+  font-weight: 900 !important;
+
+  margin-bottom: 7px !important;
+}
+
+
+/* =========================================================
+   NAME INPUT
+========================================================= */
+
+.modal-box:has(.modal-logo) .name-input {
+
+  width: 100% !important;
+
+  min-height: 55px !important;
+
+  padding:
+    13px 15px !important;
+
+  margin-bottom: 17px !important;
+
+  border:
+    1.5px solid #d9dfe8 !important;
+
+  border-radius: 15px !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff,
+      #fbfdff
+    ) !important;
+
+  color: #172b4d !important;
+
+  font-size: 17px !important;
+
+  box-shadow:
+    0 3px 12px rgba(23,43,77,0.05) !important;
+
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease !important;
+}
+
+
+.modal-box:has(.modal-logo) .name-input:focus {
+
+  border-color:
+    #f1c40f !important;
+
+  box-shadow:
+    0 0 0 4px rgba(241,196,15,0.15),
+    0 5px 15px rgba(23,43,77,0.07) !important;
+}
+
+
+/* =========================================================
+   CLASS BUTTONS
+========================================================= */
+
+.modal-box:has(.modal-logo) .class-buttons {
+
+  display: grid !important;
+
+  grid-template-columns:
+    repeat(3, 1fr) !important;
+
+  gap: 9px !important;
+}
+
+
+.modal-box:has(.modal-logo) .class-btn {
+
+  min-height: 52px !important;
+
+  padding:
+    10px 5px !important;
+
+  border:
+    1.5px solid #d9dfe8 !important;
+
+  border-radius: 14px !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff,
+      #f8fbff
+    ) !important;
+
+  color: #172b4d !important;
+
+  font-size: 15px !important;
+
+  font-weight: 900 !important;
+
+  box-shadow:
+    0 3px 10px rgba(23,43,77,0.05) !important;
+
+  transition:
+    transform .15s ease,
+    background .15s ease,
+    border-color .15s ease !important;
+}
+
+
+.modal-box:has(.modal-logo) .class-btn:active {
+
+  transform:
+    scale(0.97);
+}
+
+
+/* SELECTED CLASS */
+
+.modal-box:has(.modal-logo) .class-btn.selected {
+
+  background:
+    linear-gradient(
+      135deg,
+      #f7c928,
+      #e9a900
+    ) !important;
+
+  color: #172b4d !important;
+
+  border-color:
+    #d69b00 !important;
+
+  box-shadow:
+    0 5px 15px rgba(214,155,0,0.25) !important;
+}
+
+
+/* =========================================================
+   START LEARNING BUTTON
+========================================================= */
+
+.modal-box:has(.modal-logo) .save-profile {
+
+  width: 100% !important;
+
+  min-height: 55px !important;
+
+  margin-top: 18px !important;
+
+  padding:
+    12px 15px !important;
+
+  border: none !important;
+
+  border-radius: 16px !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f4c62b 0%,
+      #e8a900 100%
+    ) !important;
+
+  color: #172b4d !important;
+
+  font-size: 16px !important;
+
+  font-weight: 900 !important;
+
+  box-shadow:
+    0 7px 18px rgba(217,164,0,0.28) !important;
+
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease !important;
+}
+
+
+.modal-box:has(.modal-logo) .save-profile:active {
+
+  transform:
+    scale(0.98);
+
+  box-shadow:
+    0 4px 10px rgba(217,164,0,0.22) !important;
+}
+
+
+/* =========================================================
+   "बाद में"
+========================================================= */
+
+.modal-box:has(.modal-logo) .close-btn {
+
+  width: 100% !important;
+
+  margin-top: 6px !important;
+
+  padding:
+    9px !important;
+
+  color: #7a8494 !important;
+
+  font-size: 13px !important;
+
+  font-weight: 600 !important;
+}
+
+
+/* =========================================================
+   MOBILE — FULL APP FEEL
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .modal {
+
+    padding:
+      8px !important;
+
+    align-items:
+      center !important;
+  }
+
+
+  .modal-box:has(.modal-logo) {
+
+    width: 100% !important;
+
+    max-width: 100% !important;
+
+    max-height: 96vh !important;
+
+    padding:
+      10px !important;
+
+    border-radius:
+      24px !important;
+  }
+
+
+  .modal-box:has(.modal-logo) .modal-logo {
+
+    margin-bottom:
+      12px !important;
+
+    border-radius:
+      16px !important;
+  }
+
+
+  .modal-box:has(.modal-logo) .modal-title {
+
+    font-size:
+      22px !important;
+
+    margin-bottom:
+      5px !important;
+  }
+
+
+  .modal-box:has(.modal-logo) .modal-subtitle {
+
+    font-size:
+      12.5px !important;
+
+    margin-bottom:
+      15px !important;
+  }
+
+
+  .modal-box:has(.modal-logo) .input-label,
+  .modal-box:has(.modal-logo) .class-title {
+
+    font-size:
+      14px !important;
+  }
+
+
+  .modal-box:has(.modal-logo) .name-input {
+
+    min-height:
+      53px !important;
+
+    font-size:
+      16px !important;
+
+    border-radius:
+      14px !important;
+  }
+
+
+  .modal-box:has(.modal-logo) .class-btn {
+
+    min-height:
+      50px !important;
+
+    font-size:
+      14px !important;
+
+    border-radius:
+      13px !important;
+  }
+
+
+  .modal-box:has(.modal-logo) .save-profile {
+
+    min-height:
+      53px !important;
+
+    font-size:
+      15px !important;
+
+    border-radius:
+      15px !important;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .modal {
+
+    padding:
+      5px !important;
+  }
+
+
+  .modal-box:has(.modal-logo) {
+
+    padding:
+      8px !important;
+
+    border-radius:
+      22px !important;
+  }
+
+
+  .modal-box:has(.modal-logo) .modal-logo {
+
+    margin-bottom:
+      9px !important;
+  }
+
+
+  .modal-box:has(.modal-logo) .modal-title {
+
+    font-size:
+      20px !important;
+  }
+
+
+  .modal-box:has(.modal-logo) .modal-subtitle {
+
+    font-size:
+      11.5px !important;
+
+    margin-bottom:
+      12px !important;
+  }
+
+
+  .modal-box:has(.modal-logo) .name-input {
+
+    min-height:
+      50px !important;
+
+    margin-bottom:
+      13px !important;
+  }
+
+
+  .modal-box:has(.modal-logo) .class-btn {
+
+    min-height:
+      47px !important;
+  }
+
+
+  .modal-box:has(.modal-logo) .save-profile {
+
+    min-height:
+      50px !important;
+
+    margin-top:
+      15px !important;
+  }
+  }
   </style>
 
 </head>
@@ -1963,7 +2550,7 @@ body {
 
   <img
     src="./assets/logo/aadya-home-banner.png"
-    alt="AADYA – Digital Teacher">
+    alt="AADYA – Digital Pathshala">
 
     </div>
 
