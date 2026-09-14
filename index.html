@@ -1627,33 +1627,90 @@
      START LEARNING
   ========================== */
 
-  function startLearning(){
-  if(requireProfile()) openClass();
-}
+  function readProfile(){
 
-function openClass(){
-  if(!requireProfile()) return;
-  location.href="./class.html";
-}
+  try{
 
-function openProgress(){
-  if(!requireProfile()) return;
-  location.href="./progress.html";
-}
+    return JSON.parse(
+      localStorage.getItem(
+        "aadya_student_profile_v1"
+      ) || "null"
+    );
 
+  }catch(error){
 
-
-  /* =========================
-     PROGRESS
-  ========================== */
-
-  function openProgress() {
-
-
-    window.location.href =
-      "./progress.html";
+    return null;
 
   }
+
+}
+
+
+function requireProfile(){
+
+  const profile =
+    readProfile();
+
+  if(
+    !profile ||
+    !profile.name ||
+    !profile.class
+  ){
+
+    openProfile();
+
+    return false;
+
+  }
+
+  return true;
+
+}
+
+
+function startLearning(){
+
+  if(
+    requireProfile()
+  ){
+
+    openClass();
+
+  }
+
+}
+
+
+function openClass(){
+
+  if(
+    !requireProfile()
+  ){
+
+    return;
+
+  }
+
+  window.location.href =
+    "./class.html";
+
+}
+
+
+function openProgress(){
+
+  if(
+    !requireProfile()
+  ){
+
+    return;
+
+  }
+
+  window.location.href =
+    "./progress.html";
+
+}
 
 
 
