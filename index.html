@@ -1650,6 +1650,191 @@ body {
   }
 
 }
+    /* =========================================================
+   AADYA — FINAL HOME BOTTOM POLISH
+   Learning Promise + Founder + Footer
+   HOME SCREEN ONLY
+========================================================= */
+
+/* ---------- FOUNDER CARD ---------- */
+
+.founder-card {
+  position: relative;
+  overflow: hidden;
+  padding-right: 105px;
+}
+
+/* Right-side handwritten-style message */
+.founder-card::after {
+  content: "Education\nFor A Better\nTomorrow ♥";
+  position: absolute;
+  right: 9px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-5deg);
+  width: 82px;
+  text-align: center;
+  white-space: pre-line;
+  font-size: 10px;
+  line-height: 1.12;
+  font-weight: 700;
+  font-style: italic;
+  color: #65749a;
+  opacity: .88;
+  pointer-events: none;
+}
+
+
+/* ---------- FINAL FOOTER / LEARNING PROMISE ---------- */
+
+.footer {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: none;
+  min-height: 150px;
+
+  margin: 10px auto 0;
+  padding: 16px 12px 38px;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f9fcff 0%,
+      #f2f9f2 52%,
+      #e2f2d9 100%
+    );
+
+  border-top: 1px solid #e3ebef;
+  border-radius: 24px 24px 0 0;
+
+  color: #65738a;
+}
+
+
+/* Soft landscape at the bottom */
+.footer::before {
+  content: "";
+  position: absolute;
+  left: -10%;
+  bottom: -48px;
+  width: 120%;
+  height: 92px;
+
+  background:
+    radial-gradient(
+      ellipse at 18% 100%,
+      #c4e5ae 0 30%,
+      transparent 31%
+    ),
+    radial-gradient(
+      ellipse at 52% 100%,
+      #d2eabf 0 35%,
+      transparent 36%
+    ),
+    radial-gradient(
+      ellipse at 84% 100%,
+      #b5dd9e 0 31%,
+      transparent 32%
+    );
+
+  opacity: .78;
+  pointer-events: none;
+}
+
+
+/* AADYA's core message */
+.footer::after {
+  content:
+    "🌍 जहाँ बच्चा, वहीं कक्षा — कभी भी, कहीं भी।\A"
+    "📚 किताब हो या न हो • 📓 कॉपी हो या न हो • 📶 लगातार इंटरनेट/रिचार्ज की चिंता हो या न हो — सीखना रुके नहीं।\A"
+    "🌱 सीखो • बढ़ो • आत्मनिर्भर बनो • अपना भविष्य खुद गढ़ो\A"
+    "🌿 Let's Learn • Let's Grow Together 🌿";
+
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 7px;
+
+  text-align: center;
+  white-space: pre-line;
+
+  font-size: 8px;
+  line-height: 1.45;
+  font-weight: 700;
+  font-style: italic;
+
+  color: #54725b;
+  opacity: .94;
+
+  pointer-events: none;
+}
+
+
+/* Keep existing footer text readable above decoration */
+.footer strong {
+  position: relative;
+  z-index: 3;
+  display: block;
+  margin-bottom: 4px;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 520px) {
+
+  .founder-card {
+    padding-right: 84px;
+  }
+
+  .founder-card::after {
+    right: 6px;
+    width: 68px;
+    font-size: 8px;
+    line-height: 1.08;
+  }
+
+  .footer {
+    min-height: 158px;
+    margin-top: 8px;
+    padding: 14px 8px 48px;
+    border-radius: 22px 22px 0 0;
+  }
+
+  .footer::after {
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    font-size: 7px;
+    line-height: 1.4;
+  }
+}
+
+
+/* ---------- VERY SMALL MOBILE ---------- */
+
+@media (max-width: 380px) {
+
+  .founder-card {
+    padding-right: 76px;
+  }
+
+  .founder-card::after {
+    width: 62px;
+    font-size: 7px;
+  }
+
+  .footer {
+    min-height: 165px;
+    padding-bottom: 50px;
+  }
+
+  .footer::after {
+    font-size: 6.5px;
+  }
+}
     
   </style>
 
