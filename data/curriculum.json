@@ -585,11 +585,33 @@
               ]
             },
             {
-              "number": 19,
-              "book_number": 17,
-              "title": "गुणा : ऊर्ध्वतिर्यक विधि द्वारा",
-              "source": "textbook",
-              "lessons": []
+  "number": 19,
+  "book_number": 17,
+  "title": "गुणा : ऊर्ध्वतिर्यक विधि द्वारा",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "ऊर्ध्वतिर्यक विधि — दो अंकों का गुणा",
+      "file": "./content/class6/mathematics/textbook17/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "हासिल सहित ऊर्ध्वतिर्यक गुणा",
+      "file": "./content/class6/mathematics/textbook17/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "तीन अंकों का ऊर्ध्वतिर्यक गुणा",
+      "file": "./content/class6/mathematics/textbook17/lesson03.json"
+    },
+    {
+      "number": 4,
+      "title": "ऊर्ध्वतिर्यक गुणा — अभ्यास और दैनिक जीवन",
+      "file": "./content/class6/mathematics/textbook17/lesson04.json"
+    }
+  ]
+}
             }
           ]
         }
