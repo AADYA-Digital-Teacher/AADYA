@@ -383,40 +383,47 @@
 
     <!-- PROGRESS -->
 
-    <div class="progress-card">
+<div class="progress-card">
 
-      <h2 class="section-title">
-        📊 आपकी Learning Progress
-      </h2>
+  <h2 class="section-title">
+    📊 आपकी Learning Progress
+  </h2>
 
-      <div class="progress-info">
+  <div
+    class="progress-info"
+    id="overallProgressInfo">
 
-        <span id="progressText">
-          0 / 1 Lessons
-        </span>
+    <span id="progressText">
+      0 / 0 Lessons
+    </span>
 
-        <strong id="progressPercentText">
-          0%
-        </strong>
+    <strong id="progressPercentText">
+      0%
+    </strong>
 
-      </div>
+  </div>
 
-      <div class="progress-bar">
+  <div class="progress-bar">
 
-        <div
-          class="progress-fill"
-          id="progressFill">
-        </div>
-
-      </div>
-
-      <div
-        class="progress-message"
-        id="progressMessage">
-        🚀 अपनी Learning Journey शुरू करें!
-      </div>
-
+    <div
+      class="progress-fill"
+      id="progressFill">
     </div>
+
+  </div>
+
+  <div
+    class="progress-message"
+    id="progressMessage">
+    🚀 अपनी Learning Journey शुरू करें!
+  </div>
+
+  <div
+    id="subjectDashboard"
+    style="margin-top:22px;">
+  </div>
+
+</div>
 
 
     <!-- LATEST LESSON -->
@@ -492,513 +499,1427 @@
   </div>
 
 
-  <script>
+<script>
 
-    const PROFILE_KEY = "aadya_student_profile_v1";
+const PROFILE_KEY =
+  "aadya_student_profile_v1";
 
-    const PROGRESS_KEY = "aadya_progress_v1";
+const PROGRESS_KEY =
+  "aadya_progress_v1";
 
-    const QUIZ_KEY = "aadya_last_quiz_score";
+const QUIZ_KEY =
+  "aadya_last_quiz_score";
 
+const QUIZ_HISTORY_KEY =
+  "aadya_quiz_history_v1";
 
-    /* =========================
-       STUDENT PROFILE
-    ========================= */
 
-    function loadStudentProfile() {
+let profile = {};
+let curriculum = null;
+let progress = {};
+let quizHistory = {};
 
-      const profileData =
-        localStorage.getItem(PROFILE_KEY);
+let selectedSubjectKey = null;
 
-      if (!profileData) {
 
-        document.getElementById(
-          "studentGreeting"
-        ).textContent =
-          "नमस्ते! 👋";
+/* =========================
+   SAFE HELPERS
+========================= */
 
-        document.getElementById(
-          "studentClass"
-        ).textContent =
-          "अपनी Learning Journey शुरू करें।";
+function esc(value){
 
-        return;
-      }
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
+}
 
-      try {
 
-        const profile =
-          JSON.parse(profileData);
+/* =========================
+   PROFILE
+========================= */
 
-        if (profile.name) {
+function loadProfile(){
 
-          document.getElementById(
-            "studentGreeting"
-          ).textContent =
-            "नमस्ते, " + profile.name + "! 👋";
+  try{
 
-        }
-
-
-        if (profile.class) {
-
-          document.getElementById(
-            "studentClass"
-          ).textContent =
-            "कक्षा " +
-            profile.class +
-            " • आपकी Learning Journey";
-
-        }
-
-      } catch (error) {
-
-        console.log(
-          "Profile read error:",
-          error
-        );
-
-      }
-
-    }
-
-
-    /* =========================
-       PROGRESS
-    ========================= */
-
-    function loadProgress() {
-
-      let progress = {};
-
-      try {
-
-        progress = JSON.parse(
-          localStorage.getItem(
-            PROGRESS_KEY
-          ) || "{}"
-        );
-
-      } catch (error) {
-
-        console.log(
-          "Progress read error:",
-          error
-        );
-
-        progress = {};
-
-      }
-
-
-      /*
-        केवल वास्तव में completed lessons
-        को count किया जाएगा।
-      */
-
-      const completed = Object.entries(progress)
-        .filter(function(entry) {
-
-          return (
-            entry[1] &&
-            entry[1].completed === true
-          );
-
-        });
-
-
-      const completedCount =
-        completed.length;
-
-
-      /*
-  AADYA में अभी 4 connected lessons हैं:
-  Chapter 1 → Lesson 1, Lesson 2
-  Chapter 2 → Lesson 1, Lesson 2
-*/
-
-const totalLessons = 4;
-
-
-      let percentage = 0;
-
-      if (totalLessons > 0) {
-
-        percentage = Math.round(
-          (completedCount / totalLessons) * 100
-        );
-
-      }
-
-
-      if (percentage > 100) {
-
-        percentage = 100;
-
-      }
-
-
-      /* LESSON COUNT */
-
-      document.getElementById(
-        "completedLessons"
-      ).textContent =
-        completedCount;
-
-
-      /* PERCENTAGE */
-
-      document.getElementById(
-        "progressPercent"
-      ).textContent =
-        percentage + "%";
-
-
-      document.getElementById(
-        "progressPercentText"
-      ).textContent =
-        percentage + "%";
-
-
-      /* PROGRESS TEXT */
-
-      document.getElementById(
-        "progressText"
-      ).textContent =
-        completedCount +
-        " / " +
-        totalLessons +
-        " Lessons";
-
-
-      /* PROGRESS BAR */
-
-      document.getElementById(
-        "progressFill"
-      ).style.width =
-        percentage + "%";
-
-
-      /* PROGRESS MESSAGE */
-
-      const progressMessage =
-        document.getElementById(
-          "progressMessage"
-        );
-
-
-      if (completedCount === 0) {
-
-        progressMessage.textContent =
-          "🚀 अपनी Learning Journey शुरू करें!";
-
-      }
-
-      else if (percentage < 100) {
-
-        progressMessage.textContent =
-          "🔥 बहुत बढ़िया! Learning जारी रखें।";
-
-      }
-
-      else {
-
-        progressMessage.textContent =
-          "🏆 शानदार! आपने उपलब्ध Lessons पूरे कर लिए हैं।";
-
-      }
-
-
-      /* =========================
-         LATEST LESSON
-      ========================= */
-
-      const latestLesson =
-        document.getElementById(
-          "latestLesson"
-        );
-
-
-      if (completed.length === 0) {
-
-        latestLesson.innerHTML = `
-
-          <h3>
-            अभी कोई Lesson पूरा नहीं हुआ
-          </h3>
-
-          <p>
-            अपना पहला Lesson पूरा करें और यहाँ
-            अपनी progress देखें।
-          </p>
-
-        `;
-
-      }
-
-      else {
-
-        /*
-          सबसे हाल में पूरा किया गया lesson
-          खोजें।
-        */
-
-        completed.sort(function(a, b) {
-
-          const dateA =
-            new Date(
-              a[1].completedAt || 0
-            );
-
-          const dateB =
-            new Date(
-              b[1].completedAt || 0
-            );
-
-          return dateB - dateA;
-
-        });
-
-
-        const latest =
-          completed[0];
-
-
-        const lessonFile =
-          latest[0];
-
-
-        let lessonTitle =
-          "Completed Lesson";
-
-
-        let lessonDetails =
-          "कक्षा 6 • गणित • अध्याय 1";
-
-
-        /*
-          अभी हमारे पास केवल पहला lesson है।
-        */
-
-        if (
-          lessonFile.includes(
-            "lesson01.json"
-          )
-        ) {
-
-          lessonTitle =
-            "पैटर्न क्या होता है?";
-
-          lessonDetails =
-            "कक्षा 6 • गणित • अध्याय 1 • गणित में पैटर्न";
-
-        }
-
-
-        latestLesson.innerHTML = `
-
-          <h3>
-            ${lessonTitle}
-          </h3>
-
-          <p>
-            ${lessonDetails}
-          </p>
-
-          <span class="completed-badge">
-            ✅ Lesson Completed
-          </span>
-
-        `;
-
-      }
-
-
-      /* =========================
-         MOTIVATION
-      ========================= */
-
-      const motivation =
-        document.getElementById(
-          "motivation"
-        );
-
-
-      if (percentage === 100) {
-
-        motivation.innerHTML = `
-
-          <h2>
-            🏆 शानदार काम!
-          </h2>
-
-          <p>
-            आपने अपना उपलब्ध Lesson पूरा कर लिया है।
-            अब अगले Lesson की ओर बढ़ते हैं। 🚀
-          </p>
-
-        `;
-
-      }
-
-      else if (completedCount > 0) {
-
-        motivation.innerHTML = `
-
-          <h2>
-            🔥 बहुत बढ़िया!
-          </h2>
-
-          <p>
-            आपने शुरुआत कर दी है।
-            अब Learning को लगातार आगे बढ़ाइए।
-          </p>
-
-        `;
-
-      }
-
-      else {
-
-        motivation.innerHTML = `
-
-          <h2>
-            🌟 Keep Learning!
-          </h2>
-
-          <p>
-            हर पूरा किया हुआ Lesson आपको अपने लक्ष्य के
-            एक कदम और करीब ले जाता है।
-          </p>
-
-        `;
-
-      }
-
-
-      /* =========================
-         LAST QUIZ
-      ========================= */
-
-      const quizData =
+    profile =
+      JSON.parse(
         localStorage.getItem(
-          QUIZ_KEY
-        );
+          PROFILE_KEY
+        ) || "{}"
+      );
 
+  }catch(error){
 
-      if (quizData) {
-
-  try {
-
-    const quiz =
-      JSON.parse(quizData);
-
-    if (
-      quiz.score !== undefined &&
-      quiz.total !== undefined
-    ) {
-
-      document.getElementById(
-        "quizScore"
-      ).textContent =
-        quiz.score +
-        "/" +
-        quiz.total;
-
-    } else {
-
-      document.getElementById(
-        "quizScore"
-      ).textContent =
-        "—";
-
-    }
-
-  } catch (error) {
-
-    console.log(
-      "Quiz read error:",
-      error
-    );
-
-    document.getElementById(
-      "quizScore"
-    ).textContent =
-      "—";
+    profile = {};
 
   }
 
+}
+
+
+/* =========================
+   CURRICULUM URL
+========================= */
+
+function curriculumUrl(cls){
+
+  if(String(cls) === "7"){
+
+    return "./data/curriculum-class7.json";
+
+  }
+
+  if(String(cls) === "8"){
+
+    return "./data/curriculum-class8.json";
+
+  }
+
+  return "./data/curriculum.json";
+
+}
+
+
+/* =========================
+   NORMALIZE FILE PATH
+========================= */
+
+function normalizeFile(file){
+
+  return String(file || "")
+    .replace(/^\.\/+/,"")
+    .replace(/^\/+/,"");
+
+}
+
+
+/* =========================
+   LOAD PROGRESS
+========================= */
+
+function loadProgressData(){
+
+  try{
+
+    progress =
+      JSON.parse(
+        localStorage.getItem(
+          PROGRESS_KEY
+        ) || "{}"
+      );
+
+  }catch(error){
+
+    progress = {};
+
+  }
+
+}
+
+
+/* =========================
+   LOAD QUIZ HISTORY
+========================= */
+
+function loadQuizHistory(){
+
+  try{
+
+    quizHistory =
+      JSON.parse(
+        localStorage.getItem(
+          QUIZ_HISTORY_KEY
+        ) || "{}"
+      );
+
+  }catch(error){
+
+    quizHistory = {};
+
+  }
+
+}
+
+
+/* =========================
+   CLASS DATA
+========================= */
+
+function getClassData(){
+
+  return curriculum
+    ?.classes
+    ?.["class" + String(profile.class || 6)]
+    || null;
+
+}
+
+
+/* =========================
+   ALL CURRENT CLASS LESSONS
+========================= */
+
+function getAllLessons(){
+
+  const result = [];
+
+  const subjects =
+    getClassData()?.subjects || {};
+
+  Object.keys(subjects)
+    .forEach(function(subjectKey){
+
+      const subject =
+        subjects[subjectKey];
+
+      (subject.chapters || [])
+        .forEach(function(chapter){
+
+          (chapter.lessons || [])
+            .forEach(function(lesson){
+
+              result.push({
+
+                ...lesson,
+
+                subjectKey:
+                  subjectKey,
+
+                subjectName:
+                  subject.name ||
+                  subjectKey,
+
+                chapterNumber:
+                  chapter.number,
+
+                chapterTitle:
+                  chapter.title
+
+              });
+
+            });
+
+        });
+
+    });
+
+  return result;
+
+}
+
+
+/* =========================
+   COMPLETED LESSON CHECK
+========================= */
+
+function isCompleted(file){
+
+  const normalized =
+    normalizeFile(file);
+
+  const keys =
+    Object.keys(progress);
+
+  for(let i=0;i<keys.length;i++){
+
+    const key = keys[i];
+
+    if(
+      normalizeFile(key) ===
+      normalized
+    ){
+
+      const item =
+        progress[key];
+
+      if(
+        item === true ||
+        (
+          item &&
+          item.completed === true
+        )
+      ){
+
+        return true;
+
       }
 
     }
 
+  }
 
-    /* =========================
-       REFRESH DASHBOARD
-    ========================= */
+  return false;
 
-    function refreshDashboard() {
+}
 
-      loadStudentProfile();
 
-      loadProgress();
+/* =========================
+   COMPLETION RECORD
+========================= */
+
+function getCompletionRecord(file){
+
+  const normalized =
+    normalizeFile(file);
+
+  const keys =
+    Object.keys(progress);
+
+  let found = null;
+
+  keys.forEach(function(key){
+
+    if(
+      normalizeFile(key) ===
+      normalized
+    ){
+
+      const item =
+        progress[key];
+
+      if(
+        item === true ||
+        (
+          item &&
+          item.completed === true
+        )
+      ){
+
+        found = {
+
+          ...(typeof item === "object"
+            ? item
+            : {}),
+
+          file:key
+
+        };
+
+      }
 
     }
 
+  });
 
-    /*
-      पहली बार page खुलने पर
-    */
+  return found;
 
-    document.addEventListener(
-      "DOMContentLoaded",
-      function() {
+}
 
-        refreshDashboard();
+
+/* =========================
+   SUBJECT STATS
+========================= */
+
+function getSubjectStats(
+  subjectKey,
+  subject
+){
+
+  let total = 0;
+  let completed = 0;
+
+  const lessons = [];
+
+  (subject.chapters || [])
+    .forEach(function(chapter){
+
+      (chapter.lessons || [])
+        .forEach(function(lesson){
+
+          total++;
+
+          const item = {
+
+            ...lesson,
+
+            subjectKey:
+              subjectKey,
+
+            subjectName:
+              subject.name ||
+              subjectKey,
+
+            chapterNumber:
+              chapter.number,
+
+            chapterTitle:
+              chapter.title
+
+          };
+
+          lessons.push(item);
+
+          if(
+            lesson.file &&
+            isCompleted(
+              lesson.file
+            )
+          ){
+
+            completed++;
+
+          }
+
+        });
+
+    });
+
+  const remaining =
+    Math.max(
+      total - completed,
+      0
+    );
+
+  const percentage =
+    total > 0
+      ? Math.round(
+          completed / total * 100
+        )
+      : 0;
+
+  return {
+
+    total,
+    completed,
+    remaining,
+    percentage,
+    lessons
+
+  };
+
+}
+
+
+/* =========================
+   LATEST COMPLETED LESSON
+========================= */
+
+function getLatestCompletedLesson(){
+
+  const lessons =
+    getAllLessons();
+
+  const completedLessons =
+    lessons.filter(function(lesson){
+
+      return (
+        lesson.file &&
+        isCompleted(
+          lesson.file
+        )
+      );
+
+    });
+
+  if(
+    !completedLessons.length
+  ){
+
+    return null;
+
+  }
+
+
+  completedLessons.sort(
+    function(a,b){
+
+      const ra =
+        getCompletionRecord(
+          a.file
+        );
+
+      const rb =
+        getCompletionRecord(
+          b.file
+        );
+
+      const da =
+        ra?.timestamp
+          ? new Date(
+              ra.timestamp
+            ).getTime()
+          : 0;
+
+      const db =
+        rb?.timestamp
+          ? new Date(
+              rb.timestamp
+            ).getTime()
+          : 0;
+
+      return db - da;
+
+    }
+  );
+
+  return completedLessons[0];
+
+}
+
+
+/* =========================
+   LATEST QUIZ
+========================= */
+
+function getLatestQuiz(){
+
+  const lessons =
+    getAllLessons();
+
+  const records = [];
+
+  lessons.forEach(
+    function(lesson){
+
+      if(!lesson.file)
+        return;
+
+      const key =
+        normalizeFile(
+          lesson.file
+        );
+
+      const result =
+        quizHistory[key];
+
+      if(result){
+
+        records.push({
+
+          ...result,
+
+          lesson:
+
+            lesson
+
+        });
+
+      }
+
+    }
+  );
+
+  if(
+    !records.length
+  ){
+
+    return null;
+
+  }
+
+  records.sort(
+    function(a,b){
+
+      const da =
+        a.timestamp
+          ? new Date(
+              a.timestamp
+            ).getTime()
+          : 0;
+
+      const db =
+        b.timestamp
+          ? new Date(
+              b.timestamp
+            ).getTime()
+          : 0;
+
+      return db - da;
+
+    }
+  );
+
+  return records[0];
+
+}
+
+
+/* =========================
+   OVERALL CLASS STATS
+========================= */
+
+function getOverallStats(){
+
+  const lessons =
+    getAllLessons();
+
+  const total =
+    lessons.length;
+
+  const completed =
+    lessons.filter(
+      function(lesson){
+
+        return (
+          lesson.file &&
+          isCompleted(
+            lesson.file
+          )
+        );
+
+      }
+    ).length;
+
+  const remaining =
+    Math.max(
+      total - completed,
+      0
+    );
+
+  const percentage =
+    total > 0
+      ? Math.round(
+          completed / total * 100
+        )
+      : 0;
+
+  return {
+
+    total,
+    completed,
+    remaining,
+    percentage
+
+  };
+
+}
+
+
+/* =========================
+   UPDATE TOP STATS
+========================= */
+
+function updateTopStats(){
+
+  const stats =
+    getOverallStats();
+
+  document.getElementById(
+    "completedLessons"
+  ).textContent =
+    stats.completed;
+
+
+  document.getElementById(
+    "progressPercent"
+  ).textContent =
+    stats.percentage + "%";
+
+
+  document.getElementById(
+    "progressPercentText"
+  ).textContent =
+    stats.percentage + "%";
+
+
+  document.getElementById(
+    "progressText"
+  ).textContent =
+
+    stats.completed +
+    " / " +
+    stats.total +
+    " Lessons";
+
+
+  document.getElementById(
+    "progressFill"
+  ).style.width =
+    stats.percentage + "%";
+
+
+  const message =
+    document.getElementById(
+      "progressMessage"
+    );
+
+
+  if(stats.completed === 0){
+
+    message.textContent =
+      "🚀 अपनी Learning Journey शुरू करें!";
+
+  }
+
+  else if(
+    stats.percentage >= 100
+  ){
+
+    message.textContent =
+      "🏆 शानदार! इस Class के सभी Lessons पूरे हो गए!";
+
+  }
+
+  else if(
+    stats.percentage >= 75
+  ){
+
+    message.textContent =
+      "🔥 बहुत बढ़िया! मंज़िल बहुत करीब है।";
+
+  }
+
+  else if(
+    stats.percentage >= 40
+  ){
+
+    message.textContent =
+      "🌟 बहुत अच्छा! Learning जारी रखें।";
+
+  }
+
+  else{
+
+    message.textContent =
+      "💪 अच्छी शुरुआत! धीरे-धीरे आगे बढ़ते रहें।";
+
+  }
+
+
+  const latestQuiz =
+    getLatestQuiz();
+
+
+  document.getElementById(
+    "quizScore"
+  ).textContent =
+
+    latestQuiz
+
+      ? (
+          latestQuiz.score +
+          "/" +
+          latestQuiz.total
+        )
+
+      : "—";
+
+}
+
+
+/* =========================
+   SUBJECT DASHBOARD
+========================= */
+
+function renderSubjectDashboard(){
+
+  const box =
+    document.getElementById(
+      "subjectDashboard"
+    );
+
+  const subjects =
+    getClassData()?.subjects || {};
+
+
+  if(!Object.keys(subjects).length){
+
+    box.innerHTML =
+      "<div style='color:#777'>"+
+      "कोई Subject उपलब्ध नहीं है।"+
+      "</div>";
+
+    return;
+
+  }
+
+
+  /* SUBJECT DETAIL */
+
+  if(selectedSubjectKey){
+
+    renderSubjectDetail(
+      box,
+      selectedSubjectKey,
+      subjects[selectedSubjectKey]
+    );
+
+    return;
+
+  }
+
+
+  /* SUBJECT LIST */
+
+  let html =
+
+    "<div style='font-size:18px;font-weight:800;margin-bottom:12px'>"+
+    "📚 Subject-wise Progress"+
+    "</div>";
+
+
+  Object.keys(subjects)
+    .forEach(function(subjectKey){
+
+      const subject =
+        subjects[subjectKey];
+
+      const stats =
+        getSubjectStats(
+          subjectKey,
+          subject
+        );
+
+
+      html +=
+
+        "<div "+
+        "onclick=\"selectSubject('"+
+        esc(subjectKey)+
+        "')\" "+
+        "style=\""+
+        "background:#fafafa;"+
+        "border:1px solid #eee;"+
+        "border-radius:15px;"+
+        "padding:15px;"+
+        "margin:10px 0;"+
+        "cursor:pointer;"+
+        "\">"+
+
+        "<div style='font-size:17px;font-weight:800'>"+
+        "📘 "+
+        esc(
+          subject.name ||
+          subjectKey
+        )+
+        "</div>"+
+
+        "<div style='margin-top:8px;color:#666;font-size:13px'>"+
+        stats.completed+
+        " / "+
+        stats.total+
+        " Lessons पूरे"+
+        "</div>"+
+
+        "<div style='margin-top:9px;background:#e5e5e5;height:10px;border-radius:20px;overflow:hidden'>"+
+        "<div style='width:"+
+        stats.percentage+
+        "%;height:100%;background:#d4af37'></div>"+
+        "</div>"+
+
+        "<div style='margin-top:8px;font-size:12px;color:#666'>"+
+        "बाकी: "+
+        stats.remaining+
+        " • "+
+        stats.percentage+
+        "%"+
+        "</div>"+
+
+        "</div>";
+
+    });
+
+
+  box.innerHTML =
+    html;
+
+}
+
+
+/* =========================
+   SELECT SUBJECT
+========================= */
+
+function selectSubject(
+  subjectKey
+){
+
+  selectedSubjectKey =
+    subjectKey;
+
+  renderSubjectDashboard();
+
+}
+
+
+/* =========================
+   SUBJECT DETAIL
+========================= */
+
+function renderSubjectDetail(
+  box,
+  subjectKey,
+  subject
+){
+
+  const stats =
+    getSubjectStats(
+      subjectKey,
+      subject
+    );
+
+
+  let html =
+
+    "<button "+
+    "onclick=\"backToSubjects()\" "+
+    "style=\""+
+    "border:0;"+
+    "background:#111;"+
+    "color:#fff;"+
+    "border-radius:10px;"+
+    "padding:9px 12px;"+
+    "font-weight:700;"+
+    "margin-bottom:14px;"+
+    "\">"+
+    "← सभी Subjects"+
+    "</button>"+
+
+    "<div style='font-size:20px;font-weight:900;margin-bottom:12px'>"+
+    "📘 "+
+    esc(
+      subject.name ||
+      subjectKey
+    )+
+    "</div>"+
+
+
+    "<div style='display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-bottom:15px'>"+
+
+    statBox(
+      "📚 कुल Lessons",
+      stats.total
+    )+
+
+    statBox(
+      "✅ Completed",
+      stats.completed
+    )+
+
+    statBox(
+      "⏳ Remaining",
+      stats.remaining
+    )+
+
+    statBox(
+      "📈 Progress",
+      stats.percentage + "%"
+    )+
+
+    "</div>";
+
+
+  /* PROGRESS SUMMARY */
+
+  html +=
+
+    "<div style='background:#fafafa;border:1px solid #eee;border-radius:14px;padding:14px;margin-bottom:15px'>"+
+
+    "<div style='font-weight:800;margin-bottom:8px'>"+
+    "📊 इस Subject की Learning Progress"+
+    "</div>"+
+
+    "<div style='color:#666;font-size:13px'>"+
+    stats.completed+
+    " / "+
+    stats.total+
+    " Lessons पूरे • "+
+    stats.remaining+
+    " बाकी"+
+    "</div>"+
+
+    "<div style='margin-top:10px;background:#e5e5e5;height:12px;border-radius:20px;overflow:hidden'>"+
+    "<div style='width:"+
+    stats.percentage+
+    "%;height:100%;background:#d4af37'></div>"+
+    "</div>"+
+
+    "</div>";
+
+
+  /* LATEST COMPLETED IN SUBJECT */
+
+  const latest =
+    getLatestCompletedForSubject(
+      stats.lessons
+    );
+
+
+  html +=
+
+    "<div style='background:#fafafa;border:1px solid #eee;border-radius:14px;padding:14px;margin-bottom:15px'>"+
+
+    "<div style='font-weight:800;margin-bottom:8px'>"+
+    "🏁 Latest Completed Lesson"+
+    "</div>";
+
+
+  if(latest){
+
+    html +=
+
+      "<div style='font-weight:800'>"+
+      esc(latest.title)+
+      "</div>"+
+
+      "<div style='color:#666;font-size:13px;margin-top:5px'>"+
+      "अध्याय "+
+      esc(latest.chapterNumber)+
+      " • "+
+      esc(latest.chapterTitle)+
+      "</div>";
+
+  }else{
+
+    html +=
+
+      "<div style='color:#777;font-size:13px'>"+
+      "अभी इस Subject का कोई Lesson पूरा नहीं हुआ।"+
+      "</div>";
+
+  }
+
+
+  html +=
+    "</div>";
+
+
+  /* LATEST QUIZ FOR SUBJECT */
+
+  const latestQuiz =
+    getLatestQuizForSubject(
+      stats.lessons
+    );
+
+
+  html +=
+
+    "<div style='background:#fafafa;border:1px solid #eee;border-radius:14px;padding:14px'>"+
+
+    "<div style='font-weight:800;margin-bottom:8px'>"+
+    "🧠 Latest Quiz Performance"+
+    "</div>";
+
+
+  if(latestQuiz){
+
+    html +=
+
+      "<div style='font-size:18px;font-weight:900'>"+
+      latestQuiz.score+
+      " / "+
+      latestQuiz.total+
+      " ("+
+      latestQuiz.percentage+
+      "%)"+
+      "</div>"+
+
+      "<div style='color:#666;font-size:13px;margin-top:5px'>"+
+      esc(
+        latestQuiz.lesson.title
+      )+
+      "</div>";
+
+  }else{
+
+    html +=
+
+      "<div style='color:#777;font-size:13px'>"+
+      "अभी कोई Quiz attempt नहीं किया गया।"+
+      "</div>";
+
+  }
+
+
+  html +=
+    "</div>";
+
+
+  box.innerHTML =
+    html;
+
+}
+
+
+/* =========================
+   STAT BOX
+========================= */
+
+function statBox(
+  label,
+  value
+){
+
+  return (
+
+    "<div style='background:#fff;border:1px solid #eee;border-radius:12px;padding:12px;text-align:center'>"+
+
+    "<div style='font-size:20px;font-weight:900'>"+
+    esc(value)+
+    "</div>"+
+
+    "<div style='font-size:11px;color:#666;margin-top:3px'>"+
+    esc(label)+
+    "</div>"+
+
+    "</div>"
+
+  );
+
+}
+
+
+/* =========================
+   BACK TO SUBJECTS
+========================= */
+
+function backToSubjects(){
+
+  selectedSubjectKey =
+    null;
+
+  renderSubjectDashboard();
+
+}
+
+
+/* =========================
+   LATEST COMPLETED
+   FOR SUBJECT
+========================= */
+
+function getLatestCompletedForSubject(
+  lessons
+){
+
+  const completed =
+    lessons.filter(
+      function(lesson){
+
+        return (
+          lesson.file &&
+          isCompleted(
+            lesson.file
+          )
+        );
 
       }
     );
 
 
-    /*
-      IMPORTANT FIX:
+  if(!completed.length)
+    return null;
 
-      जब user Learning page से
-      Back करता है तो mobile browser
-      कई बार page को पूरी तरह reload
-      नहीं करता बल्कि पुराने page snapshot
-      (bfcache) से वापस दिखाता है।
 
-      इसलिए यहाँ pageshow पर data
-      दोबारा localStorage से पढ़ा जाता है।
-    */
+  completed.sort(
+    function(a,b){
 
-    window.addEventListener(
-      "pageshow",
-      function() {
+      const ra =
+        getCompletionRecord(
+          a.file
+        );
 
-        refreshDashboard();
+      const rb =
+        getCompletionRecord(
+          b.file
+        );
+
+
+      const da =
+        ra?.timestamp
+          ? new Date(
+              ra.timestamp
+            ).getTime()
+          : 0;
+
+
+      const db =
+        rb?.timestamp
+          ? new Date(
+              rb.timestamp
+            ).getTime()
+          : 0;
+
+
+      return db - da;
+
+    }
+  );
+
+
+  return completed[0];
+
+}
+
+
+/* =========================
+   LATEST QUIZ
+   FOR SUBJECT
+========================= */
+
+function getLatestQuizForSubject(
+  lessons
+){
+
+  const records = [];
+
+
+  lessons.forEach(
+    function(lesson){
+
+      if(!lesson.file)
+        return;
+
+
+      const key =
+        normalizeFile(
+          lesson.file
+        );
+
+
+      const result =
+        quizHistory[key];
+
+
+      if(result){
+
+        records.push({
+
+          ...result,
+
+          lesson:
+
+            lesson
+
+        });
 
       }
-    );
-    /* =========================
-       REFRESH PROGRESS PAGE
-       ========================= */
 
-    function refreshDashboard() {
-      loadStudentProfile();
-      loadProgress();
     }
+  );
 
-    document.addEventListener("DOMContentLoaded", function() {
-      refreshDashboard();
-    });
 
-    window.addEventListener("pageshow", function() {
-      refreshDashboard();
-    });
-  </script>
+  if(!records.length)
+    return null;
+
+
+  records.sort(
+    function(a,b){
+
+      const da =
+        a.timestamp
+          ? new Date(
+              a.timestamp
+            ).getTime()
+          : 0;
+
+
+      const db =
+        b.timestamp
+          ? new Date(
+              b.timestamp
+            ).getTime()
+          : 0;
+
+
+      return db - da;
+
+    }
+  );
+
+
+  return records[0];
+
+}
+
+
+/* =========================
+   LATEST LEARNING CARD
+========================= */
+
+function renderLatestLearning(){
+
+  const box =
+    document.getElementById(
+      "latestLesson"
+    );
+
+
+  const latest =
+    getLatestCompletedLesson();
+
+
+  if(!latest){
+
+    box.innerHTML =
+
+      "<h3>"+
+      "अभी कोई Lesson पूरा नहीं हुआ"+
+      "</h3>"+
+
+      "<p>"+
+      "अपना पहला Lesson पूरा करें और यहाँ अपनी progress देखें।"+
+      "</p>";
+
+    return;
+
+  }
+
+
+  const record =
+    getCompletionRecord(
+      latest.file
+    );
+
+
+  box.innerHTML =
+
+    "<h3>"+
+    "✅ "+
+    esc(latest.title)+
+    "</h3>"+
+
+    "<p>"+
+    "कक्षा "+
+    esc(profile.class || "")+
+    " • "+
+    esc(latest.subjectName)+
+    " • अध्याय "+
+    esc(latest.chapterNumber)+
+    " • "+
+    esc(latest.chapterTitle)+
+    "</p>"+
+
+    "<p style='margin-top:8px;font-size:13px;color:#777'>"+
+    (
+      record?.timestamp
+        ? "पूरा किया: "+
+          formatDate(
+            record.timestamp
+          )
+        : "Lesson Completed"
+    )+
+    "</p>"+
+
+    "<span class='completed-badge'>"+
+    "✅ Lesson Completed"+
+    "</span>";
+
+}
+
+
+/* =========================
+   DATE FORMAT
+========================= */
+
+function formatDate(
+  value
+){
+
+  try{
+
+    return new Date(value)
+      .toLocaleString(
+        "hi-IN",
+        {
+          dateStyle:"medium",
+          timeStyle:"short"
+        }
+      );
+
+  }catch(e){
+
+    return "";
+
+  }
+
+}
+
+
+/* =========================
+   INIT
+========================= */
+
+async function init(){
+
+  loadProfile();
+
+  loadProgressData();
+
+  loadQuizHistory();
+
+
+  const cls =
+    String(
+      profile.class || 6
+    );
+
+
+  /* STUDENT */
+
+  const greeting =
+    document.getElementById(
+      "studentGreeting"
+    );
+
+  const studentClass =
+    document.getElementById(
+      "studentClass"
+    );
+
+
+  if(profile.name){
+
+    greeting.textContent =
+      "नमस्ते, "+
+      profile.name+
+      "! 👋";
+
+  }else{
+
+    greeting.textContent =
+      "नमस्ते! 👋";
+
+  }
+
+
+  studentClass.textContent =
+    "कक्षा "+
+    cls+
+    " • आपकी Learning Journey";
+
+
+  /* CURRICULUM */
+
+  try{
+
+    const response =
+      await fetch(
+        curriculumUrl(cls)+
+        "?v="+
+        Date.now()
+      );
+
+    curriculum =
+      await response.json();
+
+
+    updateTopStats();
+
+    renderSubjectDashboard();
+
+    renderLatestLearning();
+
+
+  }catch(error){
+
+    console.log(
+      "Curriculum load error:",
+      error
+    );
+
+
+    document.getElementById(
+      "subjectDashboard"
+    ).innerHTML =
+
+      "<div style='color:#b00020'>"+
+      "⚠️ Curriculum लोड नहीं हो पाया।"
 
 </body>
 </html>
