@@ -1835,6 +1835,111 @@ body {
     font-size: 6.5px;
   }
 }
+
+/* =========================================================
+   AADYA — REAL FOOTER MISSION MESSAGE
+   Actual HTML text — not pseudo-element
+========================================================= */
+
+.footer::after {
+  content: none !important;
+}
+
+.footer-brand,
+.footer strong,
+.footer-promise,
+.footer-promise-sub,
+.footer-growth,
+.footer-together {
+  position: relative;
+  z-index: 5;
+}
+
+.footer-brand {
+  font-size: 10px;
+  line-height: 1.4;
+  color: #65738a;
+  margin-bottom: 3px;
+}
+
+.footer strong {
+  display: block;
+  font-size: 11px;
+  color: #40516a;
+  margin-bottom: 9px;
+}
+
+.footer-promise {
+  font-size: 11px;
+  line-height: 1.45;
+  font-weight: 800;
+  color: #3f7650;
+  margin-top: 3px;
+}
+
+.footer-promise-sub {
+  max-width: 600px;
+  margin: 4px auto 0;
+  font-size: 9px;
+  line-height: 1.45;
+  color: #617267;
+}
+
+.footer-growth {
+  margin-top: 6px;
+  font-size: 9px;
+  line-height: 1.4;
+  font-weight: 700;
+  color: #54725b;
+}
+
+.footer-together {
+  margin-top: 6px;
+  font-size: 9px;
+  line-height: 1.4;
+  font-weight: 700;
+  font-style: italic;
+  color: #6d806f;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 520px) {
+
+  .footer {
+    min-height: 185px;
+    padding:
+      14px 10px 48px;
+  }
+
+  .footer-brand {
+    font-size: 9px;
+  }
+
+  .footer strong {
+    font-size: 10px;
+    margin-bottom: 9px;
+  }
+
+  .footer-promise {
+    font-size: 10px;
+  }
+
+  .footer-promise-sub {
+    font-size: 8.5px;
+    max-width: 340px;
+  }
+
+  .footer-growth {
+    font-size: 8.5px;
+  }
+
+  .footer-together {
+    font-size: 8.5px;
+  }
+
+}
     
   </style>
 
@@ -2003,15 +2108,34 @@ body {
 
     <!-- FOOTER -->
 
-    <div class="footer">
+<div class="footer">
 
-      AADYA — Apne Adarsh Digital Gyan ka Yashasvi Abhiyan<br>
+  <div class="footer-brand">
+    AADYA — Apne Adarsh Digital Gyan ka Yashasvi Abhiyan
+  </div>
 
-      <strong>
-        हर बच्चे की शिक्षा, आत्मनिर्भर भविष्य की ओर
-      </strong>
+  <strong>
+    हर बच्चे की शिक्षा, आत्मनिर्भर भविष्य की ओर
+  </strong>
 
-    </div>
+  <div class="footer-promise">
+    🌍 जहाँ बच्चा, वहीं कक्षा — कभी भी, कहीं भी।
+  </div>
+
+  <div class="footer-promise-sub">
+    📚 किताब-कॉपी की कमी हो या इंटरनेट रिचार्ज की चिंता —
+    सीखना रुकना नहीं चाहिए।
+  </div>
+
+  <div class="footer-growth">
+    🌱 सीखो • बढ़ो • आत्मनिर्भर बनो • अपना भविष्य खुद गढ़ो • AADYA के संग
+  </div>
+
+  <div class="footer-together">
+    🌿 Let's Learn • Let's Grow Together 🌿
+  </div>
+
+</div>
 
 
   </main>
