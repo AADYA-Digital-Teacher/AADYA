@@ -977,22 +977,60 @@ async function loadLessonData(lesson){
   }
 }
 
-function normalizeQuestions(data){
+/* =====================================================
+   PRACTICE DATA NORMALISATION
+   कई lessons में practice.questions लिखित प्रश्नों
+   (string) के रूप में हैं, जबकि कुछ में MCQ objects हैं।
+   दोनों formats को अलग-अलग संभालें।
+===================================================== */
 
-  const q=
-    data?.practice?.questions;
+function getPracticeItems(data){
+  const q=data?.practice?.questions;
 
   return Array.isArray(q)
-    ?
-      q.filter(
-        x=>
+    ? q.filter(x =>
+        typeof x === "string"
+          ? x.trim()
+          : (x && x.question)
+      )
+    : [];
+}
+
+
+function normalizeQuestions(data){
+
+  const practice=getPracticeItems(data);
+
+  /* पहले वास्तविक practice MCQs */
+  const practiceMCQ=practice.filter(
+    x =>
+      x &&
+      typeof x === "object" &&
+      Array.isArray(x.options) &&
+      x.options.length
+  );
+
+  if(practiceMCQ.length){
+    return practiceMCQ;
+  }
+
+  /*
+     यदि practice केवल लिखित प्रश्न हैं,
+     तो interactive समझ-जाँच के लिए
+     उसी lesson के वास्तविक quiz questions इस्तेमाल होंगे।
+  */
+
+  const quiz=data?.quiz?.questions;
+
+  return Array.isArray(quiz)
+    ? quiz.filter(
+        x =>
           x &&
           x.question &&
           Array.isArray(x.options) &&
           x.options.length
       )
-    :
-      [];
+    : [];
 }
   function quizHistory(){
 
@@ -1560,13 +1598,13 @@ async function renderToday(){
 
 async function renderPractice(){
 
-  const l=
-    selectedLesson||
+  const l =
+    selectedLesson ||
     lessonForToday();
 
   if(!l){
 
-    $("practiceCard").innerHTML=`
+    $("practiceCard").innerHTML = `
       <div class="empty">
         अभी practice के लिए lesson उपलब्ध नहीं है।
       </div>
@@ -1575,16 +1613,23 @@ async function renderPractice(){
     return;
   }
 
-  const data=
+
+  const data =
     await loadLessonData(l);
 
-  const qs=
+  const practiceItems =
+    getPracticeItems(data);
+
+  const interactive =
     normalizeQuestions(data);
 
-  if(!qs.length){
 
-    $("practiceCard").innerHTML=`
+  if(
+    !practiceItems.length &&
+    !interactive.length
+  ){
 
+    $("practiceCard").innerHTML = `
       <div class="card-head">
 
         <div class="icon">🧩</div>
@@ -1596,8 +1641,8 @@ async function renderPractice(){
           </h3>
 
           <div class="card-sub">
-            इस lesson में अभी structured
-            practice questions उपलब्ध नहीं हैं।
+            इस lesson के लिए अभी practice
+            content उपलब्ध नहीं है।
           </div>
 
         </div>
@@ -1608,16 +1653,66 @@ async function renderPractice(){
     return;
   }
 
-  $("practiceCard").innerHTML=`
+
+  const writtenCount =
+    practiceItems.length;
+
+  const interactiveCount =
+    interactive.length;
+
+
+  const title =
+    writtenCount
+      ? `${writtenCount} अभ्यास प्रश्नों की Quick Practice`
+      : `${interactiveCount} प्रश्नों की Quick Practice`;
+
+
+  const buttons = `
+
+    ${
+      writtenCount
+      ?
+      `
+      <button
+        class="btn secondary"
+        onclick='openWorksheetByFile(${JSON.stringify(l.file)})'>
+        📝 अभ्यास देखें
+      </button>
+      `
+      :
+      ""
+    }
+
+
+    ${
+      interactiveCount
+      ?
+      `
+      <button
+        class="btn primary"
+        onclick='openActivityByFile(${JSON.stringify(l.file)})'>
+        🧠 समझ जाँचें
+      </button>
+      `
+      :
+      ""
+    }
+
+  `;
+
+
+  $("practiceCard").innerHTML = `
 
     <div class="card-head">
 
-      <div class="icon">🧩</div>
+      <div class="icon">
+        🧩
+      </div>
 
       <div>
 
         <h3 class="card-title">
-          5 प्रश्नों की Quick Practice
+          ${title}
         </h3>
 
         <div class="card-sub">
@@ -1630,37 +1725,28 @@ async function renderPractice(){
 
     </div>
 
+
     <div class="lesson-box">
 
       <div class="lesson-name">
-        सीखें → सोचें → उत्तर चुनें
+        सीखें → सोचें → अभ्यास करें
       </div>
 
       <div class="meta">
         इस lesson के वास्तविक practice
-        questions से interactive practice
+        content से अभ्यास
       </div>
 
       <div class="actions">
 
-        <button
-          class="btn primary"
-          onclick='openActivityByFile(${JSON.stringify(l.file)})'>
-          🧠 Practice शुरू करें
-        </button>
-
-        <button
-          class="btn secondary"
-          onclick='openWorksheetByFile(${JSON.stringify(l.file)})'>
-          📝 Worksheet
-        </button>
+        ${buttons}
 
       </div>
 
     </div>
+
   `;
 }
-
 
 /* =====================================================
    ACHIEVEMENTS
@@ -1940,14 +2026,12 @@ async function openMaterials(file){
         </h3>
 
         <p>
-          ${
-            qs.length
-            ?
-            "Lesson के वास्तविक practice questions से interactive activity।"
-            :
-            "इस lesson के लिए अभी practice data उपलब्ध नहीं है।"
-          }
-        </p>
+  ${
+    qs.length
+      ? "इस lesson की उपलब्ध सामग्री से interactive समझ-जाँच।"
+      : "इस lesson के लिए अभी interactive practice उपलब्ध नहीं है।"
+  }
+</p>
 
         ${
           qs.length
@@ -1979,19 +2063,15 @@ async function openMaterials(file){
         </h3>
 
         <p>
-          ${
-            qs.length
-            ?
-            "इसी lesson के questions से worksheet तैयार होगी।"
-            :
-            "अभी worksheet content उपलब्ध नहीं है।"
-          }
-        </p>
+  ${
+    getPracticeItems(data).length
+      ? "इसी lesson के वास्तविक अभ्यास प्रश्नों से worksheet।"
+      : "अभी worksheet content उपलब्ध नहीं है।"
+  }
+</p>
 
-        ${
-          qs.length
-          ?
-          `
+      ${getPracticeItems(data).length?`
+      
           <div class="actions">
 
             <button
@@ -2378,31 +2458,33 @@ function openActivity(
 /* =====================================================
    WORKSHEET
 ===================================================== */
-
 async function openWorksheetByFile(file){
 
-  const l=
+  const l =
     allLessons.find(
-      x=>x.file===file
+      x => x.file === file
     );
 
-  if(!l)return;
+  if(!l){
+    return;
+  }
 
-  const d=
+
+  const d =
     await loadLessonData(l);
 
-  const qs=
-    normalizeQuestions(d)
-      .slice(0,5);
+  const items =
+    getPracticeItems(d);
 
-  if(!qs.length){
+
+  if(!items.length){
 
     openModal(
       "📝 Worksheet",
       `
       <div class="empty">
         इस lesson में अभी worksheet के लिए
-        structured questions उपलब्ध नहीं हैं।
+        practice questions उपलब्ध नहीं हैं।
       </div>
       `
     );
@@ -2411,9 +2493,12 @@ async function openWorksheetByFile(file){
   }
 
 
-  const html=`
+  const html = `
 
-    <div class="worksheet" id="printSection">
+    <div
+      class="worksheet"
+      id="printSection"
+    >
 
       <h3>
         ${esc(l.title)}
@@ -2425,55 +2510,89 @@ async function openWorksheetByFile(file){
         ${esc(l.chapterTitle)}
       </div>
 
+
       <ol>
 
         ${
-          qs.map(
-            q=>
-              `
-              <li>
+          items
+            .map(q => {
 
-                ${esc(q.question)}
+              /* यदि question केवल text है */
+              if(typeof q === "string"){
 
+                return `
+                  <li>
+                    ${esc(q)}
+                  </li>
+                `;
+              }
+
+
+              /* यदि question MCQ object है */
+
+              const options =
+                Array.isArray(q.options) &&
+                q.options.length
+
+                ?
+
+                `
                 <div
                   style="
                     margin-top:7px;
                     color:#666;
                     font-size:13px
-                  ">
+                  "
+                >
 
                   ${
                     q.options
                       .map(
-                        (o,i)=>
+                        (o,i) =>
                           String.fromCharCode(65+i)
-                          +") "
-                          +esc(o)
+                          + ") "
+                          + esc(o)
                       )
                       .join(" &nbsp; ")
                   }
 
                 </div>
+                `
 
-              </li>
-              `
-          ).join("")
+                :
+
+                "";
+
+
+              return `
+                <li>
+                  ${esc(q.question)}
+                  ${options}
+                </li>
+              `;
+
+            })
+            .join("")
         }
 
       </ol>
+
 
       <div class="actions print-only">
 
         <button
           class="btn primary print-btn"
-          onclick="window.print()">
+          onclick="window.print()"
+        >
           🖨️ Print / Save PDF
         </button>
 
       </div>
 
     </div>
+
   `;
+
 
   openModal(
     "📝 Lesson Worksheet",
@@ -2481,10 +2600,11 @@ async function openWorksheetByFile(file){
   );
 }
 
-window.openWorksheetByFile=
+
+window.openWorksheetByFile =
   openWorksheetByFile;
 
-
+        
 /* =====================================================
    INITIALISE
 ===================================================== */
