@@ -1779,8 +1779,10 @@ lesson.quiz_questions ||
 
 if(!questions.length){
 
-alert(
-"इस Lesson में अभी Quiz प्रश्न उपलब्ध नहीं हैं।"
+showQuizNotice(
+  "इस Lesson में अभी Quiz प्रश्न उपलब्ध नहीं हैं ⏸️",
+  "Quiz अभी तैयार नहीं है 📚",
+  "📝"
 );
 
 return;
@@ -1809,8 +1811,10 @@ renderQuestion();
 
 }catch(e){
 
-alert(
-"Quiz लोड नहीं हो पाया।"
+showQuizNotice(
+  "Quiz लोड नहीं हो पाया। कृपया एक बार फिर प्रयास करें😊",
+  "Quiz लोड नहीं हुआ ⚠️",
+  "⚠️"
 );
 
 }
@@ -1928,8 +1932,10 @@ function nextQuestion(){
 
 if(answers[current]===null){
 
-alert(
-"पहले एक उत्तर चुनिए।"
+showQuizNotice(
+  "आगे बढ़ने से पहले अपना एक उत्तर चुनिए।",
+  "एक उत्तर चुनिए 🎯",
+  "🎯"
 );
 
 return;
