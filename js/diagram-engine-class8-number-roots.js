@@ -485,6 +485,15 @@ function isClass8() {
   return false;
 }
   function render() {
+
+    /* =====================================================
+       HARD CLASS ISOLATION
+       यह engine केवल Class 8 के लिए है।
+       Class 6/7 में बिल्कुल render नहीं होगा।
+    ===================================================== */
+
+    if (!isClass8()) return;
+
     const chapter = getChapter();
 
     if (chapter < 1 || chapter > 2) return;
