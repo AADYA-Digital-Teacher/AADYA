@@ -665,18 +665,28 @@
     if (!container) return;
 
 
-    /* Remove only OUR previous diagram */
+    /* =====================================================
+   IMPORTANT:
+   अगर हमारा diagram पहले से मौजूद है,
+   तो दोबारा render मत करो।
 
-    container
-      .querySelectorAll("." + CARD_CLASS)
-      .forEach(el => el.remove());
+   यही MutationObserver infinite loop को रोकता है।
+===================================================== */
+
+if (
+  container.querySelector(
+    "." + CARD_CLASS
+  )
+) {
+  return;
+}
 
 
-    const diagram =
-      selectDiagram(
-        info.chapter,
-        info.lesson
-      );
+const diagram =
+  selectDiagram(
+    info.chapter,
+    info.lesson
+  );
 
     if (!diagram) return;
 
