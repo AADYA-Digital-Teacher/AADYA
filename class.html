@@ -1,2191 +1,2632 @@
 <!DOCTYPE html>
 <html lang="hi">
-
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111111">
+<title>AADYA — मेरी कक्षा</title>
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+<style>
+*{box-sizing:border-box}
 
-  <meta
-    name="theme-color"
-    content="#111111"
-  >
-
-  <title>AADYA — मेरी कक्षा</title>
-
-  <style>
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family:
-        Arial,
-        "Noto Sans Devanagari",
-        sans-serif;
-      background: #f5f6f8;
-      color: #1d1d1f;
-    }
-
-    .top {
-      background: #111;
-      color: #fff;
-      padding: 18px 16px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .top-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .brand {
-      font-size: 21px;
-      font-weight: 800;
-      letter-spacing: .2px;
-    }
-
-    .sub {
-      font-size: 13px;
-      opacity: .78;
-      margin-top: 4px;
-    }
-
-    .home {
-      border: 0;
-      background: #fff;
-      color: #111;
-      border-radius: 10px;
-      padding: 9px 13px;
-      font-weight: 700;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    .wrap {
-      max-width: 900px;
-      margin: auto;
-      padding: 18px 14px 45px;
-    }
-
-    .welcome {
-      background: #fff;
-      border-radius: 18px;
-      padding: 18px;
-      box-shadow:
-        0 5px 18px rgba(0,0,0,.07);
-      margin-bottom: 18px;
-    }
-
-    .welcome h1 {
-      font-size: 22px;
-      margin: 0 0 7px;
-    }
-
-    .welcome p {
-      margin: 0;
-      color: #666;
-      font-size: 14px;
-    }
-
-    .subject {
-      background: #111;
-      color: #fff;
-      border-radius: 16px;
-      padding: 15px 16px;
-      margin: 18px 0 12px;
-      font-size: 19px;
-      font-weight: 800;
-    }
-
-    .chapter {
-      background: #fff;
-      border-radius: 16px;
-      margin: 12px 0;
-      box-shadow:
-        0 4px 14px rgba(0,0,0,.06);
-      overflow: hidden;
-    }
-
-    .chapter-head {
-      padding: 16px;
-      border-bottom: 1px solid #eee;
-    }
-
-    .chapter-title {
-      font-size: 17px;
-      font-weight: 800;
-      line-height: 1.5;
-    }
-
-    .badge {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 4px 8px;
-      border-radius: 8px;
-      background: #f0f0f0;
-      color: #555;
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    .lessons {
-      padding: 7px;
-    }
-
-    .lesson {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 13px 10px;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: background .15s;
-    }
-
-    .lesson:hover {
-      background: #f5f5f5;
-    }
-
-    .lesson:active {
-      background: #e9e9e9;
-    }
-
-    .num {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      background: #111;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      flex: none;
-      font-size: 14px;
-    }
-
-    .lesson-title {
-      font-size: 14px;
-      line-height: 1.5;
-      font-weight: 600;
-      flex: 1;
-    }
-
-    .arrow {
-      font-size: 22px;
-      color: #777;
-      flex: none;
-    }
-
-    .empty {
-      padding: 16px;
-      color: #777;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .loading,
-    .error {
-      background: #fff;
-      border-radius: 16px;
-      padding: 22px;
-      text-align: center;
-      box-shadow:
-        0 4px 14px rgba(0,0,0,.06);
-      line-height: 1.6;
-    }
-
-    .error {
-      color: #a40000;
-    }
-
-    .footer-note {
-      text-align: center;
-      color: #888;
-      font-size: 12px;
-      margin-top: 25px;
-      line-height: 1.6;
-    }
-/* =========================================================
-   AADYA — MY CLASS
-   PREMIUM COLORFUL LEARNING JOURNEY
-   CSS ONLY
-   CONTENT + JAVASCRIPT + LESSON LINKS UNTOUCHED
-========================================================= */
-
-
-/* ---------------------------------------------------------
-   DESIGN VARIABLES
---------------------------------------------------------- */
-
-:root {
-  --aadya-navy: #172b4d;
-  --aadya-blue: #2f80ed;
-  --aadya-sky: #56ccf2;
-  --aadya-purple: #7b61ff;
-  --aadya-pink: #ff6b9d;
-  --aadya-yellow: #f7c928;
-  --aadya-orange: #f2994a;
-  --aadya-green: #27ae60;
-
-  --page-bg: #f3f7fb;
-  --card-bg: #ffffff;
-
-  --shadow-soft:
-    0 8px 25px rgba(23,43,77,.08);
-
-  --shadow-card:
-    0 10px 28px rgba(23,43,77,.10);
+:root{
+  --navy:#172b4d;
+  --blue:#2f80ed;
+  --purple:#7b61ff;
+  --pink:#ff6b9d;
+  --yellow:#f7c928;
+  --green:#27ae60;
+  --orange:#f2994a;
+  --bg:#f3f7fb;
+  --card:#fff;
+  --muted:#667085;
+  --shadow:0 10px 28px rgba(23,43,77,.10)
 }
 
-
-/* ---------------------------------------------------------
-   PAGE
---------------------------------------------------------- */
-
-body {
+body{
+  margin:0;
+  font-family:Arial,"Noto Sans Devanagari",sans-serif;
   background:
-    radial-gradient(
-      circle at 10% 0%,
-      rgba(86,204,242,.12),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 90% 15%,
-      rgba(123,97,255,.10),
-      transparent 30%
-    ),
-    var(--page-bg) !important;
-
-  color: #172b4d !important;
-
-  overflow-x: hidden;
+    radial-gradient(circle at 8% 0%,rgba(86,204,242,.13),transparent 28%),
+    radial-gradient(circle at 92% 12%,rgba(123,97,255,.11),transparent 30%),
+    var(--bg);
+  color:var(--navy);
+  overflow-x:hidden
 }
 
+button{font:inherit}
 
-/* ---------------------------------------------------------
-   TOP HEADER
---------------------------------------------------------- */
-
-.top {
-  background:
-    linear-gradient(
-      135deg,
-      #111111 0%,
-      #172b4d 58%,
-      #243b63 100%
-    ) !important;
-
-  padding:
-    16px
-    max(16px, env(safe-area-inset-right))
-    18px
-    max(16px, env(safe-area-inset-left))
-    !important;
-
-  box-shadow:
-    0 5px 22px rgba(0,0,0,.20);
-
-  border-bottom:
-    1px solid rgba(255,255,255,.08);
-
-  position: sticky;
-  top: 0;
-  z-index: 50;
+.top{
+  background:linear-gradient(135deg,#111 0%,#172b4d 58%,#243b63 100%);
+  color:#fff;
+  padding:15px 16px 17px;
+  position:sticky;
+  top:0;
+  z-index:50;
+  box-shadow:0 5px 22px rgba(0,0,0,.2)
 }
 
-
-/* ---------------------------------------------------------
-   HEADER BRAND
---------------------------------------------------------- */
-
-.brand {
-  font-size:
-    clamp(20px, 5.5vw, 27px) !important;
-
-  font-weight: 900 !important;
-
-  letter-spacing:
-    -.3px !important;
-
-  line-height: 1.15;
-
-  color: #ffffff !important;
+.top-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  max-width:980px;
+  margin:auto
 }
 
-.sub {
-  font-size:
-    13px !important;
-
-  margin-top:
-    5px !important;
-
-  color:
-    rgba(255,255,255,.72) !important;
+.brand{
+  font-size:clamp(20px,5.5vw,27px);
+  font-weight:900;
+  line-height:1.15
 }
 
-
-/* ---------------------------------------------------------
-   HOME BUTTON
---------------------------------------------------------- */
-
-.home {
-  min-height: 46px !important;
-
-  padding:
-    9px 15px !important;
-
-  border-radius:
-    14px !important;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ffffff,
-      #f5f8ff
-    ) !important;
-
-  color:
-    #172b4d !important;
-
-  font-size:
-    14px !important;
-
-  font-weight:
-    900 !important;
-
-  box-shadow:
-    0 5px 15px rgba(0,0,0,.18);
-
-  transition:
-    transform .15s ease,
-    box-shadow .15s ease;
+.sub{
+  font-size:13px;
+  color:rgba(255,255,255,.72);
+  margin-top:5px
 }
 
-.home:active {
-  transform:
-    scale(.96);
-
-  box-shadow:
-    0 3px 9px rgba(0,0,0,.15);
+.home{
+  border:0;
+  border-radius:14px;
+  background:#fff;
+  color:#172b4d;
+  padding:10px 15px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 5px 15px rgba(0,0,0,.18)
 }
 
-
-/* ---------------------------------------------------------
-   MAIN WRAPPER
---------------------------------------------------------- */
-
-.wrap {
-  width:
-    min(100%, 980px) !important;
-
-  padding:
-    16px 14px 50px !important;
+.wrap{
+  width:min(100%,980px);
+  margin:auto;
+  padding:16px 14px 50px
 }
 
-
-/* ---------------------------------------------------------
-   WELCOME / AADYA BANNER
---------------------------------------------------------- */
-
-.welcome {
-  position: relative;
-
-  padding:
-    0 !important;
-
-  overflow:
-    hidden !important;
-
-  border-radius:
-    24px !important;
-
-  background:
-    #ffffff !important;
-
-  box-shadow:
-    var(--shadow-card) !important;
-
-  margin-bottom:
-    22px !important;
-
-  border:
-    1px solid rgba(23,43,77,.06);
-
-  isolation: isolate;
+.hero{
+  position:relative;
+  overflow:hidden;
+  border-radius:24px;
+  background:#fff;
+  box-shadow:var(--shadow);
+  margin-bottom:18px;
+  border:1px solid rgba(23,43,77,.06)
 }
 
-
-/* Colorful AADYA banner */
-
-.welcome::before {
-  content: "";
-
-  display:
-    block;
-
-  width:
-    100%;
-
-  aspect-ratio:
-    3 / 1;
-
-  min-height:
-    105px;
-
-  background-image:
-    url("./assets/logo/aadya-home-banner.png");
-
-  background-size:
-    cover;
-
-  background-position:
-    center;
-
-  background-repeat:
-    no-repeat;
+.hero-banner{
+  width:100%;
+  aspect-ratio:3/1;
+  min-height:105px;
+  background:url("./assets/logo/aadya-home-banner.png") center/cover no-repeat
 }
 
-
-/* Soft decorative glow */
-
-.welcome::after {
-  content: "";
-
-  position: absolute;
-
-  width: 170px;
-  height: 170px;
-
-  right: -75px;
-  top: -70px;
-
-  border-radius:
-    50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(255,255,255,.38),
-      transparent 70%
-    );
-
-  pointer-events:
-    none;
+.hero-text{
+  padding:17px 18px 19px
 }
 
-
-/* ---------------------------------------------------------
-   WELCOME TEXT
---------------------------------------------------------- */
-
-.welcome h1 {
-  position: relative;
-
-  margin:
-    0 !important;
-
-  padding:
-    18px 18px 5px !important;
-
-  font-size:
-    clamp(23px, 6vw, 31px) !important;
-
-  line-height:
-    1.25 !important;
-
-  font-weight:
-    900 !important;
-
-  color:
-    var(--aadya-navy) !important;
+.hero h1{
+  margin:0 0 5px;
+  font-size:clamp(23px,6vw,31px);
+  line-height:1.25;
+  font-weight:900
 }
 
-.welcome p {
-  position: relative;
-
-  margin:
-    0 !important;
-
-  padding:
-    0 18px 19px !important;
-
-  font-size:
-    clamp(13px, 3.8vw, 16px) !important;
-
-  line-height:
-    1.55 !important;
-
-  color:
-    #667085 !important;
-
-  font-weight:
-    600;
+.hero p{
+  margin:0;
+  color:var(--muted);
+  font-size:clamp(13px,3.8vw,16px);
+  line-height:1.55;
+  font-weight:600
 }
 
-
-/* ---------------------------------------------------------
-   CURRICULUM CONTAINER
---------------------------------------------------------- */
-
-#curriculumBox {
-  width:
-    100%;
-
-  background:
-    transparent !important;
-
-  box-shadow:
-    none !important;
-
-  padding:
-    0 !important;
-
-  border-radius:
-    0 !important;
+.eyebrow{
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.2px;
+  color:var(--blue);
+  margin-bottom:5px
 }
 
-
-/* ---------------------------------------------------------
-   SUBJECT CARD
-   Works automatically for ANY future subject
---------------------------------------------------------- */
-
-.subject {
-  position: relative;
-
-  margin:
-    24px 0 14px !important;
-
-  padding:
-    18px 20px !important;
-
-  min-height:
-    68px;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  border-radius:
-    20px !important;
-
-  background:
-    linear-gradient(
-      135deg,
-      #172b4d 0%,
-      #28558e 55%,
-      #2f80ed 100%
-    ) !important;
-
-  color:
-    #ffffff !important;
-
-  font-size:
-    clamp(19px, 5vw, 24px) !important;
-
-  font-weight:
-    900 !important;
-
-  letter-spacing:
-    .1px;
-
-  box-shadow:
-    0 10px 25px rgba(23,43,77,.20) !important;
-
-  overflow:
-    hidden;
-
-  border:
-    1px solid rgba(255,255,255,.10);
+.section{
+  margin:18px 0
 }
 
-
-/* Decorative shine */
-
-.subject::after {
-  content: "";
-
-  position: absolute;
-
-  width:
-    120px;
-
-  height:
-    120px;
-
-  right:
-    -45px;
-
-  top:
-    -55px;
-
-  border-radius:
-    50%;
-
-  background:
-    rgba(255,255,255,.13);
-
-  pointer-events:
-    none;
+.section-title{
+  font-size:18px;
+  font-weight:900;
+  margin:0 0 10px
 }
 
-
-/* ---------------------------------------------------------
-   CHAPTER CARD
-   Works automatically for every future chapter
---------------------------------------------------------- */
-
-.chapter {
-  position: relative;
-
-  background:
-    rgba(255,255,255,.98) !important;
-
-  border-radius:
-    20px !important;
-
-  margin:
-    12px 0 !important;
-
-  overflow:
-    hidden !important;
-
-  border:
-    1px solid rgba(23,43,77,.07);
-
-  box-shadow:
-    var(--shadow-soft) !important;
-
-  transition:
-    transform .18s ease,
-    box-shadow .18s ease;
+.big-card{
+  background:#fff;
+  border:1px solid rgba(23,43,77,.07);
+  border-radius:20px;
+  box-shadow:var(--shadow);
+  padding:17px;
+  margin:11px 0;
+  position:relative;
+  overflow:hidden
 }
 
-
-/* Tiny colored accent */
-
-.chapter::before {
-  content: "";
-
-  position: absolute;
-
-  left:
-    0;
-
-  top:
-    0;
-
-  bottom:
-    0;
-
-  width:
-    5px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #56ccf2,
-      #7b61ff,
-      #ff6b9d
-    );
+.big-card:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:5px;
+  background:linear-gradient(180deg,#56ccf2,#7b61ff,#ff6b9d)
 }
 
-
-/* Desktop hover only */
-
-@media (hover: hover) {
-
-  .chapter:hover {
-    transform:
-      translateY(-2px);
-
-    box-shadow:
-      0 14px 30px rgba(23,43,77,.12) !important;
-  }
-
+.card-head{
+  display:flex;
+  gap:12px;
+  align-items:flex-start
 }
 
-
-/* ---------------------------------------------------------
-   DIFFERENT CHAPTER ACCENT COLORS
-   Automatically cycles for future chapters
---------------------------------------------------------- */
-
-.chapter:nth-of-type(6n + 1)::before {
-  background:
-    linear-gradient(
-      180deg,
-      #56ccf2,
-      #2f80ed
-    );
+.icon{
+  width:48px;
+  height:48px;
+  border-radius:15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:25px;
+  background:#eef5ff;
+  flex:none
 }
 
-.chapter:nth-of-type(6n + 2)::before {
-  background:
-    linear-gradient(
-      180deg,
-      #f7c928,
-      #f2994a
-    );
+.card-title{
+  font-size:18px;
+  font-weight:900;
+  margin:0 0 4px
 }
 
-.chapter:nth-of-type(6n + 3)::before {
-  background:
-    linear-gradient(
-      180deg,
-      #27ae60,
-      #6fcf97
-    );
+.card-sub{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.55
 }
 
-.chapter:nth-of-type(6n + 4)::before {
-  background:
-    linear-gradient(
-      180deg,
-      #ff6b9d,
-      #eb5757
-    );
+.lesson-box{
+  margin-top:13px;
+  padding:14px;
+  border-radius:15px;
+  background:#f7faff;
+  border:1px solid #e3ecfb
 }
 
-.chapter:nth-of-type(6n + 5)::before {
-  background:
-    linear-gradient(
-      180deg,
-      #7b61ff,
-      #9b51e0
-    );
+.subject-name{
+  font-size:12px;
+  color:#2f80ed;
+  font-weight:900
 }
 
-.chapter:nth-of-type(6n + 6)::before {
-  background:
-    linear-gradient(
-      180deg,
-      #00b8a9,
-      #2f80ed
-    );
+.chapter-name{
+  font-size:13px;
+  color:#667085;
+  margin-top:2px
 }
 
-
-/* ---------------------------------------------------------
-   CHAPTER HEADER
---------------------------------------------------------- */
-
-.chapter-head {
-  padding:
-    18px 17px 15px 21px !important;
-
-  border-bottom:
-    1px solid #edf0f5 !important;
-
-  background:
-    linear-gradient(
-      180deg,
-      #ffffff,
-      #fbfdff
-    );
+.lesson-name{
+  font-size:17px;
+  font-weight:900;
+  line-height:1.45;
+  margin-top:5px
 }
 
-.chapter-title {
-  font-size:
-    clamp(17px, 4.7vw, 21px) !important;
-
-  line-height:
-    1.5 !important;
-
-  font-weight:
-    900 !important;
-
-  color:
-    #172b4d !important;
-
-  overflow-wrap:
-    anywhere;
+.meta{
+  font-size:12px;
+  color:#777;
+  margin-top:5px
 }
 
-
-/* ---------------------------------------------------------
-   SOURCE BADGE
---------------------------------------------------------- */
-
-.badge {
-  display:
-    inline-flex !important;
-
-  align-items:
-    center;
-
-  margin-top:
-    10px !important;
-
-  padding:
-    6px 10px !important;
-
-  border-radius:
-    999px !important;
-
-  background:
-    linear-gradient(
-      135deg,
-      #eef5ff,
-      #f5f1ff
-    ) !important;
-
-  color:
-    #53627a !important;
-
-  font-size:
-    11px !important;
-
-  font-weight:
-    800 !important;
-
-  border:
-    1px solid #e1e8f2;
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:12px
 }
 
-
-/* ---------------------------------------------------------
-   LESSON AREA
---------------------------------------------------------- */
-
-.lessons {
-  padding:
-    7px !important;
-
-  background:
-    #ffffff;
+.btn{
+  border:0;
+  border-radius:12px;
+  padding:10px 13px;
+  font-weight:900;
+  cursor:pointer
 }
 
-
-/* ---------------------------------------------------------
-   LESSON TILE
-   Works automatically for every lesson added later
---------------------------------------------------------- */
-
-.lesson {
-  position: relative;
-
-  display:
-    flex !important;
-
-  align-items:
-    center !important;
-
-  gap:
-    12px !important;
-
-  min-height:
-    62px;
-
-  padding:
-    10px 10px !important;
-
-  margin:
-    2px 0;
-
-  border-radius:
-    15px !important;
-
-  cursor:
-    pointer;
-
-  background:
-    #ffffff;
-
-  transition:
-    transform .14s ease,
-    background .14s ease,
-    box-shadow .14s ease;
+.primary{
+  background:var(--navy);
+  color:#fff
 }
 
-
-/* subtle separator */
-
-.lesson + .lesson {
-  border-top:
-    1px solid #f1f3f6;
+.secondary{
+  background:#edf4ff;
+  color:#20569c
 }
 
-
-/* Touch feedback */
-
-.lesson:active {
-  transform:
-    scale(.985);
-
-  background:
-    #f5f9ff !important;
-
-  box-shadow:
-    0 3px 10px rgba(47,128,237,.08);
+.save{
+  background:#fff7d9;
+  color:#7a5a00;
+  border:1px solid #f3dc84
 }
 
-
-/* Desktop hover */
-
-@media (hover: hover) {
-
-  .lesson:hover {
-    background:
-      linear-gradient(
-        90deg,
-        #f7fbff,
-        #ffffff
-      ) !important;
-
-    transform:
-      translateX(2px);
-  }
-
+.disabled{
+  background:#f0f1f3;
+  color:#858585;
+  cursor:default
 }
 
-
-/* ---------------------------------------------------------
-   LESSON NUMBER CIRCLE
---------------------------------------------------------- */
-
-.num {
-  width:
-    42px !important;
-
-  height:
-    42px !important;
-
-  min-width:
-    42px !important;
-
-  border-radius:
-    14px !important;
-
-  display:
-    flex !important;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  background:
-    linear-gradient(
-      135deg,
-      #172b4d,
-      #2f80ed
-    ) !important;
-
-  color:
-    #ffffff !important;
-
-  font-size:
-    15px !important;
-
-  font-weight:
-    900 !important;
-
-  box-shadow:
-    0 4px 10px rgba(47,128,237,.18);
+.small{
+  font-size:12px;
+  padding:8px 10px
 }
 
-
-/* ---------------------------------------------------------
-   LESSON NUMBER COLOR CYCLE
---------------------------------------------------------- */
-
-.lesson:nth-child(4n + 1) .num {
-  background:
-    linear-gradient(
-      135deg,
-      #2f80ed,
-      #56ccf2
-    ) !important;
+.status{
+  font-size:13px;
+  line-height:1.6;
+  color:#5f6b7a;
+  margin-top:10px
 }
 
-.lesson:nth-child(4n + 2) .num {
-  background:
-    linear-gradient(
-      135deg,
-      #f2994a,
-      #f7c928
-    ) !important;
+.challenge{
+  background:linear-gradient(135deg,#fffaf0,#fff);
+  border-color:#f2df9b
 }
 
-.lesson:nth-child(4n + 3) .num {
-  background:
-    linear-gradient(
-      135deg,
-      #27ae60,
-      #6fcf97
-    ) !important;
+.challenge .icon{
+  background:#fff2bf
 }
 
-.lesson:nth-child(4n + 4) .num {
-  background:
-    linear-gradient(
-      135deg,
-      #7b61ff,
-      #ff6b9d
-    ) !important;
+.today{
+  background:linear-gradient(135deg,#f4f1ff,#fff)
 }
 
-
-/* ---------------------------------------------------------
-   LESSON TITLE
---------------------------------------------------------- */
-
-.lesson-title {
-  font-size:
-    clamp(14px, 3.9vw, 16px) !important;
-
-  line-height:
-    1.55 !important;
-
-  font-weight:
-    700 !important;
-
-  color:
-    #202b3c !important;
-
-  flex:
-    1;
-
-  min-width:
-    0;
-
-  overflow-wrap:
-    anywhere;
+.today .icon{
+  background:#eee9ff
 }
 
-
-/* ---------------------------------------------------------
-   LESSON ARROW
---------------------------------------------------------- */
-
-.arrow {
-  flex:
-    none !important;
-
-  width:
-    28px;
-
-  height:
-    28px;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  border-radius:
-    50%;
-
-  background:
-    #f1f5fa;
-
-  color:
-    #4b6079 !important;
-
-  font-size:
-    23px !important;
-
-  font-weight:
-    700;
-
-  transition:
-    transform .15s ease,
-    background .15s ease;
+.practice{
+  background:linear-gradient(135deg,#effbf5,#fff)
 }
 
-.lesson:active .arrow {
-  background:
-    #dcecff;
-
-  transform:
-    translateX(2px);
+.practice .icon{
+  background:#dcf7e8
+}.achievements{
+  background:linear-gradient(135deg,#fff7ea,#fff)
 }
 
-
-/* ---------------------------------------------------------
-   EMPTY / FUTURE CONTENT
---------------------------------------------------------- */
-
-.empty {
-  margin:
-    10px 0 !important;
-
-  padding:
-    18px !important;
-
-  border-radius:
-    15px !important;
-
-  background:
-    linear-gradient(
-      135deg,
-      #f8fbff,
-      #f7f4ff
-    ) !important;
-
-  color:
-    #667085 !important;
-
-  font-size:
-    13px !important;
-
-  line-height:
-    1.6 !important;
-
-  text-align:
-    center;
-
-  border:
-    1px dashed #d7dfeb;
+.achievements .icon{
+  background:#ffedcf
 }
 
+.saved{
+  background:linear-gradient(135deg,#fff5fa,#fff)
+}
 
-/* ---------------------------------------------------------
-   LOADING / ERROR
---------------------------------------------------------- */
+.saved .icon{
+  background:#ffe3ef
+}
+
+.badges{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;
+  margin-top:13px
+}
+
+.badge-card{
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:14px;
+  padding:11px;
+  text-align:center;
+  font-size:12px;
+  font-weight:800;
+  line-height:1.4
+}
+
+.badge-card .emoji{
+  font-size:25px;
+  display:block;
+  margin-bottom:4px
+}
+
+.saved-list{
+  margin-top:11px
+}
+
+.saved-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:11px 0;
+  border-top:1px solid #eee
+}
+
+.saved-item:first-child{
+  border-top:0
+}
+
+.saved-item-main{
+  flex:1
+}
+
+.saved-item-title{
+  font-weight:800;
+  font-size:14px;
+  line-height:1.4
+}
+
+.saved-item-meta{
+  font-size:11px;
+  color:#777;
+  margin-top:3px
+}
+
+.remove{
+  border:0;
+  background:#f6f6f6;
+  border-radius:9px;
+  padding:7px 9px;
+  color:#777;
+  cursor:pointer
+}
+
+.empty{
+  padding:12px 0;
+  color:#777;
+  font-size:13px;
+  line-height:1.6
+}
+
+.quote{
+  text-align:center;
+  color:#718096;
+  font-size:13px;
+  font-weight:700;
+  margin:26px 0 0;
+  line-height:1.7
+}
 
 .loading,
-.error {
-  background:
-    #ffffff !important;
-
-  border-radius:
-    20px !important;
-
-  padding:
-    25px 18px !important;
-
-  box-shadow:
-    var(--shadow-soft) !important;
-
-  color:
-    #53627a;
+.error{
+  background:#fff;
+  border-radius:18px;
+  padding:24px;
+  text-align:center;
+  box-shadow:var(--shadow);
+  line-height:1.7
 }
 
-
-/* ---------------------------------------------------------
-   FOOTER
---------------------------------------------------------- */
-
-.footer-note {
-  margin-top:
-    32px !important;
-
-  padding:
-    22px 10px !important;
-
-  border-radius:
-    20px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #172b4d,
-      #243b63
-    );
-
-  color:
-    rgba(255,255,255,.78) !important;
-
-  font-size:
-    12px !important;
-
-  line-height:
-    1.8 !important;
-
-  box-shadow:
-    0 8px 24px rgba(23,43,77,.16);
+.error{
+  color:#9a1c1c
 }
 
-.footer-note::first-line {
-  color:
-    #ffffff;
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(9,18,32,.62);
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  z-index:100
 }
 
-
-/* ---------------------------------------------------------
-   MOBILE — SMALL SCREENS
---------------------------------------------------------- */
-
-@media (max-width: 600px) {
-
-  .top {
-    padding:
-      14px 14px 16px !important;
-  }
-
-  .top-row {
-    gap:
-      9px;
-  }
-
-  .brand {
-    font-size:
-      20px !important;
-  }
-
-  .home {
-    min-height:
-      44px !important;
-
-    padding:
-      8px 12px !important;
-
-    font-size:
-      13px !important;
-  }
-
-  .wrap {
-    padding:
-      14px 12px 42px !important;
-  }
-
-  .welcome {
-    border-radius:
-      21px !important;
-
-    margin-bottom:
-      18px !important;
-  }
-
-  .welcome::before {
-    min-height:
-      92px;
-  }
-
-  .welcome h1 {
-    padding:
-      15px 16px 4px !important;
-
-    font-size:
-      22px !important;
-  }
-
-  .welcome p {
-    padding:
-      0 16px 16px !important;
-
-    font-size:
-      13px !important;
-  }
-
-  .subject {
-    min-height:
-      62px;
-
-    margin:
-      20px 0 12px !important;
-
-    padding:
-      15px 17px !important;
-
-    border-radius:
-      18px !important;
-
-    font-size:
-      19px !important;
-  }
-
-  .chapter {
-    border-radius:
-      18px !important;
-  }
-
-  .chapter-head {
-    padding:
-      16px 15px 14px 18px !important;
-  }
-
-  .chapter-title {
-    font-size:
-      17px !important;
-  }
-
-  .lesson {
-    min-height:
-      60px;
-
-    gap:
-      10px !important;
-
-    padding:
-      9px 7px !important;
-  }
-
-  .num {
-    width:
-      40px !important;
-
-    height:
-      40px !important;
-
-    min-width:
-      40px !important;
-
-    border-radius:
-      13px !important;
-  }
-
-  .lesson-title {
-    font-size:
-      14px !important;
-  }
-
-  .arrow {
-    width:
-      26px;
-
-    height:
-      26px;
-
-    font-size:
-      21px !important;
-  }
-
+.modal.open{
+  display:flex
 }
 
-
-/* ---------------------------------------------------------
-   VERY SMALL PHONES
---------------------------------------------------------- */
-
-@media (max-width: 380px) {
-
-  .brand {
-    font-size:
-      18px !important;
-  }
-
-  .sub {
-    font-size:
-      12px !important;
-  }
-
-  .home {
-    padding:
-      8px 10px !important;
-
-    font-size:
-      12px !important;
-  }
-
-  .wrap {
-    padding-left:
-      9px !important;
-
-    padding-right:
-      9px !important;
-  }
-
-  .welcome::before {
-    min-height:
-      82px;
-  }
-
-  .welcome h1 {
-    font-size:
-      20px !important;
-  }
-
-  .subject {
-    font-size:
-      18px !important;
-
-    min-height:
-      58px;
-  }
-
-  .chapter-title {
-    font-size:
-      16px !important;
-  }
-
-  .lesson-title {
-    font-size:
-      13.5px !important;
-  }
-
-  .num {
-    width:
-      38px !important;
-
-    height:
-      38px !important;
-
-    min-width:
-      38px !important;
-  }
-
+.sheet{
+  width:min(100%,720px);
+  max-height:90vh;
+  overflow:auto;
+  background:#fff;
+  border-radius:24px 24px 0 0;
+  padding:20px 16px 28px;
+  box-shadow:0 -10px 40px rgba(0,0,0,.25)
 }
 
+.sheet-top{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:center
+}
 
-/* ---------------------------------------------------------
-   ACCESSIBILITY / REDUCED MOTION
---------------------------------------------------------- */
+.sheet h2{
+  margin:0;
+  font-size:20px
+}
 
-@media (prefers-reduced-motion: reduce) {
+.close{
+  border:0;
+  background:#f1f3f6;
+  border-radius:12px;
+  padding:8px 11px;
+  font-weight:900;
+  cursor:pointer
+}
 
-  *,
-  *::before,
-  *::after {
-    scroll-behavior:
-      auto !important;
+.material-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin-top:14px
+}
 
-    transition:
-      none !important;
+.material{
+  border:1px solid #e7eaf0;
+  border-radius:16px;
+  padding:14px;
+  background:#fbfcff
+}
 
-    animation:
-      none !important;
+.material h3{
+  margin:0 0 5px;
+  font-size:15px
+}
+
+.material p{
+  margin:0;
+  color:#687386;
+  font-size:12px;
+  line-height:1.55
+}
+
+.activity-box{
+  margin-top:14px;
+  padding:15px;
+  border-radius:16px;
+  background:#f6faff;
+  border:1px solid #dfeafb
+}
+
+.question{
+  font-weight:900;
+  font-size:16px;
+  line-height:1.55
+}
+
+.options{
+  display:grid;
+  gap:8px;
+  margin-top:12px
+}
+
+.option{
+  border:1px solid #dfe4eb;
+  background:#fff;
+  border-radius:12px;
+  padding:11px;
+  text-align:left;
+  font-weight:800;
+  cursor:pointer
+}
+
+.option.correct{
+  border-color:#46a76c;
+  background:#eaf9ef
+}
+
+.option.wrong{
+  border-color:#d56a6a;
+  background:#fff0f0
+}
+
+.feedback{
+  font-size:13px;
+  font-weight:800;
+  margin-top:10px;
+  line-height:1.5
+}
+
+.worksheet{
+  margin-top:15px;
+  border:1px solid #ddd;
+  border-radius:14px;
+  padding:15px;
+  background:#fff
+}
+
+.worksheet h3{
+  margin:0 0 10px
+}
+
+.worksheet ol{
+  padding-left:23px
+}
+
+.worksheet li{
+  margin:12px 0;
+  line-height:1.55
+}
+
+.print-btn{
+  margin-top:10px
+}
+
+.fact{
+  margin-top:12px;
+  padding:13px;
+  border-radius:14px;
+  background:#fff9e8;
+  border:1px solid #f0df9a;
+  font-size:13px;
+  line-height:1.6
+}
+
+.hidden{
+  display:none!important
+}
+
+@media(min-width:700px){
+  .badges{
+    grid-template-columns:repeat(3,minmax(0,1fr))
   }
 
-      }
-  </style>
+  .material-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr))
+  }
 
+  .modal{
+    align-items:center
+  }
+
+  .sheet{
+    border-radius:24px
+  }
+}
+
+@media print{
+  body{
+    background:#fff
+  }
+
+  .top,
+  .hero,
+  .section:not(#printSection),
+  .modal{
+    display:none!important
+  }
+
+  .wrap{
+    padding:0
+  }
+
+  .worksheet{
+    border:0
+  }
+
+  .print-only{
+    display:block!important
+  }
+}
+</style>
 </head>
-
 
 <body>
 
+<header class="top">
+  <div class="top-row">
+    <div>
+      <div class="brand">🏫 मेरी कक्षा</div>
+      <div class="sub" id="topSub">आपकी अपनी learning space</div>
+    </div>
 
-  <!-- ==============================
-       HEADER
-  =============================== -->
+    <button class="home" onclick="goHome()">⌂ होम</button>
+  </div>
+</header>
 
-  <header class="top">
+<main class="wrap">
 
-    <div class="top-row">
+  <div id="loading" class="loading">
+    📚 आपकी कक्षा तैयार हो रही है…
+  </div>
+
+  <div id="app" class="hidden">
+
+    <section class="hero">
+      <div class="hero-banner"></div>
+
+      <div class="hero-text">
+        <div class="eyebrow">MY LEARNING SPACE</div>
+
+        <h1 id="greeting">
+          नमस्ते! 👋
+        </h1>
+
+        <p id="classLine">
+          आज क्या सीखें?
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="continueSection">
+      <h2 class="section-title">
+        ▶️ जहाँ छोड़ा था, वहीं से शुरू करें
+      </h2>
+
+      <div class="big-card" id="continueCard"></div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">
+        🎯 आज का Learning Challenge
+      </h2>
+
+      <div class="big-card challenge" id="challengeCard"></div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">
+        💡 आज क्या सीखें?
+      </h2>
+
+      <div class="big-card today" id="todayCard"></div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">
+        🧩 Quick Practice
+      </h2>
+
+      <div class="big-card practice" id="practiceCard"></div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">
+        🏆 मेरी उपलब्धियाँ
+      </h2>
+
+      <div class="big-card achievements" id="achievementCard"></div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">
+        🔖 Saved Lessons
+      </h2>
+
+      <div class="big-card saved" id="savedCard"></div>
+    </section>
+
+    <div class="quote">
+      🌱 “हर दिन थोड़ा सीखें, हर दिन थोड़ा आगे बढ़ें।”
+    </div>
+
+  </div>
+</main>
+
+<div class="modal" id="modal"
+     onclick="if(event.target===this)closeModal()">
+
+  <div class="sheet">
+
+    <div class="sheet-top">
+      <h2 id="modalTitle">Learning</h2>
+
+      <button class="close" onclick="closeModal()">
+        ✕
+      </button>
+    </div>
+
+    <div id="modalBody"></div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+const PROFILE_KEY = "aadya_student_profile_v1";
+const PROGRESS_KEY = "aadya_progress_v1";
+const SAVED_KEY = "aadya_saved_lessons_v1";
+const QUIZ_KEY = "aadya_quiz_history_v1";
+const LAST_QUIZ_KEY = "aadya_last_quiz_score";
+
+const CURRICULUM_FILES = {
+  6:"./data/curriculum.json",
+  7:"./data/curriculum-class7.json",
+  8:"./data/curriculum-class8.json"
+};
+
+let profile=null;
+let curriculum=null;
+let allLessons=[];
+let progress={};
+let saved=[];
+let selectedLesson=null;
+let challengeQuestion=null;
+
+function $(id){
+  return document.getElementById(id);
+}
+
+function safeJSON(key,fallback){
+  try{
+    const raw=localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  }catch(e){
+    return fallback;
+  }
+  }
+  function esc(v){
+  return String(v??"").replace(
+    /[&<>'"]/g,
+    c=>({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      "'":"&#39;",
+      "\"":"&quot;"
+    }[c])
+  );
+}
+
+function isDone(file){
+  const p=progress[file];
+
+  return p===true ||
+    (p && p.completed===true);
+}
+
+function dayNumber(){
+  return Math.floor(Date.now()/86400000);
+}
+
+function goHome(){
+  location.href="./index.html";
+}
+
+window.goHome=goHome;
+
+function lessonUrl(file){
+  return "./learning.html?lesson="+
+    encodeURIComponent(file);
+}
+
+function openLesson(file){
+  if(file){
+    location.href=lessonUrl(file);
+  }
+}
+
+window.openLesson=openLesson;
+
+
+/* =====================================================
+   SAVED LESSONS
+===================================================== */
+
+function saveLesson(lesson){
+
+  if(!lesson || !lesson.file){
+    return;
+  }
+
+  if(saved.some(x=>x.file===lesson.file)){
+    renderSaved();
+    return;
+  }
+
+  saved.unshift({
+    file:lesson.file,
+    title:lesson.title,
+    subject:lesson.subjectName||"",
+    chapterTitle:lesson.chapterTitle||"",
+    savedAt:new Date().toISOString()
+  });
+
+  localStorage.setItem(
+    SAVED_KEY,
+    JSON.stringify(saved)
+  );
+
+  renderSaved();
+}
+
+window.saveLesson=saveLesson;
+
+function saveLessonByFile(file){
+
+  const lesson=
+    allLessons.find(x=>x.file===file);
+
+  if(lesson){
+    saveLesson(lesson);
+  }
+}
+
+window.saveLessonByFile=saveLessonByFile;
+
+function removeSaved(file){
+
+  saved=saved.filter(
+    x=>x.file!==file
+  );
+
+  localStorage.setItem(
+    SAVED_KEY,
+    JSON.stringify(saved)
+  );
+
+  renderSaved();
+}
+
+window.removeSaved=removeSaved;
+
+
+/* =====================================================
+   CURRICULUM
+===================================================== */
+
+function buildLessons(data){
+
+  const result=[];
+
+  const cls=
+    data?.classes?.["class"+profile.class];
+
+  if(!cls || !cls.subjects){
+    return result;
+  }
+
+  Object.entries(cls.subjects)
+    .forEach(([subjectKey,subject])=>{
+
+      (subject.chapters||[])
+        .forEach(ch=>{
+
+          (ch.lessons||[])
+            .forEach(ls=>{
+
+              result.push({
+
+                file:ls.file,
+
+                title:
+                  ls.title||"पाठ",
+
+                number:ls.number,
+
+                chapterNumber:
+                  ch.number,
+
+                chapterTitle:
+                  ch.title||"अध्याय",
+
+                bookNumber:
+                  ch.book_number,
+
+                subjectKey,
+
+                subjectName:
+                  subject.name||subjectKey
+              });
+
+            });
+
+        });
+
+    });
+
+  return result;
+}
+
+function firstIncomplete(){
+
+  return allLessons.find(
+    l=>!isDone(l.file)
+  )||null;
+}
+
+function lessonForToday(){
+
+  if(!allLessons.length){
+    return null;
+  }
+
+  const incomplete=
+    allLessons.filter(
+      l=>!isDone(l.file)
+    );
+
+  const pool=
+    incomplete.length ?
+    incomplete :
+    allLessons;
+
+  return pool[
+    dayNumber()%pool.length
+  ]||pool[0];
+}
+
+
+/* =====================================================
+   LESSON DATA
+===================================================== */
+
+async function loadLessonData(lesson){
+
+  if(!lesson?.file){
+    return null;
+  }
+
+  try{
+
+    const r=
+      await fetch(
+        lesson.file+"?v="+Date.now(),
+        {cache:"no-store"}
+      );
+
+    if(!r.ok){
+      throw new Error(
+        "lesson fetch failed"
+      );
+    }
+
+    return await r.json();
+
+  }catch(e){
+
+    return null;
+  }
+}
+
+function normalizeQuestions(data){
+
+  const q=
+    data?.practice?.questions;
+
+  return Array.isArray(q)
+    ?
+      q.filter(
+        x=>
+          x &&
+          x.question &&
+          Array.isArray(x.options) &&
+          x.options.length
+      )
+    :
+      [];
+}
+  function quizHistory(){
+
+  const h=
+    safeJSON(QUIZ_KEY,[]);
+
+  return Array.isArray(h)
+    ?
+      h
+    :
+      (
+        h &&
+        Array.isArray(h.history)
+          ?
+            h.history
+          :
+            []
+      );
+}
+
+function quizStats(){
+
+  const h=quizHistory();
+
+  let attempts=h.length;
+  let good=0;
+
+  h.forEach(x=>{
+
+    if(typeof x.score==="number"){
+      good+=x.score;
+
+    }else if(
+      typeof x.percentage==="number"
+    ){
+      good+=x.percentage;
+    }
+
+  });
+
+  const last=
+    Number(
+      localStorage.getItem(
+        LAST_QUIZ_KEY
+      )
+    );
+
+  if(
+    !attempts &&
+    Number.isFinite(last)
+  ){
+    attempts=1;
+    good=last;
+  }
+
+  return {
+    attempts,
+    avg:
+      attempts ?
+        good/attempts :
+        0
+  };
+}
+
+
+/* =====================================================
+   ACHIEVEMENTS
+===================================================== */
+
+function achievementBadges(){
+
+  const done=
+    allLessons.filter(
+      l=>isDone(l.file)
+    );
+
+  const out=[];
+
+  if(done.length>=1)
+    out.push([
+      "🥇",
+      "पहला Lesson पूरा"
+    ]);
+
+  if(done.length>=5)
+    out.push([
+      "🔥",
+      "5 Lessons पूरे"
+    ]);
+
+  if(done.length>=10)
+    out.push([
+      "🧠",
+      "10 Lessons Learner"
+    ]);
+
+  if(done.length>=25)
+    out.push([
+      "⭐",
+      "25 Lessons Learner"
+    ]);
+
+
+  const subjectDone={};
+
+  allLessons.forEach(l=>{
+
+    subjectDone[l.subjectKey]=
+      subjectDone[l.subjectKey]??{
+        total:0,
+        done:0,
+        name:l.subjectName
+      };
+
+    subjectDone[l.subjectKey].total++;
+
+    if(isDone(l.file)){
+      subjectDone[l.subjectKey].done++;
+    }
+
+  });
+
+  Object.values(subjectDone)
+    .forEach(s=>{
+
+      if(
+        s.total &&
+        s.done===s.total
+      ){
+        out.push([
+          "🌍",
+          s.name+" Explorer"
+        ]);
+      }
+
+    });
+
+
+  const chapterKeys={};
+
+  allLessons.forEach(l=>{
+
+    const k=
+      l.subjectKey+
+      "|"+
+      l.chapterNumber;
+
+    chapterKeys[k]=
+      chapterKeys[k]??{
+        total:0,
+        done:0,
+        title:l.chapterTitle
+      };
+
+    chapterKeys[k].total++;
+
+    if(isDone(l.file)){
+      chapterKeys[k].done++;
+    }
+
+  });
+
+  if(
+    Object.values(chapterKeys)
+      .some(
+        c=>
+          c.total &&
+          c.done===c.total
+      )
+  ){
+    out.push([
+      "📚",
+      "पहला Chapter पूरा"
+    ]);
+  }
+
+
+  const qs=quizStats();
+
+  if(
+    qs.attempts &&
+    qs.avg>=80
+  ){
+    out.push([
+      "🏆",
+      "Quiz Explorer"
+    ]);
+  }
+
+  return out.length
+    ?
+      out.slice(0,6)
+    :
+      [
+        ["🌱","सीखना शुरू करें"],
+        ["🚀","आपकी अगली उपलब्धि रास्ते में है"]
+      ];
+}
+
+
+/* =====================================================
+   LESSON CARD
+===================================================== */
+
+function saveButton(lesson){
+
+  const yes=
+    saved.some(
+      x=>x.file===lesson.file
+    );
+
+  return `
+    <button
+      class="btn save small"
+      onclick='saveLessonByFile(${JSON.stringify(lesson.file)})'>
+      ${yes ?
+        "🔖 Saved" :
+        "🔖 बाद में पढ़ें"}
+    </button>
+  `;
+}
+
+function lessonBox(
+  lesson,
+  primaryLabel
+){
+
+  if(!lesson){
+
+    return `
+      <div class="empty">
+        अभी कोई पाठ उपलब्ध नहीं है।
+        नया content जुड़ने पर यहाँ दिखाई देगा।
+      </div>
+    `;
+  }
+
+  return `
+    <div class="lesson-box">
+
+      <div class="subject-name">
+        ${esc(lesson.subjectName)}
+      </div>
+
+      <div class="chapter-name">
+        अध्याय ${esc(lesson.chapterNumber)}
+        ·
+        ${esc(lesson.chapterTitle)}
+      </div>
+
+      <div class="lesson-name">
+        Lesson ${esc(lesson.number)}:
+        ${esc(lesson.title)}
+      </div>
+
+      <div class="meta">
+        ${
+          isDone(lesson.file)
+          ?
+          "✅ यह पाठ पूरा किया जा चुका है"
+          :
+          "📖 आगे बढ़ने के लिए तैयार"
+        }
+      </div>
+
+      <div class="actions">
+
+        <button
+          class="btn primary"
+          onclick='openLesson(${JSON.stringify(lesson.file)})'>
+          ${primaryLabel}
+        </button>
+
+        ${saveButton(lesson)}
+
+      </div>
+
+    </div>
+  `;
+}
+
+
+/* =====================================================
+   CONTINUE
+===================================================== */
+
+function renderContinue(){
+
+  const l=firstIncomplete();
+
+  if(!l){
+
+    $("continueCard").innerHTML=`
+
+      <div class="card-head">
+
+        <div class="icon">🎉</div>
+
+        <div>
+
+          <h3 class="card-title">
+            उपलब्ध पाठ पूरे हो गए!
+          </h3>
+
+          <div class="card-sub">
+            इस कक्षा के अभी उपलब्ध पाठ पूरे हो चुके हैं।
+            नया विषय या नया content जुड़ने पर अगला
+            learning step यहाँ अपने आप दिखाई देगा।
+          </div>
+
+        </div>
+
+      </div>
+    `;
+
+    return;
+  }
+
+  $("continueCard").innerHTML=`
+
+    <div class="card-head">
+
+      <div class="icon">▶️</div>
 
       <div>
 
-        <div class="brand">
-          AADYA Digital Teacher
+        <h3 class="card-title">
+          यहीं से आगे बढ़ें
+        </h3>
+
+        <div class="card-sub">
+          आपके उपलब्ध progress में अगला अधूरा lesson
         </div>
 
-        <div class="sub">
-          मेरी कक्षा
+      </div>
+
+    </div>
+
+    ${lessonBox(
+      l,
+      "▶ पढ़ना जारी रखें"
+    )}
+  `;
+}
+  /* =====================================================
+   DAILY CHALLENGE
+===================================================== */
+
+async function renderChallenge(){
+
+  const base=
+    firstIncomplete()||
+    lessonForToday();
+
+  if(!base){
+
+    $("challengeCard").innerHTML=`
+      <div class="empty">
+        अभी challenge के लिए lesson उपलब्ध नहीं है।
+      </div>
+    `;
+
+    return;
+  }
+
+  const data=
+    await loadLessonData(base);
+
+  const qs=
+    normalizeQuestions(data);
+
+  if(!qs.length){
+
+    $("challengeCard").innerHTML=`
+
+      <div class="card-head">
+
+        <div class="icon">🎯</div>
+
+        <div>
+
+          <h3 class="card-title">
+            आज का Challenge
+          </h3>
+
+          <div class="card-sub">
+            ${esc(base.title)}
+            पर सीखने का छोटा challenge तैयार है।
+          </div>
+
+        </div>
+
+      </div>
+
+      ${lessonBox(
+        base,
+        "▶ Lesson खोलें"
+      )}
+    `;
+
+    return;
+  }
+
+  const q=
+    qs[
+      dayNumber()%qs.length
+    ];
+
+  challengeQuestion={
+    lesson:base,
+    data:data,
+    question:q
+  };
+
+  $("challengeCard").innerHTML=`
+
+    <div class="card-head">
+
+      <div class="icon">🎯</div>
+
+      <div>
+
+        <h3 class="card-title">
+          आज का Challenge
+        </h3>
+
+        <div class="card-sub">
+          ${esc(base.subjectName)}
+          ·
+          ${esc(base.title)}
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="lesson-box">
+
+      <div class="question">
+        ${esc(q.question)}
+      </div>
+
+      <div class="actions">
+
+        <button
+          class="btn primary"
+          onclick="openChallenge()">
+          उत्तर चुनें →
+        </button>
+
+        ${saveButton(base)}
+
+      </div>
+
+    </div>
+  `;
+}
+
+window.openChallenge=function(){
+
+  if(challengeQuestion){
+
+    openActivity(
+      challengeQuestion.lesson,
+      challengeQuestion.data,
+      challengeQuestion.question,
+      "🎯 आज का Challenge"
+    );
+  }
+};
+
+
+/* =====================================================
+   TODAY'S LEARNING
+===================================================== */
+
+async function renderToday(){
+
+  const l=lessonForToday();
+
+  if(!l){
+
+    $("todayCard").innerHTML=`
+      <div class="empty">
+        अभी कोई पाठ उपलब्ध नहीं है।
+      </div>
+    `;
+
+    return;
+  }
+
+  selectedLesson=l;
+
+  const data=
+    await loadLessonData(l);
+
+  const qs=
+    normalizeQuestions(data);
+
+  $("todayCard").innerHTML=`
+
+    <div class="card-head">
+
+      <div class="icon">💡</div>
+
+      <div>
+
+        <h3 class="card-title">
+          आज के लिए सुझाया गया पाठ
+        </h3>
+
+        <div class="card-sub">
+          ${
+            isDone(l.file)
+            ?
+            "दोहराकर अपनी समझ मजबूत करें"
+            :
+            "अभी उपलब्ध पाठों में से आज का सुझाव"
+          }
+        </div>
+
+      </div>
+
+    </div>
+
+    ${lessonBox(
+      l,
+      isDone(l.file)
+      ?
+      "↻ फिर से सीखें"
+      :
+      "🚀 सीखना शुरू करें"
+    )}
+
+    <div class="actions">
+
+      <button
+        class="btn secondary"
+        onclick='openMaterials(${JSON.stringify(l.file)})'>
+        📚 सीखने की सामग्री
+      </button>
+
+      ${
+        qs.length
+        ?
+        `
+        <button
+          class="btn secondary"
+          onclick='openActivityByFile(${JSON.stringify(l.file)})'>
+          🧩 Activity
+        </button>
+        `
+        :
+        ""
+      }
+
+    </div>
+  `;
+}
+
+
+/* =====================================================
+   QUICK PRACTICE
+===================================================== */
+
+async function renderPractice(){
+
+  const l=
+    selectedLesson||
+    lessonForToday();
+
+  if(!l){
+
+    $("practiceCard").innerHTML=`
+      <div class="empty">
+        अभी practice के लिए lesson उपलब्ध नहीं है।
+      </div>
+    `;
+
+    return;
+  }
+
+  const data=
+    await loadLessonData(l);
+
+  const qs=
+    normalizeQuestions(data);
+
+  if(!qs.length){
+
+    $("practiceCard").innerHTML=`
+
+      <div class="card-head">
+
+        <div class="icon">🧩</div>
+
+        <div>
+
+          <h3 class="card-title">
+            Quick Practice
+          </h3>
+
+          <div class="card-sub">
+            इस lesson में अभी structured
+            practice questions उपलब्ध नहीं हैं।
+          </div>
+
+        </div>
+
+      </div>
+    `;
+
+    return;
+  }
+
+  $("practiceCard").innerHTML=`
+
+    <div class="card-head">
+
+      <div class="icon">🧩</div>
+
+      <div>
+
+        <h3 class="card-title">
+          5 प्रश्नों की Quick Practice
+        </h3>
+
+        <div class="card-sub">
+          ${esc(l.subjectName)}
+          ·
+          ${esc(l.title)}
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="lesson-box">
+
+      <div class="lesson-name">
+        सीखें → सोचें → उत्तर चुनें
+      </div>
+
+      <div class="meta">
+        इस lesson के वास्तविक practice
+        questions से interactive practice
+      </div>
+
+      <div class="actions">
+
+        <button
+          class="btn primary"
+          onclick='openActivityByFile(${JSON.stringify(l.file)})'>
+          🧠 Practice शुरू करें
+        </button>
+
+        <button
+          class="btn secondary"
+          onclick='openWorksheetByFile(${JSON.stringify(l.file)})'>
+          📝 Worksheet
+        </button>
+
+      </div>
+
+    </div>
+  `;
+}
+
+
+/* =====================================================
+   ACHIEVEMENTS
+===================================================== */
+
+function renderAchievements(){
+
+  const badges=
+    achievementBadges();
+
+  $("achievementCard").innerHTML=`
+
+    <div class="card-head">
+
+      <div class="icon">🏆</div>
+
+      <div>
+
+        <h3 class="card-title">
+          आपकी Learning Achievements
+        </h3>
+
+        <div class="card-sub">
+          यह आँकड़ों वाली Progress report नहीं है—
+          यह आपकी सीखने की छोटी-छोटी उपलब्धियाँ हैं।
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="badges">
+
+      ${
+        badges.map(
+          b=>
+            `
+            <div class="badge-card">
+              <span class="emoji">${b[0]}</span>
+              ${esc(b[1])}
+            </div>
+            `
+        ).join("")
+      }
+
+    </div>
+  `;
+}
+
+
+/* =====================================================
+   SAVED LESSONS
+===================================================== */
+
+function renderSaved(){
+
+  if(!saved.length){
+
+    $("savedCard").innerHTML=`
+
+      <div class="card-head">
+
+        <div class="icon">🔖</div>
+
+        <div>
+
+          <h3 class="card-title">
+            मेरे Saved Lessons
+          </h3>
+
+          <div class="card-sub">
+            जिस lesson को बाद में पढ़ना हो,
+            यहाँ से 🔖 बाद में पढ़ें दबाएँ।
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="empty">
+        अभी कोई lesson saved नहीं है।
+      </div>
+    `;
+
+    return;
+  }
+
+  $("savedCard").innerHTML=`
+
+    <div class="card-head">
+
+      <div class="icon">🔖</div>
+
+      <div>
+
+        <h3 class="card-title">
+          मेरे Saved Lessons
+        </h3>
+
+        <div class="card-sub">
+          आपके चुने हुए lessons
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="saved-list">
+
+      ${
+        saved
+          .slice(0,10)
+          .map(
+            s=>
+              `
+              <div class="saved-item">
+
+                <div class="saved-item-main">
+
+                  <div class="saved-item-title">
+                    ${esc(s.title)}
+                  </div>
+
+                  <div class="saved-item-meta">
+                    ${esc(s.subject)}
+                    ·
+                    ${esc(s.chapterTitle)}
+                  </div>
+
+                </div>
+
+                <button
+                  class="btn primary small"
+                  onclick='openLesson(${JSON.stringify(s.file)})'>
+                  खोलें
+                </button>
+
+                <button
+                  class="remove"
+                  title="Saved से हटाएँ"
+                  onclick='removeSaved(${JSON.stringify(s.file)})'>
+                  ✕
+                </button>
+
+              </div>
+              `
+          )
+          .join("")
+      }
+
+    </div>
+
+    ${
+      saved.length>10
+      ?
+      `
+      <div class="status">
+        पहले 10 saved lessons दिखाए जा रहे हैं।
+      </div>
+      `
+      :
+      ""
+    }
+  `;
+}
+  /* =====================================================
+   MODAL
+===================================================== */
+
+function openModal(title,body){
+
+  $("modalTitle").textContent=title;
+  $("modalBody").innerHTML=body;
+  $("modal").classList.add("open");
+}
+
+function closeModal(){
+
+  $("modal").classList.remove("open");
+}
+
+window.closeModal=closeModal;
+
+
+/* =====================================================
+   SPECIAL LEARNING MATERIALS
+===================================================== */
+
+async function openMaterials(file){
+
+  const l=
+    allLessons.find(
+      x=>x.file===file
+    );
+
+  if(!l)return;
+
+  const data=
+    await loadLessonData(l);
+
+  if(!data)return;
+
+  const youtube=
+    findYoutube(data);
+
+  const fact=
+    findFact(data);
+
+  const qs=
+    normalizeQuestions(data);
+
+  const diagram=
+    findDiagram(data);
+
+
+  const html=`
+
+    <div class="lesson-box">
+
+      <div class="subject-name">
+        ${esc(l.subjectName)}
+      </div>
+
+      <div class="lesson-name">
+        ${esc(l.title)}
+      </div>
+
+    </div>
+
+
+    <div class="material-grid">
+
+
+      <!-- VIDEO -->
+
+      <div class="material">
+
+        <h3>
+          🎬 Video Lesson
+        </h3>
+
+        ${
+          youtube
+          ?
+          `
+          <p>
+            इस lesson का video उपलब्ध है।
+          </p>
+
+          <div class="actions">
+
+            <button
+              class="btn primary small"
+              onclick='openVideo(${JSON.stringify(youtube)})'>
+              ▶ YouTube पर देखें
+            </button>
+
+          </div>
+          `
+          :
+          `
+          <p>
+            🎬 वीडियो जल्द उपलब्ध होगी।
+          </p>
+          `
+        }
+
+      </div>
+
+
+      <!-- ACTIVITY -->
+
+      <div class="material">
+
+        <h3>
+          🧩 Activity
+        </h3>
+
+        <p>
+          ${
+            qs.length
+            ?
+            "Lesson के वास्तविक practice questions से interactive activity।"
+            :
+            "इस lesson के लिए अभी practice data उपलब्ध नहीं है।"
+          }
+        </p>
+
+        ${
+          qs.length
+          ?
+          `
+          <div class="actions">
+
+            <button
+              class="btn secondary small"
+              onclick='openActivityByFile(${JSON.stringify(file)})'>
+              Activity शुरू करें
+            </button>
+
+          </div>
+          `
+          :
+          ""
+        }
+
+      </div>
+
+
+      <!-- WORKSHEET -->
+
+      <div class="material">
+
+        <h3>
+          📝 Worksheet
+        </h3>
+
+        <p>
+          ${
+            qs.length
+            ?
+            "इसी lesson के questions से worksheet तैयार होगी।"
+            :
+            "अभी worksheet content उपलब्ध नहीं है।"
+          }
+        </p>
+
+        ${
+          qs.length
+          ?
+          `
+          <div class="actions">
+
+            <button
+              class="btn secondary small"
+              onclick='openWorksheetByFile(${JSON.stringify(file)})'>
+              Worksheet देखें
+            </button>
+
+          </div>
+          `
+          :
+          ""
+        }
+
+      </div>
+
+
+      <!-- FACT -->
+
+      ${
+        fact
+        ?
+        `
+        <div class="material">
+
+          <h3>
+            💡 Interesting Fact
+          </h3>
+
+          <p>
+            Lesson से संबंधित उपलब्ध तथ्य।
+          </p>
+
+          <div class="fact">
+            ${esc(fact)}
+          </div>
+
+        </div>
+        `
+        :
+        ""
+      }
+
+
+      <!-- DIAGRAM -->
+
+      ${
+        diagram
+        ?
+        `
+        <div class="material">
+
+          <h3>
+            📐 Diagram-based Content
+          </h3>
+
+          <p>
+            इस lesson के लिए उपलब्ध visual content खोलें।
+          </p>
+
+          <div class="actions">
+
+            <button
+              class="btn secondary small"
+              onclick='openDiagram(${JSON.stringify(diagram)})'>
+              📐 Diagram देखें
+            </button>
+
+          </div>
+
+        </div>
+        `
+        :
+        ""
+      }
+
+    </div>
+  `;
+
+  openModal(
+    "📚 सीखने की सामग्री",
+    html
+  );
+}
+
+window.openMaterials=openMaterials;
+
+
+/* =====================================================
+   MATERIAL DATA DETECTION
+===================================================== */
+
+function findYoutube(d){
+
+  return (
+    d?.special_materials?.youtube||
+    d?.learning_materials?.youtube||
+    d?.youtube||
+    d?.youtube_url||
+    d?.youtubeUrl||
+    d?.video?.youtube||
+    d?.video_url||
+    d?.videoUrl||
+    ""
+  );
+}
+
+function findFact(d){
+
+  return (
+    d?.interesting_fact||
+    d?.interestingFact||
+    d?.did_you_know||
+    d?.didYouKnow||
+    d?.special_materials?.interesting_fact||
+    d?.learning_materials?.interesting_fact||
+    ""
+  );
+}
+
+function findDiagram(d){
+
+  return (
+    d?.special_materials?.diagram||
+    d?.learning_materials?.diagram||
+    d?.diagram||
+    d?.diagramHtml||
+    ""
+  );
+}
+
+function openDiagram(content){
+
+  if(!content)return;
+
+  openModal(
+    "📐 Diagram-based Content",
+    `
+    <div class="material">
+      <div style="overflow:auto">
+        ${content}
+      </div>
+    </div>
+    `
+  );
+}
+
+window.openDiagram=openDiagram;
+
+
+/* =====================================================
+   YOUTUBE
+===================================================== */
+
+function openVideo(url){
+
+  if(
+    !/^https?:\/\/(www\.)?(youtube\.com|youtu\.be)\//i
+      .test(url)
+  ){
+    return;
+  }
+
+  window.open(
+    url,
+    "_blank",
+    "noopener,noreferrer"
+  );
+}
+
+window.openVideo=openVideo;
+
+
+/* =====================================================
+   INTERACTIVE ACTIVITY
+===================================================== */
+
+async function openActivityByFile(file){
+
+  const l=
+    allLessons.find(
+      x=>x.file===file
+    );
+
+  if(!l)return;
+
+  const d=
+    await loadLessonData(l);
+
+  const qs=
+    normalizeQuestions(d);
+
+  openActivity(
+    l,
+    d,
+    qs[0],
+    "🧩 Quick Practice"
+  );
+}
+
+window.openActivityByFile=
+  openActivityByFile;
+
+
+function openActivity(
+  l,
+  d,
+  startQ,
+  title
+){
+
+  const qs=
+    normalizeQuestions(d);
+
+  if(!qs.length){
+
+    openModal(
+      title,
+      `
+      <div class="empty">
+        इस lesson में अभी structured
+        practice questions उपलब्ध नहीं हैं।
+      </div>
+      `
+    );
+
+    return;
+  }
+
+  let idx=
+    Math.max(
+      0,
+      qs.indexOf(startQ)
+    );
+
+  if(idx<0){
+    idx=0;
+  }
+
+
+  function render(){
+
+    const q=qs[idx];
+
+    openModal(
+      title,
+      `
+
+      <div class="lesson-box">
+
+        <div class="subject-name">
+          ${esc(l.subjectName)}
+          ·
+          ${esc(l.chapterTitle)}
+        </div>
+
+        <div class="lesson-name">
+          ${esc(l.title)}
+        </div>
+
+        <div class="meta">
+          प्रश्न ${idx+1} / ${qs.length}
         </div>
 
       </div>
 
 
-      <button
-        class="home"
-        onclick="goHome()"
-      >
-        ⌂ होम
-      </button>
-
-    </div>
-
-  </header>
-
-
-
-  <!-- ==============================
-       MAIN
-  =============================== -->
-
-  <main class="wrap">
-
-
-    <section class="welcome">
-
-      <h1 id="studentWelcome">
-        नमस्ते! 👋
-      </h1>
-
-      <p id="classText">
-        आपकी Learning Journey यहाँ से शुरू होती है।
-      </p>
-
-    </section>
-
-
-
-    <div
-      id="curriculumBox"
-      class="loading"
-    >
-      📚 आपका Curriculum लोड हो रहा है...
-    </div>
-
-
-    <div class="footer-note">
-
-      AADYA — आपका अपना Digital Teacher<br>
-
-      हर बच्चे तक, हर जगह, हर समय —
-      सीखने की आज़ादी।
-
-    </div>
-
-
-  </main>
-
-
-
-  <!-- ==============================
-       JAVASCRIPT
-  =============================== -->
-
-  <script>
-
-
-    /* --------------------------------
-       PROFILE
-    -------------------------------- */
-
-    const PROFILE_KEY =
-      "aadya_student_profile_v1";
-
-
-
-    /* --------------------------------
-       HOME
-    -------------------------------- */
-
-    function goHome() {
-
-      window.location.href =
-        "./index.html";
-
-    }
-
-
-
-    /* --------------------------------
-       LOAD STUDENT
-    -------------------------------- */
-
-    function loadStudent() {
-
-      try {
-
-        const saved =
-          localStorage.getItem(
-            PROFILE_KEY
-          );
-
-
-        if (!saved) {
-
-          return "6";
-
-        }
-
-
-        const profile =
-          JSON.parse(saved);
-
-
-        const name =
-          profile.name ||
-          profile.studentName ||
-          "";
-
-
-        const cls =
-          profile.class ||
-          profile.studentClass ||
-          profile.selectedClass ||
-          "6";
-
-
-        const welcome =
-          document.getElementById(
-            "studentWelcome"
-          );
-
-
-        const classText =
-          document.getElementById(
-            "classText"
-          );
-
-
-        if (name) {
-
-          welcome.textContent =
-            "नमस्ते, " +
-            name +
-            "! 👋";
-
-        }
-
-
-        classText.textContent =
-          "कक्षा " +
-          cls +
-          " • आपकी Learning Journey में स्वागत है";
-
-
-        return String(cls);
-
-      }
-
-
-      catch (error) {
-
-        console.error(
-          "Profile error:",
-          error
-        );
-
-        return "6";
-
-      }
-
-    }
-
-
-
-    /* --------------------------------
-       OPEN LESSON
-    -------------------------------- */
-
-    function openLesson(file) {
-
-      if (!file) {
-
-        return;
-
-      }
-
-
-      window.location.href =
-        "./learning.html?lesson=" +
-        encodeURIComponent(file);
-
-    }
-
-
-
-    /* --------------------------------
-       ESCAPE HTML
-       सुरक्षा के लिए
-    -------------------------------- */
-
-    function escapeHtml(value) {
-
-      return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-
-    }
-
-
-
-    /* --------------------------------
-       RENDER CURRICULUM
-    -------------------------------- */
-
-    function renderCurriculum(
-      data,
-      classNumber
-    ) {
-
-
-      const box =
-        document.getElementById(
-          "curriculumBox"
-        );
-
-
-      const classKey =
-        "class" +
-        classNumber;
-
-
-      const classData =
-        data &&
-        data.classes
-          ? data.classes[classKey]
-          : null;
-
-
-      if (!classData) {
-
-        box.className =
-          "error";
-
-
-        box.innerHTML =
-          "⚠️ कक्षा " +
-          escapeHtml(classNumber) +
-          " का Curriculum नहीं मिला।";
-
-
-        return;
-
-      }
-
-
-
-      const subjects =
-        classData.subjects || {};
-
-
-      let html = "";
-
-
-      let subjectCount = 0;
-
-
-
-      /* --------------------------------
-         SUBJECTS
-      -------------------------------- */
-
-      Object.keys(subjects)
-        .forEach(
-          function(subjectKey) {
-
-
-            const subject =
-              subjects[subjectKey] || {};
-
-
-            const chapters =
-              Array.isArray(
-                subject.chapters
+      <div class="activity-box">
+
+        <div class="question">
+          ${esc(q.question)}
+        </div>
+
+        <div class="options">
+
+          ${
+            q.options
+              .map(
+                (o,i)=>
+                  `
+                  <button
+                    class="option"
+                    onclick="answerActivity(
+                      ${i},
+                      ${Number(q.correct_answer)===i}
+                    )">
+                    ${esc(o)}
+                  </button>
+                  `
               )
-                ? subject.chapters
-                : [];
+              .join("")
+          }
+
+        </div>
+
+        <div id="activityFeedback"></div>
+
+      </div>
+
+      `
+    );
+  }
 
 
-            subjectCount++;
+  window.answerActivity=
+    function(choice,correct){
 
+      document
+        .querySelectorAll(".option")
+        .forEach(
+          (b,i)=>{
 
+            b.disabled=true;
 
-            html +=
-              '<div class="subject">' +
-              "📘 " +
-              escapeHtml(
-                subject.name ||
-                subjectKey
-              ) +
-              "</div>";
+            if(i===choice){
 
-
-
-            /* --------------------------------
-               NO CHAPTER
-            -------------------------------- */
-
-            if (!chapters.length) {
-
-              html +=
-                '<div class="empty">' +
-                "अभी इस विषय के पाठ " +
-                "तैयार किए जा रहे हैं।" +
-                "</div>";
-
-              return;
-
+              b.classList.add(
+                correct
+                ?
+                "correct"
+                :
+                "wrong"
+              );
             }
-
-
-
-            /* --------------------------------
-               CHAPTERS
-            -------------------------------- */
-
-            chapters.forEach(
-              function(chapter) {
-
-
-                html +=
-                  '<section class="chapter">';
-
-
-
-                /* CHAPTER HEADER */
-
-                html +=
-                  '<div class="chapter-head">';
-
-
-                html +=
-                  '<div class="chapter-title">' +
-                  "अध्याय " +
-                  escapeHtml(
-                    chapter.number ??
-                    ""
-                  ) +
-                  " — " +
-                  escapeHtml(
-                    chapter.title ||
-                    "अध्याय"
-                  ) +
-                  "</div>";
-
-
-
-                /* SOURCE BADGE */
-
-                if (chapter.source) {
-
-                  const badgeText =
-                    chapter.source ===
-                    "textbook"
-
-                      ? "📖 पाठ्यपुस्तक आधारित"
-
-                      : "✨ AADYA विशेष पाठ";
-
-
-                  html +=
-                    '<span class="badge">' +
-                    badgeText +
-                    "</span>";
-
-                }
-
-
-                html +=
-                  "</div>";
-
-
-
-                /* LESSON CONTAINER */
-
-                html +=
-                  '<div class="lessons">';
-
-
-
-                const lessons =
-                  Array.isArray(
-                    chapter.lessons
-                  )
-                    ? chapter.lessons
-                    : [];
-
-
-
-                /* --------------------------------
-                   EMPTY LESSONS
-                -------------------------------- */
-
-                if (!lessons.length) {
-
-                  html +=
-                    '<div class="empty">' +
-                    "इस अध्याय के पाठ " +
-                    "जल्द उपलब्ध होंगे।" +
-                    "</div>";
-
-                }
-
-
-
-                /* --------------------------------
-                   LESSONS
-                -------------------------------- */
-
-                else {
-
-                  lessons.forEach(
-                    function(lesson) {
-
-
-                      const file =
-                        lesson.file ||
-                        "";
-
-
-                      const title =
-                        lesson.title ||
-                        (
-                          "पाठ " +
-                          (
-                            lesson.number ??
-                            ""
-                          )
-                        );
-
-
-                      const number =
-                        lesson.number ??
-                        "";
-
-
-
-                      html +=
-                        '<div class="lesson" ' +
-                        'data-file="' +
-                        escapeHtml(file) +
-                        '">';
-
-
-
-                      html +=
-                        '<div class="num">' +
-                        escapeHtml(number) +
-                        "</div>";
-
-
-
-                      html +=
-                        '<div class="lesson-title">' +
-                        escapeHtml(title) +
-                        "</div>";
-
-
-
-                      html +=
-                        '<div class="arrow">' +
-                        "›" +
-                        "</div>";
-
-
-                      html +=
-                        "</div>";
-
-                    }
-                  );
-
-                }
-
-
-
-                html +=
-                  "</div>";
-
-
-                html +=
-                  "</section>";
-
-              }
-            );
 
           }
         );
 
 
+      const f=
+        $("activityFeedback");
 
-      /* --------------------------------
-         NO SUBJECT
-      -------------------------------- */
+      f.className="feedback";
 
-      if (!subjectCount) {
-
-        box.className =
-          "error";
-
-
-        box.textContent =
-          "⚠️ इस कक्षा का Curriculum " +
-          "अभी उपलब्ध नहीं है।";
+      f.innerHTML=
+        correct
+        ?
+        "✅ बिल्कुल सही!"
+        :
+        "❌ फिर से सोचें। सही उत्तर देखने के बाद अगले प्रश्न पर जाएँ।";
 
 
-        return;
+      f.innerHTML+=`
 
-      }
+        <div class="actions">
 
+          <button
+            class="btn primary small"
+            onclick="nextActivity()">
 
-
-      /* --------------------------------
-         DISPLAY
-      -------------------------------- */
-
-      box.className = "";
-
-      box.innerHTML =
-        html;
-
-
-
-      /* --------------------------------
-         LESSON CLICK EVENTS
-      -------------------------------- */
-
-      const lessonElements =
-        box.querySelectorAll(
-          ".lesson"
-        );
-
-
-      lessonElements.forEach(
-        function(element) {
-
-
-          element.addEventListener(
-            "click",
-            function() {
-
-
-              const file =
-                element.getAttribute(
-                  "data-file"
-                );
-
-
-              openLesson(file);
-
+            ${
+              idx+1<qs.length
+              ?
+              "अगला प्रश्न →"
+              :
+              "फिर से शुरू करें ↻"
             }
-          );
 
+          </button>
+
+        </div>
+      `;
+    };
+
+
+  window.nextActivity=
+    function(){
+
+      idx=
+        idx+1<qs.length
+        ?
+        idx+1
+        :
+        0;
+
+      render();
+    };
+
+
+  render();
+}
+
+
+/* =====================================================
+   WORKSHEET
+===================================================== */
+
+async function openWorksheetByFile(file){
+
+  const l=
+    allLessons.find(
+      x=>x.file===file
+    );
+
+  if(!l)return;
+
+  const d=
+    await loadLessonData(l);
+
+  const qs=
+    normalizeQuestions(d)
+      .slice(0,5);
+
+  if(!qs.length){
+
+    openModal(
+      "📝 Worksheet",
+      `
+      <div class="empty">
+        इस lesson में अभी worksheet के लिए
+        structured questions उपलब्ध नहीं हैं।
+      </div>
+      `
+    );
+
+    return;
+  }
+
+
+  const html=`
+
+    <div class="worksheet" id="printSection">
+
+      <h3>
+        ${esc(l.title)}
+      </h3>
+
+      <div class="meta">
+        ${esc(l.subjectName)}
+        ·
+        ${esc(l.chapterTitle)}
+      </div>
+
+      <ol>
+
+        ${
+          qs.map(
+            q=>
+              `
+              <li>
+
+                ${esc(q.question)}
+
+                <div
+                  style="
+                    margin-top:7px;
+                    color:#666;
+                    font-size:13px
+                  ">
+
+                  ${
+                    q.options
+                      .map(
+                        (o,i)=>
+                          String.fromCharCode(65+i)
+                          +") "
+                          +esc(o)
+                      )
+                      .join(" &nbsp; ")
+                  }
+
+                </div>
+
+              </li>
+              `
+          ).join("")
         }
-      );
 
-    }
+      </ol>
 
+      <div class="actions print-only">
 
+        <button
+          class="btn primary print-btn"
+          onclick="window.print()">
+          🖨️ Print / Save PDF
+        </button>
 
-    /* --------------------------------
-       LOAD CURRICULUM
-    -------------------------------- */
+      </div>
 
-    async function loadCurriculum() {
+    </div>
+  `;
 
+  openModal(
+    "📝 Lesson Worksheet",
+    html
+  );
+}
 
-      const box =
-        document.getElementById(
-          "curriculumBox"
-        );
-
-
-      try {
-
-
-        /* STUDENT CLASS */
-
-        const cls =
-          loadStudent() ||
-          "6";
+window.openWorksheetByFile=
+  openWorksheetByFile;
 
 
+/* =====================================================
+   INITIALISE
+===================================================== */
 
-        /* CURRICULUM FILE */
+async function init(){
 
-        const curriculumFile =
-  String(cls) === "7"
-    ? "./data/curriculum-class7.json"
-    : String(cls) === "8"
-      ? "./data/curriculum-class8.json"
-      : "./data/curriculum.json";
-
-const url =
-  curriculumFile + "?v=" + Date.now();
-
-
-
-        /* FETCH */
-
-        const response =
-          await fetch(
-            url,
-            {
-              cache: "no-store"
-            }
-          );
-
-
-
-        /* HTTP ERROR */
-
-        if (!response.ok) {
-
-          throw new Error(
-            "HTTP " +
-            response.status +
-            " — curriculum.json नहीं मिला"
-          );
-
-        }
-
-
-
-        /* JSON */
-
-        const data =
-          await response.json();
-
-
-
-        /* RENDER */
-
-        renderCurriculum(
-          data,
-          cls
-        );
-
-      }
-
-
-      catch (error) {
-
-
-        console.error(
-          "Curriculum error:",
-          error
-        );
-
-
-        box.className =
-          "error";
-
-
-        box.innerHTML =
-          "⚠️ Curriculum लोड नहीं हो पाया।" +
-          "<br>" +
-          "<small>" +
-          "कृपया Internet चालू करके " +
-          "पेज Refresh करें।" +
-          "</small>";
-
-      }
-
-    }
-
-
-
-    /* --------------------------------
-       START AADYA CLASS PAGE
-       यही हिस्सा पिछली बार छूट गया था
-    -------------------------------- */
-
-    document.addEventListener(
-      "DOMContentLoaded",
-      function() {
-
-
-        loadStudent();
-
-
-        loadCurriculum();
-
-
-      }
+  profile=
+    safeJSON(
+      PROFILE_KEY,
+      null
     );
 
 
-  </script>
+  if(
+    !profile ||
+    !profile.class ||
+    !CURRICULUM_FILES[
+      Number(profile.class)
+    ]
+  ){
 
+    location.href="./profile.html";
+    return;
+  }
+
+
+  const file=
+    CURRICULUM_FILES[
+      Number(profile.class)
+    ];
+
+
+  try{
+
+    const r=
+      await fetch(
+        file+"?v="+Date.now(),
+        {cache:"no-store"}
+      );
+
+
+    if(!r.ok){
+
+      throw new Error(
+        "curriculum fetch failed"
+      );
+    }
+
+
+    curriculum=
+      await r.json();
+
+
+    progress=
+      safeJSON(
+        PROGRESS_KEY,
+        {}
+      );
+
+
+    saved=
+      safeJSON(
+        SAVED_KEY,
+        []
+      );
+
+
+    if(!Array.isArray(saved)){
+      saved=[];
+    }
+
+
+    allLessons=
+      buildLessons(
+        curriculum
+      );
+
+
+    $("greeting").textContent=
+      `नमस्ते, ${
+        profile.name||"विद्यार्थी"
+      }! 👋`;
+
+
+    $("classLine").textContent=
+      `कक्षा ${profile.class}
+       में आपकी अपनी learning space`;
+
+
+    $("topSub").textContent=
+      `कक्षा ${profile.class}
+       · आज क्या सीखें?`;
+
+
+    $("loading")
+      .classList
+      .add("hidden");
+
+
+    $("app")
+      .classList
+      .remove("hidden");
+
+
+    renderContinue();
+
+    await renderChallenge();
+
+    await renderToday();
+
+    await renderPractice();
+
+    renderAchievements();
+
+    renderSaved();
+
+
+  }catch(e){
+
+    $("loading").innerHTML=
+      `
+      ⚠️ मेरी कक्षा अभी लोड नहीं हो सकी।
+      <br>
+      <small>
+        कृपया इंटरनेट/नेटवर्क जाँचकर
+        पेज फिर खोलें।
+      </small>
+      `;
+
+    $("loading")
+      .className="error";
+  }
+}
+
+
+document.addEventListener(
+  "DOMContentLoaded",
+  init
+);
+
+})();
+</script>
 
 </body>
-
 </html>
