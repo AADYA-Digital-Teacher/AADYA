@@ -1318,6 +1318,25 @@ function lessonBox(
 ===================================================== */
 
 function renderContinue(){
+    const hasProgress = Object.keys(progress).some(
+    function(file){
+      return isDone(file);
+    }
+  );
+
+  const continueTitle =
+    document.querySelector(
+      "#continueSection .section-title"
+    );
+
+  if(continueTitle){
+
+    continueTitle.textContent =
+      hasProgress
+        ? "▶️ जहाँ छोड़ा था, वहीं से शुरू करें"
+        : "📚 शुरुआत करें";
+
+  }
 
   const l=firstIncomplete();
 
@@ -1360,10 +1379,11 @@ function renderContinue(){
         <h3 class="card-title">
           यहीं से आगे बढ़ें
         </h3>
-
-        <div class="card-sub">
-          आपके उपलब्ध progress में अगला अधूरा lesson
-        </div>
+<div class="card-sub">
+  ${hasProgress
+    ? "आपके progress के अनुसार अगला अधूरा lesson"
+    : "आपका पहला lesson यहाँ से शुरू होगा"}
+</div>
 
       </div>
 
