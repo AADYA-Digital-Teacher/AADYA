@@ -2058,42 +2058,122 @@ function answerIndex(item){
     return -1;
   }
 
+  const options = Array.isArray(item.options)
+    ? item.options
+    : [];
+
   const value =
     item.correct_answer ??
     item.answer ??
     item.correctAnswer ??
     item.answer_index;
 
+  /* ------------------------------------------
+     1. Numeric index
+     Example: 0, 1, 2, 3
+  ------------------------------------------ */
+
   if(
     typeof value === "number" &&
     Number.isFinite(value)
   ){
 
-    return value;
+    if(
+      value >= 0 &&
+      value < options.length
+    ){
+      return value;
+    }
 
+    return -1;
   }
+
+
+  /* ------------------------------------------
+     2. Numeric string
+     Example: "0", "1", "2", "3"
+  ------------------------------------------ */
 
   if(
     typeof value === "string" &&
     value.trim() !== ""
   ){
 
-    const n =
-      Number(value.trim());
+    const text = value.trim();
+
+    const n = Number(text);
 
     if(
-      Number.isFinite(n)
+      Number.isFinite(n) &&
+      Number.isInteger(n) &&
+      n >= 0 &&
+      n < options.length
     ){
-
       return n;
-
     }
 
+
+    /* ----------------------------------------
+       3. A / B / C / D format
+    ---------------------------------------- */
+
+    const letter = text
+      .toUpperCase()
+      .replace(/\s+/g,"");
+
+    const letterIndex = {
+      A:0,
+      B:1,
+      C:2,
+      D:3,
+      E:4,
+      F:5
+    };
+
+    if(
+      Object.prototype.hasOwnProperty.call(
+        letterIndex,
+        letter
+      ) &&
+      letterIndex[letter] < options.length
+    ){
+      return letterIndex[letter];
+    }
+
+
+    /* ----------------------------------------
+       4. Answer text
+       Example:
+       answer: "सूर्य"
+       options: ["पृथ्वी","चंद्रमा","सूर्य","बृहस्पति"]
+    ---------------------------------------- */
+
+    const normalize = function(v){
+
+      return String(v ?? "")
+        .trim()
+        .replace(/\s+/g," ");
+
+    };
+
+    const wanted = normalize(text);
+
+    const textIndex = options.findIndex(
+      function(option){
+
+        return normalize(option) === wanted;
+
+      }
+    );
+
+    if(textIndex >= 0){
+      return textIndex;
+    }
   }
 
-  return -1;
 
-}
+  return -1;
+    }
 
 
 /* ==========================================
