@@ -1633,6 +1633,60 @@ body{
   }
 
     }
+  /* =========================================================
+   AADYA — SAVE LESSON BUTTON
+========================================================= */
+
+.save-lesson-btn{
+  display:none;
+
+  width:100%;
+  min-height:52px;
+
+  margin-bottom:18px;
+  padding:13px 16px;
+
+  border:1px solid #f0d77a;
+  border-radius:16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff9df,
+      #fff3b8
+    );
+
+  color:#172b4d;
+
+  font-size:16px;
+  font-weight:900;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 5px 15px rgba(217,164,0,.14);
+
+  transition:
+    transform .15s ease,
+    background .15s ease;
+}
+
+.save-lesson-btn:active{
+  transform:scale(.98);
+}
+
+.save-lesson-btn.saved{
+  background:
+    linear-gradient(
+      135deg,
+      #e8f8ed,
+      #d8f3df
+    );
+
+  border-color:#7bc58e;
+
+  color:#176b3a;
+}
   
 </style>
 
@@ -1670,7 +1724,14 @@ body{
   ← होम पर जाएँ
 </button>
 
-
+<button
+  id="saveLessonButton"
+  class="save-lesson-btn"
+  onclick="toggleSaveLesson()"
+>
+  🔖 बाद में पढ़ें
+</button>
+  
 <div
   id="loading"
   class="card loading"
@@ -1876,6 +1937,9 @@ const PROGRESS_KEY =
 
 const QUIZ_KEY =
   "aadya_last_quiz_score";
+  
+  const SAVED_KEY =
+  "aadya_saved_lessons_v1";
 
 
 /* ==========================================
@@ -2753,7 +2817,7 @@ if (
 
 
     updateProgressUI();
-
+    updateSaveButton();
 
   }
   catch(error){
@@ -4430,7 +4494,209 @@ function completeLesson(){
 
 }
 
+/* ==========================================
+   SAVE / REMOVE LESSON
+========================================== */
 
+function getSavedLessons(){
+
+  try{
+
+    const raw =
+      localStorage.getItem(
+        SAVED_KEY
+      );
+
+    if(!raw){
+      return [];
+    }
+
+    const data =
+      JSON.parse(raw);
+
+    return Array.isArray(data)
+      ? data
+      : [];
+
+  }
+  catch(error){
+
+    console.error(
+      "Saved Lessons read error:",
+      error
+    );
+
+    return [];
+
+  }
+
+}
+
+
+function isLessonSaved(){
+
+  const saved =
+    getSavedLessons();
+
+  return saved.some(
+    item =>
+      item &&
+      item.file === lessonFile
+  );
+
+}
+
+
+function updateSaveButton(){
+
+  const button =
+    document.getElementById(
+      "saveLessonButton"
+    );
+
+  if(!button){
+    return;
+  }
+
+
+  /*
+   * Lesson load होने के बाद ही button दिखाएँ
+   */
+  button.style.display =
+    lessonData
+      ? "block"
+      : "none";
+
+
+  if(isLessonSaved()){
+
+    button.classList.add(
+      "saved"
+    );
+
+    button.textContent =
+      "✅ बाद में पढ़ने के लिए Saved";
+
+  }
+  else{
+
+    button.classList.remove(
+      "saved"
+    );
+
+    button.textContent =
+      "🔖 बाद में पढ़ें";
+
+  }
+
+}
+
+
+function toggleSaveLesson(){
+
+  if(!lessonData){
+    return;
+  }
+
+
+  let saved =
+    getSavedLessons();
+
+
+  const existingIndex =
+    saved.findIndex(
+      item =>
+        item &&
+        item.file === lessonFile
+    );
+
+
+  /*
+   * अगर पहले से Saved है
+   * तो Remove करें
+   */
+  if(existingIndex !== -1){
+
+    saved.splice(
+      existingIndex,
+      1
+    );
+
+    localStorage.setItem(
+      SAVED_KEY,
+      JSON.stringify(saved)
+    );
+
+    updateSaveButton();
+
+    return;
+
+  }
+
+
+  /*
+   * नया Lesson Save करें
+   */
+  const savedLesson = {
+
+    file:
+      lessonFile,
+
+    title:
+      getLessonTitle(
+        lessonData
+      ),
+
+    subject:
+      lessonData.subject ||
+      "",
+
+    chapterTitle:
+      getChapterTitle(
+        lessonData
+      ),
+
+    savedAt:
+      new Date().toISOString()
+
+  };
+
+
+  saved.unshift(
+    savedLesson
+  );
+
+
+  localStorage.setItem(
+    SAVED_KEY,
+    JSON.stringify(saved)
+  );
+
+
+  updateSaveButton();
+
+
+  /*
+   * छोटा confirmation
+   */
+  setTimeout(
+    function(){
+
+      alert(
+        "🔖 Lesson Saved!\n\n" +
+        "अब आप इसे 'मेरी कक्षा → Saved Lessons' में बाद में पढ़ सकते हैं।"
+      );
+
+    },
+    50
+  );
+
+}
+
+
+window.toggleSaveLesson =
+  toggleSaveLesson;
+  
 /* ==========================================
    HOME
 ========================================== */
