@@ -2045,135 +2045,20 @@ function escapeHTML(value){
 
 }
 
-
-/* ==========================================
-   ANSWER INDEX
-   Supports multiple JSON naming styles
-========================================== */
-
+  /* ============================================
+   UNIVERSAL QUESTION NORMALIZER BRIDGE
+   ============================================ */
 
 function answerIndex(item){
-
-  if(!item){
-    return -1;
-  }
-
-  const options = Array.isArray(item.options)
-    ? item.options
-    : [];
-
-  const value =
-    item.correct_answer ??
-    item.answer ??
-    item.correctAnswer ??
-    item.answer_index;
-
-  /* ------------------------------------------
-     1. Numeric index
-     Example: 0, 1, 2, 3
-  ------------------------------------------ */
-
   if(
-    typeof value === "number" &&
-    Number.isFinite(value)
+    window.AADYAQuestionNormalizer &&
+    typeof window.AADYAQuestionNormalizer.getCorrectIndex === "function"
   ){
-
-    if(
-      value >= 0 &&
-      value < options.length
-    ){
-      return value;
-    }
-
-    return -1;
+    return window.AADYAQuestionNormalizer.getCorrectIndex(item);
   }
-
-
-  /* ------------------------------------------
-     2. Numeric string
-     Example: "0", "1", "2", "3"
-  ------------------------------------------ */
-
-  if(
-    typeof value === "string" &&
-    value.trim() !== ""
-  ){
-
-    const text = value.trim();
-
-    const n = Number(text);
-
-    if(
-      Number.isFinite(n) &&
-      Number.isInteger(n) &&
-      n >= 0 &&
-      n < options.length
-    ){
-      return n;
-    }
-
-
-    /* ----------------------------------------
-       3. A / B / C / D format
-    ---------------------------------------- */
-
-    const letter = text
-      .toUpperCase()
-      .replace(/\s+/g,"");
-
-    const letterIndex = {
-      A:0,
-      B:1,
-      C:2,
-      D:3,
-      E:4,
-      F:5
-    };
-
-    if(
-      Object.prototype.hasOwnProperty.call(
-        letterIndex,
-        letter
-      ) &&
-      letterIndex[letter] < options.length
-    ){
-      return letterIndex[letter];
-    }
-
-
-    /* ----------------------------------------
-       4. Answer text
-       Example:
-       answer: "सूर्य"
-       options: ["पृथ्वी","चंद्रमा","सूर्य","बृहस्पति"]
-    ---------------------------------------- */
-
-    const normalize = function(v){
-
-      return String(v ?? "")
-        .trim()
-        .replace(/\s+/g," ");
-
-    };
-
-    const wanted = normalize(text);
-
-    const textIndex = options.findIndex(
-      function(option){
-
-        return normalize(option) === wanted;
-
-      }
-    );
-
-    if(textIndex >= 0){
-      return textIndex;
-    }
-  }
-
 
   return -1;
-    }
+}
 
 
 /* ==========================================
@@ -2621,106 +2506,47 @@ function getExamples(data){
    QUESTION NORMALIZER
 ========================================== */
 
-
 function normalizeQuestion(item){
 
   if(
-    typeof item === "string"
+    window.AADYAQuestionNormalizer
   ){
 
-    return {
-
-      question:item,
-
-      options:[],
-
-      correct_answer:-1,
-
-      explanation:""
-
-    };
+    return (
+      window.AADYAQuestionNormalizer
+        .normalizeQuestion(item)
+    );
 
   }
 
 
-  if(!item){
-
-    return {
-
-      question:"",
-
-      options:[],
-
-      correct_answer:-1,
-
-      explanation:""
-
-    };
-
-  }
-
-
-  let options =
-    item.options ??
-    item.choices ??
-    item.answers ??
-    [];
-
-
-  if(
-    !Array.isArray(options)
-  ){
-
-    options = [];
-
-  }
-
+  /* Emergency fallback */
 
   return {
 
+    ...item,
+
     question:
-      item.question ||
-      item.text ||
-      item.statement ||
+      item?.question ??
+      item?.q ??
       "",
 
     options:
-
-      options.map(
-        option => {
-
-          if(
-            typeof option === "object"
-          ){
-
-            return (
-              option.text ||
-              option.label ||
-              option.value ||
-              ""
-            );
-
-          }
-
-          return String(
-            option
-          );
-
-        }
-      ),
+      Array.isArray(item?.options)
+        ? item.options
+        : [],
 
     correct_answer:
       answerIndex(item),
 
     explanation:
-      item.explanation ||
-      item.solution ||
-      item.answer_explanation ||
+      item?.explanation ??
+      item?.explain ??
       ""
 
   };
 
-}
+    }
 
 
 /* ==========================================
