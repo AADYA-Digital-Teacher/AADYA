@@ -923,6 +923,109 @@ function firstIncomplete(){
   )||null;
 }
 
+
+/* =====================================================
+   RESUME LESSON
+   सबसे हाल में पूरा किए गए lesson के बाद
+   अगला अधूरा lesson दिखाता है।
+===================================================== */
+
+function getResumeLesson(){
+
+  if(!allLessons.length){
+    return null;
+  }
+
+
+  /* -----------------------------------------------
+     1. सभी completed lessons निकालें
+  ----------------------------------------------- */
+
+  const completed = allLessons
+    .map(function(lesson,index){
+
+      return {
+        lesson:lesson,
+        index:index,
+        progress:progress[lesson.file]
+      };
+
+    })
+    .filter(function(item){
+
+      return isDone(item.lesson.file);
+
+    });
+
+
+  /* -----------------------------------------------
+     2. अभी तक कोई lesson पूरा नहीं हुआ
+  ----------------------------------------------- */
+
+  if(!completed.length){
+
+    return allLessons[0]||null;
+
+  }
+
+
+  /* -----------------------------------------------
+     3. सबसे हाल में पूरा किया गया lesson
+  ----------------------------------------------- */
+
+  completed.sort(function(a,b){
+
+    const aTime =
+      a.progress &&
+      a.progress.timestamp
+        ? new Date(a.progress.timestamp).getTime()
+        : 0;
+
+    const bTime =
+      b.progress &&
+      b.progress.timestamp
+        ? new Date(b.progress.timestamp).getTime()
+        : 0;
+
+    return bTime-aTime;
+
+  });
+
+
+  const lastCompleted =
+    completed[0];
+
+
+  /* -----------------------------------------------
+     4. उसी के बाद अगला अधूरा lesson खोजें
+  ----------------------------------------------- */
+
+  for(
+    let i=lastCompleted.index+1;
+    i<allLessons.length;
+    i++
+  ){
+
+    if(
+      !isDone(allLessons[i].file)
+    ){
+
+      return allLessons[i];
+
+    }
+
+  }
+
+
+  /* -----------------------------------------------
+     5. अगर आगे कोई अधूरा lesson नहीं है,
+        तो curriculum में कहीं भी पहला अधूरा lesson
+  ----------------------------------------------- */
+
+  return firstIncomplete();
+
+}
+
 function lessonForToday(){
 
   if(!allLessons.length){
@@ -1338,7 +1441,7 @@ function renderContinue(){
 
   }
 
-  const l=firstIncomplete();
+  const l=getResumeLesson();
 
   if(!l){
 
