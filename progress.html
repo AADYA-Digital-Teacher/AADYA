@@ -1454,15 +1454,16 @@ body {
 
     <div class="action-area">
 
-      <a
-        href="./learning.html"
-        class="action-btn">
+  <a
+    href="./learning.html"
+    class="action-btn"
+    id="continueLearningBtn">
 
-        🚀 Learning जारी रखें
+    🚀 Learning जारी रखें
 
-      </a>
+  </a>
 
-    </div>
+</div>
 
 
     <!-- MOTIVATION -->
@@ -1710,7 +1711,128 @@ function getAllLessons(){
   return result;
 
 }
+/* =========================
+   UNIVERSAL RESUME LESSON
+   SAME LOGIC AS "मेरी कक्षा"
+========================= */
 
+function getResumeLesson(){
+
+  const lessons =
+    getAllLessons();
+
+  if(!lessons.length){
+    return null;
+  }
+
+
+  const completed =
+    lessons
+      .map(function(lesson,index){
+
+        return {
+          lesson: lesson,
+          index: index,
+          progress:
+            getCompletionRecord(
+              lesson.file
+            )
+        };
+
+      })
+      .filter(function(item){
+
+        return isCompleted(
+          item.lesson.file
+        );
+
+      });
+
+
+  /* अभी तक कोई Lesson पूरा नहीं हुआ */
+
+  if(!completed.length){
+
+    return lessons[0] || null;
+
+  }
+
+
+  /* सबसे हाल में पूरा किया गया Lesson */
+
+  completed.sort(
+    function(a,b){
+
+      const aTime =
+        a.progress &&
+        a.progress.timestamp
+          ? new Date(
+              a.progress.timestamp
+            ).getTime()
+          : 0;
+
+      const bTime =
+        b.progress &&
+        b.progress.timestamp
+          ? new Date(
+              b.progress.timestamp
+            ).getTime()
+          : 0;
+
+      return bTime - aTime;
+
+    }
+  );
+
+
+  const lastCompleted =
+    completed[0];
+
+
+  /*
+     Latest completed lesson के बाद
+     पहला अधूरा Lesson खोजें
+  */
+
+  for(
+    let i =
+      lastCompleted.index + 1;
+
+    i < lessons.length;
+
+    i++
+  ){
+
+    if(
+      !isCompleted(
+        lessons[i].file
+      )
+    ){
+
+      return lessons[i];
+
+    }
+
+  }
+
+
+  /*
+     यदि latest completed के बाद
+     कोई lesson नहीं है,
+     तो पूरी class में पहला अधूरा lesson
+  */
+
+  return (
+    lessons.find(function(lesson){
+
+      return !isCompleted(
+        lesson.file
+      );
+
+    }) || null
+  );
+
+}
 
 /* =========================
    COMPLETED LESSON CHECK
@@ -2903,6 +3025,7 @@ function renderLatestLearning(){
 
 }
 
+  
 
 /* =========================
    DATE FORMAT
@@ -2931,6 +3054,43 @@ function formatDate(
 
 }
 
+  /* =========================
+   CONTINUE LEARNING BUTTON
+========================= */
+
+function renderContinueLearningButton(){
+
+  const button =
+    document.getElementById(
+      "continueLearningBtn"
+    );
+
+  if(!button){
+    return;
+  }
+
+
+  const lesson =
+    getResumeLesson();
+
+
+  if(!lesson || !lesson.file){
+
+    button.href =
+      "./learning.html";
+
+    return;
+
+  }
+
+
+  button.href =
+    "./learning.html?lesson=" +
+    encodeURIComponent(
+      lesson.file
+    );
+
+}
 
 /* =========================
    INIT
@@ -3002,9 +3162,11 @@ async function init(){
 
     updateTopStats();
 
-    renderSubjectDashboard();
+renderSubjectDashboard();
 
-    renderLatestLearning();
+renderLatestLearning();
+
+renderContinueLearningButton();
 
 
   }catch(error){
