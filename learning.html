@@ -2046,18 +2046,179 @@ function escapeHTML(value){
 }
 
   /* ============================================
-   UNIVERSAL QUESTION NORMALIZER BRIDGE
-   ============================================ */
+   ANSWER INDEX
+   SAFE UNIVERSAL VERSION
+   Works even if external normalizer is absent
+============================================ */
 
 function answerIndex(item){
+
+  if(!item){
+    return -1;
+  }
+
+  /* -----------------------------------------
+     1. External normalizer available?
+     ----------------------------------------- */
+
   if(
     window.AADYAQuestionNormalizer &&
     typeof window.AADYAQuestionNormalizer.getCorrectIndex === "function"
   ){
-    return window.AADYAQuestionNormalizer.getCorrectIndex(item);
+
+    const normalizedIndex =
+      window.AADYAQuestionNormalizer.getCorrectIndex(item);
+
+    if(
+      typeof normalizedIndex === "number" &&
+      normalizedIndex >= 0
+    ){
+
+      return normalizedIndex;
+
+    }
+
   }
 
+
+  /* -----------------------------------------
+     2. Options
+     ----------------------------------------- */
+
+  const options =
+    Array.isArray(item.options)
+      ? item.options
+      : [];
+
+
+  const value =
+    item.correct_answer ??
+    item.answer ??
+    item.correctAnswer ??
+    item.answer_index ??
+    item.answerIndex ??
+    item.correct;
+
+
+  /* -----------------------------------------
+     3. Numeric index
+     Example: 0, 1, 2, 3
+     ----------------------------------------- */
+
+  if(
+    typeof value === "number" &&
+    Number.isInteger(value)
+  ){
+
+    if(
+      value >= 0 &&
+      value < options.length
+    ){
+
+      return value;
+
+    }
+
+  }
+
+
+  /* -----------------------------------------
+     4. Numeric string
+     Example: "0", "1", "2", "3"
+     ----------------------------------------- */
+
+  if(
+    typeof value === "string" &&
+    value.trim() !== ""
+  ){
+
+    const text =
+      value.trim();
+
+    const numeric =
+      Number(text);
+
+    if(
+      Number.isFinite(numeric) &&
+      Number.isInteger(numeric) &&
+      numeric >= 0 &&
+      numeric < options.length
+    ){
+
+      return numeric;
+
+    }
+
+
+    /* ---------------------------------------
+       5. A / B / C / D
+       --------------------------------------- */
+
+    const letter =
+      text
+        .toUpperCase()
+        .replace(/\s+/g,"")
+        .replace(/[.)]$/,"");
+
+    const letterIndex = {
+      A:0,
+      B:1,
+      C:2,
+      D:3,
+      E:4,
+      F:5
+    };
+
+    if(
+      Object.prototype.hasOwnProperty.call(
+        letterIndex,
+        letter
+      ) &&
+      letterIndex[letter] < options.length
+    ){
+
+      return letterIndex[letter];
+
+    }
+
+
+    /* ---------------------------------------
+       6. Answer text
+       Example:
+       answer: "सूर्य"
+       options: ["पृथ्वी","चंद्रमा","सूर्य","बृहस्पति"]
+       --------------------------------------- */
+
+    const wanted =
+      text
+        .trim()
+        .replace(/\s+/g," ");
+
+    const textIndex =
+      options.findIndex(function(option){
+
+        return String(option)
+          .trim()
+          .replace(/\s+/g," ")
+          === wanted;
+
+      });
+
+    if(textIndex >= 0){
+
+      return textIndex;
+
+    }
+
+  }
+
+
+  /* -----------------------------------------
+     7. Nothing matched
+     ----------------------------------------- */
+
   return -1;
+
 }
 
 
