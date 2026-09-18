@@ -7,13 +7,10 @@
 
 <meta
   name="viewport"
-  content="width=device-width,initial-scale=1.0">
+  content="width=device-width,initial-scale=1"
+>
 
-<meta
-  name="theme-color"
-  content="#111111">
-
-<title>AADYA | Quiz</title>
+<title>AADYA — Quiz</title>
 
 <style>
 
@@ -23,104 +20,159 @@
 
 body{
   margin:0;
+
   font-family:
     Arial,
     "Noto Sans Devanagari",
     sans-serif;
-  background:#f5f6f8;
-  color:#222;
+
+  background:#f3f7fb;
+  color:#172b4d;
 }
 
 .top{
-  background:#111;
+  background:
+    linear-gradient(
+      135deg,
+      #111,
+      #17345f,
+      #274d78
+    );
+
   color:#fff;
-  padding:17px 15px;
+
+  padding:12px;
+
   position:sticky;
   top:0;
-  z-index:10;
+
+  z-index:5;
 }
 
 .row{
+  max-width:900px;
+  margin:auto;
+
   display:flex;
+
   justify-content:space-between;
   align-items:center;
+
   gap:10px;
 }
 
 .brand{
-  font-size:21px;
-  font-weight:800;
+  font-size:22px;
+  font-weight:900;
 }
 
 .sub{
   font-size:13px;
-  color:#ccc;
-  margin-top:3px;
+  color:#dbe3ee;
 }
 
 .btn{
   border:0;
-  border-radius:10px;
-  padding:9px 12px;
+
+  border-radius:12px;
+
+  padding:10px 13px;
+
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+.home{
   background:#fff;
-  color:#111;
-  font-weight:700;
+  color:#172b4d;
 }
 
 .wrap{
-  max-width:850px;
+  max-width:900px;
+
   margin:auto;
-  padding:15px;
+
+  padding:
+    15px 12px 45px;
 }
 
 .box,
 .chapter,
-.question{
+.quiz{
   background:#fff;
-  border-radius:16px;
-  box-shadow:0 4px 14px rgba(0,0,0,.07);
+
+  border-radius:20px;
+
+  box-shadow:
+    0 7px 22px
+    rgba(23,43,77,.08);
+
+  border:
+    1px solid #e4ebf3;
 }
 
 .box{
-  padding:17px;
-  margin-bottom:14px;
+  padding:18px;
+
+  margin-bottom:15px;
 }
 
 .title{
-  font-size:21px;
-  font-weight:800;
+  font-size:28px;
+  font-weight:900;
 }
 
 .muted{
-  color:#666;
+  color:#68768a;
+
+  line-height:1.6;
+
   font-size:13px;
-  line-height:1.5;
-  margin-top:6px;
 }
 
-.select-title{
-  font-size:17px;
-  font-weight:800;
-  margin-bottom:10px;
+.select{
+  width:100%;
+
+  padding:13px;
+
+  border:
+    1px solid #dbe3ed;
+
+  border-radius:12px;
+
+  font-size:16px;
+
+  margin-top:8px;
+
+  background:#fff;
 }
 
 .chapter{
-  margin:10px 0;
+  margin:12px 0;
+
   overflow:hidden;
 }
 
-.chapter-head{
-  padding:14px;
-  font-weight:800;
-  border-bottom:1px solid #eee;
+.ch{
+  padding:15px;
+
+  background:#f7fbff;
+
+  font-weight:900;
 }
 
 .lesson{
-  padding:13px;
-  border-bottom:1px solid #eee;
   display:flex;
-  gap:10px;
+
+  gap:9px;
+
   align-items:center;
+
+  padding:12px;
+
+  border-bottom:
+    1px solid #edf1f5;
 }
 
 .lesson:last-child{
@@ -128,1079 +180,144 @@ body{
 }
 
 .num{
-  width:32px;
-  height:32px;
-  border-radius:50%;
-  background:#111;
+  width:36px;
+  height:36px;
+
+  border-radius:11px;
+
+  background:#172b4d;
+
   color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:800;
+
+  display:grid;
+
+  place-items:center;
+
+  font-weight:900;
+
   flex:none;
 }
 
 .lt{
   flex:1;
+
   font-size:14px;
+
   line-height:1.45;
 }
 
 .start{
-  border:0;
-  background:#d4af37;
-  color:#111;
-  border-radius:10px;
-  padding:9px 12px;
-  font-weight:800;
-}
-
-.quiz-head{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  align-items:center;
-}
-
-.q{
-  font-size:17px;
-  font-weight:700;
-  line-height:1.6;
-  margin-bottom:13px;
-}
-
-.option{
-  display:block;
-  width:100%;
-  text-align:left;
-  padding:12px;
-  border:1px solid #ddd;
-  background:#fff;
-  border-radius:11px;
-  margin:8px 0;
-  font-size:14px;
-}
-
-.option.selected{
-  border-color:#111;
-  background:#f1f1f1;
-}
-
-.nav{
-  display:flex;
-  gap:8px;
-  margin-top:14px;
-}
-
-.nav button{
-  flex:1;
-  padding:12px;
-  border:0;
-  border-radius:11px;
-  font-weight:800;
-}
-
-.next{
-  background:#111;
-  color:#fff;
-}
-
-.result{
-  text-align:center;
-  padding:22px;
-}
-
-.score{
-  font-size:34px;
-  font-weight:900;
-}
-
-.hidden{
-  display:none;
-}
-/* =========================================================
-   AADYA QUIZ — PREMIUM UNIVERSAL UI
-   CLASS / SUBJECT / CHAPTER AGNOSTIC
-   CSS ONLY FOR VISUAL LAYER
-========================================================= */
-
-/* ---------- PAGE ---------- */
-
-body{
-  background:
-    linear-gradient(
-      180deg,
-      #eef7ff 0%,
-      #f8fbff 45%,
-      #f3f5fb 100%
-    ) !important;
+  background:#f7c928;
 
   color:#172b4d;
 }
 
-
-/* ---------- PREMIUM HEADER ---------- */
-
-.top{
-  background:
-    linear-gradient(
-      135deg,
-      #101820 0%,
-      #17345f 55%,
-      #274d78 100%
-    ) !important;
-
-  padding:
-    12px 12px 22px !important;
-
-  box-shadow:
-    0 8px 25px rgba(16,24,32,.20);
-
-  overflow:hidden;
-}
-
-.top::before{
-  content:"";
-  display:block;
-
-  width:min(100%,760px);
-  aspect-ratio:3 / 1;
-
-  margin:
-    0 auto 15px;
-
-  border-radius:17px;
-
-  background-image:
-    url("./assets/logo/aadya-home-banner.png");
-
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-
-  box-shadow:
-    0 8px 25px rgba(0,0,0,.22);
-}
-
-.brand{
-  font-size:
-    clamp(21px,5vw,28px) !important;
-
-  font-weight:900 !important;
-  letter-spacing:-.3px;
-}
-
-.sub{
-  margin-top:4px !important;
-
-  color:
-    rgba(255,255,255,.78) !important;
-
-  font-size:14px !important;
-  font-weight:600;
-}
-
-.btn{
-  border-radius:13px !important;
-
-  padding:
-    11px 16px !important;
-
-  background:#ffffff !important;
-  color:#172b4d !important;
-
-  font-weight:900 !important;
-
-  box-shadow:
-    0 5px 14px rgba(0,0,0,.14);
-
-  transition:
-    transform .18s ease,
-    box-shadow .18s ease;
-}
-
-.btn:active{
-  transform:scale(.97);
-}
-
-
-/* ---------- PAGE WIDTH ---------- */
-
-.wrap{
-  max-width:900px !important;
-  padding:
-    18px 14px 35px !important;
-}
-
-
-/* ---------- COMMON CARDS ---------- */
-
-.box,
-.chapter,
-.question{
-  background:
-    rgba(255,255,255,.96) !important;
-
-  border-radius:
-    22px !important;
-
-  border:
-    1px solid rgba(255,255,255,.9);
-
-  box-shadow:
-    0 8px 25px rgba(39,77,120,.09) !important;
-}
-
-.box{
-  padding:
-    21px !important;
-
-  margin-bottom:
-    18px !important;
-}
-
-
-/* ---------- QUIZ INTRO ---------- */
-
-#selector > .select-title{
-  margin-top:2px;
-}
-
-.title{
-  font-size:
-    clamp(23px,6vw,31px) !important;
-
-  line-height:1.3 !important;
-
-  color:#172b4d;
-
-  font-weight:900 !important;
-}
-
-.title::first-letter{
-  filter:
-    drop-shadow(0 2px 2px rgba(0,0,0,.12));
-}
-
-.muted{
-  color:#68768a !important;
-
-  font-size:
-    15px !important;
-
-  line-height:1.6 !important;
-}
-
-
-/* ---------- LESSON SELECTOR ---------- */
-
-.select-title{
-  font-size:
-    21px !important;
-
-  color:#172b4d;
-
-  font-weight:900 !important;
-
-  margin-bottom:
-    15px !important;
-}
-
-
-/* ---------- SUBJECT TITLE ---------- */
-
-#lessons > div:not(.chapter){
-  margin:
-    20px 2px 10px !important;
-
-  padding:
-    9px 13px !important;
-
-  display:inline-block;
-
-  border-radius:999px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #e5f6ff,
-      #eef0ff
-    );
-
-  color:#17345f;
-
-  font-size:
-    16px !important;
-
-  font-weight:900 !important;
-
-  border:
-    1px solid #d8e8f5;
-
-  box-shadow:
-    0 4px 12px rgba(39,77,120,.06);
-}
-
-
-/* ---------- CHAPTER CARD ---------- */
-
-.chapter{
-  margin:
-    11px 0 19px !important;
-
-  overflow:hidden;
-
-  border:
-    1px solid #e3ebf4 !important;
-
-  position:relative;
-}
-
-.chapter::before{
-  content:"";
-
-  position:absolute;
-
-  left:0;
-  top:0;
-  bottom:0;
-
-  width:5px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #45c7e8,
-      #6976e8,
-      #9a55df
-    );
-}
-
-.chapter-head{
-  padding:
-    17px 17px 17px 22px !important;
-
-  border-bottom:
-    1px solid #edf1f6 !important;
-
-  background:
-    linear-gradient(
-      90deg,
-      #f5fbff,
-      #faf8ff
-    );
-
-  color:#172b4d;
-
-  font-size:
-    17px !important;
-
-  line-height:1.5;
-
-  font-weight:900 !important;
-}
-
-
-/* ---------- LESSON ROW ---------- */
-
-.lesson{
-  padding:
-    14px 13px 14px 16px !important;
-
-  min-height:66px;
-
-  background:#fff;
-
-  border-bottom:
-    1px solid #edf1f5 !important;
-
-  transition:
-    background .18s ease,
-    transform .18s ease;
-}
-
-.lesson:last-child{
-  border-bottom:0 !important;
-}
-
-.lesson:active{
-  background:#f7fbff;
-}
-
-
-/* ---------- LESSON NUMBER ---------- */
-
-.num{
-  width:38px !important;
-  height:38px !important;
-
-  border-radius:
-    12px !important;
-
-  background:
-    linear-gradient(
-      135deg,
-      #203a63,
-      #386da4
-    ) !important;
-
-  box-shadow:
-    0 4px 10px rgba(32,58,99,.20);
-
-  font-size:15px;
-}
-
-
-/* ---------- LESSON TITLE ---------- */
-
-.lt{
-  color:#27364d;
-
-  font-size:
-    15px !important;
-
-  line-height:1.5 !important;
-
-  font-weight:600;
-}
-
-
-/* ---------- QUIZ BUTTON ---------- */
-
-.start{
-  min-width:70px;
-
-  border:
-    0 !important;
-
-  border-radius:
-    13px !important;
-
-  padding:
-    11px 13px !important;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ffd84d,
-      #f2ad12
-    ) !important;
-
-  color:#172b4d !important;
-
-  font-size:14px;
-
-  font-weight:900 !important;
-
-  box-shadow:
-    0 5px 12px rgba(242,173,18,.22);
-
-  transition:
-    transform .16s ease,
-    box-shadow .16s ease;
-}
-
-.start:active{
-  transform:scale(.95);
-
-  box-shadow:
-    0 2px 7px rgba(242,173,18,.18);
-}
-
-
-/* =========================================================
-   ACTUAL QUIZ SCREEN
-========================================================= */
-
-#quizBox{
-  padding:
-    20px !important;
-
-  border-top:
-    5px solid #52c7e8 !important;
-}
-
-
-/* ---------- QUESTION HEADER ---------- */
-
-.quiz-head{
-  min-height:44px;
-
-  color:#172b4d;
-
-  font-size:17px;
-}
-
-.quiz-head strong{
-  font-size:18px;
-
-  font-weight:900;
-
-  background:
-    linear-gradient(
-      135deg,
-      #e7f8ff,
-      #eef0ff
-    );
-
-  padding:
-    8px 13px;
-
-  border-radius:999px;
-}
-
-.quiz-head .btn{
-  padding:
-    9px 13px !important;
-
-  background:
-    #f4f6fa !important;
-
-  box-shadow:none;
-}
-
-
-/* ---------- DIVIDER ---------- */
-
-#quizBox hr{
-  border-top:
-    1px solid #e8edf3 !important;
-
-  margin:
-    17px 0 !important;
-}
-
-
-/* ---------- QUESTION ---------- */
-
-.q{
-  padding:
-    4px 2px 12px !important;
-
-  color:#172b4d;
-
-  font-size:
-    clamp(19px,5.2vw,24px) !important;
-
-  line-height:
-    1.55 !important;
-
-  font-weight:900 !important;
-}
-
-
-/* ---------- OPTIONS ---------- */
-
-.option{
-  position:relative;
-
-  padding:
-    15px 16px !important;
-
-  min-height:56px;
-
-  margin:
-    10px 0 !important;
-
-  border:
-    2px solid #e5e9ef !important;
-
-  border-radius:
-    16px !important;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ffffff,
-      #fbfdff
-    ) !important;
-
-  color:#28374d;
-
-  font-size:
-    16px !important;
-
-  line-height:1.5;
-
-  font-weight:600;
-
-  box-shadow:
-    0 4px 12px rgba(39,77,120,.045);
-
-  transition:
-    transform .15s ease,
-    border-color .15s ease,
-    background .15s ease,
-    box-shadow .15s ease;
-}
-
-.option:active{
-  transform:scale(.985);
-}
-
-.option.selected{
-  border:
-    2px solid #35a9d1 !important;
-
-  background:
-    linear-gradient(
-      135deg,
-      #e8f9ff,
-      #edf5ff
-    ) !important;
-
-  color:#123b5b !important;
-
-  box-shadow:
-    0 6px 16px rgba(53,169,209,.16);
-}
-
-.option.selected::after{
-  content:"✓";
-
-  position:absolute;
-
-  right:13px;
-  top:50%;
-
-  transform:translateY(-50%);
-
-  width:27px;
-  height:27px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border-radius:50%;
-
-  background:#24ad69;
-
-  color:#fff;
-
-  font-weight:900;
-}
-
-
-/* ---------- NAVIGATION ---------- */
-
-.nav{
-  gap:
-    11px !important;
-
-  margin-top:
-    20px !important;
-}
-
-.nav button{
-  min-height:54px;
-
-  padding:
-    13px 16px !important;
-
-  border-radius:
-    15px !important;
-
-  font-size:
-    15px !important;
-
-  font-weight:900 !important;
-
-  transition:
-    transform .16s ease,
-    box-shadow .16s ease;
-}
-
-.nav button:active{
-  transform:scale(.97);
-}
-
-.nav button:first-child{
-  background:
-    #eef1f5 !important;
-
-  color:#59677a !important;
-}
-
-.next{
-  background:
-    linear-gradient(
-      135deg,
-      #172b4d,
-      #28517d
-    ) !important;
-
-  color:#fff !important;
-
-  box-shadow:
-    0 6px 15px rgba(23,43,77,.20);
-}
-
-
-/* =========================================================
-   RESULT CARD
-========================================================= */
-
-.result{
-  padding:
-    25px 16px !important;
-}
-
-.result > div:first-child{
-  width:72px;
-  height:72px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  margin:
-    0 auto 12px;
-
-  border-radius:50%;
-
-  background:
-    linear-gradient(
-      135deg,
-      #fff2a8,
-      #ffd24c
-    );
-
-  box-shadow:
-    0 8px 20px rgba(255,194,45,.22);
-}
-
-.score{
-  color:#172b4d !important;
-
-  font-size:
-    42px !important;
-}
-
-.result .muted{
-  max-width:430px;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-
-/* ---------- EMPTY STATE ---------- */
-
-.empty{
-  padding:
-    25px 15px !important;
-
-  border-radius:
-    16px;
-
-  background:
-    #f7f9fc;
-
-  color:#718096 !important;
-
-  font-size:15px;
-}
-
-
-/* =========================================================
-   AADYA CUSTOM NOTIFICATION
-========================================================= */
-
-.qa-overlay{
-  position:fixed;
-
-  inset:0;
-
-  z-index:9999;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
+.quiz{
   padding:20px;
 
-  background:
-    rgba(10,24,40,.68);
-
-  backdrop-filter:
-    blur(7px);
-
-  -webkit-backdrop-filter:
-    blur(7px);
-
-  animation:
-    qaFadeIn .18s ease;
+  border-top:
+    5px solid #52c7e8;
 }
 
-.qa-modal{
-  width:min(100%,390px);
-
-  background:
-    linear-gradient(
-      180deg,
-      #ffffff,
-      #f8fbff
-    );
-
-  border-radius:
-    26px;
-
-  padding:
-    25px 21px 19px;
-
-  text-align:center;
-
-  box-shadow:
-    0 25px 70px rgba(0,0,0,.28);
-
-  border:
-    1px solid rgba(255,255,255,.9);
-
-  animation:
-    qaPop .22s ease;
-
-  position:relative;
-}
-
-.qa-icon{
-  width:64px;
-  height:64px;
-
-  margin:
-    0 auto 12px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border-radius:20px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #fff1a8,
-      #ffd34e
-    );
-
-  font-size:31px;
-
-  box-shadow:
-    0 8px 18px rgba(255,194,45,.22);
-}
-
-.qa-title{
-  margin:0;
-
-  color:#172b4d;
-
-  font-size:
-    22px;
-
-  line-height:1.35;
+.q{
+  font-size:20px;
 
   font-weight:900;
+
+  line-height:1.55;
+
+  margin:15px 0;
 }
 
-.qa-message{
-  margin:
-    9px 0 18px;
+.option{
+  display:block;
 
-  color:#657389;
-
-  font-size:
-    15px;
-
-  line-height:1.65;
-}
-
-.qa-ok{
   width:100%;
 
-  min-height:50px;
+  text-align:left;
 
-  border:0;
+  padding:14px;
 
-  border-radius:15px;
+  border:
+    2px solid #e5e9ef;
 
-  background:
-    linear-gradient(
-      135deg,
-      #172b4d,
-      #28517d
-    );
+  background:#fff;
 
-  color:#fff;
+  border-radius:14px;
 
-  font-size:16px;
+  margin:9px 0;
 
-  font-weight:900;
-
-  box-shadow:
-    0 7px 16px rgba(23,43,77,.20);
+  font-size:15px;
 
   cursor:pointer;
 }
 
-.qa-ok:active{
-  transform:scale(.98);
+.option.selected{
+  border-color:#35a9d1;
+
+  background:#e8f9ff;
 }
 
-@keyframes qaFadeIn{
-  from{
-    opacity:0;
-  }
-  to{
-    opacity:1;
-  }
+.nav{
+  display:flex;
+
+  gap:9px;
+
+  margin-top:15px;
 }
 
-@keyframes qaPop{
-  from{
-    opacity:0;
-    transform:translateY(10px) scale(.96);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0) scale(1);
-  }
+.nav .btn{
+  flex:1;
 }
 
+.next{
+  background:#172b4d;
 
-/* =========================================================
-   MOBILE
-========================================================= */
+  color:#fff;
+}
+
+.result{
+  text-align:center;
+
+  padding:15px;
+}
+
+.score{
+  font-size:43px;
+
+  font-weight:900;
+}
+
+.hidden{
+  display:none!important;
+}
+
+.empty{
+  padding:20px;
+
+  text-align:center;
+
+  color:#718096;
+
+  background:#f8fafc;
+
+  border-radius:15px;
+}
 
 @media(max-width:600px){
 
-  .top{
-    padding:
-      10px 10px 20px !important;
-  }
-
-  .top::before{
-    width:100%;
-    aspect-ratio:3 / 1;
-
-    margin-bottom:
-      13px;
-
-    border-radius:
-      14px;
-  }
-
   .brand{
-    font-size:
-      20px !important;
+    font-size:19px;
   }
 
-  .sub{
-    font-size:
-      13px !important;
-  }
-
-  .btn{
-    padding:
-      10px 13px !important;
-  }
-
-  .wrap{
-    padding:
-      15px 12px 30px !important;
-  }
-
-  .box{
-    padding:
-      18px !important;
-
-    border-radius:
-      20px !important;
-  }
-
-  .lesson{
-    gap:
-      9px;
-
-    padding:
-      13px 10px !important;
-  }
-
-  .num{
-    width:36px !important;
-    height:36px !important;
-  }
-
-  .lt{
-    font-size:
-      14px !important;
-  }
-
-  .start{
-    min-width:
-      63px;
-
-    padding:
-      10px 10px !important;
-  }
-
-  #quizBox{
-    padding:
-      18px !important;
+  .title{
+    font-size:25px;
   }
 
   .q{
-    font-size:
-      19px !important;
+    font-size:18px;
   }
 
-  .option{
-    font-size:
-      15px !important;
-
-    padding:
-      14px !important;
-  }
-
-  .nav button{
-    min-height:
-      52px;
-  }
-
-}
-
-@media(max-width:380px){
-
-  .brand{
-    font-size:
-      18px !important;
-  }
-
-  .quiz-head strong{
-    font-size:
-      15px;
-  }
-
-  .quiz-head .btn{
-    font-size:
-      13px;
-  }
-
-  .option{
-    font-size:
-      14px !important;
-  }
-
-  .nav button{
-    font-size:
-      14px !important;
-  }
-
-  }
-.empty{
-  padding:18px;
-  text-align:center;
-  color:#777;
 }
 
 </style>
@@ -1216,21 +333,23 @@ body{
 <div>
 
 <div class="brand">
-AADYA Digital Teacher
+🎯 Quiz
 </div>
 
-<div class="sub">
-🧠 Quiz
+<div
+  class="sub"
+  id="sub"
+>
+AADYA Digital Teacher
 </div>
 
 </div>
 
 <button
-class="btn"
-onclick="location.href='./index.html'">
-
-⌂ Home
-
+  class="btn home"
+  onclick="location.href='./index.html'"
+>
+⌂ होम
 </button>
 
 </div>
@@ -1240,190 +359,1117 @@ onclick="location.href='./index.html'">
 
 <main class="wrap">
 
+
 <section class="box">
 
 <div class="title">
-🧠 अपना Quiz चुनें
+🎯 अपनी तैयारी जाँचें
 </div>
 
-<div
-class="muted"
-id="intro">
-
-पहले Lesson चुनें, फिर उसी Lesson का Quiz दें।
-
+<div class="muted">
+विषय चुनिए और किसी भी Lesson का Quiz शुरू कीजिए।
 </div>
+
+
+<label
+  style="
+    display:block;
+    font-weight:900;
+    margin-top:14px
+  "
+>
+
+📘 विषय
+
+</label>
+
+
+<select
+  id="subjectSelect"
+  class="select"
+>
+
+<option value="">
+सभी विषय
+</option>
+
+</select>
 
 </section>
 
 
 <section
-id="selector"
-class="box">
-
-<div class="select-title">
-📚 Lessons
-</div>
-
-<div id="lessons"></div>
-
+  id="lessons"
+>
 </section>
 
 
 <section
-id="quizBox"
-class="box hidden">
-
+  id="quizBox"
+  class="quiz hidden"
+>
 </section>
+
 
 </main>
 
 
+<script src="./js/aadya-core.js"></script>
+
+
 <script>
 
-const PROFILE_KEY =
-"aadya_student_profile_v1";
-
-const HISTORY_KEY =
-"aadya_quiz_history_v1";
-
-const LAST_KEY =
-"aadya_last_quiz_score";
+"use strict";
 
 
-let cls="6";
-let data=null;
-let questions=[];
-let current=0;
-let answers=[];
-let currentFile="";
-/* =========================================================
-   AADYA CUSTOM QUIZ NOTIFICATION
-========================================================= */
+let cls =
+  AADYA.getClass();
 
-let qaLastFocus = null;
+let data =
+  null;
 
-function showQuizNotice(
-  message,
-  title="एक छोटी सी बात 😊",
-  icon="💡"
+let all =
+  [];
+
+let currentFile =
+  "";
+
+let questions =
+  [];
+
+let current =
+  0;
+
+let answers =
+  [];
+
+
+const $ =
+  id =>
+    document.getElementById(id);
+
+
+const esc =
+  AADYA.esc;
+
+
+/* =====================================================
+   LESSON LIST
+===================================================== */
+
+function buildList(){
+
+  const subjectKey =
+    $("subjectSelect")
+      .value;
+
+
+  const groups =
+    {};
+
+
+  all
+    .filter(
+      function(item){
+
+        return (
+          !subjectKey ||
+          item.subjectKey ===
+          subjectKey
+        );
+
+      }
+    )
+    .forEach(
+      function(item){
+
+        const key =
+          item.subjectKey +
+          "|" +
+          item.chapterNumber;
+
+
+        if(
+          !groups[key]
+        ){
+
+          groups[key] = {
+
+            subject:
+              item.subjectName,
+
+            chapter:
+              item.chapterTitle,
+
+            items:
+              []
+
+          };
+
+        }
+
+
+        groups[key]
+          .items
+          .push(item);
+
+      }
+    );
+
+
+  let html =
+    "";
+
+
+  Object.values(
+    groups
+  ).forEach(
+    function(group){
+
+      html +=
+
+        '<section class="chapter">' +
+
+        '<div class="ch">' +
+
+        '📘 ' +
+
+        esc(
+          group.subject
+        ) +
+
+        ' · अध्याय ' +
+
+        esc(
+          group.chapter
+        ) +
+
+        '</div>';
+
+
+      group.items.forEach(
+        function(lesson){
+
+          html +=
+
+            '<div class="lesson">' +
+
+            '<div class="num">' +
+
+            esc(
+              lesson.number
+            ) +
+
+            '</div>' +
+
+            '<div class="lt">' +
+
+            esc(
+              lesson.title
+            ) +
+
+            '</div>' +
+
+            '<button ' +
+            'class="btn start" ' +
+            'data-file="' +
+            esc(
+              lesson.file
+            ) +
+            '">' +
+
+            'Quiz' +
+
+            '</button>' +
+
+            '</div>';
+
+        }
+      );
+
+
+      html +=
+        '</section>';
+
+    }
+  );
+
+
+  $("lessons").innerHTML =
+    html ||
+
+    '<div class="empty">' +
+    'इस विषय में Quiz वाले Lessons उपलब्ध नहीं हैं।' +
+    '</div>';
+
+
+  document
+    .querySelectorAll(
+      ".start"
+    )
+    .forEach(
+      function(button){
+
+        button.onclick =
+          function(){
+
+            startQuiz(
+              button.dataset.file
+            );
+
+          };
+
+      }
+    );
+
+}
+
+
+/* =====================================================
+   START QUIZ
+===================================================== */
+
+async function startQuiz(
+  file
 ){
 
-  qaLastFocus =
-    document.activeElement;
+  try{
 
-  let overlay =
-    document.getElementById(
-      "aadyaQuizNotice"
+    const lesson =
+      await AADYA.lessonData(
+        file
+      );
+
+
+    questions =
+      AADYA.questions(
+        lesson,
+        false
+      );
+
+
+    if(
+      !questions.length
+    ){
+
+      alert(
+        "इस Lesson में अभी Quiz प्रश्न उपलब्ध नहीं हैं।"
+      );
+
+      return;
+
+    }
+
+
+    currentFile =
+      file;
+
+
+    current =
+      0;
+
+
+    answers =
+      new Array(
+        questions.length
+      ).fill(null);
+
+
+    $("lessons")
+      .classList
+      .add("hidden");
+
+
+    $("quizBox")
+      .classList
+      .remove("hidden");
+
+
+    renderQuestion();
+
+  }
+  catch(error){
+
+    console.error(
+      error
     );
 
-  if(!overlay){
 
-    overlay =
-      document.createElement("div");
-
-    overlay.id =
-      "aadyaQuizNotice";
-
-    overlay.className =
-      "qa-overlay";
-
-    overlay.setAttribute(
-      "role",
-      "alertdialog"
-    );
-
-    overlay.setAttribute(
-      "aria-modal",
-      "true"
-    );
-
-    overlay.setAttribute(
-      "aria-labelledby",
-      "qaNoticeTitle"
-    );
-
-    overlay.setAttribute(
-      "aria-describedby",
-      "qaNoticeMessage"
-    );
-
-    overlay.innerHTML = `
-
-      <div class="qa-modal">
-
-        <div class="qa-icon">
-          ${icon}
-        </div>
-
-        <h2
-          class="qa-title"
-          id="qaNoticeTitle">
-          ${title}
-        </h2>
-
-        <div
-          class="qa-message"
-          id="qaNoticeMessage">
-          ${message}
-        </div>
-
-        <button
-          type="button"
-          class="qa-ok"
-          id="qaNoticeOk">
-          ठीक है 👍
-        </button>
-
-      </div>
-
-    `;
-
-    document.body.appendChild(
-      overlay
+    alert(
+      "Quiz लोड नहीं हो पाया।"
     );
 
   }
 
-  overlay.style.display =
-    "flex";
+}
 
-  const ok =
-    document.getElementById(
-      "qaNoticeOk"
+
+/* =====================================================
+   QUESTION
+===================================================== */
+
+function renderQuestion(){
+
+  const q =
+    questions[current];
+
+
+  let html =
+
+    '<div ' +
+    'style="' +
+    'display:flex;' +
+    'justify-content:space-between;' +
+    'gap:8px' +
+    '">' +
+
+    '<b>' +
+
+    'प्रश्न ' +
+
+    (
+      current + 1
+    ) +
+
+    ' / ' +
+
+    questions.length +
+
+    '</b>' +
+
+    '<button ' +
+    'class="btn" ' +
+    'onclick="backToLessons()">' +
+
+    '← Lessons' +
+
+    '</button>' +
+
+    '</div>' +
+
+    '<hr>' +
+
+    '<div class="q">' +
+
+    esc(
+      q.question
+    ) +
+
+    '</div>';
+
+
+  q.options.forEach(
+    function(option,index){
+
+      html +=
+
+        '<button ' +
+
+        'class="option ' +
+
+        (
+          answers[current] ===
+          index
+            ?
+          'selected'
+            :
+          ''
+        ) +
+
+        '" ' +
+
+        'data-i="' +
+        index +
+        '">' +
+
+        String.fromCharCode(
+          65 + index
+        ) +
+
+        '. ' +
+
+        esc(
+          option
+        ) +
+
+        '</button>';
+
+    }
+  );
+
+
+  html +=
+
+    '<div class="nav">' +
+
+    '<button ' +
+    'class="btn" ' +
+    'onclick="backToLessons()">' +
+
+    'बाद में' +
+
+    '</button>' +
+
+    '<button ' +
+    'class="btn next" ' +
+    'id="next">' +
+
+    (
+      current <
+      questions.length - 1
+        ?
+      'अगला →'
+        :
+      'परिणाम देखें'
+    ) +
+
+    '</button>' +
+
+    '</div>';
+
+
+  $("quizBox")
+    .innerHTML =
+    html;
+
+
+  $("quizBox")
+    .querySelectorAll(
+      ".option"
+    )
+    .forEach(
+      function(button){
+
+        button.onclick =
+          function(){
+
+            answers[current] =
+              Number(
+                button.dataset.i
+              );
+
+
+            renderQuestion();
+
+          };
+
+      }
     );
 
-  ok.onclick =
-    closeQuizNotice;
 
-  overlay.onclick =
-    function(e){
+  $("next")
+    .onclick =
+    nextQuestion;
 
-      if(e.target === overlay){
+}
 
-        closeQuizNotice();
 
-      }
+/* =====================================================
+   NEXT
+===================================================== */
 
-    };
+function nextQuestion(){
 
-  document.onkeydown =
-    function(e){
+  if(
+    answers[current] ==
+    null
+  ){
+
+    alert(
+      "पहले एक उत्तर चुनिए।"
+    );
+
+    return;
+
+  }
+
+
+  if(
+    current <
+    questions.length - 1
+  ){
+
+    current++;
+
+    renderQuestion();
+
+  }
+  else{
+
+    finishQuiz();
+
+  }
+
+}
+
+
+/* =====================================================
+   FINISH
+===================================================== */
+
+function finishQuiz(){
+
+  let score =
+    0;
+
+
+  questions.forEach(
+    function(question,index){
 
       if(
-        e.key === "Escape"
+        answers[index] ===
+        question.correctIndex
       ){
 
-        closeQuizNotice();
+        score++;
 
       }
 
-    };
+    }
+  );
 
-  requestAnimationFrame(
-    function(){
 
-      ok.focus();
+  const percentage =
+    Math.round(
+      score /
+      questions.length *
+      100
+    );
+
+
+  const result = {
+
+        score: score,
+    total: questions.length,
+    percentage: percentage,
+    date: new Date().toISOString()
+  };
+
+  localStorage.setItem(
+    "aadya_last_quiz_score",
+    JSON.stringify(result)
+  );
+
+  let history = [];
+
+  try{
+    history =
+      JSON.parse(
+        localStorage.getItem("aadya_quiz_history_v1")
+      ) || [];
+  }catch(e){
+    history = [];
+  }
+
+  history.push(result);
+
+  localStorage.setItem(
+    "aadya_quiz_history_v1",
+    JSON.stringify(history)
+  );
+
+  const resultBox =
+    document.getElementById("result");
+
+  let message = "";
+
+  if(percentage >= 80){
+    message = "🌟 बहुत बढ़िया! शानदार प्रदर्शन!";
+  }else if(percentage >= 60){
+    message = "👏 अच्छा प्रयास! थोड़ा और अभ्यास करें।";
+  }else{
+    message = "💪 कोई बात नहीं! दोबारा अभ्यास करें और फिर प्रयास करें।";
+  }
+
+  resultBox.innerHTML =
+    '<div class="result-card">' +
+      '<div class="result-emoji">🎉</div>' +
+      '<h2>Quiz पूरा हुआ!</h2>' +
+      '<div class="score">' +
+        score + " / " + questions.length +
+      '</div>' +
+      '<div class="percentage">' +
+        percentage + "%" +
+      '</div>' +
+      '<p>' + message + '</p>' +
+      '<button onclick="location.reload()">' +
+        '🔄 फिर से Quiz दें' +
+      '</button>' +
+      '<button onclick="location.href=\'index.html\'">' +
+        '🏠 Home पर जाएँ' +
+      '</button>' +
+    '</div>';
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+/* =========================================
+   QUIZ START
+========================================= */
+
+async function startQuiz(){
+
+  const subject =
+    document.getElementById("subjectSelect").value;
+
+  if(!subject){
+    alert("कृपया पहले विषय चुनें।");
+    return;
+  }
+
+  const classNumber =
+    AADYA.getClassNumber();
+
+  const curriculum =
+    await AADYA.loadCurriculum(classNumber);
+
+  if(!curriculum){
+    document.getElementById("quizArea").innerHTML =
+      '<div class="empty">⚠️ Curriculum लोड नहीं हो पाया।</div>';
+    return;
+  }
+
+  const subjectData =
+    AADYA.classData(
+      curriculum,
+      subject
+    );
+
+  if(!subjectData){
+    document.getElementById("quizArea").innerHTML =
+      '<div class="empty">⚠️ इस विषय की जानकारी उपलब्ध नहीं है।</div>';
+    return;
+  }
+
+  const lessons =
+    AADYA.buildLessons(
+      subjectData,
+      subject
+    );
+
+  if(!lessons.length){
+    document.getElementById("quizArea").innerHTML =
+      '<div class="empty">📚 इस विषय में अभी कोई lesson उपलब्ध नहीं है।</div>';
+    return;
+  }
+
+  questions = [];
+
+  /*
+    सभी lessons से quiz questions इकट्ठे किए जाएंगे।
+    इससे भविष्य में नए chapter/lesson जोड़ने पर
+    Quiz अपने आप उन्हें पढ़ सकेगा।
+  */
+
+  for(
+    let i = 0;
+    i < lessons.length;
+    i++
+  ){
+
+    try{
+
+      const response =
+        await fetch(
+          lessons[i].file
+        );
+
+      if(!response.ok){
+        continue;
+      }
+
+      const data =
+        await response.json();
+
+      const lessonQuestions =
+        AADYA.questions(
+          data,
+          false
+        );
+
+      lessonQuestions.forEach(
+        function(question){
+
+          if(
+            question &&
+            Array.isArray(question.options) &&
+            question.options.length >= 2
+          ){
+
+            questions.push({
+              ...question,
+              lessonTitle:
+                lessons[i].title,
+              lessonFile:
+                lessons[i].file
+            });
+
+          }
+
+        }
+      );
+
+    }catch(error){
+
+      console.error(
+        "Quiz lesson error:",
+        lessons[i].file,
+        error
+      );
+
+    }
+  }
+
+
+  if(!questions.length){
+
+    document.getElementById("quizArea").innerHTML =
+      '<div class="empty">' +
+        '📚 इस विषय के lessons में अभी Quiz questions उपलब्ध नहीं हैं।' +
+      '</div>';
+
+    return;
+  }
+
+
+  /*
+    हर बार Quiz शुरू होने पर
+    questions को random order में दिखाएँ।
+  */
+
+  questions =
+    questions
+      .sort(
+        () => Math.random() - 0.5
+      )
+      .slice(
+        0,
+        Math.min(10, questions.length)
+      );
+
+
+  answers =
+    new Array(
+      questions.length
+    ).fill(null);
+
+  currentQuestion = 0;
+
+  document.getElementById(
+    "quizArea"
+  ).style.display = "block";
+
+  document.getElementById(
+    "quizStart"
+  ).style.display = "none";
+
+  renderQuestion();
+
+}
+
+
+/* =========================================
+   RENDER QUESTION
+========================================= */
+
+function renderQuestion(){
+
+  const area =
+    document.getElementById("quizArea");
+
+  if(
+    !questions.length
+  ){
+    area.innerHTML =
+      '<div class="empty">' +
+        '⚠️ कोई प्रश्न उपलब्ध नहीं है।' +
+      '</div>';
+
+    return;
+  }
+
+
+  const question =
+    questions[currentQuestion];
+
+
+  let optionsHTML = "";
+
+
+  question.options.forEach(
+    function(option,index){
+
+      const selected =
+        answers[currentQuestion] === index
+          ? "selected"
+          : "";
+
+      optionsHTML +=
+        '<button class="option ' +
+          selected +
+          '" onclick="selectAnswer(' +
+            index +
+          ')">' +
+          '<span class="option-letter">' +
+            String.fromCharCode(65 + index) +
+          '</span>' +
+          '<span>' +
+            option +
+          '</span>' +
+        '</button>';
+
+    }
+  );
+
+
+  const progressPercent =
+    Math.round(
+      (
+        (currentQuestion + 1) /
+        questions.length
+      ) * 100
+    );
+
+
+  area.innerHTML =
+
+    '<div class="quiz-card">' +
+
+      '<div class="quiz-top">' +
+
+        '<span>' +
+          'प्रश्न ' +
+          (currentQuestion + 1) +
+          ' / ' +
+          questions.length +
+        '</span>' +
+
+        '<span>' +
+          progressPercent +
+          '%' +
+        '</span>' +
+
+      '</div>' +
+
+      '<div class="progress-bar">' +
+        '<div class="progress-fill" style="width:' +
+          progressPercent +
+        '%"></div>' +
+      '</div>' +
+
+      '<div class="lesson-name">' +
+        (question.lessonTitle || "") +
+      '</div>' +
+
+      '<h2 class="question">' +
+        question.question +
+      '</h2>' +
+
+      '<div class="options">' +
+        optionsHTML +
+      '</div>' +
+
+      '<div class="quiz-navigation">' +
+
+        '<button ' +
+          (
+            currentQuestion === 0
+              ? 'disabled'
+              : ''
+          ) +
+          ' onclick="previousQuestion()">' +
+          '← पिछला' +
+        '</button>' +
+
+        (
+          currentQuestion <
+          questions.length - 1
+
+            ?
+
+          '<button ' +
+            (
+              answers[currentQuestion] === null
+                ? 'disabled'
+                : ''
+            ) +
+            ' onclick="nextQuestion()">' +
+            'अगला →' +
+          '</button>'
+
+            :
+
+          '<button ' +
+            (
+              answers[currentQuestion] === null
+                ? 'disabled'
+                : ''
+            ) +
+            ' onclick="finishQuiz()">' +
+            '🏁 Quiz समाप्त करें' +
+          '</button>'
+        ) +
+
+      '</div>' +
+
+    '</div>';
+
+}
+
+
+/* =========================================
+   SELECT ANSWER
+========================================= */
+
+function selectAnswer(index){
+
+  answers[currentQuestion] =
+    index;
+
+  renderQuestion();
+
+}
+
+
+/* =========================================
+   NEXT
+========================================= */
+
+function nextQuestion(){
+
+  if(
+    answers[currentQuestion] === null
+  ){
+    return;
+  }
+
+  if(
+    currentQuestion <
+    questions.length - 1
+  ){
+
+    currentQuestion++;
+
+    renderQuestion();
+
+  }
+
+}
+
+
+/* =========================================
+   PREVIOUS
+========================================= */
+
+function previousQuestion(){
+
+  if(
+    currentQuestion > 0
+  ){
+
+    currentQuestion--;
+
+    renderQuestion();
+
+  }
+
+}
+
+
+/* =========================================
+   INIT
+========================================= */
+
+async function init(){
+
+  const select =
+    document.getElementById(
+      "subjectSelect"
+    );
+
+  const classNumber =
+    AADYA.getClassNumber();
+
+
+  const curriculum =
+    await AADYA.loadCurriculum(
+      classNumber
+    );
+
+
+  if(!curriculum){
+
+    select.innerHTML =
+      '<option value="">' +
+        '⚠️ विषय लोड नहीं हुए' +
+      '</option>';
+
+    return;
+  }
+
+
+  const subjects =
+    Object.keys(
+      curriculum
+    ).filter(
+      function(key){
+
+        return (
+          curriculum[key] &&
+          typeof curriculum[key] === "object" &&
+          (
+            curriculum[key].chapters ||
+            curriculum[key].lessons
+          );
+
+      }
+    );
+
+
+  if(!subjects.length){
+
+    select.innerHTML =
+      '<option value="">' +
+        'कोई विषय उपलब्ध नहीं' +
+      '</option>';
+
+    return;
+  }
+
+
+  select.innerHTML =
+    '<option value="">' +
+      '📚 विषय चुनें' +
+    '</option>';
+
+
+  subjects.forEach(
+    function(subject){
+
+      const data =
+        curriculum[subject];
+
+      const option =
+        document.createElement(
+          "option"
+        );
+
+      option.value =
+        subject;
+
+      option.textContent =
+        (
+          data.name ||
+          AADYA.subjectName(subject)
+        );
+
+      select.appendChild(
+        option
+      );
 
     }
   );
@@ -1431,693 +1477,12 @@ function showQuizNotice(
 }
 
 
-function closeQuizNotice(){
-
-  const overlay =
-    document.getElementById(
-      "aadyaQuizNotice"
-    );
-
-  if(!overlay)
-    return;
-
-  overlay.style.display =
-    "none";
-
-  document.onkeydown =
-    null;
-
-  if(
-    qaLastFocus &&
-    typeof qaLastFocus.focus ===
-    "function"
-  ){
-
-    qaLastFocus.focus();
-
-  }
-
-}
-
-function esc(v){
-
-return String(v ?? "")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
-}
-
-
-function profile(){
-
-try{
-
-return JSON.parse(
-localStorage.getItem(PROFILE_KEY)||"{}"
+document.addEventListener(
+  "DOMContentLoaded",
+  init
 );
-
-}catch(e){
-
-return {};
-
-}
-
-}
-
-
-function curriculumUrl(c){
-
-if(String(c)==="7")
-return "./data/curriculum-class7.json";
-
-if(String(c)==="8")
-return "./data/curriculum-class8.json";
-
-return "./data/curriculum.json";
-
-}
-
-
-function classData(){
-
-return data?.classes?.["class"+cls] || null;
-
-}
-
-
-function normalizeQuestion(q){
-
-if(typeof q==="string"){
-
-return {
-question:q,
-options:[],
-correct_answer:null
-};
-
-}
-
-return {
-
-question:
-q?.question ||
-q?.text ||
-"",
-
-options:
-Array.isArray(q?.options)
-?q.options
-:[],
-
-correct_answer:
-q?.correct_answer ??
-q?.answer ??
-q?.correct ??
-null
-
-};
-
-}
-
-
-function allLessons(){
-
-const result=[];
-
-const subjects =
-classData()?.subjects || {};
-
-Object.keys(subjects)
-.forEach(function(subjectKey){
-
-const subject =
-subjects[subjectKey];
-
-(subject.chapters || [])
-.forEach(function(chapter){
-
-(chapter.lessons || [])
-.forEach(function(lesson){
-
-result.push({
-
-...lesson,
-
-subjectName:
-subject.name ||
-subjectKey,
-
-chapterTitle:
-chapter.title,
-
-chapterNumber:
-chapter.number
-
-});
-
-});
-
-});
-
-});
-
-return result;
-
-}
-
-
-async function init(){
-
-const p=profile();
-
-cls=String(p.class || 6);
-
-document.getElementById("intro")
-.textContent =
-(p.name
-?"नमस्ते, "+p.name+"! "
-:"")+
-"कक्षा "+cls+
-" के Lessons का Quiz यहाँ दें।";
-
-
-try{
-
-data =
-await (
-await fetch(
-curriculumUrl(cls)+
-"?v="+Date.now()
-)
-).json();
-
-renderLessons();
-
-}catch(e){
-
-document.getElementById("lessons")
-.innerHTML =
-'<div class="empty">'+
-'⚠️ Curriculum लोड नहीं हो पाया।'+
-'</div>';
-
-}
-
-}
-
-
-function renderLessons(){
-
-const lessons=allLessons();
-
-let html="";
-
-let lastSubject="";
-let lastChapter="";
-
-
-lessons.forEach(function(lesson,index){
-
-if(
-lesson.subjectName !==
-lastSubject
-){
-
-html +=
-'<div style="margin:14px 0 8px;font-weight:800">'+
-'📘 '+
-esc(lesson.subjectName)+
-'</div>';
-
-lastSubject=
-lesson.subjectName;
-
-lastChapter="";
-
-}
-
-
-if(
-lesson.chapterTitle !==
-lastChapter
-){
-
-html +=
-'<div class="chapter">'+
-'<div class="chapter-head">'+
-'अध्याय '+
-esc(lesson.chapterNumber)+
-' — '+
-esc(lesson.chapterTitle || "")+
-'</div>';
-
-lastChapter=
-lesson.chapterTitle;
-
-}
-
-
-html +=
-'<div class="lesson">'+
-
-'<div class="num">'+
-esc(lesson.number)+
-'</div>'+
-
-'<div class="lt">'+
-esc(
-lesson.title ||
-("पाठ "+lesson.number)
-)+
-'</div>'+
-
-'<button '+
-'class="start" '+
-'data-file="'+
-esc(lesson.file || "")+
-'">'+
-
-'Quiz'+
-
-'</button>'+
-
-'</div>';
-
-
-const next=lessons[index+1];
-
-
-if(
-!next ||
-next.chapterTitle !==
-lastChapter
-){
-
-html +=
-'</div>';
-
-}
-
-});
-
-
-document.getElementById("lessons")
-.innerHTML =
-html ||
-'<div class="empty">'+
-'अभी कोई Lesson उपलब्ध नहीं है।'+
-'</div>';
-
-
-document
-.querySelectorAll(".start")
-.forEach(function(button){
-
-button.onclick=function(){
-
-startQuiz(
-button.dataset.file
-);
-
-};
-
-});
-
-}
-
-
-async function startQuiz(file){
-
-if(!file)
-return;
-
-currentFile=file;
-
-
-try{
-
-const response =
-await fetch(
-file+"?v="+Date.now()
-);
-
-const lesson =
-await response.json();
-
-
-questions =
-(
-lesson.quiz?.questions ||
-lesson.quiz_questions ||
-[]
-)
-.map(normalizeQuestion);
-
-
-if(!questions.length){
-
-showQuizNotice(
-  "इस Lesson में अभी Quiz प्रश्न उपलब्ध नहीं हैं ⏸️",
-  "Quiz अभी तैयार नहीं है 📚",
-  "📝"
-);
-
-return;
-
-}
-
-
-current=0;
-
-answers=
-new Array(
-questions.length
-).fill(null);
-
-
-document
-.getElementById("selector")
-.classList.add("hidden");
-
-document
-.getElementById("quizBox")
-.classList.remove("hidden");
-
-
-renderQuestion();
-
-}catch(e){
-
-showQuizNotice(
-  "Quiz लोड नहीं हो पाया। कृपया एक बार फिर प्रयास करें😊",
-  "Quiz लोड नहीं हुआ ⚠️",
-  "⚠️"
-);
-
-}
-
-}
-
-
-function renderQuestion(){
-
-const q=
-questions[current];
-
-let html="";
-
-
-html +=
-'<div class="quiz-head">'+
-
-'<strong>'+
-'प्रश्न '+
-(current+1)+
-' / '+
-questions.length+
-'</strong>'+
-
-'<button class="btn" '+
-'onclick="backToLessons()">'+
-'← Lessons'+
-'</button>'+
-
-'</div>';
-
-
-html +=
-'<hr style="border:0;border-top:1px solid #eee;margin:12px 0">';
-
-
-html +=
-'<div class="q">'+
-esc(q.question)+
-'</div>';
-
-
-q.options.forEach(function(option,index){
-
-html +=
-'<button '+
-'class="option" '+
-'data-i="'+
-index+
-'">'+
-
-String.fromCharCode(65+index)+
-'. '+
-esc(option)+
-
-'</button>';
-
-});
-
-
-html +=
-'<div class="nav">'+
-
-'<button onclick="backToLessons()">'+
-'बाद में'+
-'</button>'+
-
-'<button class="next" '+
-'id="nextBtn">'+
-'अगला →'+
-'</button>'+
-
-'</div>';
-
-
-document.getElementById("quizBox")
-.innerHTML=html;
-
-
-document
-.querySelectorAll(".option")
-.forEach(function(button){
-
-button.onclick=function(){
-
-answers[current]=
-Number(button.dataset.i);
-
-
-document
-.querySelectorAll(".option")
-.forEach(function(b){
-
-b.classList.toggle(
-"selected",
-Number(b.dataset.i) ===
-answers[current]
-);
-
-});
-
-};
-
-});
-
-
-document.getElementById("nextBtn")
-.onclick=nextQuestion;
-
-}
-
-
-function nextQuestion(){
-
-if(answers[current]===null){
-
-showQuizNotice(
-  "आगे बढ़ने से पहले अपना एक उत्तर चुनिए।",
-  "एक उत्तर चुनिए 🎯",
-  "🎯"
-);
-
-return;
-
-}
-
-
-if(
-current <
-questions.length-1
-){
-
-current++;
-
-renderQuestion();
-
-}else{
-
-finishQuiz();
-
-}
-
-}
-
-
-function finishQuiz(){
-
-let score=0;
-
-
-questions.forEach(function(q,index){
-
-if(
-String(answers[index]) ===
-String(q.correct_answer)
-){
-
-score++;
-
-}
-
-});
-
-
-const percentage =
-Math.round(
-score /
-questions.length *
-100
-);
-
-
-let history={};
-
-try{
-
-history=
-JSON.parse(
-localStorage.getItem(
-HISTORY_KEY
-)||"{}"
-);
-
-}catch(e){
-
-history={};
-
-}
-
-
-const key=
-String(currentFile)
-.replace(/^\.\/+/,"");
-
-
-const result={
-
-score:score,
-
-total:
-questions.length,
-
-percentage:
-percentage,
-
-timestamp:
-new Date().toISOString()
-
-};
-
-
-history[key]=result;
-
-
-localStorage.setItem(
-HISTORY_KEY,
-JSON.stringify(history)
-);
-
-
-localStorage.setItem(
-LAST_KEY,
-JSON.stringify({
-
-...result,
-
-lessonFile:
-currentFile
-
-})
-);
-
-
-document.getElementById("quizBox")
-.innerHTML=
-
-'<div class="result">'+
-
-'<div style="font-size:42px">'+
-'🎉'+
-'</div>'+
-
-'<div class="score">'+
-score+
-' / '+
-questions.length+
-'</div>'+
-
-'<div style="margin-top:7px;font-weight:800">'+
-percentage+
-'% सही'+
-'</div>'+
-
-'<div class="muted" style="margin-top:10px">'+
-
-(
-percentage>=80
-?"बहुत बढ़िया! 🌟"
-:
-percentage>=50
-?"अच्छा प्रयास! फिर से अभ्यास करें।"
-:
-"कोई बात नहीं — Lesson दोबारा पढ़कर फिर प्रयास करें।"
-)+
-
-'</div>'+
-
-'<div class="nav">'+
-
-'<button onclick="backToLessons()">'+
-'📚 दूसरा Quiz'+
-'</button>'+
-
-'<button class="next" '+
-'onclick="startQuiz(currentFile)">'+
-'🔁 फिर से दें'+
-'</button>'+
-
-'</div>'+
-
-'</div>';
-
-}
-
-
-function backToLessons(){
-
-document
-.getElementById("quizBox")
-.classList.add("hidden");
-
-document
-.getElementById("selector")
-.classList.remove("hidden");
-
-}
-
-
-init();
 
 </script>
 
 </body>
-
 </html>
