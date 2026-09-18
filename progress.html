@@ -1,3212 +1,831 @@
 <!DOCTYPE html>
 <html lang="hi">
+
 <head>
-  <meta charset="UTF-8">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
 
-  <meta name="theme-color" content="#111111">
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
 
-  <title>AADYA | मेरी Progress</title>
+<title>AADYA — मेरी Progress</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
 
-    body {
-      margin: 0;
-      font-family: Arial, "Noto Sans Devanagari", sans-serif;
-      background: #f5f5f5;
-      color: #222;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 18px;
-    }
-
-    /* HEADER */
-
-    .header {
-      background: #111;
-      color: white;
-      border-radius: 18px;
-      padding: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.15);
-    }
-
-    .logo {
-      width: 150px;
-      max-width: 45%;
-      height: auto;
-    }
-
-    .back {
-      color: #f1c40f;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 14px;
-    }
-
-    /* STUDENT CARD */
-
-    .student-card {
-      margin-top: 18px;
-      background: white;
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      border-left: 5px solid #f1c40f;
-    }
-
-    .student-card h1 {
-      margin: 0 0 7px;
-      font-size: 25px;
-    }
-
-    .student-class {
-      margin: 0;
-      color: #666;
-      font-size: 15px;
-    }
-
-    /* STATS */
-
-    .stats {
-      margin-top: 18px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .stat-card {
-      background: white;
-      border-radius: 16px;
-      padding: 18px 10px;
-      text-align: center;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.07);
-    }
-
-    .stat-number {
-      font-size: 27px;
-      font-weight: bold;
-      color: #111;
-      margin-bottom: 5px;
-    }
-
-    .stat-label {
-      color: #666;
-      font-size: 13px;
-    }
-
-    /* PROGRESS */
-
-    .progress-card {
-      margin-top: 18px;
-      background: white;
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    }
-
-    .section-title {
-      margin: 0 0 15px;
-      font-size: 20px;
-    }
-
-    .progress-info {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      font-size: 14px;
-      margin-bottom: 9px;
-      color: #555;
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 14px;
-      background: #e5e5e5;
-      border-radius: 20px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #f1c40f, #d4a900);
-      border-radius: 20px;
-      transition: width 0.5s ease;
-    }
-
-    .progress-message {
-      margin-top: 14px;
-      font-weight: bold;
-      color: #555;
-      line-height: 1.5;
-    }
-
-    /* LATEST LESSON */
-
-    .latest-card {
-      margin-top: 18px;
-      background: white;
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    }
-
-    .latest-lesson {
-      background: #fafafa;
-      border-radius: 14px;
-      padding: 16px;
-      border: 1px solid #eee;
-    }
-
-    .latest-lesson h3 {
-      margin: 0 0 8px;
-      font-size: 18px;
-    }
-
-    .latest-lesson p {
-      margin: 5px 0;
-      color: #666;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .completed-badge {
-      display: inline-block;
-      margin-top: 10px;
-      background: #111;
-      color: #f1c40f;
-      padding: 6px 10px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    /* BUTTON */
-
-    .action-area {
-      margin-top: 18px;
-    }
-
-    .action-btn {
-      display: block;
-      width: 100%;
-      text-align: center;
-      text-decoration: none;
-      background: #111;
-      color: white;
-      padding: 15px;
-      border-radius: 14px;
-      font-weight: bold;
-      font-size: 16px;
-      transition: 0.2s;
-    }
-
-    .action-btn:hover {
-      transform: translateY(-1px);
-    }
-
-    /* MOTIVATION */
-
-    .motivation {
-      margin-top: 18px;
-      background: linear-gradient(135deg, #111, #222);
-      color: white;
-      border-radius: 18px;
-      padding: 22px;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.12);
-    }
-
-    .motivation h2 {
-      margin: 0 0 8px;
-      color: #f1c40f;
-      font-size: 20px;
-    }
-
-    .motivation p {
-      margin: 0;
-      line-height: 1.6;
-      color: #eee;
-    }
-
-    /* HOME BUTTON */
-
-    .home-area {
-      margin-top: 18px;
-      text-align: center;
-    }
-
-    .home-btn {
-      display: inline-block;
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-      padding: 10px 15px;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 600px) {
-
-      .container {
-        padding: 12px;
-      }
-
-      .header {
-        padding: 15px;
-      }
-
-      .logo {
-        width: 135px;
-      }
-
-      .stats {
-        gap: 8px;
-      }
-
-      .stat-card {
-        padding: 15px 6px;
-      }
-
-      .stat-number {
-        font-size: 23px;
-      }
-
-      .stat-label {
-        font-size: 12px;
-      }
-
-      .student-card h1 {
-        font-size: 22px;
-      }
-    }
-    /* =========================================================
-   AADYA PROGRESS — FINAL PREMIUM COMPACT DESIGN
-   AADYA HOME BANNER + SINGLE-SCREEN MOBILE LAYOUT
-   CSS ONLY — EXISTING JS / DATA / FUNCTIONALITY UNTOUCHED
-========================================================= */
-
-* {
-  box-sizing: border-box;
+*{
+  box-sizing:border-box;
 }
 
-body {
-  margin: 0;
-  background: #f4f7fb !important;
-  color: #202b3c;
+body{
+  margin:0;
+
+  font-family:
+    Arial,
+    "Noto Sans Devanagari",
+    sans-serif;
+
+  background:#f3f7fb;
+  color:#172b4d;
 }
 
-.container {
-  width: min(100%, 980px);
-  max-width: 980px;
-  margin: auto;
-  padding: 9px 12px 8px !important;
+.wrap{
+  max-width:900px;
+
+  margin:auto;
+
+  padding:
+    10px 12px 40px;
 }
 
-/* =========================================================
-   AADYA BANNER HEADER
-========================================================= */
+.header{
+  height:125px;
 
-.header {
-  position: relative !important;
-  width: 100%;
-  height: 122px !important;
-  min-height: 122px !important;
-  padding: 0 !important;
-  overflow: hidden !important;
+  border-radius:19px;
 
-  border-radius: 20px !important;
-  background-color: #ffffff !important;
-  background-image: url("./assets/logo/aadya-home-banner.png") !important;
-  background-repeat: no-repeat !important;
-  background-position: center center !important;
-  background-size: 100% auto !important;
+  background:
+    url("./assets/logo/aadya-home-banner.png")
+    center/cover;
 
-  box-shadow: 0 6px 18px rgba(0,0,0,.10) !important;
+  position:relative;
 }
 
-/* Existing logo element is hidden,
-   but NOT removed from HTML */
-.header .logo {
-  display: none !important;
+.home{
+  position:absolute;
+
+  right:10px;
+  bottom:9px;
+
+  border:0;
+
+  border-radius:18px;
+
+  background:
+    rgba(17,17,17,.86);
+
+  color:#f7c928;
+
+  padding:8px 12px;
+
+  font-weight:900;
+
+  cursor:pointer;
 }
 
-/* Home button stays on top of banner */
-.header .back {
-  position: absolute !important;
-  right: 12px !important;
-  bottom: 9px !important;
-  z-index: 10 !important;
+.card{
+  background:#fff;
 
-  display: inline-flex !important;
-  align-items: center !important;
+  border-radius:19px;
 
-  padding: 5px 10px !important;
-  border-radius: 20px !important;
+  padding:16px;
 
-  background: rgba(17,17,17,.82) !important;
-  color: #f6c928 !important;
+  margin-top:10px;
 
-  font-size: 11px !important;
-  font-weight: 800 !important;
-  text-decoration: none !important;
+  box-shadow:
+    0 7px 22px
+    rgba(23,43,77,.07);
 
-  box-shadow: 0 3px 9px rgba(0,0,0,.18) !important;
+  border:
+    1px solid #e5ecf4;
 }
 
-/* =========================================================
-   STUDENT GREETING
-========================================================= */
-
-.student-card {
-  margin-top: 9px !important;
-  min-height: 68px !important;
-
-  padding: 11px 16px !important;
-
-  border-radius: 18px !important;
-  border-left: 5px solid #f1c40f !important;
-
-  background: linear-gradient(
-    135deg,
-    #fffdf2,
-    #ffffff
-  ) !important;
-
-  box-shadow: 0 4px 14px rgba(0,0,0,.065) !important;
+.student{
+  border-left:
+    5px solid #f1c40f;
 }
 
-.student-card h1 {
-  margin: 0 0 3px !important;
-
-  font-size: 22px !important;
-  line-height: 1.18 !important;
-  color: #202b3c !important;
+.student h1{
+  margin:0 0 4px;
+  font-size:23px;
 }
 
-.student-class {
-  margin: 0 !important;
+.muted{
+  color:#68768a;
 
-  color: #687589 !important;
-  font-size: 12px !important;
-  line-height: 1.3 !important;
+  font-size:13px;
+
+  line-height:1.6;
 }
 
-/* =========================================================
-   THREE QUICK STATS
-========================================================= */
+.stats{
+  display:grid;
 
-.stats {
-  margin-top: 8px !important;
+  grid-template-columns:
+    repeat(3,1fr);
 
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 7px !important;
+  gap:8px;
 }
 
-.stat-card {
-  min-height: 62px !important;
+.stat{
+  text-align:center;
 
-  padding: 7px 5px !important;
+  padding:13px;
 
-  border-radius: 15px !important;
-  background: #ffffff !important;
+  background:#f8fbff;
 
-  box-shadow: 0 4px 12px rgba(0,0,0,.06) !important;
+  border-radius:14px;
 }
 
-.stat-number {
-  margin: 0 0 2px !important;
-
-  font-size: 22px !important;
-  line-height: 1.05 !important;
-
-  color: #182235 !important;
+.num{
+  font-size:25px;
+  font-weight:900;
 }
 
-.stat-label {
-  font-size: 10px !important;
-  line-height: 1.15 !important;
-  color: #718096 !important;
+.bar{
+  height:10px;
+
+  background:#e5e9ef;
+
+  border-radius:99px;
+
+  overflow:hidden;
 }
 
-/* =========================================================
-   MAIN PROGRESS CARD
-========================================================= */
+.fill{
+  height:100%;
 
-.progress-card {
-  margin-top: 8px !important;
-
-  padding: 12px 14px 10px !important;
-
-  border-radius: 19px !important;
-  background: #ffffff !important;
-
-  box-shadow: 0 5px 16px rgba(0,0,0,.075) !important;
+  background:
+    linear-gradient(
+      90deg,
+      #f7c928,
+      #56ccf2,
+      #7b61ff
+    );
 }
 
-.section-title {
-  margin: 0 0 7px !important;
+.subject{
+  padding:12px;
 
-  font-size: 18px !important;
-  line-height: 1.18 !important;
+  border:
+    1px solid #e5ebf3;
 
-  color: #202b3c !important;
+  border-radius:14px;
+
+  margin:8px 0;
 }
 
-.progress-info {
-  margin-bottom: 5px !important;
+.row{
+  display:flex;
 
-  display: flex !important;
-  justify-content: space-between !important;
+  justify-content:space-between;
 
-  font-size: 12px !important;
-  line-height: 1.2 !important;
-
-  color: #697586 !important;
+  gap:8px;
 }
 
-.progress-info strong {
-  color: #202b3c !important;
+.small{
+  font-size:11px;
+  color:#68768a;
 }
 
-.progress-bar {
-  width: 100% !important;
-  height: 9px !important;
+.btn{
+  display:inline-block;
 
-  background: #e5e9ee !important;
-  border-radius: 20px !important;
+  border:0;
 
-  overflow: hidden !important;
+  border-radius:11px;
+
+  padding:10px 12px;
+
+  background:#172b4d;
+
+  color:#fff;
+
+  font-weight:900;
+
+  text-decoration:none;
+
+  cursor:pointer;
 }
 
-.progress-fill {
-  height: 100% !important;
-  width: 0%;
+.empty{
+  padding:15px;
 
-  background: linear-gradient(
-    90deg,
-    #f1c40f,
-    #ffb300
-  ) !important;
+  background:#f8fafc;
 
-  border-radius: 20px !important;
-  transition: width .5s ease !important;
+  border-radius:13px;
+
+  color:#718096;
+
+  line-height:1.6;
 }
 
-.progress-message {
-  margin-top: 6px !important;
+@media(max-width:600px){
 
-  font-size: 11px !important;
-  line-height: 1.25 !important;
-  font-weight: 700 !important;
+  .header{
+    height:112px;
+  }
 
-  color: #596579 !important;
+  .stats{
+    gap:5px;
+  }
+
+  .num{
+    font-size:21px;
+  }
+
 }
 
-/* =========================================================
-   SUBJECT-WISE PROGRESS
-========================================================= */
+</style>
 
-#subjectDashboard {
-  margin-top: 8px !important;
-}
-
-/*
-   Existing JS-generated subject heading
-*/
-#subjectDashboard > div:first-child {
-  margin-bottom: 5px !important;
-
-  font-size: 16px !important;
-  line-height: 1.2 !important;
-}
-
-/*
-   Existing JS-generated subject cards
-*/
-#subjectDashboard > div[onclick] {
-  display: inline-block !important;
-  vertical-align: top !important;
-
-  width: calc(50% - 4px) !important;
-
-  min-height: 61px !important;
-
-  margin: 4px 5px 4px 0 !important;
-  padding: 7px 9px !important;
-
-  border: 1px solid #e7edf3 !important;
-  border-radius: 13px !important;
-
-  background: linear-gradient(
-    135deg,
-    #f9fbfd,
-    #ffffff
-  ) !important;
-
-  box-shadow: 0 2px 7px rgba(0,0,0,.035) !important;
-}
-
-/* Last card on each row */
-#subjectDashboard > div[onclick]:nth-child(even) {
-  margin-right: 0 !important;
-}
-
-/* Subject name */
-#subjectDashboard > div[onclick] > div:nth-child(1) {
-  font-size: 14px !important;
-  line-height: 1.1 !important;
-}
-
-/* Completed lesson text */
-#subjectDashboard > div[onclick] > div:nth-child(2) {
-  margin-top: 3px !important;
-
-  font-size: 10px !important;
-  line-height: 1.15 !important;
-}
-
-/* Subject progress bar */
-#subjectDashboard > div[onclick] > div:nth-child(3) {
-  margin-top: 4px !important;
-
-  height: 6px !important;
-}
-
-/* Remaining / percentage */
-#subjectDashboard > div[onclick] > div:nth-child(4) {
-  margin-top: 3px !important;
-
-  font-size: 9px !important;
-  line-height: 1.1 !important;
-}
-
-/* =========================================================
-   LATEST LEARNING
-========================================================= */
-
-.latest-card {
-  margin-top: 8px !important;
-
-  padding: 10px 12px !important;
-
-  border-radius: 17px !important;
-  background: #ffffff !important;
-
-  box-shadow: 0 4px 14px rgba(0,0,0,.065) !important;
-}
-
-.latest-card .section-title {
-  margin-bottom: 6px !important;
-
-  font-size: 16px !important;
-}
-
-.latest-lesson {
-  padding: 8px 10px !important;
-
-  border-radius: 12px !important;
-  border: 1px solid #edf0f3 !important;
-
-  background: #fafbfc !important;
-}
-
-.latest-lesson h3 {
-  margin: 0 0 3px !important;
-
-  font-size: 14px !important;
-  line-height: 1.25 !important;
-}
-
-.latest-lesson p {
-  margin: 2px 0 !important;
-
-  font-size: 10px !important;
-  line-height: 1.3 !important;
-
-  color: #6b7280 !important;
-}
-
-.completed-badge {
-  margin-top: 4px !important;
-
-  padding: 4px 8px !important;
-
-  border-radius: 20px !important;
-
-  font-size: 9px !important;
-}
-
-/* =========================================================
-   CONTINUE LEARNING
-========================================================= */
-
-.action-area {
-  margin-top: 7px !important;
-}
-
-.action-btn {
-  display: block !important;
-  width: 100% !important;
-
-  padding: 9px !important;
-
-  border-radius: 12px !important;
-
-  background: linear-gradient(
-    135deg,
-    #111111,
-    #252525
-  ) !important;
-
-  color: #ffffff !important;
-
-  font-size: 13px !important;
-  font-weight: 800 !important;
-
-  text-align: center !important;
-  text-decoration: none !important;
-
-  box-shadow: 0 4px 11px rgba(0,0,0,.12) !important;
-}
-
-/* =========================================================
-   MOTIVATION
-========================================================= */
-
-.motivation {
-  margin-top: 7px !important;
-
-  padding: 9px 12px !important;
-
-  border-radius: 16px !important;
-
-  background: linear-gradient(
-    135deg,
-    #111111,
-    #242424
-  ) !important;
-
-  box-shadow: 0 4px 13px rgba(0,0,0,.10) !important;
-
-  text-align: center !important;
-}
-
-.motivation h2 {
-  margin: 0 0 3px !important;
-
-  font-size: 15px !important;
-  line-height: 1.15 !important;
-
-  color: #f6c928 !important;
-}
-
-.motivation p {
-  margin: 0 !important;
-
-  font-size: 10px !important;
-  line-height: 1.3 !important;
-
-  color: #eeeeee !important;
-}
-
-/* =========================================================
-   HOME
-========================================================= */
-
-.home-area {
-  margin-top: 2px !important;
-
-  text-align: center !important;
-}
-
-.home-btn {
-  display: inline-block !important;
-
-  padding: 3px 8px !important;
-
-  color: #4b5563 !important;
-
-  font-size: 11px !important;
-  font-weight: 800 !important;
-
-  text-decoration: none !important;
-}
-
-/* =========================================================
-   MOBILE — FINAL
-========================================================= */
-
-@media (max-width: 600px) {
-
-  .container {
-    padding: 7px 9px 7px !important;
-  }
-
-  /*
-     Banner is deliberately compact.
-     Full artwork remains visible because it is NOT cropped.
-  */
-  .header {
-    height: 116px !important;
-    min-height: 116px !important;
-
-    border-radius: 17px !important;
-
-    background-size: 100% auto !important;
-  }
-
-  .header .back {
-    right: 9px !important;
-    bottom: 7px !important;
-
-    padding: 4px 8px !important;
-
-    font-size: 10px !important;
-  }
-
-  .student-card {
-    margin-top: 7px !important;
-
-    min-height: 65px !important;
-
-    padding: 10px 13px !important;
-
-    border-radius: 16px !important;
-  }
-
-  .student-card h1 {
-    font-size: 20px !important;
-  }
-
-  .student-class {
-    font-size: 11px !important;
-  }
-
-  .stats {
-    margin-top: 7px !important;
-    gap: 6px !important;
-  }
-
-  .stat-card {
-    min-height: 59px !important;
-
-    padding: 6px 3px !important;
-
-    border-radius: 13px !important;
-  }
-
-  .stat-number {
-    font-size: 21px !important;
-  }
-
-  .stat-label {
-    font-size: 9px !important;
-  }
-
-  .progress-card {
-    margin-top: 7px !important;
-
-    padding: 11px 12px 9px !important;
-
-    border-radius: 17px !important;
-  }
-
-  .section-title {
-    font-size: 17px !important;
-  }
-
-  .progress-info {
-    font-size: 11px !important;
-  }
-
-  .progress-bar {
-    height: 8px !important;
-  }
-
-  .progress-message {
-    font-size: 10px !important;
-  }
-
-  #subjectDashboard {
-    margin-top: 7px !important;
-  }
-
-  #subjectDashboard > div:first-child {
-    margin-bottom: 4px !important;
-    font-size: 15px !important;
-  }
-
-  #subjectDashboard > div[onclick] {
-    min-height: 58px !important;
-
-    margin-top: 3px !important;
-    margin-bottom: 3px !important;
-
-    padding: 6px 8px !important;
-
-    border-radius: 12px !important;
-  }
-
-  #subjectDashboard > div[onclick] > div:nth-child(1) {
-    font-size: 13px !important;
-  }
-
-  #subjectDashboard > div[onclick] > div:nth-child(2) {
-    font-size: 9px !important;
-  }
-
-  #subjectDashboard > div[onclick] > div:nth-child(3) {
-    height: 5px !important;
-  }
-
-  #subjectDashboard > div[onclick] > div:nth-child(4) {
-    font-size: 8px !important;
-  }
-
-  .latest-card {
-    margin-top: 7px !important;
-
-    padding: 9px 10px !important;
-
-    border-radius: 16px !important;
-  }
-
-  .latest-card .section-title {
-    font-size: 15px !important;
-  }
-
-  .latest-lesson {
-    padding: 7px 9px !important;
-    border-radius: 11px !important;
-  }
-
-  .latest-lesson h3 {
-    font-size: 13px !important;
-  }
-
-  .latest-lesson p {
-    font-size: 9.5px !important;
-  }
-
-  .action-area {
-    margin-top: 6px !important;
-  }
-
-  .action-btn {
-    padding: 8px !important;
-
-    border-radius: 11px !important;
-
-    font-size: 12px !important;
-  }
-
-  .motivation {
-    margin-top: 6px !important;
-
-    padding: 8px 10px !important;
-
-    border-radius: 14px !important;
-  }
-
-  .motivation h2 {
-    font-size: 14px !important;
-  }
-
-  .motivation p {
-    font-size: 9px !important;
-  }
-
-  .home-area {
-    margin-top: 1px !important;
-  }
-
-  .home-btn {
-    padding: 2px 6px !important;
-    font-size: 10px !important;
-  }
-}
-
-/* =========================================================
-   VERY SMALL DEVICES
-========================================================= */
-
-@media (max-width: 380px) {
-
-  .container {
-    padding: 6px 7px 6px !important;
-  }
-
-  .header {
-    height: 104px !important;
-    min-height: 104px !important;
-  }
-
-  .student-card h1 {
-    font-size: 18px !important;
-  }
-
-  .student-class {
-    font-size: 10px !important;
-  }
-
-  .stat-number {
-    font-size: 19px !important;
-  }
-
-  .stat-label {
-    font-size: 8.5px !important;
-  }
-
-  #subjectDashboard > div[onclick] {
-    width: 100% !important;
-    margin-right: 0 !important;
-  }
-      }
-    /* =========================================================
-   AADYA PROGRESS — FINAL FULL MOBILE REFINEMENT
-   Uses existing AADYA HOME BANNER
-   No HTML / JS / DATA changes
-========================================================= */
-
-@media (max-width: 600px) {
-
-  /* PAGE WIDTH */
-  .container {
-    width: 100% !important;
-    max-width: none !important;
-    padding: 8px 10px 9px !important;
-  }
-
-  /* -------------------------------------------------------
-     AADYA BANNER
-  ------------------------------------------------------- */
-
-  .header {
-    height: 138px !important;
-    min-height: 138px !important;
-
-    border-radius: 18px !important;
-
-    background-size: 100% auto !important;
-    background-position: center center !important;
-  }
-
-  .header .back {
-    right: 10px !important;
-    bottom: 8px !important;
-
-    padding: 5px 10px !important;
-
-    font-size: 11px !important;
-    border-radius: 20px !important;
-  }
-
-  /* -------------------------------------------------------
-     GREETING
-  ------------------------------------------------------- */
-
-  .student-card {
-    margin-top: 9px !important;
-
-    min-height: 76px !important;
-
-    padding: 12px 15px !important;
-
-    border-radius: 18px !important;
-    border-left-width: 5px !important;
-  }
-
-  .student-card h1 {
-    margin-bottom: 5px !important;
-
-    font-size: 22px !important;
-    line-height: 1.2 !important;
-  }
-
-  .student-class {
-    font-size: 12px !important;
-    line-height: 1.35 !important;
-  }
-
-  /* -------------------------------------------------------
-     STATS
-  ------------------------------------------------------- */
-
-  .stats {
-    margin-top: 9px !important;
-    gap: 7px !important;
-  }
-
-  .stat-card {
-    min-height: 70px !important;
-
-    padding: 8px 5px !important;
-
-    border-radius: 15px !important;
-  }
-
-  .stat-number {
-    font-size: 24px !important;
-    line-height: 1.05 !important;
-
-    margin-bottom: 4px !important;
-  }
-
-  .stat-label {
-    font-size: 10px !important;
-    line-height: 1.2 !important;
-  }
-
-  /* -------------------------------------------------------
-     MAIN PROGRESS
-  ------------------------------------------------------- */
-
-  .progress-card {
-    margin-top: 9px !important;
-
-    padding: 14px 14px 13px !important;
-
-    border-radius: 19px !important;
-  }
-
-  .section-title {
-    margin-bottom: 9px !important;
-
-    font-size: 19px !important;
-    line-height: 1.2 !important;
-  }
-
-  .progress-info {
-    margin-bottom: 7px !important;
-
-    font-size: 12px !important;
-  }
-
-  .progress-bar {
-    height: 10px !important;
-  }
-
-  .progress-message {
-    margin-top: 8px !important;
-
-    font-size: 11px !important;
-  }
-
-  /* -------------------------------------------------------
-     SUBJECT DASHBOARD
-     ONE SUBJECT = FULL WIDTH
-     MULTIPLE SUBJECTS = TWO COLUMNS
-  ------------------------------------------------------- */
-
-  #subjectDashboard {
-    margin-top: 10px !important;
-  }
-
-  #subjectDashboard > div:first-child {
-    margin-bottom: 7px !important;
-
-    font-size: 17px !important;
-  }
-
-  #subjectDashboard > div[onclick] {
-    min-height: 70px !important;
-
-    margin: 5px 0 !important;
-    padding: 9px 11px !important;
-
-    border-radius: 14px !important;
-  }
-
-  /* If only one subject exists, use full width */
-  #subjectDashboard > div[onclick]:only-child {
-    display: block !important;
-    width: 100% !important;
-    margin-right: 0 !important;
-  }
-
-  #subjectDashboard > div[onclick] > div:nth-child(1) {
-    font-size: 15px !important;
-    line-height: 1.15 !important;
-  }
-
-  #subjectDashboard > div[onclick] > div:nth-child(2) {
-    margin-top: 4px !important;
-
-    font-size: 10px !important;
-  }
-
-  #subjectDashboard > div[onclick] > div:nth-child(3) {
-    margin-top: 6px !important;
-
-    height: 7px !important;
-  }
-
-  #subjectDashboard > div[onclick] > div:nth-child(4) {
-    margin-top: 4px !important;
-
-    font-size: 9px !important;
-  }
-
-  /* -------------------------------------------------------
-     LATEST LEARNING
-  ------------------------------------------------------- */
-
-  .latest-card {
-    margin-top: 9px !important;
-
-    padding: 12px 13px !important;
-
-    border-radius: 18px !important;
-  }
-
-  .latest-card .section-title {
-    margin-bottom: 8px !important;
-
-    font-size: 17px !important;
-  }
-
-  .latest-lesson {
-    padding: 10px 11px !important;
-
-    border-radius: 13px !important;
-  }
-
-  .latest-lesson h3 {
-    margin-bottom: 5px !important;
-
-    font-size: 15px !important;
-    line-height: 1.25 !important;
-  }
-
-  .latest-lesson p {
-    font-size: 10.5px !important;
-    line-height: 1.4 !important;
-  }
-
-  /* -------------------------------------------------------
-     CONTINUE BUTTON
-  ------------------------------------------------------- */
-
-  .action-area {
-    margin-top: 9px !important;
-  }
-
-  .action-btn {
-    padding: 10px !important;
-
-    border-radius: 13px !important;
-
-    font-size: 13px !important;
-  }
-
-  /* -------------------------------------------------------
-     MOTIVATION
-  ------------------------------------------------------- */
-
-  .motivation {
-    margin-top: 9px !important;
-
-    padding: 11px 12px !important;
-
-    border-radius: 16px !important;
-  }
-
-  .motivation h2 {
-    margin-bottom: 5px !important;
-
-    font-size: 16px !important;
-  }
-
-  .motivation p {
-    font-size: 10px !important;
-    line-height: 1.4 !important;
-  }
-
-  /* -------------------------------------------------------
-     HOME
-  ------------------------------------------------------- */
-
-  .home-area {
-    margin-top: 5px !important;
-  }
-
-  .home-btn {
-    padding: 4px 8px !important;
-
-    font-size: 11px !important;
-  }
-}
-
-
-/* =========================================================
-   VERY SMALL PHONES
-========================================================= */
-
-@media (max-width: 380px) {
-
-  .container {
-    padding: 7px 8px 8px !important;
-  }
-
-  .header {
-    height: 126px !important;
-    min-height: 126px !important;
-  }
-
-  .student-card h1 {
-    font-size: 20px !important;
-  }
-
-  .student-class {
-    font-size: 11px !important;
-  }
-
-  .stat-card {
-    min-height: 66px !important;
-  }
-
-  .stat-number {
-    font-size: 22px !important;
-  }
-
-  .stat-label {
-    font-size: 9px !important;
-  }
-
-  .section-title {
-    font-size: 18px !important;
-  }
-}
-  </style>
 </head>
 
 <body>
 
-  <div class="container">
-
-    <!-- HEADER -->
-
-    <div class="header">
-
-      <img
-        src="./assets/logo/aadya-logo-header-full.png"
-        class="logo"
-        alt="AADYA">
-
-      <a href="./index.html" class="back">
-        ← AADYA Home
-      </a>
-
-    </div>
+<main class="wrap">
 
 
-    <!-- STUDENT -->
+<header class="header">
 
-    <div class="student-card">
+<button
+  class="home"
+  onclick="location.href='./index.html'"
+>
+⌂ होम
+</button>
 
-      <h1 id="studentGreeting">
-        नमस्ते! 👋
-      </h1>
-
-      <p class="student-class" id="studentClass">
-        आपकी Learning Journey यहाँ दिखाई देगी।
-      </p>
-
-    </div>
+</header>
 
 
-    <!-- STATS -->
+<section class="card student">
 
-    <div class="stats">
+<h1 id="name">
+मेरी Progress
+</h1>
 
-      <div class="stat-card">
+<div
+  class="muted"
+  id="classLine"
+>
+</div>
 
-        <div
-          class="stat-number"
-          id="completedLessons">
-          0
-        </div>
-
-        <div class="stat-label">
-          Lessons पूरे
-        </div>
-
-      </div>
+</section>
 
 
-      <div class="stat-card">
+<section class="card">
 
-        <div
-          class="stat-number"
-          id="quizScore">
-          —
-        </div>
+<h2
+  style="margin:0 0 10px"
+>
+📊 कुल Progress
+</h2>
 
-        <div class="stat-label">
-          Last Quiz
-        </div>
+<div
+  class="stats"
+  id="stats"
+>
+</div>
 
-      </div>
+<div
+  style="margin-top:13px"
+  class="bar"
+>
 
-
-      <div class="stat-card">
-
-        <div
-          class="stat-number"
-          id="progressPercent">
-          0%
-        </div>
-
-        <div class="stat-label">
-          Learning Progress
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- PROGRESS -->
-
-<div class="progress-card">
-
-  <h2 class="section-title">
-    📊 आपकी Learning Progress
-  </h2>
-
-  <div
-    class="progress-info"
-    id="overallProgressInfo">
-
-    <span id="progressText">
-      0 / 0 Lessons
-    </span>
-
-    <strong id="progressPercentText">
-      0%
-    </strong>
-
-  </div>
-
-  <div class="progress-bar">
-
-    <div
-      class="progress-fill"
-      id="progressFill">
-    </div>
-
-  </div>
-
-  <div
-    class="progress-message"
-    id="progressMessage">
-    🚀 अपनी Learning Journey शुरू करें!
-  </div>
-
-  <div
-    id="subjectDashboard"
-    style="margin-top:22px;">
-  </div>
+<div
+  id="fill"
+  class="fill"
+  style="width:0"
+>
+</div>
 
 </div>
 
-
-    <!-- LATEST LESSON -->
-
-    <div class="latest-card">
-
-      <h2 class="section-title">
-        📚 Latest Learning
-      </h2>
-
-      <div
-        class="latest-lesson"
-        id="latestLesson">
-
-        <h3>
-          अभी कोई Lesson पूरा नहीं हुआ
-        </h3>
-
-        <p>
-          अपना पहला Lesson पूरा करें और यहाँ अपनी progress देखें।
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <!-- CONTINUE -->
-
-    <div class="action-area">
-
-  <a
-    href="./learning.html"
-    class="action-btn"
-    id="continueLearningBtn">
-
-    🚀 Learning जारी रखें
-
-  </a>
-
+<div
+  id="message"
+  class="muted"
+  style="margin-top:7px"
+>
 </div>
 
-
-    <!-- MOTIVATION -->
-
-    <div class="motivation" id="motivation">
-
-      <h2>
-        🌟 Keep Learning!
-      </h2>
-
-      <p>
-        हर पूरा किया हुआ Lesson आपको अपने लक्ष्य के
-        एक कदम और करीब ले जाता है।
-      </p>
-
-    </div>
+</section>
 
 
-    <!-- HOME -->
+<section class="card">
 
-    <div class="home-area">
+<h2
+  style="margin:0 0 10px"
+>
+📚 विषयवार Progress
+</h2>
 
-      <a
-        href="./index.html"
-        class="home-btn">
+<div
+  id="subjects"
+>
+</div>
 
-        🏠 Home पर जाएँ
+</section>
 
-      </a>
 
-    </div>
+<section class="card">
 
-  </div>
+<h2
+  style="margin:0 0 10px"
+>
+▶️ जारी रखें
+</h2>
+
+<div
+  id="resume"
+>
+</div>
+
+</section>
+
+
+<section class="card">
+
+<h2
+  style="margin:0 0 10px"
+>
+🎯 Last Quiz
+</h2>
+
+<div
+  id="quiz"
+>
+</div>
+
+</section>
+
+
+</main>
+
+
+<script src="./js/aadya-core.js"></script>
 
 
 <script>
 
-const PROFILE_KEY =
-  "aadya_student_profile_v1";
+"use strict";
 
-const PROGRESS_KEY =
-  "aadya_progress_v1";
 
-const QUIZ_KEY =
-  "aadya_last_quiz_score";
+let profile =
+  {};
 
-const QUIZ_HISTORY_KEY =
-  "aadya_quiz_history_v1";
+let data =
+  null;
 
+let lessons =
+  [];
 
-let profile = {};
-let curriculum = null;
-let progress = {};
-let quizHistory = {};
+let progress =
+  {};
 
-let selectedSubjectKey = null;
 
+const $ =
+  id =>
+    document.getElementById(id);
 
-/* =========================
-   SAFE HELPERS
-========================= */
 
-function esc(value){
+const esc =
+  AADYA.esc;
 
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
 
-}
+/* =====================================================
+   RENDER
+===================================================== */
 
+function render(){
 
-/* =========================
-   PROFILE
-========================= */
-
-function loadProfile(){
-
-  try{
-
-    profile =
-      JSON.parse(
-        localStorage.getItem(
-          PROFILE_KEY
-        ) || "{}"
-      );
-
-  }catch(error){
-
-    profile = {};
-
-  }
-
-}
-
-
-/* =========================
-   CURRICULUM URL
-========================= */
-
-function curriculumUrl(cls){
-
-  if(String(cls) === "7"){
-
-    return "./data/curriculum-class7.json";
-
-  }
-
-  if(String(cls) === "8"){
-
-    return "./data/curriculum-class8.json";
-
-  }
-
-  return "./data/curriculum.json";
-
-}
-
-
-/* =========================
-   NORMALIZE FILE PATH
-========================= */
-
-function normalizeFile(file){
-
-  return String(file || "")
-    .replace(/^\.\/+/,"")
-    .replace(/^\/+/,"");
-
-}
-
-
-/* =========================
-   LOAD PROGRESS
-========================= */
-
-function loadProgressData(){
-
-  try{
-
-    progress =
-      JSON.parse(
-        localStorage.getItem(
-          PROGRESS_KEY
-        ) || "{}"
-      );
-
-  }catch(error){
-
-    progress = {};
-
-  }
-
-}
-
-
-/* =========================
-   LOAD QUIZ HISTORY
-========================= */
-
-function loadQuizHistory(){
-
-  try{
-
-    quizHistory =
-      JSON.parse(
-        localStorage.getItem(
-          QUIZ_HISTORY_KEY
-        ) || "{}"
-      );
-
-  }catch(error){
-
-    quizHistory = {};
-
-  }
-
-}
-
-
-/* =========================
-   CLASS DATA
-========================= */
-
-function getClassData(){
-
-  return curriculum
-    ?.classes
-    ?.["class" + String(profile.class || 6)]
-    || null;
-
-}
-
-
-/* =========================
-   ALL CURRENT CLASS LESSONS
-========================= */
-
-function getAllLessons(){
-
-  const result = [];
-
-  const subjects =
-    getClassData()?.subjects || {};
-
-  Object.keys(subjects)
-    .forEach(function(subjectKey){
-
-      const subject =
-        subjects[subjectKey];
-
-      (subject.chapters || [])
-        .forEach(function(chapter){
-
-          (chapter.lessons || [])
-            .forEach(function(lesson){
-
-              result.push({
-
-                ...lesson,
-
-                subjectKey:
-                  subjectKey,
-
-                subjectName:
-                  subject.name ||
-                  subjectKey,
-
-                chapterNumber:
-                  chapter.number,
-
-                chapterTitle:
-                  chapter.title
-
-              });
-
-            });
-
-        });
-
-    });
-
-  return result;
-
-}
-/* =========================
-   UNIVERSAL RESUME LESSON
-   SAME LOGIC AS "मेरी कक्षा"
-========================= */
-
-function getResumeLesson(){
-
-  const lessons =
-    getAllLessons();
-
-  if(!lessons.length){
-    return null;
-  }
-
-
-  const completed =
-    lessons
-      .map(function(lesson,index){
-
-        return {
-          lesson: lesson,
-          index: index,
-          progress:
-            getCompletionRecord(
-              lesson.file
-            )
-        };
-
-      })
-      .filter(function(item){
-
-        return isCompleted(
-          item.lesson.file
-        );
-
-      });
-
-
-  /* अभी तक कोई Lesson पूरा नहीं हुआ */
-
-  if(!completed.length){
-
-    return lessons[0] || null;
-
-  }
-
-
-  /* सबसे हाल में पूरा किया गया Lesson */
-
-  completed.sort(
-    function(a,b){
-
-      const aTime =
-        a.progress &&
-        a.progress.timestamp
-          ? new Date(
-              a.progress.timestamp
-            ).getTime()
-          : 0;
-
-      const bTime =
-        b.progress &&
-        b.progress.timestamp
-          ? new Date(
-              b.progress.timestamp
-            ).getTime()
-          : 0;
-
-      return bTime - aTime;
-
-    }
-  );
-
-
-  const lastCompleted =
-    completed[0];
-
-
-  /*
-     Latest completed lesson के बाद
-     पहला अधूरा Lesson खोजें
-  */
-
-  for(
-    let i =
-      lastCompleted.index + 1;
-
-    i < lessons.length;
-
-    i++
-  ){
-
-    if(
-      !isCompleted(
-        lessons[i].file
-      )
-    ){
-
-      return lessons[i];
-
-    }
-
-  }
-
-
-  /*
-     यदि latest completed के बाद
-     कोई lesson नहीं है,
-     तो पूरी class में पहला अधूरा lesson
-  */
-
-  return (
-    lessons.find(function(lesson){
-
-      return !isCompleted(
-        lesson.file
-      );
-
-    }) || null
-  );
-
-}
-
-/* =========================
-   COMPLETED LESSON CHECK
-========================= */
-
-function isCompleted(file){
-
-  const normalized =
-    normalizeFile(file);
-
-  const keys =
-    Object.keys(progress);
-
-  for(let i=0;i<keys.length;i++){
-
-    const key = keys[i];
-
-    if(
-      normalizeFile(key) ===
-      normalized
-    ){
-
-      const item =
-        progress[key];
-
-      if(
-        item === true ||
-        (
-          item &&
-          item.completed === true
-        )
-      ){
-
-        return true;
-
-      }
-
-    }
-
-  }
-
-  return false;
-
-}
-
-
-/* =========================
-   COMPLETION RECORD
-========================= */
-
-function getCompletionRecord(file){
-
-  const normalized =
-    normalizeFile(file);
-
-  const keys =
-    Object.keys(progress);
-
-  let found = null;
-
-  keys.forEach(function(key){
-
-    if(
-      normalizeFile(key) ===
-      normalized
-    ){
-
-      const item =
-        progress[key];
-
-      if(
-        item === true ||
-        (
-          item &&
-          item.completed === true
-        )
-      ){
-
-        found = {
-
-          ...(typeof item === "object"
-            ? item
-            : {}),
-
-          file:key
-
-        };
-
-      }
-
-    }
-
-  });
-
-  return found;
-
-}
-
-
-/* =========================
-   SUBJECT STATS
-========================= */
-
-function getSubjectStats(
-  subjectKey,
-  subject
-){
-
-  let total = 0;
-  let completed = 0;
-
-  const lessons = [];
-
-  (subject.chapters || [])
-    .forEach(function(chapter){
-
-      (chapter.lessons || [])
-        .forEach(function(lesson){
-
-          total++;
-
-          const item = {
-
-            ...lesson,
-
-            subjectKey:
-              subjectKey,
-
-            subjectName:
-              subject.name ||
-              subjectKey,
-
-            chapterNumber:
-              chapter.number,
-
-            chapterTitle:
-              chapter.title
-
-          };
-
-          lessons.push(item);
-
-          if(
-            lesson.file &&
-            isCompleted(
-              lesson.file
-            )
-          ){
-
-            completed++;
-
-          }
-
-        });
-
-    });
-
-  const remaining =
-    Math.max(
-      total - completed,
-      0
-    );
-
-  const percentage =
-    total > 0
-      ? Math.round(
-          completed / total * 100
-        )
-      : 0;
-
-  return {
-
-    total,
-    completed,
-    remaining,
-    percentage,
-    lessons
-
-  };
-
-}
-
-
-/* =========================
-   LATEST COMPLETED LESSON
-========================= */
-
-function getLatestCompletedLesson(){
-
-  const lessons =
-    getAllLessons();
-
-  const completedLessons =
-    lessons.filter(function(lesson){
-
-      return (
-        lesson.file &&
-        isCompleted(
-          lesson.file
-        )
-      );
-
-    });
-
-  if(
-    !completedLessons.length
-  ){
-
-    return null;
-
-  }
-
-
-  completedLessons.sort(
-    function(a,b){
-
-      const ra =
-        getCompletionRecord(
-          a.file
-        );
-
-      const rb =
-        getCompletionRecord(
-          b.file
-        );
-
-      const da =
-        ra?.timestamp
-          ? new Date(
-              ra.timestamp
-            ).getTime()
-          : 0;
-
-      const db =
-        rb?.timestamp
-          ? new Date(
-              rb.timestamp
-            ).getTime()
-          : 0;
-
-      return db - da;
-
-    }
-  );
-
-  return completedLessons[0];
-
-}
-
-
-/* =========================
-   LATEST QUIZ
-========================= */
-
-function getLatestQuiz(){
-
-  const lessons =
-    getAllLessons();
-
-  const records = [];
-
-  lessons.forEach(
-    function(lesson){
-
-      if(!lesson.file)
-        return;
-
-      const key =
-        normalizeFile(
-          lesson.file
-        );
-
-      const result =
-        quizHistory[key];
-
-      if(result){
-
-        records.push({
-
-          ...result,
-
-          lesson:
-
-            lesson
-
-        });
-
-      }
-
-    }
-  );
-
-  if(
-    !records.length
-  ){
-
-    return null;
-
-  }
-
-  records.sort(
-    function(a,b){
-
-      const da =
-        a.timestamp
-          ? new Date(
-              a.timestamp
-            ).getTime()
-          : 0;
-
-      const db =
-        b.timestamp
-          ? new Date(
-              b.timestamp
-            ).getTime()
-          : 0;
-
-      return db - da;
-
-    }
-  );
-
-  return records[0];
-
-}
-
-
-/* =========================
-   OVERALL CLASS STATS
-========================= */
-
-function getOverallStats(){
-
-  const lessons =
-    getAllLessons();
-
-  const total =
-    lessons.length;
-
-  const completed =
+  const done =
     lessons.filter(
-      function(lesson){
+      function(item){
 
-        return (
-          lesson.file &&
-          isCompleted(
-            lesson.file
-          )
+        return AADYA.isDone(
+          item.file,
+          progress
         );
 
       }
     ).length;
 
-  const remaining =
-    Math.max(
-      total - completed,
-      0
-    );
+
+  const total =
+    lessons.length;
+
 
   const percentage =
-    total > 0
+    total
       ? Math.round(
-          completed / total * 100
+          done /
+          total *
+          100
         )
       : 0;
 
-  return {
 
-    total,
-    completed,
-    remaining,
+  /* TOTAL */
+
+  $("stats").innerHTML =
+
+    '<div class="stat">' +
+
+    '<div class="num">' +
+    done +
+    '</div>' +
+
+    '<div>पूरे</div>' +
+
+    '</div>' +
+
+
+    '<div class="stat">' +
+
+    '<div class="num">' +
+    total +
+    '</div>' +
+
+    '<div>कुल</div>' +
+
+    '</div>' +
+
+
+    '<div class="stat">' +
+
+    '<div class="num">' +
+    percentage +
+    '%</div>' +
+
+    '<div>Progress</div>' +
+
+    '</div>';
+
+
+  $("fill")
+    .style.width =
+    percentage +
+    "%";
+
+
+  $("message")
+    .textContent =
+
+    percentage === 100 &&
+    total
+
+      ?
+
+    "🎉 सभी उपलब्ध Lessons पूरे हो गए!"
+
+      :
+
     percentage
 
-  };
+      ?
 
-}
+    done +
+    " Lessons पूरे हो चुके हैं।"
 
+      :
 
-/* =========================
-   UPDATE TOP STATS
-========================= */
+    "अभी सीखना शुरू करें।";
 
-function updateTopStats(){
 
-  const stats =
-    getOverallStats();
+  /* =================================================
+     SUBJECTS
+  ================================================= */
 
-  document.getElementById(
-    "completedLessons"
-  ).textContent =
-    stats.completed;
-
-
-  document.getElementById(
-    "progressPercent"
-  ).textContent =
-    stats.percentage + "%";
-
-
-  document.getElementById(
-    "progressPercentText"
-  ).textContent =
-    stats.percentage + "%";
-
-
-  document.getElementById(
-    "progressText"
-  ).textContent =
-
-    stats.completed +
-    " / " +
-    stats.total +
-    " Lessons";
-
-
-  document.getElementById(
-    "progressFill"
-  ).style.width =
-    stats.percentage + "%";
-
-
-  const message =
-    document.getElementById(
-      "progressMessage"
-    );
-
-
-  if(stats.completed === 0){
-
-    message.textContent =
-      "🚀 अपनी Learning Journey शुरू करें!";
-
-  }
-
-  else if(
-    stats.percentage >= 100
-  ){
-
-    message.textContent =
-      "🏆 शानदार! इस Class के सभी Lessons पूरे हो गए!";
-
-  }
-
-  else if(
-    stats.percentage >= 75
-  ){
-
-    message.textContent =
-      "🔥 बहुत बढ़िया! मंज़िल बहुत करीब है।";
-
-  }
-
-  else if(
-    stats.percentage >= 40
-  ){
-
-    message.textContent =
-      "🌟 बहुत अच्छा! Learning जारी रखें।";
-
-  }
-
-  else{
-
-    message.textContent =
-      "💪 अच्छी शुरुआत! धीरे-धीरे आगे बढ़ते रहें।";
-
-  }
-
-
-  const latestQuiz =
-    getLatestQuiz();
-
-
-  document.getElementById(
-    "quizScore"
-  ).textContent =
-
-    latestQuiz
-
-      ? (
-          latestQuiz.score +
-          "/" +
-          latestQuiz.total
-        )
-
-      : "—";
-
-}
-
-
-/* =========================
-   SUBJECT DASHBOARD
-========================= */
-
-function renderSubjectDashboard(){
-
-  const box =
-    document.getElementById(
-      "subjectDashboard"
-    );
-
-  const subjects =
-    getClassData()?.subjects || {};
-
-
-  if(!Object.keys(subjects).length){
-
-    box.innerHTML =
-      "<div style='color:#777'>"+
-      "कोई Subject उपलब्ध नहीं है।"+
-      "</div>";
-
-    return;
-
-  }
-
-
-  /* SUBJECT DETAIL */
-
-  if(selectedSubjectKey){
-
-    renderSubjectDetail(
-      box,
-      selectedSubjectKey,
-      subjects[selectedSubjectKey]
-    );
-
-    return;
-
-  }
-
-
-  /* SUBJECT LIST */
-
-  let html =
-
-    "<div style='font-size:18px;font-weight:800;margin-bottom:12px'>"+
-    "📚 Subject-wise Progress"+
-    "</div>";
-
-
-  Object.keys(subjects)
-    .forEach(function(subjectKey){
-
-      const subject =
-        subjects[subjectKey];
-
-      const stats =
-        getSubjectStats(
-          subjectKey,
-          subject
-        );
-
-
-      html +=
-
-        "<div "+
-        "onclick=\"selectSubject('"+
-        esc(subjectKey)+
-        "')\" "+
-        "style=\""+
-        "background:#fafafa;"+
-        "border:1px solid #eee;"+
-        "border-radius:15px;"+
-        "padding:15px;"+
-        "margin:10px 0;"+
-        "cursor:pointer;"+
-        "\">"+
-
-        "<div style='font-size:17px;font-weight:800'>"+
-        "📘 "+
-        esc(
-          subject.name ||
-          subjectKey
-        )+
-        "</div>"+
-
-        "<div style='margin-top:8px;color:#666;font-size:13px'>"+
-        stats.completed+
-        " / "+
-        stats.total+
-        " Lessons पूरे"+
-        "</div>"+
-
-        "<div style='margin-top:9px;background:#e5e5e5;height:10px;border-radius:20px;overflow:hidden'>"+
-        "<div style='width:"+
-        stats.percentage+
-        "%;height:100%;background:#d4af37'></div>"+
-        "</div>"+
-
-        "<div style='margin-top:8px;font-size:12px;color:#666'>"+
-        "बाकी: "+
-        stats.remaining+
-        " • "+
-        stats.percentage+
-        "%"+
-        "</div>"+
-
-        "</div>";
-
-    });
-
-
-  box.innerHTML =
-    html;
-
-}
-
-
-/* =========================
-   SELECT SUBJECT
-========================= */
-
-function selectSubject(
-  subjectKey
-){
-
-  selectedSubjectKey =
-    subjectKey;
-
-  renderSubjectDashboard();
-
-}
-
-
-/* =========================
-   SUBJECT DETAIL
-========================= */
-
-function renderSubjectDetail(
-  box,
-  subjectKey,
-  subject
-){
-
-  const stats =
-    getSubjectStats(
-      subjectKey,
-      subject
+  const classData =
+    AADYA.classData(
+      data,
+      profile.class
     );
 
 
   let html =
+    "";
 
-    "<button "+
-    "onclick=\"backToSubjects()\" "+
-    "style=\""+
-    "border:0;"+
-    "background:#111;"+
-    "color:#fff;"+
-    "border-radius:10px;"+
-    "padding:9px 12px;"+
-    "font-weight:700;"+
-    "margin-bottom:14px;"+
-    "\">"+
-    "← सभी Subjects"+
-    "</button>"+
 
-    "<div style='font-size:20px;font-weight:900;margin-bottom:12px'>"+
-    "📘 "+
-    esc(
-      subject.name ||
-      subjectKey
-    )+
-    "</div>"+
-
-
-    "<div style='display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-bottom:15px'>"+
-
-    statBox(
-      "📚 कुल Lessons",
-      stats.total
-    )+
-
-    statBox(
-      "✅ Completed",
-      stats.completed
-    )+
-
-    statBox(
-      "⏳ Remaining",
-      stats.remaining
-    )+
-
-    statBox(
-      "📈 Progress",
-      stats.percentage + "%"
-    )+
-
-    "</div>";
-
-
-  /* PROGRESS SUMMARY */
-
-  html +=
-
-    "<div style='background:#fafafa;border:1px solid #eee;border-radius:14px;padding:14px;margin-bottom:15px'>"+
-
-    "<div style='font-weight:800;margin-bottom:8px'>"+
-    "📊 इस Subject की Learning Progress"+
-    "</div>"+
-
-    "<div style='color:#666;font-size:13px'>"+
-    stats.completed+
-    " / "+
-    stats.total+
-    " Lessons पूरे • "+
-    stats.remaining+
-    " बाकी"+
-    "</div>"+
-
-    "<div style='margin-top:10px;background:#e5e5e5;height:12px;border-radius:20px;overflow:hidden'>"+
-    "<div style='width:"+
-    stats.percentage+
-    "%;height:100%;background:#d4af37'></div>"+
-    "</div>"+
-
-    "</div>";
-
-
-  /* LATEST COMPLETED IN SUBJECT */
-
-  const latest =
-    getLatestCompletedForSubject(
-      stats.lessons
-    );
-
-
-  html +=
-
-    "<div style='background:#fafafa;border:1px solid #eee;border-radius:14px;padding:14px;margin-bottom:15px'>"+
-
-    "<div style='font-weight:800;margin-bottom:8px'>"+
-    "🏁 Latest Completed Lesson"+
-    "</div>";
-
-
-  if(latest){
-
-    html +=
-
-      "<div style='font-weight:800'>"+
-      esc(latest.title)+
-      "</div>"+
-
-      "<div style='color:#666;font-size:13px;margin-top:5px'>"+
-      "अध्याय "+
-      esc(latest.chapterNumber)+
-      " • "+
-      esc(latest.chapterTitle)+
-      "</div>";
-
-  }else{
-
-    html +=
-
-      "<div style='color:#777;font-size:13px'>"+
-      "अभी इस Subject का कोई Lesson पूरा नहीं हुआ।"+
-      "</div>";
-
-  }
-
-
-  html +=
-    "</div>";
-
-
-  /* LATEST QUIZ FOR SUBJECT */
-
-  const latestQuiz =
-    getLatestQuizForSubject(
-      stats.lessons
-    );
-
-
-  html +=
-
-    "<div style='background:#fafafa;border:1px solid #eee;border-radius:14px;padding:14px'>"+
-
-    "<div style='font-weight:800;margin-bottom:8px'>"+
-    "🧠 Latest Quiz Performance"+
-    "</div>";
-
-
-  if(latestQuiz){
-
-    html +=
-
-      "<div style='font-size:18px;font-weight:900'>"+
-      latestQuiz.score+
-      " / "+
-      latestQuiz.total+
-      " ("+
-      latestQuiz.percentage+
-      "%)"+
-      "</div>"+
-
-      "<div style='color:#666;font-size:13px;margin-top:5px'>"+
-      esc(
-        latestQuiz.lesson.title
-      )+
-      "</div>";
-
-  }else{
-
-    html +=
-
-      "<div style='color:#777;font-size:13px'>"+
-      "अभी कोई Quiz attempt नहीं किया गया।"+
-      "</div>";
-
-  }
-
-
-  html +=
-    "</div>";
-
-  /* =========================
-     ALL LESSONS OF SUBJECT
-  ========================= */
-
-  html +=
-
-    "<div style='margin-top:18px;font-size:18px;font-weight:900'>" +
-    "📖 इस Subject के सभी Lessons" +
-    "</div>";
-
-
-  (subject.chapters || [])
-    .forEach(function(chapter){
-
-      html +=
-
-        "<div style='margin-top:14px'>" +
-
-        "<div style='" +
-        "background:#111;" +
-        "color:#fff;" +
-        "padding:10px 12px;" +
-        "border-radius:11px 11px 0 0;" +
-        "font-weight:800;" +
-        "'>" +
-
-        "अध्याय " +
-        esc(chapter.number) +
-        " — " +
-        esc(chapter.title) +
-
-        "</div>";
-
-
-      (chapter.lessons || [])
-        .forEach(function(lesson){
-
-          const completed =
-            isCompleted(
-              lesson.file
-            );
-
-
-          html +=
-
-            "<div style='" +
-            "background:#fff;" +
-            "border:1px solid #eee;" +
-            "border-top:0;" +
-            "padding:11px 12px;" +
-            "display:flex;" +
-            "gap:9px;" +
-            "align-items:flex-start;" +
-            "'>" +
-
-            "<div style='" +
-            "width:27px;" +
-            "height:27px;" +
-            "border-radius:50%;" +
-            "background:#111;" +
-            "color:#fff;" +
-            "display:flex;" +
-            "align-items:center;" +
-            "justify-content:center;" +
-            "font-weight:800;" +
-            "font-size:12px;" +
-            "flex:none;" +
-            "'>" +
-
-            esc(lesson.number) +
-
-            "</div>" +
-
-            "<div style='flex:1;font-size:13px;line-height:1.45'>" +
-
-            esc(
-              lesson.title ||
-              ("पाठ " + lesson.number)
-            ) +
-
-            "</div>" +
-
-            (
-              completed
-
-                ? "<div style='color:#17823b;font-size:12px;font-weight:800;white-space:nowrap'>" +
-                  "✅ पूरा" +
-                  "</div>"
-
-                : "<div style='color:#999;font-size:12px;font-weight:800;white-space:nowrap'>" +
-                  "○ बाकी" +
-                  "</div>"
-            ) +
-
-            "</div>";
-
-        });
-
-
-      html +=
-        "</div>";
-
-    });
-  box.innerHTML =
-    html;
-
-}
-
-
-/* =========================
-   STAT BOX
-========================= */
-
-function statBox(
-  label,
-  value
-){
-
-  return (
-
-    "<div style='background:#fff;border:1px solid #eee;border-radius:12px;padding:12px;text-align:center'>"+
-
-    "<div style='font-size:20px;font-weight:900'>"+
-    esc(value)+
-    "</div>"+
-
-    "<div style='font-size:11px;color:#666;margin-top:3px'>"+
-    esc(label)+
-    "</div>"+
-
-    "</div>"
-
-  );
-
-}
-
-
-/* =========================
-   BACK TO SUBJECTS
-========================= */
-
-function backToSubjects(){
-
-  selectedSubjectKey =
-    null;
-
-  renderSubjectDashboard();
-
-}
-
-
-/* =========================
-   LATEST COMPLETED
-   FOR SUBJECT
-========================= */
-
-function getLatestCompletedForSubject(
-  lessons
-){
-
-  const completed =
-    lessons.filter(
-      function(lesson){
-
-        return (
-          lesson.file &&
-          isCompleted(
-            lesson.file
-          )
-        );
-
-      }
-    );
-
-
-  if(!completed.length)
-    return null;
-
-
-  completed.sort(
-    function(a,b){
-
-      const ra =
-        getCompletionRecord(
-          a.file
-        );
-
-      const rb =
-        getCompletionRecord(
-          b.file
-        );
-
-
-      const da =
-        ra?.timestamp
-          ? new Date(
-              ra.timestamp
-            ).getTime()
-          : 0;
-
-
-      const db =
-        rb?.timestamp
-          ? new Date(
-              rb.timestamp
-            ).getTime()
-          : 0;
-
-
-      return db - da;
-
-    }
-  );
-
-
-  return completed[0];
-
-}
-
-
-/* =========================
-   LATEST QUIZ
-   FOR SUBJECT
-========================= */
-
-function getLatestQuizForSubject(
-  lessons
-){
-
-  const records = [];
-
-
-  lessons.forEach(
-    function(lesson){
-
-      if(!lesson.file)
-        return;
-
+  Object.entries(
+    classData?.subjects || {}
+  ).forEach(
+    function(entry){
 
       const key =
-        normalizeFile(
-          lesson.file
+        entry[0];
+
+      const subject =
+        entry[1];
+
+
+      const subjectLessons =
+        AADYA.buildLessons(
+
+          {
+            classes: {
+
+              [
+                "class" +
+                profile.class
+              ]: {
+
+                subjects: {
+
+                  [key]:
+                    subject
+
+                }
+
+              }
+
+            }
+
+          },
+
+          Number(
+            profile.class
+          )
+
         );
 
 
-      const result =
-        quizHistory[key];
+      const subjectDone =
+        subjectLessons.filter(
+          function(item){
+
+            return AADYA.isDone(
+              item.file,
+              progress
+            );
+
+          }
+        ).length;
 
 
-      if(result){
+      const subjectPercentage =
+        subjectLessons.length
+          ? Math.round(
+              subjectDone /
+              subjectLessons.length *
+              100
+            )
+          : 0;
 
-        records.push({
 
-          ...result,
+      html +=
 
-          lesson:
+        '<div class="subject">' +
 
-            lesson
+        '<div class="row">' +
 
-        });
+        '<b>' +
 
-      }
+        AADYA.icon(key) +
+
+        ' ' +
+
+        esc(
+          subject.name ||
+          key
+        ) +
+
+        '</b>' +
+
+        '<span class="small">' +
+
+        subjectDone +
+        ' / ' +
+        subjectLessons.length +
+
+        '</span>' +
+
+        '</div>' +
+
+
+        '<div ' +
+        'class="bar" ' +
+        'style="margin-top:7px">' +
+
+        '<div ' +
+        'class="fill" ' +
+        'style="width:' +
+        subjectPercentage +
+        '%">' +
+
+        '</div>' +
+
+        '</div>' +
+
+
+        '<div ' +
+        'class="small" ' +
+        'style="margin-top:4px">' +
+
+        subjectPercentage +
+        '% पूर्ण' +
+
+        '</div>' +
+
+        '</div>';
 
     }
   );
 
 
-  if(!records.length)
-    return null;
+  $("subjects").innerHTML =
+    html ||
+
+    '<div class="empty">' +
+    'अभी विषय उपलब्ध नहीं हैं।' +
+    '</div>';
 
 
-  records.sort(
-    function(a,b){
+  /* =================================================
+     RESUME
+  ================================================= */
 
-      const da =
-        a.timestamp
-          ? new Date(
-              a.timestamp
-            ).getTime()
-          : 0;
-
-
-      const db =
-        b.timestamp
-          ? new Date(
-              b.timestamp
-            ).getTime()
-          : 0;
-
-
-      return db - da;
-
-    }
-  );
-
-
-  return records[0];
-
-}
-
-
-/* =========================
-   LATEST LEARNING CARD
-========================= */
-
-function renderLatestLearning(){
-
-  const box =
-    document.getElementById(
-      "latestLesson"
+  const resume =
+    AADYA.resumeLesson(
+      lessons,
+      progress
     );
 
 
-  const latest =
-    getLatestCompletedLesson();
+  if(resume){
 
+    $("resume").innerHTML =
 
-  if(!latest){
+      '<b>' +
 
-    box.innerHTML =
+      esc(
+        resume.title
+      ) +
 
-      "<h3>"+
-      "अभी कोई Lesson पूरा नहीं हुआ"+
-      "</h3>"+
+      '</b>' +
 
-      "<p>"+
-      "अपना पहला Lesson पूरा करें और यहाँ अपनी progress देखें।"+
-      "</p>";
+      '<div class="small">' +
 
-    return;
+      esc(
+        resume.subjectName
+      ) +
+
+      ' · ' +
+
+      esc(
+        resume.chapterTitle
+      ) +
+
+      '</div>' +
+
+      '<div style="margin-top:8px">' +
+
+      '<a ' +
+      'class="btn" ' +
+      'href="' +
+      AADYA.lessonUrl(
+        resume.file
+      ) +
+      '">' +
+
+      (
+        AADYA.isDone(
+          resume.file,
+          progress
+        )
+          ?
+        "🔁 फिर से पढ़ें"
+          :
+        "▶️ जारी रखें"
+      ) +
+
+      '</a>' +
+
+      '</div>';
+
+  }
+  else{
+
+    $("resume").innerHTML =
+      '<div class="empty">' +
+      'अभी कोई Lesson नहीं है।' +
+      '</div>';
 
   }
 
 
-  const record =
-    getCompletionRecord(
-      latest.file
+  /* =================================================
+     LAST QUIZ
+  ================================================= */
+
+  const quiz =
+    AADYA.read(
+      AADYA.KEYS.LAST_QUIZ,
+      null
     );
 
 
-  box.innerHTML =
+  $("quiz").innerHTML =
 
-    "<h3>"+
-    "✅ "+
-    esc(latest.title)+
-    "</h3>"+
+    quiz
 
-    "<p>"+
-    "कक्षा "+
-    esc(profile.class || "")+
-    " • "+
-    esc(latest.subjectName)+
-    " • अध्याय "+
-    esc(latest.chapterNumber)+
-    " • "+
-    esc(latest.chapterTitle)+
-    "</p>"+
+      ?
 
-    "<p style='margin-top:8px;font-size:13px;color:#777'>"+
-    (
-      record?.timestamp
-        ? "पूरा किया: "+
-          formatDate(
-            record.timestamp
-          )
-        : "Lesson Completed"
-    )+
-    "</p>"+
+    '<b>' +
 
-    "<span class='completed-badge'>"+
-    "✅ Lesson Completed"+
-    "</span>";
+    quiz.score +
+
+    ' / ' +
+
+    quiz.total +
+
+    '</b> · ' +
+
+    quiz.percentage +
+
+    '% सही'
+
+      :
+
+    'अभी Quiz नहीं दिया गया है।';
 
 }
 
-  
 
-/* =========================
-   DATE FORMAT
-========================= */
-
-function formatDate(
-  value
-){
-
-  try{
-
-    return new Date(value)
-      .toLocaleString(
-        "hi-IN",
-        {
-          dateStyle:"medium",
-          timeStyle:"short"
-        }
-      );
-
-  }catch(e){
-
-    return "";
-
-  }
-
-}
-
-  /* =========================
-   CONTINUE LEARNING BUTTON
-========================= */
-
-function renderContinueLearningButton(){
-
-  const button =
-    document.getElementById(
-      "continueLearningBtn"
-    );
-
-  if(!button){
-    return;
-  }
-
-
-  const lesson =
-    getResumeLesson();
-
-
-  if(!lesson || !lesson.file){
-
-    button.href =
-      "./learning.html";
-
-    return;
-
-  }
-
-
-  button.href =
-    "./learning.html?lesson=" +
-    encodeURIComponent(
-      lesson.file
-    );
-
-}
-
-/* =========================
+/* =====================================================
    INIT
-========================= */
+===================================================== */
 
 async function init(){
 
-  loadProfile();
-
-  loadProgressData();
-
-  loadQuizHistory();
+  profile =
+    AADYA.profile();
 
 
-  const cls =
-    String(
-      profile.class || 6
-    );
+  if(
+    !profile.class
+  ){
 
+    location.href =
+      "./profile.html";
 
-  /* STUDENT */
-
-  const greeting =
-    document.getElementById(
-      "studentGreeting"
-    );
-
-  const studentClass =
-    document.getElementById(
-      "studentClass"
-    );
-
-
-  if(profile.name){
-
-    greeting.textContent =
-      "नमस्ते, "+
-      profile.name+
-      "! 👋";
-
-  }else{
-
-    greeting.textContent =
-      "नमस्ते! 👋";
+    return;
 
   }
 
 
-  studentClass.textContent =
-    "कक्षा "+
-    cls+
-    " • आपकी Learning Journey";
-
-
-  /* CURRICULUM */
-
   try{
 
-    const response =
-      await fetch(
-        curriculumUrl(cls)+
-        "?v="+
-        Date.now()
+    data =
+      await AADYA.loadCurriculum(
+        Number(
+          profile.class
+        )
       );
 
-    curriculum =
-      await response.json();
+
+    lessons =
+      AADYA.buildLessons(
+        data,
+        Number(
+          profile.class
+        )
+      );
 
 
-    updateTopStats();
-
-renderSubjectDashboard();
-
-renderLatestLearning();
-
-renderContinueLearningButton();
+    progress =
+      AADYA.progress();
 
 
-  }catch(error){
+    $("name")
+      .textContent =
+      "📈 " +
+      (
+        profile.name ||
+        "विद्यार्थी"
+      ) +
+      " की Progress";
+
+
+    $("classLine")
+      .textContent =
+      "कक्षा " +
+      profile.class;
+
+
+    render();
+
+  }
+  catch(error){
 
     console.error(
-      "Curriculum load error:",
       error
     );
 
-    document.getElementById(
-      "progressText"
-    ).textContent =
-      "Curriculum लोड नहीं हुआ";
 
-    document.getElementById(
-      "progressPercentText"
-    ).textContent =
-      "0%";
-
-    document.getElementById(
-      "subjectDashboard"
-    ).innerHTML =
-
-      "<div style='color:#b00020;background:#fff;padding:14px;border-radius:12px'>" +
-      "⚠️ Curriculum लोड नहीं हो पाया।<br>" +
-      "कृपया एक बार page refresh करें।" +
-      "</div>";
+    $("subjects").innerHTML =
+      '<div class="empty">' +
+      '⚠️ Progress लोड नहीं हो सकी।' +
+      '</div>';
 
   }
 
 }
 
-
-/* =========================
-   START APP
-========================= */
 
 init();
 
 </script>
 
 </body>
+
 </html>
