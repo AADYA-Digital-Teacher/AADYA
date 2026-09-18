@@ -1,0 +1,19 @@
+{
+  "classes": [
+    {
+      "number": 6,
+      "name": "कक्षा 6",
+      "file": "./data/curriculum.json"
+    },
+    {
+      "number": 7,
+      "name": "कक्षा 7",
+      "file": "./data/curriculum-class7.json"
+    },
+    {
+      "number": 8,
+      "name": "कक्षा 8",
+      "file": "./data/curriculum-class8.json"
+    }
+  ]
+}
