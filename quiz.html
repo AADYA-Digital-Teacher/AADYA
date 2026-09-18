@@ -916,14 +916,17 @@ function finishQuiz(){
   questions.forEach(
     function(question,index){
 
-      if(
-        answers[index] ===
-        question.correctIndex
-      ){
+      const correctIndex =
+  AADYA.answerIndex(
+    question.answer,
+    question.options
+  );
 
-        score++;
-
-      }
+if(
+  answers[index] === correctIndex
+){
+  score++;
+    }
 
     }
   );
