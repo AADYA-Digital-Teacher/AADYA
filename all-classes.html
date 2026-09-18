@@ -6,227 +6,374 @@
 <meta charset="UTF-8">
 
 <meta
-name="viewport"
-content="width=device-width,initial-scale=1.0">
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
 
 <meta
-name="theme-color"
-content="#111111">
+  name="theme-color"
+  content="#111111"
+>
 
 <title>AADYA | सभी कक्षाएँ</title>
 
 <style>
 
 *{
-box-sizing:border-box;
+  box-sizing:border-box;
 }
 
 body{
-margin:0;
-font-family:
-Arial,
-"Noto Sans Devanagari",
-sans-serif;
-background:#f5f6f8;
-color:#222;
+  margin:0;
+
+  font-family:
+    Arial,
+    "Noto Sans Devanagari",
+    sans-serif;
+
+  background:#f3f7fb;
+  color:#172b4d;
 }
 
 .top{
-background:#111;
-color:#fff;
-padding:17px 15px;
-position:sticky;
-top:0;
-z-index:10;
+  background:
+    linear-gradient(
+      135deg,
+      #111,
+      #17345f,
+      #274d78
+    );
+
+  color:#fff;
+
+  padding:13px;
+
+  position:sticky;
+  top:0;
+
+  z-index:10;
 }
 
 .row{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
+  max-width:950px;
+  margin:auto;
+
+  display:flex;
+
+  justify-content:space-between;
+  align-items:center;
+
+  gap:10px;
 }
 
 .brand{
-font-size:21px;
-font-weight:800;
+  font-size:22px;
+  font-weight:900;
 }
 
 .sub{
-font-size:13px;
-color:#ccc;
-margin-top:3px;
+  font-size:13px;
+  color:#dbe3ee;
+
+  margin-top:3px;
 }
 
 .btn{
-border:0;
-border-radius:10px;
-padding:9px 12px;
-background:#fff;
-color:#111;
-font-weight:700;
+  border:0;
+
+  border-radius:12px;
+
+  padding:10px 13px;
+
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+.home{
+  background:#fff;
+  color:#172b4d;
 }
 
 .wrap{
-max-width:950px;
-margin:auto;
-padding:15px;
+  max-width:950px;
+
+  margin:auto;
+
+  padding:
+    15px 12px 45px;
 }
 
 .intro,
 .classbox,
 .chapter,
 .lesson{
-background:#fff;
-border-radius:16px;
-box-shadow:
-0 4px 14px rgba(0,0,0,.07);
+  background:#fff;
+
+  border-radius:18px;
+
+  border:
+    1px solid #e4ebf3;
+
+  box-shadow:
+    0 7px 22px
+    rgba(23,43,77,.07);
 }
 
 .intro{
-padding:17px;
-margin-bottom:14px;
+  padding:18px;
+
+  margin-bottom:14px;
 }
 
 .intro h1{
-margin:0 0 6px;
-font-size:22px;
+  margin:0 0 6px;
+
+  font-size:24px;
 }
 
 .muted{
-color:#666;
-font-size:13px;
-line-height:1.5;
+  color:#68768a;
+
+  font-size:13px;
+
+  line-height:1.6;
 }
 
+
+/* ===============================
+   CLASS TABS
+================================ */
+
 .class-tabs{
-display:grid;
-grid-template-columns:
-repeat(3,1fr);
-gap:9px;
-margin-bottom:14px;
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(90px,1fr)
+    );
+
+  gap:9px;
+
+  margin-bottom:15px;
 }
 
 .tab{
-border:0;
-border-radius:12px;
-padding:12px;
-background:#fff;
-font-weight:800;
-box-shadow:
-0 3px 10px rgba(0,0,0,.06);
+  border:0;
+
+  border-radius:13px;
+
+  padding:12px;
+
+  background:#fff;
+
+  color:#172b4d;
+
+  font-weight:900;
+
+  box-shadow:
+    0 4px 13px
+    rgba(23,43,77,.07);
+
+  cursor:pointer;
 }
 
 .tab.active{
-background:#111;
-color:#d4af37;
+  background:#172b4d;
+
+  color:#f7c928;
 }
 
+
+/* ===============================
+   CONTENT
+================================ */
+
 .classbox{
-padding:15px;
+  padding:16px;
 }
 
 .subject-title{
-font-size:19px;
-font-weight:900;
-margin:18px 0 9px;
+  font-size:20px;
+
+  font-weight:900;
+
+  margin:
+    20px 2px 10px;
 }
 
 .chapter{
-margin:10px 0;
-overflow:hidden;
+  margin:
+    11px 0 17px;
+
+  overflow:hidden;
 }
 
 .ch-head{
-padding:14px;
-border-bottom:1px solid #eee;
-font-weight:800;
-line-height:1.5;
+  padding:15px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #f7fbff,
+      #faf8ff
+    );
+
+  border-bottom:
+    1px solid #e8edf3;
+
+  font-weight:900;
+
+  line-height:1.55;
 }
 
 .badge{
-display:inline-block;
-margin-top:6px;
-padding:4px 8px;
-background:#eee;
-border-radius:8px;
-font-size:10px;
-color:#555;
+  display:inline-block;
+
+  margin-top:7px;
+
+  padding:5px 9px;
+
+  border-radius:999px;
+
+  background:#eef2f6;
+
+  color:#667085;
+
+  font-size:11px;
 }
 
 .lesson{
-margin:8px;
-padding:11px;
-display:flex;
-align-items:center;
-gap:10px;
-box-shadow:none;
-border:1px solid #eee;
+  margin:8px;
+
+  padding:11px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  box-shadow:none;
+
+  border:
+    1px solid #e9eef4;
 }
 
 .num{
-width:32px;
-height:32px;
-border-radius:50%;
-background:#111;
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:800;
-flex:none;
+  width:34px;
+  height:34px;
+
+  border-radius:10px;
+
+  background:#172b4d;
+
+  color:#fff;
+
+  display:grid;
+
+  place-items:center;
+
+  font-weight:900;
+
+  flex:none;
 }
 
 .lt{
-flex:1;
-font-size:13px;
-line-height:1.45;
+  flex:1;
+
+  font-size:13px;
+
+  line-height:1.5;
 }
 
 .open{
-border:0;
-border-radius:9px;
-padding:8px 10px;
-background:#111;
-color:#fff;
-font-weight:800;
+  border:0;
+
+  border-radius:10px;
+
+  padding:9px 11px;
+
+  background:#172b4d;
+
+  color:#fff;
+
+  font-weight:900;
+
+  cursor:pointer;
 }
 
 .locked{
-background:#eee;
-color:#888;
+  background:#e8edf2;
+
+  color:#7b8794;
 }
 
 .lesson.disabled{
-opacity:.62;
+  opacity:.65;
 }
 
 .note{
-margin:9px 0;
-padding:11px;
-border-radius:11px;
-background:#fff8df;
-color:#6a5700;
-font-size:12px;
-line-height:1.5;
+  margin:
+    8px 0 14px;
+
+  padding:12px;
+
+  border-radius:12px;
+
+  background:#fff8df;
+
+  color:#6a5700;
+
+  font-size:12px;
+
+  line-height:1.6;
 }
 
 .empty{
-text-align:center;
-color:#777;
-padding:18px;
+  text-align:center;
+
+  color:#718096;
+
+  padding:20px;
+
+  background:#f8fafc;
+
+  border-radius:14px;
+
+  line-height:1.6;
 }
+
+.loading{
+  text-align:center;
+
+  padding:25px;
+
+  color:#718096;
+}
+
 
 @media(max-width:600px){
 
-.lt{
-font-size:12px;
-}
+  .brand{
+    font-size:19px;
+  }
 
-.open{
-padding:7px 8px;
-font-size:11px;
-}
+  .subject-title{
+    font-size:18px;
+  }
+
+  .lt{
+    font-size:12px;
+  }
+
+  .open{
+    padding:
+      8px 9px;
+
+    font-size:11px;
+  }
 
 }
 
@@ -234,7 +381,9 @@ font-size:11px;
 
 </head>
 
+
 <body>
+
 
 <header class="top">
 
@@ -253,11 +402,10 @@ AADYA Digital Teacher
 </div>
 
 <button
-class="btn"
-onclick="location.href='./index.html'">
-
+  class="btn home"
+  onclick="location.href='./index.html'"
+>
 ⌂ Home
-
 </button>
 
 </div>
@@ -267,439 +415,662 @@ onclick="location.href='./index.html'">
 
 <main class="wrap">
 
+
 <section class="intro">
 
 <h1>
-📖 सभी कक्षाएँ देखें
+📖 सभी कक्षाएँ
 </h1>
 
 <div
-class="muted"
-id="intro">
-
-यहाँ कक्षा 6, 7 और 8 के विषय,
-अध्याय और Lesson नाम देख सकते हैं।
-
+  class="muted"
+  id="intro"
+>
+उपलब्ध कक्षाओं के विषय, अध्याय और Lessons देखें।
 </div>
 
 </section>
 
 
-<div class="class-tabs">
-
-<button
-class="tab"
-data-c="6">
-
-कक्षा 6
-
-</button>
-
-<button
-class="tab"
-data-c="7">
-
-कक्षा 7
-
-</button>
-
-<button
-class="tab"
-data-c="8">
-
-कक्षा 8
-
-</button>
-
+<div
+  class="class-tabs"
+  id="classTabs"
+>
 </div>
 
 
-<section
-class="classbox"
-id="content">
+<section class="classbox">
 
-लोड हो रहा है...
+<div id="content">
+
+<div class="loading">
+⏳ Curriculum लोड हो रहा है...
+</div>
+
+</div>
 
 </section>
+
 
 </main>
 
 
+<script src="./js/aadya-core.js"></script>
+
+
 <script>
 
-const PROFILE_KEY =
-"aadya_student_profile_v1";
+"use strict";
 
 
-let selected="6";
-let profile={};
+let profile =
+  {};
+
+let classes =
+  [];
+
+let selectedClass =
+  6;
 
 
-function esc(v){
+/* ==========================================
+   ESCAPE
+========================================== */
 
-return String(v ?? "")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
+function esc(value){
 
-}
-
-
-function curriculumUrl(c){
-
-if(String(c)==="7")
-return "./data/curriculum-class7.json";
-
-if(String(c)==="8")
-return "./data/curriculum-class8.json";
-
-return "./data/curriculum.json";
+  return AADYA.esc(
+    value
+  );
 
 }
 
 
-async function loadClass(c){
+/* ==========================================
+   LOAD CLASS REGISTRY
+========================================== */
 
-selected=
-String(c);
+async function loadClasses(){
 
+  try{
 
-document
-.querySelectorAll(".tab")
-.forEach(function(button){
-
-button.classList.toggle(
-"active",
-button.dataset.c===
-selected
-);
-
-});
-
-
-document.getElementById(
-"content"
-).innerHTML=
-"⏳ Curriculum लोड हो रहा है...";
+    const response =
+      await fetch(
+        "./data/classes.json?v=" +
+        Date.now(),
+        {
+          cache:"no-store"
+        }
+      );
 
 
-try{
+    if(
+      !response.ok
+    ){
 
-const response=
-await fetch(
-curriculumUrl(selected)+
-"?v="+Date.now()
-);
+      throw new Error(
+        "classes.json failed"
+      );
 
-const data=
-await response.json();
-
-render(data);
-
-}catch(e){
-
-document.getElementById(
-"content"
-).innerHTML=
-'<div class="empty">'+
-'⚠️ Curriculum लोड नहीं हो पाया।'+
-'</div>';
-
-}
-
-}
+    }
 
 
-function render(data){
-
-const classData=
-data?.classes?.[
-"class"+selected
-];
+    const data =
+      await response.json();
 
 
-if(!classData){
+    if(
+      Array.isArray(
+        data.classes
+      ) &&
+      data.classes.length
+    ){
 
-document.getElementById(
-"content"
-).innerHTML=
-'<div class="empty">'+
-'इस कक्षा का Curriculum नहीं मिला।'+
-'</div>';
+      classes =
+        data.classes;
 
-return;
+    }
+    else{
 
-}
+      throw new Error(
+        "Invalid classes.json"
+      );
 
+    }
 
-const own=
-String(profile.class || "") ===
-selected;
+  }
+  catch(error){
 
+    /*
+      Fallback:
+      अगर registry file उपलब्ध न हो
+      तो current 6–8 classes काम करती रहें।
+    */
 
-let html=
+    classes = [
 
-'<div class="note">'+
+      {
+        number:6,
+        name:"कक्षा 6",
+        file:"./data/curriculum.json"
+      },
 
-(
-own
-?
+      {
+        number:7,
+        name:"कक्षा 7",
+        file:"./data/curriculum-class7.json"
+      },
 
-'✅ यह आपकी चुनी हुई कक्षा है। Lessons खोल सकते हैं।'
+      {
+        number:8,
+        name:"कक्षा 8",
+        file:"./data/curriculum-class8.json"
+      }
 
-:
+    ];
 
-'🔒 यह आपकी चुनी हुई कक्षा नहीं है। '+
-'विषय, अध्याय और Lesson नाम केवल देखने के लिए हैं; '+
-'Content नहीं खोला जाएगा।'
-
-)+
-
-'</div>';
-
-
-Object.keys(
-classData.subjects || {}
-)
-.forEach(function(subjectKey){
-
-const subject=
-classData.subjects[
-subjectKey
-];
-
-
-html +=
-'<div class="subject-title">'+
-'📘 '+
-esc(
-subject.name ||
-subjectKey
-)+
-'</div>';
-
-
-(subject.chapters || [])
-.forEach(function(chapter){
-
-html +=
-'<section class="chapter">'+
-
-'<div class="ch-head">'+
-
-'अध्याय '+
-esc(chapter.number)+
-' — '+
-esc(chapter.title || "");
-
-
-if(chapter.source){
-
-html +=
-'<br><span class="badge">'+
-
-(
-chapter.source==="textbook"
-?
-"📖 पाठ्यपुस्तक आधारित"
-:
-"✨ AADYA विशेष पाठ"
-)+
-
-'</span>';
+  }
 
 }
 
 
-html +=
-'</div>';
+/* ==========================================
+   CLASS TABS
+========================================== */
+
+function renderTabs(){
+
+  const box =
+    document.getElementById(
+      "classTabs"
+    );
 
 
-const lessons=
-chapter.lessons || [];
+  box.innerHTML =
+    "";
 
 
-lessons.forEach(function(lesson){
+  classes.forEach(
+    function(item){
 
-const file=
-esc(
-lesson.file || ""
-);
-
-
-html +=
-'<div class="lesson '+
-(
-own
-?
-''
-:
-'disabled'
-)+
-'">'+
-
-'<div class="num">'+
-esc(lesson.number)+
-'</div>'+
-
-'<div class="lt">'+
-esc(
-lesson.title ||
-("पाठ "+lesson.number)
-)+
-'</div>';
+      const button =
+        document.createElement(
+          "button"
+        );
 
 
-if(
-own &&
-file
+      button.className =
+        "tab";
+
+
+      button.dataset.class =
+        item.number;
+
+
+      button.textContent =
+        item.name ||
+        (
+          "कक्षा " +
+          item.number
+        );
+
+
+      button.onclick =
+        function(){
+
+          loadClass(
+            Number(
+              item.number
+            )
+          );
+
+        };
+
+
+      box.appendChild(
+        button
+      );
+
+    }
+  );
+
+}
+
+
+/* ==========================================
+   LOAD CLASS
+========================================== */
+
+async function loadClass(
+  classNumber
 ){
 
-html +=
-'<button class="open" '+
-'data-file="'+
-file+
-'">'+
-'खोलें'+
-'</button>';
+  selectedClass =
+    Number(
+      classNumber
+    );
 
-}else{
 
-html +=
-'<button class="open locked" disabled>'+
-'🔒'+
-'</button>';
+  document
+    .querySelectorAll(
+      ".tab"
+    )
+    .forEach(
+      function(button){
+
+        button.classList.toggle(
+          "active",
+          Number(
+            button.dataset.class
+          ) ===
+          selectedClass
+        );
+
+      }
+    );
+
+
+  const content =
+    document.getElementById(
+      "content"
+    );
+
+
+  content.innerHTML =
+    '<div class="loading">' +
+    '⏳ कक्षा ' +
+    selectedClass +
+    ' का Curriculum लोड हो रहा है...' +
+    '</div>';
+
+
+  try{
+
+    const data =
+      await AADYA.loadCurriculum(
+        selectedClass
+      );
+
+
+    renderClass(
+      data
+    );
+
+  }
+  catch(error){
+
+    console.error(
+      error
+    );
+
+
+    content.innerHTML =
+      '<div class="empty">' +
+      '⚠️ इस कक्षा का Curriculum लोड नहीं हो पाया।' +
+      '</div>';
+
+  }
 
 }
 
 
-html +=
-'</div>';
+/* ==========================================
+   RENDER CLASS
+========================================== */
 
-});
-
-
-if(!lessons.length){
-
-html +=
-'<div class="empty">'+
-'इस अध्याय के पाठ जल्द उपलब्ध होंगे।'+
-'</div>';
-
-}
-
-
-html +=
-'</section>';
-
-});
-
-});
-
-
-document.getElementById(
-"content"
-).innerHTML=html;
-
-
-document
-.querySelectorAll(
-".open[data-file]"
-)
-.forEach(function(button){
-
-button.onclick=function(){
-
-if(
-String(profile.class || "") !==
-selected
+function renderClass(
+  data
 ){
 
-return;
+  const classData =
+    AADYA.classData(
+      data,
+      selectedClass
+    );
+
+
+  if(!classData){
+
+    document.getElementById(
+      "content"
+    ).innerHTML =
+      '<div class="empty">' +
+      'इस कक्षा का Curriculum उपलब्ध नहीं है।' +
+      '</div>';
+
+    return;
+
+  }
+
+
+  const own =
+    Number(
+      profile.class
+    ) ===
+    selectedClass;
+
+
+  let html =
+
+    '<div class="note">' +
+
+    (
+      own
+
+        ?
+
+      '✅ यह आपकी चुनी हुई कक्षा है। Lessons खोले जा सकते हैं।'
+
+        :
+
+      '🔒 यह आपकी चुनी हुई कक्षा नहीं है। यहाँ केवल विषय, अध्याय और Lesson नाम दिखेंगे।'
+
+    ) +
+
+    '</div>';
+
+
+  Object.entries(
+    classData.subjects || {}
+  ).forEach(
+    function(entry){
+
+      const subjectKey =
+        entry[0];
+
+      const subject =
+        entry[1];
+
+
+      html +=
+
+        '<div class="subject-title">' +
+
+        AADYA.icon(
+          subjectKey
+        ) +
+
+        ' ' +
+
+        esc(
+          subject.name ||
+          subjectKey
+        ) +
+
+        '</div>';
+
+
+      (
+        subject.chapters ||
+        []
+      ).forEach(
+        function(chapter){
+
+          html +=
+
+            '<section class="chapter">' +
+
+            '<div class="ch-head">' +
+
+            'अध्याय ' +
+
+            esc(
+              chapter.number
+            ) +
+
+            ' — ' +
+
+            esc(
+              chapter.title ||
+              ""
+            );
+
+
+          if(
+            chapter.source
+          ){
+
+            html +=
+
+              '<br>' +
+
+              '<span class="badge">' +
+
+              (
+                chapter.source ===
+                "textbook"
+
+                  ?
+
+                "📖 पाठ्यपुस्तक आधारित"
+
+                  :
+
+                "✨ AADYA विशेष पाठ"
+
+              ) +
+
+              '</span>';
+
+          }
+
+
+          html +=
+            '</div>';
+
+
+          const chapterLessons =
+            chapter.lessons ||
+            [];
+
+
+          if(
+            !chapterLessons.length
+          ){
+
+            html +=
+
+              '<div class="empty">' +
+
+              'इस अध्याय के Lessons जल्द उपलब्ध होंगे।' +
+
+              '</div>';
+
+          }
+
+
+          chapterLessons.forEach(
+            function(lesson){
+
+              const file =
+                lesson.file ||
+                "";
+
+
+              html +=
+
+                '<div class="lesson ' +
+
+                (
+                  own
+                    ? ""
+                    : "disabled"
+                ) +
+
+                '">' +
+
+                '<div class="num">' +
+
+                esc(
+                  lesson.number
+                ) +
+
+                '</div>' +
+
+                '<div class="lt">' +
+
+                esc(
+                  lesson.title ||
+                  (
+                    "पाठ " +
+                    lesson.number
+                  )
+                ) +
+
+                '</div>';
+
+
+              if(
+                own &&
+                file
+              ){
+
+                html +=
+
+                  '<button ' +
+
+                  'class="open" ' +
+
+                  'data-file="' +
+
+                  esc(file) +
+
+                  '">' +
+
+                  'खोलें' +
+
+                  '</button>';
+
+              }
+              else{
+
+                html +=
+
+                  '<button ' +
+
+                  'class="open locked" ' +
+
+                  'disabled>' +
+
+                  '🔒' +
+
+                  '</button>';
+
+              }
+
+
+              html +=
+                '</div>';
+
+            }
+          );
+
+
+          html +=
+            '</section>';
+
+        }
+      );
+
+    }
+  );
+
+
+  document.getElementById(
+    "content"
+  ).innerHTML =
+    html;
+
+
+  document
+    .querySelectorAll(
+      ".open[data-file]"
+    )
+    .forEach(
+      function(button){
+
+        button.onclick =
+          function(){
+
+            AADYA.goLesson(
+              button.dataset.file
+            );
+
+          };
+
+      }
+    );
 
 }
 
 
-location.href=
-"./learning.html?lesson="+
-encodeURIComponent(
-button.dataset.file
-);
+/* ==========================================
+   INIT
+========================================== */
 
-};
+async function init(){
 
-});
-
-}
+  profile =
+    AADYA.profile();
 
 
-function init(){
-
-try{
-
-profile=
-JSON.parse(
-localStorage.getItem(
-PROFILE_KEY
-)||"{}"
-);
-
-}catch(e){
-
-profile={};
-
-}
+  selectedClass =
+    Number(
+      profile.class ||
+      6
+    );
 
 
-selected=
-String(
-profile.class || 6
-);
+  await loadClasses();
 
 
-document.getElementById(
-"intro"
-).textContent=
-
-(
-profile.name
-?
-"नमस्ते, "+
-profile.name+
-"! "
-:
-""
-)+
-
-"आप कक्षा 6, 7 और 8 का Curriculum देख सकते हैं। "+
-"चुनी हुई कक्षा के Lessons ही खुलेंगे।";
+  renderTabs();
 
 
-document
-.querySelectorAll(".tab")
-.forEach(function(button){
+  /*
+    अगर profile वाली class
+    registry में नहीं है,
+    तो पहली available class।
+  */
 
-button.onclick=function(){
+  const exists =
+    classes.some(
+      function(item){
 
-loadClass(
-button.dataset.c
-);
+        return Number(
+          item.number
+        ) ===
+        selectedClass;
 
-};
+      }
+    );
 
-});
+
+  if(!exists){
+
+    selectedClass =
+      Number(
+        classes[0]?.number ||
+        6
+      );
+
+  }
 
 
-loadClass(selected);
+  loadClass(
+    selectedClass
+  );
 
 }
 
 
-init();
+document.addEventListener(
+  "DOMContentLoaded",
+  init
+);
 
 </script>
+
 
 </body>
 
