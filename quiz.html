@@ -10,6 +10,11 @@
   content="width=device-width,initial-scale=1"
 >
 
+<meta
+  name="theme-color"
+  content="#111111"
+>
+
 <title>AADYA — Quiz</title>
 
 <style>
@@ -30,6 +35,11 @@ body{
   color:#172b4d;
 }
 
+
+/* ===============================
+   HEADER
+================================ */
+
 .top{
   background:
     linear-gradient(
@@ -46,11 +56,12 @@ body{
   position:sticky;
   top:0;
 
-  z-index:5;
+  z-index:10;
 }
 
 .row{
   max-width:900px;
+
   margin:auto;
 
   display:flex;
@@ -69,6 +80,7 @@ body{
 .sub{
   font-size:13px;
   color:#dbe3ee;
+  margin-top:3px;
 }
 
 .btn{
@@ -88,6 +100,11 @@ body{
   color:#172b4d;
 }
 
+
+/* ===============================
+   PAGE
+================================ */
+
 .wrap{
   max-width:900px;
 
@@ -104,12 +121,12 @@ body{
 
   border-radius:20px;
 
+  border:
+    1px solid #e4ebf3;
+
   box-shadow:
     0 7px 22px
     rgba(23,43,77,.08);
-
-  border:
-    1px solid #e4ebf3;
 }
 
 .box{
@@ -117,6 +134,11 @@ body{
 
   margin-bottom:15px;
 }
+
+
+/* ===============================
+   TITLE
+================================ */
 
 .title{
   font-size:28px;
@@ -129,6 +151,21 @@ body{
   line-height:1.6;
 
   font-size:13px;
+
+  margin-top:6px;
+}
+
+
+/* ===============================
+   SUBJECT SELECT
+================================ */
+
+.select-title{
+  font-size:18px;
+
+  font-weight:900;
+
+  margin-bottom:8px;
 }
 
 .select{
@@ -143,10 +180,15 @@ body{
 
   font-size:16px;
 
-  margin-top:8px;
-
   background:#fff;
+
+  color:#172b4d;
 }
+
+
+/* ===============================
+   LESSON LIST
+================================ */
 
 .chapter{
   margin:12px 0;
@@ -160,6 +202,8 @@ body{
   background:#f7fbff;
 
   font-weight:900;
+
+  line-height:1.5;
 }
 
 .lesson{
@@ -212,11 +256,26 @@ body{
   color:#172b4d;
 }
 
+
+/* ===============================
+   QUIZ
+================================ */
+
 .quiz{
   padding:20px;
 
   border-top:
     5px solid #52c7e8;
+}
+
+.quiz-head{
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  gap:8px;
 }
 
 .q{
@@ -226,7 +285,7 @@ body{
 
   line-height:1.55;
 
-  margin:15px 0;
+  margin:18px 0;
 }
 
 .option{
@@ -250,6 +309,13 @@ body{
   font-size:15px;
 
   cursor:pointer;
+
+  transition:
+    .15s ease;
+}
+
+.option:hover{
+  background:#f8fbff;
 }
 
 .option.selected{
@@ -258,12 +324,53 @@ body{
   background:#e8f9ff;
 }
 
+.option.correct{
+  border-color:#24ad69;
+
+  background:#e5f8ed;
+}
+
+.option.wrong{
+  border-color:#e05252;
+
+  background:#ffe9e9;
+}
+
+.option:disabled{
+  cursor:default;
+}
+
+.feedback{
+  margin-top:12px;
+
+  padding:12px;
+
+  border-radius:12px;
+
+  line-height:1.6;
+}
+
+.feedback.good{
+  background:#e5f8ed;
+  color:#176b3a;
+}
+
+.feedback.bad{
+  background:#ffe9e9;
+  color:#9d2020;
+}
+
+
+/* ===============================
+   NAVIGATION
+================================ */
+
 .nav{
   display:flex;
 
   gap:9px;
 
-  margin-top:15px;
+  margin-top:18px;
 }
 
 .nav .btn{
@@ -276,21 +383,53 @@ body{
   color:#fff;
 }
 
+
+/* ===============================
+   RESULT
+================================ */
+
 .result{
   text-align:center;
 
-  padding:15px;
+  padding:20px;
 }
 
 .score{
   font-size:43px;
 
   font-weight:900;
+
+  margin:10px 0;
 }
 
-.hidden{
-  display:none!important;
+.result-message{
+  line-height:1.7;
+
+  color:#68768a;
+
+  margin-bottom:15px;
 }
+
+.result button{
+  margin:5px;
+
+  padding:11px 15px;
+
+  border:0;
+
+  border-radius:11px;
+
+  background:#172b4d;
+
+  color:#fff;
+
+  font-weight:900;
+}
+
+
+/* ===============================
+   EMPTY
+================================ */
 
 .empty{
   padding:20px;
@@ -302,7 +441,43 @@ body{
   background:#f8fafc;
 
   border-radius:15px;
+
+  line-height:1.6;
 }
+
+
+/* ===============================
+   PROGRESS
+================================ */
+
+.quiz-progress{
+  height:9px;
+
+  background:#e8edf3;
+
+  border-radius:99px;
+
+  overflow:hidden;
+
+  margin:12px 0 18px;
+}
+
+.quiz-progress-fill{
+  height:100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      #f7c928,
+      #56ccf2,
+      #7b61ff
+    );
+}
+
+
+/* ===============================
+   MOBILE
+================================ */
 
 @media(max-width:600px){
 
@@ -318,13 +493,27 @@ body{
     font-size:18px;
   }
 
+  .lesson{
+    gap:7px;
+  }
+
+  .lt{
+    font-size:13px;
+  }
+
+  .start{
+    padding:9px 10px;
+  }
+
 }
 
 </style>
 
 </head>
 
+
 <body>
+
 
 <header class="top">
 
@@ -333,14 +522,11 @@ body{
 <div>
 
 <div class="brand">
-🎯 Quiz
+AADYA Digital Teacher
 </div>
 
-<div
-  class="sub"
-  id="sub"
->
-AADYA Digital Teacher
+<div class="sub">
+🧠 Quiz
 </div>
 
 </div>
@@ -349,7 +535,7 @@ AADYA Digital Teacher
   class="btn home"
   onclick="location.href='./index.html'"
 >
-⌂ होम
+⌂ Home
 </button>
 
 </div>
@@ -363,50 +549,64 @@ AADYA Digital Teacher
 <section class="box">
 
 <div class="title">
-🎯 अपनी तैयारी जाँचें
+🧠 अपना Quiz चुनें
 </div>
 
-<div class="muted">
-विषय चुनिए और किसी भी Lesson का Quiz शुरू कीजिए।
+<div
+  class="muted"
+  id="intro"
+>
+विषय चुनें और फिर किसी Lesson का Quiz दें।
 </div>
 
+</section>
 
-<label
-  style="
-    display:block;
-    font-weight:900;
-    margin-top:14px
-  "
+
+<section
+  class="box"
+  id="selector"
 >
 
-📘 विषय
-
-</label>
-
+<div class="select-title">
+📚 विषय चुनें
+</div>
 
 <select
   id="subjectSelect"
   class="select"
 >
-
 <option value="">
-सभी विषय
+विषय लोड हो रहा है...
 </option>
-
 </select>
 
 </section>
 
 
 <section
-  id="lessons"
+  class="box"
+  id="lessonsBox"
 >
+
+<div class="select-title">
+📖 Lesson चुनें
+</div>
+
+<div id="lessons">
+
+<div class="empty">
+पहले विषय चुनें।
+</div>
+
+</div>
+
 </section>
 
 
 <section
   id="quizBox"
-  class="quiz hidden"
+  class="quiz"
+  style="display:none"
 >
 </section>
 
@@ -422,17 +622,14 @@ AADYA Digital Teacher
 "use strict";
 
 
-let cls =
-  AADYA.getClass();
+let profile =
+  {};
 
-let data =
+let curriculum =
   null;
 
-let all =
+let lessons =
   [];
-
-let currentFile =
-  "";
 
 let questions =
   [];
@@ -443,78 +640,255 @@ let current =
 let answers =
   [];
 
+let currentLesson =
+  null;
+
 
 const $ =
   id =>
     document.getElementById(id);
 
 
-const esc =
-  AADYA.esc;
+/* ==========================================
+   LOAD SUBJECTS
+========================================== */
+
+async function init(){
+
+  profile =
+    AADYA.profile();
 
 
-/* =====================================================
+  const classNumber =
+    AADYA.getClass();
+
+
+  $("intro").textContent =
+    (
+      profile.name
+        ? "नमस्ते, " +
+          profile.name +
+          "! "
+        : ""
+    ) +
+    "कक्षा " +
+    classNumber +
+    " के Lessons का Quiz यहाँ दें।";
+
+
+  try{
+
+    curriculum =
+      await AADYA.loadCurriculum(
+        classNumber
+      );
+
+
+    const classData =
+      AADYA.classData(
+        curriculum,
+        classNumber
+      );
+
+
+    const subjects =
+      Object.entries(
+        classData?.subjects || {}
+      );
+
+
+    const select =
+      $("subjectSelect");
+
+
+    select.innerHTML =
+      '<option value="">' +
+      '📚 विषय चुनें' +
+      '</option>';
+
+
+    subjects.forEach(
+      function(entry){
+
+        const key =
+          entry[0];
+
+        const subject =
+          entry[1];
+
+
+        const option =
+          document.createElement(
+            "option"
+          );
+
+
+        option.value =
+          key;
+
+
+        option.textContent =
+          (
+            AADYA.icon(key) +
+            " " +
+            (
+              subject.name ||
+              key
+            )
+          );
+
+
+        select.appendChild(
+          option
+        );
+
+      }
+    );
+
+
+    select.onchange =
+      renderLessons;
+
+
+  }
+  catch(error){
+
+    console.error(
+      "Quiz curriculum error:",
+      error
+    );
+
+
+    $("lessons").innerHTML =
+      '<div class="empty">' +
+      '⚠️ Curriculum लोड नहीं हो पाया।' +
+      '</div>';
+
+  }
+
+}
+
+
+/* ==========================================
    LESSON LIST
-===================================================== */
+========================================== */
 
-function buildList(){
+function renderLessons(){
 
   const subjectKey =
-    $("subjectSelect")
-      .value;
+    $("subjectSelect").value;
+
+
+  $("quizBox").style.display =
+    "none";
+
+
+  if(!subjectKey){
+
+    $("lessons").innerHTML =
+      '<div class="empty">' +
+      'पहले विषय चुनें।' +
+      '</div>';
+
+    return;
+
+  }
+
+
+  const classNumber =
+    AADYA.getClass();
+
+
+  const classData =
+    AADYA.classData(
+      curriculum,
+      classNumber
+    );
+
+
+  const subject =
+    classData?.subjects?.[
+      subjectKey
+    ];
+
+
+  if(!subject){
+
+    $("lessons").innerHTML =
+      '<div class="empty">' +
+      'इस विषय की जानकारी उपलब्ध नहीं है।' +
+      '</div>';
+
+    return;
+
+  }
+
+
+  lessons =
+    AADYA.buildLessons(
+      {
+        classes:{
+          [
+            "class" +
+            classNumber
+          ]:{
+            subjects:{
+              [subjectKey]:
+                subject
+            }
+          }
+        }
+      },
+      classNumber
+    );
+
+
+  if(!lessons.length){
+
+    $("lessons").innerHTML =
+      '<div class="empty">' +
+      'इस विषय में अभी कोई Lesson उपलब्ध नहीं है।' +
+      '</div>';
+
+    return;
+
+  }
 
 
   const groups =
     {};
 
 
-  all
-    .filter(
-      function(item){
+  lessons.forEach(
+    function(lesson){
 
-        return (
-          !subjectKey ||
-          item.subjectKey ===
-          subjectKey
+      const key =
+        String(
+          lesson.chapterNumber
         );
 
-      }
-    )
-    .forEach(
-      function(item){
 
-        const key =
-          item.subjectKey +
-          "|" +
-          item.chapterNumber;
+      if(!groups[key]){
 
+        groups[key] = {
 
-        if(
-          !groups[key]
-        ){
+          title:
+            lesson.chapterTitle,
 
-          groups[key] = {
+          items:
+            []
 
-            subject:
-              item.subjectName,
-
-            chapter:
-              item.chapterTitle,
-
-            items:
-              []
-
-          };
-
-        }
-
-
-        groups[key]
-          .items
-          .push(item);
+        };
 
       }
-    );
+
+
+      groups[key].items.push(
+        lesson
+      );
+
+    }
+  );
 
 
   let html =
@@ -534,14 +908,8 @@ function buildList(){
 
         '📘 ' +
 
-        esc(
-          group.subject
-        ) +
-
-        ' · अध्याय ' +
-
-        esc(
-          group.chapter
+        AADYA.esc(
+          group.title
         ) +
 
         '</div>';
@@ -556,7 +924,7 @@ function buildList(){
 
             '<div class="num">' +
 
-            esc(
+            AADYA.esc(
               lesson.number
             ) +
 
@@ -564,7 +932,7 @@ function buildList(){
 
             '<div class="lt">' +
 
-            esc(
+            AADYA.esc(
               lesson.title
             ) +
 
@@ -573,7 +941,7 @@ function buildList(){
             '<button ' +
             'class="btn start" ' +
             'data-file="' +
-            esc(
+            AADYA.esc(
               lesson.file
             ) +
             '">' +
@@ -596,11 +964,7 @@ function buildList(){
 
 
   $("lessons").innerHTML =
-    html ||
-
-    '<div class="empty">' +
-    'इस विषय में Quiz वाले Lessons उपलब्ध नहीं हैं।' +
-    '</div>';
+    html;
 
 
   document
@@ -625,9 +989,9 @@ function buildList(){
 }
 
 
-/* =====================================================
+/* ==========================================
    START QUIZ
-===================================================== */
+========================================== */
 
 async function startQuiz(
   file
@@ -635,7 +999,14 @@ async function startQuiz(
 
   try{
 
-    const lesson =
+    currentLesson =
+      AADYA.lessonMeta(
+        lessons,
+        file
+      );
+
+
+    const data =
       await AADYA.lessonData(
         file
       );
@@ -643,14 +1014,33 @@ async function startQuiz(
 
     questions =
       AADYA.questions(
-        lesson,
+        data,
         false
       );
 
 
-    if(
-      !questions.length
-    ){
+    /*
+      केवल वही questions जिनका
+      सही उत्तर पहचाना जा सके।
+    */
+
+    questions =
+      questions.filter(
+        function(question){
+
+          return (
+            question.correctIndex >= 0 &&
+            Array.isArray(
+              question.options
+            ) &&
+            question.options.length >= 2
+          );
+
+        }
+      );
+
+
+    if(!questions.length){
 
       alert(
         "इस Lesson में अभी Quiz प्रश्न उपलब्ध नहीं हैं।"
@@ -659,10 +1049,6 @@ async function startQuiz(
       return;
 
     }
-
-
-    currentFile =
-      file;
 
 
     current =
@@ -675,28 +1061,30 @@ async function startQuiz(
       ).fill(null);
 
 
-    $("lessons")
-      .classList
-      .add("hidden");
+    $("lessonsBox")
+      .style.display =
+      "none";
 
 
     $("quizBox")
-      .classList
-      .remove("hidden");
+      .style.display =
+      "block";
 
 
     renderQuestion();
+
 
   }
   catch(error){
 
     console.error(
+      "Quiz load error:",
       error
     );
 
 
     alert(
-      "Quiz लोड नहीं हो पाया।"
+      "⚠️ Quiz लोड नहीं हो पाया।"
     );
 
   }
@@ -704,91 +1092,117 @@ async function startQuiz(
 }
 
 
-/* =====================================================
-   QUESTION
-===================================================== */
+/* ==========================================
+   RENDER QUESTION
+========================================== */
 
 function renderQuestion(){
 
-  const q =
+  const question =
     questions[current];
+
+
+  if(!question){
+
+    return;
+
+  }
+
+
+  const percentage =
+    Math.round(
+      (
+        (current + 1) /
+        questions.length
+      ) * 100
+    );
 
 
   let html =
 
-    '<div ' +
-    'style="' +
-    'display:flex;' +
-    'justify-content:space-between;' +
-    'gap:8px' +
-    '">' +
+    '<div class="quiz-head">' +
 
-    '<b>' +
+      '<b>' +
 
-    'प्रश्न ' +
+      'प्रश्न ' +
+      (current + 1) +
+      ' / ' +
+      questions.length +
 
-    (
-      current + 1
-    ) +
+      '</b>' +
 
-    ' / ' +
+      '<button ' +
+        'class="btn" ' +
+        'onclick="backToLessons()">' +
 
-    questions.length +
+        '← Lessons' +
 
-    '</b>' +
-
-    '<button ' +
-    'class="btn" ' +
-    'onclick="backToLessons()">' +
-
-    '← Lessons' +
-
-    '</button>' +
+      '</button>' +
 
     '</div>' +
 
-    '<hr>' +
+
+    '<div class="quiz-progress">' +
+
+      '<div ' +
+        'class="quiz-progress-fill" ' +
+        'style="width:' +
+        percentage +
+        '%">' +
+      '</div>' +
+
+    '</div>' +
+
+
+    '<div class="muted">' +
+
+      AADYA.esc(
+        currentLesson?.title ||
+        ""
+      ) +
+
+    '</div>' +
+
 
     '<div class="q">' +
 
-    esc(
-      q.question
-    ) +
+      AADYA.esc(
+        question.question
+      ) +
 
     '</div>';
 
 
-  q.options.forEach(
+  question.options.forEach(
     function(option,index){
+
+      const selected =
+        answers[current] === index;
+
 
       html +=
 
         '<button ' +
 
         'class="option ' +
-
         (
-          answers[current] ===
-          index
-            ?
-          'selected'
-            :
-          ''
+          selected
+            ? "selected"
+            : ""
         ) +
-
         '" ' +
 
-        'data-i="' +
+        'data-index="' +
         index +
         '">' +
 
+        '<b>' +
         String.fromCharCode(
           65 + index
         ) +
+        '.</b> ' +
 
-        '. ' +
-
-        esc(
+        AADYA.esc(
           option
         ) +
 
@@ -802,34 +1216,44 @@ function renderQuestion(){
 
     '<div class="nav">' +
 
-    '<button ' +
-    'class="btn" ' +
-    'onclick="backToLessons()">' +
+      '<button ' +
+        'class="btn" ' +
+        'onclick="previousQuestion()" ' +
+        (
+          current === 0
+            ? "disabled"
+            : ""
+        ) +
+      '>' +
 
-    'बाद में' +
+        '← पिछला' +
 
-    '</button>' +
+      '</button>' +
 
-    '<button ' +
-    'class="btn next" ' +
-    'id="next">' +
 
-    (
-      current <
-      questions.length - 1
-        ?
-      'अगला →'
-        :
-      'परिणाम देखें'
-    ) +
+      '<button ' +
+        'class="btn next" ' +
+        'id="nextButton" ' +
+        (
+          answers[current] === null
+            ? "disabled"
+            : ""
+        ) +
+      '>' +
 
-    '</button>' +
+        (
+          current <
+          questions.length - 1
+            ? "अगला →"
+            : "🏁 परिणाम देखें"
+        ) +
+
+      '</button>' +
 
     '</div>';
 
 
-  $("quizBox")
-    .innerHTML =
+  $("quizBox").innerHTML =
     html;
 
 
@@ -845,7 +1269,7 @@ function renderQuestion(){
 
             answers[current] =
               Number(
-                button.dataset.i
+                button.dataset.index
               );
 
 
@@ -857,27 +1281,22 @@ function renderQuestion(){
     );
 
 
-  $("next")
+  $("nextButton")
     .onclick =
     nextQuestion;
 
 }
 
 
-/* =====================================================
+/* ==========================================
    NEXT
-===================================================== */
+========================================== */
 
 function nextQuestion(){
 
   if(
-    answers[current] ==
-    null
+    answers[current] === null
   ){
-
-    alert(
-      "पहले एक उत्तर चुनिए।"
-    );
 
     return;
 
@@ -903,9 +1322,28 @@ function nextQuestion(){
 }
 
 
-/* =====================================================
+/* ==========================================
+   PREVIOUS
+========================================== */
+
+function previousQuestion(){
+
+  if(
+    current > 0
+  ){
+
+    current--;
+
+    renderQuestion();
+
+  }
+
+}
+
+
+/* ==========================================
    FINISH
-===================================================== */
+========================================== */
 
 function finishQuiz(){
 
@@ -916,569 +1354,243 @@ function finishQuiz(){
   questions.forEach(
     function(question,index){
 
+      /*
+        Universal normalizer का सही उपयोग:
+        answer / correct_answer / A-B-C-D /
+        text / numeric सभी core संभालता है।
+      */
+
       const correctIndex =
-  AADYA.answerIndex(
-    question.answer,
-    question.options
+        question.correctIndex;
+
+
+      if(
+        answers[index] ===
+        correctIndex
+      ){
+
+        score++;
+
+      }
+
+    }
   );
 
-if(
-  answers[index] === correctIndex
-){
-  score++;
-    }
 
-    }
-  );
+  const total =
+    questions.length;
 
 
   const percentage =
-    Math.round(
-      score /
-      questions.length *
-      100
-    );
+    total
+      ? Math.round(
+          score /
+          total *
+          100
+        )
+      : 0;
 
 
   const result = {
 
-        score: score,
-    total: questions.length,
-    percentage: percentage,
-    date: new Date().toISOString()
+    score:
+      score,
+
+    total:
+      total,
+
+    percentage:
+      percentage,
+
+    lesson:
+      currentLesson?.file ||
+      "",
+
+    lessonTitle:
+      currentLesson?.title ||
+      "",
+
+    subject:
+      currentLesson?.subjectName ||
+      "",
+
+    timestamp:
+      new Date().toISOString()
+
   };
 
-  localStorage.setItem(
-    "aadya_last_quiz_score",
-    JSON.stringify(result)
+
+  /*
+    Last Quiz
+  */
+
+  AADYA.write(
+    AADYA.KEYS.LAST_QUIZ,
+    result
   );
 
-  let history = [];
 
-  try{
-    history =
-      JSON.parse(
-        localStorage.getItem("aadya_quiz_history_v1")
-      ) || [];
-  }catch(e){
-    history = [];
+  /*
+    Quiz History
+  */
+
+  const history =
+    AADYA.read(
+      AADYA.KEYS.QUIZ,
+      []
+    );
+
+
+  if(
+    Array.isArray(history)
+  ){
+
+    history.push(
+      result
+    );
+
+    AADYA.write(
+      AADYA.KEYS.QUIZ,
+      history
+    );
+
   }
 
-  history.push(result);
 
-  localStorage.setItem(
-    "aadya_quiz_history_v1",
-    JSON.stringify(history)
-  );
+  let message;
 
-  const resultBox =
-    document.getElementById("result");
 
-  let message = "";
+  if(
+    percentage >= 80
+  ){
 
-  if(percentage >= 80){
-    message = "🌟 बहुत बढ़िया! शानदार प्रदर्शन!";
-  }else if(percentage >= 60){
-    message = "👏 अच्छा प्रयास! थोड़ा और अभ्यास करें।";
-  }else{
-    message = "💪 कोई बात नहीं! दोबारा अभ्यास करें और फिर प्रयास करें।";
+    message =
+      "🌟 बहुत बढ़िया! शानदार प्रदर्शन!";
+
+  }
+  else if(
+    percentage >= 60
+  ){
+
+    message =
+      "👏 अच्छा प्रयास! थोड़ा और अभ्यास करें।";
+
+  }
+  else{
+
+    message =
+      "💪 कोई बात नहीं! Lesson दोबारा पढ़कर फिर प्रयास करें।";
+
   }
 
-  resultBox.innerHTML =
-    '<div class="result-card">' +
-      '<div class="result-emoji">🎉</div>' +
+
+  $("quizBox").innerHTML =
+
+    '<div class="result">' +
+
+      '<div style="font-size:42px">🎉</div>' +
+
       '<h2>Quiz पूरा हुआ!</h2>' +
+
       '<div class="score">' +
-        score + " / " + questions.length +
+
+        score +
+        " / " +
+        total +
+
       '</div>' +
-      '<div class="percentage">' +
-        percentage + "%" +
+
+      '<div>' +
+
+        percentage +
+        "% सही" +
+
       '</div>' +
-      '<p>' + message + '</p>' +
-      '<button onclick="location.reload()">' +
-        '🔄 फिर से Quiz दें' +
+
+      '<div class="result-message">' +
+
+        message +
+
+      '</div>' +
+
+      '<button ' +
+        'onclick="restartQuiz()">' +
+
+        '🔄 फिर से दें' +
+
       '</button>' +
-      '<button onclick="location.href=\'index.html\'">' +
-        '🏠 Home पर जाएँ' +
+
+      '<button ' +
+        'onclick="backToLessons()">' +
+
+        '📚 दूसरा Lesson' +
+
       '</button>' +
+
+      '<button ' +
+        'onclick="location.href=\'./index.html\'">' +
+
+        '🏠 Home' +
+
+      '</button>' +
+
     '</div>';
+
 
   window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+    top:0,
+    behavior:"smooth"
   });
-}
-
-
-/* =========================================
-   QUIZ START
-========================================= */
-
-async function startQuiz(){
-
-  const subject =
-    document.getElementById("subjectSelect").value;
-
-  if(!subject){
-    alert("कृपया पहले विषय चुनें।");
-    return;
-  }
-
-  const classNumber =
-    AADYA.getClassNumber();
-
-  const curriculum =
-    await AADYA.loadCurriculum(classNumber);
-
-  if(!curriculum){
-    document.getElementById("quizArea").innerHTML =
-      '<div class="empty">⚠️ Curriculum लोड नहीं हो पाया।</div>';
-    return;
-  }
-
-  const subjectData =
-    AADYA.classData(
-      curriculum,
-      subject
-    );
-
-  if(!subjectData){
-    document.getElementById("quizArea").innerHTML =
-      '<div class="empty">⚠️ इस विषय की जानकारी उपलब्ध नहीं है।</div>';
-    return;
-  }
-
-  const lessons =
-    AADYA.buildLessons(
-      subjectData,
-      subject
-    );
-
-  if(!lessons.length){
-    document.getElementById("quizArea").innerHTML =
-      '<div class="empty">📚 इस विषय में अभी कोई lesson उपलब्ध नहीं है।</div>';
-    return;
-  }
-
-  questions = [];
-
-  /*
-    सभी lessons से quiz questions इकट्ठे किए जाएंगे।
-    इससे भविष्य में नए chapter/lesson जोड़ने पर
-    Quiz अपने आप उन्हें पढ़ सकेगा।
-  */
-
-  for(
-    let i = 0;
-    i < lessons.length;
-    i++
-  ){
-
-    try{
-
-      const response =
-        await fetch(
-          lessons[i].file
-        );
-
-      if(!response.ok){
-        continue;
-      }
-
-      const data =
-        await response.json();
-
-      const lessonQuestions =
-        AADYA.questions(
-          data,
-          false
-        );
-
-      lessonQuestions.forEach(
-        function(question){
-
-          if(
-            question &&
-            Array.isArray(question.options) &&
-            question.options.length >= 2
-          ){
-
-            questions.push({
-              ...question,
-              lessonTitle:
-                lessons[i].title,
-              lessonFile:
-                lessons[i].file
-            });
-
-          }
-
-        }
-      );
-
-    }catch(error){
-
-      console.error(
-        "Quiz lesson error:",
-        lessons[i].file,
-        error
-      );
-
-    }
-  }
-
-
-  if(!questions.length){
-
-    document.getElementById("quizArea").innerHTML =
-      '<div class="empty">' +
-        '📚 इस विषय के lessons में अभी Quiz questions उपलब्ध नहीं हैं।' +
-      '</div>';
-
-    return;
-  }
-
-
-  /*
-    हर बार Quiz शुरू होने पर
-    questions को random order में दिखाएँ।
-  */
-
-  questions =
-    questions
-      .sort(
-        () => Math.random() - 0.5
-      )
-      .slice(
-        0,
-        Math.min(10, questions.length)
-      );
-
-
-  answers =
-    new Array(
-      questions.length
-    ).fill(null);
-
-  currentQuestion = 0;
-
-  document.getElementById(
-    "quizArea"
-  ).style.display = "block";
-
-  document.getElementById(
-    "quizStart"
-  ).style.display = "none";
-
-  renderQuestion();
 
 }
 
 
-/* =========================================
-   RENDER QUESTION
-========================================= */
+/* ==========================================
+   RESTART
+========================================== */
 
-function renderQuestion(){
-
-  const area =
-    document.getElementById("quizArea");
+function restartQuiz(){
 
   if(
-    !questions.length
-  ){
-    area.innerHTML =
-      '<div class="empty">' +
-        '⚠️ कोई प्रश्न उपलब्ध नहीं है।' +
-      '</div>';
-
-    return;
-  }
-
-
-  const question =
-    questions[currentQuestion];
-
-
-  let optionsHTML = "";
-
-
-  question.options.forEach(
-    function(option,index){
-
-      const selected =
-        answers[currentQuestion] === index
-          ? "selected"
-          : "";
-
-      optionsHTML +=
-        '<button class="option ' +
-          selected +
-          '" onclick="selectAnswer(' +
-            index +
-          ')">' +
-          '<span class="option-letter">' +
-            String.fromCharCode(65 + index) +
-          '</span>' +
-          '<span>' +
-            option +
-          '</span>' +
-        '</button>';
-
-    }
-  );
-
-
-  const progressPercent =
-    Math.round(
-      (
-        (currentQuestion + 1) /
-        questions.length
-      ) * 100
-    );
-
-
-  area.innerHTML =
-
-    '<div class="quiz-card">' +
-
-      '<div class="quiz-top">' +
-
-        '<span>' +
-          'प्रश्न ' +
-          (currentQuestion + 1) +
-          ' / ' +
-          questions.length +
-        '</span>' +
-
-        '<span>' +
-          progressPercent +
-          '%' +
-        '</span>' +
-
-      '</div>' +
-
-      '<div class="progress-bar">' +
-        '<div class="progress-fill" style="width:' +
-          progressPercent +
-        '%"></div>' +
-      '</div>' +
-
-      '<div class="lesson-name">' +
-        (question.lessonTitle || "") +
-      '</div>' +
-
-      '<h2 class="question">' +
-        question.question +
-      '</h2>' +
-
-      '<div class="options">' +
-        optionsHTML +
-      '</div>' +
-
-      '<div class="quiz-navigation">' +
-
-        '<button ' +
-          (
-            currentQuestion === 0
-              ? 'disabled'
-              : ''
-          ) +
-          ' onclick="previousQuestion()">' +
-          '← पिछला' +
-        '</button>' +
-
-        (
-          currentQuestion <
-          questions.length - 1
-
-            ?
-
-          '<button ' +
-            (
-              answers[currentQuestion] === null
-                ? 'disabled'
-                : ''
-            ) +
-            ' onclick="nextQuestion()">' +
-            'अगला →' +
-          '</button>'
-
-            :
-
-          '<button ' +
-            (
-              answers[currentQuestion] === null
-                ? 'disabled'
-                : ''
-            ) +
-            ' onclick="finishQuiz()">' +
-            '🏁 Quiz समाप्त करें' +
-          '</button>'
-        ) +
-
-      '</div>' +
-
-    '</div>';
-
-}
-
-
-/* =========================================
-   SELECT ANSWER
-========================================= */
-
-function selectAnswer(index){
-
-  answers[currentQuestion] =
-    index;
-
-  renderQuestion();
-
-}
-
-
-/* =========================================
-   NEXT
-========================================= */
-
-function nextQuestion(){
-
-  if(
-    answers[currentQuestion] === null
-  ){
-    return;
-  }
-
-  if(
-    currentQuestion <
-    questions.length - 1
+    currentLesson?.file
   ){
 
-    currentQuestion++;
-
-    renderQuestion();
+    startQuiz(
+      currentLesson.file
+    );
 
   }
 
 }
 
 
-/* =========================================
-   PREVIOUS
-========================================= */
+/* ==========================================
+   BACK TO LESSONS
+========================================== */
 
-function previousQuestion(){
+function backToLessons(){
 
-  if(
-    currentQuestion > 0
-  ){
-
-    currentQuestion--;
-
-    renderQuestion();
-
-  }
-
-}
+  $("quizBox")
+    .style.display =
+    "none";
 
 
-/* =========================================
-   INIT
-========================================= */
-
-async function init(){
-
-  const select =
-    document.getElementById(
-      "subjectSelect"
-    );
-
-  const classNumber =
-    AADYA.getClassNumber();
+  $("lessonsBox")
+    .style.display =
+    "block";
 
 
-  const curriculum =
-    await AADYA.loadCurriculum(
-      classNumber
-    );
-
-
-  if(!curriculum){
-
-    select.innerHTML =
-      '<option value="">' +
-        '⚠️ विषय लोड नहीं हुए' +
-      '</option>';
-
-    return;
-  }
-
-
-  const subjects =
-    Object.keys(
-      curriculum
-    ).filter(
-      function(key){
-
-        return (
-          curriculum[key] &&
-          typeof curriculum[key] === "object" &&
-          (
-            curriculum[key].chapters ||
-            curriculum[key].lessons
-          );
-
-      }
-    );
-
-
-  if(!subjects.length){
-
-    select.innerHTML =
-      '<option value="">' +
-        'कोई विषय उपलब्ध नहीं' +
-      '</option>';
-
-    return;
-  }
-
-
-  select.innerHTML =
-    '<option value="">' +
-      '📚 विषय चुनें' +
-    '</option>';
-
-
-  subjects.forEach(
-    function(subject){
-
-      const data =
-        curriculum[subject];
-
-      const option =
-        document.createElement(
-          "option"
-        );
-
-      option.value =
-        subject;
-
-      option.textContent =
-        (
-          data.name ||
-          AADYA.subjectName(subject)
-        );
-
-      select.appendChild(
-        option
-      );
-
-    }
-  );
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
 }
 
+
+/* ==========================================
+   START
+========================================== */
 
 document.addEventListener(
   "DOMContentLoaded",
@@ -1487,5 +1599,7 @@ document.addEventListener(
 
 </script>
 
+
 </body>
+
 </html>
