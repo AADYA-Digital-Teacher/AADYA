@@ -4771,6 +4771,45 @@ window.toggleSaveLesson =
 
 function goHome(){
 
+  /*
+   * Lesson जिस page से खोला गया है,
+   * पहले उसी page पर एक step वापस जाएँ।
+   *
+   * उदाहरण:
+   * Home → विषय → अध्याय/Lessons → Lesson
+   *                         ↑
+   *                  यहाँ वापस आएगा
+   *
+   * यदि Lesson सीधे खोला गया हो या browser history उपलब्ध
+   * न हो, तभी Home fallback रहेगा।
+   */
+
+  try{
+
+    const referrer =
+      document.referrer || "";
+
+    const sameOrigin =
+      referrer &&
+      new URL(referrer).origin === window.location.origin;
+
+    if(
+      sameOrigin &&
+      window.history.length > 1
+    ){
+
+      window.history.back();
+
+      return;
+
+    }
+
+  }catch(error){
+
+    /* fallback नीचे रहेगा */
+
+  }
+
   window.location.href =
     "./index.html";
 
