@@ -7,11 +7,13 @@
 
 <meta
   name="viewport"
-  content="width=device-width,initial-scale=1.0">
+  content="width=device-width,initial-scale=1"
+>
 
 <meta
   name="theme-color"
-  content="#111111">
+  content="#111"
+>
 
 <title>AADYA — विषय</title>
 
@@ -27,124 +29,137 @@ body{
     Arial,
     "Noto Sans Devanagari",
     sans-serif;
-  background:#f5f6f8;
-  color:#222;
+
+  background:#f3f7fb;
+  color:#172b4d;
 }
 
 .top{
-  background:#111;
+  background:
+    linear-gradient(
+      135deg,
+      #111,
+      #17345f,
+      #274d78
+    );
+
   color:#fff;
-  padding:18px 16px;
+
+  padding:12px;
+
   position:sticky;
   top:0;
-  z-index:10;
+
+  z-index:5;
 }
 
-.toprow{
+.row{
+  max-width:900px;
+  margin:auto;
+
   display:flex;
+
   justify-content:space-between;
   align-items:center;
+
   gap:10px;
 }
 
 .brand{
-  font-size:21px;
-  font-weight:800;
+  font-size:22px;
+  font-weight:900;
 }
 
 .sub{
   font-size:13px;
-  color:#ccc;
-  margin-top:4px;
+  color:#dbe3ee;
+  margin-top:3px;
 }
 
 .btn{
   border:0;
-  border-radius:11px;
+  border-radius:12px;
   padding:10px 13px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.home{
   background:#fff;
-  color:#111;
-  font-weight:700;
+  color:#172b4d;
 }
 
 .wrap{
   max-width:900px;
   margin:auto;
-  padding:16px 14px 45px;
+  padding:15px 12px 45px;
 }
 
 .intro,
-.subject-card,
 .chapter,
-.empty{
+.selectBox{
   background:#fff;
-  border-radius:16px;
-  box-shadow:0 4px 14px rgba(0,0,0,.07);
+
+  border-radius:20px;
+
+  box-shadow:
+    0 7px 22px
+    rgba(23,43,77,.08);
+
+  border:
+    1px solid #e4ebf3;
 }
 
 .intro{
-  padding:18px;
-  margin-bottom:16px;
+  padding:19px;
+  margin-bottom:15px;
 }
 
 .intro h1{
-  margin:0 0 6px;
-  font-size:23px;
+  margin:0 0 5px;
+  font-size:27px;
 }
 
 .muted{
-  color:#666;
-  font-size:14px;
-  line-height:1.55;
+  color:#68768a;
+  font-size:13px;
+  line-height:1.6;
 }
 
-.subjects{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+.selectBox{
+  padding:17px;
+  margin-bottom:17px;
 }
 
-.subject-card{
-  padding:18px;
-  cursor:pointer;
+.selectBox label{
+  display:block;
+  font-weight:900;
+  margin-bottom:8px;
 }
 
-.subject-icon{
-  font-size:30px;
+.select{
+  width:100%;
+
+  padding:13px;
+
+  border:
+    1px solid #dbe3ed;
+
+  border-radius:12px;
+
+  font-size:16px;
+
+  background:#fff;
+
+  color:#172b4d;
 }
 
-.subject-name{
-  font-size:18px;
-  font-weight:800;
-  margin-top:8px;
-}
+.subjectHeading{
+  font-size:22px;
+  font-weight:900;
 
-.subject-count{
-  font-size:12px;
-  color:#777;
-  margin-top:5px;
-}
-
-.panel-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  margin:8px 0 12px;
-}
-
-.panel-head h2{
-  margin:0;
-  font-size:20px;
-}
-
-.backbtn{
-  background:#111;
-  color:#fff;
-  border:0;
-  border-radius:10px;
-  padding:9px 12px;
-  font-weight:700;
+  margin:
+    18px 2px 10px;
 }
 
 .chapter{
@@ -152,733 +167,145 @@ body{
   overflow:hidden;
 }
 
-.chapter-head{
-  padding:15px;
-  border-bottom:1px solid #eee;
+.chHead{
+  padding:16px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #f7fbff,
+      #faf8ff
+    );
+
+  border-bottom:
+    1px solid #e7edf5;
 }
 
-.chapter-title{
-  font-size:17px;
-  font-weight:800;
+.chTitle{
+  font-size:18px;
+  font-weight:900;
   line-height:1.5;
 }
 
 .badge{
   display:inline-block;
-  margin-top:7px;
-  padding:4px 8px;
-  border-radius:8px;
-  background:#f0f0f0;
-  color:#555;
-  font-size:11px;
-  font-weight:700;
-}
 
-.lessons{
-  padding:7px;
+  margin-top:7px;
+
+  padding:5px 9px;
+
+  border-radius:999px;
+
+  background:#eef2f6;
+
+  color:#667085;
+
+  font-size:11px;
 }
 
 .lesson{
   display:flex;
+
   align-items:center;
-  gap:10px;
+
+  gap:9px;
+
   padding:12px;
-  border-radius:12px;
+
+  border-bottom:
+    1px solid #eef2f6;
+
   cursor:pointer;
 }
 
+.lesson:last-child{
+  border-bottom:0;
+}
+
 .lesson:active{
-  background:#f5f5f5;
+  background:#f7fbff;
 }
 
 .num{
-  width:34px;
-  height:34px;
-  border-radius:50%;
-  background:#111;
+  width:36px;
+  height:36px;
+
+  border-radius:11px;
+
+  background:#172b4d;
+
   color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:800;
+
+  display:grid;
+  place-items:center;
+
+  font-weight:900;
+
   flex:none;
 }
 
-.lesson-title{
+.lt{
   flex:1;
+
   font-size:14px;
-  line-height:1.45;
-  font-weight:600;
+
+  line-height:1.5;
+}
+
+.done{
+  color:#198754;
+
+  font-size:12px;
+
+  font-weight:800;
+
+  margin-top:3px;
 }
 
 .arrow{
-  font-size:22px;
-  color:#777;
-}
-
-.empty{
-  padding:18px;
-  text-align:center;
-  color:#777;
-}
-
-.hidden{
-  display:none;
-}
-
-@media(max-width:520px){
-
-  .subjects{
-    grid-template-columns:1fr;
-  }
-
-}
-/* =========================================================
-   AADYA SUBJECTS — PREMIUM UNIVERSAL UI
-   ALL CLASSES • ALL SUBJECTS • ALL CHAPTERS
-   CSS ONLY — CONTENT / JS / LINKS UNTOUCHED
-========================================================= */
-
-body{
-  background:
-    linear-gradient(
-      180deg,
-      #eef7ff 0%,
-      #f9fbff 48%,
-      #f2f5fa 100%
-    ) !important;
-  color:#172b4d !important;
-}
-
-/* ---------- HEADER ---------- */
-
-.top{
-  background:
-    linear-gradient(
-      135deg,
-      #101820 0%,
-      #17345f 55%,
-      #274d78 100%
-    ) !important;
-
-  padding:12px 12px 21px !important;
-  box-shadow:0 8px 25px rgba(16,24,40,.20);
-  overflow:hidden;
-}
-
-.top::before{
-  content:"";
-  display:block;
-
-  width:min(100%,760px);
-  aspect-ratio:3 / 1;
-
-  margin:0 auto 14px;
-
-  border-radius:17px;
-
-  background:
-    url("./assets/logo/aadya-home-banner.png")
-    center/cover no-repeat;
-
-  box-shadow:
-    0 8px 24px rgba(0,0,0,.22);
-}
-
-.toprow{
-  max-width:900px;
-  margin:auto;
-}
-
-.brand{
-  font-size:clamp(21px,5vw,28px) !important;
-  font-weight:900 !important;
-  letter-spacing:-.3px;
-}
-
-.sub{
-  color:rgba(255,255,255,.80) !important;
-  font-size:14px !important;
-  font-weight:600;
-  margin-top:4px !important;
-}
-
-.btn{
-  border-radius:13px !important;
-  padding:11px 16px !important;
-
-  background:#fff !important;
-  color:#172b4d !important;
-
-  font-weight:900 !important;
-
-  box-shadow:
-    0 5px 14px rgba(0,0,0,.14);
-}
-
-/* ---------- PAGE ---------- */
-
-.wrap{
-  max-width:900px !important;
-  padding:18px 14px 45px !important;
-}
-
-/* ---------- INTRO ---------- */
-
-.intro{
-  position:relative;
-  overflow:hidden;
-
-  padding:21px 21px 21px 25px !important;
-
-  border-radius:22px !important;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ffffff,
-      #f5fbff
-    ) !important;
-
-  border:1px solid #dfeaf4;
-
-  box-shadow:
-    0 8px 25px rgba(39,77,120,.09) !important;
-}
-
-.intro::before{
-  content:"";
-
-  position:absolute;
-  left:0;
-  top:0;
-  bottom:0;
-
-  width:6px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #45c7e8,
-      #6976e8,
-      #9a55df
-    );
-}
-
-.intro h1{
-  font-size:
-    clamp(25px,6vw,32px) !important;
-
-  font-weight:900 !important;
-  line-height:1.3 !important;
-
-  color:#172b4d !important;
-}
-
-.muted{
-  color:#68768a !important;
-  font-size:15px !important;
-  line-height:1.6 !important;
-}
-
-/* ---------- SUBJECT CARDS ---------- */
-
-.subjects{
-  gap:14px !important;
-}
-
-.subject-card{
-  position:relative;
-  overflow:hidden;
-
-  min-height:145px;
-
-  padding:19px !important;
-
-  border-radius:22px !important;
-
-  border:1px solid rgba(255,255,255,.9);
-
-  box-shadow:
-    0 8px 25px rgba(39,77,120,.09) !important;
-
-  transition:
-    transform .18s ease,
-    box-shadow .18s ease;
-}
-
-.subject-card::after{
-  content:"→";
-
-  position:absolute;
-
-  right:16px;
-  bottom:15px;
-
-  width:40px;
-  height:40px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  width:34px;
+  height:34px;
 
   border-radius:50%;
 
-  background:
-    linear-gradient(
-      135deg,
-      #2d82df,
-      #2568c8
-    );
+  background:#f0f4f8;
 
-  color:#fff;
+  display:grid;
+  place-items:center;
 
   font-size:22px;
-  font-weight:900;
-
-  box-shadow:
-    0 6px 14px rgba(43,130,223,.22);
 }
-
-/* Automatic rotating pastel themes */
-.subject-card:nth-child(4n+1){
-  background:
-    linear-gradient(135deg,#eaf8ff,#fafdff) !important;
-  border-top:4px solid #42bfe4;
-}
-
-.subject-card:nth-child(4n+2){
-  background:
-    linear-gradient(135deg,#fff0f7,#fffaff) !important;
-  border-top:4px solid #e65b9a;
-}
-
-.subject-card:nth-child(4n+3){
-  background:
-    linear-gradient(135deg,#ebfff5,#fafffd) !important;
-  border-top:4px solid #20b777;
-}
-
-.subject-card:nth-child(4n+4){
-  background:
-    linear-gradient(135deg,#f1efff,#fbfaff) !important;
-  border-top:4px solid #8650dc;
-}
-
-.subject-card:active{
-  transform:scale(.985);
-}
-
-.subject-icon{
-  width:52px;
-  height:52px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border-radius:16px;
-
-  background:
-    rgba(255,255,255,.75);
-
-  font-size:30px;
-
-  box-shadow:
-    0 5px 14px rgba(39,77,120,.08);
-}
-
-.subject-name{
-  margin-top:12px !important;
-
-  font-size:22px !important;
-  font-weight:900 !important;
-
-  color:#172b4d !important;
-}
-
-.subject-count{
-  margin-top:6px !important;
-
-  color:#68768a !important;
-
-  font-size:13px !important;
-  font-weight:600;
-}
-
-/* ---------- SUBJECT / CHAPTER HEADER ---------- */
-
-.panel-head{
-  margin:
-    7px 2px 13px !important;
-}
-
-.panel-head h2{
-  font-size:22px !important;
-  font-weight:900 !important;
-  color:#172b4d !important;
-}
-
-.backbtn{
-  border-radius:13px !important;
-  padding:10px 14px !important;
-
-  background:#111 !important;
-  color:#fff !important;
-
-  font-weight:900 !important;
-
-  box-shadow:
-    0 5px 14px rgba(0,0,0,.15);
-}
-
-/* ---------- CHAPTER ---------- */
-
-.chapter{
-  position:relative;
-  overflow:hidden;
-
-  margin:13px 0 19px !important;
-
-  border-radius:22px !important;
-
-  border:1px solid #e3ebf4 !important;
-
-  box-shadow:
-    0 8px 25px rgba(39,77,120,.09) !important;
-}
-
-.chapter::before{
-  content:"";
-
-  position:absolute;
-
-  left:0;
-  top:0;
-  bottom:0;
-
-  width:5px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #45c7e8,
-      #6976e8,
-      #9a55df
-    );
-}
-
-.chapter:nth-child(4n+2)::before{
-  background:
-    linear-gradient(
-      180deg,
-      #ff8a65,
-      #ff4f81,
-      #a855d8
-    );
-}
-
-.chapter:nth-child(4n+3)::before{
-  background:
-    linear-gradient(
-      180deg,
-      #20c997,
-      #29a3e8,
-      #5965e8
-    );
-}
-
-.chapter:nth-child(4n+4)::before{
-  background:
-    linear-gradient(
-      180deg,
-      #f5c542,
-      #f28b30,
-      #e95787
-    );
-}
-
-.chapter-head{
-  padding:
-    17px 17px 15px 22px !important;
-
-  background:
-    linear-gradient(
-      90deg,
-      #f5fbff,
-      #faf8ff
-    ) !important;
-
-  border-bottom:
-    1px solid #edf1f6 !important;
-}
-
-.chapter-title{
-  font-size:18px !important;
-  font-weight:900 !important;
-  line-height:1.5 !important;
-
-  color:#172b4d !important;
-}
-
-.badge{
-  margin-top:9px !important;
-
-  padding:6px 10px !important;
-
-  border-radius:999px !important;
-
-  background:#f0f3f7 !important;
-  color:#5d6978 !important;
-
-  font-size:11px !important;
-  font-weight:800 !important;
-}
-
-/* ---------- LESSONS ---------- */
-
-.lessons{
-  padding:7px 8px 9px !important;
-}
-
-.lesson{
-  min-height:58px;
-
-  padding:12px 9px !important;
-
-  border-radius:14px !important;
-
-  transition:
-    background .16s ease,
-    transform .16s ease;
-}
-
-.lesson + .lesson{
-  border-top:
-    1px solid #eef2f6 !important;
-}
-
-.lesson:active{
-  background:#f5faff !important;
-  transform:scale(.992);
-}
-
-/* Lesson number */
-
-.num{
-  width:38px !important;
-  height:38px !important;
-
-  border-radius:12px !important;
-
-  background:
-    linear-gradient(
-      135deg,
-      #172b4d,
-      #315f8f
-    ) !important;
-
-  color:#fff !important;
-
-  font-weight:900 !important;
-
-  box-shadow:
-    0 4px 10px rgba(23,43,77,.18);
-}
-
-/* Lesson title */
-
-.lesson-title{
-  font-size:15px !important;
-  line-height:1.5 !important;
-
-  font-weight:700 !important;
-
-  color:#27364d !important;
-}
-
-/* Arrow */
-
-.arrow{
-  width:32px !important;
-  height:32px !important;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border-radius:50% !important;
-
-  background:#f2f5f8 !important;
-
-  color:#637287 !important;
-
-  font-size:24px !important;
-}
-
-/* ---------- EMPTY ---------- */
 
 .empty{
-  padding:22px 18px !important;
+  padding:20px;
 
-  border-radius:18px !important;
+  text-align:center;
 
-  color:#718096 !important;
+  color:#718096;
 
-  background:#f7f9fc !important;
+  background:#f8fafc;
+
+  border-radius:15px;
+
+  line-height:1.6;
 }
-
-/* ---------- MOBILE ---------- */
 
 @media(max-width:600px){
 
-  .top{
-    padding:10px 10px 19px !important;
-  }
-
-  .top::before{
-    width:100%;
-    aspect-ratio:3 / 1;
-
-    margin-bottom:12px;
-
-    border-radius:14px;
-  }
-
   .brand{
-    font-size:20px !important;
-  }
-
-  .sub{
-    font-size:13px !important;
-  }
-
-  .wrap{
-    padding:15px 12px 32px !important;
-  }
-
-  .intro{
-    padding:
-      19px 18px 18px 21px !important;
-
-    border-radius:20px !important;
-  }
-
-  .intro h1{
-    font-size:25px !important;
-  }
-
-  .subjects{
-    grid-template-columns:
-      1fr 1fr !important;
-
-    gap:11px !important;
-  }
-
-  .subject-card{
-    min-height:139px;
-    padding:15px !important;
-    border-radius:19px !important;
-  }
-
-  .subject-icon{
-    width:45px;
-    height:45px;
-    font-size:26px;
-    border-radius:14px;
-  }
-
-  .subject-name{
-    font-size:19px !important;
-    margin-top:10px !important;
-  }
-
-  .subject-count{
-    font-size:11.5px !important;
-  }
-
-  .subject-card::after{
-    width:34px;
-    height:34px;
-
-    right:12px;
-    bottom:12px;
-
     font-size:19px;
   }
 
-  .panel-head h2{
-    font-size:20px !important;
+  .intro h1{
+    font-size:24px;
   }
 
-  .backbtn{
-    padding:9px 12px !important;
+  .lt{
     font-size:13px;
-  }
-
-  .chapter{
-    border-radius:20px !important;
-    margin-bottom:16px !important;
-  }
-
-  .chapter-head{
-    padding:
-      16px 14px 14px 20px !important;
-  }
-
-  .chapter-title{
-    font-size:17px !important;
-  }
-
-  .lesson{
-    gap:9px;
-    padding:11px 7px !important;
-  }
-
-  .num{
-    width:36px !important;
-    height:36px !important;
-  }
-
-  .lesson-title{
-    font-size:14px !important;
-  }
-
-  .arrow{
-    width:29px !important;
-    height:29px !important;
-    font-size:21px !important;
   }
 
 }
 
-@media(max-width:380px){
-
-  .subjects{
-    grid-template-columns:1fr !important;
-  }
-
-  .subject-card{
-    min-height:125px;
-  }
-
-  .chapter-title{
-    font-size:16px !important;
-  }
-
-  .lesson-title{
-    font-size:13.5px !important;
-  }
-
-  }
-  @media(max-width:600px){
-
-  .subjects:has(.subject-card:only-child){
-    grid-template-columns:1fr !important;
-  }
-
-  }
-  
 </style>
 
 </head>
@@ -887,26 +314,28 @@ body{
 
 <header class="top">
 
-  <div class="toprow">
+  <div class="row">
 
     <div>
 
       <div class="brand">
-        AADYA Digital Teacher
+        📚 मेरे विषय
       </div>
 
-      <div class="sub">
-        📚 मेरे विषय
+      <div
+        class="sub"
+        id="sub"
+      >
+        AADYA Digital Teacher
       </div>
 
     </div>
 
     <button
-      class="btn"
-      onclick="location.href='./index.html'">
-
+      class="btn home"
+      onclick="location.href='./index.html'"
+    >
       ⌂ होम
-
     </button>
 
   </div>
@@ -916,382 +345,486 @@ body{
 
 <main class="wrap">
 
+
 <section class="intro">
 
   <h1>
-    📚 मेरे विषय
+    📚 विषय चुनें
   </h1>
 
-  <div
-    class="muted"
-    id="introText">
-
-    आपकी चुनी हुई कक्षा के सभी उपलब्ध विषय यहाँ दिखाई देंगे।
-
+  <div class="muted">
+    पहले विषय चुनिए। उसके बाद उसी विषय के
+    अध्याय और सभी Lessons दिखाई देंगे।
   </div>
 
 </section>
 
 
-<section id="subjectView">
+<section class="selectBox">
 
-  <div
-    id="subjects"
-    class="subjects">
+  <label for="subjectSelect">
+    📘 विषय
+  </label>
 
+  <select
+    id="subjectSelect"
+    class="select"
+  >
+
+    <option value="">
+      विषय चुनें…
+    </option>
+
+  </select>
+
+</section>
+
+
+<section id="content">
+
+  <div class="empty">
+    ऊपर से कोई विषय चुनिए।
   </div>
 
 </section>
 
-
-<section
-  id="chapterView"
-  class="hidden">
-
-  <div class="panel-head">
-
-    <h2 id="subjectTitle"></h2>
-
-    <button
-      class="backbtn"
-      onclick="showSubjects()">
-
-      ← विषय
-
-    </button>
-
-  </div>
-
-  <div id="chapters"></div>
-
-</section>
 
 </main>
 
 
+<script src="./js/aadya-core.js"></script>
+
+
 <script>
 
-const PROFILE_KEY =
-  "aadya_student_profile_v1";
-
-let cls="6";
-let data=null;
+"use strict";
 
 
-function esc(v){
+let cls =
+  AADYA.getClass();
 
-  return String(v ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+let data =
+  null;
 
-}
+let subjects =
+  {};
 
 
-function profile(){
-
-  try{
-
-    return JSON.parse(
-      localStorage.getItem(PROFILE_KEY) || "{}"
-    );
-
-  }catch(e){
-
-    return {};
-
-  }
-
-}
+const $ =
+  id =>
+    document.getElementById(id);
 
 
-function curriculumUrl(c){
-
-  if(String(c)==="7")
-    return "./data/curriculum-class7.json";
-
-  if(String(c)==="8")
-    return "./data/curriculum-class8.json";
-
-  return "./data/curriculum.json";
-
-}
+const esc =
+  AADYA.esc;
 
 
-function classData(){
+/* =====================================================
+   SUBJECT DROPDOWN
+===================================================== */
 
-  return data?.classes?.["class"+cls] || null;
+function renderSubjects(
+  selected
+){
 
-}
-
-
-function totalLessons(subject){
-
-  return (subject?.chapters || [])
-    .reduce(
-      (n,c)=>
-        n+(c.lessons || []).length,
-      0
-    );
-
-}
-
-
-async function init(){
-
-  const p=profile();
-
-  cls=String(p.class || 6);
-
-  document.getElementById("introText")
-    .textContent =
-      (p.name
-        ? "नमस्ते, "+p.name+"! "
-        : "")+
-      "कक्षा "+cls+
-      " के सभी विषय यहाँ देखें।";
+  const allSubjects =
+    AADYA
+      .classData(
+        data,
+        cls
+      )
+      ?.subjects ||
+    {};
 
 
-  try{
-
-    const response =
-      await fetch(
-        curriculumUrl(cls)+
-        "?v="+Date.now()
-      );
-
-    data=await response.json();
-
-    renderSubjects();
-
-  }catch(error){
-
-    document.getElementById("subjects")
-      .innerHTML =
-      '<div class="empty">'+
-      '⚠️ Curriculum लोड नहीं हो पाया।'+
-      '</div>';
-
-  }
-
-}
+  subjects =
+    allSubjects;
 
 
-function renderSubjects(){
-
-  const subjects =
-    classData()?.subjects || {};
-
-  let html="";
+  const select =
+    $("subjectSelect");
 
 
-  Object.keys(subjects)
-    .forEach(function(key){
+  select.innerHTML =
+    '<option value="">विषय चुनें…</option>' +
 
-      const subject =
-        subjects[key];
+    Object.entries(
+      allSubjects
+    )
+    .map(
+      function(entry){
 
-      html +=
-        '<div class="subject-card" '+
-        'data-key="'+
-        esc(key)+
-        '">'+
+        const key =
+          entry[0];
 
-        '<div class="subject-icon">📘</div>'+
+        const subject =
+          entry[1];
 
-        '<div class="subject-name">'+
-        esc(subject.name || key)+
-        '</div>'+
+        return (
 
-        '<div class="subject-count">'+
-        totalLessons(subject)+
-        ' Lessons • '+
-        (subject.chapters || []).length+
-        ' अध्याय'+
-        '</div>'+
+          '<option value="' +
+          esc(key) +
+          '">' +
 
-        '</div>';
+          esc(
+            subject.name ||
+            key
+          ) +
 
-    });
+          '</option>'
 
-
-  document.getElementById("subjects")
-    .innerHTML =
-      html ||
-      '<div class="empty">'+
-      'अभी कोई विषय उपलब्ध नहीं है।'+
-      '</div>';
-
-
-  document
-    .querySelectorAll(".subject-card")
-    .forEach(function(card){
-
-      card.onclick=function(){
-
-        showSubject(
-          card.dataset.key
         );
 
-      };
+      }
+    )
+    .join("");
 
-    });
+
+  if(
+    selected &&
+    allSubjects[selected]
+  ){
+
+    select.value =
+      selected;
+
+    renderSubject(
+      selected
+    );
+
+  }
 
 }
 
 
-function showSubject(key){
+/* =====================================================
+   RENDER SUBJECT
+===================================================== */
+
+function renderSubject(
+  key
+){
 
   const subject =
-    classData()?.subjects?.[key];
+    subjects[key];
 
-  if(!subject)
+
+  if(!subject){
+
+    $("content").innerHTML =
+      '<div class="empty">' +
+      'विषय चुनिए।' +
+      '</div>';
+
     return;
 
-
-  document
-    .getElementById("subjectView")
-    .classList.add("hidden");
-
-  document
-    .getElementById("chapterView")
-    .classList.remove("hidden");
+  }
 
 
-  document.getElementById("subjectTitle")
-    .textContent =
-      "📘 "+
-      (subject.name || key);
+  let html =
+
+    '<div class="subjectHeading">' +
+
+    AADYA.icon(key) +
+    ' ' +
+
+    esc(
+      subject.name ||
+      key
+    ) +
+
+    '</div>';
 
 
-  let html="";
+  const chapters =
+    subject.chapters ||
+    [];
 
 
-  (subject.chapters || [])
-    .forEach(function(chapter){
+  chapters.forEach(
+    function(chapter){
 
       html +=
-        '<section class="chapter">'+
 
-        '<div class="chapter-head">'+
+        '<section class="chapter">' +
 
-        '<div class="chapter-title">'+
-        'अध्याय '+
-        esc(chapter.number)+
-        ' — '+
-        esc(chapter.title || "")+
+        '<div class="chHead">' +
+
+        '<div class="chTitle">' +
+
+        'अध्याय ' +
+
+        esc(
+          chapter.number
+        ) +
+
+        ' — ' +
+
+        esc(
+          chapter.title ||
+          ""
+        ) +
+
         '</div>';
 
 
-      if(chapter.source){
+      if(
+        chapter.source
+      ){
 
         html +=
-          '<span class="badge">'+
+
+          '<span class="badge">' +
+
           (
-            chapter.source==="textbook"
-              ? "📖 पाठ्यपुस्तक आधारित"
-              : "✨ AADYA विशेष पाठ"
-          )+
+            chapter.source ===
+            "textbook"
+
+              ?
+
+            "📖 पाठ्यपुस्तक आधारित"
+
+              :
+
+            "✨ AADYA विशेष पाठ"
+
+          ) +
+
           '</span>';
 
       }
 
 
       html +=
-        '</div>'+
 
-        '<div class="lessons">';
+        '</div>';
 
 
       const lessons =
-        chapter.lessons || [];
+        chapter.lessons ||
+        [];
 
 
-      if(!lessons.length){
+      if(
+        !lessons.length
+      ){
 
         html +=
-          '<div class="empty">'+
-          'इस अध्याय के पाठ जल्द उपलब्ध होंगे।'+
+
+          '<div class="empty">' +
+
+          'इस अध्याय के Lessons ' +
+          'जल्द उपलब्ध होंगे।' +
+
           '</div>';
 
       }
 
 
-      lessons.forEach(function(lesson){
+      lessons.forEach(
+        function(lesson){
 
-        html +=
-          '<div class="lesson" '+
-          'data-file="'+
-          esc(lesson.file || "")+
-          '">'+
+          const done =
+            AADYA.isDone(
+              lesson.file
+            );
 
-          '<div class="num">'+
-          esc(lesson.number)+
-          '</div>'+
 
-          '<div class="lesson-title">'+
-          esc(
-            lesson.title ||
-            ("पाठ "+lesson.number)
-          )+
-          '</div>'+
+          html +=
 
-          '<div class="arrow">›</div>'+
+            '<div ' +
 
-          '</div>';
+            'class="lesson" ' +
 
-      });
+            'data-file="' +
+
+            esc(
+              lesson.file ||
+              ""
+            ) +
+
+            '">' +
+
+            '<div class="num">' +
+
+            esc(
+              lesson.number
+            ) +
+
+            '</div>' +
+
+            '<div class="lt">' +
+
+            '<div>' +
+
+            esc(
+              lesson.title ||
+              (
+                "पाठ " +
+                lesson.number
+              )
+            ) +
+
+            '</div>' +
+
+            (
+              done
+
+                ?
+
+              '<div class="done">' +
+              '✅ पूरा किया' +
+              '</div>'
+
+                :
+
+              ''
+
+            ) +
+
+            '</div>' +
+
+            '<div class="arrow">' +
+            '›' +
+            '</div>' +
+
+            '</div>';
+
+        }
+      );
 
 
       html +=
-        '</div>'+
         '</section>';
 
-    });
+    }
+  );
 
 
-  document.getElementById("chapters")
-    .innerHTML =
-      html ||
-      '<div class="empty">'+
-      'इस विषय में अभी पाठ उपलब्ध नहीं हैं।'+
-      '</div>';
+  $("content").innerHTML =
+    html ||
+
+    '<div class="empty">' +
+    'इस विषय में अभी Lessons उपलब्ध नहीं हैं।' +
+    '</div>';
 
 
-  document
-    .querySelectorAll("#chapters .lesson")
-    .forEach(function(item){
+  $("content")
+    .querySelectorAll(
+      ".lesson"
+    )
+    .forEach(
+      function(item){
 
-      item.onclick=function(){
+        item.onclick =
+          function(){
 
-        const file =
-          item.dataset.file;
+            const file =
+              item.dataset.file;
 
-        if(!file)
-          return;
+            if(file){
 
-        location.href =
-          "./learning.html?lesson="+
-          encodeURIComponent(file);
+              AADYA.goLesson(
+                file
+              );
 
-      };
+            }
 
-    });
+          };
+
+      }
+    );
 
 }
 
 
-function showSubjects(){
+/* =====================================================
+   DROPDOWN CHANGE
+===================================================== */
 
-  document
-    .getElementById("chapterView")
-    .classList.add("hidden");
+$("subjectSelect")
+  .onchange =
+  function(event){
 
-  document
-    .getElementById("subjectView")
-    .classList.remove("hidden");
+    const key =
+      event.target.value;
+
+
+    if(key){
+
+      history.replaceState(
+        null,
+        "",
+        "./subjects.html?class=" +
+        cls +
+        "&subject=" +
+        encodeURIComponent(
+          key
+        )
+      );
+
+
+      renderSubject(
+        key
+      );
+
+    }
+    else{
+
+      $("content").innerHTML =
+        '<div class="empty">' +
+        'ऊपर से कोई विषय चुनिए।' +
+        '</div>';
+
+    }
+
+  };
+
+
+/* =====================================================
+   INIT
+===================================================== */
+
+async function init(){
+
+  try{
+
+    data =
+      await AADYA.loadCurriculum(
+        cls
+      );
+
+
+    $("sub").textContent =
+      "कक्षा " +
+      cls +
+      " · विषय चुनें";
+
+
+    const selected =
+      new URLSearchParams(
+        location.search
+      ).get("subject");
+
+
+    renderSubjects(
+      selected
+    );
+
+
+  }catch(error){
+
+    console.error(
+      error
+    );
+
+
+    $("content").innerHTML =
+      '<div class="empty">' +
+      '⚠️ Curriculum लोड नहीं हो पाया।' +
+      '</div>';
+
+  }
 
 }
 
@@ -1301,4 +834,5 @@ init();
 </script>
 
 </body>
+
 </html>
