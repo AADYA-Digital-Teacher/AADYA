@@ -616,45 +616,71 @@
         },
 
         "geography": {
-          "name": "भूगोल",
-          "chapters": [
-            {
-              "number": 1,
-              "book_number": 1,
-              "title": "हमारा सौरमंडल",
-              "source": "textbook",
-              "lessons": [
-                {
-                  "number": 1,
-                  "title": "हमारा सौरमंडल",
-                  "file": "./content/class6/geography/chapter01/lesson01.json"
-                },
-                {
-                  "number": 2,
-                  "title": "सौरमंडल में पृथ्वी, बिग-बैंग और सौरमंडल की उत्पत्ति",
-                  "file": "./content/class6/geography/chapter01/lesson02.json"
-                }
-              ]
-            },
-            {
-              "number": 2,
-              "book_number": 2,
-              "title": "पृथ्वी और चंद्रमा",
-              "source": "textbook",
-              "lessons": [
-                {
-                  "number": 1,
-                  "title": "पृथ्वी और चंद्रमा, चंद्रमा की कलाएं",
-                  "file": "./content/class6/geography/chapter02/lesson01.json"
-                },
-                {
-                  "number": 2,
-                  "title": "सूर्य ग्रहण व चंद्र ग्रहण",
-                  "file": "./content/class6/geography/chapter02/lesson02.json"
-                }
-              ]
-            }
-          ]
+  "name": "भूगोल",
+  "chapters": [
+    {
+      "number": 1,
+      "book_number": 1,
+      "title": "हमारा सौरमंडल",
+      "source": "textbook",
+      "lessons": [
+        {
+          "number": 1,
+          "title": "हमारा सौरमंडल",
+          "file": "./content/class6/geography/chapter01/lesson01.json"
+        },
+        {
+          "number": 2,
+          "title": "सौरमंडल में पृथ्वी, बिग-बैंग और सौरमंडल की उत्पत्ति",
+          "file": "./content/class6/geography/chapter01/lesson02.json"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "book_number": 2,
+      "title": "पृथ्वी और चंद्रमा",
+      "source": "textbook",
+      "lessons": [
+        {
+          "number": 1,
+          "title": "पृथ्वी और चंद्रमा, चंद्रमा की कलाएं",
+          "file": "./content/class6/geography/chapter02/lesson01.json"
+        },
+        {
+          "number": 2,
+          "title": "सूर्य ग्रहण व चंद्र ग्रहण",
+          "file": "./content/class6/geography/chapter02/lesson02.json"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "book_number": 3,
+      "title": "ग्लोब अक्षांश व देशांतर : स्थानीय",
+      "source": "textbook",
+      "lessons": [
+        {
+          "number": 1,
+          "title": "स्थानीय समय मानक समय एवं अंतर्राष्ट्रीय तिथि रेखा",
+          "file": "./content/class6/geography/chapter03/lesson01.json"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "book_number": 4,
+      "title": "पृथ्वी की गतियां एवं उसका प्रभाव",
+      "source": "textbook",
+      "lessons": [
+        {
+          "number": 1,
+          "title": "परिभ्रमण एवं परिक्रमण",
+          "file": "./content/class6/geography/chapter04/lesson01.json"
+        }
+      ]
+    }
+  ]
         }
       }
     }
