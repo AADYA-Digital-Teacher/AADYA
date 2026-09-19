@@ -133,7 +133,63 @@
      URL ?class=7 gets priority
      otherwise profile class
   ===================================================== */
+A.getClass = function () {
 
+  try {
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+    const fromUrl =
+      params.get("class");
+
+    if (fromUrl) {
+
+      const n =
+        Number(fromUrl);
+
+      if (
+        Number.isInteger(n) &&
+        n > 0
+      ) {
+
+        return n;
+
+      }
+
+    }
+
+  }
+  catch (error) {
+
+    console.warn(
+      "Class URL read error:",
+      error
+    );
+
+  }
+
+
+  const profile =
+    A.profile();
+
+
+  const n =
+    Number(
+      profile.class
+    );
+
+
+  return (
+    Number.isInteger(n) &&
+    n > 0
+  )
+    ? n
+    : 6;
+
+};
   A.goLesson = function (
   file
 ) {
