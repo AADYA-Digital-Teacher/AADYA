@@ -134,37 +134,56 @@
      otherwise profile class
   ===================================================== */
 
-  A.getClass = function () {
+  A.goLesson = function (
+  file
+) {
 
-    const params =
-      new URLSearchParams(
-        window.location.search
-      );
+  if (!file) {
+    return;
+  }
 
-    const queryClass =
-      Number(
-        params.get("class")
-      );
+  /*
+   * जिस page से Lesson खोला गया है,
+   * उसका exact URL साथ लेकर जाएँ।
+   *
+   * उदाहरण:
+   * subjects.html?class=6&subject=geography
+   *
+   * Lesson से "वापस" दबाने पर
+   * वही Subject + Chapter + Lesson list खुलेगी।
+   */
 
-    const profile =
-      A.profile();
+  let from = "";
 
-    const profileClass =
-      Number(profile.class);
+  try {
 
-    const n =
-      queryClass ||
-      profileClass ||
-      6;
+    from =
+      window.location.pathname +
+      window.location.search +
+      window.location.hash;
 
-    return (
-      Number.isFinite(n) &&
-      n > 0
-    )
-      ? n
-      : 6;
+  }
+  catch (error) {
 
-  };
+    from = "";
+
+  }
+
+  let url =
+    A.lessonUrl(file);
+
+  if (from) {
+
+    url +=
+      "&from=" +
+      encodeURIComponent(from);
+
+  }
+
+  window.location.href =
+    url;
+
+};
 
 
   /* =====================================================
