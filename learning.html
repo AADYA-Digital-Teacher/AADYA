@@ -1721,7 +1721,7 @@ body{
   class="home-btn"
   onclick="goHome()"
 >
-  ← होम पर जाएँ
+  ← वापस जाएँ
 </button>
 
 <button
@@ -4772,31 +4772,77 @@ window.toggleSaveLesson =
 function goHome(){
 
   /*
-   * Lesson जिस page से खोला गया है,
-   * पहले उसी page पर एक step वापस जाएँ।
+   * Lesson जिस page से खोला गया था,
+   * पहले उसी exact page पर वापस जाएँ।
    *
    * उदाहरण:
-   * Home → विषय → अध्याय/Lessons → Lesson
-   *                         ↑
-   *                  यहाँ वापस आएगा
+   * subjects.html?class=6&subject=geography
    *
-   * यदि Lesson सीधे खोला गया हो या browser history उपलब्ध
-   * न हो, तभी Home fallback रहेगा।
+   * इससे Subject dropdown की स्थिति भी बनी रहेगी।
    */
 
-  try{
+  try {
 
-    const referrer =
-      document.referrer || "";
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
 
-    const sameOrigin =
-      referrer &&
-      new URL(referrer).origin === window.location.origin;
+    const from =
+      params.get("from");
 
-    if(
-      sameOrigin &&
+    if (from) {
+
+      const target =
+        new URL(
+          from,
+          window.location.href
+        );
+
+      /*
+       * केवल उसी website के अंदर वापस जाने दें।
+       */
+
+      if (
+        target.origin ===
+        window.location.origin
+      ) {
+
+        window.location.href =
+          target.href;
+
+        return;
+
+      }
+
+    }
+
+  }
+  catch (error) {
+
+    console.warn(
+      "Back navigation error:",
+      error
+    );
+
+  }
+
+
+  /*
+   * पुराने/सीधे खुले Lesson के लिए
+   * browser history fallback।
+   */
+
+  try {
+
+    if (
+      document.referrer &&
+      new URL(
+        document.referrer
+      ).origin ===
+      window.location.origin &&
       window.history.length > 1
-    ){
+    ) {
 
       window.history.back();
 
@@ -4804,11 +4850,20 @@ function goHome(){
 
     }
 
-  }catch(error){
+  }
+  catch (error) {
 
-    /* fallback नीचे रहेगा */
+    console.warn(
+      "History fallback error:",
+      error
+    );
 
   }
+
+
+  /*
+   * अंतिम fallback
+   */
 
   window.location.href =
     "./index.html";
