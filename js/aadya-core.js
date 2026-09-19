@@ -765,20 +765,6 @@ A.getClass = function () {
   };
 
 
-  A.goLesson = function (
-    file
-  ) {
-
-    if (file) {
-
-      window.location.href =
-        A.lessonUrl(file);
-
-    }
-
-  };
-
-
   /* =====================================================
      UNIVERSAL ANSWER NORMALIZER
   ===================================================== */
