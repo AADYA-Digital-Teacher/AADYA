@@ -730,6 +730,60 @@
       "file": "./content/class6/geography/chapter06/lesson04.json"
     }
   ]
+},
+    {
+  "number": 7,
+  "book_number": 7,
+  "title": "विश्व में भारत",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "विश्व में भारत - स्थिति एवं विस्तार",
+      "file": "./content/class6/geography/chapter07/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "भारत के पड़ोसी देश",
+      "file": "./content/class6/geography/chapter07/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "भारत का राजनीतिक परिचय",
+      "file": "./content/class6/geography/chapter07/lesson03.json"
+    }
+  ]
+},
+{
+  "number": 8,
+  "book_number": 8,
+  "title": "भारत का भौतिक स्वरूप",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "भारत का भौतिक स्वरूप",
+      "file": "./content/class6/geography/chapter08/lesson01.json"
+    }
+  ]
+},
+{
+  "number": 9,
+  "book_number": 9,
+  "title": "भारत : जलवायु",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "भारत की जलवायु",
+      "file": "./content/class6/geography/chapter09/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "मौसम व ऋतुएं तथा मानसूनी पवनें",
+      "file": "./content/class6/geography/chapter09/lesson02.json"
+    }
+  ]
 }
   ]
         }
