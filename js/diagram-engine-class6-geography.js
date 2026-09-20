@@ -175,21 +175,19 @@
 
 
     /*
-     * Class 6 Geography
-     *
-     * अब Chapter 1–4 तक
-     * automatic PNG support।
-     */
+ * Class 6 Geography
+ *
+ * Chapter 1–12 तक
+ * automatic PNG support।
+ */
 
-    if (
-      target.chapter < 1 ||
-      target.chapter > 4 ||
-      target.lesson < 1
-    ) {
-
-      return;
-
-    }
+if (
+  target.chapter < 1 ||
+  target.chapter > 12 ||
+  target.lesson < 1
+) {
+  return;
+}
 
 
     const fileName =
