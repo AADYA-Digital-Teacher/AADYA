@@ -679,7 +679,58 @@
           "file": "./content/class6/geography/chapter04/lesson01.json"
         }
       ]
+    },
+    {
+  "number": 5,
+  "book_number": 5,
+  "title": "मानचित्रण",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "मानचित्रण, मानचित्र के प्रकार",
+      "file": "./content/class6/geography/chapter05/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "मानचित्र के घटक, दिशाएं व पैमाने का प्रयोग",
+      "file": "./content/class6/geography/chapter05/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "भौगोलिक सूचना प्रणाली",
+      "file": "./content/class6/geography/chapter05/lesson03.json"
     }
+  ]
+},
+{
+  "number": 6,
+  "book_number": 6,
+  "title": "पृथ्वी के परिमण्डल",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "स्थलमण्डल",
+      "file": "./content/class6/geography/chapter06/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "वायुमण्डल",
+      "file": "./content/class6/geography/chapter06/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "जलमण्डल",
+      "file": "./content/class6/geography/chapter06/lesson03.json"
+    },
+    {
+      "number": 4,
+      "title": "जैवमण्डल एवं पर्यावरणीय समस्याएं",
+      "file": "./content/class6/geography/chapter06/lesson04.json"
+    }
+  ]
+}
   ]
         }
       }
