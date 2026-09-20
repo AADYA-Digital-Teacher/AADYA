@@ -784,6 +784,55 @@
       "file": "./content/class6/geography/chapter09/lesson02.json"
     }
   ]
+},
+    {
+  "number": 10,
+  "book_number": 10,
+  "title": "भारत : मृदा, वनस्पति एवं वन्य जीव",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "भारत की मृदा",
+      "file": "./content/class6/geography/chapter10/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "भारत की वनस्पति",
+      "file": "./content/class6/geography/chapter10/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "भारत के वन्य जीव",
+      "file": "./content/class6/geography/chapter10/lesson03.json"
+    }
+  ]
+},
+{
+  "number": 11,
+  "book_number": 11,
+  "title": "हमारा प्रदेश : उत्तरप्रदेश",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "उत्तरप्रदेश",
+      "file": "./content/class6/geography/chapter11/lesson01.json"
+    }
+  ]
+},
+{
+  "number": 12,
+  "book_number": 12,
+  "title": "पुनरावृत्ति",
+  "source": "custom",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "पुनरावृत्ति (सभी अध्यायों के मुख्य बिंदु)",
+      "file": "./content/class6/geography/chapter12/lesson01.json"
+    }
+  ]
 }
   ]
         }
