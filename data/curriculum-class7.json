@@ -580,6 +580,58 @@
       "file": "./content/class7/geography/chapter08/lesson01.json"
     }
   ]
+},
+    {
+  "number": 9,
+  "book_number": 9,
+  "title": "प्राकृतिक प्रदेश एवं जनजीवन : सवाना प्रदेश",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "सवाना प्रदेश",
+      "file": "./content/class7/geography/chapter09/lesson01.json"
+    }
+  ]
+},
+{
+  "number": 10,
+  "book_number": 10,
+  "title": "प्राकृतिक प्रदेश एवं जनजीवन : मरुस्थल",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "मरुस्थल",
+      "file": "./content/class7/geography/chapter10/lesson01.json"
+    }
+  ]
+},
+{
+  "number": 11,
+  "book_number": 11,
+  "title": "प्राकृतिक प्रदेश एवं जनजीवन : टैगा एवं टुंड्रा",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "टैगा एवं टुंड्रा",
+      "file": "./content/class7/geography/chapter11/lesson01.json"
+    }
+  ]
+},
+{
+  "number": 12,
+  "book_number": 12,
+  "title": "पुनरावृत्ति (महत्वपूर्ण तथ्य)",
+  "source": "revision",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "महत्वपूर्ण तथ्य",
+      "file": "./content/class7/geography/chapter12/lesson01.json"
+    }
+  ]
 }
   ]
         }
