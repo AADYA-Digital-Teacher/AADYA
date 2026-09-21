@@ -438,6 +438,83 @@
       "file": "./content/class7/mathematics/textbook14/lesson04.json"
     }
   ]
+            },
+            "geography": {
+  "name": "भूगोल",
+  "chapters": [
+    {
+      "number": 1,
+      "book_number": 1,
+      "title": "पृथ्वी की आंतरिक संरचना",
+      "source": "textbook",
+      "lessons": [
+        {
+          "number": 1,
+          "title": "पृथ्वी की आंतरिक परतें, शैल एवं शैल के प्रकार",
+          "file": "./content/class7/geography/chapter01/lesson01.json"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "book_number": 2,
+      "title": "पृथ्वी के स्थलरूप",
+      "source": "textbook",
+      "lessons": [
+        {
+          "number": 1,
+          "title": "पृथ्वी के स्थलरूप",
+          "file": "./content/class7/geography/chapter02/lesson01.json"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "book_number": 3,
+      "title": "धरातल के रूप बदलने वाले कारक : आंतरिक कारक",
+      "source": "textbook",
+      "lessons": [
+        {
+          "number": 1,
+          "title": "भूकंप",
+          "file": "./content/class7/geography/chapter03/lesson01.json"
+        },
+        {
+          "number": 2,
+          "title": "ज्वालामुखी",
+          "file": "./content/class7/geography/chapter03/lesson02.json"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "book_number": 4,
+      "title": "धरातल के रूप बदलने वाले कारक : बाह्य कारक",
+      "source": "textbook",
+      "lessons": [
+        {
+          "number": 1,
+          "title": "अनाच्छादन",
+          "file": "./content/class7/geography/chapter04/lesson01.json"
+        },
+        {
+          "number": 2,
+          "title": "अपक्षय",
+          "file": "./content/class7/geography/chapter04/lesson02.json"
+        },
+        {
+          "number": 3,
+          "title": "अपरदन एवं निक्षेपण",
+          "file": "./content/class7/geography/chapter04/lesson03.json"
+        },
+        {
+          "number": 4,
+          "title": "प्रवाहित जल, भूमिगत जल, पवन, समुद्री लहरें तथा हिमानी द्वारा निर्मित भू-आकृतियाँ",
+          "file": "./content/class7/geography/chapter04/lesson04.json"
+        }
+      ]
+    }
+  ]
             }
           ]
         }
