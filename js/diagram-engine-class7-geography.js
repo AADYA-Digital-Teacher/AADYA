@@ -183,7 +183,7 @@
 
     if (
       target.chapter < 1 ||
-      target.chapter > 4 ||
+      target.chapter > 8 ||
       target.lesson < 1
     ) {
 
