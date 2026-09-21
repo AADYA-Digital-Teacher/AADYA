@@ -513,10 +513,75 @@
           "file": "./content/class7/geography/chapter04/lesson04.json"
         }
       ]
+    },
+    {
+  "number": 5,
+  "book_number": 5,
+  "title": "वायुमण्डल",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "संघटन, परतें एवं तत्व",
+      "file": "./content/class7/geography/chapter05/lesson01.json"
     }
   ]
-            }
-          ]
+},
+{
+  "number": 6,
+  "book_number": 6,
+  "title": "वायु की गतियाँ",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "पवन के प्रकार",
+      "file": "./content/class7/geography/chapter06/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "चक्रवात एवं प्रतिचक्रवात",
+      "file": "./content/class7/geography/chapter06/lesson02.json"
+    }
+  ]
+},
+{
+  "number": 7,
+  "book_number": 7,
+  "title": "समुद्र की गतियाँ",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "लहरें, ज्वार-भाटा",
+      "file": "./content/class7/geography/chapter07/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "समुद्री धाराएं",
+      "file": "./content/class7/geography/chapter07/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "सुनामी लहरें",
+      "file": "./content/class7/geography/chapter07/lesson03.json"
+    }
+  ]
+},
+{
+  "number": 8,
+  "book_number": 8,
+  "title": "प्राकृतिक प्रदेश एवं जनजीवन : विषुवतरेखीय प्रदेश",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "विषुवतरेखीय प्रदेश",
+      "file": "./content/class7/geography/chapter08/lesson01.json"
+    }
+  ]
+}
+  ]
         }
       }
     }
