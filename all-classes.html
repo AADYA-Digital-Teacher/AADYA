@@ -202,7 +202,47 @@ body{
   margin:
     20px 2px 10px;
 }
+.subject-select-box{
+  background:#fff;
 
+  border-radius:18px;
+
+  border:
+    1px solid #e4ebf3;
+
+  box-shadow:
+    0 7px 22px
+    rgba(23,43,77,.07);
+
+  padding:16px;
+
+  margin-bottom:17px;
+}
+
+.subject-select-box label{
+  display:block;
+
+  font-weight:900;
+
+  margin-bottom:8px;
+}
+
+.subject-select{
+  width:100%;
+
+  padding:13px;
+
+  border:
+    1px solid #dbe3ed;
+
+  border-radius:12px;
+
+  font-size:16px;
+
+  background:#fff;
+
+  color:#172b4d;
+}
 .chapter{
   margin:
     11px 0 17px;
@@ -441,6 +481,30 @@ AADYA Digital Teacher
 
 <section class="classbox">
 
+<div
+  class="subject-select-box"
+  id="subjectBox"
+  style="display:none;"
+>
+
+<label for="subjectSelect">
+📘 विषय चुनें
+</label>
+
+<select
+  id="subjectSelect"
+  class="subject-select"
+>
+
+<option value="">
+विषय चुनें…
+</option>
+
+</select>
+
+</div>
+
+
 <div id="content">
 
 <div class="loading">
@@ -649,7 +713,29 @@ async function loadClass(
     Number(
       classNumber
     );
+  const subjectBox =
+    document.getElementById(
+      "subjectBox"
+    );
 
+  const subjectSelect =
+    document.getElementById(
+      "subjectSelect"
+    );
+
+  if(subjectBox){
+
+    subjectBox.style.display =
+      "none";
+
+  }
+
+  if(subjectSelect){
+
+    subjectSelect.value =
+      "";
+
+  }
 
   document
     .querySelectorAll(
@@ -718,7 +804,8 @@ async function loadClass(
    RENDER CLASS
 ========================================== */
 
-function renderClass(
+
+                function renderClass(
   data
 ){
 
@@ -750,7 +837,80 @@ function renderClass(
     selectedClass;
 
 
-  let html =
+  /*
+    ==========================================
+    SUBJECT DROPDOWN
+  ==========================================
+  */
+
+  const subjectBox =
+    document.getElementById(
+      "subjectBox"
+    );
+
+
+  const subjectSelect =
+    document.getElementById(
+      "subjectSelect"
+    );
+
+
+  const allSubjects =
+    classData.subjects ||
+    {};
+
+
+  subjectSelect.innerHTML =
+    '<option value="">विषय चुनें…</option>' +
+
+    Object.entries(
+      allSubjects
+    )
+    .map(
+      function(entry){
+
+        const key =
+          entry[0];
+
+        const subject =
+          entry[1];
+
+
+        return (
+
+          '<option value="' +
+
+          esc(key) +
+
+          '">' +
+
+          esc(
+            subject.name ||
+            key
+          ) +
+
+          '</option>'
+
+        );
+
+      }
+    )
+    .join("");
+
+
+  subjectBox.style.display =
+    "block";
+
+
+  /*
+    ==========================================
+    DEFAULT MESSAGE
+  ==========================================
+  */
+
+  document.getElementById(
+    "content"
+  ).innerHTML =
 
     '<div class="note">' +
 
@@ -759,98 +919,286 @@ function renderClass(
 
         ?
 
-      '✅ यह आपकी चुनी हुई कक्षा है। Lessons खोले जा सकते हैं।'
+      '✅ यह आपकी चुनी हुई कक्षा है। विषय चुनने के बाद Lessons खोले जा सकते हैं।'
 
         :
 
-      '🔒 यह आपकी चुनी हुई कक्षा नहीं है। यहाँ केवल विषय, अध्याय और Lesson नाम दिखेंगे।'
+      '🔒 यह आपकी चुनी हुई कक्षा नहीं है। विषय, अध्याय और Lesson नाम देख सकते हैं, लेकिन Lesson खोला नहीं जा सकता।'
 
+    ) +
+
+    '</div>' +
+
+    '<div class="empty">' +
+
+    'ऊपर से कोई विषय चुनिए।' +
+
+    '</div>';
+
+
+  /*
+    ==========================================
+    SUBJECT CHANGE
+  ==========================================
+  */
+
+  subjectSelect.onchange =
+    function(){
+
+      const key =
+        subjectSelect.value;
+
+
+      if(!key){
+
+        document.getElementById(
+          "content"
+        ).innerHTML =
+
+          '<div class="note">' +
+
+          (
+            own
+
+              ?
+
+            '✅ यह आपकी चुनी हुई कक्षा है। विषय चुनने के बाद Lessons खोले जा सकते हैं।'
+
+              :
+
+            '🔒 यह आपकी चुनी हुई कक्षा नहीं है। विषय, अध्याय और Lesson नाम देख सकते हैं, लेकिन Lesson खोला नहीं जा सकता।'
+
+          ) +
+
+          '</div>' +
+
+          '<div class="empty">' +
+          'ऊपर से कोई विषय चुनिए।' +
+          '</div>';
+
+        return;
+
+      }
+
+
+      renderSubject(
+        classData,
+        key,
+        own
+      );
+
+    };
+
+
+}
+
+
+/*
+  ==========================================
+  RENDER SELECTED SUBJECT
+  ==========================================
+*/
+
+function renderSubject(
+  classData,
+  subjectKey,
+  own
+){
+
+  const subject =
+    (
+      classData.subjects ||
+      {}
+    )[subjectKey];
+
+
+  if(!subject){
+
+    document.getElementById(
+      "content"
+    ).innerHTML =
+      '<div class="empty">' +
+      'विषय उपलब्ध नहीं है।' +
+      '</div>';
+
+    return;
+
+  }
+
+
+  let html =
+
+    '<div class="subject-title">' +
+
+    AADYA.icon(
+      subjectKey
+    ) +
+
+    ' ' +
+
+    esc(
+      subject.name ||
+      subjectKey
     ) +
 
     '</div>';
 
 
-  Object.entries(
-    classData.subjects || {}
+  (
+    subject.chapters ||
+    []
   ).forEach(
-    function(entry){
-
-      const subjectKey =
-        entry[0];
-
-      const subject =
-        entry[1];
-
+    function(chapter){
 
       html +=
 
-        '<div class="subject-title">' +
+        '<section class="chapter">' +
 
-        AADYA.icon(
-          subjectKey
-        ) +
+        '<div class="ch-head">' +
 
-        ' ' +
+        'अध्याय ' +
 
         esc(
-          subject.name ||
-          subjectKey
+          chapter.number
         ) +
 
+        ' — ' +
+
+        esc(
+          chapter.title ||
+          ""
+        );
+
+
+      if(
+        chapter.source
+      ){
+
+        html +=
+
+          '<br>' +
+
+          '<span class="badge">' +
+
+          (
+            chapter.source ===
+            "textbook"
+
+              ?
+
+            "📖 पाठ्यपुस्तक आधारित"
+
+              :
+
+            "✨ AADYA विशेष पाठ"
+
+          ) +
+
+          '</span>';
+
+      }
+
+
+      html +=
         '</div>';
 
 
-      (
-        subject.chapters ||
-        []
-      ).forEach(
-        function(chapter){
+      const chapterLessons =
+        chapter.lessons ||
+        [];
+
+
+      if(
+        !chapterLessons.length
+      ){
+
+        html +=
+
+          '<div class="empty">' +
+
+          'इस अध्याय के Lessons जल्द उपलब्ध होंगे।' +
+
+          '</div>';
+
+      }
+
+
+      chapterLessons.forEach(
+        function(lesson){
+
+          const file =
+            lesson.file ||
+            "";
+
 
           html +=
 
-            '<section class="chapter">' +
+            '<div class="lesson ' +
 
-            '<div class="ch-head">' +
-
-            'अध्याय ' +
-
-            esc(
-              chapter.number
+            (
+              own
+                ? ""
+                : "disabled"
             ) +
 
-            ' — ' +
+            '">' +
+
+            '<div class="num">' +
 
             esc(
-              chapter.title ||
-              ""
-            );
+              lesson.number
+            ) +
+
+            '</div>' +
+
+            '<div class="lt">' +
+
+            esc(
+              lesson.title ||
+              (
+                "पाठ " +
+                lesson.number
+              )
+            ) +
+
+            '</div>';
 
 
           if(
-            chapter.source
+            own &&
+            file
           ){
 
             html +=
 
-              '<br>' +
+              '<button ' +
 
-              '<span class="badge">' +
+              'class="open" ' +
 
-              (
-                chapter.source ===
-                "textbook"
+              'data-file="' +
 
-                  ?
+              esc(file) +
 
-                "📖 पाठ्यपुस्तक आधारित"
+              '">' +
 
-                  :
+              'खोलें' +
 
-                "✨ AADYA विशेष पाठ"
+              '</button>';
 
-              ) +
+          }
+          else{
 
-              '</span>';
+            html +=
+
+              '<button ' +
+
+              'class="open locked" ' +
+
+              'disabled>' +
+
+              '🔒' +
+
+              '</button>';
 
           }
 
@@ -858,119 +1206,12 @@ function renderClass(
           html +=
             '</div>';
 
-
-          const chapterLessons =
-            chapter.lessons ||
-            [];
-
-
-          if(
-            !chapterLessons.length
-          ){
-
-            html +=
-
-              '<div class="empty">' +
-
-              'इस अध्याय के Lessons जल्द उपलब्ध होंगे।' +
-
-              '</div>';
-
-          }
-
-
-          chapterLessons.forEach(
-            function(lesson){
-
-              const file =
-                lesson.file ||
-                "";
-
-
-              html +=
-
-                '<div class="lesson ' +
-
-                (
-                  own
-                    ? ""
-                    : "disabled"
-                ) +
-
-                '">' +
-
-                '<div class="num">' +
-
-                esc(
-                  lesson.number
-                ) +
-
-                '</div>' +
-
-                '<div class="lt">' +
-
-                esc(
-                  lesson.title ||
-                  (
-                    "पाठ " +
-                    lesson.number
-                  )
-                ) +
-
-                '</div>';
-
-
-              if(
-                own &&
-                file
-              ){
-
-                html +=
-
-                  '<button ' +
-
-                  'class="open" ' +
-
-                  'data-file="' +
-
-                  esc(file) +
-
-                  '">' +
-
-                  'खोलें' +
-
-                  '</button>';
-
-              }
-              else{
-
-                html +=
-
-                  '<button ' +
-
-                  'class="open locked" ' +
-
-                  'disabled>' +
-
-                  '🔒' +
-
-                  '</button>';
-
-              }
-
-
-              html +=
-                '</div>';
-
-            }
-          );
-
-
-          html +=
-            '</section>';
-
         }
       );
+
+
+      html +=
+        '</section>';
 
     }
   );
@@ -979,8 +1220,18 @@ function renderClass(
   document.getElementById(
     "content"
   ).innerHTML =
-    html;
+    html ||
 
+    '<div class="empty">' +
+    'इस विषय में अभी Lessons उपलब्ध नहीं हैं।' +
+    '</div>';
+
+
+  /*
+    ==========================================
+    OPEN LESSON
+  ==========================================
+  */
 
   document
     .querySelectorAll(
@@ -1001,8 +1252,7 @@ function renderClass(
       }
     );
 
-}
-
+      }
 
 /* ==========================================
    INIT
