@@ -598,6 +598,91 @@
     }
   ]
 }
+                    ]
+        },
+        "geography": {
+          "name": "भूगोल",
+          "chapters": [
+            {
+              "number": 1,
+              "book_number": 1,
+              "title": "संसाधन",
+              "source": "textbook",
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "संसाधन एवं संसाधन के प्रकार",
+                  "file": "./content/class8/geography/chapter01/lesson01.json"
+                }
+              ]
+            },
+            {
+              "number": 2,
+              "book_number": 2,
+              "title": "भारत : कृषि एवं सिंचाई",
+              "source": "textbook",
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "कृषि एवं प्रमुख उपजें",
+                  "file": "./content/class8/geography/chapter02/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "कृषि एवं सिंचाई",
+                  "file": "./content/class8/geography/chapter02/lesson02.json"
+                }
+              ]
+            },
+            {
+              "number": 3,
+              "book_number": 3,
+              "title": "भारत : खनिज संपदा",
+              "source": "textbook",
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "खनिज : भारत के आर्थिक आधार",
+                  "file": "./content/class8/geography/chapter03/lesson01.json"
+                }
+              ]
+            },
+            {
+              "number": 4,
+              "book_number": 4,
+              "title": "भारत : शक्ति के साधन",
+              "source": "textbook",
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "शक्ति के साधन",
+                  "file": "./content/class8/geography/chapter04/lesson01.json"
+                }
+              ]
+            },
+            {
+              "number": 5,
+              "book_number": 5,
+              "title": "भारत : उद्योग - धंधे",
+              "source": "textbook",
+              "lessons": [
+                {
+                  "number": 1,
+                  "title": "उद्योग - धंधे",
+                  "file": "./content/class8/geography/chapter05/lesson01.json"
+                },
+                {
+                  "number": 2,
+                  "title": "भारी उद्योग",
+                  "file": "./content/class8/geography/chapter05/lesson02.json"
+                },
+                {
+                  "number": 3,
+                  "title": "भारत के प्रमुख उद्योग",
+                  "file": "./content/class8/geography/chapter05/lesson03.json"
+                }
+              ]
+            }
           ]
         }
       }
