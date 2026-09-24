@@ -682,7 +682,61 @@
                   "file": "./content/class8/geography/chapter05/lesson03.json"
                 }
               ]
-            }
+            },
+{
+  "number": 6,
+  "book_number": 6,
+  "title": "भारत : यातायात, व्यापार एवं संचार",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "यातायात एवं प्रमुख साधन",
+      "file": "./content/class8/geography/chapter06/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "व्यापार : देशी व विदेशी व्यापार",
+      "file": "./content/class8/geography/chapter06/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "संचार एवं माध्यम",
+      "file": "./content/class8/geography/chapter06/lesson03.json"
+    }
+  ]
+},
+{
+  "number": 7,
+  "book_number": 7,
+  "title": "भारत : मानव-संसाधन",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "भारत : जनसंख्या",
+      "file": "./content/class8/geography/chapter07/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "भारत : मानव संसाधन",
+      "file": "./content/class8/geography/chapter07/lesson02.json"
+    }
+  ]
+},
+{
+  "number": 8,
+  "book_number": 8,
+  "title": "उत्तरप्रदेश : अर्थव्यवस्था एवं मानव संसाधन",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "उत्तरप्रदेश : अर्थव्यवस्था एवं मानव संसाधन",
+      "file": "./content/class8/geography/chapter08/lesson01.json"
+    }
+  ]
+}
           ]
         }
       }
