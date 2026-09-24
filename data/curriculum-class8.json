@@ -736,6 +736,96 @@
       "file": "./content/class8/geography/chapter08/lesson01.json"
     }
   ]
+},
+{
+  "number": 9,
+  "book_number": 9,
+  "title": "प्राकृतिक प्रदेश एवं जनजीवन - 1",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "प्राकृतिक वातावरण का मानव जीवन पर प्रभाव",
+      "file": "./content/class8/geography/chapter09/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "शीतोष्ण प्रदेश",
+      "file": "./content/class8/geography/chapter09/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "जलवायु, जीव-जन्तु व मानव जीवन",
+      "file": "./content/class8/geography/chapter09/lesson03.json"
+    }
+  ]
+},
+{
+  "number": 10,
+  "book_number": 10,
+  "title": "प्राकृतिक प्रदेश एवं जनजीवन - 2",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "भूमध्य सागरीय प्रदेश",
+      "file": "./content/class8/geography/chapter10/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "मानसूनी प्रदेश",
+      "file": "./content/class8/geography/chapter10/lesson02.json"
+    },
+    {
+      "number": 3,
+      "title": "जलवायु, वनस्पति व मानव जीवन",
+      "file": "./content/class8/geography/chapter10/lesson03.json"
+    }
+  ]
+},
+{
+  "number": 11,
+  "book_number": 11,
+  "title": "प्राकृतिक प्रदेश एवं जनजीवन - 3",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "पश्चिम यूरोपीय तुल्य प्रदेश",
+      "file": "./content/class8/geography/chapter11/lesson01.json"
+    },
+    {
+      "number": 2,
+      "title": "चीन तुल्य एवं सेंट लॉरेंस तुल्य प्रदेश",
+      "file": "./content/class8/geography/chapter11/lesson02.json"
+    }
+  ]
+},
+{
+  "number": 12,
+  "book_number": 12,
+  "title": "आपदा प्रबंधन",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "आपदा प्रबंधन",
+      "file": "./content/class8/geography/chapter12/lesson01.json"
+    }
+  ]
+},
+{
+  "number": 13,
+  "book_number": 13,
+  "title": "पुनरावृत्ति",
+  "source": "revision",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "महत्वपूर्ण तथ्य (सार)",
+      "file": "./content/class8/geography/chapter13/lesson01.json"
+    }
+  ]
 }
           ]
         }
