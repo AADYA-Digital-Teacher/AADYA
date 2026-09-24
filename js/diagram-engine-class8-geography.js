@@ -175,13 +175,13 @@
 
 
     /*
-     * अभी Chapter 1–5 तक
+     * अभी Chapter 1–8 तक
      * automatic PNG support।
      */
 
     if (
       target.chapter < 1 ||
-      target.chapter > 5 ||
+      target.chapter > 8 ||
       target.lesson < 1
     ) {
 
