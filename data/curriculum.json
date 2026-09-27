@@ -834,7 +834,31 @@
     }
   ]
 }
-  ]
+    ],
+  
+  "science": {
+    "name": "विज्ञान",
+    "chapters": [
+      {
+        "number": 1,
+        "book_number": 1,
+        "title": "विज्ञान का अनूठा संसार",
+        "source": "textbook",
+        "lessons": [
+          {
+            "number": 1,
+            "title": "विज्ञान का अनूठा संसार",
+            "file": "./content/class6/science/chapter01/lesson01.json"
+          }
+        ]
+      }
+    ]
+  }
+        }
+      }
+    }
+  }
+}
         }
       }
     }
