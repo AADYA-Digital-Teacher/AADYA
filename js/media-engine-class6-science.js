@@ -1,7 +1,26 @@
 (function () {
   "use strict";
 
+  let initialized = false;
+
+  function getLessonPath() {
+    try {
+      const params = new URLSearchParams(
+        window.location.search
+      );
+
+      return decodeURIComponent(
+        params.get("lesson") || ""
+      );
+    } catch (error) {
+      return "";
+    }
+  }
+
   function initScienceMedia() {
+
+    if (initialized) return;
+
     const data = window.lessonData;
 
     if (!data) return;
@@ -10,7 +29,10 @@
     if (Number(data.class) !== 6) return;
 
     // केवल Science
-    const subject = String(data.subject || "").trim().toLowerCase();
+    const subject =
+      String(data.subject || "")
+        .trim()
+        .toLowerCase();
 
     if (
       subject !== "विज्ञान" &&
@@ -20,18 +42,13 @@
     }
 
     /*
-      Expected lesson source/path:
-      content/class6/science/chapter01/lesson01.json
-    */
+     * Actual lesson path URL से लिया जाएगा।
+     * इससे JSON के "source" field पर निर्भरता नहीं रहेगी।
+     */
 
-    const source = String(
-      data.source ||
-      data.path ||
-      data.lesson_path ||
-      ""
-    ).trim();
+    const lessonPath = getLessonPath();
 
-    const match = source.match(
+    const match = lessonPath.match(
       /content\/class6\/science\/chapter(\d+)\/lesson(\d+)\.json$/i
     );
 
@@ -40,7 +57,12 @@
     const chapter = Number(match[1]);
     const lesson = Number(match[2]);
 
-    if (chapter < 1 || lesson < 1) return;
+    if (
+      chapter < 1 ||
+      lesson < 1
+    ) {
+      return;
+    }
 
     const lessonContainer =
       document.querySelector("#lessonContent") ||
@@ -49,16 +71,25 @@
 
     if (!lessonContainer) return;
 
-    // पुराने render से duplicate रोकें
+    /*
+     * Duplicate protection
+     */
+
     if (
       lessonContainer.querySelector(
         ".aadya-class6-science-media"
       )
     ) {
+      initialized = true;
       return;
     }
 
-    const mediaWrapper = document.createElement("section");
+    /*
+     * Media wrapper
+     */
+
+    const mediaWrapper =
+      document.createElement("section");
 
     mediaWrapper.className =
       "aadya-class6-science-media";
@@ -66,176 +97,251 @@
     mediaWrapper.style.width = "100%";
     mediaWrapper.style.margin = "24px 0";
 
-    const mediaTitle = document.createElement("h3");
+    const mediaTitle =
+      document.createElement("h3");
 
-    mediaTitle.textContent = "🎬 देखें और समझें";
+    mediaTitle.textContent =
+      "🎬 देखें और समझें";
 
-    mediaTitle.style.marginBottom = "12px";
+    mediaTitle.style.marginBottom =
+      "16px";
 
-    mediaWrapper.appendChild(mediaTitle);
-
-    let mediaFound = false;
+    mediaWrapper.appendChild(
+      mediaTitle
+    );
 
     /*
-      Lesson 1 के लिए:
-      01 = विज्ञान का अनूठा संसार
-      02 = कलम वाली वैज्ञानिक विधि
-      03 = विज्ञान की यात्रा
+     * Paths
+     */
 
-      भविष्य में इसी pattern से अन्य lessons भी जोड़े जा सकते हैं।
-    */
-
-    const basePath =
-      "assets/media/class6/science/chapter" +
+    const chapterNumber =
       String(chapter).padStart(2, "0");
+
+    const lessonNumber =
+      String(lesson).padStart(2, "0");
 
     const imageBasePath =
       "assets/images/class6/science/chapter" +
-      String(chapter).padStart(2, "0");
+      chapterNumber;
 
-    const mediaItems = [];
+    const videoBasePath =
+      "assets/media/class6/science/chapter" +
+      chapterNumber;
 
     /*
-      पहले तीन visual slots.
-      यदि file उपलब्ध है तो अपने-आप दिखाई जाएगी।
-    */
+     * Lesson 1:
+     *
+     * 01 = विज्ञान का अनूठा संसार
+     * 02 = कलम वाली वैज्ञानिक विधि
+     * 03 = विज्ञान की यात्रा
+     */
 
     for (let i = 1; i <= 3; i++) {
-      const number = String(i).padStart(2, "0");
 
-      mediaItems.push({
-        number: number,
-        video:
-          basePath +
-          "/chapter" +
-          String(chapter).padStart(2, "0") +
-          "-lesson" +
-          String(lesson).padStart(2, "0") +
-          "-" +
-          number +
-          ".mp4",
-        image:
-          imageBasePath +
-          "/chapter" +
-          String(chapter).padStart(2, "0") +
-          "-lesson" +
-          String(lesson).padStart(2, "0") +
-          "-" +
-          number +
-          ".png"
-      });
-    }
+      const mediaNumber =
+        String(i).padStart(2, "0");
 
-    mediaItems.forEach(function (item) {
-      const block = document.createElement("div");
+      const fileName =
+        "chapter" +
+        chapterNumber +
+        "-lesson" +
+        lessonNumber +
+        "-" +
+        mediaNumber;
 
-      block.style.marginBottom = "28px";
+      const block =
+        document.createElement("div");
 
-      const video = document.createElement("video");
+      block.style.marginBottom =
+        "32px";
+
+      /*
+       * VIDEO
+       */
+
+      const video =
+        document.createElement("video");
 
       video.controls = true;
       video.playsInline = true;
       video.preload = "metadata";
 
       video.style.width = "100%";
-      video.style.maxWidth = "100%";
       video.style.height = "auto";
       video.style.display = "block";
-      video.style.borderRadius = "12px";
+      video.style.borderRadius = "14px";
+      video.style.background = "#000";
 
-      const sourceElement =
+      const videoSource =
         document.createElement("source");
 
-      sourceElement.src = item.video;
-      sourceElement.type = "video/mp4";
+      videoSource.src =
+        videoBasePath +
+        "/" +
+        fileName +
+        ".mp4";
 
-      video.appendChild(sourceElement);
+      videoSource.type =
+        "video/mp4";
 
-      const image = document.createElement("img");
+      video.appendChild(
+        videoSource
+      );
 
-      image.src = item.image;
+      /*
+       * PNG
+       */
+
+      const image =
+        document.createElement("img");
+
+      image.src =
+        imageBasePath +
+        "/" +
+        fileName +
+        ".png";
+
       image.alt =
-        "Class 6 Science Chapter " +
-        chapter +
-        " Lesson " +
-        lesson +
-        " visual " +
-        item.number;
+        "कक्षा 6 विज्ञान — " +
+        data.title +
+        " — दृश्य " +
+        mediaNumber;
 
       image.loading = "lazy";
 
       image.style.width = "100%";
       image.style.height = "auto";
       image.style.display = "block";
-      image.style.borderRadius = "12px";
+      image.style.borderRadius = "14px";
       image.style.marginTop = "12px";
 
-      let videoOK = false;
-      let imageOK = false;
+      /*
+       * अगर दोनों files missing हों
+       * तो पूरा block हट जाएगा।
+       */
 
-      video.addEventListener("loadedmetadata", function () {
-        videoOK = true;
-        mediaFound = true;
-      });
+      let videoLoaded = false;
+      let imageLoaded = false;
 
-      video.addEventListener("error", function () {
-        video.remove();
-        checkBlock();
-      });
+      video.addEventListener(
+        "loadedmetadata",
+        function () {
 
-      image.addEventListener("load", function () {
-        imageOK = true;
-        mediaFound = true;
-      });
+          videoLoaded = true;
 
-      image.addEventListener("error", function () {
-        image.remove();
-        checkBlock();
-      });
+        }
+      );
+
+      video.addEventListener(
+        "error",
+        function () {
+
+          video.remove();
+
+          if (!imageLoaded) {
+            block.remove();
+          }
+
+        }
+      );
+
+      image.addEventListener(
+        "load",
+        function () {
+
+          imageLoaded = true;
+
+        }
+      );
+
+      image.addEventListener(
+        "error",
+        function () {
+
+          image.remove();
+
+          if (!videoLoaded) {
+            block.remove();
+          }
+
+        }
+      );
 
       block.appendChild(video);
       block.appendChild(image);
 
-      mediaWrapper.appendChild(block);
-
-      function checkBlock() {
-        if (!videoOK && !imageOK) {
-          block.remove();
-        }
-      }
-    });
+      mediaWrapper.appendChild(
+        block
+      );
+    }
 
     /*
-      थोड़ी देर बाद देखें कि कोई media मिला या नहीं।
-      Media न मिले तो खाली heading भी नहीं दिखेगी।
-    */
+     * Try Yourself से पहले media दिखाएँ।
+     */
 
-    setTimeout(function () {
-      if (!mediaFound) {
-        mediaWrapper.remove();
-        return;
-      }
+    const tryYourself =
+      document.querySelector(
+        "#tryYourself"
+      );
 
-      const tryYourself =
-        document.querySelector("#tryYourself");
+    if (tryYourself) {
 
-      if (tryYourself) {
-        tryYourself.parentNode.insertBefore(
-          mediaWrapper,
-          tryYourself
-        );
-      } else {
-        lessonContainer.appendChild(mediaWrapper);
-      }
-    }, 1200);
+      tryYourself.parentNode.insertBefore(
+        mediaWrapper,
+        tryYourself
+      );
+
+    } else {
+
+      lessonContainer.appendChild(
+        mediaWrapper
+      );
+
+    }
+
+    initialized = true;
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener(
-      "DOMContentLoaded",
-      initScienceMedia
+
+  /*
+   * LessonData asynchronous है,
+   * इसलिए थोड़ी देर तक check करेंगे।
+   *
+   * इससे learning.html की existing
+   * architecture को बदलने की जरूरत नहीं।
+   */
+
+  const timer =
+    setInterval(
+      function () {
+
+        if (
+          window.lessonData
+        ) {
+
+          initScienceMedia();
+
+          if (initialized) {
+            clearInterval(timer);
+          }
+
+        }
+
+      },
+      250
     );
-  } else {
-    initScienceMedia();
-  }
+
+
+  /*
+   * Safety timeout:
+   * 15 seconds बाद checking बंद।
+   */
+
+  setTimeout(
+    function () {
+      clearInterval(timer);
+    },
+    15000
+  );
+
 })();
