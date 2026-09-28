@@ -28,10 +28,8 @@
   /* =====================================================
      GENERIC MEDIA BLOCK
      
-     यह Chapter 1 के पुराने
-     PNG + MP4 के लिए है।
-     
-     Chapter 2 इसमें नहीं आएगा।
+     केवल Chapter 1 के पुराने
+     PNG + MP4 के लिए।
   ===================================================== */
 
   function createMediaBlock(
@@ -68,10 +66,6 @@
       "24px 0 30px 0";
 
 
-    /* -------------------------------------------------
-       TITLE
-    ------------------------------------------------- */
-
     const titleElement =
       document.createElement("h4");
 
@@ -98,7 +92,7 @@
 
 
     /* -------------------------------------------------
-       PNG IMAGE
+       PNG
     ------------------------------------------------- */
 
     const image =
@@ -141,7 +135,7 @@
 
 
     /* -------------------------------------------------
-       VIDEO
+       MP4
     ------------------------------------------------- */
 
     const video =
@@ -200,10 +194,6 @@
     );
 
 
-    /* -------------------------------------------------
-       ERROR HANDLING
-    ------------------------------------------------- */
-
     let imageLoaded =
       false;
 
@@ -231,9 +221,7 @@
 
 
         if (!videoLoaded) {
-
           wrapper.remove();
-
         }
 
       }
@@ -259,19 +247,12 @@
 
 
         if (!imageLoaded) {
-
           wrapper.remove();
-
         }
 
       }
     );
 
-
-    /* -------------------------------------------------
-       PNG पहले
-       MP4 उसके नीचे
-    ------------------------------------------------- */
 
     wrapper.appendChild(
       image
@@ -288,7 +269,7 @@
 
 
   /* =====================================================
-     INSERT MEDIA AFTER EXPLANATION ITEM
+     INSERT AFTER EXPLANATION
   ===================================================== */
 
   function insertAfterExplanation(
@@ -327,7 +308,7 @@
 
 
   /* =====================================================
-     CLASS 6 SCIENCE MEDIA ENGINE
+     MAIN ENGINE
   ===================================================== */
 
   function initScienceMedia() {
@@ -418,9 +399,9 @@
     /* =====================================================
        CHAPTER 2
        पदार्थ एवं पदार्थ के समूह
-       
-       केवल PNG
-       कोई MP4 नहीं
+
+       ONLY PNG
+       NO MP4
     ===================================================== */
 
     if (
@@ -438,10 +419,6 @@
         return;
       }
 
-
-      /* -------------------------------------------------
-         DUPLICATE PROTECTION
-      ------------------------------------------------- */
 
       if (
         explanation.querySelector(
@@ -474,13 +451,6 @@
         "assets/images/class6/science/chapter" +
         chapterNumber;
 
-
-      /* -------------------------------------------------
-         CHAPTER 2 PNG CREATOR
-         
-         ध्यान दें:
-         यहां VIDEO ELEMENT बनाया ही नहीं जाता।
-      ------------------------------------------------- */
 
       function createChapter02Image(
         mediaNumber,
@@ -517,10 +487,6 @@
           "24px 0 30px 0";
 
 
-        /* ---------------------------------------------
-           TITLE
-        --------------------------------------------- */
-
         const titleElement =
           document.createElement(
             "h4"
@@ -547,10 +513,6 @@
           titleElement
         );
 
-
-        /* ---------------------------------------------
-           PNG
-        --------------------------------------------- */
 
         const image =
           document.createElement(
@@ -593,10 +555,6 @@
           "0 5px 18px rgba(23,43,77,.10)";
 
 
-        /* ---------------------------------------------
-           IMAGE ERROR
-        --------------------------------------------- */
-
         image.addEventListener(
           "error",
           function () {
@@ -616,24 +574,12 @@
       }
 
 
-      /* =================================================
-         CHAPTER 2 — PNG 1
-         
-         chapter02-lesson01-01.png
-      ================================================= */
-
       const media1 =
         createChapter02Image(
           1,
           "🔬 देखें और समझें — पदार्थों का वर्गीकरण"
         );
 
-
-      /* =================================================
-         CHAPTER 2 — PNG 2
-         
-         chapter02-lesson01-02.png
-      ================================================= */
 
       const media2 =
         createChapter02Image(
@@ -642,21 +588,11 @@
         );
 
 
-      /* -------------------------------------------------
-         CURRENT EXPLANATION BOXES
-      ------------------------------------------------- */
-
       const boxes =
         explanation.querySelectorAll(
           ".example"
         );
 
-
-      /* -------------------------------------------------
-         PNG 1
-         
-         पहले explanation item के बाद
-      ------------------------------------------------- */
 
       if (
         boxes.length > 0
@@ -677,12 +613,6 @@
 
       }
 
-
-      /* -------------------------------------------------
-         PNG 2
-         
-         पांचवें explanation item के बाद
-      ------------------------------------------------- */
 
       if (
         boxes.length > 4
@@ -713,336 +643,265 @@
 
 
     /* =====================================================
-   CHAPTER 3
-   पदार्थों का पृथक्करण
+       CHAPTER 3
+       पदार्थों का पृथक्करण
 
-   केवल PNG MEDIA
-   कोई MP4 नहीं
-===================================================== */
+       ONLY PNG
+       NO MP4
+    ===================================================== */
 
-if (
-  chapter === 3 &&
-  lesson === 1
-) {
+    if (
+      chapter === 3 &&
+      lesson === 1
+    ) {
 
-  const explanation =
-    document.querySelector(
-      "#explanation"
-    );
+      const explanation =
+        document.querySelector(
+          "#explanation"
+        );
 
 
-  if (!explanation) {
-    return;
-  }
+      if (!explanation) {
+        return;
+      }
 
 
-  /* -------------------------------------------------
-     DUPLICATE PROTECTION
-  ------------------------------------------------- */
+      if (
+        explanation.querySelector(
+          ".aadya-science-chapter03-media"
+        )
+      ) {
 
-  if (
-    explanation.querySelector(
-      ".aadya-science-chapter03-media"
-    )
-  ) {
+        initialized =
+          true;
 
-    initialized =
-      true;
+        return;
+      }
 
-    return;
-  }
 
+      const chapterNumber =
+        String(chapter).padStart(
+          2,
+          "0"
+        );
 
-  const chapterNumber =
-    String(chapter).padStart(
-      2,
-      "0"
-    );
 
+      const lessonNumber =
+        String(lesson).padStart(
+          2,
+          "0"
+        );
 
-  const lessonNumber =
-    String(lesson).padStart(
-      2,
-      "0"
-    );
 
+      const imageBasePath =
+        "assets/images/class6/science/chapter" +
+        chapterNumber;
 
-  const imageBasePath =
-    "assets/images/class6/science/chapter" +
-    chapterNumber;
 
+      function createChapter03Image(
+        mediaNumber,
+        title
+      ) {
 
-  /* -------------------------------------------------
-     CHAPTER 3 PNG CREATOR
+        const mediaNumberText =
+          String(mediaNumber).padStart(
+            2,
+            "0"
+          );
 
-     यहां केवल IMAGE बनाया जाता है।
-     कोई VIDEO / MP4 नहीं।
-  ------------------------------------------------- */
 
-  function createChapter03Image(
-    mediaNumber,
-    title
-  ) {
+        const fileName =
+          "chapter" +
+          chapterNumber +
+          "-lesson" +
+          lessonNumber +
+          "-" +
+          mediaNumberText;
 
-    const mediaNumberText =
-      String(mediaNumber).padStart(
-        2,
-        "0"
-      );
 
+        const wrapper =
+          document.createElement(
+            "div"
+          );
 
-    const fileName =
-      "chapter" +
-      chapterNumber +
-      "-lesson" +
-      lessonNumber +
-      "-" +
-      mediaNumberText;
 
+        wrapper.className =
+          "aadya-science-chapter03-media";
 
-    const wrapper =
-      document.createElement(
-        "div"
-      );
 
+        wrapper.style.margin =
+          "24px 0 30px 0";
 
-    wrapper.className =
-      "aadya-science-chapter03-media";
 
+        const titleElement =
+          document.createElement(
+            "h4"
+          );
 
-    wrapper.style.margin =
-      "24px 0 30px 0";
 
+        titleElement.textContent =
+          title;
 
-    /* ---------------------------------------------
-       TITLE
-    --------------------------------------------- */
 
-    const titleElement =
-      document.createElement(
-        "h4"
-      );
+        titleElement.style.margin =
+          "0 0 14px 0";
 
 
-    titleElement.textContent =
-      title;
+        titleElement.style.fontSize =
+          "19px";
 
 
-    titleElement.style.margin =
-      "0 0 14px 0";
+        titleElement.style.color =
+          "#172b4d";
 
 
-    titleElement.style.fontSize =
-      "19px";
+        wrapper.appendChild(
+          titleElement
+        );
 
 
-    titleElement.style.color =
-      "#172b4d";
+        const image =
+          document.createElement(
+            "img"
+          );
 
 
-    wrapper.appendChild(
-      titleElement
-    );
+        image.src =
+          imageBasePath +
+          "/" +
+          fileName +
+          ".png";
 
 
-    /* ---------------------------------------------
-       PNG IMAGE
-    --------------------------------------------- */
+        image.alt =
+          title;
 
-    const image =
-      document.createElement(
-        "img"
-      );
 
+        image.loading =
+          "lazy";
 
-    image.src =
-      imageBasePath +
-      "/" +
-      fileName +
-      ".png";
 
+        image.style.width =
+          "100%";
 
-    image.alt =
-      title;
 
+        image.style.height =
+          "auto";
 
-    image.loading =
-      "lazy";
 
+        image.style.display =
+          "block";
 
-    image.style.width =
-      "100%";
 
+        image.style.borderRadius =
+          "14px";
 
-    image.style.height =
-      "auto";
 
+        image.style.boxShadow =
+          "0 5px 18px rgba(23,43,77,.10)";
 
-    image.style.display =
-      "block";
 
+        image.addEventListener(
+          "error",
+          function () {
 
-    image.style.borderRadius =
-      "14px";
+            wrapper.remove();
 
+          }
+        );
 
-    image.style.boxShadow =
-      "0 5px 18px rgba(23,43,77,.10)";
 
+        wrapper.appendChild(
+          image
+        );
 
-    /* ---------------------------------------------
-       IMAGE ERROR
-    --------------------------------------------- */
 
-    image.addEventListener(
-      "error",
-      function () {
+        return wrapper;
+      }
 
-        wrapper.remove();
+
+      const media1 =
+        createChapter03Image(
+          1,
+          "🔬 देखें और समझें — तत्व, यौगिक एवं मिश्रण"
+        );
+
+
+      const media2 =
+        createChapter03Image(
+          2,
+          "🧪 देखें और समझें — पृथक्करण की सामान्य विधियाँ"
+        );
+
+
+      const boxes =
+        explanation.querySelectorAll(
+          ".example"
+        );
+
+
+      if (
+        boxes.length > 0
+      ) {
+
+        boxes[0]
+          .parentNode
+          .insertBefore(
+            media1,
+            boxes[0].nextSibling
+          );
+
+      } else {
+
+        explanation.appendChild(
+          media1
+        );
 
       }
-    );
 
 
-    wrapper.appendChild(
-      image
-    );
+      if (
+        boxes.length > 4
+      ) {
+
+        boxes[4]
+          .parentNode
+          .insertBefore(
+            media2,
+            boxes[4].nextSibling
+          );
+
+      } else {
+
+        explanation.appendChild(
+          media2
+        );
+
+      }
 
 
-    return wrapper;
-  }
+      initialized =
+        true;
 
 
-  /* =================================================
-     CHAPTER 3 — PNG 1
-
-     chapter03-lesson01-01.png
-
-     विषय:
-     तत्व, यौगिक एवं मिश्रण
-  ================================================= */
-
-  const media1 =
-    createChapter03Image(
-      1,
-      "🔬 देखें और समझें — तत्व, यौगिक एवं मिश्रण"
-    );
+      return;
+    }
 
 
-  /* =================================================
-     CHAPTER 3 — PNG 2
+    /* =====================================================
+       FUTURE CHAPTERS
 
-     chapter03-lesson01-02.png
+       Chapter 4, 5, 6...
+       बाद में इसी pattern पर जोड़ेंगे।
 
-     विषय:
-     पृथक्करण की सामान्य विधियाँ
-  ================================================= */
-
-  const media2 =
-    createChapter03Image(
-      2,
-      "🧪 देखें और समझें — पृथक्करण की सामान्य विधियाँ"
-    );
-
-
-  /* -------------------------------------------------
-     EXPLANATION BOXES
-  ------------------------------------------------- */
-
-  const boxes =
-    explanation.querySelectorAll(
-      ".example"
-    );
-
-
-  /* -------------------------------------------------
-     PNG 1
-     पहले explanation item के बाद
-  ------------------------------------------------- */
-
-  if (
-    boxes.length > 0
-  ) {
-
-    boxes[0]
-      .parentNode
-      .insertBefore(
-        media1,
-        boxes[0].nextSibling
-      );
-
-  } else {
-
-    explanation.appendChild(
-      media1
-    );
-
-  }
-
-
-  /* -------------------------------------------------
-     PNG 2
-     पांचवें explanation item के बाद
-  ------------------------------------------------- */
-
-  if (
-    boxes.length > 4
-  ) {
-
-    boxes[4]
-      .parentNode
-      .insertBefore(
-        media2,
-        boxes[4].nextSibling
-      );
-
-  } else {
-
-    explanation.appendChild(
-      media2
-    );
-
-  }
-
-
-  initialized =
-    true;
-
-
-  return;
-}
-
-
-/* =====================================================
-   FUTURE CHAPTERS
-
-   Chapter 4, 5, 6...
-   बाद में इसी pattern पर जोड़ेंगे।
-===================================================== */
-
-
-    /*
-     * उदाहरण:
-     *
-     * if (
-     *   chapter === 3 &&
-     *   lesson === 1
-     * ) {
-     *
-     *   // Chapter 3 media code
-     *
-     *   initialized = true;
-     *   return;
-     * }
-     */
+       अभी कोई बदलाव नहीं।
+    ===================================================== */
 
 
     /* =====================================================
        CHAPTER 1
        विज्ञान का अनूठा संसार
-       
-       केवल Chapter 1 / Lesson 1
-       
+
        पुराने 3 PNG + MP4
        बिल्कुल सुरक्षित
     ===================================================== */
@@ -1067,10 +926,6 @@ if (
     }
 
 
-    /* -------------------------------------------------
-       DUPLICATE PROTECTION
-    ------------------------------------------------- */
-
     if (
       explanation.querySelector(
         ".aadya-science-media-block"
@@ -1083,10 +938,6 @@ if (
       return;
     }
 
-
-    /* -------------------------------------------------
-       PATHS
-    ------------------------------------------------- */
 
     const chapterNumber =
       String(chapter).padStart(
@@ -1114,9 +965,6 @@ if (
 
     /* =================================================
        CHAPTER 1 — MEDIA 1
-       
-       विज्ञान हमारे आसपास
-       Explanation item 1 के बाद
     ================================================= */
 
     const media1 =
@@ -1132,9 +980,6 @@ if (
 
     /* =================================================
        CHAPTER 1 — MEDIA 2
-       
-       कलम वाली वैज्ञानिक विधि
-       Explanation item 5 के बाद
     ================================================= */
 
     const media2 =
@@ -1150,9 +995,6 @@ if (
 
     /* =================================================
        CHAPTER 1 — MEDIA 3
-       
-       विज्ञान की यात्रा
-       Explanation item 8 के बाद
     ================================================= */
 
     const media3 =
@@ -1165,14 +1007,6 @@ if (
         videoBasePath
       );
 
-
-    /* -------------------------------------------------
-       INSERT POSITIONS
-       
-       0 = पहला explanation item
-       4 = पांचवां explanation item
-       7 = आठवां explanation item
-    ------------------------------------------------- */
 
     const inserted1 =
       insertAfterExplanation(
@@ -1198,10 +1032,6 @@ if (
       );
 
 
-    /* -------------------------------------------------
-       ENGINE COMPLETE
-    ------------------------------------------------- */
-
     if (
       inserted1 ||
       inserted2 ||
@@ -1216,9 +1046,7 @@ if (
 
 
   /* =====================================================
-     LESSON DATA ASYNCHRONOUS LOAD
-     
-     इसलिए हर 250ms पर check
+     ASYNCHRONOUS LESSON DATA
   ===================================================== */
 
   const timer =
@@ -1238,6 +1066,7 @@ if (
               timer
             );
           }
+
         }
 
       },
@@ -1247,8 +1076,6 @@ if (
 
   /* =====================================================
      SAFETY TIMEOUT
-     
-     अधिकतम 15 सेकंड
   ===================================================== */
 
   setTimeout(
