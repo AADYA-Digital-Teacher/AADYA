@@ -838,23 +838,36 @@
         },
   
   "science": {
-    "name": "विज्ञान",
-    "chapters": [
-      {
-        "number": 1,
-        "book_number": 1,
-        "title": "विज्ञान का अनूठा संसार",
-        "source": "textbook",
-        "lessons": [
-          {
-            "number": 1,
-            "title": "विज्ञान का अनूठा संसार",
-            "file": "./content/class6/science/chapter01/lesson01.json"
-          }
-        ]
-      }
-    ]
+  "name": "विज्ञान",
+  "chapters": [
+    {
+      "number": 1,
+      "book_number": 1,
+      "title": "विज्ञान का अनूठा संसार",
+      "source": "textbook",
+      "lessons": [
+        {
+          "number": 1,
+          "title": "विज्ञान का अनूठा संसार",
+          "file": "./content/class6/science/chapter01/lesson01.json"
         }
+      ]
+    },
+    {
+      "number": 2,
+      "book_number": 2,
+      "title": "पदार्थ एवं पदार्थ के समूह",
+      "source": "textbook",
+      "lessons": [
+        {
+          "number": 1,
+          "title": "पदार्थ एवं पदार्थ के समूह",
+          "file": "./content/class6/science/chapter02/lesson01.json"
+        }
+      ]
+    }
+  ]
+}
       }
     }
   }
