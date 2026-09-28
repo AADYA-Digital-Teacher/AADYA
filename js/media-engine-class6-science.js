@@ -3,6 +3,11 @@
 
   let initialized = false;
 
+
+  /* =====================================================
+     LESSON PATH
+  ===================================================== */
+
   function getLessonPath() {
     try {
       const params =
@@ -13,11 +18,21 @@
       return decodeURIComponent(
         params.get("lesson") || ""
       );
+
     } catch (error) {
       return "";
     }
   }
 
+
+  /* =====================================================
+     GENERIC MEDIA BLOCK
+     
+     यह Chapter 1 के पुराने
+     PNG + MP4 के लिए है।
+     
+     Chapter 2 इसमें नहीं आएगा।
+  ===================================================== */
 
   function createMediaBlock(
     chapterNumber,
@@ -31,6 +46,7 @@
     const mediaNumberText =
       String(mediaNumber).padStart(2, "0");
 
+
     const fileName =
       "chapter" +
       chapterNumber +
@@ -43,43 +59,51 @@
     const wrapper =
       document.createElement("div");
 
+
     wrapper.className =
       "aadya-science-media-block";
+
 
     wrapper.style.margin =
       "24px 0 30px 0";
 
 
-    /*
-     * Title
-     */
+    /* -------------------------------------------------
+       TITLE
+    ------------------------------------------------- */
 
     const titleElement =
       document.createElement("h4");
 
+
     titleElement.textContent =
       title;
+
 
     titleElement.style.margin =
       "0 0 14px 0";
 
+
     titleElement.style.fontSize =
       "19px";
 
+
     titleElement.style.color =
       "#172b4d";
+
 
     wrapper.appendChild(
       titleElement
     );
 
 
-    /*
-     * PNG IMAGE
-     */
+    /* -------------------------------------------------
+       PNG IMAGE
+    ------------------------------------------------- */
 
     const image =
       document.createElement("img");
+
 
     image.src =
       imageBasePath +
@@ -87,55 +111,70 @@
       fileName +
       ".png";
 
+
     image.alt =
       title;
+
 
     image.loading =
       "lazy";
 
+
     image.style.width =
       "100%";
+
 
     image.style.height =
       "auto";
 
+
     image.style.display =
       "block";
 
+
     image.style.borderRadius =
       "14px";
+
 
     image.style.marginBottom =
       "14px";
 
 
-    /*
-     * VIDEO
-     */
+    /* -------------------------------------------------
+       VIDEO
+    ------------------------------------------------- */
 
     const video =
       document.createElement("video");
 
+
     video.controls =
       true;
+
 
     video.playsInline =
       true;
 
+
     video.preload =
       "metadata";
+
 
     video.style.width =
       "100%";
 
+
     video.style.height =
       "auto";
+
 
     video.style.display =
       "block";
 
+
     video.style.borderRadius =
       "14px";
+
 
     video.style.background =
       "#000";
@@ -144,26 +183,30 @@
     const source =
       document.createElement("source");
 
+
     source.src =
       videoBasePath +
       "/" +
       fileName +
       ".mp4";
 
+
     source.type =
       "video/mp4";
+
 
     video.appendChild(
       source
     );
 
 
-    /*
-     * File error handling
-     */
+    /* -------------------------------------------------
+       ERROR HANDLING
+    ------------------------------------------------- */
 
     let imageLoaded =
       false;
+
 
     let videoLoaded =
       false;
@@ -185,6 +228,7 @@
       function () {
 
         image.remove();
+
 
         if (!videoLoaded) {
 
@@ -213,6 +257,7 @@
 
         video.remove();
 
+
         if (!imageLoaded) {
 
           wrapper.remove();
@@ -223,14 +268,15 @@
     );
 
 
-    /*
-     * PNG पहले
-     * Video उसके नीचे
-     */
+    /* -------------------------------------------------
+       PNG पहले
+       MP4 उसके नीचे
+    ------------------------------------------------- */
 
     wrapper.appendChild(
       image
     );
+
 
     wrapper.appendChild(
       video
@@ -240,6 +286,10 @@
     return wrapper;
   }
 
+
+  /* =====================================================
+     INSERT MEDIA AFTER EXPLANATION ITEM
+  ===================================================== */
 
   function insertAfterExplanation(
     explanationContainer,
@@ -261,18 +311,24 @@
       const target =
         boxes[index];
 
+
       target.parentNode.insertBefore(
         mediaBlock,
         target.nextSibling
       );
 
-      return true;
 
+      return true;
     }
+
 
     return false;
   }
 
+
+  /* =====================================================
+     CLASS 6 SCIENCE MEDIA ENGINE
+  ===================================================== */
 
   function initScienceMedia() {
 
@@ -290,22 +346,21 @@
     }
 
 
-    /*
-     * केवल Class 6
-     */
+    /* -------------------------------------------------
+       ONLY CLASS 6
+    ------------------------------------------------- */
 
     if (
       Number(data.class) !== 6
     ) {
 
       return;
-
     }
 
 
-    /*
-     * केवल Science
-     */
+    /* -------------------------------------------------
+       ONLY SCIENCE
+    ------------------------------------------------- */
 
     const subject =
       String(
@@ -321,13 +376,12 @@
     ) {
 
       return;
-
     }
 
 
-    /*
-     * Lesson path
-     */
+    /* -------------------------------------------------
+       LESSON PATH
+    ------------------------------------------------- */
 
     const lessonPath =
       getLessonPath();
@@ -358,16 +412,341 @@
     ) {
 
       return;
-
     }
 
 
+    /* =====================================================
+       CHAPTER 2
+       पदार्थ एवं पदार्थ के समूह
+       
+       केवल PNG
+       कोई MP4 नहीं
+    ===================================================== */
+
+    if (
+      chapter === 2 &&
+      lesson === 1
+    ) {
+
+      const explanation =
+        document.querySelector(
+          "#explanation"
+        );
+
+
+      if (!explanation) {
+        return;
+      }
+
+
+      /* -------------------------------------------------
+         DUPLICATE PROTECTION
+      ------------------------------------------------- */
+
+      if (
+        explanation.querySelector(
+          ".aadya-science-chapter02-media"
+        )
+      ) {
+
+        initialized =
+          true;
+
+        return;
+      }
+
+
+      const chapterNumber =
+        String(chapter).padStart(
+          2,
+          "0"
+        );
+
+
+      const lessonNumber =
+        String(lesson).padStart(
+          2,
+          "0"
+        );
+
+
+      const imageBasePath =
+        "assets/images/class6/science/chapter" +
+        chapterNumber;
+
+
+      /* -------------------------------------------------
+         CHAPTER 2 PNG CREATOR
+         
+         ध्यान दें:
+         यहां VIDEO ELEMENT बनाया ही नहीं जाता।
+      ------------------------------------------------- */
+
+      function createChapter02Image(
+        mediaNumber,
+        title
+      ) {
+
+        const mediaNumberText =
+          String(mediaNumber).padStart(
+            2,
+            "0"
+          );
+
+
+        const fileName =
+          "chapter" +
+          chapterNumber +
+          "-lesson" +
+          lessonNumber +
+          "-" +
+          mediaNumberText;
+
+
+        const wrapper =
+          document.createElement(
+            "div"
+          );
+
+
+        wrapper.className =
+          "aadya-science-chapter02-media";
+
+
+        wrapper.style.margin =
+          "24px 0 30px 0";
+
+
+        /* ---------------------------------------------
+           TITLE
+        --------------------------------------------- */
+
+        const titleElement =
+          document.createElement(
+            "h4"
+          );
+
+
+        titleElement.textContent =
+          title;
+
+
+        titleElement.style.margin =
+          "0 0 14px 0";
+
+
+        titleElement.style.fontSize =
+          "19px";
+
+
+        titleElement.style.color =
+          "#172b4d";
+
+
+        wrapper.appendChild(
+          titleElement
+        );
+
+
+        /* ---------------------------------------------
+           PNG
+        --------------------------------------------- */
+
+        const image =
+          document.createElement(
+            "img"
+          );
+
+
+        image.src =
+          imageBasePath +
+          "/" +
+          fileName +
+          ".png";
+
+
+        image.alt =
+          title;
+
+
+        image.loading =
+          "lazy";
+
+
+        image.style.width =
+          "100%";
+
+
+        image.style.height =
+          "auto";
+
+
+        image.style.display =
+          "block";
+
+
+        image.style.borderRadius =
+          "14px";
+
+
+        image.style.boxShadow =
+          "0 5px 18px rgba(23,43,77,.10)";
+
+
+        /* ---------------------------------------------
+           IMAGE ERROR
+        --------------------------------------------- */
+
+        image.addEventListener(
+          "error",
+          function () {
+
+            wrapper.remove();
+
+          }
+        );
+
+
+        wrapper.appendChild(
+          image
+        );
+
+
+        return wrapper;
+      }
+
+
+      /* =================================================
+         CHAPTER 2 — PNG 1
+         
+         chapter02-lesson01-01.png
+      ================================================= */
+
+      const media1 =
+        createChapter02Image(
+          1,
+          "🔬 देखें और समझें — पदार्थों का वर्गीकरण"
+        );
+
+
+      /* =================================================
+         CHAPTER 2 — PNG 2
+         
+         chapter02-lesson01-02.png
+      ================================================= */
+
+      const media2 =
+        createChapter02Image(
+          2,
+          "🔎 देखें और समझें — पदार्थों के गुण"
+        );
+
+
+      /* -------------------------------------------------
+         CURRENT EXPLANATION BOXES
+      ------------------------------------------------- */
+
+      const boxes =
+        explanation.querySelectorAll(
+          ".example"
+        );
+
+
+      /* -------------------------------------------------
+         PNG 1
+         
+         पहले explanation item के बाद
+      ------------------------------------------------- */
+
+      if (
+        boxes.length > 0
+      ) {
+
+        boxes[0]
+          .parentNode
+          .insertBefore(
+            media1,
+            boxes[0].nextSibling
+          );
+
+      } else {
+
+        explanation.appendChild(
+          media1
+        );
+
+      }
+
+
+      /* -------------------------------------------------
+         PNG 2
+         
+         पांचवें explanation item के बाद
+      ------------------------------------------------- */
+
+      if (
+        boxes.length > 4
+      ) {
+
+        boxes[4]
+          .parentNode
+          .insertBefore(
+            media2,
+            boxes[4].nextSibling
+          );
+
+      } else {
+
+        explanation.appendChild(
+          media2
+        );
+
+      }
+
+
+      initialized =
+        true;
+
+
+      return;
+    }
+
+
+    /* =====================================================
+       FUTURE CHAPTERS
+       
+       Chapter 3, 4, 5...
+       यहां इसी pattern में जोड़े जाएंगे।
+       
+       अभी इनके लिए कोई media नहीं।
+    ===================================================== */
+
+
     /*
-     * केवल Chapter 1 / Lesson 1
+     * उदाहरण:
      *
-     * क्योंकि अभी हमारे पास
-     * इसी lesson के 3 media हैं।
+     * if (
+     *   chapter === 3 &&
+     *   lesson === 1
+     * ) {
+     *
+     *   // Chapter 3 media code
+     *
+     *   initialized = true;
+     *   return;
+     * }
      */
+
+
+    /* =====================================================
+       CHAPTER 1
+       विज्ञान का अनूठा संसार
+       
+       केवल Chapter 1 / Lesson 1
+       
+       पुराने 3 PNG + MP4
+       बिल्कुल सुरक्षित
+    ===================================================== */
 
     if (
       chapter !== 1 ||
@@ -375,247 +754,9 @@
     ) {
 
       return;
-
     }
 
-/* =====================================================
-   CLASS 6 SCIENCE
-   CHAPTER 2 — पदार्थ एवं पदार्थ के समूह
-   केवल PNG MEDIA
-===================================================== */
 
-if (
-  chapter === 2 &&
-  lesson === 1
-) {
-
-  const explanation =
-    document.querySelector(
-      "#explanation"
-    );
-
-  if (!explanation) {
-    return;
-  }
-
-  /* Duplicate protection */
-
-  if (
-    explanation.querySelector(
-      ".aadya-science-chapter02-media"
-    )
-  ) {
-    initialized = true;
-    return;
-  }
-
-  const chapterNumber =
-    String(chapter).padStart(
-      2,
-      "0"
-    );
-
-  const lessonNumber =
-    String(lesson).padStart(
-      2,
-      "0"
-    );
-
-  const imageBasePath =
-    "assets/images/class6/science/chapter" +
-    chapterNumber;
-
-
-  function createChapter02Image(
-    mediaNumber,
-    title
-  ) {
-
-    const mediaNumberText =
-      String(mediaNumber).padStart(
-        2,
-        "0"
-      );
-
-    const fileName =
-      "chapter" +
-      chapterNumber +
-      "-lesson" +
-      lessonNumber +
-      "-" +
-      mediaNumberText;
-
-    const wrapper =
-      document.createElement(
-        "div"
-      );
-
-    wrapper.className =
-      "aadya-science-chapter02-media";
-
-    wrapper.style.margin =
-      "24px 0 30px 0";
-
-
-    const titleElement =
-      document.createElement(
-        "h4"
-      );
-
-    titleElement.textContent =
-      title;
-
-    titleElement.style.margin =
-      "0 0 14px 0";
-
-    titleElement.style.fontSize =
-      "19px";
-
-    titleElement.style.color =
-      "#172b4d";
-
-    wrapper.appendChild(
-      titleElement
-    );
-
-
-    const image =
-      document.createElement(
-        "img"
-      );
-
-    image.src =
-      imageBasePath +
-      "/" +
-      fileName +
-      ".png";
-
-    image.alt =
-      title;
-
-    image.loading =
-      "lazy";
-
-    image.style.width =
-      "100%";
-
-    image.style.height =
-      "auto";
-
-    image.style.display =
-      "block";
-
-    image.style.borderRadius =
-      "14px";
-
-    image.style.boxShadow =
-      "0 5px 18px rgba(23,43,77,.10)";
-
-
-    image.addEventListener(
-      "error",
-      function () {
-
-        wrapper.remove();
-
-      }
-    );
-
-
-    wrapper.appendChild(
-      image
-    );
-
-    return wrapper;
-  }
-
-
-  /* =================================================
-     PNG 1
-     ================================================= */
-
-  const media1 =
-    createChapter02Image(
-      1,
-      "🔬 देखें और समझें — पदार्थों का वर्गीकरण"
-    );
-
-
-  /* =================================================
-     PNG 2
-     ================================================= */
-
-  const media2 =
-    createChapter02Image(
-      2,
-      "🔎 देखें और समझें — पदार्थों के गुण"
-    );
-
-
-  /*
-   * पहला PNG explanation के
-   * पहले भाग के बाद
-   */
-
-  const boxes =
-    explanation.querySelectorAll(
-      ".example"
-    );
-
-
-  if (
-    boxes.length > 0
-  ) {
-
-    boxes[0]
-      .parentNode
-      .insertBefore(
-        media1,
-        boxes[0].nextSibling
-      );
-
-  }
-  else {
-
-    explanation.appendChild(
-      media1
-    );
-
-  }
-
-
-  /*
-   * दूसरा PNG explanation के
-   * बीच के भाग के बाद
-   */
-
-  if (
-    boxes.length > 4
-  ) {
-
-    boxes[4]
-      .parentNode
-      .insertBefore(
-        media2,
-        boxes[4].nextSibling
-      );
-
-  }
-  else {
-
-    explanation.appendChild(
-      media2
-    );
-
-  }
-
-
-  initialized =
-    true;
-
-  return;
-}
-    
     const explanation =
       document.querySelector(
         "#explanation"
@@ -623,15 +764,13 @@ if (
 
 
     if (!explanation) {
-
       return;
-
     }
 
 
-    /*
-     * Duplicate protection
-     */
+    /* -------------------------------------------------
+       DUPLICATE PROTECTION
+    ------------------------------------------------- */
 
     if (
       explanation.querySelector(
@@ -643,13 +782,12 @@ if (
         true;
 
       return;
-
     }
 
 
-    /*
-     * Paths
-     */
+    /* -------------------------------------------------
+       PATHS
+    ------------------------------------------------- */
 
     const chapterNumber =
       String(chapter).padStart(
@@ -675,13 +813,12 @@ if (
       chapterNumber;
 
 
-    /*
-     * ----------------------------------------
-     * MEDIA 1
-     * विज्ञान हर जगह
-     * Explanation item 1 के बाद
-     * ----------------------------------------
-     */
+    /* =================================================
+       CHAPTER 1 — MEDIA 1
+       
+       विज्ञान हमारे आसपास
+       Explanation item 1 के बाद
+    ================================================= */
 
     const media1 =
       createMediaBlock(
@@ -694,13 +831,12 @@ if (
       );
 
 
-    /*
-     * ----------------------------------------
-     * MEDIA 2
-     * कलम वाली वैज्ञानिक जाँच
-     * Explanation item 5 के बाद
-     * ----------------------------------------
-     */
+    /* =================================================
+       CHAPTER 1 — MEDIA 2
+       
+       कलम वाली वैज्ञानिक विधि
+       Explanation item 5 के बाद
+    ================================================= */
 
     const media2 =
       createMediaBlock(
@@ -713,13 +849,12 @@ if (
       );
 
 
-    /*
-     * ----------------------------------------
-     * MEDIA 3
-     * विज्ञान एक यात्रा है
-     * Explanation item 8 के बाद
-     * ----------------------------------------
-     */
+    /* =================================================
+       CHAPTER 1 — MEDIA 3
+       
+       विज्ञान की यात्रा
+       Explanation item 8 के बाद
+    ================================================= */
 
     const media3 =
       createMediaBlock(
@@ -732,15 +867,13 @@ if (
       );
 
 
-    /*
-     * Insert positions
-     *
-     * explanation[] में:
-     *
-     * 0 = विज्ञान हर जगह है
-     * 4 = कलम वाली छोटी-सी वैज्ञानिक जाँच
-     * 7 = विज्ञान एक यात्रा है
-     */
+    /* -------------------------------------------------
+       INSERT POSITIONS
+       
+       0 = पहला explanation item
+       4 = पांचवां explanation item
+       7 = आठवां explanation item
+    ------------------------------------------------- */
 
     const inserted1 =
       insertAfterExplanation(
@@ -766,11 +899,9 @@ if (
       );
 
 
-    /*
-     * अगर कम से कम एक media
-     * successfully insert हो गया
-     * तो engine complete माना जाएगा।
-     */
+    /* -------------------------------------------------
+       ENGINE COMPLETE
+    ------------------------------------------------- */
 
     if (
       inserted1 ||
@@ -780,15 +911,16 @@ if (
 
       initialized =
         true;
-
     }
 
   }
 
 
-  /*
-   * LessonData asynchronous है।
-   */
+  /* =====================================================
+     LESSON DATA ASYNCHRONOUS LOAD
+     
+     इसलिए हर 250ms पर check
+  ===================================================== */
 
   const timer =
     setInterval(
@@ -806,9 +938,7 @@ if (
             clearInterval(
               timer
             );
-
           }
-
         }
 
       },
@@ -816,9 +946,11 @@ if (
     );
 
 
-  /*
-   * Safety timeout
-   */
+  /* =====================================================
+     SAFETY TIMEOUT
+     
+     अधिकतम 15 सेकंड
+  ===================================================== */
 
   setTimeout(
     function () {
