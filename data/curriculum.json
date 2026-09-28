@@ -865,6 +865,19 @@
           "file": "./content/class6/science/chapter02/lesson01.json"
         }
       ]
+    },
+    {
+  "number": 3,
+  "book_number": 3,
+  "title": "पदार्थों का पृथक्करण",
+  "source": "textbook",
+  "lessons": [
+    {
+      "number": 1,
+      "title": "पदार्थों का पृथक्करण",
+      "file": "./content/class6/science/chapter03/lesson01.json"
+    }
+  ]
     }
   ]
 }
