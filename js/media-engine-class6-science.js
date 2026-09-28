@@ -713,13 +713,312 @@
 
 
     /* =====================================================
-       FUTURE CHAPTERS
-       
-       Chapter 3, 4, 5...
-       यहां इसी pattern में जोड़े जाएंगे।
-       
-       अभी इनके लिए कोई media नहीं।
-    ===================================================== */
+   CHAPTER 3
+   पदार्थों का पृथक्करण
+
+   केवल PNG MEDIA
+   कोई MP4 नहीं
+===================================================== */
+
+if (
+  chapter === 3 &&
+  lesson === 1
+) {
+
+  const explanation =
+    document.querySelector(
+      "#explanation"
+    );
+
+
+  if (!explanation) {
+    return;
+  }
+
+
+  /* -------------------------------------------------
+     DUPLICATE PROTECTION
+  ------------------------------------------------- */
+
+  if (
+    explanation.querySelector(
+      ".aadya-science-chapter03-media"
+    )
+  ) {
+
+    initialized =
+      true;
+
+    return;
+  }
+
+
+  const chapterNumber =
+    String(chapter).padStart(
+      2,
+      "0"
+    );
+
+
+  const lessonNumber =
+    String(lesson).padStart(
+      2,
+      "0"
+    );
+
+
+  const imageBasePath =
+    "assets/images/class6/science/chapter" +
+    chapterNumber;
+
+
+  /* -------------------------------------------------
+     CHAPTER 3 PNG CREATOR
+
+     यहां केवल IMAGE बनाया जाता है।
+     कोई VIDEO / MP4 नहीं।
+  ------------------------------------------------- */
+
+  function createChapter03Image(
+    mediaNumber,
+    title
+  ) {
+
+    const mediaNumberText =
+      String(mediaNumber).padStart(
+        2,
+        "0"
+      );
+
+
+    const fileName =
+      "chapter" +
+      chapterNumber +
+      "-lesson" +
+      lessonNumber +
+      "-" +
+      mediaNumberText;
+
+
+    const wrapper =
+      document.createElement(
+        "div"
+      );
+
+
+    wrapper.className =
+      "aadya-science-chapter03-media";
+
+
+    wrapper.style.margin =
+      "24px 0 30px 0";
+
+
+    /* ---------------------------------------------
+       TITLE
+    --------------------------------------------- */
+
+    const titleElement =
+      document.createElement(
+        "h4"
+      );
+
+
+    titleElement.textContent =
+      title;
+
+
+    titleElement.style.margin =
+      "0 0 14px 0";
+
+
+    titleElement.style.fontSize =
+      "19px";
+
+
+    titleElement.style.color =
+      "#172b4d";
+
+
+    wrapper.appendChild(
+      titleElement
+    );
+
+
+    /* ---------------------------------------------
+       PNG IMAGE
+    --------------------------------------------- */
+
+    const image =
+      document.createElement(
+        "img"
+      );
+
+
+    image.src =
+      imageBasePath +
+      "/" +
+      fileName +
+      ".png";
+
+
+    image.alt =
+      title;
+
+
+    image.loading =
+      "lazy";
+
+
+    image.style.width =
+      "100%";
+
+
+    image.style.height =
+      "auto";
+
+
+    image.style.display =
+      "block";
+
+
+    image.style.borderRadius =
+      "14px";
+
+
+    image.style.boxShadow =
+      "0 5px 18px rgba(23,43,77,.10)";
+
+
+    /* ---------------------------------------------
+       IMAGE ERROR
+    --------------------------------------------- */
+
+    image.addEventListener(
+      "error",
+      function () {
+
+        wrapper.remove();
+
+      }
+    );
+
+
+    wrapper.appendChild(
+      image
+    );
+
+
+    return wrapper;
+  }
+
+
+  /* =================================================
+     CHAPTER 3 — PNG 1
+
+     chapter03-lesson01-01.png
+
+     विषय:
+     तत्व, यौगिक एवं मिश्रण
+  ================================================= */
+
+  const media1 =
+    createChapter03Image(
+      1,
+      "🔬 देखें और समझें — तत्व, यौगिक एवं मिश्रण"
+    );
+
+
+  /* =================================================
+     CHAPTER 3 — PNG 2
+
+     chapter03-lesson01-02.png
+
+     विषय:
+     पृथक्करण की सामान्य विधियाँ
+  ================================================= */
+
+  const media2 =
+    createChapter03Image(
+      2,
+      "🧪 देखें और समझें — पृथक्करण की सामान्य विधियाँ"
+    );
+
+
+  /* -------------------------------------------------
+     EXPLANATION BOXES
+  ------------------------------------------------- */
+
+  const boxes =
+    explanation.querySelectorAll(
+      ".example"
+    );
+
+
+  /* -------------------------------------------------
+     PNG 1
+     पहले explanation item के बाद
+  ------------------------------------------------- */
+
+  if (
+    boxes.length > 0
+  ) {
+
+    boxes[0]
+      .parentNode
+      .insertBefore(
+        media1,
+        boxes[0].nextSibling
+      );
+
+  } else {
+
+    explanation.appendChild(
+      media1
+    );
+
+  }
+
+
+  /* -------------------------------------------------
+     PNG 2
+     पांचवें explanation item के बाद
+  ------------------------------------------------- */
+
+  if (
+    boxes.length > 4
+  ) {
+
+    boxes[4]
+      .parentNode
+      .insertBefore(
+        media2,
+        boxes[4].nextSibling
+      );
+
+  } else {
+
+    explanation.appendChild(
+      media2
+    );
+
+  }
+
+
+  initialized =
+    true;
+
+
+  return;
+}
+
+
+/* =====================================================
+   FUTURE CHAPTERS
+
+   Chapter 4, 5, 6...
+   बाद में इसी pattern पर जोड़ेंगे।
+===================================================== */
 
 
     /*
