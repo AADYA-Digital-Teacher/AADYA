@@ -378,7 +378,244 @@
 
     }
 
+/* =====================================================
+   CLASS 6 SCIENCE
+   CHAPTER 2 — पदार्थ एवं पदार्थ के समूह
+   केवल PNG MEDIA
+===================================================== */
 
+if (
+  chapter === 2 &&
+  lesson === 1
+) {
+
+  const explanation =
+    document.querySelector(
+      "#explanation"
+    );
+
+  if (!explanation) {
+    return;
+  }
+
+  /* Duplicate protection */
+
+  if (
+    explanation.querySelector(
+      ".aadya-science-chapter02-media"
+    )
+  ) {
+    initialized = true;
+    return;
+  }
+
+  const chapterNumber =
+    String(chapter).padStart(
+      2,
+      "0"
+    );
+
+  const lessonNumber =
+    String(lesson).padStart(
+      2,
+      "0"
+    );
+
+  const imageBasePath =
+    "assets/images/class6/science/chapter" +
+    chapterNumber;
+
+
+  function createChapter02Image(
+    mediaNumber,
+    title
+  ) {
+
+    const mediaNumberText =
+      String(mediaNumber).padStart(
+        2,
+        "0"
+      );
+
+    const fileName =
+      "chapter" +
+      chapterNumber +
+      "-lesson" +
+      lessonNumber +
+      "-" +
+      mediaNumberText;
+
+    const wrapper =
+      document.createElement(
+        "div"
+      );
+
+    wrapper.className =
+      "aadya-science-chapter02-media";
+
+    wrapper.style.margin =
+      "24px 0 30px 0";
+
+
+    const titleElement =
+      document.createElement(
+        "h4"
+      );
+
+    titleElement.textContent =
+      title;
+
+    titleElement.style.margin =
+      "0 0 14px 0";
+
+    titleElement.style.fontSize =
+      "19px";
+
+    titleElement.style.color =
+      "#172b4d";
+
+    wrapper.appendChild(
+      titleElement
+    );
+
+
+    const image =
+      document.createElement(
+        "img"
+      );
+
+    image.src =
+      imageBasePath +
+      "/" +
+      fileName +
+      ".png";
+
+    image.alt =
+      title;
+
+    image.loading =
+      "lazy";
+
+    image.style.width =
+      "100%";
+
+    image.style.height =
+      "auto";
+
+    image.style.display =
+      "block";
+
+    image.style.borderRadius =
+      "14px";
+
+    image.style.boxShadow =
+      "0 5px 18px rgba(23,43,77,.10)";
+
+
+    image.addEventListener(
+      "error",
+      function () {
+
+        wrapper.remove();
+
+      }
+    );
+
+
+    wrapper.appendChild(
+      image
+    );
+
+    return wrapper;
+  }
+
+
+  /* =================================================
+     PNG 1
+     ================================================= */
+
+  const media1 =
+    createChapter02Image(
+      1,
+      "🔬 देखें और समझें — पदार्थों का वर्गीकरण"
+    );
+
+
+  /* =================================================
+     PNG 2
+     ================================================= */
+
+  const media2 =
+    createChapter02Image(
+      2,
+      "🔎 देखें और समझें — पदार्थों के गुण"
+    );
+
+
+  /*
+   * पहला PNG explanation के
+   * पहले भाग के बाद
+   */
+
+  const boxes =
+    explanation.querySelectorAll(
+      ".example"
+    );
+
+
+  if (
+    boxes.length > 0
+  ) {
+
+    boxes[0]
+      .parentNode
+      .insertBefore(
+        media1,
+        boxes[0].nextSibling
+      );
+
+  }
+  else {
+
+    explanation.appendChild(
+      media1
+    );
+
+  }
+
+
+  /*
+   * दूसरा PNG explanation के
+   * बीच के भाग के बाद
+   */
+
+  if (
+    boxes.length > 4
+  ) {
+
+    boxes[4]
+      .parentNode
+      .insertBefore(
+        media2,
+        boxes[4].nextSibling
+      );
+
+  }
+  else {
+
+    explanation.appendChild(
+      media2
+    );
+
+  }
+
+
+  initialized =
+    true;
+
+  return;
+}
+    
     const explanation =
       document.querySelector(
         "#explanation"
