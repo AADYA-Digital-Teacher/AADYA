@@ -887,11 +887,282 @@
       return;
     }
 
+    /* =====================================================
+       CHAPTER 4
+       पास-पड़ोस में होने वाले परिवर्तन
+
+       ONLY PNG
+       NO MP4
+    ===================================================== */
+
+    if (
+      chapter === 4 &&
+      lesson === 1
+    ) {
+
+      const explanation =
+        document.querySelector(
+          "#explanation"
+        );
+
+
+      if (!explanation) {
+        return;
+      }
+
+
+      if (
+        explanation.querySelector(
+          ".aadya-science-chapter04-media"
+        )
+      ) {
+
+        initialized =
+          true;
+
+        return;
+      }
+
+
+      const chapterNumber =
+        String(chapter).padStart(
+          2,
+          "0"
+        );
+
+
+      const lessonNumber =
+        String(lesson).padStart(
+          2,
+          "0"
+        );
+
+
+      const imageBasePath =
+        "assets/images/class6/science/chapter" +
+        chapterNumber;
+
+
+      function createChapter04Image(
+        mediaNumber,
+        title
+      ) {
+
+        const mediaNumberText =
+          String(mediaNumber).padStart(
+            2,
+            "0"
+          );
+
+
+        const fileName =
+          "chapter" +
+          chapterNumber +
+          "-lesson" +
+          lessonNumber +
+          "-" +
+          mediaNumberText;
+
+
+        const wrapper =
+          document.createElement(
+            "div"
+          );
+
+
+        wrapper.className =
+          "aadya-science-chapter04-media";
+
+
+        wrapper.style.margin =
+          "24px 0 30px 0";
+
+
+        const titleElement =
+          document.createElement(
+            "h4"
+          );
+
+
+        titleElement.textContent =
+          title;
+
+
+        titleElement.style.margin =
+          "0 0 14px 0";
+
+
+        titleElement.style.fontSize =
+          "19px";
+
+
+        titleElement.style.color =
+          "#172b4d";
+
+
+        wrapper.appendChild(
+          titleElement
+        );
+
+
+        /* ---------------------------------------------
+           ONLY PNG
+           कोई VIDEO ELEMENT नहीं
+        --------------------------------------------- */
+
+        const image =
+          document.createElement(
+            "img"
+          );
+
+
+        image.src =
+          imageBasePath +
+          "/" +
+          fileName +
+          ".png";
+
+
+        image.alt =
+          title;
+
+
+        image.loading =
+          "lazy";
+
+
+        image.style.width =
+          "100%";
+
+
+        image.style.height =
+          "auto";
+
+
+        image.style.display =
+          "block";
+
+
+        image.style.borderRadius =
+          "14px";
+
+
+        image.style.boxShadow =
+          "0 5px 18px rgba(23,43,77,.10)";
+
+
+        image.addEventListener(
+          "error",
+          function () {
+
+            wrapper.remove();
+
+          }
+        );
+
+
+        wrapper.appendChild(
+          image
+        );
+
+
+        return wrapper;
+      }
+
+
+      /* =================================================
+         CHAPTER 4 — PNG 1
+
+         chapter04-lesson01-01.png
+      ================================================= */
+
+      const media1 =
+        createChapter04Image(
+          1,
+          "🔄 देखें और समझें — विभिन्न प्रकार के परिवर्तन"
+        );
+
+
+      /* =================================================
+         CHAPTER 4 — PNG 2
+
+         chapter04-lesson01-02.png
+      ================================================= */
+
+      const media2 =
+        createChapter04Image(
+          2,
+          "⚗️ देखें और समझें — भौतिक एवं रासायनिक परिवर्तन"
+        );
+
+
+      const boxes =
+        explanation.querySelectorAll(
+          ".example"
+        );
+
+
+      /* -------------------------------------------------
+         PNG 1
+         पहले explanation item के बाद
+      ------------------------------------------------- */
+
+      if (
+        boxes.length > 0
+      ) {
+
+        boxes[0]
+          .parentNode
+          .insertBefore(
+            media1,
+            boxes[0].nextSibling
+          );
+
+      } else {
+
+        explanation.appendChild(
+          media1
+        );
+
+      }
+
+
+      /* -------------------------------------------------
+         PNG 2
+         पांचवें explanation item के बाद
+      ------------------------------------------------- */
+
+      if (
+        boxes.length > 4
+      ) {
+
+        boxes[4]
+          .parentNode
+          .insertBefore(
+            media2,
+            boxes[4].nextSibling
+          );
+
+      } else {
+
+        explanation.appendChild(
+          media2
+        );
+
+      }
+
+
+      initialized =
+        true;
+
+
+      return;
+    }
 
     /* =====================================================
        FUTURE CHAPTERS
 
-       Chapter 4, 5, 6...
+       Chapter 5, 6, 7, 8...
        बाद में इसी pattern पर जोड़ेंगे।
 
        अभी कोई बदलाव नहीं।
